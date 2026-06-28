@@ -204,6 +204,12 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
       <a class="sidebar-link" href="#activate">
         <span class="step-badge">6</span> License activation
       </a>
+      <a class="sidebar-link" href="#ffmpeg">
+        <span class="step-badge">7</span> FFmpeg setup
+      </a>
+      <a class="sidebar-link" href="#mediaplayer">
+        <span class="step-badge">8</span> Windows Media Player
+      </a>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-title">Troubleshooting</div>
@@ -250,6 +256,16 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
       <div class="progress-step">
         <div class="progress-dot">6</div>
         <span class="progress-label">Activate</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="progress-dot">7</div>
+        <span class="progress-label">FFmpeg</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="progress-dot">8</div>
+        <span class="progress-label">Media Player</span>
       </div>
     </div>
 
@@ -446,6 +462,139 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
       <div class="alert alert-ok">
         <span class="alert-ico">✅</span>
         After activation, TapeVault works completely offline. No recurring internet connection required.
+      </div>
+    </div>
+
+    <hr class="step-divider">
+
+    <!-- STEP 7 FFmpeg -->
+    <div class="step-card" id="ffmpeg">
+      <div class="step-header">
+        <div class="step-number">7</div>
+        <div class="step-title">FFmpeg Setup (Thumbnail Generation)</div>
+      </div>
+      <p class="step-desc">TapeVault uses <strong style="color:#c8cfe0">FFmpeg</strong> to automatically generate preview thumbnails from video files stored on LTO tape. FFmpeg is a free, open-source multimedia framework and must be installed separately.</p>
+      <div class="alert alert-info">
+        <span class="alert-ico">ℹ️</span>
+        Without FFmpeg, TapeVault will still work normally — but video thumbnail previews will not be generated. All other features remain fully functional.
+      </div>
+      <div style="margin:20px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Why FFmpeg?</div>
+      <ul class="checklist">
+        <li>Generates preview thumbnails from MP4, MOV, MXF, AVI, MKV files without recalling the full file from tape</li>
+        <li>Used for video metadata extraction (duration, resolution, codec information)</li>
+        <li>Enables the visual grid view in TapeVault — browse your archive like a media browser</li>
+        <li>Runs locally on your machine — no data is sent externally</li>
+      </ul>
+      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Installation — Method 1: Automatic (Recommended)</div>
+      <p class="step-desc">TapeVault can download and configure FFmpeg automatically on first launch:</p>
+      <ul class="checklist">
+        <li>Launch TapeVault → go to <strong style="color:#f5a623">설정 (Settings)</strong> → <strong style="color:#f5a623">Video &amp; Thumbnails</strong></li>
+        <li>Click <strong style="color:#f5a623">Install FFmpeg automatically</strong></li>
+        <li>TapeVault downloads and configures FFmpeg in the background (~50 MB)</li>
+        <li>Restart TapeVault — thumbnail generation is now active</li>
+      </ul>
+      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Installation — Method 2: Manual</div>
+      <p class="step-desc">For air-gapped environments where internet access is restricted:</p>
+      <ul class="checklist">
+        <li>Download FFmpeg from <strong style="color:#5b9cf6">ffmpeg.org/download.html</strong> → Windows builds → <strong style="color:#c8cfe0">ffmpeg-release-essentials.zip</strong></li>
+        <li>Extract the zip file to a folder, e.g. <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\ffmpeg</code></li>
+        <li>In TapeVault → <strong style="color:#f5a623">Settings → Video &amp; Thumbnails → FFmpeg path</strong></li>
+        <li>Set the path to <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\ffmpeg\bin\ffmpeg.exe</code></li>
+        <li>Click <strong style="color:#f5a623">Test &amp; Save</strong> to verify</li>
+      </ul>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Verify FFmpeg installation (Command Prompt)</span>
+          <button class="code-copy" onclick="navigator.clipboard.writeText('ffmpeg -version')">Copy</button>
+        </div>
+        <div class="code-body">
+<span class="cmd">C:\></span> ffmpeg -version<br>
+<span class="ok">ffmpeg version 6.1 Copyright (c) 2000-2024 the FFmpeg developers</span><br>
+<span class="dim">built with gcc 13.2.0 (crosstool-NG 1.25.0.296)</span><br>
+<span class="dim">libavcodec    60.31.102</span><br>
+<span class="dim">libavformat   60.16.100</span><br>
+<span class="dim">...</span>
+        </div>
+      </div>
+      <div class="req-grid" style="margin-top:20px">
+        <div class="req-item"><div class="req-label">Supported formats</div><div class="req-value ok" style="font-size:12px">MP4, MOV, MXF, AVI, MKV, WMV</div></div>
+        <div class="req-item"><div class="req-label">Thumbnail size</div><div class="req-value ok" style="font-size:12px">320×180px (configurable)</div></div>
+        <div class="req-item"><div class="req-label">FFmpeg version</div><div class="req-value ok" style="font-size:12px">4.x or later required</div></div>
+        <div class="req-item"><div class="req-label">License</div><div class="req-value ok" style="font-size:12px">LGPL / GPL — free to use</div></div>
+      </div>
+      <div class="alert alert-warn" style="margin-top:16px">
+        <span class="alert-ico">⚠️</span>
+        For broadcast environments using <strong>MXF (OP1a / OP-Atom)</strong> files, make sure your FFmpeg build includes <strong>libavcodec with MXF support</strong>. The recommended "essentials" build from ffmpeg.org includes this by default.
+      </div>
+    </div>
+
+    <hr class="step-divider">
+
+    <!-- STEP 8 Windows Media Player -->
+    <div class="step-card" id="mediaplayer">
+      <div class="step-header">
+        <div class="step-number">8</div>
+        <div class="step-title">Windows Media Player &amp; Codec Setup</div>
+      </div>
+      <p class="step-desc">TapeVault's built-in video preview feature uses <strong style="color:#c8cfe0">Windows Media Foundation</strong> to play back recalled video files directly within the app. On some Windows configurations, additional codec packs may be required for certain formats.</p>
+      <div style="margin:20px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Check Windows Media Player status</div>
+      <ul class="checklist">
+        <li>Press <strong style="color:#c8cfe0">Win + R</strong> → type <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">wmplayer</code> → press Enter</li>
+        <li>If Windows Media Player opens — you are ready to go ✅</li>
+        <li>If not found — follow the steps below to enable it</li>
+      </ul>
+      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Enable Windows Media Player (if missing)</div>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">Windows Features — Step by step</span></div>
+        <div class="code-body">
+<span class="cmd">1.</span> Press <span class="hl" style="color:#f5a623">Win + R</span> → type <span class="path">optionalfeatures</span> → Enter<br>
+<span class="cmd">2.</span> Find <span class="ok">Media Features</span> → expand → check <span class="ok">Windows Media Player</span><br>
+<span class="cmd">3.</span> Click <span class="hl" style="color:#f5a623">OK</span> → Windows will install it (~1 min)<br>
+<span class="cmd">4.</span> <span class="dim">Restart your computer if prompted</span><br>
+<span class="cmd">5.</span> <span class="ok">✓ Windows Media Player is now active</span>
+        </div>
+      </div>
+      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Recommended Codec Pack — K-Lite Codec Pack</div>
+      <ul class="checklist">
+        <li>Download from <strong style="color:#5b9cf6">codecguide.com/download_k-lite_codec_pack_basic.htm</strong></li>
+        <li>Run the installer with default settings</li>
+        <li>Restart TapeVault after installation</li>
+        <li>All major video formats will now preview correctly</li>
+      </ul>
+      <div class="req-grid" style="margin-top:16px">
+        <div class="req-item"><div class="req-label">H.264 / MP4</div><div class="req-value ok">✓ Built-in Windows</div></div>
+        <div class="req-item"><div class="req-label">H.265 / HEVC</div><div class="req-value warn">K-Lite or MS Store codec</div></div>
+        <div class="req-item"><div class="req-label">MXF / ProRes</div><div class="req-value warn">K-Lite recommended</div></div>
+        <div class="req-item"><div class="req-label">AVI / WMV</div><div class="req-value ok">✓ Built-in Windows</div></div>
+        <div class="req-item"><div class="req-label">MOV / QuickTime</div><div class="req-value warn">K-Lite recommended</div></div>
+        <div class="req-item"><div class="req-label">DNxHD / DNxHR</div><div class="req-value warn">Avid codec required</div></div>
+      </div>
+      <div class="alert alert-info" style="margin-top:16px">
+        <span class="alert-ico">ℹ️</span>
+        <strong>HEVC codec for Windows 11:</strong> Search for <strong>"HEVC Video Extensions"</strong> in the Microsoft Store. Free on Windows 11 — provides native H.265 playback without third-party codec packs.
+      </div>
+      <div class="alert alert-warn" style="margin-top:12px">
+        <span class="alert-ico">⚠️</span>
+        <strong>Enterprise / Air-gapped environments:</strong> If Microsoft Store access is restricted, use K-Lite Codec Pack which can be installed offline.
+      </div>
+      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Video preview inside TapeVault</div>
+      <div class="screen-mock">
+        <div class="screen-mock-bar">
+          <div class="screen-dot" style="background:#ff5f57"></div>
+          <div class="screen-dot" style="background:#febc2e"></div>
+          <div class="screen-dot" style="background:#28c840"></div>
+          <span style="font-size:11px;color:#3a3a4a;margin-left:8px;font-family:monospace">TapeVault — 파일 정보 패널</span>
+        </div>
+        <div class="screen-mock-body">
+          <span class="hl">2026_06_12_22_41(1).mp4</span><br>
+          <span class="dim">/A1-1/2026_06_12_22_41_(1).mp4</span><br><br>
+          <span class="ok">▶ 동영상 미리보기</span>  <span class="dim">← Click to preview in-app</span><br><br>
+          <span class="dim">파일 유형    </span><span class="ok">h264</span><br>
+          <span class="dim">해상도       </span><span class="ok">1280×720</span><br>
+          <span class="dim">용량         </span><span class="ok">0.0 GB (31 MB / 31497 KB)</span><br>
+          <span class="dim">날짜         </span><span class="ok">2026-06-26</span><br>
+          <span class="dim">보관 테이프  </span><span class="hl" style="color:#f5a623">VT TEST</span>
+        </div>
       </div>
     </div>
 
