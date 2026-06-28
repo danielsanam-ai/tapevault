@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Install — TapeVault</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 48px;border-bottom:0.5px solid #1e2230;position:sticky;top:0;background:#0b0b0dee;backdrop-filter:blur(14px);z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
+.nav-logo-icon{width:40px;height:40px;background:transparent;border:none;display:flex;align-items:center;justify-content:center}
+.nav-logo-text{font-size:17px;letter-spacing:-0.02em;color:#f0f2f8;font-weight:400}
+.nav-logo-text b{font-weight:700}
+.nav-ver{font-size:10px;background:#1a2340;color:#5b9cf6;padding:2px 7px;border-radius:4px;font-family:monospace}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:13px;color:#6b7694;text-decoration:none;cursor:pointer;transition:color .2s}
+.nav-links a:hover{color:#c8cfe0}
+.nav-links a.active{color:#f5a623}
+.nav-right{display:flex;gap:7px;align-items:center}
+.lang-grp{display:flex;gap:4px;margin-right:6px}
+.lang-btn{font-size:10px;color:#4a5270;background:#111520;border:0.5px solid #1e2330;padding:3px 8px;border-radius:4px;cursor:pointer;font-family:monospace}
+.lang-btn.on{color:#5b9cf6;border-color:#1e3a5f}
+.btn-ghost{font-size:13px;color:#6b7694;background:#111827;border:0.5px solid #2a3349;padding:6px 16px;border-radius:6px;cursor:pointer}
+.btn-orange{font-size:13px;color:#0b0b0d;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer}
+
+/* PAGE HEADER */
+.page-header{padding:64px 48px 48px;border-bottom:0.5px solid #1e2230;background:linear-gradient(180deg,#0d1117 0%,#0b0b0d 100%)}
+.page-header-inner{max-width:860px;margin:0 auto}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:#3a4a5a;margin-bottom:20px;font-family:monospace}
+.breadcrumb a{color:#3a4a5a;text-decoration:none}
+.breadcrumb a:hover{color:#6b7694}
+.breadcrumb-sep{color:#2a3040}
+.page-label{font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:monospace}
+.page-title{font-size:40px;font-weight:500;color:#f0f2f8;margin-bottom:14px;letter-spacing:-.6px}
+.page-sub{font-size:16px;color:#5a6480;max-width:560px;line-height:1.75}
+
+/* LAYOUT */
+.doc-layout{display:grid;grid-template-columns:240px 1fr;gap:0;max-width:1100px;margin:0 auto;min-height:calc(100vh - 300px)}
+
+/* SIDEBAR */
+.doc-sidebar{border-right:0.5px solid #1e2230;padding:32px 0;position:sticky;top:65px;height:fit-content}
+.sidebar-section{margin-bottom:28px}
+.sidebar-title{font-size:10px;color:#2e3a52;text-transform:uppercase;letter-spacing:.12em;padding:0 24px;margin-bottom:10px;font-family:monospace}
+.sidebar-link{display:flex;align-items:center;gap:8px;padding:7px 24px;font-size:13px;color:#4a5270;text-decoration:none;cursor:pointer;transition:all .15s;border-left:2px solid transparent}
+.sidebar-link:hover{color:#c8cfe0;background:#0d1117}
+.sidebar-link.active{color:#f5a623;border-left-color:#f5a623;background:#1a1508}
+.sidebar-link .step-badge{width:18px;height:18px;background:#1e2330;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:#4a5270;font-family:monospace;flex-shrink:0}
+.sidebar-link.active .step-badge{background:#f5a623;color:#0b0b0d}
+
+/* CONTENT */
+.doc-content{padding:48px 56px;max-width:780px}
+
+/* STEP CARDS */
+.step-card{margin-bottom:48px;scroll-margin-top:80px}
+.step-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.step-number{width:40px;height:40px;border-radius:50%;background:#f5a623;color:#0b0b0d;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:monospace;flex-shrink:0}
+.step-title{font-size:22px;font-weight:600;color:#e8eaf0;letter-spacing:-.3px}
+.step-desc{font-size:14px;color:#5a6480;line-height:1.8;margin-bottom:20px}
+.step-divider{border:none;border-top:0.5px solid #1e2330;margin:48px 0}
+
+/* REQ BOX */
+.req-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.req-item{background:#0d1117;border:0.5px solid #1e2330;border-radius:8px;padding:16px}
+.req-label{font-size:10px;color:#3a4a5a;text-transform:uppercase;letter-spacing:.1em;font-family:monospace;margin-bottom:6px}
+.req-value{font-size:13px;color:#c8cfe0;font-weight:500}
+.req-value.ok{color:#4ade80}
+.req-value.warn{color:#f5a623}
+
+/* CODE BLOCK */
+.code-block{background:#0d1117;border:0.5px solid #1e2330;border-radius:8px;overflow:hidden;margin:16px 0}
+.code-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#111520;border-bottom:0.5px solid #1e2230}
+.code-lang{font-size:10px;color:#3a4a5a;font-family:monospace;text-transform:uppercase;letter-spacing:.08em}
+.code-copy{font-size:11px;color:#4a5270;background:none;border:none;cursor:pointer;font-family:monospace;padding:2px 8px;border-radius:4px;transition:all .15s}
+.code-copy:hover{color:#c8cfe0;background:#1e2330}
+.code-body{padding:16px;font-family:monospace;font-size:13px;color:#c8cfe0;line-height:1.7;overflow-x:auto}
+.code-body .cmd{color:#4ade80}
+.code-body .cmt{color:#2e4a2e}
+.code-body .path{color:#5b9cf6}
+.code-body .warn{color:#f5a623}
+
+/* DOWNLOAD BTN */
+.dl-btn-big{display:inline-flex;align-items:center;gap:10px;background:#f5a623;color:#0b0b0d;border:none;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;margin:16px 0;text-decoration:none;transition:opacity .15s}
+.dl-btn-big:hover{opacity:.88}
+
+/* CHECKLIST */
+.checklist{list-style:none;display:flex;flex-direction:column;gap:10px;margin:16px 0}
+.checklist li{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:#5a6480;line-height:1.6}
+.checklist li::before{content:'✓';color:#22d3ee;font-size:13px;flex-shrink:0;margin-top:1px}
+
+/* ALERT BOX */
+.alert{border-radius:8px;padding:14px 18px;margin:16px 0;font-size:13px;line-height:1.7;display:flex;align-items:flex-start;gap:10px}
+.alert-info{background:#0d1829;border:0.5px solid #1e3a5f;color:#7ab4f0}
+.alert-warn{background:#1a1508;border:0.5px solid #3a2a05;color:#d4921a}
+.alert-ok{background:#0a1a0a;border:0.5px solid #1a3a1a;color:#4ade80}
+.alert-ico{flex-shrink:0;font-size:16px}
+
+/* PROGRESS STEPS */
+.progress-bar{display:flex;align-items:center;gap:0;margin:24px 0 32px;overflow-x:auto}
+.progress-step{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.progress-dot{width:28px;height:28px;border-radius:50%;background:#1e2330;border:1.5px solid #2a3349;display:flex;align-items:center;justify-content:center;font-size:11px;color:#4a5270;font-family:monospace;font-weight:700;flex-shrink:0}
+.progress-dot.done{background:#f5a623;border-color:#f5a623;color:#0b0b0d}
+.progress-dot.current{background:#0d1117;border-color:#f5a623;color:#f5a623}
+.progress-label{font-size:11px;color:#4a5270;white-space:nowrap}
+.progress-label.done{color:#f5a623}
+.progress-line{width:32px;height:1px;background:#1e2330;flex-shrink:0;margin:0 4px}
+
+/* SCREENSHOT MOCK */
+.screen-mock{background:#141418;border:0.5px solid #2a2a35;border-radius:8px;overflow:hidden;margin:20px 0}
+.screen-mock-bar{background:#1a1a1f;border-bottom:0.5px solid #2a2a35;padding:8px 14px;display:flex;align-items:center;gap:6px}
+.screen-dot{width:9px;height:9px;border-radius:50%}
+.screen-mock-body{padding:24px;font-size:12px;color:#4a5270;font-family:monospace}
+.screen-mock-body .hl{color:#f5a623}
+.screen-mock-body .ok{color:#4ade80}
+.screen-mock-body .dim{color:#2e3a52}
+
+/* NEXT STEPS */
+.next-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px}
+.next-card{background:#0d1117;border:0.5px solid #1e2330;border-radius:8px;padding:20px;text-decoration:none;transition:border-color .2s}
+.next-card:hover{border-color:#2e3a4a}
+.next-card-ico{font-size:20px;margin-bottom:10px}
+.next-card-title{font-size:13px;font-weight:600;color:#c8cfe0;margin-bottom:6px}
+.next-card-desc{font-size:11px;color:#3a4a5a;line-height:1.6}
+
+/* FOOTER */
+footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-left{font-size:11px;color:#2a3040}
+.footer-right{display:flex;gap:16px}
+.footer-right a{font-size:11px;color:#2a3040;text-decoration:none;cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-icon">
+      <svg width="40" height="40" viewBox="0 0 120 120" fill="none" stroke="#f5a623" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="16" y="32" width="88" height="56" rx="14"/>
+        <circle cx="43" cy="58" r="13"/><circle cx="77" cy="58" r="13"/>
+        <circle cx="43" cy="58" r="4.5" fill="#f5a623" stroke="none"/><circle cx="77" cy="58" r="4.5" fill="#f5a623" stroke="none"/>
+        <path d="M56 58 H64"/><rect x="48" y="78" width="24" height="9" rx="3"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text">Tape<b>Vault</b></span>
+    <span class="nav-ver">v1.0.0</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#features">Features</a>
+    <a href="index.html#how">How it works</a>
+    <a href="index.html#download">Download</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="how-to-install.html" class="active">Install Guide</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-grp">
+      <button class="lang-btn on">EN</button>
+      <button class="lang-btn">KO</button>
+      <button class="lang-btn">JA</button>
+    </div>
+    <button class="btn-ghost">Sign in</button>
+    <button class="btn-orange">Free Trial</button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="#">Support</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>How to Install</span>
+    </div>
+    <div class="page-label">Support · Installation Guide</div>
+    <div class="page-title">How to Install TapeVault</div>
+    <p class="page-sub">Step-by-step installation guide for TapeVault v1.0.0 on Windows 10 / 11. Get up and running with your LTO drive in under 10 minutes.</p>
+  </div>
+</div>
+
+<!-- BODY -->
+<div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:240px 1fr">
+
+  <!-- SIDEBAR -->
+  <div class="doc-sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Installation</div>
+      <a class="sidebar-link active" href="#requirements">
+        <span class="step-badge">1</span> System requirements
+      </a>
+      <a class="sidebar-link" href="#download">
+        <span class="step-badge">2</span> Download installer
+      </a>
+      <a class="sidebar-link" href="#install">
+        <span class="step-badge">3</span> Run installer
+      </a>
+      <a class="sidebar-link" href="#driver">
+        <span class="step-badge">4</span> LTO driver setup
+      </a>
+      <a class="sidebar-link" href="#first-launch">
+        <span class="step-badge">5</span> First launch
+      </a>
+      <a class="sidebar-link" href="#activate">
+        <span class="step-badge">6</span> License activation
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Troubleshooting</div>
+      <a class="sidebar-link" href="#trouble-drive">Drive not detected</a>
+      <a class="sidebar-link" href="#trouble-install">Installation fails</a>
+      <a class="sidebar-link" href="#trouble-license">License issues</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Support</div>
+      <a class="sidebar-link" href="mailto:support@tapevault.net">Contact support</a>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="doc-content">
+
+    <!-- PROGRESS -->
+    <div class="progress-bar">
+      <div class="progress-step">
+        <div class="progress-dot current">1</div>
+        <span class="progress-label">Requirements</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="progress-dot">2</div>
+        <span class="progress-label">Download</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="progress-dot">3</div>
+        <span class="progress-label">Install</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="progress-dot">4</div>
+        <span class="progress-label">Driver</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="progress-dot">5</div>
+        <span class="progress-label">Launch</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="progress-dot">6</div>
+        <span class="progress-label">Activate</span>
+      </div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step-card" id="requirements">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <div class="step-title">System Requirements</div>
+      </div>
+      <p class="step-desc">Before installing TapeVault, make sure your system meets the following requirements.</p>
+      <div class="req-grid">
+        <div class="req-item">
+          <div class="req-label">Operating System</div>
+          <div class="req-value ok">Windows 10 / 11 (64-bit)</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">RAM</div>
+          <div class="req-value ok">8 GB or more recommended</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">Storage</div>
+          <div class="req-value ok">500 MB free disk space</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">LTO Drive Interface</div>
+          <div class="req-value ok">SAS / Thunderbolt / USB</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">Supported LTO</div>
+          <div class="req-value ok">LTO-4 through LTO-9</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">Internet</div>
+          <div class="req-value warn">Required for activation only</div>
+        </div>
+      </div>
+      <div class="alert alert-info">
+        <span class="alert-ico">ℹ️</span>
+        TapeVault runs fully offline after initial license activation. No ongoing internet connection is required.
+      </div>
+    </div>
+
+    <hr class="step-divider">
+
+    <!-- STEP 2 -->
+    <div class="step-card" id="download">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <div class="step-title">Download the Installer</div>
+      </div>
+      <p class="step-desc">Download the latest TapeVault installer for Windows. The installer includes all required runtime components including Python and Electron.</p>
+      <a class="dl-btn-big" href="index.html#download">
+        ⬇ Download TapeVault v1.0.0 for Windows
+      </a>
+      <div class="alert alert-ok">
+        <span class="alert-ico">✅</span>
+        File: <strong>TapeVault-Setup-v1.0.0-win64.exe</strong> · ~180 MB · SHA256 verified
+      </div>
+      <div class="alert alert-warn">
+        <span class="alert-ico">⚠️</span>
+        Windows SmartScreen may show a warning on first run. Click <strong>"More info" → "Run anyway"</strong> to proceed. This is normal for newly released software.
+      </div>
+    </div>
+
+    <hr class="step-divider">
+
+    <!-- STEP 3 -->
+    <div class="step-card" id="install">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <div class="step-title">Run the Installer</div>
+      </div>
+      <p class="step-desc">Run the downloaded <code style="background:#1a1a20;padding:2px 6px;border-radius:3px;font-size:12px;color:#5b9cf6">TapeVault-Setup-v1.0.0-win64.exe</code> file and follow the steps below.</p>
+      <ul class="checklist">
+        <li>Double-click the installer file to launch the setup wizard</li>
+        <li>Accept the License Agreement and click <strong style="color:#c8cfe0">Next</strong></li>
+        <li>Choose installation folder (default: <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\Program Files\TapeVault</code>)</li>
+        <li>Select <strong style="color:#c8cfe0">Create Desktop Shortcut</strong> if desired</li>
+        <li>Click <strong style="color:#f5a623">Install</strong> and wait for completion (~2 minutes)</li>
+        <li>Click <strong style="color:#c8cfe0">Finish</strong> — TapeVault will launch automatically</li>
+      </ul>
+      <div class="screen-mock">
+        <div class="screen-mock-bar">
+          <div class="screen-dot" style="background:#ff5f57"></div>
+          <div class="screen-dot" style="background:#febc2e"></div>
+          <div class="screen-dot" style="background:#28c840"></div>
+          <span style="font-size:11px;color:#3a3a4a;margin-left:8px;font-family:monospace">TapeVault Setup v1.0.0</span>
+        </div>
+        <div class="screen-mock-body">
+          <span class="ok">✓</span> Extracting files...<br>
+          <span class="ok">✓</span> Installing Python runtime...<br>
+          <span class="ok">✓</span> Installing Electron framework...<br>
+          <span class="ok">✓</span> Registering TapeVault...<br>
+          <span class="hl">→</span> Installation complete. Click Finish to launch.<br>
+          <span class="dim">Installed to C:\Program Files\TapeVault</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="step-divider">
+
+    <!-- STEP 4 -->
+    <div class="step-card" id="driver">
+      <div class="step-header">
+        <div class="step-number">4</div>
+        <div class="step-title">LTO Driver Setup</div>
+      </div>
+      <p class="step-desc">TapeVault requires the appropriate SCSI/SAS or tape driver for your LTO drive. Most modern LTO drives are automatically recognized by Windows, but some may require manual driver installation.</p>
+      <div class="alert alert-info">
+        <span class="alert-ico">ℹ️</span>
+        Connect your LTO drive <strong>before</strong> launching TapeVault for the first time. TapeVault will detect the drive automatically on startup.
+      </div>
+      <p class="step-desc" style="margin-top:16px">If your drive is not detected, install the driver manually:</p>
+      <ul class="checklist">
+        <li>Open <strong style="color:#c8cfe0">Device Manager</strong> (Win + X → Device Manager)</li>
+        <li>Look for your LTO drive under <strong style="color:#c8cfe0">Tape drives</strong> or <strong style="color:#c8cfe0">Other devices</strong></li>
+        <li>Right-click → <strong style="color:#c8cfe0">Update driver</strong> → Search automatically</li>
+        <li>If not found, download the driver from your drive manufacturer's website</li>
+      </ul>
+      <div class="req-grid" style="margin-top:16px">
+        <div class="req-item">
+          <div class="req-label">HPE LTO</div>
+          <div class="req-value" style="font-size:12px">hpe.com/drivers</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">IBM LTO</div>
+          <div class="req-value" style="font-size:12px">ibm.com/support</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">Quantum LTO</div>
+          <div class="req-value" style="font-size:12px">quantum.com/drivers</div>
+        </div>
+        <div class="req-item">
+          <div class="req-label">Sony LTO</div>
+          <div class="req-value" style="font-size:12px">sony.com/support</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="step-divider">
+
+    <!-- STEP 5 -->
+    <div class="step-card" id="first-launch">
+      <div class="step-header">
+        <div class="step-number">5</div>
+        <div class="step-title">First Launch</div>
+      </div>
+      <p class="step-desc">Launch TapeVault from the Desktop shortcut or Start Menu. On first launch, TapeVault will scan for connected LTO drives and guide you through initial setup.</p>
+      <div class="screen-mock">
+        <div class="screen-mock-bar">
+          <div class="screen-dot" style="background:#ff5f57"></div>
+          <div class="screen-dot" style="background:#febc2e"></div>
+          <div class="screen-dot" style="background:#28c840"></div>
+          <span style="font-size:11px;color:#3a3a4a;margin-left:8px;font-family:monospace">TapeVault v1.0.0 — LTO Archive Manager</span>
+        </div>
+        <div class="screen-mock-body">
+          <span class="hl">TapeVault</span> <span class="dim">v1.0.0</span><br><br>
+          <span class="ok">✓</span> Python IPC bridge started<br>
+          <span class="ok">✓</span> Database initialized<br>
+          <span class="hl">→</span> Scanning for LTO drives...<br>
+          <span class="ok">✓</span> Drive detected: <span class="hl">HP Ultrium 7 (LTO-7)</span><br>
+          <span class="dim">Ready. Insert tape to begin.</span>
+        </div>
+      </div>
+      <ul class="checklist" style="margin-top:16px">
+        <li>Insert an LTO tape into your drive</li>
+        <li>Click <strong style="color:#f5a623">+ 새 테이프 (New Tape)</strong> to register the tape</li>
+        <li>Create your first project folder</li>
+        <li>Drag files into the queue and click <strong style="color:#f5a623">Archive to Tape</strong></li>
+      </ul>
+    </div>
+
+    <hr class="step-divider">
+
+    <!-- STEP 6 -->
+    <div class="step-card" id="activate">
+      <div class="step-header">
+        <div class="step-number">6</div>
+        <div class="step-title">License Activation</div>
+      </div>
+      <p class="step-desc">TapeVault includes a 30-day free trial with full features. To activate a paid license, go to <strong style="color:#c8cfe0">Settings → License</strong> and enter your license key.</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Activation steps</span>
+        </div>
+        <div class="code-body">
+          <span class="cmd">1.</span> Open TapeVault → Click <span class="hl" style="color:#f5a623">설정 (Settings)</span> in the top bar<br>
+          <span class="cmd">2.</span> Navigate to <span class="path">Settings → License → Activate</span><br>
+          <span class="cmd">3.</span> Enter your license key from the purchase email<br>
+          <span class="cmd">4.</span> Click <span class="hl" style="color:#f5a623">Activate</span> — internet required for this step only<br>
+          <span class="cmd">5.</span> <span class="ok" style="color:#4ade80">✓ Activation complete</span> — now fully offline capable
+        </div>
+      </div>
+      <div class="alert alert-ok">
+        <span class="alert-ico">✅</span>
+        After activation, TapeVault works completely offline. No recurring internet connection required.
+      </div>
+    </div>
+
+    <hr class="step-divider">
+
+    <!-- TROUBLESHOOTING -->
+    <div style="margin-bottom:16px">
+      <div class="sec-label" style="font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;margin-bottom:16px">Troubleshooting</div>
+      <div class="sec-title" style="font-size:26px;font-weight:500;color:#e8eaf0;margin-bottom:24px">Common issues &amp; fixes</div>
+    </div>
+
+    <div class="step-card" id="trouble-drive">
+      <div class="step-header">
+        <div class="step-number" style="background:#2a1a1a;color:#ef4444;font-size:18px">!</div>
+        <div class="step-title" style="font-size:18px">LTO drive not detected</div>
+      </div>
+      <ul class="checklist">
+        <li>Make sure the LTO drive is powered on and connected before launching TapeVault</li>
+        <li>Check Device Manager — the drive should appear under <strong style="color:#c8cfe0">Tape drives</strong></li>
+        <li>Try a different SAS/USB port or cable</li>
+        <li>Reinstall the tape driver from your drive manufacturer</li>
+        <li>Click <strong style="color:#f5a623">새로고침 (Refresh)</strong> in TapeVault's top bar to re-scan</li>
+      </ul>
+    </div>
+
+    <div class="step-card" id="trouble-install">
+      <div class="step-header">
+        <div class="step-number" style="background:#2a1a1a;color:#ef4444;font-size:18px">!</div>
+        <div class="step-title" style="font-size:18px">Installation fails or won't start</div>
+      </div>
+      <ul class="checklist">
+        <li>Right-click the installer → <strong style="color:#c8cfe0">Run as Administrator</strong></li>
+        <li>Temporarily disable antivirus software during installation</li>
+        <li>Make sure you have at least 500 MB of free disk space</li>
+        <li>Download the installer again — the file may be corrupted</li>
+      </ul>
+    </div>
+
+    <div class="step-card" id="trouble-license">
+      <div class="step-header">
+        <div class="step-number" style="background:#2a1a1a;color:#ef4444;font-size:18px">!</div>
+        <div class="step-title" style="font-size:18px">License activation issues</div>
+      </div>
+      <ul class="checklist">
+        <li>Make sure you have an active internet connection during activation</li>
+        <li>Check that you copied the license key correctly — no extra spaces</li>
+        <li>Each license key can be activated on up to 2 devices</li>
+        <li>If you need to transfer a license, contact support</li>
+      </ul>
+      <div class="alert alert-info" style="margin-top:16px">
+        <span class="alert-ico">ℹ️</span>
+        Still having issues? Contact us at <strong>support@tapevault.net</strong> — we respond within 24 hours on business days.
+      </div>
+    </div>
+
+    <hr class="step-divider">
+
+    <!-- NEXT STEPS -->
+    <div style="margin-bottom:20px">
+      <div class="sec-label" style="font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;margin-bottom:12px">What's next</div>
+      <div class="sec-title" style="font-size:22px;font-weight:500;color:#e8eaf0;margin-bottom:20px">You're all set!</div>
+    </div>
+    <div class="next-grid">
+      <a class="next-card" href="index.html#features">
+        <div class="next-card-ico">💾</div>
+        <div class="next-card-title">Explore Features</div>
+        <div class="next-card-desc">See everything TapeVault can do for your archive workflow.</div>
+      </a>
+      <a class="next-card" href="index.html#pricing">
+        <div class="next-card-ico">💳</div>
+        <div class="next-card-title">Choose a Plan</div>
+        <div class="next-card-desc">Start free for 30 days, then pick the plan that fits your workflow.</div>
+      </a>
+      <a class="next-card" href="mailto:support@tapevault.net">
+        <div class="next-card-ico">💬</div>
+        <div class="next-card-title">Contact Support</div>
+        <div class="next-card-desc">Our team is ready to help. Response within 24 hours.</div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-left">TapeVault v1.0.0 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
+    <div class="footer-right">
+      <a href="index.html">Home</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="mailto:support@tapevault.net">Support</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const links = document.querySelectorAll('.sidebar-link[href^="#"]');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('.sidebar-link[href="#' + e.target.id + '"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-60px 0px -60% 0px' });
+
+document.querySelectorAll('.step-card[id], div[id^="trouble"]').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
