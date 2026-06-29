@@ -46,13 +46,18 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .btn-hero-ghost{background:#111827;color:#c8cfe0;border:0.5px solid #2a3349;padding:14px 24px;border-radius:8px;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:8px}
 .btn-hero-ghost:hover{border-color:#3a4a6a}
 
-/* VIDEO EMBED */
-.hero-videos{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:0 auto 20px}
-.video-card{background:#141418;border:0.5px solid #2a2a35;border-radius:12px;overflow:hidden}
+/* VIDEO THUMB LINKS */
+.hero-videos{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:540px;margin:0 auto 20px}
+.video-card{background:#141418;border:0.5px solid #2a2a35;border-radius:12px;overflow:hidden;text-decoration:none;display:block;transition:border-color .2s}
+.video-card:hover{border-color:#f5a623}
 .video-label{background:#1a1a1f;border-bottom:0.5px solid #2a2a35;padding:10px 16px;font-size:11px;color:#4a5270;font-family:monospace;display:flex;align-items:center;gap:6px}
 .video-label span{color:#f5a623}
-.video-wrap{position:relative;padding-bottom:177.78%;height:0;overflow:hidden}
-.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.video-thumb{position:relative;background:#0d0d12}
+.video-thumb img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover;opacity:.85}
+.video-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.video-play-btn{width:52px;height:52px;background:rgba(245,166,35,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.video-card:hover .video-play-btn{transform:scale(1.1)}
+.video-play-btn svg{width:20px;height:20px;fill:#0b0b0d;margin-left:3px}
 
 /* PAIN POINTS */
 .pain-sec{padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
@@ -238,22 +243,32 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 
   <!-- YOUTUBE SHORTS -->
   <div class="hero-videos">
-    <div class="video-card">
+    <a class="video-card" href="https://www.youtube.com/shorts/IjWJ3z6mAjY" target="_blank" rel="noopener">
       <div class="video-label">
         <span>▶ DEMO 01</span> — Archive workflow
       </div>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/IjWJ3z6mAjY" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+      <div class="video-thumb">
+        <img src="https://i.ytimg.com/vi/IjWJ3z6mAjY/oq1.jpg" alt="TapeVault Demo 01 — Archive workflow">
+        <div class="video-play">
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="video-card">
+    </a>
+    <a class="video-card" href="https://www.youtube.com/shorts/y5VK5Dz19Ao" target="_blank" rel="noopener">
       <div class="video-label">
-        <span>▶ DEMO 02</span> — Search & retrieve
+        <span>▶ DEMO 02</span> — Search &amp; retrieve
       </div>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/y5VK5Dz19Ao" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+      <div class="video-thumb">
+        <img src="https://i.ytimg.com/vi/y5VK5Dz19Ao/oq1.jpg" alt="TapeVault Demo 02 — Search and retrieve">
+        <div class="video-play">
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
