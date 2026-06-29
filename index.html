@@ -3,138 +3,188 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TapeVault — Professional LTO Tape Management</title>
+<title>TapeVault — Find Any File on LTO Tape in 30 Seconds</title>
+<meta name="description" content="TapeVault is the only professional LTO tape archive manager for Windows. Browse, search, and retrieve media files from LTO tape in seconds.">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
 .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 48px;border-bottom:0.5px solid #1e2230;position:sticky;top:0;background:#0b0b0dee;backdrop-filter:blur(14px);z-index:100}
-.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
-.nav-logo-icon{width:40px;height:40px;background:transparent;border-radius:0;display:flex;align-items:center;justify-content:center;border:none}
-.nav-logo-text{font-size:17px;letter-spacing:-0.02em;color:#f0f2f8;font-weight:400}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.nav-logo-text{font-size:17px;letter-spacing:-0.02em;color:#f0f2f8}
 .nav-logo-text b{font-weight:700}
 .nav-ver{font-size:10px;background:#1a2340;color:#5b9cf6;padding:2px 7px;border-radius:4px;font-family:monospace}
 .nav-links{display:flex;gap:28px}
 .nav-links a{font-size:13px;color:#6b7694;text-decoration:none;cursor:pointer;transition:color .2s}
-.nav-links a:hover{color:#c8cfe0}
+.nav-links a:hover,.nav-links a.active{color:#f5a623}
 .nav-right{display:flex;gap:7px;align-items:center}
 .lang-grp{display:flex;gap:4px;margin-right:6px}
-.lang-btn{font-size:10px;color:#4a5270;background:#111520;border:0.5px solid #1e2330;padding:3px 8px;border-radius:4px;cursor:pointer;font-family:monospace;transition:all .15s}
+.lang-btn{font-size:10px;color:#4a5270;background:#111520;border:0.5px solid #1e2330;padding:3px 8px;border-radius:4px;cursor:pointer;font-family:monospace}
 .lang-btn.on{color:#5b9cf6;border-color:#1e3a5f}
 .btn-ghost{font-size:13px;color:#6b7694;background:#111827;border:0.5px solid #2a3349;padding:6px 16px;border-radius:6px;cursor:pointer}
 .btn-orange{font-size:13px;color:#0b0b0d;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer}
-.hero{text-align:center;padding:76px 48px 60px}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:#111827;border:0.5px solid #1e3a5f;color:#5b9cf6;font-size:11px;padding:4px 14px;border-radius:20px;margin-bottom:26px;font-family:monospace}
-.badge-dot{width:6px;height:6px;background:#22d3ee;border-radius:50%;animation:blink 2s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-.hero h1{font-size:52px;font-weight:400;line-height:1.13;letter-spacing:-1.2px;color:#f0f2f8;margin-bottom:18px}
-.hero h1 b{font-weight:700;color:#f5a623}
-.hero-sub{font-size:16px;color:#5a6480;max-width:500px;margin:0 auto 34px;line-height:1.75}
-.hero-btns{display:flex;gap:10px;justify-content:center;margin-bottom:54px}
-.btn-hero{background:#f5a623;color:#0b0b0d;border:none;padding:13px 30px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer}
-.btn-hero:hover{opacity:.88}
-.btn-hero2{background:#111827;color:#c8cfe0;border:0.5px solid #2a3349;padding:13px 22px;border-radius:8px;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:8px}
-.mockup{background:#141418;border:0.5px solid #2a2a35;border-radius:10px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);max-width:820px;margin:0 auto}
-.mock-tb{background:#1a1a1f;border-bottom:0.5px solid #2a2a35;padding:8px 14px;display:flex;align-items:center;gap:7px}
-.mock-dot{width:10px;height:10px;border-radius:50%}
-.mock-title{font-size:11px;color:#3a3a4a;margin-left:8px;font-family:monospace}
-.mock-hd{background:#1a1a1f;border-bottom:0.5px solid #2a2a35;padding:7px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.hd-sdot{width:8px;height:8px;background:#ef4444;border-radius:50%}
-.hd-stxt{font-size:10px;color:#ef4444}
-.hd-tape{font-size:10px;color:#4a5270;font-family:monospace;margin-left:4px}
-.hd-prog{height:8px;width:90px;background:#1e2330;border-radius:3px;overflow:hidden}
-.hd-progf{height:100%;background:#f5a623;width:38%;border-radius:3px}
-.hd-btns{margin-left:auto;display:flex;gap:5px}
-.hd-btn{font-size:10px;background:#1e2330;color:#5a6480;border:none;padding:4px 10px;border-radius:4px;cursor:pointer}
-.hd-btn.ac{background:#f5a623;color:#0b0b0d;font-weight:700}
-.mock-body{display:grid;grid-template-columns:190px 1fr}
-.mock-sb{border-right:0.5px solid #2a2a35;padding:10px 0;font-size:11px;min-height:260px;background:#0f0f12}
-.sb-grp{padding:8px 12px 3px;font-size:9px;color:#2e3a52;letter-spacing:.1em;text-transform:uppercase;font-family:monospace}
-.sb-item{padding:5px 12px;color:#4a5270;display:flex;align-items:center;gap:6px}
-.sb-item.ac{color:#f5a623;background:#1e1a10}
-.sb-item .ct{margin-left:auto;font-size:9px;background:#1e2330;padding:1px 5px;border-radius:3px;color:#4a5270}
-.mock-main{padding:12px;background:#0f0f12}
-.mock-bc{font-size:10px;color:#3a4060;margin-bottom:10px;font-family:monospace}
-.mock-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.mock-card{background:#1a1a20;border:0.5px solid #2a2a35;border-radius:6px;padding:6px}
-.mc-thumb{height:46px;border-radius:3px;margin-bottom:5px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;overflow:hidden}
-.mc-video{background:#1e2a1e}.mc-pdf{background:#2a1a1a}.mc-zip{background:#1a1e2a}.mc-jpg{background:#1a2a2a}
-.mc-name{font-size:9px;color:#4a5270;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mc-size{font-size:8px;color:#2e3a52;margin-top:2px}
-.badge-t{font-size:8px;background:#1e3a1e;color:#4ade80;border-radius:2px;padding:1px 4px}
-.badge-q{font-size:8px;background:#1e2a3a;color:#5b9cf6;border-radius:2px;padding:1px 4px}
-.blur-p{width:100%;height:100%;background:repeating-linear-gradient(45deg,#1e2a1e 0,#1e2a1e 4px,#162016 4px,#162016 8px);display:flex;align-items:center;justify-content:center;opacity:.6}
-.mock-sb-bar{background:#111115;border-top:0.5px solid #2a2a35;padding:5px 14px;display:flex;justify-content:space-between;font-size:9px;color:#2e3a52;font-family:monospace}
-.sec{padding:72px 48px}
-.sec-head{text-align:center;margin-bottom:44px}
-.sec-label{font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;font-family:monospace}
-.sec-title{font-size:32px;font-weight:500;color:#e8eaf0;margin-bottom:10px;letter-spacing:-.4px}
+.btn-orange:hover{opacity:.88}
+
+/* HERO */
+.hero{padding:72px 48px 56px;text-align:center;position:relative}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:#111827;border:0.5px solid #1e3a5f;color:#5b9cf6;font-size:11px;padding:5px 14px;border-radius:20px;margin-bottom:28px;font-family:monospace}
+.hero-dot{width:6px;height:6px;background:#22d3ee;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero h1{font-size:56px;font-weight:400;line-height:1.1;letter-spacing:-1.5px;color:#f0f2f8;margin-bottom:10px}
+.hero h1 b{font-weight:800;color:#f5a623}
+.hero h1 em{font-style:normal;color:#c8cfe0}
+.hero-sub{font-size:17px;color:#5a6480;max-width:540px;margin:0 auto 16px;line-height:1.75}
+.hero-platform{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#3a4a5a;margin-bottom:36px;font-family:monospace}
+.hero-platform span{background:#1a1a20;border:0.5px solid #2a2a35;padding:3px 10px;border-radius:4px}
+.hero-platform span.hi{color:#f5a623;border-color:#3a2a05;background:#1a1508}
+.hero-btns{display:flex;gap:12px;justify-content:center;margin-bottom:56px}
+.btn-hero-main{background:#f5a623;color:#0b0b0d;border:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px}
+.btn-hero-main:hover{opacity:.88}
+.btn-hero-ghost{background:#111827;color:#c8cfe0;border:0.5px solid #2a3349;padding:14px 24px;border-radius:8px;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.btn-hero-ghost:hover{border-color:#3a4a6a}
+
+/* VIDEO EMBED */
+.hero-videos{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:0 auto 20px}
+.video-card{background:#141418;border:0.5px solid #2a2a35;border-radius:12px;overflow:hidden}
+.video-label{background:#1a1a1f;border-bottom:0.5px solid #2a2a35;padding:10px 16px;font-size:11px;color:#4a5270;font-family:monospace;display:flex;align-items:center;gap:6px}
+.video-label span{color:#f5a623}
+.video-wrap{position:relative;padding-bottom:177.78%;height:0;overflow:hidden}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+
+/* PAIN POINTS */
+.pain-sec{padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
+.pain-head{text-align:center;margin-bottom:48px}
+.sec-label{font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:monospace}
+.sec-title{font-size:34px;font-weight:600;color:#e8eaf0;letter-spacing:-.5px;margin-bottom:10px}
 .sec-sub{font-size:15px;color:#4a5270;max-width:520px;margin:0 auto}
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
+.pain-card{background:#0d1117;border:0.5px solid #2a1a1a;border-radius:12px;padding:28px}
+.pain-ico{font-size:28px;margin-bottom:14px}
+.pain-title{font-size:15px;font-weight:700;color:#ef4444;margin-bottom:10px}
+.pain-desc{font-size:13px;color:#4a5270;line-height:1.75}
+.pain-arrow{text-align:center;padding:32px 0;font-size:32px;color:#f5a623}
+.solution-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
+.solution-card{background:#0a1a0a;border:0.5px solid #1a3a1a;border-radius:12px;padding:28px}
+.solution-ico{font-size:28px;margin-bottom:14px}
+.solution-title{font-size:15px;font-weight:700;color:#4ade80;margin-bottom:10px}
+.solution-desc{font-size:13px;color:#4a5270;line-height:1.75}
+
+/* REAL GUI SECTION */
+.gui-sec{padding:80px 48px}
+.gui-head{text-align:center;margin-bottom:64px}
+.gui-step{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:80px;max-width:1100px;margin-left:auto;margin-right:auto}
+.gui-step:last-child{margin-bottom:0}
+.gui-step-rev{direction:rtl}
+.gui-step-rev>*{direction:ltr}
+.gui-info{}
+.gui-step-num{font-size:10px;color:#f5a623;font-family:monospace;letter-spacing:.15em;background:#1a1508;border:0.5px solid #3a2a05;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:16px}
+.gui-step-title{font-size:28px;font-weight:700;color:#e8eaf0;margin-bottom:14px;letter-spacing:-.4px;line-height:1.3}
+.gui-step-desc{font-size:14px;color:#5a6480;line-height:1.85;margin-bottom:20px}
+.gui-checklist{list-style:none;display:flex;flex-direction:column;gap:10px}
+.gui-checklist li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#5a6480;line-height:1.6}
+.gui-checklist li::before{content:"✓";color:#f5a623;font-size:13px;flex-shrink:0;margin-top:1px;font-weight:700}
+.gui-tip{display:flex;align-items:flex-start;gap:8px;background:#1a1508;border:0.5px solid #3a2a05;border-radius:8px;padding:12px 16px;margin-top:20px;font-size:12px;color:#d4921a;line-height:1.65}
+.gui-screen{border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);border:0.5px solid #2a2a35}
+.gui-screen img{width:100%;display:block}
+.gui-screen-cap{font-size:11px;color:#2e3a52;text-align:center;margin-top:10px;font-family:monospace}
+
+/* STATS BAR */
+.stats-bar{background:#0d1117;border-top:0.5px solid #1e2330;border-bottom:0.5px solid #1e2330;padding:32px 48px}
+.stats-inner{display:flex;align-items:center;justify-content:center;gap:0;max-width:900px;margin:0 auto}
+.stat-item{text-align:center;padding:0 48px}
+.stat-num{font-size:44px;font-weight:800;color:#f5a623;letter-spacing:-1px;line-height:1}
+.stat-num sup{font-size:20px;font-weight:400}
+.stat-label{font-size:11px;color:#4a5270;margin-top:6px;font-family:monospace}
+.stat-div{width:0.5px;height:52px;background:#1e2330}
+
+/* FEATURES */
+.feat-sec{padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto}
 .feat{background:#0d1117;border:0.5px solid #1e2330;border-radius:10px;padding:24px;transition:border-color .2s}
 .feat:hover{border-color:#2e3a4a}
-.feat-ico{font-size:24px;margin-bottom:14px}
-.feat-title{font-size:14px;font-weight:600;color:#c8cfe0;margin-bottom:8px}
+.feat-ico{font-size:26px;margin-bottom:14px}
+.feat-title{font-size:14px;font-weight:700;color:#c8cfe0;margin-bottom:8px}
 .feat-desc{font-size:12px;color:#3a4a5a;line-height:1.75}
-.how-sec{background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
-.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:820px;margin:0 auto}
-.step{text-align:center;padding:0 16px}
-.step-num{width:56px;height:56px;border-radius:50%;background:#0d1117;border:1px solid #2a3349;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:18px;font-weight:700;color:#f5a623;font-family:monospace}
-.step-title{font-size:14px;font-weight:600;color:#c8cfe0;margin-bottom:8px}
-.step-desc{font-size:12px;color:#3a4a5a;line-height:1.7}
-.dl-box{background:#0d1117;border:0.5px solid #2a3349;border-radius:16px;padding:56px 40px;max-width:700px;margin:0 auto;text-align:center}
-.dl-icon{width:120px;height:120px;background:transparent;border-radius:0;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;border:none}
-.dl-title{font-size:28px;font-weight:600;color:#e8eaf0;margin-bottom:10px;letter-spacing:-.4px}
-.dl-sub{font-size:14px;color:#4a5270;margin-bottom:28px}
-.dl-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.dl-btn-main{background:#f5a623;color:#0b0b0d;border:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px}
-.dl-btn-main:hover{opacity:.88}
-.dl-btn-sec{background:#1a1a20;color:#c8cfe0;border:0.5px solid #2a3349;padding:14px 24px;border-radius:8px;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px}
-.dl-sys{display:flex;justify-content:center;gap:24px;margin-top:24px}
-.dl-sys-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#3a4a5a}
-.dl-sys-dot{width:6px;height:6px;border-radius:50%}
-.dl-note{font-size:11px;color:#2e3a52;margin-top:18px}
-.price-sec{background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:760px;margin:0 auto}
-.pc{background:#0d1117;border:0.5px solid #1a2035;border-radius:10px;padding:26px;position:relative}
-.pc.hot{border:1.5px solid #f5a623}
-.pc-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#f5a623;color:#0b0b0d;font-size:10px;font-weight:700;padding:3px 14px;border-radius:20px;white-space:nowrap}
-.pc-plan{font-size:11px;color:#3a4a6a;margin-bottom:10px;font-family:monospace;letter-spacing:.08em}
-.pc-amount{font-size:32px;font-weight:700;color:#e8eaf0}
-.pc-unit{font-size:12px;color:#3a4a6a}
-.pc-hr{border:none;border-top:0.5px solid #1a2035;margin:18px 0}
-.pc-feat{font-size:12px;color:#4a5270;padding:5px 0;display:flex;align-items:center;gap:8px}
-.pc-feat::before{content:'✓';color:#22d3ee;font-size:11px}
-.pc-btn{width:100%;margin-top:20px;padding:10px;border-radius:7px;font-size:13px;cursor:pointer;border:0.5px solid #2a3349;background:none;color:#6b7694;transition:all .15s}
-.pc-btn.hot{background:#f5a623;border:none;color:#0b0b0d;font-weight:700}
-.price-note{text-align:center;font-size:11px;color:#2e3a52;margin-top:22px}
-.faq-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+
+/* BEFORE AFTER */
+.baf-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:center;max-width:900px;margin:0 auto}
+.baf-card{border-radius:12px;padding:32px}
+.baf-card.before{background:#0d0808;border:1px solid #3a1a1a}
+.baf-card.after{background:#080d08;border:1px solid #1a3a1a}
+.baf-label{font-size:13px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.baf-card.before .baf-label{color:#ef4444}
+.baf-card.after .baf-label{color:#4ade80}
+.baf-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.baf-list li{font-size:13px;color:#5a6480;line-height:1.65;display:flex;align-items:flex-start;gap:8px}
+.baf-card.before .baf-list li::before{content:"✗";color:#ef4444;flex-shrink:0;font-weight:700}
+.baf-card.after .baf-list li::before{content:"✓";color:#4ade80;flex-shrink:0;font-weight:700}
+.baf-arrow{font-size:36px;color:#f5a623;text-align:center}
+
+/* PRICING */
+.price-sec{padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:820px;margin:0 auto}
+.pc{background:#0d1117;border:0.5px solid #1a2035;border-radius:12px;padding:30px;position:relative}
+.pc.hot{border:2px solid #f5a623}
+.pc-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#f5a623;color:#0b0b0d;font-size:10px;font-weight:800;padding:3px 16px;border-radius:20px;white-space:nowrap}
+.pc-plan{font-size:11px;color:#3a4a6a;margin-bottom:8px;font-family:monospace;letter-spacing:.1em}
+.pc-amount{font-size:40px;font-weight:800;color:#e8eaf0;letter-spacing:-1px}
+.pc-unit{font-size:13px;color:#3a4a6a;font-weight:400}
+.pc-desc{font-size:12px;color:#3a4a5a;margin:8px 0 16px;line-height:1.6}
+.pc-hr{border:none;border-top:0.5px solid #1a2035;margin:16px 0}
+.pc-feat{font-size:12px;color:#4a5270;padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.pc-feat::before{content:'✓';color:#22d3ee;font-size:11px;flex-shrink:0;margin-top:1px}
+.pc-btn{width:100%;margin-top:22px;padding:11px;border-radius:8px;font-size:13px;cursor:pointer;border:0.5px solid #2a3349;background:none;color:#6b7694;font-weight:600;transition:all .15s}
+.pc-btn:hover{border-color:#3a4a6a;color:#c8cfe0}
+.pc-btn.hot{background:#f5a623;border:none;color:#0b0b0d;font-weight:800}
+.pc-btn.hot:hover{opacity:.88}
+.price-trust{text-align:center;margin-top:28px}
+.price-trust p{font-size:12px;color:#2e3a52;margin-bottom:6px}
+.price-trust-items{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.price-trust-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#3a4a5a;font-family:monospace}
+.price-trust-item::before{content:"✓";color:#4ade80}
+
+/* FAQ */
+.faq-sec{padding:72px 48px}
+.faq-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
 .faq-item{background:#0d1117;border:0.5px solid #1e2330;border-radius:8px;overflow:hidden}
-.faq-q{padding:16px 20px;font-size:13px;color:#c8cfe0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
-.faq-q::after{content:'+';color:#f5a623;font-size:16px;transition:transform .2s}
-.faq-q.open::after{content:'−'}
-.faq-a{padding:0 20px 16px;font-size:12px;color:#4a5270;line-height:1.75;display:none}
+.faq-q{padding:18px 22px;font-size:14px;color:#c8cfe0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q .ico{color:#f5a623;font-size:18px;font-weight:300;transition:transform .2s}
+.faq-q.open .ico{transform:rotate(45deg)}
+.faq-a{padding:0 22px 18px;font-size:13px;color:#4a5270;line-height:1.8;display:none}
 .faq-a.open{display:block}
-.cta-band{background:linear-gradient(135deg,#1a1508 0%,#0b0b0d 50%,#081528 100%);border-top:0.5px solid #2a2035;padding:64px 48px;text-align:center}
-.cta-band h2{font-size:36px;font-weight:500;color:#f0f2f8;margin-bottom:12px}
-.cta-band p{font-size:15px;color:#5a6480;margin-bottom:30px}
-footer{padding:32px 48px;border-top:0.5px solid #1a2035}
-.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px}
-.footer-logo-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.footer-logo-icon{width:26px;height:26px;background:#0b0b0d;border-radius:6px;display:flex;align-items:center;justify-content:center;border:1px solid #2a2a35}
-.footer-logo-text{font-size:14px;font-weight:700;color:#c8cfe0}
-.footer-copy{font-size:11px;color:#2e3a52;line-height:1.6}
-.footer-cols{display:flex;gap:48px}
-.footer-col-title{font-size:11px;color:#4a5270;font-family:monospace;letter-spacing:.08em;margin-bottom:12px;text-transform:uppercase}
-.footer-col a{display:block;font-size:12px;color:#2e3a52;text-decoration:none;margin-bottom:8px;cursor:pointer}
+
+/* CTA */
+.cta-sec{padding:80px 48px;text-align:center;background:linear-gradient(135deg,#1a1508 0%,#0b0b0d 40%,#081528 100%);border-top:0.5px solid #2a2035}
+.cta-sec h2{font-size:40px;font-weight:700;color:#f0f2f8;margin-bottom:12px;letter-spacing:-.6px}
+.cta-sec p{font-size:16px;color:#5a6480;margin-bottom:32px}
+.cta-note{font-size:12px;color:#2e3a52;margin-top:16px;font-family:monospace}
+
+/* FOOTER */
+footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
+.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;margin-bottom:32px}
+.footer-brand{}
+.footer-logo-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.footer-logo-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center}
+.footer-brand-name{font-size:15px;font-weight:700;color:#c8cfe0}
+.footer-copy{font-size:11px;color:#2e3a52;line-height:1.7}
+.footer-cols{display:flex;gap:56px}
+.footer-col-title{font-size:10px;color:#4a5270;font-family:monospace;letter-spacing:.1em;margin-bottom:14px;text-transform:uppercase}
+.footer-col a{display:block;font-size:12px;color:#2e3a52;text-decoration:none;margin-bottom:10px;cursor:pointer;transition:color .15s}
 .footer-col a:hover{color:#6b7694}
-.footer-bottom{margin-top:24px;padding-top:20px;border-top:0.5px solid #1a2035;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-bottom{padding-top:24px;border-top:0.5px solid #1a2035;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .footer-bottom-left{font-size:11px;color:#2a3040}
 .footer-bottom-right{display:flex;gap:16px}
 .footer-bottom-right a{font-size:11px;color:#2a3040;text-decoration:none;cursor:pointer}
 </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav class="nav">
-  <div class="nav-logo">
+  <a class="nav-logo" href="#">
     <div class="nav-logo-icon">
       <svg width="40" height="40" viewBox="0 0 120 120" fill="none" stroke="#f5a623" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
         <rect x="16" y="32" width="88" height="56" rx="14"/>
@@ -145,13 +195,12 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035}
     </div>
     <span class="nav-logo-text">Tape<b>Vault</b></span>
     <span class="nav-ver">v1.0.0</span>
-  </div>
+  </a>
   <div class="nav-links">
+    <a href="#gui">How it works</a>
     <a href="#features">Features</a>
-    <a href="#how">How it works</a>
     <a href="#download">Download</a>
     <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
     <a href="how-to-install.html">Install Guide</a>
   </div>
   <div class="nav-right">
@@ -165,592 +214,478 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035}
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-badge"><span class="badge-dot"></span>v1.0.0 — Now available for Windows</div>
-  <h1>Professional LTO<br><b>Tape Management</b></h1>
-  <p class="hero-sub">Archive, retrieve, and manage media across LTO drives — built for broadcast, medical, defense, and education sectors.</p>
+  <div class="hero-eyebrow">
+    <span class="hero-dot"></span>
+    v1.0.0 — Now available for Windows
+  </div>
+  <h1>Find any file on LTO tape<br><b>in under 30 seconds.</b></h1>
+  <p class="hero-sub">TapeVault is the only LTO tape archive manager built for Windows. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.</p>
+  <div class="hero-platform">
+    <span class="hi">Windows Only</span>
+    <span>LTO-4 to LTO-9</span>
+    <span>Broadcast · Medical · Defense · Education</span>
+  </div>
   <div class="hero-btns">
-    <button class="btn-hero" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">⬇ Download free trial</button>
-    <button class="btn-hero2">▶ Watch demo</button>
+    <button class="btn-hero-main" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">
+      ⬇ Download Free Trial
+    </button>
+    <button class="btn-hero-ghost" onclick="document.getElementById('gui').scrollIntoView({behavior:'smooth'})">
+      ▶ See how it works
+    </button>
   </div>
-  <div class="mockup">
-    <div class="mock-tb">
-      <div class="mock-dot" style="background:#ff5f57"></div>
-      <div class="mock-dot" style="background:#febc2e"></div>
-      <div class="mock-dot" style="background:#28c840"></div>
-      <span class="mock-title">TapeVault v1.0.0 — LTO Archive Manager</span>
-    </div>
-    <div class="mock-hd">
-      <div class="hd-sdot"></div>
-      <span class="hd-stxt">Drive 없음 — 테이프를 넣어주세요</span>
-      <span class="hd-tape">TAPE_014</span>
-      <div class="hd-prog"><div class="hd-progf"></div></div>
-      <span style="font-size:10px;color:#4a5270;font-family:monospace">2.3 / 6.0 TB</span>
-      <div class="hd-btns">
-        <button class="hd-btn">Refresh</button>
-        <button class="hd-btn">설정</button>
-        <button class="hd-btn">Eject</button>
-        <button class="hd-btn ac">+ New Tape</button>
+
+  <!-- YOUTUBE SHORTS -->
+  <div class="hero-videos">
+    <div class="video-card">
+      <div class="video-label">
+        <span>▶ DEMO 01</span> — Archive workflow
+      </div>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/IjWJ3z6mAjY" allowfullscreen allow="autoplay; encrypted-media"></iframe>
       </div>
     </div>
-    <div class="mock-body">
-      <div class="mock-sb">
-        <div class="sb-grp">Projects / Folders</div>
-        <div class="sb-item">📁 2026</div>
-        <div class="sb-item ac">　A1-1 <span class="ct">21</span></div>
-        <div class="sb-item">　A2-1 <span class="ct">4</span></div>
-        <div class="sb-item">　A3 <span class="ct">4</span></div>
-        <div class="sb-item">　A4 <span class="ct">4</span></div>
-        <div class="sb-grp" style="margin-top:6px">Tape List</div>
-        <div class="sb-item">💿 VT TEST <span class="ct">66개</span></div>
+    <div class="video-card">
+      <div class="video-label">
+        <span>▶ DEMO 02</span> — Search & retrieve
       </div>
-      <div class="mock-main">
-        <div class="mock-bc">보관함 / A1-1 · 21개 파일 · 0.5 GB</div>
-        <div class="mock-grid">
-          <div class="mock-card"><div class="mc-thumb mc-video"><div class="blur-p">🎬</div></div><div class="mc-name">0000A550.mp4</div><div class="mc-size">0.3 GB <span class="badge-t">VT TEST</span></div></div>
-          <div class="mock-card"><div class="mc-thumb mc-pdf"><span style="color:#ef4444">PDF</span></div><div class="mc-name">사업자등록증.pdf</div><div class="mc-size">0.0 GB <span class="badge-q">대기</span></div></div>
-          <div class="mock-card"><div class="mc-thumb mc-zip"><span style="color:#f5a623">ZIP</span></div><div class="mc-name">사업자등록증.zip</div><div class="mc-size">0.0 GB <span class="badge-q">대기</span></div></div>
-          <div class="mock-card"><div class="mc-thumb mc-video"><div class="blur-p">🎬</div></div><div class="mc-name">2026_06_12_22_41.mp4</div><div class="mc-size">0.0 GB <span class="badge-t">VT TEST</span></div></div>
-          <div class="mock-card"><div class="mc-thumb mc-jpg"><span style="color:#22d3ee">JPG</span></div><div class="mc-name">기업은행통장.jpg</div><div class="mc-size">0.0 GB <span class="badge-q">대기</span></div></div>
-        </div>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/y5VK5Dz19Ao" allowfullscreen allow="autoplay; encrypted-media"></iframe>
       </div>
-    </div>
-    <div class="mock-sb-bar">
-      <span>A1-1 · 21개 파일 · 0.5 GB · 1개 선택됨</span>
-      <span>TAPE_014 · 사용 38% · 전체 71개 파일 · 테이프 14개</span>
     </div>
   </div>
 </section>
 
-<section class="sec" id="features">
-  <div class="sec-head">
-    <div class="sec-label">Features</div>
-    <div class="sec-title">Everything you need for tape management</div>
-    <p class="sec-sub">From single LTO drives to enterprise tape libraries — all from one desktop interface.</p>
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">30<sup>sec</sup></div>
+      <div class="stat-label">File search across all tapes</div>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <div class="stat-num">3<sup>sec</sup></div>
+      <div class="stat-label">Auto thumbnail generation</div>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <div class="stat-num">LTO<sup>4-9</sup></div>
+      <div class="stat-label">Auto drive detection</div>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <div class="stat-num">100<sup>%</sup></div>
+      <div class="stat-label">Offline after activation</div>
+    </div>
   </div>
-  <div class="feat-grid">
-    <div class="feat"><div class="feat-ico">💾</div><div class="feat-title">LTO drive control</div><div class="feat-desc">Direct hardware control for LTO-4 through LTO-9. Read, write, verify, and eject from one interface.</div></div>
-    <div class="feat"><div class="feat-ico">🖼️</div><div class="feat-title">Auto thumbnail generation</div><div class="feat-desc">Generate preview thumbnails for video files on tape. Browse visually without full recall.</div></div>
-    <div class="feat"><div class="feat-ico">🔍</div><div class="feat-title">Full-text search</div><div class="feat-desc">Search all tapes, projects, and metadata instantly. Find any file in seconds.</div></div>
-    <div class="feat"><div class="feat-ico">📁</div><div class="feat-title">Project &amp; folder management</div><div class="feat-desc">Hierarchical project structure with folders, sub-projects, and tape assignments.</div></div>
-    <div class="feat"><div class="feat-ico">📊</div><div class="feat-title">Tape usage analytics</div><div class="feat-desc">Real-time capacity tracking. Plan storage and predict when new tapes are needed.</div></div>
-    <div class="feat"><div class="feat-ico">🔒</div><div class="feat-title">Air-gapped security</div><div class="feat-desc">Fully offline-capable. No cloud dependency — data stays in your facility.</div></div>
-    <div class="feat"><div class="feat-ico">🎬</div><div class="feat-title">Multi-format support</div><div class="feat-desc">MP4, MOV, MXF, AVI, PDF, ZIP, JPG and more. Any file type on your tape archive.</div></div>
-    <div class="feat"><div class="feat-ico">📋</div><div class="feat-title">Tape queue &amp; scheduling</div><div class="feat-desc">Queue multiple files for tape write operations. Monitor progress in real time.</div></div>
-    <div class="feat"><div class="feat-ico">🌐</div><div class="feat-title">Multi-language UI</div><div class="feat-desc">Full support for English, Korean, and Japanese — for global media organizations.</div></div>
+</div>
+
+<!-- PAIN → SOLUTION -->
+<section class="pain-sec" id="pain">
+  <div class="pain-head">
+    <div class="sec-label">The Problem</div>
+    <div class="sec-title">Sound familiar?</div>
+    <p class="sec-sub">Every LTO tape user faces the same frustrations. TapeVault solves all three.</p>
+  </div>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-ico">⏰</div>
+      <div class="pain-title">Hours wasted finding files</div>
+      <div class="pain-desc">You know the file is on one of 20 tapes. But which one? Manual label checking takes 2+ hours every time.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-ico">👤</div>
+      <div class="pain-title">Archive lost when staff leaves</div>
+      <div class="pain-desc">When the person who organized the tapes leaves, the archive becomes a mystery. No index, no metadata, no thumbnails.</div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-ico">📼</div>
+      <div class="pain-title">Full recall just to preview</div>
+      <div class="pain-desc">Without thumbnails, you must recall the entire file to check if it's the right one. Wastes tape drive time and staff hours.</div>
+    </div>
+  </div>
+  <div class="pain-arrow">↓</div>
+  <div class="solution-grid">
+    <div class="solution-card">
+      <div class="solution-ico">🔍</div>
+      <div class="solution-title">Search in 30 seconds</div>
+      <div class="solution-desc">Type the filename, date, or metadata. TapeVault searches all tapes instantly and shows exactly where the file is.</div>
+    </div>
+    <div class="solution-card">
+      <div class="solution-ico">🗄️</div>
+      <div class="solution-title">Permanent metadata database</div>
+      <div class="solution-desc">Every file is indexed with metadata, checksum, and location. Staff changes never affect your archive organization.</div>
+    </div>
+    <div class="solution-card">
+      <div class="solution-ico">🖼️</div>
+      <div class="solution-title">Thumbnails without recall</div>
+      <div class="solution-desc">TapeVault auto-generates thumbnails for every video file. Browse visually and confirm before recalling from tape.</div>
+    </div>
   </div>
 </section>
 
-<section class="how-sec-new" id="how">
-
-  <!-- 상단 헤더 -->
-  <div class="how-header">
-    <div class="sec-label">How it works</div>
-    <div class="sec-title">See exactly how it works</div>
-    <p class="sec-sub">Complex LTO tape operations made simple. From drive connection to file retrieval — see it in action.</p>
-  </div>
-
-  <!-- 핵심 지표 -->
-  <div class="how-stats">
-    <div class="how-stat">
-      <div class="how-stat-num">3<span>초</span></div>
-      <div class="how-stat-label">Avg. thumbnail generation</div>
-    </div>
-    <div class="how-stat-div"></div>
-    <div class="how-stat">
-      <div class="how-stat-num">30<span>초</span></div>
-      <div class="how-stat-label">Full library search</div>
-    </div>
-    <div class="how-stat-div"></div>
-    <div class="how-stat">
-      <div class="how-stat-num">LTO<span>4-9</span></div>
-      <div class="how-stat-label">Auto drive detection</div>
-    </div>
-    <div class="how-stat-div"></div>
-    <div class="how-stat">
-      <div class="how-stat-num">100<span>%</span></div>
-      <div class="how-stat-label">Fully offline capable</div>
-    </div>
+<!-- REAL GUI STEPS -->
+<section class="gui-sec" id="gui">
+  <div class="gui-head">
+    <div class="sec-label">Real Software. Real UI.</div>
+    <div class="sec-title">See exactly what you get</div>
+    <p class="sec-sub" style="margin:0 auto">These are actual screenshots from TapeVault v1.0.0 — no mockups, no illustrations.</p>
   </div>
 
   <!-- STEP 1 -->
-  <div class="how-step-row">
-    <div class="how-step-info">
-      <div class="how-step-badge">STEP 01</div>
-      <div class="how-step-title">Drive Connection &amp; Tape Detection</div>
-      <p class="how-step-desc">Connect your LTO drive and TapeVault detects it instantly. Monitor drive status, tape capacity, and usage in real time.</p>
-      <ul class="how-checklist">
-        <li>Automatic detection for LTO-4 through LTO-9</li>
-        <li>Real-time tape capacity and usage display</li>
-        <li>Drive status monitoring (read / write / idle)</li>
-        <li>SAS, Thunderbolt, and USB interface support</li>
+  <div class="gui-step" style="margin-bottom:80px">
+    <div class="gui-info">
+      <div class="gui-step-num">STEP 01</div>
+      <div class="gui-step-title">All your files,<br>visible at a glance</div>
+      <div class="gui-step-desc">Open any project folder and see every file as a thumbnail — videos, PDFs, images, ZIP files — all organized exactly as you archived them. Switch between grid view and list view instantly.</div>
+      <ul class="gui-checklist">
+        <li>Thumbnail grid view for visual browsing</li>
+        <li>List view with filename, size, date, and status</li>
+        <li>Color-coded tape status badges (archived / queued)</li>
+        <li>Filter by file type, date, or tape</li>
       </ul>
-      <div class="how-tip">
-        <span class="how-tip-ico">💡</span>
-        If your drive is not detected, click the <strong>Refresh</strong> button in the top bar to re-scan instantly.
+      <div class="gui-tip">
+        💡 Green badge = already on tape. Blue = waiting in queue. You always know the status of every file.
       </div>
     </div>
-    <div class="how-step-screen">
-      <div class="how-mock">
-        <div class="how-mock-bar">
-          <div class="how-mock-dot" style="background:#ff5f57"></div>
-          <div class="how-mock-dot" style="background:#febc2e"></div>
-          <div class="how-mock-dot" style="background:#28c840"></div>
-          <span class="how-mock-title">TapeVault v1.0.0</span>
-        </div>
-        <div class="how-mock-hd">
-          <div class="how-hd-green"></div>
-          <span class="how-hd-ok">Drive detected — HP Ultrium LTO-7</span>
-          <span class="how-hd-tape">VT TEST</span>
-          <div class="how-hd-prog"><div class="how-hd-progf" style="width:38%"></div></div>
-          <span class="how-hd-size">2.3 / 6.0 TB</span>
-          <div class="how-hd-btns">
-            <button class="how-hd-btn">Refresh</button>
-            <button class="how-hd-btn">Eject</button>
-            <button class="how-hd-btn ac">+ New Tape</button>
-          </div>
-        </div>
-        <div class="how-drive-info">
-          <div class="how-drive-card"><div class="how-drive-label">Drive</div><div class="how-drive-val" style="color:#4ade80">● HP Ultrium LTO-7</div></div>
-          <div class="how-drive-card"><div class="how-drive-label">Current Tape</div><div class="how-drive-val">VT TEST · TAPE_014</div></div>
-          <div class="how-drive-card"><div class="how-drive-label">Capacity</div><div class="how-drive-val">2.3 TB / 6.0 TB <span style="color:#f5a623">(38%)</span></div></div>
-          <div class="how-drive-card"><div class="how-drive-label">Status</div><div class="how-drive-val" style="color:#4ade80">● Ready</div></div>
-          <div class="how-drive-card"><div class="how-drive-label">Total Files</div><div class="how-drive-val">71개 파일</div></div>
-          <div class="how-drive-card"><div class="how-drive-label">Tapes</div><div class="how-drive-val">14 registered</div></div>
-        </div>
-        <div class="how-mock-sb-bar"><span>TAPE_014 · LTO-7 · 38% used · 71 total files · 14 tapes</span></div>
+    <div>
+      <div class="gui-screen">
+        <img src="img/screen-grid.png" alt="TapeVault grid view — browse all archived files with thumbnails">
       </div>
-      <div class="how-screen-caption">▲ Drive status displayed automatically on connection</div>
+      <div class="gui-screen-cap">▲ Grid view — actual TapeVault v1.0.0 screenshot</div>
     </div>
   </div>
 
   <!-- STEP 2 -->
-  <div class="how-step-row how-step-row-rev">
-    <div class="how-step-screen">
-      <div class="how-mock">
-        <div class="how-mock-bar">
-          <div class="how-mock-dot" style="background:#ff5f57"></div>
-          <div class="how-mock-dot" style="background:#febc2e"></div>
-          <div class="how-mock-dot" style="background:#28c840"></div>
-          <span class="how-mock-title">TapeVault v1.0.0 — Project Management</span>
-        </div>
-        <div class="how-mock-body2">
-          <div class="how-sb2">
-            <div class="how-sb2-grp">Projects / Folders</div>
-            <div class="how-sb2-item">📁 2026</div>
-            <div class="how-sb2-item ac">　📂 A1 Broadcast <span class="how-ct">21</span></div>
-            <div class="how-sb2-item">　　A1-1 <span class="how-ct">7</span></div>
-            <div class="how-sb2-item">　　A1-2 <span class="how-ct">4</span></div>
-            <div class="how-sb2-item">　📂 A2 Interview <span class="how-ct">4</span></div>
-            <div class="how-sb2-item">　📂 A3 News Reel <span class="how-ct">4</span></div>
-            <div class="how-sb2-item">　📂 A4 Raw Masters <span class="how-ct">6</span></div>
-            <div class="how-sb2-grp" style="margin-top:6px">Tape List</div>
-            <div class="how-sb2-item" style="color:#f5a623">💿 VT TEST · 14 tapes</div>
-          </div>
-          <div class="how-main2">
-            <div class="how-main2-bc">Archive / A1 Broadcast / A1-1 &nbsp;·&nbsp; 7 files · 0.4 GB</div>
-            <div class="how-queue-bar">
-              <span class="how-queue-label">📋 Tape Write Queue</span>
-              <span class="how-queue-count">3 files queued</span>
-              <button class="how-queue-btn">▶ Start Writing</button>
-            </div>
-            <div class="how-grid2">
-              <div class="how-card2 sel"><div class="how-thumb2" style="background:#1e2a1e"><div class="how-blur2">🎬</div></div><div class="how-fname">broadcast_01.mp4</div><div class="how-fsize">0.3 GB <span class="how-bt">VT TEST</span></div></div>
-              <div class="how-card2 sel"><div class="how-thumb2" style="background:#1e2a1e"><div class="how-blur2">🎬</div></div><div class="how-fname">interview_hq.mov</div><div class="how-fsize">0.0 GB <span class="how-bq">queued</span></div></div>
-              <div class="how-card2 sel"><div class="how-thumb2" style="background:#2a1a1a"><span style="color:#ef4444;font-size:11px;font-weight:700">PDF</span></div><div class="how-fname">broadcast_contract.pdf</div><div class="how-fsize">0.0 GB <span class="how-bq">queued</span></div></div>
-              <div class="how-card2"><div class="how-thumb2" style="background:#1e2a1e"><div class="how-blur2">🎬</div></div><div class="how-fname">news_reel_003.mxf</div><div class="how-fsize">0.0 GB <span class="how-bt">VT TEST</span></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="how-mock-sb-bar"><span>3 selected · 0.3 GB · Added to tape write queue</span></div>
-      </div>
-      <div class="how-screen-caption">▲ Project-based file management and tape write queue</div>
-    </div>
-    <div class="how-step-info">
-      <div class="how-step-badge">STEP 02</div>
-      <div class="how-step-title">Project Setup &amp; Queue Management</div>
-      <p class="how-step-desc">Organize projects and folders by client, department, or date. Select files, add them to the tape write queue, and assign to a specific tape. Checksums and metadata are managed automatically.</p>
-      <ul class="how-checklist">
-        <li>Hierarchical project and folder structure</li>
-        <li>Select files → Add to queue → Assign tape</li>
-        <li>MP4, MOV, MXF, AVI, PDF, ZIP and any file format</li>
-        <li>Automatic checksum verification for data integrity</li>
-        <li>Cameraman, location, and owner metadata fields</li>
+  <div class="gui-step gui-step-rev" style="margin-bottom:80px">
+    <div class="gui-info">
+      <div class="gui-step-num">STEP 02</div>
+      <div class="gui-step-title">Click any file.<br>See everything about it.</div>
+      <div class="gui-step-desc">Select any file and the right panel instantly shows the video thumbnail preview, file type, resolution, size, tape location, checksum, and your custom metadata notes. No waiting. No recalling.</div>
+      <ul class="gui-checklist">
+        <li>Auto-generated video thumbnail preview</li>
+        <li>Full file metadata: codec, resolution, date, size</li>
+        <li>Exact tape path and tape name shown</li>
+        <li>Custom notes: cameraman, location, owner</li>
       </ul>
-      <div class="how-tip">
-        <span class="how-tip-ico">💡</span>
-        Select files and click <strong>Add to Tape Queue</strong>. No complex configuration — start archiving immediately.
+      <div class="gui-tip">
+        💡 Know exactly what's on the tape before you eject it and insert a new one. Zero guesswork.
       </div>
+    </div>
+    <div>
+      <div class="gui-screen">
+        <img src="img/screen-thumb.png" alt="TapeVault file detail panel with thumbnail and metadata">
+      </div>
+      <div class="gui-screen-cap">▲ File detail panel — actual TapeVault v1.0.0 screenshot</div>
     </div>
   </div>
 
   <!-- STEP 3 -->
-  <div class="how-step-row">
-    <div class="how-step-info">
-      <div class="how-step-badge">STEP 03</div>
-      <div class="how-step-title">Tape Writing &amp; Real-time Monitoring</div>
-      <p class="how-step-desc">One click starts writing all queued files to LTO tape in sequence. Monitor progress in real time — automatic verification runs after each file completes.</p>
-      <ul class="how-checklist">
-        <li>Sequential automatic writing of queued files</li>
-        <li>Per-file progress and speed displayed in real time</li>
-        <li>Automatic verify pass after each write completes</li>
-        <li>Instant alert on error with automatic retry</li>
-        <li>Write completion report saved automatically</li>
+  <div class="gui-step" style="margin-bottom:80px">
+    <div class="gui-info">
+      <div class="gui-step-num">STEP 03</div>
+      <div class="gui-step-title">List view for<br>power users</div>
+      <div class="gui-step-desc">Switch to list view to see all files in a sortable table. Sort by name, size, date, or archive status. Instantly identify which files are on tape and which are still queued.</div>
+      <ul class="gui-checklist">
+        <li>Sort by any column — name, size, date, status</li>
+        <li>VT TEST badge = confirmed on tape</li>
+        <li>One-click select multiple files</li>
+        <li>Batch add to tape write queue</li>
       </ul>
-      <div class="how-tip">
-        <span class="how-tip-ico">💡</span>
-        Average write speed <strong>300 MB/s</strong> on LTO-7. A 100 GB file completes in around 6 minutes.
+      <div class="gui-tip">
+        💡 Select 50 files, add to queue, and start writing — in under 30 seconds.
       </div>
     </div>
-    <div class="how-step-screen">
-      <div class="how-mock">
-        <div class="how-mock-bar">
-          <div class="how-mock-dot" style="background:#ff5f57"></div>
-          <div class="how-mock-dot" style="background:#febc2e"></div>
-          <div class="how-mock-dot" style="background:#28c840"></div>
-          <span class="how-mock-title">TapeVault v1.0.0 — Write Queue</span>
-        </div>
-        <div style="padding:14px;background:#0f0f12">
-          <div style="font-size:10px;color:#3a4060;margin-bottom:10px;font-family:monospace">Write Queue · TAPE_014 · LTO-7</div>
-          <div class="how-writing-card">
-            <div class="how-writing-left">
-              <div class="how-writing-icon">🎬</div>
-              <div><div class="how-writing-name">broadcast_01.mp4</div><div class="how-writing-meta">0.3 GB · H.264 · 1920×1080</div></div>
-            </div>
-            <div class="how-writing-right"><span class="how-writing-status writing">● Writing</span><span class="how-writing-speed">287 MB/s</span></div>
-          </div>
-          <div class="how-prog-bar-wrap">
-            <div class="how-prog-bar-bg"><div class="how-prog-bar-fill" style="width:62%"></div></div>
-            <span class="how-prog-pct">62%</span>
-          </div>
-          <div class="how-writing-card" style="opacity:.5">
-            <div class="how-writing-left">
-              <div class="how-writing-icon">🎬</div>
-              <div><div class="how-writing-name">interview_hq.mov</div><div class="how-writing-meta">0.1 GB · H.264 · 1280×720</div></div>
-            </div>
-            <div class="how-writing-right"><span class="how-writing-status waiting">● Queued</span></div>
-          </div>
-          <div class="how-writing-card" style="opacity:.5">
-            <div class="how-writing-left">
-              <div class="how-writing-icon" style="background:#2a1a1a">📄</div>
-              <div><div class="how-writing-name">broadcast_contract.pdf</div><div class="how-writing-meta">2.1 MB · PDF</div></div>
-            </div>
-            <div class="how-writing-right"><span class="how-writing-status waiting">● Queued</span></div>
-          </div>
-          <div class="how-writing-card" style="border-color:#1a3a1a">
-            <div class="how-writing-left">
-              <div class="how-writing-icon" style="background:#1a3a1a">✅</div>
-              <div><div class="how-writing-name" style="color:#4ade80">news_reel_003.mxf</div><div class="how-writing-meta">Done · Verified OK · /VT TEST/news_reel_003.mxf</div></div>
-            </div>
-            <div class="how-writing-right"><span class="how-writing-status done">● Complete</span></div>
-          </div>
-        </div>
-        <div class="how-mock-sb-bar">
-          <span>Writing 1 · Queued 2 · Done 1 · Elapsed 00:02:14</span>
-          <span>Est. remaining: ~00:01:08</span>
-        </div>
+    <div>
+      <div class="gui-screen">
+        <img src="img/screen-list.png" alt="TapeVault list view with sortable file table">
       </div>
-      <div class="how-screen-caption">▲ Real-time tape write progress monitoring</div>
+      <div class="gui-screen-cap">▲ List view — actual TapeVault v1.0.0 screenshot</div>
     </div>
   </div>
 
   <!-- STEP 4 -->
-  <div class="how-step-row how-step-row-rev">
-    <div class="how-step-screen">
-      <div class="how-mock">
-        <div class="how-mock-bar">
-          <div class="how-mock-dot" style="background:#ff5f57"></div>
-          <div class="how-mock-dot" style="background:#febc2e"></div>
-          <div class="how-mock-dot" style="background:#28c840"></div>
-          <span class="how-mock-title">TapeVault v1.0.0 — Search &amp; Retrieve</span>
-        </div>
-        <div style="padding:14px;background:#0f0f12">
-          <div class="how-search-bar">
-            <span class="how-search-ico">🔍</span>
-            <span class="how-search-text">broadcast_01</span>
-            <span class="how-search-cursor">|</span>
-          </div>
-          <div style="font-size:9px;color:#2e3a52;margin-bottom:10px;font-family:monospace">Searching full tape library · 14 tapes · 3 results found</div>
-          <div class="how-result-item">
-            <div class="how-result-thumb" style="background:#1e2a1e"><div class="how-blur2" style="font-size:16px">🎬</div></div>
-            <div class="how-result-info">
-              <div class="how-result-name">broadcast_<span style="color:#f5a623;font-weight:700">01</span>.mp4</div>
-              <div class="how-result-meta">0.3 GB · H.264 · 1920×1080 · 2026-06-12</div>
-              <div class="how-result-path">/VT TEST/2026/A1-Broadcast/A1-1/broadcast_01.mp4</div>
-            </div>
-            <div class="how-result-right"><div class="how-result-tape">💿 TAPE_014</div><button class="how-result-btn">Eject</button></div>
-          </div>
-          <div class="how-result-item">
-            <div class="how-result-thumb" style="background:#1e2a1e"><div class="how-blur2" style="font-size:16px">🎬</div></div>
-            <div class="how-result-info">
-              <div class="how-result-name">broadcast_<span style="color:#f5a623;font-weight:700">01</span>_backup.mp4</div>
-              <div class="how-result-meta">0.3 GB · H.264 · 1920×1080 · 2026-05-20</div>
-              <div class="how-result-path">/VT TEST/2025/A3-NewsReel/broadcast_01_backup.mp4</div>
-            </div>
-            <div class="how-result-right"><div class="how-result-tape">💿 TAPE_009</div><button class="how-result-btn">Eject</button></div>
-          </div>
-          <div class="how-result-item">
-            <div class="how-result-thumb" style="background:#2a1a1a"><span style="color:#ef4444;font-size:10px;font-weight:700">PDF</span></div>
-            <div class="how-result-info">
-              <div class="how-result-name">broadcast_<span style="color:#f5a623;font-weight:700">01</span>_script.pdf</div>
-              <div class="how-result-meta">0.8 MB · PDF · 2026-06-10</div>
-              <div class="how-result-path">/VT TEST/2026/A1-Broadcast/broadcast_01_script.pdf</div>
-            </div>
-            <div class="how-result-right"><div class="how-result-tape">💿 TAPE_014</div><button class="how-result-btn">Eject</button></div>
-          </div>
-        </div>
-        <div class="how-mock-sb-bar"><span>Search complete · 14 tapes · 0.03 sec</span></div>
-      </div>
-      <div class="how-screen-caption">▲ Full library search — 0.03초</div>
-    </div>
-    <div class="how-step-info">
-      <div class="how-step-badge">STEP 04</div>
-      <div class="how-step-title">즉시 검색 &amp; 파일 Eject</div>
-      <p class="how-step-desc">Search your entire tape library by filename, date, resolution, or metadata. Find and recall any file in under 30 seconds — regardless of which tape it is on.</p>
-      <ul class="how-checklist">
-        <li>Search by filename, date, resolution, or owner</li>
-        <li>Search across all 14 tapes in 0.03 seconds</li>
-        <li>검색 결과에서 바로 Eject(Recall) 실행</li>
-        <li>Tape location displayed automatically</li>
-        <li>Preview file content via thumbnail before recall</li>
+  <div class="gui-step gui-step-rev" style="margin-bottom:80px">
+    <div class="gui-info">
+      <div class="gui-step-num">STEP 04</div>
+      <div class="gui-step-title">Play video directly<br>from tape. Instantly.</div>
+      <div class="gui-step-desc">Double-click any video file to open the built-in player. Watch the content directly — no need to copy the file first, no external player needed. Works with MP4, MOV, MXF, AVI and more.</div>
+      <ul class="gui-checklist">
+        <li>Built-in video player — no external software</li>
+        <li>Supports MP4, MOV, MXF, AVI, H.264, H.265</li>
+        <li>Confirm the right file before recalling to storage</li>
+        <li>26-minute files play smoothly from tape</li>
       </ul>
-      <div class="how-tip">
-        <span class="how-tip-ico">💡</span>
-        Search 14 tapes and 71 files in <strong>0.03 seconds</strong>. No more manually checking tape labels one by one.
+      <div class="gui-tip">
+        💡 Stop wasting time recalling wrong files. Preview first, recall only what you need.
       </div>
+    </div>
+    <div>
+      <div class="gui-screen">
+        <img src="img/screen-player.png" alt="TapeVault built-in video player playing directly from LTO tape">
+      </div>
+      <div class="gui-screen-cap">▲ Built-in video player — actual TapeVault v1.0.0 screenshot</div>
     </div>
   </div>
 
-  <!-- Before / After -->
-  <div class="how-baf">
-    <div class="how-baf-title">Before TapeVault vs. After TapeVault</div>
-    <div class="how-baf-grid">
-      <div class="how-baf-card before">
-        <div class="how-baf-label">❌ Before TapeVault</div>
-        <ul class="how-baf-list">
-          <li>Manual tape label check → <strong>avg. 2 hours</strong></li>
-          <li>No file location index → check every tape manually</li>
-          <li>No thumbnails → full recall required to preview</li>
-          <li>Archive lost when responsible staff leaves</li>
-          <li>Tape capacity tracked manually in spreadsheets</li>
-        </ul>
-      </div>
-      <div class="how-baf-arrow">→</div>
-      <div class="how-baf-card after">
-        <div class="how-baf-label">✅ After TapeVault</div>
-        <ul class="how-baf-list">
-          <li>Filename search → <strong>location found in 30 sec</strong></li>
-          <li>Full library search → <strong>0.03 seconds</strong></li>
-          <li>Thumbnail preview → unnecessary recalls eliminated</li>
-          <li>Metadata database → staff changes have no impact</li>
-          <li>Tape capacity tracked and predicted automatically</li>
-        </ul>
+  <!-- STEP 5 -->
+  <div class="gui-step">
+    <div class="gui-info">
+      <div class="gui-step-num">STEP 05</div>
+      <div class="gui-step-title">New tape registered<br>in 3 clicks</div>
+      <div class="gui-step-desc">Insert a new tape, click New Tape, enter a volume label and serial number, select your LTO generation, and click Format. TapeVault formats it as LTFS and registers it in your database. Done.</div>
+      <ul class="gui-checklist">
+        <li>LTFS format — cross-platform compatible</li>
+        <li>LTO-4 through LTO-9 supported</li>
+        <li>Volume label auto-recognized on future inserts</li>
+        <li>Tape serial number linked to physical label</li>
+      </ul>
+      <div class="gui-tip">
+        💡 New tape registered and ready to archive in under 60 seconds.
       </div>
     </div>
-  </div>
-
-</section>
-
-<style>
-.how-sec-new{background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035;padding:80px 0}
-.how-header{text-align:center;padding:0 48px;margin-bottom:56px}
-.how-stats{display:flex;align-items:center;justify-content:center;gap:0;background:#0d1117;border-top:0.5px solid #1e2330;border-bottom:0.5px solid #1e2330;padding:28px 0;margin-bottom:80px}
-.how-stat{text-align:center;padding:0 48px}
-.how-stat-num{font-size:42px;font-weight:700;color:#f5a623;letter-spacing:-1px;line-height:1}
-.how-stat-num span{font-size:20px;font-weight:400;color:#f5a623;margin-left:2px}
-.how-stat-label{font-size:11px;color:#4a5270;margin-top:6px;font-family:monospace}
-.how-stat-div{width:0.5px;height:48px;background:#1e2330}
-.how-step-row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:64px 80px;border-bottom:0.5px solid #1a2035}
-.how-step-row:last-of-type{border-bottom:none}
-.how-step-row-rev{direction:rtl}
-.how-step-row-rev > *{direction:ltr}
-.how-step-badge{display:inline-block;font-size:10px;color:#f5a623;background:#1a1508;border:0.5px solid #3a2a05;padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:.1em;margin-bottom:14px}
-.how-step-title{font-size:26px;font-weight:600;color:#e8eaf0;margin-bottom:14px;letter-spacing:-.4px;line-height:1.3}
-.how-step-desc{font-size:14px;color:#5a6480;line-height:1.8;margin-bottom:18px}
-.how-checklist{list-style:none;display:flex;flex-direction:column;gap:8px}
-.how-checklist li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#5a6480;line-height:1.6}
-.how-checklist li::before{content:"✓";color:#22d3ee;font-size:12px;flex-shrink:0;margin-top:2px}
-.how-tip{display:flex;align-items:flex-start;gap:8px;background:#1a1508;border:0.5px solid #3a2a05;border-radius:6px;padding:12px 14px;margin-top:18px;font-size:12px;color:#d4921a;line-height:1.6}
-.how-tip-ico{flex-shrink:0}
-.how-mock{background:#141418;border:0.5px solid #2a2a35;border-radius:10px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.5)}
-.how-mock-bar{background:#1a1a1f;border-bottom:0.5px solid #2a2a35;padding:8px 14px;display:flex;align-items:center;gap:7px}
-.how-mock-dot{width:10px;height:10px;border-radius:50%}
-.how-mock-title{font-size:10px;color:#3a3a4a;margin-left:8px;font-family:monospace}
-.how-mock-hd{background:#1a1a1f;border-bottom:0.5px solid #2a2a35;padding:7px 14px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.how-hd-green{width:8px;height:8px;background:#4ade80;border-radius:50%;flex-shrink:0}
-.how-hd-ok{font-size:10px;color:#4ade80}
-.how-hd-tape{font-size:10px;color:#4a5270;font-family:monospace;margin-left:4px}
-.how-hd-prog{height:8px;width:80px;background:#1e2330;border-radius:3px;overflow:hidden}
-.how-hd-progf{height:100%;background:#f5a623;border-radius:3px}
-.how-hd-size{font-size:10px;color:#4a5270;font-family:monospace}
-.how-hd-btns{margin-left:auto;display:flex;gap:5px}
-.how-hd-btn{font-size:10px;background:#1e2330;color:#5a6480;border:none;padding:4px 8px;border-radius:4px;cursor:pointer}
-.how-hd-btn.ac{background:#f5a623;color:#0b0b0d;font-weight:700}
-.how-drive-info{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px;background:#0f0f12}
-.how-drive-card{background:#1a1a20;border:0.5px solid #2a2a35;border-radius:6px;padding:10px}
-.how-drive-label{font-size:9px;color:#2e3a52;font-family:monospace;margin-bottom:4px;text-transform:uppercase;letter-spacing:.08em}
-.how-drive-val{font-size:11px;color:#c8cfe0;font-weight:500}
-.how-mock-sb-bar{background:#111115;border-top:0.5px solid #2a2a35;padding:5px 14px;display:flex;justify-content:space-between;font-size:9px;color:#2e3a52;font-family:monospace}
-.how-mock-body2{display:grid;grid-template-columns:160px 1fr}
-.how-sb2{border-right:0.5px solid #2a2a35;padding:10px 0;font-size:10px;background:#0f0f12}
-.how-sb2-grp{padding:7px 12px 3px;font-size:8px;color:#2e3a52;letter-spacing:.1em;text-transform:uppercase;font-family:monospace}
-.how-sb2-item{padding:4px 12px;color:#4a5270;display:flex;align-items:center;gap:4px}
-.how-sb2-item.ac{color:#f5a623;background:#1e1a10}
-.how-ct{margin-left:auto;font-size:8px;background:#1e2330;padding:1px 4px;border-radius:2px;color:#4a5270}
-.how-main2{padding:10px;background:#0f0f12}
-.how-main2-bc{font-size:9px;color:#3a4060;margin-bottom:8px;font-family:monospace}
-.how-queue-bar{display:flex;align-items:center;gap:8px;background:#1a1a08;border:0.5px solid #3a3a10;border-radius:5px;padding:6px 10px;margin-bottom:8px}
-.how-queue-label{font-size:9px;color:#d4921a}
-.how-queue-count{font-size:9px;color:#f5a623;margin-left:auto}
-.how-queue-btn{font-size:9px;background:#f5a623;color:#0b0b0d;border:none;padding:3px 8px;border-radius:3px;cursor:pointer;font-weight:700}
-.how-grid2{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
-.how-card2{background:#1a1a20;border:0.5px solid #2a2a35;border-radius:5px;padding:5px}
-.how-card2.sel{border-color:#f5a623}
-.how-thumb2{height:38px;border-radius:3px;margin-bottom:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;overflow:hidden}
-.how-blur2{width:100%;height:100%;background:repeating-linear-gradient(45deg,#1e2a1e 0,#1e2a1e 3px,#162016 3px,#162016 6px);display:flex;align-items:center;justify-content:center;opacity:.7}
-.how-fname{font-size:8px;color:#4a5270;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.how-fsize{font-size:7px;color:#2e3a52;margin-top:1px}
-.how-bt{font-size:7px;background:#1e3a1e;color:#4ade80;border-radius:2px;padding:0 3px}
-.how-bq{font-size:7px;background:#1e2a3a;color:#5b9cf6;border-radius:2px;padding:0 3px}
-.how-writing-card{display:flex;align-items:center;justify-content:space-between;background:#1a1a20;border:0.5px solid #2a2a35;border-radius:6px;padding:10px 12px;margin-bottom:6px}
-.how-writing-left{display:flex;align-items:center;gap:10px}
-.how-writing-icon{width:32px;height:32px;background:#1e2a1e;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.how-writing-name{font-size:11px;color:#c8cfe0;margin-bottom:3px}
-.how-writing-meta{font-size:9px;color:#3a4a5a;font-family:monospace}
-.how-writing-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.how-writing-status{font-size:9px;font-family:monospace}
-.how-writing-status.writing{color:#f5a623}
-.how-writing-status.waiting{color:#3a4a5a}
-.how-writing-status.done{color:#4ade80}
-.how-writing-speed{font-size:9px;color:#4a5270;font-family:monospace}
-.how-prog-bar-wrap{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding:0 2px}
-.how-prog-bar-bg{flex:1;height:4px;background:#1e2330;border-radius:2px;overflow:hidden}
-.how-prog-bar-fill{height:100%;background:#f5a623;border-radius:2px}
-.how-prog-pct{font-size:9px;color:#f5a623;font-family:monospace;flex-shrink:0}
-.how-search-bar{display:flex;align-items:center;gap:8px;background:#1a1a20;border:0.5px solid #2a3349;border-radius:6px;padding:8px 12px;margin-bottom:10px}
-.how-search-ico{font-size:13px}
-.how-search-text{font-size:13px;color:#c8cfe0;font-family:monospace}
-.how-search-cursor{color:#f5a623;animation:tblink 1s infinite}
-@keyframes tblink{0%,100%{opacity:1}50%{opacity:0}}
-.how-result-item{display:flex;align-items:center;gap:10px;background:#1a1a20;border:0.5px solid #2a2a35;border-radius:6px;padding:10px;margin-bottom:6px}
-.how-result-thumb{width:44px;height:34px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
-.how-result-info{flex:1;min-width:0}
-.how-result-name{font-size:11px;color:#c8cfe0;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.how-result-meta{font-size:9px;color:#3a4a5a;font-family:monospace;margin-bottom:2px}
-.how-result-path{font-size:8px;color:#2e3a52;font-family:monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.how-result-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0}
-.how-result-tape{font-size:9px;color:#4a5270;font-family:monospace}
-.how-result-btn{font-size:9px;background:#f5a623;color:#0b0b0d;border:none;padding:3px 8px;border-radius:3px;cursor:pointer;font-weight:700;white-space:nowrap}
-.how-screen-caption{font-size:11px;color:#2e3a52;text-align:center;margin-top:10px;font-family:monospace}
-.how-baf{padding:64px 80px;background:#0a0c10;border-top:0.5px solid #1a2035}
-.how-baf-title{font-size:22px;font-weight:600;color:#e8eaf0;text-align:center;margin-bottom:32px;letter-spacing:-.3px}
-.how-baf-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;max-width:900px;margin:0 auto}
-.how-baf-arrow{font-size:32px;color:#f5a623;text-align:center}
-.how-baf-card{background:#0d1117;border-radius:10px;padding:28px}
-.how-baf-card.before{border:0.5px solid #3a1a1a}
-.how-baf-card.after{border:0.5px solid #1a3a1a}
-.how-baf-label{font-size:12px;font-weight:700;margin-bottom:16px}
-.how-baf-card.before .how-baf-label{color:#ef4444}
-.how-baf-card.after .how-baf-label{color:#4ade80}
-.how-baf-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.how-baf-list li{font-size:12px;color:#5a6480;line-height:1.6;padding-left:4px}
-.how-baf-card.before .how-baf-list li::before{content:"✗ ";color:#ef4444}
-.how-baf-card.after .how-baf-list li::before{content:"✓ ";color:#4ade80}
-</style>
-
-<section class="sec" id="download">
-  <div class="dl-box">
-    <div class="dl-icon">
-      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#f5a623" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="16" y="32" width="88" height="56" rx="14"/>
-        <circle cx="43" cy="58" r="13"/><circle cx="77" cy="58" r="13"/>
-        <circle cx="43" cy="58" r="4.5" fill="#f5a623" stroke="none"/><circle cx="77" cy="58" r="4.5" fill="#f5a623" stroke="none"/>
-        <path d="M56 58 H64"/><rect x="48" y="78" width="24" height="9" rx="3"/>
-      </svg>
+    <div>
+      <div class="gui-screen">
+        <img src="img/screen-new-tape.png" alt="TapeVault new tape registration dialog">
+      </div>
+      <div class="gui-screen-cap">▲ New tape registration — actual TapeVault v1.0.0 screenshot</div>
     </div>
-    <div class="dl-title">TapeVault v1.0.0</div>
-    <div class="dl-sub">Professional LTO Tape Management for Windows — Free 30-day trial, no credit card required.</div>
-    <div class="dl-btns">
-      <button class="dl-btn-main">⬇ Download for Windows</button>
-      <button class="dl-btn-sec">📄 Release notes</button>
-    </div>
-    <div class="dl-sys">
-      <div class="dl-sys-item"><div class="dl-sys-dot" style="background:#5b9cf6"></div>Windows 10 / 11 (64-bit)</div>
-      <div class="dl-sys-item"><div class="dl-sys-dot" style="background:#4ade80"></div>LTO-4 through LTO-9</div>
-      <div class="dl-sys-item"><div class="dl-sys-dot" style="background:#f5a623"></div>Electron + Python IPC</div>
-    </div>
-    <div class="dl-note">v1.0.0 released June 2026 · 30-day free trial · Requires Windows 10 64-bit or later</div>
   </div>
 </section>
 
-<section class="sec price-sec" id="pricing">
-  <div class="sec-head">
+<!-- BEFORE AFTER -->
+<section style="padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035">
+  <div style="text-align:center;margin-bottom:48px">
+    <div class="sec-label">The Difference</div>
+    <div class="sec-title">Before vs. After TapeVault</div>
+  </div>
+  <div class="baf-grid">
+    <div class="baf-card before">
+      <div class="baf-label">❌ Without TapeVault</div>
+      <ul class="baf-list">
+        <li>Check tape labels manually — <strong style="color:#c8cfe0">avg. 2 hours per search</strong></li>
+        <li>No file index — must check every tape one by one</li>
+        <li>No thumbnails — full recall required just to preview</li>
+        <li>Archive becomes unusable when key staff leaves</li>
+        <li>Tape capacity tracked manually in spreadsheets</li>
+        <li>No checksum — never know if files are corrupted</li>
+      </ul>
+    </div>
+    <div class="baf-arrow">→</div>
+    <div class="baf-card after">
+      <div class="baf-label">✅ With TapeVault</div>
+      <ul class="baf-list">
+        <li>Search by filename → <strong style="color:#c8cfe0">location found in 30 sec</strong></li>
+        <li>Full library indexed — any file found instantly</li>
+        <li>Thumbnails generated automatically — preview before recall</li>
+        <li>Metadata database survives any staff change</li>
+        <li>Tape capacity tracked and predicted automatically</li>
+        <li>Auto checksum on every write — data integrity guaranteed</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="feat-sec" id="features">
+  <div style="text-align:center;margin-bottom:44px">
+    <div class="sec-label">Features</div>
+    <div class="sec-title">Everything in one app</div>
+    <p class="sec-sub" style="margin:0 auto">No plugins. No separate tools. No cloud required.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat"><div class="feat-ico">💾</div><div class="feat-title">LTO Drive Control</div><div class="feat-desc">Direct hardware control for LTO-4 through LTO-9. Read, write, verify, eject — all from one interface.</div></div>
+    <div class="feat"><div class="feat-ico">🖼️</div><div class="feat-title">Auto Thumbnail Generation</div><div class="feat-desc">FFmpeg-powered thumbnails for every video file. Browse your archive visually without recalling from tape.</div></div>
+    <div class="feat"><div class="feat-ico">🔍</div><div class="feat-title">Full-Text Search</div><div class="feat-desc">Search across all tapes by filename, date, resolution, or custom metadata. Results in under a second.</div></div>
+    <div class="feat"><div class="feat-ico">📁</div><div class="feat-title">Project Management</div><div class="feat-desc">Organize by project, year, department, or client. Hierarchical folder structure mirrors your real workflow.</div></div>
+    <div class="feat"><div class="feat-ico">▶️</div><div class="feat-title">Built-in Video Player</div><div class="feat-desc">Preview any video file directly in TapeVault. MP4, MOV, MXF, AVI — no external player needed.</div></div>
+    <div class="feat"><div class="feat-ico">📊</div><div class="feat-title">Tape Usage Analytics</div><div class="feat-desc">Real-time capacity tracking across all tapes. Know exactly when to order new tapes before you run out.</div></div>
+    <div class="feat"><div class="feat-ico">🔒</div><div class="feat-title">Air-Gapped Operation</div><div class="feat-desc">Fully offline after activation. No cloud connection required. Built for secure broadcast and defense environments.</div></div>
+    <div class="feat"><div class="feat-ico">✅</div><div class="feat-title">Checksum Verification</div><div class="feat-desc">MD5/SHA256 checksum on every write. Automatically verify data integrity after each archive operation.</div></div>
+    <div class="feat"><div class="feat-ico">🌐</div><div class="feat-title">Multi-Language UI</div><div class="feat-desc">Full English, Korean, and Japanese support. Built for global broadcast and media organizations.</div></div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section style="padding:72px 48px;text-align:center" id="download">
+  <div class="sec-label">Download</div>
+  <div class="sec-title" style="margin-bottom:10px">Try TapeVault free for 30 days</div>
+  <p style="font-size:15px;color:#4a5270;margin-bottom:36px">No credit card. No commitment. Full features from day one.</p>
+  <div style="display:inline-flex;flex-direction:column;align-items:center;gap:16px">
+    <button class="btn-hero-main" style="font-size:16px;padding:16px 40px">
+      ⬇ Download TapeVault v1.0.0 for Windows
+    </button>
+    <div style="display:flex;gap:24px">
+      <span style="font-size:11px;color:#3a4a5a;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#5b9cf6">●</span> Windows 10 / 11 (64-bit)</span>
+      <span style="font-size:11px;color:#3a4a5a;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#4ade80">●</span> LTO-4 through LTO-9</span>
+      <span style="font-size:11px;color:#3a4a5a;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#f5a623">●</span> ~180 MB installer</span>
+    </div>
+    <p style="font-size:11px;color:#2e3a52">v1.0.0 · June 2026 · Requires Windows 10 64-bit or later</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="price-sec" id="pricing">
+  <div style="text-align:center;margin-bottom:48px">
     <div class="sec-label">Pricing</div>
-    <div class="sec-title">Simple, transparent pricing</div>
-    <p class="sec-sub">Start free. Scale when ready. Billing via Paddle, VAT automatically handled.</p>
+    <div class="sec-title">Simple pricing. No surprises.</div>
+    <p class="sec-sub" style="margin:0 auto">Start free for 30 days. Upgrade when ready. Cancel anytime — no auto-renewal.</p>
   </div>
   <div class="price-grid">
-    <div class="pc"><div class="pc-plan">STARTER</div><div><span class="pc-amount">$29</span><span class="pc-unit"> / month</span></div><hr class="pc-hr"><div class="pc-feat">1 LTO drive</div><div class="pc-feat">Up to 50 tapes</div><div class="pc-feat">Thumbnail generation</div><div class="pc-feat">Full-text search</div><div class="pc-feat">Email support</div><button class="pc-btn">Get started</button></div>
-    <div class="pc hot"><div class="pc-badge">Most popular</div><div class="pc-plan">PRO</div><div><span class="pc-amount">$89</span><span class="pc-unit"> / month</span></div><hr class="pc-hr"><div class="pc-feat">Up to 4 LTO drives</div><div class="pc-feat">Unlimited tapes</div><div class="pc-feat">Advanced search</div><div class="pc-feat">Tape queue scheduling</div><div class="pc-feat">Priority support</div><button class="pc-btn hot">Start free trial</button></div>
-    <div class="pc"><div class="pc-plan">ENTERPRISE</div><div><span class="pc-amount">Custom</span></div><hr class="pc-hr"><div class="pc-feat">Unlimited drives</div><div class="pc-feat">Tape library integration</div><div class="pc-feat">On-site deployment</div><div class="pc-feat">Dedicated SLA</div><div class="pc-feat">Custom onboarding</div><button class="pc-btn">Contact sales</button></div>
+    <div class="pc">
+      <div class="pc-plan">STARTER</div>
+      <div><span class="pc-amount">$20</span><span class="pc-unit"> / month</span></div>
+      <div class="pc-desc">For single LTO drive setups — broadcast studios, small archives, individual operators.</div>
+      <hr class="pc-hr">
+      <div class="pc-feat">1 LTO drive (LTO-4 to LTO-9)</div>
+      <div class="pc-feat">Unlimited tapes</div>
+      <div class="pc-feat">Auto thumbnail generation</div>
+      <div class="pc-feat">Full-text search</div>
+      <div class="pc-feat">Built-in video player</div>
+      <div class="pc-feat">Email support</div>
+      <button class="pc-btn" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Start free trial</button>
+    </div>
+    <div class="pc hot">
+      <div class="pc-badge">Most popular</div>
+      <div class="pc-plan">AUTOLOADER</div>
+      <div><span class="pc-amount">$40</span><span class="pc-unit"> / month</span></div>
+      <div class="pc-desc">For tape autoloader / library setups — TV stations, hospitals, government archives.</div>
+      <hr class="pc-hr">
+      <div class="pc-feat">LTO Autoloader / Library support</div>
+      <div class="pc-feat">Up to 4 LTO drives simultaneously</div>
+      <div class="pc-feat">Automated tape slot management</div>
+      <div class="pc-feat">Batch archive &amp; restore jobs</div>
+      <div class="pc-feat">Advanced search &amp; filters</div>
+      <div class="pc-feat">Priority support</div>
+      <button class="pc-btn hot" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Start free trial</button>
+    </div>
+    <div class="pc">
+      <div class="pc-plan">ENTERPRISE</div>
+      <div><span class="pc-amount">Custom</span></div>
+      <div class="pc-desc">For large institutions with multi-library setups, custom deployment, and SLA requirements.</div>
+      <hr class="pc-hr">
+      <div class="pc-feat">Multiple tape libraries</div>
+      <div class="pc-feat">On-site deployment &amp; setup</div>
+      <div class="pc-feat">Custom integration support</div>
+      <div class="pc-feat">Dedicated SLA</div>
+      <div class="pc-feat">Staff training included</div>
+      <button class="pc-btn" onclick="window.location.href='mailto:sales@tapevault.net'">Contact sales</button>
+    </div>
   </div>
-  <div class="price-note">Billing via Paddle · VAT included · Cancel anytime</div>
+  <div class="price-trust">
+    <p>Every plan includes a <strong style="color:#c8cfe0">30-day free trial</strong> with full features. No credit card required.</p>
+    <div class="price-trust-items" style="margin-top:12px">
+      <span class="price-trust-item">No automatic renewal</span>
+      <span class="price-trust-item">Cancel anytime</span>
+      <span class="price-trust-item">Your data always yours</span>
+      <span class="price-trust-item">Offline after activation</span>
+      <span class="price-trust-item">Billing via Paddle · VAT included</span>
+    </div>
+  </div>
 </section>
 
-<section class="sec" id="faq">
-  <div class="sec-head">
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+  <div style="text-align:center;margin-bottom:44px">
     <div class="sec-label">FAQ</div>
-    <div class="sec-title">Frequently asked questions</div>
+    <div class="sec-title">Questions before buying?</div>
   </div>
   <div class="faq-list">
-    <div class="faq-item"><div class="faq-q">Which LTO drive generations does TapeVault support?</div><div class="faq-a">TapeVault supports LTO-4 through LTO-9. Single-drive in all plans; multi-drive in Pro and Enterprise.</div></div>
-    <div class="faq-item"><div class="faq-q">Does TapeVault require an internet connection?</div><div class="faq-a">No. TapeVault is fully offline-capable after initial license activation. Ideal for air-gapped environments.</div></div>
-    <div class="faq-item"><div class="faq-q">What file formats are supported?</div><div class="faq-a">Any file your OS can read — MP4, MOV, MXF, AVI, PDF, ZIP, JPG, PNG and more. Video files get automatic thumbnail generation.</div></div>
-    <div class="faq-item"><div class="faq-q">How does the free trial work?</div><div class="faq-a">Download and use TapeVault fully featured for 30 days — no credit card required.</div></div>
-    <div class="faq-item"><div class="faq-q">Is there an Enterprise deployment option?</div><div class="faq-a">Yes. Enterprise includes on-site deployment, dedicated SLA, and custom onboarding. Contact sales for details.</div></div>
+    <div class="faq-item">
+      <div class="faq-q">Does TapeVault work without an internet connection? <span class="ico">+</span></div>
+      <div class="faq-a">Yes. TapeVault is fully offline after the initial license activation. No ongoing internet connection is required. This makes it ideal for air-gapped environments in broadcast, defense, and medical sectors.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens to my data when my subscription expires? <span class="ico">+</span></div>
+      <div class="faq-a">Your archived data on tape is always yours — it's stored in standard LTFS format, which is readable by any LTFS-compatible software. TapeVault's database and project index remain accessible in read-only mode after expiry.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is there automatic renewal? <span class="ico">+</span></div>
+      <div class="faq-a">No. There is no automatic renewal. TapeVault does not store credit card details. You will receive a reminder before expiry and can choose to renew manually.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Which LTO generations are supported? <span class="ico">+</span></div>
+      <div class="faq-a">TapeVault supports LTO-4 through LTO-9 drives. LTO-10 support is planned for v1.1. Both single drives and autoloaders (AUTOLOADER plan) are supported.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between Starter and AutoLoader? <span class="ico">+</span></div>
+      <div class="faq-a">Starter is designed for a single standalone LTO drive. AutoLoader adds support for tape autoloaders and libraries — automated slot management, multi-drive operation, and batch archive/restore jobs. If you have a tape library (e.g. Quantum, Overland), you need the AutoLoader plan.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I install TapeVault on multiple computers? <span class="ico">+</span></div>
+      <div class="faq-a">Each license covers one computer at a time. You can transfer the license to a different machine as needed — just deactivate on the old machine and activate on the new one. An internet connection is required only during the transfer.</div>
+    </div>
   </div>
 </section>
 
-<section class="cta-band">
-  <h2>Start archiving professionally</h2>
-  <p>30-day free trial — no credit card required. Available for Windows.</p>
-  <button class="btn-hero" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">⬇ Download TapeVault free</button>
+<!-- CTA -->
+<section class="cta-sec">
+  <h2>Stop searching tapes manually.</h2>
+  <p>Download TapeVault and find any file in 30 seconds — starting today.</p>
+  <button class="btn-hero-main" style="margin:0 auto;font-size:16px;padding:16px 40px" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">
+    ⬇ Download Free Trial — No Credit Card
+  </button>
+  <div class="cta-note">Windows 10 / 11 · 30-day full-feature trial · LTO-4 to LTO-9</div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div>
+    <div class="footer-brand">
       <div class="footer-logo-row">
         <div class="footer-logo-icon">
-          <svg width="16" height="16" viewBox="0 0 120 120" fill="none" stroke="#f5a623" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="28" height="28" viewBox="0 0 120 120" fill="none" stroke="#f5a623" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
             <rect x="16" y="32" width="88" height="56" rx="14"/>
             <circle cx="43" cy="58" r="13"/><circle cx="77" cy="58" r="13"/>
             <circle cx="43" cy="58" r="4.5" fill="#f5a623" stroke="none"/><circle cx="77" cy="58" r="4.5" fill="#f5a623" stroke="none"/>
             <path d="M56 58 H64"/>
           </svg>
         </div>
-        <span class="footer-logo-text">TapeVault</span>
+        <span class="footer-brand-name">TapeVault</span>
       </div>
-      <div class="footer-copy">© 2026 주식회사 베테랑아이티 (Veteran IT Co., Ltd.)<br>Seocho-gu, Seoul, Republic of Korea</div>
+      <div class="footer-copy">
+        © 2026 주식회사 베테랑아이티 (Veteran IT Co., Ltd.)<br>
+        Seocho-gu, Seoul, Republic of Korea<br>
+        <a href="mailto:support@tapevault.net" style="color:#3a4a5a;text-decoration:none">support@tapevault.net</a>
+      </div>
     </div>
     <div class="footer-cols">
-      <div class="footer-col"><div class="footer-col-title">Product</div><a href="#features">Features</a><a href="#how">How it works</a><a href="#download">Download</a><a href="#pricing">Pricing</a></div>
-      <div class="footer-col"><div class="footer-col-title">Support</div><a>Documentation</a><a>Release notes</a><a>Contact sales</a><a>Contact support</a></div>
-      <div class="footer-col"><div class="footer-col-title">Legal</div><a>Privacy policy</a><a>Terms of service</a><a>License</a></div>
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="#gui">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#download">Download</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Support</div>
+        <a href="how-to-install.html">Install Guide</a>
+        <a href="mailto:support@tapevault.net">Contact support</a>
+        <a href="mailto:sales@tapevault.net">Contact sales</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Legal</div>
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+        <a href="#">License</a>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-bottom-left">TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle</div>
-    <div class="footer-bottom-right"><a>EN</a><a>한국어</a><a>日本語</a></div>
+    <div class="footer-bottom-left">TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle · No auto-renewal</div>
+    <div class="footer-bottom-right">
+      <a>EN</a><a>한국어</a><a>日本語</a>
+    </div>
   </div>
 </footer>
 
 <script>
-document.querySelectorAll('.faq-q').forEach(function(q) {
+document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', function() {
     this.classList.toggle('open');
-    var a = this.nextElementSibling;
-    a.classList.toggle('open');
+    this.nextElementSibling.classList.toggle('open');
   });
 });
 </script>
