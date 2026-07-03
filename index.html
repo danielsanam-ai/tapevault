@@ -9,8 +9,6 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;overflow-x:hidden}
-
-/* NAV */
 .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 48px;border-bottom:0.5px solid #1e2230;position:sticky;top:0;background:#0b0b0dee;backdrop-filter:blur(14px);z-index:100}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-logo-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center}
@@ -27,15 +25,12 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .btn-ghost{font-size:13px;color:#6b7694;background:#111827;border:0.5px solid #2a3349;padding:6px 16px;border-radius:6px;cursor:pointer}
 .btn-orange{font-size:13px;color:#0b0b0d;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer}
 .btn-orange:hover{opacity:.88}
-
-/* HERO */
 .hero{padding:72px 48px 56px;text-align:center;position:relative}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:#111827;border:0.5px solid #1e3a5f;color:#5b9cf6;font-size:11px;padding:5px 14px;border-radius:20px;margin-bottom:28px;font-family:monospace}
 .hero-dot{width:6px;height:6px;background:#22d3ee;border-radius:50%;animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .hero h1{font-size:56px;font-weight:400;line-height:1.1;letter-spacing:-1.5px;color:#f0f2f8;margin-bottom:10px}
 .hero h1 b{font-weight:800;color:#f5a623}
-.hero h1 em{font-style:normal;color:#c8cfe0}
 .hero-sub{font-size:17px;color:#5a6480;max-width:540px;margin:0 auto 16px;line-height:1.75}
 .hero-platform{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#3a4a5a;margin-bottom:36px;font-family:monospace}
 .hero-platform span{background:#1a1a20;border:0.5px solid #2a2a35;padding:3px 10px;border-radius:4px}
@@ -45,21 +40,16 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .btn-hero-main:hover{opacity:.88}
 .btn-hero-ghost{background:#111827;color:#c8cfe0;border:0.5px solid #2a3349;padding:14px 24px;border-radius:8px;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:8px}
 .btn-hero-ghost:hover{border-color:#3a4a6a}
-
-/* VIDEO THUMB LINKS */
-.hero-videos{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:540px;margin:0 auto 20px}
-.video-card{background:#141418;border:0.5px solid #2a2a35;border-radius:12px;overflow:hidden;text-decoration:none;display:block;transition:border-color .2s}
+.video-card{background:#141418;border:0.5px solid #2a2a35;border-radius:12px;overflow:hidden;display:block;transition:border-color .2s}
 .video-card:hover{border-color:#f5a623}
 .video-label{background:#1a1a1f;border-bottom:0.5px solid #2a2a35;padding:10px 16px;font-size:11px;color:#4a5270;font-family:monospace;display:flex;align-items:center;gap:6px}
 .video-label span{color:#f5a623}
 .video-thumb{position:relative;background:#0d0d12}
-.video-thumb img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover;opacity:.85}
+.video-thumb img{width:100%;display:block;object-fit:cover;opacity:.85}
 .video-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .video-play-btn{width:52px;height:52px;background:rgba(245,166,35,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .15s}
 .video-card:hover .video-play-btn{transform:scale(1.1)}
 .video-play-btn svg{width:20px;height:20px;fill:#0b0b0d;margin-left:3px}
-
-/* PAIN POINTS */
 .pain-sec{padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
 .pain-head{text-align:center;margin-bottom:48px}
 .sec-label{font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:monospace}
@@ -76,15 +66,12 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .solution-ico{font-size:28px;margin-bottom:14px}
 .solution-title{font-size:15px;font-weight:700;color:#4ade80;margin-bottom:10px}
 .solution-desc{font-size:13px;color:#4a5270;line-height:1.75}
-
-/* REAL GUI SECTION */
 .gui-sec{padding:80px 48px}
 .gui-head{text-align:center;margin-bottom:64px}
 .gui-step{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:80px;max-width:1100px;margin-left:auto;margin-right:auto}
 .gui-step:last-child{margin-bottom:0}
 .gui-step-rev{direction:rtl}
 .gui-step-rev>*{direction:ltr}
-.gui-info{}
 .gui-step-num{font-size:10px;color:#f5a623;font-family:monospace;letter-spacing:.15em;background:#1a1508;border:0.5px solid #3a2a05;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:16px}
 .gui-step-title{font-size:28px;font-weight:700;color:#e8eaf0;margin-bottom:14px;letter-spacing:-.4px;line-height:1.3}
 .gui-step-desc{font-size:14px;color:#5a6480;line-height:1.85;margin-bottom:20px}
@@ -95,8 +82,6 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .gui-screen{border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);border:0.5px solid #2a2a35}
 .gui-screen img{width:100%;display:block}
 .gui-screen-cap{font-size:11px;color:#2e3a52;text-align:center;margin-top:10px;font-family:monospace}
-
-/* STATS BAR */
 .stats-bar{background:#0d1117;border-top:0.5px solid #1e2330;border-bottom:0.5px solid #1e2330;padding:32px 48px}
 .stats-inner{display:flex;align-items:center;justify-content:center;gap:0;max-width:900px;margin:0 auto}
 .stat-item{text-align:center;padding:0 48px}
@@ -104,8 +89,6 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .stat-num sup{font-size:20px;font-weight:400}
 .stat-label{font-size:11px;color:#4a5270;margin-top:6px;font-family:monospace}
 .stat-div{width:0.5px;height:52px;background:#1e2330}
-
-/* FEATURES */
 .feat-sec{padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto}
 .feat{background:#0d1117;border:0.5px solid #1e2330;border-radius:10px;padding:24px;transition:border-color .2s}
@@ -113,8 +96,6 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .feat-ico{font-size:26px;margin-bottom:14px}
 .feat-title{font-size:14px;font-weight:700;color:#c8cfe0;margin-bottom:8px}
 .feat-desc{font-size:12px;color:#3a4a5a;line-height:1.75}
-
-/* BEFORE AFTER */
 .baf-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:center;max-width:900px;margin:0 auto}
 .baf-card{border-radius:12px;padding:32px}
 .baf-card.before{background:#0d0808;border:1px solid #3a1a1a}
@@ -127,8 +108,6 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .baf-card.before .baf-list li::before{content:"✗";color:#ef4444;flex-shrink:0;font-weight:700}
 .baf-card.after .baf-list li::before{content:"✓";color:#4ade80;flex-shrink:0;font-weight:700}
 .baf-arrow{font-size:36px;color:#f5a623;text-align:center}
-
-/* PRICING */
 .price-sec{padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:820px;margin:0 auto}
 .pc{background:#0d1117;border:0.5px solid #1a2035;border-radius:12px;padding:30px;position:relative}
@@ -150,27 +129,20 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .price-trust-items{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
 .price-trust-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#3a4a5a;font-family:monospace}
 .price-trust-item::before{content:"✓";color:#4ade80}
-
-/* FAQ */
 .faq-sec{padding:72px 48px}
 .faq-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
 .faq-item{background:#0d1117;border:0.5px solid #1e2330;border-radius:8px;overflow:hidden}
 .faq-q{padding:18px 22px;font-size:14px;color:#c8cfe0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
-.faq-q .ico{color:#f5a623;font-size:18px;font-weight:300;transition:transform .2s}
+.faq-q .ico{color:#f5a623;font-size:18px;font-weight:300;transition:transform .2s;flex-shrink:0;margin-left:12px}
 .faq-q.open .ico{transform:rotate(45deg)}
 .faq-a{padding:0 22px 18px;font-size:13px;color:#4a5270;line-height:1.8;display:none}
 .faq-a.open{display:block}
-
-/* CTA */
 .cta-sec{padding:80px 48px;text-align:center;background:linear-gradient(135deg,#1a1508 0%,#0b0b0d 40%,#081528 100%);border-top:0.5px solid #2a2035}
 .cta-sec h2{font-size:40px;font-weight:700;color:#f0f2f8;margin-bottom:12px;letter-spacing:-.6px}
 .cta-sec p{font-size:16px;color:#5a6480;margin-bottom:32px}
 .cta-note{font-size:12px;color:#2e3a52;margin-top:16px;font-family:monospace}
-
-/* FOOTER */
 footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 .footer-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;margin-bottom:32px}
-.footer-brand{}
 .footer-logo-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
 .footer-logo-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center}
 .footer-brand-name{font-size:15px;font-weight:700;color:#c8cfe0}
@@ -187,7 +159,6 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <a class="nav-logo" href="#">
     <div class="nav-logo-icon">
@@ -202,437 +173,326 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <span class="nav-ver">v1.0.0</span>
   </a>
   <div class="nav-links">
-    <a href="#gui">How it works</a>
-    <a href="#features">Features</a>
-    <a href="#download">Download</a>
-    <a href="#pricing">Pricing</a>
-    <a href="how-to-install.html">Install Guide</a>
+    <a href="#gui" data-i18n="nav_how">How it works</a>
+    <a href="#features" data-i18n="nav_features">Features</a>
+    <a href="#download" data-i18n="nav_download">Download</a>
+    <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+    <a href="how-to-install.html" data-i18n="nav_install">Install Guide</a>
   </div>
   <div class="nav-right">
     <div class="lang-grp">
-      <button class="lang-btn on">EN</button>
-      <button class="lang-btn">KO</button>
-      <button class="lang-btn">JA</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="ko">KO</button>
+      <button class="lang-btn" data-lang="ja">JA</button>
     </div>
-    <button class="btn-ghost">Sign in</button>
-    <button class="btn-orange" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Free Trial</button>
+    <button class="btn-ghost" data-i18n="nav_signin">Sign in</button>
+    <button class="btn-orange" data-i18n="nav_trial" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Free Trial</button>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">
     <span class="hero-dot"></span>
-    v1.0.0 — Now available for Windows
+    <span data-i18n="hero_eyebrow">v1.0.0 — Now available for Windows</span>
   </div>
-  <h1>Find any file on LTO tape<br><b>in under 30 seconds.</b></h1>
-  <p class="hero-sub">TapeVault is the only LTO tape archive manager built for Windows. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.</p>
+  <h1 data-i18n="hero_h1">Find any file on LTO tape<br><b>in under 30 seconds.</b></h1>
+  <p class="hero-sub" data-i18n="hero_sub">TapeVault is the only LTO tape archive manager built for Windows. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.</p>
   <div class="hero-platform">
-    <span class="hi">Windows Only</span>
-    <span>LTO-4 to LTO-9</span>
-    <span>Broadcast · Medical · Defense · Education</span>
+    <span class="hi" data-i18n="hero_p1">Windows Only</span>
+    <span data-i18n="hero_p2">LTO-4 to LTO-9</span>
+    <span data-i18n="hero_p3">Broadcast · Medical · Defense · Education</span>
   </div>
   <div class="hero-btns">
-    <button class="btn-hero-main" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">
-      ⬇ Download Free Trial
-    </button>
-    <button class="btn-hero-ghost" onclick="document.getElementById('gui').scrollIntoView({behavior:'smooth'})">
-      ▶ See how it works
-    </button>
+    <button class="btn-hero-main" data-i18n="hero_btn1" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">⬇ Download Free Trial</button>
+    <button class="btn-hero-ghost" data-i18n="hero_btn2" onclick="document.getElementById('gui').scrollIntoView({behavior:'smooth'})">▶ See how it works</button>
   </div>
-
-  <!-- YOUTUBE VIDEO -->
   <div style="max-width:720px;margin:0 auto 20px">
     <div class="video-card" style="cursor:pointer" id="yt-thumb" onclick="document.getElementById('yt-thumb').outerHTML='<div style=\'max-width:720px;margin:0 auto 20px\'><div class=\'video-card\' style=\'padding:0\'><div class=\'video-label\'><span>▶ DEMO</span> — TapeVault full walkthrough</div><div style=\'position:relative;padding-bottom:56.25%;height:0\'><iframe style=\'position:absolute;top:0;left:0;width:100%;height:100%;border:none\' src=\'https://www.youtube.com/embed/gq-fioGNzgo?autoplay=1\' allow=\'autoplay;encrypted-media\' allowfullscreen></iframe></div></div></div>'">
-      <div class="video-label">
-        <span>▶ DEMO</span> — TapeVault full walkthrough
-      </div>
+      <div class="video-label"><span>▶ DEMO</span> — TapeVault full walkthrough</div>
       <div class="video-thumb">
         <img src="https://i.ytimg.com/vi/gq-fioGNzgo/maxresdefault.jpg" alt="TapeVault demo video" style="aspect-ratio:16/9">
-        <div class="video-play">
-          <div class="video-play-btn">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
+        <div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat-item">
-      <div class="stat-num">30<sup>sec</sup></div>
-      <div class="stat-label">File search across all tapes</div>
-    </div>
+    <div class="stat-item"><div class="stat-num">30<sup>sec</sup></div><div class="stat-label" data-i18n="stat1">File search across all tapes</div></div>
     <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num">3<sup>sec</sup></div>
-      <div class="stat-label">Auto thumbnail generation</div>
-    </div>
+    <div class="stat-item"><div class="stat-num">3<sup>sec</sup></div><div class="stat-label" data-i18n="stat2">Auto thumbnail generation</div></div>
     <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num">LTO<sup>4-9</sup></div>
-      <div class="stat-label">Auto drive detection</div>
-    </div>
+    <div class="stat-item"><div class="stat-num">LTO<sup>4-9</sup></div><div class="stat-label" data-i18n="stat3">Auto drive detection</div></div>
     <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num">100<sup>%</sup></div>
-      <div class="stat-label">Offline after activation</div>
-    </div>
+    <div class="stat-item"><div class="stat-num">100<sup>%</sup></div><div class="stat-label" data-i18n="stat4">Offline after activation</div></div>
   </div>
 </div>
 
-<!-- PAIN → SOLUTION -->
 <section class="pain-sec" id="pain">
   <div class="pain-head">
-    <div class="sec-label">The Problem</div>
-    <div class="sec-title">Sound familiar?</div>
-    <p class="sec-sub">Every LTO tape user faces the same frustrations. TapeVault solves all three.</p>
+    <div class="sec-label" data-i18n="pain_label">The Problem</div>
+    <div class="sec-title" data-i18n="pain_title">Sound familiar?</div>
+    <p class="sec-sub" data-i18n="pain_sub">Every LTO tape user faces the same frustrations. TapeVault solves all three.</p>
   </div>
   <div class="pain-grid">
-    <div class="pain-card">
-      <div class="pain-ico">⏰</div>
-      <div class="pain-title">Hours wasted finding files</div>
-      <div class="pain-desc">You know the file is on one of 20 tapes. But which one? Manual label checking takes 2+ hours every time.</div>
-    </div>
-    <div class="pain-card">
-      <div class="pain-ico">👤</div>
-      <div class="pain-title">Archive lost when staff leaves</div>
-      <div class="pain-desc">When the person who organized the tapes leaves, the archive becomes a mystery. No index, no metadata, no thumbnails.</div>
-    </div>
-    <div class="pain-card">
-      <div class="pain-ico">📼</div>
-      <div class="pain-title">Full recall just to preview</div>
-      <div class="pain-desc">Without thumbnails, you must recall the entire file to check if it's the right one. Wastes tape drive time and staff hours.</div>
-    </div>
+    <div class="pain-card"><div class="pain-ico">⏰</div><div class="pain-title" data-i18n="pain1_t">Hours wasted finding files</div><div class="pain-desc" data-i18n="pain1_d">You know the file is on one of 20 tapes. But which one? Manual label checking takes 2+ hours every time.</div></div>
+    <div class="pain-card"><div class="pain-ico">👤</div><div class="pain-title" data-i18n="pain2_t">Archive lost when staff leaves</div><div class="pain-desc" data-i18n="pain2_d">When the person who organized the tapes leaves, the archive becomes a mystery. No index, no metadata, no thumbnails.</div></div>
+    <div class="pain-card"><div class="pain-ico">📼</div><div class="pain-title" data-i18n="pain3_t">Full recall just to preview</div><div class="pain-desc" data-i18n="pain3_d">Without thumbnails, you must recall the entire file to check if it's the right one. Wastes tape drive time and staff hours.</div></div>
   </div>
   <div class="pain-arrow">↓</div>
   <div class="solution-grid">
-    <div class="solution-card">
-      <div class="solution-ico">🔍</div>
-      <div class="solution-title">Search in 30 seconds</div>
-      <div class="solution-desc">Type the filename, date, or metadata. TapeVault searches all tapes instantly and shows exactly where the file is.</div>
-    </div>
-    <div class="solution-card">
-      <div class="solution-ico">🗄️</div>
-      <div class="solution-title">Permanent metadata database</div>
-      <div class="solution-desc">Every file is indexed with metadata, checksum, and location. Staff changes never affect your archive organization.</div>
-    </div>
-    <div class="solution-card">
-      <div class="solution-ico">🖼️</div>
-      <div class="solution-title">Thumbnails without recall</div>
-      <div class="solution-desc">TapeVault auto-generates thumbnails for every video file. Browse visually and confirm before recalling from tape.</div>
-    </div>
+    <div class="solution-card"><div class="solution-ico">🔍</div><div class="solution-title" data-i18n="sol1_t">Search in 30 seconds</div><div class="solution-desc" data-i18n="sol1_d">Type the filename, date, or metadata. TapeVault searches all tapes instantly and shows exactly where the file is.</div></div>
+    <div class="solution-card"><div class="solution-ico">🗄️</div><div class="solution-title" data-i18n="sol2_t">Permanent metadata database</div><div class="solution-desc" data-i18n="sol2_d">Every file is indexed with metadata, checksum, and location. Staff changes never affect your archive organization.</div></div>
+    <div class="solution-card"><div class="solution-ico">🖼️</div><div class="solution-title" data-i18n="sol3_t">Thumbnails without recall</div><div class="solution-desc" data-i18n="sol3_d">TapeVault auto-generates thumbnails for every video file. Browse visually and confirm before recalling from tape.</div></div>
   </div>
 </section>
 
-<!-- REAL GUI STEPS -->
 <section class="gui-sec" id="gui">
   <div class="gui-head">
-    <div class="sec-label">Real Software. Real UI.</div>
-    <div class="sec-title">See exactly what you get</div>
-    <p class="sec-sub" style="margin:0 auto">These are actual screenshots from TapeVault v1.0.0 — no mockups, no illustrations.</p>
+    <div class="sec-label" data-i18n="gui_label">Real Software. Real UI.</div>
+    <div class="sec-title" data-i18n="gui_title">See exactly what you get</div>
+    <p class="sec-sub" style="margin:0 auto" data-i18n="gui_sub">These are actual screenshots from TapeVault v1.0.0 — no mockups, no illustrations.</p>
   </div>
-
-  <!-- STEP 1 -->
   <div class="gui-step" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 01</div>
-      <div class="gui-step-title">All your files,<br>visible at a glance</div>
-      <div class="gui-step-desc">Open any project folder and see every file as a thumbnail — videos, PDFs, images, ZIP files — all organized exactly as you archived them. Switch between grid view and list view instantly.</div>
+      <div class="gui-step-title" data-i18n="s1_title">All your files,<br>visible at a glance</div>
+      <div class="gui-step-desc" data-i18n="s1_desc">Open any project folder and see every file as a thumbnail — videos, PDFs, images, ZIP files — all organized exactly as you archived them. Switch between grid view and list view instantly.</div>
       <ul class="gui-checklist">
-        <li>Thumbnail grid view for visual browsing</li>
-        <li>List view with filename, size, date, and status</li>
-        <li>Color-coded tape status badges (archived / queued)</li>
-        <li>Filter by file type, date, or tape</li>
+        <li data-i18n="s1_c1">Thumbnail grid view for visual browsing</li>
+        <li data-i18n="s1_c2">List view with filename, size, date, and status</li>
+        <li data-i18n="s1_c3">Color-coded tape status badges (archived / queued)</li>
+        <li data-i18n="s1_c4">Filter by file type, date, or tape</li>
       </ul>
-      <div class="gui-tip">
-        💡 Green badge = already on tape. Blue = waiting in queue. You always know the status of every file.
-      </div>
+      <div class="gui-tip" data-i18n="s1_tip">💡 Green badge = already on tape. Blue = waiting in queue. You always know the status of every file.</div>
     </div>
     <div>
-      <div class="gui-screen">
-        <img src="img/screen-grid.png" alt="TapeVault grid view — browse all archived files with thumbnails">
-      </div>
-      <div class="gui-screen-cap">▲ Grid view — actual TapeVault v1.0.0 screenshot</div>
+      <div class="gui-screen"><img src="img/screen-grid.png" alt="TapeVault grid view"></div>
+      <div class="gui-screen-cap" data-i18n="s1_cap">▲ Grid view — actual TapeVault v1.0.0 screenshot</div>
     </div>
   </div>
-
-  <!-- STEP 2 -->
   <div class="gui-step gui-step-rev" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 02</div>
-      <div class="gui-step-title">Click any file.<br>See everything about it.</div>
-      <div class="gui-step-desc">Select any file and the right panel instantly shows the video thumbnail preview, file type, resolution, size, tape location, checksum, and your custom metadata notes. No waiting. No recalling.</div>
+      <div class="gui-step-title" data-i18n="s2_title">Click any file.<br>See everything about it.</div>
+      <div class="gui-step-desc" data-i18n="s2_desc">Select any file and the right panel instantly shows the video thumbnail preview, file type, resolution, size, tape location, checksum, and your custom metadata notes. No waiting. No recalling.</div>
       <ul class="gui-checklist">
-        <li>Auto-generated video thumbnail preview</li>
-        <li>Full file metadata: codec, resolution, date, size</li>
-        <li>Exact tape path and tape name shown</li>
-        <li>Custom notes: cameraman, location, owner</li>
+        <li data-i18n="s2_c1">Auto-generated video thumbnail preview</li>
+        <li data-i18n="s2_c2">Full file metadata: codec, resolution, date, size</li>
+        <li data-i18n="s2_c3">Exact tape path and tape name shown</li>
+        <li data-i18n="s2_c4">Custom notes: cameraman, location, owner</li>
       </ul>
-      <div class="gui-tip">
-        💡 Know exactly what's on the tape before you eject it and insert a new one. Zero guesswork.
-      </div>
+      <div class="gui-tip" data-i18n="s2_tip">💡 Know exactly what's on the tape before you eject it and insert a new one. Zero guesswork.</div>
     </div>
     <div>
-      <div class="gui-screen">
-        <img src="img/screen-thumb.png" alt="TapeVault file detail panel with thumbnail and metadata">
-      </div>
-      <div class="gui-screen-cap">▲ File detail panel — actual TapeVault v1.0.0 screenshot</div>
+      <div class="gui-screen"><img src="img/screen-thumb.png" alt="TapeVault file detail panel"></div>
+      <div class="gui-screen-cap" data-i18n="s2_cap">▲ File detail panel — actual TapeVault v1.0.0 screenshot</div>
     </div>
   </div>
-
-  <!-- STEP 3 -->
   <div class="gui-step" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 03</div>
-      <div class="gui-step-title">List view for<br>power users</div>
-      <div class="gui-step-desc">Switch to list view to see all files in a sortable table. Sort by name, size, date, or archive status. Instantly identify which files are on tape and which are still queued.</div>
+      <div class="gui-step-title" data-i18n="s3_title">List view for<br>power users</div>
+      <div class="gui-step-desc" data-i18n="s3_desc">Switch to list view to see all files in a sortable table. Sort by name, size, date, or archive status. Instantly identify which files are on tape and which are still queued.</div>
       <ul class="gui-checklist">
-        <li>Sort by any column — name, size, date, status</li>
-        <li>VT TEST badge = confirmed on tape</li>
-        <li>One-click select multiple files</li>
-        <li>Batch add to tape write queue</li>
+        <li data-i18n="s3_c1">Sort by any column — name, size, date, status</li>
+        <li data-i18n="s3_c2">VT TEST badge = confirmed on tape</li>
+        <li data-i18n="s3_c3">One-click select multiple files</li>
+        <li data-i18n="s3_c4">Batch add to tape write queue</li>
       </ul>
-      <div class="gui-tip">
-        💡 Select 50 files, add to queue, and start writing — in under 30 seconds.
-      </div>
+      <div class="gui-tip" data-i18n="s3_tip">💡 Select 50 files, add to queue, and start writing — in under 30 seconds.</div>
     </div>
     <div>
-      <div class="gui-screen">
-        <img src="img/screen-list.png" alt="TapeVault list view with sortable file table">
-      </div>
-      <div class="gui-screen-cap">▲ List view — actual TapeVault v1.0.0 screenshot</div>
+      <div class="gui-screen"><img src="img/screen-list.png" alt="TapeVault list view"></div>
+      <div class="gui-screen-cap" data-i18n="s3_cap">▲ List view — actual TapeVault v1.0.0 screenshot</div>
     </div>
   </div>
-
-  <!-- STEP 4 -->
   <div class="gui-step gui-step-rev" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 04</div>
-      <div class="gui-step-title">Play video directly<br>from tape. Instantly.</div>
-      <div class="gui-step-desc">Double-click any video file to open the built-in player. Watch the content directly — no need to copy the file first, no external player needed. Works with MP4, MOV, MXF, AVI and more.</div>
+      <div class="gui-step-title" data-i18n="s4_title">Play video directly<br>from tape. Instantly.</div>
+      <div class="gui-step-desc" data-i18n="s4_desc">Double-click any video file to open the built-in player. Watch the content directly — no need to copy the file first, no external player needed. Works with MP4, MOV, MXF, AVI and more.</div>
       <ul class="gui-checklist">
-        <li>Built-in video player — no external software</li>
-        <li>Supports MP4, MOV, MXF, AVI, H.264, H.265</li>
-        <li>Confirm the right file before recalling to storage</li>
-        <li>26-minute files play smoothly from tape</li>
+        <li data-i18n="s4_c1">Built-in video player — no external software</li>
+        <li data-i18n="s4_c2">Supports MP4, MOV, MXF, AVI, H.264, H.265</li>
+        <li data-i18n="s4_c3">Confirm the right file before recalling to storage</li>
+        <li data-i18n="s4_c4">26-minute files play smoothly from tape</li>
       </ul>
-      <div class="gui-tip">
-        💡 Stop wasting time recalling wrong files. Preview first, recall only what you need.
-      </div>
+      <div class="gui-tip" data-i18n="s4_tip">💡 Stop wasting time recalling wrong files. Preview first, recall only what you need.</div>
     </div>
     <div>
-      <div class="gui-screen">
-        <img src="img/screen-player.png" alt="TapeVault built-in video player playing directly from LTO tape">
-      </div>
-      <div class="gui-screen-cap">▲ Built-in video player — actual TapeVault v1.0.0 screenshot</div>
+      <div class="gui-screen"><img src="img/screen-player.png" alt="TapeVault built-in video player"></div>
+      <div class="gui-screen-cap" data-i18n="s4_cap">▲ Built-in video player — actual TapeVault v1.0.0 screenshot</div>
     </div>
   </div>
-
-  <!-- STEP 5 -->
   <div class="gui-step">
     <div class="gui-info">
       <div class="gui-step-num">STEP 05</div>
-      <div class="gui-step-title">New tape registered<br>in 3 clicks</div>
-      <div class="gui-step-desc">Insert a new tape, click New Tape, enter a volume label and serial number, select your LTO generation, and click Format. TapeVault formats it as LTFS and registers it in your database. Done.</div>
+      <div class="gui-step-title" data-i18n="s5_title">New tape registered<br>in 3 clicks</div>
+      <div class="gui-step-desc" data-i18n="s5_desc">Insert a new tape, click New Tape, enter a volume label and serial number, select your LTO generation, and click Format. TapeVault formats it as LTFS and registers it in your database. Done.</div>
       <ul class="gui-checklist">
-        <li>LTFS format — cross-platform compatible</li>
-        <li>LTO-4 through LTO-9 supported</li>
-        <li>Volume label auto-recognized on future inserts</li>
-        <li>Tape serial number linked to physical label</li>
+        <li data-i18n="s5_c1">LTFS format — cross-platform compatible</li>
+        <li data-i18n="s5_c2">LTO-4 through LTO-9 supported</li>
+        <li data-i18n="s5_c3">Volume label auto-recognized on future inserts</li>
+        <li data-i18n="s5_c4">Tape serial number linked to physical label</li>
       </ul>
-      <div class="gui-tip">
-        💡 New tape registered and ready to archive in under 60 seconds.
-      </div>
+      <div class="gui-tip" data-i18n="s5_tip">💡 New tape registered and ready to archive in under 60 seconds.</div>
     </div>
     <div>
-      <div class="gui-screen">
-        <img src="img/screen-new-tape.png" alt="TapeVault new tape registration dialog">
-      </div>
-      <div class="gui-screen-cap">▲ New tape registration — actual TapeVault v1.0.0 screenshot</div>
+      <div class="gui-screen"><img src="img/screen-new-tape.png" alt="TapeVault new tape registration"></div>
+      <div class="gui-screen-cap" data-i18n="s5_cap">▲ New tape registration — actual TapeVault v1.0.0 screenshot</div>
     </div>
   </div>
 </section>
 
-<!-- BEFORE AFTER -->
 <section style="padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035">
   <div style="text-align:center;margin-bottom:48px">
-    <div class="sec-label">The Difference</div>
-    <div class="sec-title">Before vs. After TapeVault</div>
+    <div class="sec-label" data-i18n="baf_label">The Difference</div>
+    <div class="sec-title" data-i18n="baf_title">Before vs. After TapeVault</div>
   </div>
   <div class="baf-grid">
     <div class="baf-card before">
-      <div class="baf-label">❌ Without TapeVault</div>
+      <div class="baf-label" data-i18n="baf_bl">❌ Without TapeVault</div>
       <ul class="baf-list">
-        <li>Check tape labels manually — <strong style="color:#c8cfe0">avg. 2 hours per search</strong></li>
-        <li>No file index — must check every tape one by one</li>
-        <li>No thumbnails — full recall required just to preview</li>
-        <li>Archive becomes unusable when key staff leaves</li>
-        <li>Tape capacity tracked manually in spreadsheets</li>
-        <li>No checksum — never know if files are corrupted</li>
+        <li data-i18n="baf_b1">Check tape labels manually — <strong style="color:#c8cfe0">avg. 2 hours per search</strong></li>
+        <li data-i18n="baf_b2">No file index — must check every tape one by one</li>
+        <li data-i18n="baf_b3">No thumbnails — full recall required just to preview</li>
+        <li data-i18n="baf_b4">Archive becomes unusable when key staff leaves</li>
+        <li data-i18n="baf_b5">Tape capacity tracked manually in spreadsheets</li>
+        <li data-i18n="baf_b6">No checksum — never know if files are corrupted</li>
       </ul>
     </div>
     <div class="baf-arrow">→</div>
     <div class="baf-card after">
-      <div class="baf-label">✅ With TapeVault</div>
+      <div class="baf-label" data-i18n="baf_al">✅ With TapeVault</div>
       <ul class="baf-list">
-        <li>Search by filename → <strong style="color:#c8cfe0">location found in 30 sec</strong></li>
-        <li>Full library indexed — any file found instantly</li>
-        <li>Thumbnails generated automatically — preview before recall</li>
-        <li>Metadata database survives any staff change</li>
-        <li>Tape capacity tracked and predicted automatically</li>
-        <li>Auto checksum on every write — data integrity guaranteed</li>
+        <li data-i18n="baf_a1">Search by filename → <strong style="color:#c8cfe0">location found in 30 sec</strong></li>
+        <li data-i18n="baf_a2">Full library indexed — any file found instantly</li>
+        <li data-i18n="baf_a3">Thumbnails generated automatically — preview before recall</li>
+        <li data-i18n="baf_a4">Metadata database survives any staff change</li>
+        <li data-i18n="baf_a5">Tape capacity tracked and predicted automatically</li>
+        <li data-i18n="baf_a6">Auto checksum on every write — data integrity guaranteed</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
 <section class="feat-sec" id="features">
   <div style="text-align:center;margin-bottom:44px">
-    <div class="sec-label">Features</div>
-    <div class="sec-title">Everything in one app</div>
-    <p class="sec-sub" style="margin:0 auto">No plugins. No separate tools. No cloud required.</p>
+    <div class="sec-label" data-i18n="feat_label">Features</div>
+    <div class="sec-title" data-i18n="feat_title">Everything in one app</div>
+    <p class="sec-sub" style="margin:0 auto" data-i18n="feat_sub">No plugins. No separate tools. No cloud required.</p>
   </div>
   <div class="feat-grid">
-    <div class="feat"><div class="feat-ico">💾</div><div class="feat-title">LTO Drive Control</div><div class="feat-desc">Direct hardware control for LTO-4 through LTO-9. Read, write, verify, eject — all from one interface.</div></div>
-    <div class="feat"><div class="feat-ico">🖼️</div><div class="feat-title">Auto Thumbnail Generation</div><div class="feat-desc">FFmpeg-powered thumbnails for every video file. Browse your archive visually without recalling from tape.</div></div>
-    <div class="feat"><div class="feat-ico">🔍</div><div class="feat-title">Full-Text Search</div><div class="feat-desc">Search across all tapes by filename, date, resolution, or custom metadata. Results in under a second.</div></div>
-    <div class="feat"><div class="feat-ico">📁</div><div class="feat-title">Project Management</div><div class="feat-desc">Organize by project, year, department, or client. Hierarchical folder structure mirrors your real workflow.</div></div>
-    <div class="feat"><div class="feat-ico">▶️</div><div class="feat-title">Built-in Video Player</div><div class="feat-desc">Preview any video file directly in TapeVault. MP4, MOV, MXF, AVI — no external player needed.</div></div>
-    <div class="feat"><div class="feat-ico">📊</div><div class="feat-title">Tape Usage Analytics</div><div class="feat-desc">Real-time capacity tracking across all tapes. Know exactly when to order new tapes before you run out.</div></div>
-    <div class="feat"><div class="feat-ico">🔒</div><div class="feat-title">Air-Gapped Operation</div><div class="feat-desc">Fully offline after activation. No cloud connection required. Built for secure broadcast and defense environments.</div></div>
-    <div class="feat"><div class="feat-ico">✅</div><div class="feat-title">Checksum Verification</div><div class="feat-desc">MD5/SHA256 checksum on every write. Automatically verify data integrity after each archive operation.</div></div>
-    <div class="feat"><div class="feat-ico">🌐</div><div class="feat-title">Multi-Language UI</div><div class="feat-desc">Full English, Korean, and Japanese support. Built for global broadcast and media organizations.</div></div>
+    <div class="feat"><div class="feat-ico">💾</div><div class="feat-title" data-i18n="f1_t">LTO Drive Control</div><div class="feat-desc" data-i18n="f1_d">Direct hardware control for LTO-4 through LTO-9. Read, write, verify, eject — all from one interface.</div></div>
+    <div class="feat"><div class="feat-ico">🖼️</div><div class="feat-title" data-i18n="f2_t">Auto Thumbnail Generation</div><div class="feat-desc" data-i18n="f2_d">FFmpeg-powered thumbnails for every video file. Browse your archive visually without recalling from tape.</div></div>
+    <div class="feat"><div class="feat-ico">🔍</div><div class="feat-title" data-i18n="f3_t">Full-Text Search</div><div class="feat-desc" data-i18n="f3_d">Search across all tapes by filename, date, resolution, or custom metadata. Results in under a second.</div></div>
+    <div class="feat"><div class="feat-ico">📁</div><div class="feat-title" data-i18n="f4_t">Project Management</div><div class="feat-desc" data-i18n="f4_d">Organize by project, year, department, or client. Hierarchical folder structure mirrors your real workflow.</div></div>
+    <div class="feat"><div class="feat-ico">▶️</div><div class="feat-title" data-i18n="f5_t">Built-in Video Player</div><div class="feat-desc" data-i18n="f5_d">Preview any video file directly in TapeVault. MP4, MOV, MXF, AVI — no external player needed.</div></div>
+    <div class="feat"><div class="feat-ico">📊</div><div class="feat-title" data-i18n="f6_t">Tape Usage Analytics</div><div class="feat-desc" data-i18n="f6_d">Real-time capacity tracking across all tapes. Know exactly when to order new tapes before you run out.</div></div>
+    <div class="feat"><div class="feat-ico">🔒</div><div class="feat-title" data-i18n="f7_t">Air-Gapped Operation</div><div class="feat-desc" data-i18n="f7_d">Fully offline after activation. No cloud connection required. Built for secure broadcast and defense environments.</div></div>
+    <div class="feat"><div class="feat-ico">✅</div><div class="feat-title" data-i18n="f8_t">Checksum Verification</div><div class="feat-desc" data-i18n="f8_d">MD5/SHA256 checksum on every write. Automatically verify data integrity after each archive operation.</div></div>
+    <div class="feat"><div class="feat-ico">🌐</div><div class="feat-title" data-i18n="f9_t">Multi-Language UI</div><div class="feat-desc" data-i18n="f9_d">Full English, Korean, and Japanese support. Built for global broadcast and media organizations.</div></div>
   </div>
 </section>
 
-<!-- DOWNLOAD -->
 <section style="padding:72px 48px;text-align:center" id="download">
-  <div class="sec-label">Download</div>
-  <div class="sec-title" style="margin-bottom:10px">Try TapeVault free for 30 days</div>
-  <p style="font-size:15px;color:#4a5270;margin-bottom:36px">No credit card. No commitment. Full features from day one.</p>
+  <div class="sec-label" data-i18n="dl_label">Download</div>
+  <div class="sec-title" style="margin-bottom:10px" data-i18n="dl_title">Try TapeVault free for 30 days</div>
+  <p style="font-size:15px;color:#4a5270;margin-bottom:36px" data-i18n="dl_sub">No credit card. No commitment. Full features from day one.</p>
   <div style="display:inline-flex;flex-direction:column;align-items:center;gap:16px">
-    <button class="btn-hero-main" style="font-size:16px;padding:16px 40px">
-      ⬇ Download TapeVault v1.0.0 for Windows
-    </button>
+    <button class="btn-hero-main" style="font-size:16px;padding:16px 40px" data-i18n="dl_btn">⬇ Download TapeVault v1.0.0 for Windows</button>
     <div style="display:flex;gap:24px">
-      <span style="font-size:11px;color:#3a4a5a;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#5b9cf6">●</span> Windows 10 / 11 (64-bit)</span>
-      <span style="font-size:11px;color:#3a4a5a;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#4ade80">●</span> LTO-4 through LTO-9</span>
-      <span style="font-size:11px;color:#3a4a5a;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#f5a623">●</span> ~180 MB installer</span>
+      <span style="font-size:11px;color:#3a4a5a;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#5b9cf6">●</span> <span data-i18n="dl_s1">Windows 10 / 11 (64-bit)</span></span>
+      <span style="font-size:11px;color:#3a4a5a;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#4ade80">●</span> <span data-i18n="dl_s2">LTO-4 through LTO-9</span></span>
+      <span style="font-size:11px;color:#3a4a5a;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#f5a623">●</span> <span data-i18n="dl_s3">~180 MB installer</span></span>
     </div>
-    <p style="font-size:11px;color:#2e3a52">v1.0.0 · June 2026 · Requires Windows 10 64-bit or later</p>
+    <p style="font-size:11px;color:#2e3a52" data-i18n="dl_ver">v1.0.0 · June 2026 · Requires Windows 10 64-bit or later</p>
   </div>
 </section>
 
-<!-- PRICING -->
 <section class="price-sec" id="pricing">
   <div style="text-align:center;margin-bottom:48px">
-    <div class="sec-label">Pricing</div>
-    <div class="sec-title">Simple pricing. No surprises.</div>
-    <p class="sec-sub" style="margin:0 auto">Start free for 30 days. Upgrade when ready. Cancel anytime — no auto-renewal.</p>
+    <div class="sec-label" data-i18n="pr_label">Pricing</div>
+    <div class="sec-title" data-i18n="pr_title">Simple pricing. No surprises.</div>
+    <p class="sec-sub" style="margin:0 auto" data-i18n="pr_sub">Start free for 30 days. Upgrade when ready. Cancel anytime — no auto-renewal.</p>
   </div>
   <div class="price-grid">
     <div class="pc">
       <div class="pc-plan">STARTER</div>
-      <div><span class="pc-amount">$20</span><span class="pc-unit"> / month</span></div>
-      <div class="pc-desc">For single LTO drive setups — broadcast studios, small archives, individual operators.</div>
+      <div><span class="pc-amount">$20</span><span class="pc-unit" data-i18n="pc_mo"> / month</span></div>
+      <div class="pc-desc" data-i18n="p1_desc">For single LTO drive setups — broadcast studios, small archives, individual operators.</div>
       <hr class="pc-hr">
-      <div class="pc-feat">1 LTO drive (LTO-4 to LTO-9)</div>
-      <div class="pc-feat">Unlimited tapes</div>
-      <div class="pc-feat">Auto thumbnail generation</div>
-      <div class="pc-feat">Full-text search</div>
-      <div class="pc-feat">Built-in video player</div>
-      <div class="pc-feat">Email support</div>
-      <button class="pc-btn" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Start free trial</button>
+      <div class="pc-feat" data-i18n="p1_f1">1 LTO drive (LTO-4 to LTO-9)</div>
+      <div class="pc-feat" data-i18n="p1_f2">Unlimited tapes</div>
+      <div class="pc-feat" data-i18n="p1_f3">Auto thumbnail generation</div>
+      <div class="pc-feat" data-i18n="p1_f4">Full-text search</div>
+      <div class="pc-feat" data-i18n="p1_f5">Built-in video player</div>
+      <div class="pc-feat" data-i18n="p1_f6">Email support</div>
+      <button class="pc-btn" data-i18n="pc_trial" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Start free trial</button>
     </div>
     <div class="pc hot">
-      <div class="pc-badge">Most popular</div>
+      <div class="pc-badge" data-i18n="pc_popular">Most popular</div>
       <div class="pc-plan">AUTOLOADER</div>
-      <div><span class="pc-amount">$40</span><span class="pc-unit"> / month</span></div>
-      <div class="pc-desc">For tape autoloader / library setups — TV stations, hospitals, government archives.</div>
+      <div><span class="pc-amount">$40</span><span class="pc-unit" data-i18n="pc_mo"> / month</span></div>
+      <div class="pc-desc" data-i18n="p2_desc">For tape autoloader / library setups — TV stations, hospitals, government archives.</div>
       <hr class="pc-hr">
-      <div class="pc-feat">LTO Autoloader / Library support</div>
-      <div class="pc-feat">Up to 4 LTO drives simultaneously</div>
-      <div class="pc-feat">Automated tape slot management</div>
-      <div class="pc-feat">Batch archive &amp; restore jobs</div>
-      <div class="pc-feat">Advanced search &amp; filters</div>
-      <div class="pc-feat">Priority support</div>
-      <button class="pc-btn hot" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Start free trial</button>
+      <div class="pc-feat" data-i18n="p2_f1">LTO Autoloader / Library support</div>
+      <div class="pc-feat" data-i18n="p2_f2">Up to 4 LTO drives simultaneously</div>
+      <div class="pc-feat" data-i18n="p2_f3">Automated tape slot management</div>
+      <div class="pc-feat" data-i18n="p2_f4">Batch archive &amp; restore jobs</div>
+      <div class="pc-feat" data-i18n="p2_f5">Advanced search &amp; filters</div>
+      <div class="pc-feat" data-i18n="p2_f6">Priority support</div>
+      <button class="pc-btn hot" data-i18n="pc_trial" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Start free trial</button>
     </div>
     <div class="pc">
       <div class="pc-plan">ENTERPRISE</div>
-      <div><span class="pc-amount">Custom</span></div>
-      <div class="pc-desc">For large institutions with multi-library setups, custom deployment, and SLA requirements.</div>
+      <div><span class="pc-amount" data-i18n="p3_amt">Custom</span></div>
+      <div class="pc-desc" data-i18n="p3_desc">For large institutions with multi-library setups, custom deployment, and SLA requirements.</div>
       <hr class="pc-hr">
-      <div class="pc-feat">Multiple tape libraries</div>
-      <div class="pc-feat">On-site deployment &amp; setup</div>
-      <div class="pc-feat">Custom integration support</div>
-      <div class="pc-feat">Dedicated SLA</div>
-      <div class="pc-feat">Staff training included</div>
-      <button class="pc-btn" onclick="window.location.href='mailto:sales@tapevault.net'">Contact sales</button>
+      <div class="pc-feat" data-i18n="p3_f1">Multiple tape libraries</div>
+      <div class="pc-feat" data-i18n="p3_f2">On-site deployment &amp; setup</div>
+      <div class="pc-feat" data-i18n="p3_f3">Custom integration support</div>
+      <div class="pc-feat" data-i18n="p3_f4">Dedicated SLA</div>
+      <div class="pc-feat" data-i18n="p3_f5">Staff training included</div>
+      <button class="pc-btn" data-i18n="p3_btn" onclick="window.location.href='mailto:sales@tapevault.net'">Contact sales</button>
     </div>
   </div>
   <div class="price-trust">
-    <p>Every plan includes a <strong style="color:#c8cfe0">30-day free trial</strong> with full features. No credit card required.</p>
+    <p data-i18n="trust_txt">Every plan includes a <strong style="color:#c8cfe0">30-day free trial</strong> with full features. No credit card required.</p>
     <div class="price-trust-items" style="margin-top:12px">
-      <span class="price-trust-item">No automatic renewal</span>
-      <span class="price-trust-item">Cancel anytime</span>
-      <span class="price-trust-item">Your data always yours</span>
-      <span class="price-trust-item">Offline after activation</span>
-      <span class="price-trust-item">Billing via Paddle · VAT included</span>
+      <span class="price-trust-item" data-i18n="tr1">No automatic renewal</span>
+      <span class="price-trust-item" data-i18n="tr2">Cancel anytime</span>
+      <span class="price-trust-item" data-i18n="tr3">Your data always yours</span>
+      <span class="price-trust-item" data-i18n="tr4">Offline after activation</span>
+      <span class="price-trust-item" data-i18n="tr5">Billing via Paddle · VAT included</span>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="faq-sec" id="faq">
   <div style="text-align:center;margin-bottom:44px">
-    <div class="sec-label">FAQ</div>
-    <div class="sec-title">Questions before buying?</div>
+    <div class="sec-label" data-i18n="faq_label">FAQ</div>
+    <div class="sec-title" data-i18n="faq_title">Questions before buying?</div>
   </div>
   <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q">Does TapeVault work without an internet connection? <span class="ico">+</span></div>
-      <div class="faq-a">Yes. TapeVault is fully offline after the initial license activation. No ongoing internet connection is required. This makes it ideal for air-gapped environments in broadcast, defense, and medical sectors.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">What happens to my data when my subscription expires? <span class="ico">+</span></div>
-      <div class="faq-a">Your archived data on tape is always yours — it's stored in standard LTFS format, which is readable by any LTFS-compatible software. TapeVault's database and project index remain accessible in read-only mode after expiry.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Is there automatic renewal? <span class="ico">+</span></div>
-      <div class="faq-a">No. There is no automatic renewal. TapeVault does not store credit card details. You will receive a reminder before expiry and can choose to renew manually.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Which LTO generations are supported? <span class="ico">+</span></div>
-      <div class="faq-a">TapeVault supports LTO-4 through LTO-9 drives. LTO-10 support is planned for v1.1. Both single drives and autoloaders (AUTOLOADER plan) are supported.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">What is the difference between Starter and AutoLoader? <span class="ico">+</span></div>
-      <div class="faq-a">Starter is designed for a single standalone LTO drive. AutoLoader adds support for tape autoloaders and libraries — automated slot management, multi-drive operation, and batch archive/restore jobs. If you have a tape library (e.g. Quantum, Overland), you need the AutoLoader plan.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Can I install TapeVault on multiple computers? <span class="ico">+</span></div>
-      <div class="faq-a">Each license covers one computer at a time. You can transfer the license to a different machine as needed — just deactivate on the old machine and activate on the new one. An internet connection is required only during the transfer.</div>
-    </div>
+    <div class="faq-item"><div class="faq-q"><span data-i18n="faq1_q">Does TapeVault work without an internet connection?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq1_a">Yes. TapeVault is fully offline after the initial license activation. No ongoing internet connection is required. This makes it ideal for air-gapped environments in broadcast, defense, and medical sectors.</div></div>
+    <div class="faq-item"><div class="faq-q"><span data-i18n="faq2_q">What happens to my data when my subscription expires?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq2_a">Your archived data on tape is always yours — it's stored in standard LTFS format, which is readable by any LTFS-compatible software. TapeVault's database and project index remain accessible in read-only mode after expiry.</div></div>
+    <div class="faq-item"><div class="faq-q"><span data-i18n="faq3_q">Is there automatic renewal?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq3_a">No. There is no automatic renewal. TapeVault does not store credit card details. You will receive a reminder before expiry and can choose to renew manually.</div></div>
+    <div class="faq-item"><div class="faq-q"><span data-i18n="faq4_q">Which LTO generations are supported?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq4_a">TapeVault supports LTO-4 through LTO-9 drives. LTO-10 support is planned for v1.1. Both single drives and autoloaders (AUTOLOADER plan) are supported.</div></div>
+    <div class="faq-item"><div class="faq-q"><span data-i18n="faq5_q">What is the difference between Starter and AutoLoader?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq5_a">Starter is designed for a single standalone LTO drive. AutoLoader adds support for tape autoloaders and libraries — automated slot management, multi-drive operation, and batch archive/restore jobs. If you have a tape library (e.g. Quantum, Overland), you need the AutoLoader plan.</div></div>
+    <div class="faq-item"><div class="faq-q"><span data-i18n="faq6_q">Can I install TapeVault on multiple computers?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq6_a">Each license covers one computer at a time. You can transfer the license to a different machine as needed — just deactivate on the old machine and activate on the new one. An internet connection is required only during the transfer.</div></div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-sec">
-  <h2>Stop searching tapes manually.</h2>
-  <p>Download TapeVault and find any file in 30 seconds — starting today.</p>
-  <button class="btn-hero-main" style="margin:0 auto;font-size:16px;padding:16px 40px" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">
-    ⬇ Download Free Trial — No Credit Card
-  </button>
-  <div class="cta-note">Windows 10 / 11 · 30-day full-feature trial · LTO-4 to LTO-9</div>
+  <h2 data-i18n="cta_h2">Stop searching tapes manually.</h2>
+  <p data-i18n="cta_p">Download TapeVault and find any file in 30 seconds — starting today.</p>
+  <button class="btn-hero-main" style="margin:0 auto;font-size:16px;padding:16px 40px" data-i18n="cta_btn" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">⬇ Download Free Trial — No Credit Card</button>
+  <div class="cta-note" data-i18n="cta_note">Windows 10 / 11 · 30-day full-feature trial · LTO-4 to LTO-9</div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -655,41 +515,282 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     </div>
     <div class="footer-cols">
       <div class="footer-col">
-        <div class="footer-col-title">Product</div>
-        <a href="#gui">How it works</a>
-        <a href="#features">Features</a>
-        <a href="#download">Download</a>
-        <a href="#pricing">Pricing</a>
+        <div class="footer-col-title" data-i18n="fc_product">Product</div>
+        <a href="#gui" data-i18n="nav_how">How it works</a>
+        <a href="#features" data-i18n="nav_features">Features</a>
+        <a href="#download" data-i18n="nav_download">Download</a>
+        <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
       </div>
       <div class="footer-col">
-        <div class="footer-col-title">Support</div>
-        <a href="how-to-install.html">Install Guide</a>
-        <a href="mailto:support@tapevault.net">Contact support</a>
-        <a href="mailto:sales@tapevault.net">Contact sales</a>
+        <div class="footer-col-title" data-i18n="fc_support">Support</div>
+        <a href="how-to-install.html" data-i18n="nav_install">Install Guide</a>
+        <a href="mailto:support@tapevault.net" data-i18n="fc_contact">Contact support</a>
+        <a href="mailto:sales@tapevault.net" data-i18n="fc_sales">Contact sales</a>
       </div>
       <div class="footer-col">
-        <div class="footer-col-title">Legal</div>
-        <a href="#">Privacy policy</a>
-        <a href="#">Terms of service</a>
-        <a href="#">License</a>
+        <div class="footer-col-title" data-i18n="fc_legal">Legal</div>
+        <a href="#" data-i18n="fc_privacy">Privacy policy</a>
+        <a href="#" data-i18n="fc_terms">Terms of service</a>
+        <a href="#" data-i18n="fc_license">License</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-bottom-left">TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle · No auto-renewal</div>
-    <div class="footer-bottom-right">
-      <a>EN</a><a>한국어</a><a>日本語</a>
-    </div>
+    <div class="footer-bottom-left" data-i18n="foot_bottom">TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle · No auto-renewal</div>
+    <div class="footer-bottom-right"><a>EN</a><a>한국어</a><a>日本語</a></div>
   </div>
 </footer>
 
 <script>
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', function() {
-    this.classList.toggle('open');
-    this.nextElementSibling.classList.toggle('open');
+const T = {
+  en: {
+    nav_how:'How it works', nav_features:'Features', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide',
+    nav_signin:'Sign in', nav_trial:'Free Trial',
+    hero_eyebrow:'v1.0.0 — Now available for Windows',
+    hero_h1:'Find any file on LTO tape<br><b>in under 30 seconds.</b>',
+    hero_sub:'TapeVault is the only LTO tape archive manager built for Windows. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.',
+    hero_p1:'Windows Only', hero_p2:'LTO-4 to LTO-9', hero_p3:'Broadcast · Medical · Defense · Education',
+    hero_btn1:'⬇ Download Free Trial', hero_btn2:'▶ See how it works',
+    stat1:'File search across all tapes', stat2:'Auto thumbnail generation', stat3:'Auto drive detection', stat4:'Offline after activation',
+    pain_label:'The Problem', pain_title:'Sound familiar?', pain_sub:'Every LTO tape user faces the same frustrations. TapeVault solves all three.',
+    pain1_t:'Hours wasted finding files', pain1_d:"You know the file is on one of 20 tapes. But which one? Manual label checking takes 2+ hours every time.",
+    pain2_t:'Archive lost when staff leaves', pain2_d:"When the person who organized the tapes leaves, the archive becomes a mystery. No index, no metadata, no thumbnails.",
+    pain3_t:'Full recall just to preview', pain3_d:"Without thumbnails, you must recall the entire file to check if it's the right one. Wastes tape drive time and staff hours.",
+    sol1_t:'Search in 30 seconds', sol1_d:'Type the filename, date, or metadata. TapeVault searches all tapes instantly and shows exactly where the file is.',
+    sol2_t:'Permanent metadata database', sol2_d:'Every file is indexed with metadata, checksum, and location. Staff changes never affect your archive organization.',
+    sol3_t:'Thumbnails without recall', sol3_d:'TapeVault auto-generates thumbnails for every video file. Browse visually and confirm before recalling from tape.',
+    gui_label:'Real Software. Real UI.', gui_title:'See exactly what you get', gui_sub:'These are actual screenshots from TapeVault v1.0.0 — no mockups, no illustrations.',
+    s1_title:'All your files,<br>visible at a glance', s1_desc:'Open any project folder and see every file as a thumbnail — videos, PDFs, images, ZIP files — all organized exactly as you archived them. Switch between grid view and list view instantly.',
+    s1_c1:'Thumbnail grid view for visual browsing', s1_c2:'List view with filename, size, date, and status', s1_c3:'Color-coded tape status badges (archived / queued)', s1_c4:'Filter by file type, date, or tape',
+    s1_tip:'💡 Green badge = already on tape. Blue = waiting in queue. You always know the status of every file.', s1_cap:'▲ Grid view — actual TapeVault v1.0.0 screenshot',
+    s2_title:'Click any file.<br>See everything about it.', s2_desc:'Select any file and the right panel instantly shows the video thumbnail preview, file type, resolution, size, tape location, checksum, and your custom metadata notes. No waiting. No recalling.',
+    s2_c1:'Auto-generated video thumbnail preview', s2_c2:'Full file metadata: codec, resolution, date, size', s2_c3:'Exact tape path and tape name shown', s2_c4:'Custom notes: cameraman, location, owner',
+    s2_tip:"💡 Know exactly what's on the tape before you eject it and insert a new one. Zero guesswork.", s2_cap:'▲ File detail panel — actual TapeVault v1.0.0 screenshot',
+    s3_title:'List view for<br>power users', s3_desc:'Switch to list view to see all files in a sortable table. Sort by name, size, date, or archive status. Instantly identify which files are on tape and which are still queued.',
+    s3_c1:'Sort by any column — name, size, date, status', s3_c2:'VT TEST badge = confirmed on tape', s3_c3:'One-click select multiple files', s3_c4:'Batch add to tape write queue',
+    s3_tip:'💡 Select 50 files, add to queue, and start writing — in under 30 seconds.', s3_cap:'▲ List view — actual TapeVault v1.0.0 screenshot',
+    s4_title:'Play video directly<br>from tape. Instantly.', s4_desc:'Double-click any video file to open the built-in player. Watch the content directly — no need to copy the file first, no external player needed. Works with MP4, MOV, MXF, AVI and more.',
+    s4_c1:'Built-in video player — no external software', s4_c2:'Supports MP4, MOV, MXF, AVI, H.264, H.265', s4_c3:'Confirm the right file before recalling to storage', s4_c4:'26-minute files play smoothly from tape',
+    s4_tip:'💡 Stop wasting time recalling wrong files. Preview first, recall only what you need.', s4_cap:'▲ Built-in video player — actual TapeVault v1.0.0 screenshot',
+    s5_title:'New tape registered<br>in 3 clicks', s5_desc:'Insert a new tape, click New Tape, enter a volume label and serial number, select your LTO generation, and click Format. TapeVault formats it as LTFS and registers it in your database. Done.',
+    s5_c1:'LTFS format — cross-platform compatible', s5_c2:'LTO-4 through LTO-9 supported', s5_c3:'Volume label auto-recognized on future inserts', s5_c4:'Tape serial number linked to physical label',
+    s5_tip:'💡 New tape registered and ready to archive in under 60 seconds.', s5_cap:'▲ New tape registration — actual TapeVault v1.0.0 screenshot',
+    baf_label:'The Difference', baf_title:'Before vs. After TapeVault',
+    baf_bl:'❌ Without TapeVault', baf_al:'✅ With TapeVault',
+    baf_b1:'Check tape labels manually — <strong style="color:#c8cfe0">avg. 2 hours per search</strong>',
+    baf_b2:'No file index — must check every tape one by one', baf_b3:'No thumbnails — full recall required just to preview',
+    baf_b4:'Archive becomes unusable when key staff leaves', baf_b5:'Tape capacity tracked manually in spreadsheets', baf_b6:'No checksum — never know if files are corrupted',
+    baf_a1:'Search by filename → <strong style="color:#c8cfe0">location found in 30 sec</strong>',
+    baf_a2:'Full library indexed — any file found instantly', baf_a3:'Thumbnails generated automatically — preview before recall',
+    baf_a4:'Metadata database survives any staff change', baf_a5:'Tape capacity tracked and predicted automatically', baf_a6:'Auto checksum on every write — data integrity guaranteed',
+    feat_label:'Features', feat_title:'Everything in one app', feat_sub:'No plugins. No separate tools. No cloud required.',
+    f1_t:'LTO Drive Control', f1_d:'Direct hardware control for LTO-4 through LTO-9. Read, write, verify, eject — all from one interface.',
+    f2_t:'Auto Thumbnail Generation', f2_d:'FFmpeg-powered thumbnails for every video file. Browse your archive visually without recalling from tape.',
+    f3_t:'Full-Text Search', f3_d:'Search across all tapes by filename, date, resolution, or custom metadata. Results in under a second.',
+    f4_t:'Project Management', f4_d:'Organize by project, year, department, or client. Hierarchical folder structure mirrors your real workflow.',
+    f5_t:'Built-in Video Player', f5_d:'Preview any video file directly in TapeVault. MP4, MOV, MXF, AVI — no external player needed.',
+    f6_t:'Tape Usage Analytics', f6_d:'Real-time capacity tracking across all tapes. Know exactly when to order new tapes before you run out.',
+    f7_t:'Air-Gapped Operation', f7_d:'Fully offline after activation. No cloud connection required. Built for secure broadcast and defense environments.',
+    f8_t:'Checksum Verification', f8_d:'MD5/SHA256 checksum on every write. Automatically verify data integrity after each archive operation.',
+    f9_t:'Multi-Language UI', f9_d:'Full English, Korean, and Japanese support. Built for global broadcast and media organizations.',
+    dl_label:'Download', dl_title:'Try TapeVault free for 30 days', dl_sub:'No credit card. No commitment. Full features from day one.',
+    dl_btn:'⬇ Download TapeVault v1.0.0 for Windows', dl_s1:'Windows 10 / 11 (64-bit)', dl_s2:'LTO-4 through LTO-9', dl_s3:'~180 MB installer',
+    dl_ver:'v1.0.0 · June 2026 · Requires Windows 10 64-bit or later',
+    pr_label:'Pricing', pr_title:'Simple pricing. No surprises.', pr_sub:'Start free for 30 days. Upgrade when ready. Cancel anytime — no auto-renewal.',
+    pc_mo:' / month', pc_trial:'Start free trial', pc_popular:'Most popular',
+    p1_desc:'For single LTO drive setups — broadcast studios, small archives, individual operators.',
+    p1_f1:'1 LTO drive (LTO-4 to LTO-9)', p1_f2:'Unlimited tapes', p1_f3:'Auto thumbnail generation', p1_f4:'Full-text search', p1_f5:'Built-in video player', p1_f6:'Email support',
+    p2_desc:'For tape autoloader / library setups — TV stations, hospitals, government archives.',
+    p2_f1:'LTO Autoloader / Library support', p2_f2:'Up to 4 LTO drives simultaneously', p2_f3:'Automated tape slot management', p2_f4:'Batch archive &amp; restore jobs', p2_f5:'Advanced search &amp; filters', p2_f6:'Priority support',
+    p3_amt:'Custom', p3_desc:'For large institutions with multi-library setups, custom deployment, and SLA requirements.',
+    p3_f1:'Multiple tape libraries', p3_f2:'On-site deployment &amp; setup', p3_f3:'Custom integration support', p3_f4:'Dedicated SLA', p3_f5:'Staff training included', p3_btn:'Contact sales',
+    trust_txt:'Every plan includes a <strong style="color:#c8cfe0">30-day free trial</strong> with full features. No credit card required.',
+    tr1:'No automatic renewal', tr2:'Cancel anytime', tr3:'Your data always yours', tr4:'Offline after activation', tr5:'Billing via Paddle · VAT included',
+    faq_label:'FAQ', faq_title:'Questions before buying?',
+    faq1_q:'Does TapeVault work without an internet connection?', faq1_a:'Yes. TapeVault is fully offline after the initial license activation. No ongoing internet connection is required. This makes it ideal for air-gapped environments in broadcast, defense, and medical sectors.',
+    faq2_q:'What happens to my data when my subscription expires?', faq2_a:"Your archived data on tape is always yours — it's stored in standard LTFS format, which is readable by any LTFS-compatible software. TapeVault's database and project index remain accessible in read-only mode after expiry.",
+    faq3_q:'Is there automatic renewal?', faq3_a:'No. There is no automatic renewal. TapeVault does not store credit card details. You will receive a reminder before expiry and can choose to renew manually.',
+    faq4_q:'Which LTO generations are supported?', faq4_a:'TapeVault supports LTO-4 through LTO-9 drives. LTO-10 support is planned for v1.1. Both single drives and autoloaders (AUTOLOADER plan) are supported.',
+    faq5_q:'What is the difference between Starter and AutoLoader?', faq5_a:'Starter is designed for a single standalone LTO drive. AutoLoader adds support for tape autoloaders and libraries — automated slot management, multi-drive operation, and batch archive/restore jobs. If you have a tape library (e.g. Quantum, Overland), you need the AutoLoader plan.',
+    faq6_q:'Can I install TapeVault on multiple computers?', faq6_a:'Each license covers one computer at a time. You can transfer the license to a different machine as needed — just deactivate on the old machine and activate on the new one. An internet connection is required only during the transfer.',
+    cta_h2:'Stop searching tapes manually.', cta_p:'Download TapeVault and find any file in 30 seconds — starting today.',
+    cta_btn:'⬇ Download Free Trial — No Credit Card', cta_note:'Windows 10 / 11 · 30-day full-feature trial · LTO-4 to LTO-9',
+    fc_product:'Product', fc_support:'Support', fc_legal:'Legal',
+    fc_contact:'Contact support', fc_sales:'Contact sales', fc_privacy:'Privacy policy', fc_terms:'Terms of service', fc_license:'License',
+    foot_bottom:'TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle · No auto-renewal'
+  },
+  ko: {
+    nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
+    nav_signin:'로그인', nav_trial:'무료 체험',
+    hero_eyebrow:'v1.0.0 — Windows용 출시',
+    hero_h1:'LTO 테이프의 모든 파일을<br><b>30초 안에 찾아드립니다.</b>',
+    hero_sub:'TapeVault는 Windows 전용 LTO 테이프 아카이브 관리 소프트웨어입니다. 테이프를 일일이 확인하지 않고도 썸네일 탐색, 메타데이터 검색, 파일 꺼내기를 바로 할 수 있습니다.',
+    hero_p1:'Windows 전용', hero_p2:'LTO-4 ~ LTO-9', hero_p3:'방송 · 의료 · 국방 · 교육',
+    hero_btn1:'⬇ 무료 체험 다운로드', hero_btn2:'▶ 작동 방식 보기',
+    stat1:'전체 테이프 검색', stat2:'썸네일 자동 생성', stat3:'드라이브 자동 인식', stat4:'활성화 후 완전 오프라인',
+    pain_label:'문제점', pain_title:'익숙한가요?', pain_sub:'LTO 테이프 사용자라면 누구나 겪는 불편함입니다. TapeVault가 세 가지를 모두 해결합니다.',
+    pain1_t:'파일 찾다가 몇 시간씩 낭비', pain1_d:'20개 테이프 중 어느 것에 있는지 모릅니다. 라벨을 하나씩 확인하다 2시간이 지나버립니다.',
+    pain2_t:'담당자 퇴사 시 아카이브 소실', pain2_d:'테이프를 정리한 직원이 떠나면 아카이브 구조를 아무도 모릅니다. 인덱스도, 메타데이터도, 썸네일도 없습니다.',
+    pain3_t:'미리보기에 전체 리콜 필요', pain3_d:'썸네일이 없으면 맞는 파일인지 확인하려고 전체를 꺼내야 합니다. 드라이브 시간과 인력 낭비입니다.',
+    sol1_t:'30초 안에 검색', sol1_d:'파일명, 날짜, 메타데이터를 입력하면 모든 테이프를 즉시 검색해 정확한 위치를 알려줍니다.',
+    sol2_t:'영구 메타데이터 DB', sol2_d:'모든 파일이 메타데이터, 체크섬, 위치 정보와 함께 인덱싱됩니다. 담당자가 바뀌어도 아카이브는 안전합니다.',
+    sol3_t:'리콜 없이 썸네일 미리보기', sol3_d:'동영상 파일마다 썸네일이 자동 생성됩니다. 테이프에서 꺼내기 전에 시각적으로 확인할 수 있습니다.',
+    gui_label:'실제 소프트웨어. 실제 UI.', gui_title:'실제로 이렇게 생겼습니다', gui_sub:'전부 TapeVault v1.0.0의 실제 스크린샷입니다 — 목업이나 일러스트가 아닙니다.',
+    s1_title:'모든 파일을<br>한눈에 확인', s1_desc:'프로젝트 폴더를 열면 동영상, PDF, 이미지, ZIP 등 모든 파일을 썸네일로 확인할 수 있습니다. 그리드 뷰와 리스트 뷰를 즉시 전환할 수 있습니다.',
+    s1_c1:'시각적 탐색을 위한 썸네일 그리드 뷰', s1_c2:'파일명, 크기, 날짜, 상태 포함 리스트 뷰', s1_c3:'색상 코딩된 테이프 상태 배지 (보관됨 / 대기 중)', s1_c4:'파일 유형, 날짜, 테이프로 필터링',
+    s1_tip:'💡 초록 배지 = 테이프에 저장됨. 파란 배지 = 대기 중. 모든 파일의 상태를 항상 알 수 있습니다.', s1_cap:'▲ 그리드 뷰 — TapeVault v1.0.0 실제 스크린샷',
+    s2_title:'파일을 클릭하면<br>모든 정보가 표시됩니다.', s2_desc:'파일을 선택하면 오른쪽 패널에 썸네일 미리보기, 파일 유형, 해상도, 크기, 테이프 위치, 체크섬, 메모가 즉시 표시됩니다.',
+    s2_c1:'자동 생성된 동영상 썸네일 미리보기', s2_c2:'전체 파일 메타데이터: 코덱, 해상도, 날짜, 크기', s2_c3:'정확한 테이프 경로와 테이프 이름 표시', s2_c4:'커스텀 메모: 촬영자, 장소, 담당자',
+    s2_tip:'💡 꺼내기 전에 테이프에 무엇이 있는지 정확히 파악하세요. 추측이 필요 없습니다.', s2_cap:'▲ 파일 상세 패널 — TapeVault v1.0.0 실제 스크린샷',
+    s3_title:'파워 유저를 위한<br>리스트 뷰', s3_desc:'리스트 뷰로 전환하면 모든 파일을 정렬 가능한 테이블로 볼 수 있습니다. 이름, 크기, 날짜, 보관 상태 기준으로 정렬하고 상태를 즉시 파악하세요.',
+    s3_c1:'모든 컬럼 정렬 — 이름, 크기, 날짜, 상태', s3_c2:'VT TEST 배지 = 테이프에 확인된 파일', s3_c3:'한 번의 클릭으로 여러 파일 선택', s3_c4:'테이프 기록 대기열에 일괄 추가',
+    s3_tip:'💡 파일 50개 선택, 대기열 추가, 기록 시작 — 30초 안에 완료.', s3_cap:'▲ 리스트 뷰 — TapeVault v1.0.0 실제 스크린샷',
+    s4_title:'테이프에서 직접<br>바로 재생.', s4_desc:'동영상 파일을 더블클릭하면 내장 플레이어가 열립니다. 파일을 먼저 복사하거나 외부 플레이어 없이 바로 재생 가능. MP4, MOV, MXF, AVI 지원.',
+    s4_c1:'내장 동영상 플레이어 — 외부 소프트웨어 불필요', s4_c2:'MP4, MOV, MXF, AVI, H.264, H.265 지원', s4_c3:'스토리지로 리콜하기 전에 올바른 파일 확인', s4_c4:'26분 파일도 테이프에서 끊김 없이 재생',
+    s4_tip:'💡 잘못된 파일을 리콜하느라 시간 낭비하지 마세요. 먼저 미리보기, 필요한 것만 리콜.', s4_cap:'▲ 내장 동영상 플레이어 — TapeVault v1.0.0 실제 스크린샷',
+    s5_title:'새 테이프 등록<br>클릭 3번이면 끝', s5_desc:'새 테이프를 삽입하고, 새 테이프 클릭, 볼륨 레이블과 시리얼 번호 입력, LTO 세대 선택, 포맷 클릭. TapeVault가 LTFS로 포맷하고 DB에 등록합니다.',
+    s5_c1:'LTFS 포맷 — 크로스 플랫폼 호환', s5_c2:'LTO-4~LTO-9 지원', s5_c3:'이후 삽입 시 볼륨 레이블 자동 인식', s5_c4:'테이프 시리얼 번호와 물리 라벨 연동',
+    s5_tip:'💡 새 테이프 등록 및 아카이브 준비 완료 — 60초 이내.', s5_cap:'▲ 새 테이프 등록 — TapeVault v1.0.0 실제 스크린샷',
+    baf_label:'도입 전후 비교', baf_title:'TapeVault 도입 전 vs. 후',
+    baf_bl:'❌ TapeVault 미사용', baf_al:'✅ TapeVault 사용',
+    baf_b1:'테이프 라벨 수작업 확인 — <strong style="color:#c8cfe0">평균 2시간 소요</strong>',
+    baf_b2:'파일 인덱스 없음 — 테이프 전수 확인', baf_b3:'썸네일 없음 — 미리보기에 전체 리콜 필요',
+    baf_b4:'핵심 담당자 퇴사 시 아카이브 사용 불가', baf_b5:'테이프 용량 엑셀로 수작업 관리', baf_b6:'체크섬 없음 — 파일 손상 여부 알 수 없음',
+    baf_a1:'파일명 검색 → <strong style="color:#c8cfe0">30초 안에 위치 확인</strong>',
+    baf_a2:'전체 라이브러리 인덱싱 — 모든 파일 즉시 검색', baf_a3:'썸네일 자동 생성 — 리콜 전 미리보기 가능',
+    baf_a4:'메타데이터 DB — 담당자 교체 무관', baf_a5:'테이프 용량 자동 추적 및 예측', baf_a6:'모든 기록에 자동 체크섬 — 데이터 무결성 보장',
+    feat_label:'기능', feat_title:'하나의 앱에 모든 것', feat_sub:'플러그인 없음. 별도 도구 없음. 클라우드 불필요.',
+    f1_t:'LTO 드라이브 제어', f1_d:'LTO-4~LTO-9 직접 하드웨어 제어. 읽기, 쓰기, 검증, 꺼내기 — 하나의 인터페이스에서.',
+    f2_t:'썸네일 자동 생성', f2_d:'FFmpeg 기반 썸네일 자동 생성. 테이프에서 꺼내지 않고도 아카이브를 시각적으로 탐색.',
+    f3_t:'전체 텍스트 검색', f3_d:'파일명, 날짜, 해상도, 커스텀 메타데이터로 전체 테이프 검색. 1초 이내 결과.',
+    f4_t:'프로젝트 관리', f4_d:'프로젝트, 연도, 부서, 고객별로 구성. 계층형 폴더 구조가 실제 워크플로를 그대로 반영.',
+    f5_t:'내장 동영상 플레이어', f5_d:'TapeVault에서 직접 동영상 미리보기. MP4, MOV, MXF, AVI — 외부 플레이어 불필요.',
+    f6_t:'테이프 사용량 분석', f6_d:'전체 테이프 실시간 용량 추적. 소진 전에 새 테이프 주문 시기를 정확히 파악.',
+    f7_t:'완전 오프라인 동작', f7_d:'활성화 후 완전 오프라인. 클라우드 연결 불필요. 방송·국방 환경에 최적화.',
+    f8_t:'체크섬 검증', f8_d:'모든 기록에 MD5/SHA256 체크섬. 아카이브 작업 후 데이터 무결성 자동 검증.',
+    f9_t:'다국어 UI', f9_d:'영어, 한국어, 일본어 완전 지원. 글로벌 방송·미디어 조직을 위해 설계.',
+    dl_label:'다운로드', dl_title:'TapeVault 30일 무료 체험', dl_sub:'신용카드 불필요. 약정 없음. 첫날부터 전체 기능 사용.',
+    dl_btn:'⬇ TapeVault v1.0.0 Windows용 다운로드', dl_s1:'Windows 10 / 11 (64비트)', dl_s2:'LTO-4 ~ LTO-9', dl_s3:'~180 MB 인스톨러',
+    dl_ver:'v1.0.0 · 2026년 6월 · Windows 10 64비트 이상 필요',
+    pr_label:'요금제', pr_title:'심플한 요금제. 예상치 못한 청구 없음.', pr_sub:'30일 무료로 시작. 준비되면 업그레이드. 언제든 취소 — 자동 갱신 없음.',
+    pc_mo:' / 월', pc_trial:'무료 체험 시작', pc_popular:'가장 인기',
+    p1_desc:'단일 LTO 드라이브 환경 — 방송 스튜디오, 소규모 아카이브, 개인 운영자.',
+    p1_f1:'LTO 드라이브 1대 (LTO-4~LTO-9)', p1_f2:'무제한 테이프', p1_f3:'썸네일 자동 생성', p1_f4:'전체 텍스트 검색', p1_f5:'내장 동영상 플레이어', p1_f6:'이메일 지원',
+    p2_desc:'테이프 오토로더 / 라이브러리 환경 — TV 방송국, 병원, 정부 아카이브.',
+    p2_f1:'LTO 오토로더 / 라이브러리 지원', p2_f2:'최대 4개 LTO 드라이브 동시 사용', p2_f3:'자동화된 테이프 슬롯 관리', p2_f4:'일괄 아카이브 및 복원 작업', p2_f5:'고급 검색 및 필터', p2_f6:'우선 지원',
+    p3_amt:'맞춤 견적', p3_desc:'대규모 기관 — 멀티 라이브러리, 커스텀 배포, SLA 요건이 있는 환경.',
+    p3_f1:'복수 테이프 라이브러리', p3_f2:'현장 배포 및 설치', p3_f3:'커스텀 통합 지원', p3_f4:'전용 SLA', p3_f5:'직원 교육 포함', p3_btn:'영업팀 문의',
+    trust_txt:'모든 요금제에 <strong style="color:#c8cfe0">30일 무료 체험</strong>이 포함됩니다. 신용카드 불필요.',
+    tr1:'자동 갱신 없음', tr2:'언제든 취소', tr3:'데이터는 항상 귀하의 것', tr4:'활성화 후 오프라인', tr5:'Paddle 결제 · VAT 포함',
+    faq_label:'FAQ', faq_title:'구매 전 궁금한 점이 있으신가요?',
+    faq1_q:'TapeVault는 인터넷 없이 사용할 수 있나요?', faq1_a:'네. TapeVault는 최초 라이선스 활성화 이후 완전히 오프라인으로 동작합니다. 지속적인 인터넷 연결이 필요하지 않습니다. 방송, 국방, 의료 등 에어갭 환경에 적합합니다.',
+    faq2_q:'구독 만료 시 데이터는 어떻게 되나요?', faq2_a:'테이프에 보관된 데이터는 항상 귀하의 것입니다 — 표준 LTFS 형식으로 저장되어 LTFS 호환 소프트웨어라면 모두 읽을 수 있습니다. TapeVault의 DB와 프로젝트 인덱스는 만료 후 읽기 전용으로 유지됩니다.',
+    faq3_q:'자동 갱신이 있나요?', faq3_a:'없습니다. 자동 갱신 없음. TapeVault는 신용카드 정보를 저장하지 않습니다. 만료 전 알림을 받고 수동으로 갱신하실 수 있습니다.',
+    faq4_q:'어떤 LTO 세대를 지원하나요?', faq4_a:'TapeVault는 LTO-4~LTO-9 드라이브를 지원합니다. LTO-10 지원은 v1.1에서 예정되어 있습니다. 단독 드라이브와 오토로더(AUTOLOADER 요금제) 모두 지원합니다.',
+    faq5_q:'Starter와 AutoLoader의 차이는 무엇인가요?', faq5_a:'Starter는 단독 LTO 드라이브용입니다. AutoLoader는 테이프 오토로더 및 라이브러리 지원을 추가합니다. 테이프 라이브러리(Quantum, Overland 등)를 보유하고 있다면 AutoLoader 요금제가 필요합니다.',
+    faq6_q:'여러 컴퓨터에 설치할 수 있나요?', faq6_a:'각 라이선스는 동시에 1대의 컴퓨터에서만 사용 가능합니다. 이전 기기에서 비활성화 후 새 기기에서 활성화하세요. 이전 시에만 인터넷 연결이 필요합니다.',
+    cta_h2:'테이프를 일일이 뒤지는 것, 이제 그만.', cta_p:'TapeVault를 다운로드하고 오늘부터 30초 안에 모든 파일을 찾으세요.',
+    cta_btn:'⬇ 무료 체험 다운로드 — 신용카드 불필요', cta_note:'Windows 10 / 11 · 30일 전체 기능 무료 체험 · LTO-4 ~ LTO-9',
+    fc_product:'제품', fc_support:'지원', fc_legal:'법적 정보',
+    fc_contact:'지원팀 문의', fc_sales:'영업팀 문의', fc_privacy:'개인정보 처리방침', fc_terms:'이용약관', fc_license:'라이선스',
+    foot_bottom:'TapeVault v1.0.0 · Veteran IT 개발 · Paddle 결제 · 자동 갱신 없음'
+  },
+  ja: {
+    nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール',
+    nav_signin:'サインイン', nav_trial:'無料トライアル',
+    hero_eyebrow:'v1.0.0 — Windows版リリース',
+    hero_h1:'LTOテープのすべてのファイルを<br><b>30秒以内に見つける。</b>',
+    hero_sub:'TapeVaultはWindows向けの唯一のLTOテープアーカイブ管理ソフトです。テープを1本ずつ確認することなく、サムネイル閲覧・メタデータ検索・ファイル取り出しができます。',
+    hero_p1:'Windowsのみ', hero_p2:'LTO-4〜LTO-9', hero_p3:'放送・医療・防衛・教育',
+    hero_btn1:'⬇ 無料トライアルをDL', hero_btn2:'▶ 使い方を見る',
+    stat1:'全テープ横断検索', stat2:'サムネイル自動生成', stat3:'ドライブ自動認識', stat4:'アクティベーション後オフライン',
+    pain_label:'課題', pain_title:'心当たりはありませんか？', pain_sub:'LTOテープを使う誰もが感じる悩みです。TapeVaultが3つすべてを解決します。',
+    pain1_t:'ファイル探しに何時間も無駄に', pain1_d:'20本のテープのどれに入っているか不明。ラベルを1本ずつ確認して2時間が経ちます。',
+    pain2_t:'担当者退職でアーカイブが消える', pain2_d:'テープを管理していた社員が辞めると、誰も構造を把握できなくなります。インデックスもメタデータもサムネイルもありません。',
+    pain3_t:'確認だけで全リコールが必要', pain3_d:'サムネイルがないため、確認のためだけに全ファイルをリコールする必要があります。テープドライブの時間と人員の無駄です。',
+    sol1_t:'30秒で検索', sol1_d:'ファイル名・日付・メタデータを入力するだけで全テープを瞬時に検索し、場所を特定します。',
+    sol2_t:'永続的なメタデータDB', sol2_d:'全ファイルがメタデータ・チェックサム・場所とともに登録されます。担当者交代の影響を受けません。',
+    sol3_t:'リコール不要でサムネイル確認', sol3_d:'動画ファイルのサムネイルが自動生成されます。リコール前に内容を視覚的に確認できます。',
+    gui_label:'リアルなソフト。リアルなUI。', gui_title:'実際の画面をご確認ください', gui_sub:'すべてTapeVault v1.0.0の実際のスクリーンショットです。モックアップではありません。',
+    s1_title:'すべてのファイルを<br>一目で把握', s1_desc:'プロジェクトフォルダを開くと、動画・PDF・画像・ZIPなど全ファイルがサムネイル表示されます。グリッドとリスト表示を即時切替できます。',
+    s1_c1:'視覚的ブラウジング用サムネイルグリッド', s1_c2:'ファイル名・サイズ・日付・状態つきリスト表示', s1_c3:'カラーコードのテープステータスバッジ', s1_c4:'ファイル種別・日付・テープでフィルター',
+    s1_tip:'💡 緑のバッジ＝テープ保存済。青＝キュー待ち。全ファイルの状態を常に把握できます。', s1_cap:'▲ グリッド表示 — TapeVault v1.0.0 実際のスクリーンショット',
+    s2_title:'ファイルをクリックすると<br>すべての情報が表示される。', s2_desc:'ファイルを選択すると、右パネルにサムネイル・ファイル種別・解像度・サイズ・テープ場所・チェックサム・メモが即表示されます。',
+    s2_c1:'自動生成された動画サムネイルプレビュー', s2_c2:'完全なファイルメタデータ：コーデック・解像度・日付・サイズ', s2_c3:'正確なテープパスとテープ名を表示', s2_c4:'カスタムメモ：カメラマン・場所・担当者',
+    s2_tip:'💡 テープを取り出す前に内容を正確に把握できます。推測不要。', s2_cap:'▲ ファイル詳細パネル — TapeVault v1.0.0 実際のスクリーンショット',
+    s3_title:'パワーユーザー向け<br>リスト表示', s3_desc:'リスト表示に切り替えると、全ファイルをソート可能なテーブルで確認できます。名前・サイズ・日付・状態でソートできます。',
+    s3_c1:'全列でソート — 名前・サイズ・日付・状態', s3_c2:'VT TESTバッジ＝テープ保存確認済', s3_c3:'ワンクリックで複数ファイル選択', s3_c4:'テープ書込キューに一括追加',
+    s3_tip:'💡 50ファイル選択→キュー追加→書込開始、30秒以内で完了。', s3_cap:'▲ リスト表示 — TapeVault v1.0.0 実際のスクリーンショット',
+    s4_title:'テープから直接<br>即時再生。', s4_desc:'動画ファイルをダブルクリックすると内蔵プレーヤーが開きます。コピー不要・外部プレーヤー不要。MP4・MOV・MXF・AVI対応。',
+    s4_c1:'内蔵動画プレーヤー — 外部ソフト不要', s4_c2:'MP4・MOV・MXF・AVI・H.264・H.265対応', s4_c3:'ストレージにリコールする前に正しいファイルを確認', s4_c4:'26分のファイルもテープからスムーズに再生',
+    s4_tip:'💡 間違ったファイルのリコールで時間を無駄にしないで。先に確認、必要なものだけリコール。', s4_cap:'▲ 内蔵動画プレーヤー — TapeVault v1.0.0 実際のスクリーンショット',
+    s5_title:'新しいテープを<br>3クリックで登録', s5_desc:'新テープを挿入し、新規テープをクリック、ボリュームラベルとシリアル番号を入力、LTFSでフォーマット。TapeVaultが自動でDBに登録します。完了。',
+    s5_c1:'LTFSフォーマット — クロスプラットフォーム互換', s5_c2:'LTO-4〜LTO-9対応', s5_c3:'次回以降の挿入時にボリュームラベルを自動認識', s5_c4:'テープシリアル番号と物理ラベルを紐付け',
+    s5_tip:'💡 新テープの登録からアーカイブ開始まで60秒以内。', s5_cap:'▲ 新テープ登録 — TapeVault v1.0.0 実際のスクリーンショット',
+    baf_label:'導入前後の違い', baf_title:'TapeVault導入前 vs 後',
+    baf_bl:'❌ TapeVaultなし', baf_al:'✅ TapeVaultあり',
+    baf_b1:'テープラベルを手作業で確認 — <strong style="color:#c8cfe0">平均2時間</strong>',
+    baf_b2:'ファイルインデックスなし — テープを1本ずつ確認', baf_b3:'サムネイルなし — 確認だけで全リコールが必要',
+    baf_b4:'担当者退職でアーカイブが使えなくなる', baf_b5:'テープ容量をExcelで手動管理', baf_b6:'チェックサムなし — ファイル破損を検知できない',
+    baf_a1:'ファイル名検索 → <strong style="color:#c8cfe0">30秒で場所を特定</strong>',
+    baf_a2:'全ライブラリ登録 — どのファイルも即座に検索', baf_a3:'サムネイル自動生成 — リコール前にプレビュー可能',
+    baf_a4:'メタデータDB — 担当者交代の影響なし', baf_a5:'テープ容量を自動追跡・予測', baf_a6:'全書込に自動チェックサム — データ整合性を保証',
+    feat_label:'機能', feat_title:'すべてひとつのアプリに', feat_sub:'プラグイン不要。別途ツール不要。クラウド不要。',
+    f1_t:'LTOドライブ制御', f1_d:'LTO-4〜LTO-9の直接ハードウェア制御。読込・書込・検証・排出をひとつのUIで。',
+    f2_t:'サムネイル自動生成', f2_d:'FFmpeg対応の自動サムネイル生成。テープをリコールせずにアーカイブを視覚的に閲覧。',
+    f3_t:'全文検索', f3_d:'ファイル名・日付・解像度・メタデータで全テープを検索。1秒以内に結果表示。',
+    f4_t:'プロジェクト管理', f4_d:'プロジェクト・年度・部署・クライアント別に整理。階層フォルダ構造が実際の業務フローを反映。',
+    f5_t:'内蔵動画プレーヤー', f5_d:'TapeVaultで直接動画をプレビュー。MP4・MOV・MXF・AVI — 外部プレーヤー不要。',
+    f6_t:'テープ使用量分析', f6_d:'全テープのリアルタイム容量追跡。在庫切れ前に新テープの注文タイミングを把握。',
+    f7_t:'エアギャップ運用', f7_d:'アクティベーション後は完全オフライン。クラウド接続不要。放送・防衛環境に最適。',
+    f8_t:'チェックサム検証', f8_d:'全書込にMD5/SHA256チェックサム。アーカイブ後にデータ整合性を自動検証。',
+    f9_t:'多言語UI', f9_d:'英語・韓国語・日本語に完全対応。グローバルな放送・メディア組織向けに設計。',
+    dl_label:'ダウンロード', dl_title:'TapeVaultを30日間無料でお試し', dl_sub:'クレジットカード不要。縛りなし。初日から全機能利用可。',
+    dl_btn:'⬇ TapeVault v1.0.0 Windows版をDL', dl_s1:'Windows 10 / 11 (64ビット)', dl_s2:'LTO-4〜LTO-9', dl_s3:'~180 MB インストーラー',
+    dl_ver:'v1.0.0 · 2026年6月 · Windows 10 64ビット以上が必要',
+    pr_label:'料金', pr_title:'シンプルな料金。想定外の請求なし。', pr_sub:'30日間無料でスタート。準備ができたらアップグレード。いつでもキャンセル可。自動更新なし。',
+    pc_mo:' / 月', pc_trial:'無料トライアル開始', pc_popular:'最も人気',
+    p1_desc:'シングルLTOドライブ環境 — 放送スタジオ・小規模アーカイブ・個人運用者向け。',
+    p1_f1:'LTOドライブ1台 (LTO-4〜LTO-9)', p1_f2:'テープ枚数無制限', p1_f3:'サムネイル自動生成', p1_f4:'全文検索', p1_f5:'内蔵動画プレーヤー', p1_f6:'メールサポート',
+    p2_desc:'テープオートローダー/ライブラリ環境 — テレビ局・病院・政府アーカイブ向け。',
+    p2_f1:'LTOオートローダー/ライブラリ対応', p2_f2:'最大4台のLTOドライブを同時使用', p2_f3:'テープスロット自動管理', p2_f4:'バッチアーカイブ＆復元ジョブ', p2_f5:'高度な検索＆フィルター', p2_f6:'優先サポート',
+    p3_amt:'カスタム', p3_desc:'大規模機関 — マルチライブラリ・カスタム展開・SLA要件がある環境向け。',
+    p3_f1:'複数テープライブラリ', p3_f2:'オンサイト展開＆セットアップ', p3_f3:'カスタム統合サポート', p3_f4:'専用SLA', p3_f5:'社員トレーニング込み', p3_btn:'営業に問い合わせ',
+    trust_txt:'すべてのプランに<strong style="color:#c8cfe0">30日間無料トライアル</strong>が含まれます。クレジットカード不要。',
+    tr1:'自動更新なし', tr2:'いつでもキャンセル', tr3:'データは常にあなたのもの', tr4:'アクティベーション後オフライン', tr5:'Paddle決済 · VAT込み',
+    faq_label:'よくある質問', faq_title:'購入前のよくある質問',
+    faq1_q:'TapeVaultはインターネットなしで使えますか？', faq1_a:'はい。TapeVaultは初回ライセンスアクティベーション後は完全オフラインで動作します。継続的なインターネット接続は不要です。放送・防衛・医療のエアギャップ環境に最適です。',
+    faq2_q:'サブスクリプション期限切れ後、データはどうなりますか？', faq2_a:'テープ上のアーカイブデータは常にあなたのものです。標準LTFSフォーマットで保存されており、LTFS対応ソフトなら読み取り可能です。TapeVaultのDBとプロジェクトインデックスは期限切れ後も読取専用で残ります。',
+    faq3_q:'自動更新はありますか？', faq3_a:'いいえ。自動更新はありません。TapeVaultはクレジットカード情報を保存しません。期限前に通知が届き、手動で更新できます。',
+    faq4_q:'どのLTO世代に対応していますか？', faq4_a:'TapeVaultはLTO-4〜LTO-9ドライブに対応しています。LTO-10はv1.1で対応予定です。シングルドライブとオートローダー（AUTOLOADERプラン）の両方をサポートします。',
+    faq5_q:'StarterとAutoLoaderの違いは何ですか？', faq5_a:'StarterはシングルLTOドライブ向けです。AutoLoaderはテープオートローダー/ライブラリのサポートを追加します。テープライブラリ（Quantum、Overlandなど）をお持ちの場合はAutoLoaderプランが必要です。',
+    faq6_q:'複数のコンピューターにインストールできますか？', faq6_a:'各ライセンスは同時に1台のコンピューターで使用できます。別のマシンへの移転も可能です。古いマシンで無効化してから新しいマシンで有効化してください。移転時のみインターネット接続が必要です。',
+    cta_h2:'テープを手動で探すのはもうやめよう。', cta_p:'TapeVaultをダウンロードして、今日から30秒で任意のファイルを見つけましょう。',
+    cta_btn:'⬇ 無料トライアルをDL — クレジットカード不要', cta_note:'Windows 10 / 11 · 30日間全機能トライアル · LTO-4〜LTO-9',
+    fc_product:'製品', fc_support:'サポート', fc_legal:'法的情報',
+    fc_contact:'サポートに連絡', fc_sales:'営業に連絡', fc_privacy:'プライバシーポリシー', fc_terms:'利用規約', fc_license:'ライセンス',
+    foot_bottom:'TapeVault v1.0.0 · Veteran IT製 · Paddle決済 · 自動更新なし'
+  }
+};
+
+function applyLang(lang) {
+  if (!T[lang]) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T[lang][el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
   });
-});
+  document.documentElement.lang = lang === 'ko' ? 'ko' : lang === 'ja' ? 'ja' : 'en';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('on', b.dataset.lang === lang));
+  localStorage.setItem('tv-lang', lang);
+}
+
+document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+document.querySelectorAll('.faq-q').forEach(q => q.addEventListener('click', function() {
+  this.classList.toggle('open');
+  this.nextElementSibling.classList.toggle('open');
+}));
+
+applyLang(localStorage.getItem('tv-lang') || 'en');
 </script>
 </body>
 </html>
