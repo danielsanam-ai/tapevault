@@ -26,8 +26,6 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .btn-orange{font-size:13px;color:#0b0b0d;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer}
 .btn-orange:hover{opacity:.88}
 .hero{padding:72px 48px 56px;text-align:center;position:relative}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:#111827;border:0.5px solid #1e3a5f;color:#5b9cf6;font-size:11px;padding:5px 14px;border-radius:20px;margin-bottom:28px;font-family:monospace}
-.hero-dot{width:6px;height:6px;background:#22d3ee;border-radius:50%;animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .hero h1{font-size:56px;font-weight:400;line-height:1.1;letter-spacing:-1.5px;color:#f0f2f8;margin-bottom:10px}
 .hero h1 b{font-weight:800;color:#f5a623}
@@ -155,8 +153,9 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 .footer-bottom-left{font-size:11px;color:#7c88a4}
 .footer-bottom-right{display:flex;gap:16px}
 .footer-bottom-right a{font-size:11px;color:#7c88a4;text-decoration:none;cursor:pointer}
-.beta-pill{display:inline-flex;align-items:center;gap:7px;background:#1a1508;border:0.5px solid #3a2a05;color:#f5a623;font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px;margin-bottom:16px;cursor:pointer;text-decoration:none;transition:border-color .2s}
-.beta-pill:hover{border-color:#f5a623}
+.beta-pill{display:inline-flex;align-items:center;gap:9px;background:#1a1508;border:1px solid #f5a623;color:#f5a623;font-size:14px;font-weight:800;padding:11px 24px;border-radius:24px;margin-bottom:28px;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 0 24px rgba(245,166,35,.12)}
+.beta-pill:hover{background:#241c0b;transform:translateY(-1px);box-shadow:0 0 32px rgba(245,166,35,.22)}
+.beta-pill-dot{width:7px;height:7px;background:#f5a623;border-radius:50%;animation:blink 2s infinite;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -193,12 +192,11 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 </nav>
 
 <section class="hero">
-  <div class="hero-eyebrow">
-    <span class="hero-dot"></span>
-    <span data-i18n="hero_eyebrow">v1.0.0 — Now available for Windows</span>
-  </div>
   <div>
-    <a class="beta-pill" data-i18n="beta_pill" href="#download">🧪 Beta Testers Wanted — 3 months free + 50% coupon →</a>
+    <a class="beta-pill" href="#download">
+      <span class="beta-pill-dot"></span>
+      <span data-i18n="beta_pill">🧪 Try TapeVault Free for 3 Months in Beta + 50% Off →</span>
+    </a>
   </div>
   <h1 data-i18n="hero_h1">Find any file on LTO tape<br><b>in under 30 seconds.</b></h1>
   <p class="hero-sub" data-i18n="hero_sub">TapeVault is the only LTO tape archive manager built for Windows. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.</p>
@@ -565,7 +563,6 @@ const T = {
   en: {
     nav_how:'How it works', nav_features:'Features', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide',
     nav_signin:'Sign in', nav_trial:'Free Trial',
-    hero_eyebrow:'v1.0.0 — Now available for Windows',
     hero_h1:'Find any file on LTO tape<br><b>in under 30 seconds.</b>',
     hero_sub:'TapeVault is the only LTO tape archive manager built for Windows. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.',
     hero_p1:'Windows Only', hero_p2:'LTO-4 to LTO-9', hero_p3:'Broadcast · Medical · Defense · Education',
@@ -637,12 +634,11 @@ const T = {
     fc_product:'Product', fc_support:'Support', fc_legal:'Legal',
     fc_contact:'Contact support', fc_sales:'Contact sales', fc_privacy:'Privacy policy', fc_terms:'Terms of service', fc_license:'License',
     foot_bottom:'TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle · No auto-renewal',
-    beta_pill:'🧪 Beta Testers Wanted — 3 months free + 50% coupon →'
+    beta_pill:'🧪 Try TapeVault Free for 3 Months in Beta + 50% Off →'
   },
   ko: {
     nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
     nav_signin:'로그인', nav_trial:'무료 체험',
-    hero_eyebrow:'v1.0.0 — Windows용 출시',
     hero_h1:'LTO 테이프의 모든 파일을<br><b>30초 안에 찾아드립니다.</b>',
     hero_sub:'TapeVault는 Windows 전용 LTO 테이프 아카이브 관리 소프트웨어입니다. 테이프를 일일이 확인하지 않고도 썸네일 탐색, 메타데이터 검색, 파일 꺼내기를 바로 할 수 있습니다.',
     hero_p1:'Windows 전용', hero_p2:'LTO-4 ~ LTO-9', hero_p3:'방송 · 의료 · 국방 · 교육',
@@ -714,12 +710,11 @@ const T = {
     fc_product:'제품', fc_support:'지원', fc_legal:'법적 정보',
     fc_contact:'지원팀 문의', fc_sales:'영업팀 문의', fc_privacy:'개인정보 처리방침', fc_terms:'이용약관', fc_license:'라이선스',
     foot_bottom:'TapeVault v1.0.0 · Veteran IT 개발 · Paddle 결제 · 자동 갱신 없음',
-    beta_pill:'🧪 베타 테스터 모집 중 — 3개월 무료 + 50% 할인 →'
+    beta_pill:'🧪 TapeVault 베타 3개월 무료 체험 + 50% 할인 →'
   },
   ja: {
     nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール',
     nav_signin:'サインイン', nav_trial:'無料トライアル',
-    hero_eyebrow:'v1.0.0 — Windows版リリース',
     hero_h1:'LTOテープのすべてのファイルを<br><b>30秒以内に見つける。</b>',
     hero_sub:'TapeVaultはWindows向けの唯一のLTOテープアーカイブ管理ソフトです。テープを1本ずつ確認することなく、サムネイル閲覧・メタデータ検索・ファイル取り出しができます。',
     hero_p1:'Windowsのみ', hero_p2:'LTO-4〜LTO-9', hero_p3:'放送・医療・防衛・教育',
@@ -791,7 +786,7 @@ const T = {
     fc_product:'製品', fc_support:'サポート', fc_legal:'法的情報',
     fc_contact:'サポートに連絡', fc_sales:'営業に連絡', fc_privacy:'プライバシーポリシー', fc_terms:'利用規約', fc_license:'ライセンス',
     foot_bottom:'TapeVault v1.0.0 · Veteran IT製 · Paddle決済 · 自動更新なし',
-    beta_pill:'🧪 ベータテスター募集中 — 3ヶ月無料 + 50%割引 →'
+    beta_pill:'🧪 TapeVaultベータ版を3ヶ月無料体験 + 50%割引 →'
   }
 };
 
