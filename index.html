@@ -155,9 +155,23 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 .footer-bottom-left{font-size:11px;color:#2a3040}
 .footer-bottom-right{display:flex;gap:16px}
 .footer-bottom-right a{font-size:11px;color:#2a3040;text-decoration:none;cursor:pointer}
+.beta-banner{display:flex;align-items:center;justify-content:center;gap:16px;padding:11px 56px;background:linear-gradient(90deg,#1a1508 0%,#241c0b 50%,#1a1508 100%);border-bottom:0.5px solid #3a2a05;position:relative;flex-wrap:wrap;text-align:center}
+.beta-banner-text{font-size:13px;color:#d4b877;line-height:1.5}
+.beta-banner-text strong{color:#f5a623;font-weight:800}
+.beta-banner-btn{font-size:12px;font-weight:800;color:#0b0b0d;background:#f5a623;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-block;flex-shrink:0}
+.beta-banner-btn:hover{opacity:.88}
+.beta-banner-close{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:none;color:#5a4a2a;font-size:20px;cursor:pointer;line-height:1;padding:4px;flex-shrink:0}
+.beta-banner-close:hover{color:#f5a623}
+@media (max-width:640px){.beta-banner{padding:11px 40px 11px 16px}}
 </style>
 </head>
 <body>
+
+<div class="beta-banner" id="beta-banner">
+  <span class="beta-banner-text" data-i18n="beta_text">🧪 <strong>Beta Testers Wanted</strong> — get <strong>3 months free</strong> + a <strong>50% discount coupon</strong> for TapeVault.</span>
+  <a class="beta-banner-btn" data-i18n="beta_btn" href="mailto:support@tapevault.net?subject=TapeVault%20Beta%20Tester%20Application">Apply Now →</a>
+  <button class="beta-banner-close" id="beta-banner-close" aria-label="Dismiss">×</button>
+</div>
 
 <nav class="nav">
   <a class="nav-logo" href="#">
@@ -631,7 +645,9 @@ const T = {
     cta_btn:'⬇ Download Free Trial — No Credit Card', cta_note:'Windows 10 / 11 · 30-day full-feature trial · LTO-4 to LTO-9',
     fc_product:'Product', fc_support:'Support', fc_legal:'Legal',
     fc_contact:'Contact support', fc_sales:'Contact sales', fc_privacy:'Privacy policy', fc_terms:'Terms of service', fc_license:'License',
-    foot_bottom:'TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle · No auto-renewal'
+    foot_bottom:'TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle · No auto-renewal',
+    beta_text:'🧪 <strong>Beta Testers Wanted</strong> — get <strong>3 months free</strong> + a <strong>50% discount coupon</strong> for TapeVault.',
+    beta_btn:'Apply Now →'
   },
   ko: {
     nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
@@ -707,7 +723,9 @@ const T = {
     cta_btn:'⬇ 무료 체험 다운로드 — 신용카드 불필요', cta_note:'Windows 10 / 11 · 30일 전체 기능 무료 체험 · LTO-4 ~ LTO-9',
     fc_product:'제품', fc_support:'지원', fc_legal:'법적 정보',
     fc_contact:'지원팀 문의', fc_sales:'영업팀 문의', fc_privacy:'개인정보 처리방침', fc_terms:'이용약관', fc_license:'라이선스',
-    foot_bottom:'TapeVault v1.0.0 · Veteran IT 개발 · Paddle 결제 · 자동 갱신 없음'
+    foot_bottom:'TapeVault v1.0.0 · Veteran IT 개발 · Paddle 결제 · 자동 갱신 없음',
+    beta_text:'🧪 <strong>베타 테스터 모집 중</strong> — 참여하시면 <strong>3개월 무료 이용</strong> + <strong>50% 할인 쿠폰</strong>을 드립니다.',
+    beta_btn:'지원하기 →'
   },
   ja: {
     nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール',
@@ -783,7 +801,9 @@ const T = {
     cta_btn:'⬇ 無料トライアルをDL — クレジットカード不要', cta_note:'Windows 10 / 11 · 30日間全機能トライアル · LTO-4〜LTO-9',
     fc_product:'製品', fc_support:'サポート', fc_legal:'法的情報',
     fc_contact:'サポートに連絡', fc_sales:'営業に連絡', fc_privacy:'プライバシーポリシー', fc_terms:'利用規約', fc_license:'ライセンス',
-    foot_bottom:'TapeVault v1.0.0 · Veteran IT製 · Paddle決済 · 自動更新なし'
+    foot_bottom:'TapeVault v1.0.0 · Veteran IT製 · Paddle決済 · 自動更新なし',
+    beta_text:'🧪 <strong>ベータテスター募集中</strong> — ご参加いただくと<strong>3ヶ月無料利用</strong> + <strong>50%割引クーポン</strong>をプレゼント。',
+    beta_btn:'応募する →'
   }
 };
 
@@ -796,6 +816,15 @@ function applyLang(lang) {
   document.documentElement.lang = lang === 'ko' ? 'ko' : lang === 'ja' ? 'ja' : 'en';
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('on', b.dataset.lang === lang));
   localStorage.setItem('tv-lang', lang);
+}
+
+const betaBanner = document.getElementById('beta-banner');
+if (betaBanner) {
+  if (localStorage.getItem('tv-beta-closed')) betaBanner.style.display = 'none';
+  document.getElementById('beta-banner-close').addEventListener('click', () => {
+    betaBanner.style.display = 'none';
+    localStorage.setItem('tv-beta-closed', '1');
+  });
 }
 
 document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
