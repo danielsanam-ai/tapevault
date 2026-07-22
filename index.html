@@ -156,6 +156,20 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 .beta-pill{display:inline-flex;align-items:center;gap:9px;background:#1a1508;border:1px solid #f5a623;color:#f5a623;font-size:14px;font-weight:800;padding:11px 24px;border-radius:24px;margin-bottom:28px;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 0 24px rgba(245,166,35,.12)}
 .beta-pill:hover{background:#241c0b;transform:translateY(-1px);box-shadow:0 0 32px rgba(245,166,35,.22)}
 .beta-pill-dot{width:7px;height:7px;background:#f5a623;border-radius:50%;animation:blink 2s infinite;flex-shrink:0}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(5,6,10,.75);backdrop-filter:blur(3px);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#0d1117;border:0.5px solid #2a2a35;border-radius:14px;padding:32px;max-width:460px;width:100%;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.6);text-align:left}
+.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:#7c88a4;font-size:22px;cursor:pointer;line-height:1;padding:6px}
+.modal-close:hover{color:#f5a623}
+.modal-icon{font-size:30px;margin-bottom:12px}
+.modal-box h3{font-size:18px;font-weight:700;color:#e8eaf0;margin-bottom:12px;letter-spacing:-.3px;line-height:1.4}
+.modal-box p{font-size:13px;color:#99a3c4;line-height:1.75;margin-bottom:22px}
+.modal-steps{display:flex;flex-direction:column;gap:14px;margin-bottom:26px}
+.modal-step{display:flex;gap:12px;align-items:flex-start}
+.modal-step-num{width:24px;height:24px;border-radius:50%;background:#1a1508;border:1px solid #3a2a05;color:#f5a623;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:monospace}
+.modal-step-title{font-size:13px;font-weight:700;color:#c8cfe0;margin-bottom:4px}
+.modal-step-desc{font-size:12px;color:#8b96b8;line-height:1.6}
+.modal-continue{width:100%;justify-content:center;font-size:14px;padding:13px}
 </style>
 </head>
 <body>
@@ -206,7 +220,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <span data-i18n="hero_p3">Broadcast · Medical · Defense · Education</span>
   </div>
   <div class="hero-btns">
-    <button class="btn-hero-main" data-i18n="hero_btn1" onclick="window.location.href='https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-Setup-1.0.0.exe'">⬇ Download Free Trial</button>
+    <button class="btn-hero-main" data-i18n="hero_btn1" onclick="showDownloadWarning()">⬇ Download Free Trial</button>
     <button class="btn-hero-ghost" data-i18n="hero_btn2" onclick="document.getElementById('gui').scrollIntoView({behavior:'smooth'})">▶ See how it works</button>
   </div>
   <!-- APP SCREENSHOT -->
@@ -419,7 +433,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
   <div class="sec-title" style="margin-bottom:10px" data-i18n="dl_title">Try TapeVault free for 3 months in Beta</div>
   <p style="font-size:15px;color:#99a3c4;margin-bottom:36px" data-i18n="dl_sub">No credit card. No commitment. Full features from day one — plus 50% off when you upgrade.</p>
   <div style="display:inline-flex;flex-direction:column;align-items:center;gap:16px">
-    <button class="btn-hero-main" style="font-size:16px;padding:16px 40px" data-i18n="dl_btn" onclick="window.location.href='https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-Setup-1.0.0.exe'">⬇ Download TapeVault v1.0.0 for Windows</button>
+    <button class="btn-hero-main" style="font-size:16px;padding:16px 40px" data-i18n="dl_btn" onclick="showDownloadWarning()">⬇ Download TapeVault v1.0.0 for Windows</button>
     <div style="display:flex;gap:24px">
       <span style="font-size:11px;color:#8b96b8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#5b9cf6">●</span> <span data-i18n="dl_s1">Windows 10 / 11 (64-bit)</span></span>
       <span style="font-size:11px;color:#8b96b8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#4ade80">●</span> <span data-i18n="dl_s2">LTO-4 through LTO-9</span></span>
@@ -506,7 +520,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 <section class="cta-sec">
   <h2 data-i18n="cta_h2">Stop searching tapes manually.</h2>
   <p data-i18n="cta_p">Download TapeVault and find any file in 30 seconds — starting today.</p>
-  <button class="btn-hero-main" style="margin:0 auto;font-size:16px;padding:16px 40px" data-i18n="cta_btn" onclick="window.location.href='https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-Setup-1.0.0.exe'">⬇ Download Free Trial — No Credit Card</button>
+  <button class="btn-hero-main" style="margin:0 auto;font-size:16px;padding:16px 40px" data-i18n="cta_btn" onclick="showDownloadWarning()">⬇ Download Free Trial — No Credit Card</button>
   <div class="cta-note" data-i18n="cta_note">Windows 10 / 11 · 30-day full-feature trial · LTO-4 to LTO-9</div>
 </section>
 
@@ -558,7 +572,38 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
   </div>
 </footer>
 
+<div class="modal-overlay" id="dl-warning-modal" onclick="if(event.target===this) closeDownloadWarning()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeDownloadWarning()" aria-label="Close">×</button>
+    <div class="modal-icon">🛡️</div>
+    <h3 data-i18n="dlw_title">Beta Notice: You may see a security warning</h3>
+    <p data-i18n="dlw_body">TapeVault v1.0.0 is in open beta. Because the installer is new and not yet code-signed, Windows SmartScreen and some browsers may flag it during download or install. This is expected for new software and does not mean the file is unsafe.</p>
+    <div class="modal-steps">
+      <div class="modal-step">
+        <div class="modal-step-num">1</div>
+        <div>
+          <div class="modal-step-title" data-i18n="dlw_step1_t">Browser download warning</div>
+          <div class="modal-step-desc" data-i18n="dlw_step1_d">If your browser flags the file, click the "···" next to the download and choose "Keep" (Chrome/Edge).</div>
+        </div>
+      </div>
+      <div class="modal-step">
+        <div class="modal-step-num">2</div>
+        <div>
+          <div class="modal-step-title" data-i18n="dlw_step2_t">"Windows protected your PC" screen</div>
+          <div class="modal-step-desc" data-i18n="dlw_step2_d">Click "More info", then click "Run anyway" to start the installer.</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-hero-main modal-continue" data-i18n="dlw_continue" onclick="proceedDownload()">⬇ Continue Download</button>
+  </div>
+</div>
+
 <script>
+const DOWNLOAD_URL = 'https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-Setup-1.0.0.exe';
+function showDownloadWarning() { document.getElementById('dl-warning-modal').classList.add('open'); }
+function closeDownloadWarning() { document.getElementById('dl-warning-modal').classList.remove('open'); }
+function proceedDownload() { window.location.href = DOWNLOAD_URL; closeDownloadWarning(); }
+
 const T = {
   en: {
     nav_how:'How it works', nav_features:'Features', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide',
@@ -634,7 +679,12 @@ const T = {
     fc_product:'Product', fc_support:'Support', fc_legal:'Legal',
     fc_contact:'Contact support', fc_sales:'Contact sales', fc_privacy:'Privacy policy', fc_terms:'Terms of service', fc_license:'License',
     foot_bottom:'TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle · No auto-renewal',
-    beta_pill:'🧪 Try TapeVault Free for 3 Months in Beta + 50% Off →'
+    beta_pill:'🧪 Try TapeVault Free for 3 Months in Beta + 50% Off →',
+    dlw_title:'🛡️ Beta Notice: You may see a security warning',
+    dlw_body:'TapeVault v1.0.0 is in open beta. Because the installer is new and not yet code-signed, Windows SmartScreen and some browsers may flag it during download or install. This is expected for new software and does not mean the file is unsafe.',
+    dlw_step1_t:'Browser download warning', dlw_step1_d:'If your browser flags the file, click the "···" next to the download and choose "Keep" (Chrome/Edge).',
+    dlw_step2_t:'"Windows protected your PC" screen', dlw_step2_d:'Click "More info", then click "Run anyway" to start the installer.',
+    dlw_continue:'⬇ Continue Download'
   },
   ko: {
     nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
@@ -710,7 +760,12 @@ const T = {
     fc_product:'제품', fc_support:'지원', fc_legal:'법적 정보',
     fc_contact:'지원팀 문의', fc_sales:'영업팀 문의', fc_privacy:'개인정보 처리방침', fc_terms:'이용약관', fc_license:'라이선스',
     foot_bottom:'TapeVault v1.0.0 · Veteran IT 개발 · Paddle 결제 · 자동 갱신 없음',
-    beta_pill:'🧪 TapeVault 베타 3개월 무료 체험 + 50% 할인 →'
+    beta_pill:'🧪 TapeVault 베타 3개월 무료 체험 + 50% 할인 →',
+    dlw_title:'🛡️ 베타 안내: 보안 경고가 나타날 수 있어요',
+    dlw_body:'TapeVault v1.0.0은 현재 오픈 베타 기간입니다. 설치 파일이 아직 코드 서명(디지털 인증)을 받지 않아 다운로드나 설치 중 Windows SmartScreen이나 일부 브라우저에서 경고가 뜰 수 있습니다. 신규 소프트웨어에서 흔히 발생하는 정상적인 현상이며, 파일이 위험하다는 뜻이 아닙니다.',
+    dlw_step1_t:'브라우저 다운로드 경고', dlw_step1_d:'브라우저가 파일을 경고하면, 다운로드 항목 옆의 "···"를 클릭하고 "유지"(Chrome/Edge)를 선택하세요.',
+    dlw_step2_t:'"Windows에서 PC를 보호했습니다" 화면', dlw_step2_d:'"추가 정보"를 클릭한 다음 "실행"을 눌러 설치를 계속하세요.',
+    dlw_continue:'⬇ 다운로드 계속하기'
   },
   ja: {
     nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール',
@@ -786,7 +841,12 @@ const T = {
     fc_product:'製品', fc_support:'サポート', fc_legal:'法的情報',
     fc_contact:'サポートに連絡', fc_sales:'営業に連絡', fc_privacy:'プライバシーポリシー', fc_terms:'利用規約', fc_license:'ライセンス',
     foot_bottom:'TapeVault v1.0.0 · Veteran IT製 · Paddle決済 · 自動更新なし',
-    beta_pill:'🧪 TapeVaultベータ版を3ヶ月無料体験 + 50%割引 →'
+    beta_pill:'🧪 TapeVaultベータ版を3ヶ月無料体験 + 50%割引 →',
+    dlw_title:'🛡️ ベータ版のお知らせ：セキュリティ警告が表示される場合があります',
+    dlw_body:'TapeVault v1.0.0はオープンベータ版です。インストーラーがまだコード署名されていないため、ダウンロードやインストール時にWindows SmartScreenや一部のブラウザで警告が表示されることがあります。これは新しいソフトウェアでよくある現象で、ファイルが危険という意味ではありません。',
+    dlw_step1_t:'ブラウザのダウンロード警告', dlw_step1_d:'ブラウザが警告を表示した場合、ダウンロード項目の「···」をクリックして「保持」(Chrome/Edge)を選択してください。',
+    dlw_step2_t:'「WindowsによってPCが保護されました」画面', dlw_step2_d:'「詳細情報」をクリックしてから「実行」をクリックしてインストールを続けてください。',
+    dlw_continue:'⬇ ダウンロードを続ける'
   }
 };
 
