@@ -61,6 +61,27 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
 .footer-left{font-size:11px;color:#7c88a4}
 .footer-right{display:flex;gap:16px}
 .footer-right a{font-size:11px;color:#7c88a4;text-decoration:none;cursor:pointer}
+.nav-burger{display:none;background:none;border:0.5px solid #2a3349;color:#c8cfe0;padding:7px;border-radius:6px;cursor:pointer;align-items:center;justify-content:center}
+.nav-burger svg{width:18px;height:18px}
+.legal-table{display:block;overflow-x:auto}
+
+@media (max-width:860px){
+  .nav{padding:12px 20px;flex-wrap:wrap}
+  .nav-links{display:none;order:3;width:100%;flex-direction:column;gap:0;background:#0b0b0d;border-top:0.5px solid #1e2230;margin-top:12px;padding-top:8px}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 4px;border-bottom:0.5px solid #16192480}
+  .nav-burger{display:flex}
+  .nav-ver{display:none}
+
+  .page-header{padding:40px 20px 32px}
+  .page-title{font-size:26px}
+  .page-sub{font-size:14px}
+
+  .doc-content{padding:32px 20px 48px}
+  .legal-toc ol{grid-template-columns:1fr}
+
+  footer{padding:24px 20px}
+}
 </style>
 </head>
 <body>
@@ -78,7 +99,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <span class="nav-logo-text">Tape<b>Vault</b></span>
     <span class="nav-ver">v1.0.0</span>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="index.html#gui">How it works</a>
     <a href="index.html#features">Features</a>
     <a href="index.html#download">Download</a>
@@ -88,6 +109,9 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
   <div class="nav-right">
     <a class="btn-ghost" href="mailto:support@tapevault.net">Contact</a>
     <a class="btn-orange" href="index.html#download">Free Trial</a>
+    <button class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </div>
 </nav>
 
@@ -204,5 +228,17 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
   </div>
 </footer>
 
+<script>
+function toggleMobileNav() {
+  const nav = document.getElementById('nav-links');
+  const burger = document.getElementById('nav-burger');
+  const open = nav.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+document.querySelectorAll('#nav-links a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('nav-burger').setAttribute('aria-expanded', 'false');
+}));
+</script>
 </body>
 </html>
