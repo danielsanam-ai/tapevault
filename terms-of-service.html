@@ -21,6 +21,20 @@
 .btn-ghost{font-size:13px;color:#a8b2d0;background:#111827;border:0.5px solid #2a3349;padding:6px 16px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-block}
 .btn-orange{font-size:13px;color:#0b0b0d;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
 
+.lang-select{position:relative;margin-right:6px}
+.lang-globe-btn{display:flex;align-items:center;gap:6px;background:#111520;border:0.5px solid #1e2330;color:#99a3c4;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-family:monospace;transition:all .15s}
+.lang-globe-btn:hover{border-color:#3a4a6a;color:#c8cfe0}
+.lang-globe-btn svg{width:15px;height:15px;flex-shrink:0;stroke:currentColor}
+.lang-globe-btn .lang-chevron{width:8px;height:8px;flex-shrink:0;stroke:currentColor;transition:transform .15s}
+.lang-globe-btn.open .lang-chevron{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:#0d1117;border:0.5px solid #2a2a35;border-radius:10px;padding:6px;min-width:150px;box-shadow:0 16px 40px rgba(0,0,0,.55);display:none;flex-direction:column;gap:2px;z-index:200}
+.lang-menu.open{display:flex}
+.lang-menu-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:none;border:none;color:#99a3c4;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:12px;text-align:left;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.lang-menu-item:hover{background:#1a1f2e;color:#c8cfe0}
+.lang-menu-item.active{color:#5b9cf6}
+.lang-menu-item .lang-check{color:#5b9cf6;font-size:12px;opacity:0}
+.lang-menu-item.active .lang-check{opacity:1}
+
 .page-header{padding:64px 48px 48px;border-bottom:0.5px solid #1e2230;background:linear-gradient(180deg,#0d1117 0%,#0b0b0d 100%)}
 .page-header-inner{max-width:780px;margin:0 auto}
 .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:#8b96b8;margin-bottom:20px;font-family:monospace}
@@ -100,15 +114,27 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <span class="nav-ver">v1.0.0</span>
   </a>
   <div class="nav-links" id="nav-links">
-    <a href="index.html#gui">How it works</a>
-    <a href="index.html#features">Features</a>
-    <a href="index.html#download">Download</a>
-    <a href="index.html#pricing">Pricing</a>
-    <a href="how-to-install.html">Install Guide</a>
+    <a href="index.html#gui" data-i18n="nav_how">How it works</a>
+    <a href="index.html#features" data-i18n="nav_features">Features</a>
+    <a href="index.html#download" data-i18n="nav_download">Download</a>
+    <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
+    <a href="how-to-install.html" data-i18n="nav_install">Install Guide</a>
   </div>
   <div class="nav-right">
-    <a class="btn-ghost" href="mailto:support@tapevault.net">Contact</a>
-    <a class="btn-orange" href="index.html#download">Free Trial</a>
+    <div class="lang-select" id="lang-select">
+      <button class="lang-globe-btn" id="lang-globe-btn" onclick="toggleLangMenu(event)" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
+        <span id="lang-current">EN</span>
+        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="lang-menu" id="lang-menu">
+        <button class="lang-menu-item" data-lang="en" onclick="applyLang('en');toggleLangMenu()">English<span class="lang-check">✓</span></button>
+        <button class="lang-menu-item" data-lang="ko" onclick="applyLang('ko');toggleLangMenu()">한국어<span class="lang-check">✓</span></button>
+        <button class="lang-menu-item" data-lang="ja" onclick="applyLang('ja');toggleLangMenu()">日本語<span class="lang-check">✓</span></button>
+      </div>
+    </div>
+    <a class="btn-ghost" href="mailto:support@tapevault.net" data-i18n="nav_contact">Contact</a>
+    <a class="btn-orange" href="index.html#download" data-i18n="nav_trial">Free Trial</a>
     <button class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -118,117 +144,309 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
 <div class="page-header">
   <div class="page-header-inner">
     <div class="breadcrumb">
-      <a href="index.html">Home</a>
+      <a href="index.html" data-i18n="bc_home">Home</a>
       <span class="breadcrumb-sep">›</span>
-      <span>Terms of Service</span>
+      <span data-i18n="bc_current">Terms of Service</span>
     </div>
-    <div class="page-label">Legal</div>
-    <div class="page-title">Terms of Service</div>
-    <p class="page-sub">The terms that govern your use of tapevault.net and the TapeVault software, and your subscription with Veteran IT Co., Ltd.</p>
+    <div class="page-label" data-i18n="page_label">Legal</div>
+    <div class="page-title" data-i18n="page_title">Terms of Service</div>
+    <p class="page-sub" data-i18n="page_sub">The terms that govern your use of tapevault.net and the TapeVault software, and your subscription with Veteran IT Co., Ltd.</p>
   </div>
 </div>
 
 <div class="doc-content legal">
-  <div class="legal-updated">Effective date: July 18, 2026 · Last updated: July 18, 2026</div>
+  <div class="legal-updated" data-i18n="legal_updated">Effective date: July 18, 2026 · Last updated: July 18, 2026</div>
 
   <div class="legal-toc">
-    <div class="legal-toc-title">Contents</div>
+    <div class="legal-toc-title" data-i18n="toc_title">Contents</div>
     <ol>
-      <li><a href="#acceptance">1. Acceptance of terms</a></li>
-      <li><a href="#service">2. The service</a></li>
-      <li><a href="#trial">3. Free trial</a></li>
-      <li><a href="#plans">4. Subscription plans &amp; license</a></li>
-      <li><a href="#billing">5. Billing, renewal &amp; refunds</a></li>
-      <li><a href="#acceptable-use">6. Acceptable use</a></li>
-      <li><a href="#ip">7. Intellectual property</a></li>
-      <li><a href="#third-party">8. Third-party components</a></li>
-      <li><a href="#warranty">9. Disclaimer of warranties</a></li>
-      <li><a href="#liability">10. Limitation of liability</a></li>
-      <li><a href="#termination">11. Termination</a></li>
-      <li><a href="#law">12. Governing law &amp; disputes</a></li>
-      <li><a href="#changes">13. Changes to these terms</a></li>
-      <li><a href="#contact">14. Contact us</a></li>
+      <li><a href="#acceptance" data-i18n="toc1">1. Acceptance of terms</a></li>
+      <li><a href="#service" data-i18n="toc2">2. The service</a></li>
+      <li><a href="#trial" data-i18n="toc3">3. Free trial</a></li>
+      <li><a href="#plans" data-i18n="toc4">4. Subscription plans &amp; license</a></li>
+      <li><a href="#billing" data-i18n="toc5">5. Billing, renewal &amp; refunds</a></li>
+      <li><a href="#acceptable-use" data-i18n="toc6">6. Acceptable use</a></li>
+      <li><a href="#ip" data-i18n="toc7">7. Intellectual property</a></li>
+      <li><a href="#third-party" data-i18n="toc8">8. Third-party components</a></li>
+      <li><a href="#warranty" data-i18n="toc9">9. Disclaimer of warranties</a></li>
+      <li><a href="#liability" data-i18n="toc10">10. Limitation of liability</a></li>
+      <li><a href="#termination" data-i18n="toc11">11. Termination</a></li>
+      <li><a href="#law" data-i18n="toc12">12. Governing law &amp; disputes</a></li>
+      <li><a href="#changes" data-i18n="toc13">13. Changes to these terms</a></li>
+      <li><a href="#contact" data-i18n="toc14">14. Contact us</a></li>
     </ol>
   </div>
 
-  <h2 id="acceptance">1. Acceptance of terms</h2>
-  <p>These Terms of Service ("Terms") form a binding agreement between you (an individual or the organization you represent, "you") and <strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong> ("Veteran IT", "we", "us"), a company registered in Seocho-gu, Seoul, Republic of Korea. By downloading, installing, activating, or using TapeVault, or by browsing tapevault.net, you agree to these Terms. If you do not agree, do not use the website or software.</p>
+  <h2 id="acceptance" data-i18n="h1">1. Acceptance of terms</h2>
+  <p data-i18n="p1">These Terms of Service ("Terms") form a binding agreement between you (an individual or the organization you represent, "you") and <strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong> ("Veteran IT", "we", "us"), a company registered in Seocho-gu, Seoul, Republic of Korea. By downloading, installing, activating, or using TapeVault, or by browsing tapevault.net, you agree to these Terms. If you do not agree, do not use the website or software.</p>
 
-  <h2 id="service">2. The service</h2>
-  <p>TapeVault is Windows desktop software for managing LTO tape archives (the "Software"). It is licensed, not sold, to you on a subscription basis as described in Section 4. Use of the Software also requires acceptance of the <a href="license.html">TapeVault License</a>, which governs the specific rights and restrictions attached to the Software itself. If there is a conflict between these Terms and the License regarding software usage rights, the License controls.</p>
+  <h2 id="service" data-i18n="h2">2. The service</h2>
+  <p data-i18n="p2">TapeVault is Windows desktop software for managing LTO tape archives (the "Software"). It is licensed, not sold, to you on a subscription basis as described in Section 4. Use of the Software also requires acceptance of the <a href="license.html">TapeVault License</a>, which governs the specific rights and restrictions attached to the Software itself. If there is a conflict between these Terms and the License regarding software usage rights, the License controls.</p>
 
-  <h2 id="trial">3. Free trial</h2>
-  <p>New customers may use TapeVault free for 30 days with full features. No credit card is required to start a trial. At the end of the trial period, the Software will stop functioning until you purchase a paid subscription. We do not automatically charge you at the end of a trial.</p>
+  <h2 id="trial" data-i18n="h3">3. Free trial</h2>
+  <p data-i18n="p3">New customers may use TapeVault free for 30 days with full features. No credit card is required to start a trial. At the end of the trial period, the Software will stop functioning until you purchase a paid subscription. We do not automatically charge you at the end of a trial.</p>
 
-  <h2 id="plans">4. Subscription plans &amp; license</h2>
-  <p>TapeVault is offered under the following plans, described in full on our <a href="index.html#pricing">Pricing page</a>:</p>
+  <h2 id="plans" data-i18n="h4">4. Subscription plans &amp; license</h2>
+  <p data-i18n="p4a">TapeVault is offered under the following plans, described in full on our <a href="index.html#pricing">Pricing page</a>:</p>
   <table class="legal-table">
-    <tr><th>Plan</th><th>Price</th><th>Scope</th></tr>
-    <tr><td>Starter</td><td>$20 / month</td><td>Single LTO drive (LTO-4 to LTO-9), unlimited tapes</td></tr>
-    <tr><td>AutoLoader</td><td>$40 / month</td><td>LTO autoloader / library support, up to 4 drives simultaneously</td></tr>
-    <tr><td>Enterprise</td><td>Custom</td><td>Multiple tape libraries, on-site deployment, dedicated SLA — contact <a href="mailto:sales@tapevault.net">sales@tapevault.net</a></td></tr>
+    <tr><th data-i18n="tb_h1">Plan</th><th data-i18n="tb_h2">Price</th><th data-i18n="tb_h3">Scope</th></tr>
+    <tr><td data-i18n="tb1a">Starter</td><td data-i18n="tb1b">$20 / month</td><td data-i18n="tb1c">Single LTO drive (LTO-4 to LTO-9), unlimited tapes</td></tr>
+    <tr><td data-i18n="tb2a">AutoLoader</td><td data-i18n="tb2b">$40 / month</td><td data-i18n="tb2c">LTO autoloader / library support, up to 4 drives simultaneously</td></tr>
+    <tr><td data-i18n="tb3a">Enterprise</td><td data-i18n="tb3b">Custom</td><td data-i18n="tb3c">Multiple tape libraries, on-site deployment, dedicated SLA — contact <a href="mailto:sales@tapevault.net">sales@tapevault.net</a></td></tr>
   </table>
-  <p>Each active subscription license activates the Software on <strong>one computer at a time</strong>. You may transfer your license to a different machine by deactivating it on the old machine and activating it on the new one; an internet connection is required only during activation and transfer.</p>
+  <p data-i18n="p4b">Each active subscription license activates the Software on <strong>one computer at a time</strong>. You may transfer your license to a different machine by deactivating it on the old machine and activating it on the new one; an internet connection is required only during activation and transfer.</p>
 
-  <h2 id="billing">5. Billing, renewal &amp; refunds</h2>
+  <h2 id="billing" data-i18n="h5">5. Billing, renewal &amp; refunds</h2>
   <ul>
-    <li>All payments are processed by <strong>Paddle.com Market Ltd.</strong> ("Paddle"), our authorized reseller and Merchant of Record. Your purchase is subject to Paddle's own <a href="https://www.paddle.com/legal/checkout-buyer-terms" target="_blank" rel="noopener">Buyer Terms</a> in addition to these Terms.</li>
-    <li>Prices shown are exclusive of applicable VAT/sales tax, which Paddle calculates and adds at checkout where required.</li>
-    <li><strong>There is no automatic renewal.</strong> TapeVault does not store your card details and will not charge you without a new, explicit checkout. You will receive a reminder before your license expires.</li>
-    <li>If you believe you were charged in error, contact <a href="mailto:sales@tapevault.net">sales@tapevault.net</a> within 14 days of the charge. Refunds are issued at our discretion in accordance with applicable consumer protection law, including EU/UK statutory withdrawal rights for digital goods where activation has not yet occurred.</li>
+    <li data-i18n="p5a">All payments are processed by <strong>Paddle.com Market Ltd.</strong> ("Paddle"), our authorized reseller and Merchant of Record. Your purchase is subject to Paddle's own <a href="https://www.paddle.com/legal/checkout-buyer-terms" target="_blank" rel="noopener">Buyer Terms</a> in addition to these Terms.</li>
+    <li data-i18n="p5b">Prices shown are exclusive of applicable VAT/sales tax, which Paddle calculates and adds at checkout where required.</li>
+    <li data-i18n="p5c"><strong>There is no automatic renewal.</strong> TapeVault does not store your card details and will not charge you without a new, explicit checkout. You will receive a reminder before your license expires.</li>
+    <li data-i18n="p5d">If you believe you were charged in error, contact <a href="mailto:sales@tapevault.net">sales@tapevault.net</a> within 14 days of the charge. Refunds are issued at our discretion in accordance with applicable consumer protection law, including EU/UK statutory withdrawal rights for digital goods where activation has not yet occurred.</li>
   </ul>
 
-  <h2 id="acceptable-use">6. Acceptable use</h2>
-  <p>You agree not to:</p>
+  <h2 id="acceptable-use" data-i18n="h6">6. Acceptable use</h2>
+  <p data-i18n="p6a">You agree not to:</p>
   <ul>
-    <li>Circumvent, disable, or tamper with license activation or trial limitations</li>
-    <li>Reverse engineer, decompile, or disassemble the Software except where permitted by mandatory law</li>
-    <li>Redistribute, resell, rent, lease, or sublicense the Software without our written consent</li>
-    <li>Use the Software for any unlawful purpose or in a way that infringes third-party rights</li>
-    <li>Use the website to transmit malware or attempt unauthorized access to our systems</li>
+    <li data-i18n="p6b">Circumvent, disable, or tamper with license activation or trial limitations</li>
+    <li data-i18n="p6c">Reverse engineer, decompile, or disassemble the Software except where permitted by mandatory law</li>
+    <li data-i18n="p6d">Redistribute, resell, rent, lease, or sublicense the Software without our written consent</li>
+    <li data-i18n="p6e">Use the Software for any unlawful purpose or in a way that infringes third-party rights</li>
+    <li data-i18n="p6f">Use the website to transmit malware or attempt unauthorized access to our systems</li>
   </ul>
 
-  <h2 id="ip">7. Intellectual property</h2>
-  <p>The Software, website, logos, and all related content are the intellectual property of Veteran IT Co., Ltd. and its licensors, protected by copyright and other intellectual property laws. These Terms grant you only the limited license described in Section 4 and the <a href="license.html">License</a> — no other rights are transferred.</p>
+  <h2 id="ip" data-i18n="h7">7. Intellectual property</h2>
+  <p data-i18n="p7">The Software, website, logos, and all related content are the intellectual property of Veteran IT Co., Ltd. and its licensors, protected by copyright and other intellectual property laws. These Terms grant you only the limited license described in Section 4 and the <a href="license.html">License</a> — no other rights are transferred.</p>
 
-  <h2 id="third-party">8. Third-party components</h2>
-  <p>TapeVault may interoperate with or rely on third-party and open-source components (for example, FFmpeg for thumbnail generation). Such components remain subject to their own licenses. See the <a href="license.html">License</a> page for details.</p>
+  <h2 id="third-party" data-i18n="h8">8. Third-party components</h2>
+  <p data-i18n="p8">TapeVault may interoperate with or rely on third-party and open-source components (for example, FFmpeg for thumbnail generation). Such components remain subject to their own licenses. See the <a href="license.html">License</a> page for details.</p>
 
-  <h2 id="warranty">9. Disclaimer of warranties</h2>
-  <p>THE SOFTWARE AND WEBSITE ARE PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. We do not warrant that the Software will be error-free, uninterrupted, or that it will prevent all data loss. You are responsible for maintaining independent backups of critical data. Nothing in these Terms excludes warranties that cannot be lawfully excluded under applicable consumer protection law.</p>
+  <h2 id="warranty" data-i18n="h9">9. Disclaimer of warranties</h2>
+  <p data-i18n="p9">THE SOFTWARE AND WEBSITE ARE PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. We do not warrant that the Software will be error-free, uninterrupted, or that it will prevent all data loss. You are responsible for maintaining independent backups of critical data. Nothing in these Terms excludes warranties that cannot be lawfully excluded under applicable consumer protection law.</p>
 
-  <h2 id="liability">10. Limitation of liability</h2>
-  <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, VETERAN IT CO., LTD. SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF DATA, PROFITS, OR REVENUE, ARISING FROM YOUR USE OF THE SOFTWARE OR WEBSITE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. OUR TOTAL LIABILITY FOR ANY CLAIM SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE 12 MONTHS PRECEDING THE CLAIM. Nothing in these Terms limits liability that cannot be limited under applicable law, including liability for death, personal injury, or fraud.</p>
+  <h2 id="liability" data-i18n="h10">10. Limitation of liability</h2>
+  <p data-i18n="p10">TO THE MAXIMUM EXTENT PERMITTED BY LAW, VETERAN IT CO., LTD. SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF DATA, PROFITS, OR REVENUE, ARISING FROM YOUR USE OF THE SOFTWARE OR WEBSITE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. OUR TOTAL LIABILITY FOR ANY CLAIM SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE 12 MONTHS PRECEDING THE CLAIM. Nothing in these Terms limits liability that cannot be limited under applicable law, including liability for death, personal injury, or fraud.</p>
 
-  <h2 id="termination">11. Termination</h2>
-  <p>We may suspend or terminate your access to the Software if you materially breach these Terms or the License, including through license abuse. You may stop using the Software and let your subscription lapse at any time — since there is no automatic renewal, no cancellation action is required. Sections that by their nature should survive termination (including Sections 7, 9, and 10) will survive.</p>
+  <h2 id="termination" data-i18n="h11">11. Termination</h2>
+  <p data-i18n="p11">We may suspend or terminate your access to the Software if you materially breach these Terms or the License, including through license abuse. You may stop using the Software and let your subscription lapse at any time — since there is no automatic renewal, no cancellation action is required. Sections that by their nature should survive termination (including Sections 7, 9, and 10) will survive.</p>
 
-  <h2 id="law">12. Governing law &amp; disputes</h2>
-  <p>These Terms are governed by the laws of the Republic of Korea, without regard to conflict-of-law principles. Any dispute arising from these Terms shall be subject to the exclusive jurisdiction of the courts having jurisdiction over Seocho-gu, Seoul, Republic of Korea, except where mandatory local consumer protection law grants you the right to bring proceedings in your own country of residence (applicable to EU/EEA and UK consumers).</p>
+  <h2 id="law" data-i18n="h12">12. Governing law &amp; disputes</h2>
+  <p data-i18n="p12">These Terms are governed by the laws of the Republic of Korea, without regard to conflict-of-law principles. Any dispute arising from these Terms shall be subject to the exclusive jurisdiction of the courts having jurisdiction over Seocho-gu, Seoul, Republic of Korea, except where mandatory local consumer protection law grants you the right to bring proceedings in your own country of residence (applicable to EU/EEA and UK consumers).</p>
 
-  <h2 id="changes">13. Changes to these terms</h2>
-  <p>We may update these Terms from time to time. Material changes will be reflected by updating the "Last updated" date at the top of this page, and where appropriate we will notify active subscribers by email. Continued use of the Software or website after changes take effect constitutes acceptance of the revised Terms.</p>
+  <h2 id="changes" data-i18n="h13">13. Changes to these terms</h2>
+  <p data-i18n="p13">We may update these Terms from time to time. Material changes will be reflected by updating the "Last updated" date at the top of this page, and where appropriate we will notify active subscribers by email. Continued use of the Software or website after changes take effect constitutes acceptance of the revised Terms.</p>
 
-  <h2 id="contact">14. Contact us</h2>
-  <p><strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>
+  <h2 id="contact" data-i18n="h14">14. Contact us</h2>
+  <p data-i18n="p14"><strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>
   Seocho-gu, Seoul, Republic of Korea<br>
   Support: <a href="mailto:support@tapevault.net">support@tapevault.net</a> · Sales: <a href="mailto:sales@tapevault.net">sales@tapevault.net</a></p>
 </div>
 
 <footer>
   <div class="footer-bottom">
-    <div class="footer-left">TapeVault v1.0.0 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
+    <div class="footer-left" data-i18n="foot_left">TapeVault v1.0.0 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
     <div class="footer-right">
-      <a href="index.html">Home</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms-of-service.html">Terms of Service</a>
-      <a href="license.html">License</a>
-      <a href="mailto:support@tapevault.net">Support</a>
+      <a href="index.html" data-i18n="foot_home">Home</a>
+      <a href="privacy-policy.html" data-i18n="foot_privacy">Privacy Policy</a>
+      <a href="terms-of-service.html" data-i18n="foot_terms">Terms of Service</a>
+      <a href="license.html" data-i18n="foot_license">License</a>
+      <a href="mailto:support@tapevault.net" data-i18n="foot_support">Support</a>
     </div>
   </div>
 </footer>
 
 <script>
+const T = {
+  en: {
+    nav_how:'How it works', nav_features:'Features', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide',
+    nav_contact:'Contact', nav_trial:'Free Trial',
+    bc_home:'Home', bc_current:'Terms of Service',
+    page_label:'Legal', page_title:'Terms of Service',
+    page_sub:'The terms that govern your use of tapevault.net and the TapeVault software, and your subscription with Veteran IT Co., Ltd.',
+    legal_updated:'Effective date: July 18, 2026 · Last updated: July 18, 2026',
+    toc_title:'Contents',
+    toc1:'1. Acceptance of terms', toc2:'2. The service', toc3:'3. Free trial', toc4:'4. Subscription plans &amp; license',
+    toc5:'5. Billing, renewal &amp; refunds', toc6:'6. Acceptable use', toc7:'7. Intellectual property', toc8:'8. Third-party components',
+    toc9:'9. Disclaimer of warranties', toc10:'10. Limitation of liability', toc11:'11. Termination', toc12:'12. Governing law &amp; disputes',
+    toc13:'13. Changes to these terms', toc14:'14. Contact us',
+    h1:'1. Acceptance of terms',
+    p1:'These Terms of Service ("Terms") form a binding agreement between you (an individual or the organization you represent, "you") and <strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong> ("Veteran IT", "we", "us"), a company registered in Seocho-gu, Seoul, Republic of Korea. By downloading, installing, activating, or using TapeVault, or by browsing tapevault.net, you agree to these Terms. If you do not agree, do not use the website or software.',
+    h2:'2. The service',
+    p2:'TapeVault is Windows desktop software for managing LTO tape archives (the "Software"). It is licensed, not sold, to you on a subscription basis as described in Section 4. Use of the Software also requires acceptance of the <a href="license.html">TapeVault License</a>, which governs the specific rights and restrictions attached to the Software itself. If there is a conflict between these Terms and the License regarding software usage rights, the License controls.',
+    h3:'3. Free trial',
+    p3:'New customers may use TapeVault free for 30 days with full features. No credit card is required to start a trial. At the end of the trial period, the Software will stop functioning until you purchase a paid subscription. We do not automatically charge you at the end of a trial.',
+    h4:'4. Subscription plans &amp; license', p4a:'TapeVault is offered under the following plans, described in full on our <a href="index.html#pricing">Pricing page</a>:',
+    tb_h1:'Plan', tb_h2:'Price', tb_h3:'Scope',
+    tb1a:'Starter', tb1b:'$20 / month', tb1c:'Single LTO drive (LTO-4 to LTO-9), unlimited tapes',
+    tb2a:'AutoLoader', tb2b:'$40 / month', tb2c:'LTO autoloader / library support, up to 4 drives simultaneously',
+    tb3a:'Enterprise', tb3b:'Custom', tb3c:'Multiple tape libraries, on-site deployment, dedicated SLA — contact <a href="mailto:sales@tapevault.net">sales@tapevault.net</a>',
+    p4b:'Each active subscription license activates the Software on <strong>one computer at a time</strong>. You may transfer your license to a different machine by deactivating it on the old machine and activating it on the new one; an internet connection is required only during activation and transfer.',
+    h5:'5. Billing, renewal &amp; refunds',
+    p5a:'All payments are processed by <strong>Paddle.com Market Ltd.</strong> ("Paddle"), our authorized reseller and Merchant of Record. Your purchase is subject to Paddle\'s own <a href="https://www.paddle.com/legal/checkout-buyer-terms" target="_blank" rel="noopener">Buyer Terms</a> in addition to these Terms.',
+    p5b:'Prices shown are exclusive of applicable VAT/sales tax, which Paddle calculates and adds at checkout where required.',
+    p5c:'<strong>There is no automatic renewal.</strong> TapeVault does not store your card details and will not charge you without a new, explicit checkout. You will receive a reminder before your license expires.',
+    p5d:'If you believe you were charged in error, contact <a href="mailto:sales@tapevault.net">sales@tapevault.net</a> within 14 days of the charge. Refunds are issued at our discretion in accordance with applicable consumer protection law, including EU/UK statutory withdrawal rights for digital goods where activation has not yet occurred.',
+    h6:'6. Acceptable use', p6a:'You agree not to:',
+    p6b:'Circumvent, disable, or tamper with license activation or trial limitations',
+    p6c:'Reverse engineer, decompile, or disassemble the Software except where permitted by mandatory law',
+    p6d:'Redistribute, resell, rent, lease, or sublicense the Software without our written consent',
+    p6e:'Use the Software for any unlawful purpose or in a way that infringes third-party rights',
+    p6f:'Use the website to transmit malware or attempt unauthorized access to our systems',
+    h7:'7. Intellectual property',
+    p7:'The Software, website, logos, and all related content are the intellectual property of Veteran IT Co., Ltd. and its licensors, protected by copyright and other intellectual property laws. These Terms grant you only the limited license described in Section 4 and the <a href="license.html">License</a> — no other rights are transferred.',
+    h8:'8. Third-party components',
+    p8:'TapeVault may interoperate with or rely on third-party and open-source components (for example, FFmpeg for thumbnail generation). Such components remain subject to their own licenses. See the <a href="license.html">License</a> page for details.',
+    h9:'9. Disclaimer of warranties',
+    p9:'THE SOFTWARE AND WEBSITE ARE PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. We do not warrant that the Software will be error-free, uninterrupted, or that it will prevent all data loss. You are responsible for maintaining independent backups of critical data. Nothing in these Terms excludes warranties that cannot be lawfully excluded under applicable consumer protection law.',
+    h10:'10. Limitation of liability',
+    p10:'TO THE MAXIMUM EXTENT PERMITTED BY LAW, VETERAN IT CO., LTD. SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF DATA, PROFITS, OR REVENUE, ARISING FROM YOUR USE OF THE SOFTWARE OR WEBSITE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. OUR TOTAL LIABILITY FOR ANY CLAIM SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE 12 MONTHS PRECEDING THE CLAIM. Nothing in these Terms limits liability that cannot be limited under applicable law, including liability for death, personal injury, or fraud.',
+    h11:'11. Termination',
+    p11:'We may suspend or terminate your access to the Software if you materially breach these Terms or the License, including through license abuse. You may stop using the Software and let your subscription lapse at any time — since there is no automatic renewal, no cancellation action is required. Sections that by their nature should survive termination (including Sections 7, 9, and 10) will survive.',
+    h12:'12. Governing law &amp; disputes',
+    p12:'These Terms are governed by the laws of the Republic of Korea, without regard to conflict-of-law principles. Any dispute arising from these Terms shall be subject to the exclusive jurisdiction of the courts having jurisdiction over Seocho-gu, Seoul, Republic of Korea, except where mandatory local consumer protection law grants you the right to bring proceedings in your own country of residence (applicable to EU/EEA and UK consumers).',
+    h13:'13. Changes to these terms',
+    p13:'We may update these Terms from time to time. Material changes will be reflected by updating the "Last updated" date at the top of this page, and where appropriate we will notify active subscribers by email. Continued use of the Software or website after changes take effect constitutes acceptance of the revised Terms.',
+    h14:'14. Contact us',
+    p14:'<strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>Seocho-gu, Seoul, Republic of Korea<br>Support: <a href="mailto:support@tapevault.net">support@tapevault.net</a> · Sales: <a href="mailto:sales@tapevault.net">sales@tapevault.net</a>',
+    foot_left:'TapeVault v1.0.0 · Built by Veteran IT · © 2026 Veteran IT Co., Ltd.',
+    foot_home:'Home', foot_privacy:'Privacy Policy', foot_terms:'Terms of Service', foot_license:'License', foot_support:'Support'
+  },
+  ko: {
+    nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
+    nav_contact:'문의하기', nav_trial:'무료 체험',
+    bc_home:'홈', bc_current:'이용약관',
+    page_label:'법적 정보', page_title:'이용약관',
+    page_sub:'tapevault.net과 TapeVault 소프트웨어 이용, 그리고 주식회사 베테랑아이티와의 구독 계약에 적용되는 약관입니다.',
+    legal_updated:'시행일: 2026년 7월 18일 · 최종 수정일: 2026년 7월 18일',
+    toc_title:'목차',
+    toc1:'1. 약관 동의', toc2:'2. 서비스 개요', toc3:'3. 무료 체험', toc4:'4. 구독 요금제 및 라이선스',
+    toc5:'5. 결제, 갱신 및 환불', toc6:'6. 이용 제한 사항', toc7:'7. 지적재산권', toc8:'8. 제3자 구성 요소',
+    toc9:'9. 보증의 부인', toc10:'10. 책임의 제한', toc11:'11. 계약 해지', toc12:'12. 준거법 및 분쟁 해결',
+    toc13:'13. 약관 변경', toc14:'14. 문의처',
+    h1:'1. 약관 동의',
+    p1:'본 이용약관("약관")은 귀하(개인 또는 귀하가 대표하는 조직, 이하 "귀하")와 대한민국 서울특별시 서초구에 등록된 <strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong>("베테랑아이티", "당사") 간의 구속력 있는 계약입니다. TapeVault를 다운로드, 설치, 활성화, 사용하거나 tapevault.net을 이용함으로써 귀하는 본 약관에 동의하는 것입니다. 동의하지 않는 경우 웹사이트나 소프트웨어를 이용하지 마세요.',
+    h2:'2. 서비스 개요',
+    p2:'TapeVault는 LTO 테이프 아카이브 관리를 위한 Windows 데스크톱 소프트웨어("소프트웨어")입니다. 이는 판매가 아닌, 제4항에 따른 구독 방식으로 라이선스가 부여됩니다. 소프트웨어 이용을 위해서는 소프트웨어 자체의 구체적인 권리와 제한 사항을 규율하는 <a href="license.html">TapeVault 라이선스</a>에도 동의해야 합니다. 소프트웨어 이용 권리와 관련하여 본 약관과 라이선스 간에 충돌이 있는 경우 라이선스가 우선합니다.',
+    h3:'3. 무료 체험',
+    p3:'신규 고객은 30일간 전체 기능을 무료로 체험할 수 있습니다. 체험을 시작하는 데 신용카드가 필요하지 않습니다. 체험 기간이 종료되면 유료 구독을 구매하기 전까지 소프트웨어 작동이 중지됩니다. 체험 종료 시 자동으로 요금이 청구되지 않습니다.',
+    h4:'4. 구독 요금제 및 라이선스', p4a:'TapeVault는 아래 요금제로 제공되며, 자세한 내용은 <a href="index.html#pricing">요금제 페이지</a>에서 확인할 수 있습니다:',
+    tb_h1:'요금제', tb_h2:'가격', tb_h3:'범위',
+    tb1a:'스타터', tb1b:'$20 / 월', tb1c:'단일 LTO 드라이브(LTO-4~LTO-9), 무제한 테이프',
+    tb2a:'오토로더', tb2b:'$40 / 월', tb2c:'LTO 오토로더/라이브러리 지원, 최대 4대 드라이브 동시 사용',
+    tb3a:'엔터프라이즈', tb3b:'맞춤 견적', tb3c:'다중 테이프 라이브러리, 현장 배포, 전담 SLA — <a href="mailto:sales@tapevault.net">sales@tapevault.net</a>으로 문의',
+    p4b:'각 활성 구독 라이선스는 한 번에 <strong>한 대의 컴퓨터</strong>에서만 소프트웨어를 활성화합니다. 기존 기기에서 비활성화한 뒤 새 기기에서 활성화하면 라이선스를 이전할 수 있으며, 활성화 및 이전 시에만 인터넷 연결이 필요합니다.',
+    h5:'5. 결제, 갱신 및 환불',
+    p5a:'모든 결제는 당사의 공식 리셀러이자 판매기록업체(Merchant of Record)인 <strong>Paddle.com Market Ltd.</strong>("Paddle")가 처리합니다. 귀하의 구매는 본 약관 외에도 Paddle 자체의 <a href="https://www.paddle.com/legal/checkout-buyer-terms" target="_blank" rel="noopener">구매자 약관</a>의 적용을 받습니다.',
+    p5b:'표시된 가격에는 적용 가능한 부가가치세/판매세가 포함되어 있지 않으며, 필요한 경우 Paddle이 결제 시 이를 계산하여 추가합니다.',
+    p5c:'<strong>자동 갱신은 없습니다.</strong> TapeVault는 귀하의 카드 정보를 저장하지 않으며, 새로운 명시적 결제 절차 없이는 요금을 청구하지 않습니다. 라이선스 만료 전에 안내 메일을 받게 됩니다.',
+    p5d:'요금이 잘못 청구되었다고 판단되는 경우, 청구일로부터 14일 이내에 <a href="mailto:sales@tapevault.net">sales@tapevault.net</a>으로 문의해 주세요. 환불은 활성화가 이루어지지 않은 디지털 상품에 대한 EU/영국의 법정 철회권을 포함하여 관련 소비자 보호법에 따라 당사 재량으로 처리됩니다.',
+    h6:'6. 이용 제한 사항', p6a:'귀하는 다음 행위를 하지 않을 것에 동의합니다:',
+    p6b:'라이선스 활성화 또는 체험판 제한을 우회, 비활성화, 조작하는 행위',
+    p6c:'강행법규가 허용하는 경우를 제외하고 소프트웨어를 역공학, 디컴파일, 디스어셈블하는 행위',
+    p6d:'당사의 서면 동의 없이 소프트웨어를 재배포, 재판매, 대여, 임대, 재라이선스하는 행위',
+    p6e:'불법적인 목적 또는 제3자의 권리를 침해하는 방식으로 소프트웨어를 이용하는 행위',
+    p6f:'웹사이트를 통해 악성코드를 전송하거나 당사 시스템에 무단으로 접근을 시도하는 행위',
+    h7:'7. 지적재산권',
+    p7:'소프트웨어, 웹사이트, 로고 및 관련 콘텐츠 일체는 주식회사 베테랑아이티 및 라이선스 제공자의 지적재산으로, 저작권 및 기타 지적재산권법에 의해 보호됩니다. 본 약관은 제4항 및 <a href="license.html">라이선스</a>에서 규정하는 제한된 라이선스만을 부여하며, 그 외의 권리는 이전되지 않습니다.',
+    h8:'8. 제3자 구성 요소',
+    p8:'TapeVault는 제3자 및 오픈소스 구성 요소(예: 썸네일 생성을 위한 FFmpeg)와 상호 운용되거나 이에 의존할 수 있습니다. 이러한 구성 요소는 각각의 자체 라이선스의 적용을 받습니다. 자세한 내용은 <a href="license.html">라이선스</a> 페이지를 참고하세요.',
+    h9:'9. 보증의 부인',
+    p9:'소프트웨어 및 웹사이트는 어떠한 종류의 명시적 또는 묵시적 보증도 없이 "있는 그대로" 및 "이용 가능한 상태로" 제공되며, 상품성, 특정 목적에의 적합성, 비침해에 대한 보증을 포함하되 이에 국한되지 않습니다. 당사는 소프트웨어가 오류 없이 중단 없이 작동하거나 모든 데이터 손실을 방지한다고 보증하지 않습니다. 중요한 데이터는 별도로 백업할 책임이 귀하에게 있습니다. 관련 소비자 보호법상 법적으로 배제할 수 없는 보증은 본 약관에 의해 배제되지 않습니다.',
+    h10:'10. 책임의 제한',
+    p10:'관련 법률이 허용하는 최대 범위 내에서, 주식회사 베테랑아이티는 소프트웨어 또는 웹사이트 이용으로 인해 발생하는 간접적, 부수적, 특별, 결과적, 징벌적 손해나 데이터·이익·수익의 손실에 대해 그러한 손해 발생 가능성을 사전에 고지받았더라도 책임을 지지 않습니다. 모든 청구에 대한 당사의 총 책임은 청구 발생 이전 12개월간 귀하가 당사에 지불한 금액을 초과하지 않습니다. 사망, 인신 상해, 사기로 인한 책임 등 관련 법률상 제한할 수 없는 책임은 본 약관에 의해 제한되지 않습니다.',
+    h11:'11. 계약 해지',
+    p11:'귀하가 본 약관 또는 라이선스를 중대하게 위반하는 경우(라이선스 오남용 포함) 당사는 소프트웨어에 대한 접근을 정지하거나 종료할 수 있습니다. 귀하는 언제든지 소프트웨어 이용을 중단하고 구독을 만료시킬 수 있으며, 자동 갱신이 없으므로 별도의 해지 절차가 필요하지 않습니다. 그 성질상 해지 후에도 존속해야 하는 조항(제7항, 제9항, 제10항 포함)은 계속 유효합니다.',
+    h12:'12. 준거법 및 분쟁 해결',
+    p12:'본 약관은 국제사법 원칙에 관계없이 대한민국 법률의 적용을 받습니다. 본 약관에서 발생하는 모든 분쟁은 대한민국 서울특별시 서초구를 관할하는 법원의 전속 관할에 따르며, 다만 강행 규정에 따라 소비자가 자신의 거주국에서 소송을 제기할 권리가 인정되는 경우(EU/EEA 및 영국 소비자에게 적용)는 예외로 합니다.',
+    h13:'13. 약관 변경',
+    p13:'당사는 본 약관을 수시로 업데이트할 수 있습니다. 중요한 변경 사항은 이 페이지 상단의 "최종 수정일"을 갱신하여 반영하며, 필요한 경우 활성 구독자에게 이메일로 안내합니다. 변경 사항 적용 이후에도 소프트웨어나 웹사이트를 계속 이용하시면 개정된 약관에 동의한 것으로 간주됩니다.',
+    h14:'14. 문의처',
+    p14:'<strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>대한민국 서울특별시 서초구<br>지원: <a href="mailto:support@tapevault.net">support@tapevault.net</a> · 영업: <a href="mailto:sales@tapevault.net">sales@tapevault.net</a>',
+    foot_left:'TapeVault v1.0.0 · Veteran IT 개발 · © 2026 주식회사 베테랑아이티',
+    foot_home:'홈', foot_privacy:'개인정보 처리방침', foot_terms:'이용약관', foot_license:'라이선스', foot_support:'지원'
+  },
+  ja: {
+    nav_how:'仕組み', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金プラン', nav_install:'インストールガイド',
+    nav_contact:'お問い合わせ', nav_trial:'無料体験',
+    bc_home:'ホーム', bc_current:'利用規約',
+    page_label:'法的情報', page_title:'利用規約',
+    page_sub:'tapevault.netおよびTapeVaultソフトウェアのご利用、また株式会社ベテランITとの契約に適用される規約です。',
+    legal_updated:'発効日：2026年7月18日 · 最終更新日：2026年7月18日',
+    toc_title:'目次',
+    toc1:'1. 規約への同意', toc2:'2. サービス概要', toc3:'3. 無料体験', toc4:'4. 料金プランとライセンス',
+    toc5:'5. 請求、更新、返金', toc6:'6. 禁止事項', toc7:'7. 知的財産権', toc8:'8. サードパーティコンポーネント',
+    toc9:'9. 保証の否認', toc10:'10. 責任の制限', toc11:'11. 契約解除', toc12:'12. 準拠法および紛争解決',
+    toc13:'13. 本規約の変更', toc14:'14. お問い合わせ',
+    h1:'1. 規約への同意',
+    p1:'本利用規約（「本規約」）は、お客様（個人またはお客様が代表する組織、以下「お客様」）と、大韓民国ソウル特別市瑞草区に登録された<strong>株式会社ベテランIT（Veteran IT Co., Ltd.）</strong>（「ベテランIT」、「当社」）との間の拘束力のある契約です。TapeVaultをダウンロード、インストール、認証、使用すること、またはtapevault.netを閲覧することにより、お客様は本規約に同意したものとみなされます。同意されない場合は、本ウェブサイトまたはソフトウェアを利用しないでください。',
+    h2:'2. サービス概要',
+    p2:'TapeVaultはLTOテープアーカイブを管理するためのWindowsデスクトップソフトウェア（「本ソフトウェア」）です。本ソフトウェアは販売ではなく、第4項に定めるサブスクリプション形式でライセンス供与されます。本ソフトウェアの利用には、ソフトウェア自体に付随する具体的な権利と制限を定める<a href="license.html">TapeVaultライセンス</a>への同意も必要です。ソフトウェアの利用権に関して本規約とライセンスの間に矛盾がある場合、ライセンスが優先します。',
+    h3:'3. 無料体験',
+    p3:'新規のお客様は、全機能を30日間無料でお試しいただけます。体験開始にクレジットカードは不要です。体験期間終了後、有料サブスクリプションをご購入いただくまでソフトウェアは動作を停止します。体験終了時に自動的に課金されることはありません。',
+    h4:'4. 料金プランとライセンス', p4a:'TapeVaultは以下のプランで提供されており、詳細は<a href="index.html#pricing">料金プランページ</a>をご覧ください：',
+    tb_h1:'プラン', tb_h2:'価格', tb_h3:'範囲',
+    tb1a:'スターター', tb1b:'$20 / 月', tb1c:'LTOドライブ1台（LTO-4〜LTO-9）、テープ数無制限',
+    tb2a:'オートローダー', tb2b:'$40 / 月', tb2c:'LTOオートローダー/ライブラリ対応、最大4ドライブ同時利用',
+    tb3a:'エンタープライズ', tb3b:'個別見積り', tb3c:'複数テープライブラリ、オンサイト導入、専用SLA — <a href="mailto:sales@tapevault.net">sales@tapevault.net</a>までお問い合わせください',
+    p4b:'有効なサブスクリプションライセンスは、一度に<strong>1台のコンピューター</strong>でのみ本ソフトウェアを有効化します。旧端末で無効化し、新端末で有効化することでライセンスを移行できます。インターネット接続は認証および移行時にのみ必要です。',
+    h5:'5. 請求、更新、返金',
+    p5a:'すべてのお支払いは、当社の正規リセラーであり販売記録事業者（Merchant of Record）である<strong>Paddle.com Market Ltd.</strong>（「Paddle」）が処理します。お客様のご購入には、本規約に加えてPaddle独自の<a href="https://www.paddle.com/legal/checkout-buyer-terms" target="_blank" rel="noopener">購入者規約</a>が適用されます。',
+    p5b:'表示価格には適用対象のVAT/売上税が含まれておらず、必要な場合はPaddleがチェックアウト時に計算のうえ加算します。',
+    p5c:'<strong>自動更新はありません。</strong>TapeVaultはお客様のカード情報を保存せず、新たな明示的なチェックアウトなしに課金されることはありません。ライセンス期限が切れる前にリマインダーをお送りします。',
+    p5d:'誤って課金されたと思われる場合は、課金から14日以内に<a href="mailto:sales@tapevault.net">sales@tapevault.net</a>までご連絡ください。返金は、認証が行われていないデジタル商品に対するEU/英国の法定解除権を含む関連消費者保護法に従い、当社の裁量により行われます。',
+    h6:'6. 禁止事項', p6a:'お客様は以下の行為を行わないことに同意するものとします：',
+    p6b:'ライセンス認証や体験版の制限を回避、無効化、改ざんする行為',
+    p6c:'強行法規により許容される場合を除き、本ソフトウェアをリバースエンジニアリング、逆コンパイル、逆アセンブルする行為',
+    p6d:'当社の書面による同意なく本ソフトウェアを再配布、再販売、貸与、リース、再許諾する行為',
+    p6e:'違法な目的で、または第三者の権利を侵害する方法で本ソフトウェアを利用する行為',
+    p6f:'本ウェブサイトを通じてマルウェアを送信し、または当社システムへの不正アクセスを試みる行為',
+    h7:'7. 知的財産権',
+    p7:'本ソフトウェア、ウェブサイト、ロゴおよび関連するすべてのコンテンツは、株式会社ベテランITおよびそのライセンサーの知的財産であり、著作権法その他の知的財産法により保護されています。本規約は、第4項および<a href="license.html">ライセンス</a>に定める限定的なライセンスのみをお客様に付与するものであり、それ以外の権利は移転されません。',
+    h8:'8. サードパーティコンポーネント',
+    p8:'TapeVaultは、サードパーティ製またはオープンソースのコンポーネント（サムネイル生成用のFFmpegなど）と連携し、またはこれに依存する場合があります。これらのコンポーネントはそれぞれ独自のライセンスに従います。詳細は<a href="license.html">ライセンス</a>ページをご覧ください。',
+    h9:'9. 保証の否認',
+    p9:'本ソフトウェアおよびウェブサイトは、商品性、特定目的への適合性、非侵害性を含む（ただしこれらに限定されない）明示または黙示のいかなる保証もなく、「現状有姿」および「利用可能な状態で」提供されます。当社は、本ソフトウェアがエラーのない状態で中断なく動作すること、またはすべてのデータ損失を防止することを保証しません。重要なデータの独自バックアップの維持はお客様の責任です。適用される消費者保護法上、法的に排除できない保証は本規約によって排除されません。',
+    h10:'10. 責任の制限',
+    p10:'法律で許容される最大限の範囲において、株式会社ベテランITは、本ソフトウェアまたはウェブサイトの利用に起因する間接的、付随的、特別、結果的、懲罰的損害、またはデータ・利益・収益の損失について、そのような損害の可能性を事前に通知されていた場合であっても責任を負いません。いかなる請求についても、当社の総責任額は、請求発生前12か月間にお客様が当社に支払った金額を上限とします。死亡、人身傷害、または詐欺による責任など、適用法上制限できない責任は本規約によって制限されません。',
+    h11:'11. 契約解除',
+    p11:'お客様が本規約またはライセンス（ライセンスの不正利用を含む）に重大に違反した場合、当社は本ソフトウェアへのアクセスを停止または終了することがあります。お客様はいつでも本ソフトウェアの利用を停止し、サブスクリプションを失効させることができます。自動更新がないため、解約手続きは不要です。その性質上解除後も存続すべき条項（第7項、第9項、第10項を含む）は引き続き効力を有します。',
+    h12:'12. 準拠法および紛争解決',
+    p12:'本規約は、抵触法の原則にかかわらず大韓民国の法律に準拠します。本規約に起因する紛争は、大韓民国ソウル特別市瑞草区を管轄する裁判所の専属管轄に服するものとします。ただし、強行法規により消費者が自身の居住国で訴訟を提起する権利が認められる場合（EU/EEAおよび英国の消費者に適用）はこの限りではありません。',
+    h13:'13. 本規約の変更',
+    p13:'当社は本規約を随時更新することがあります。重要な変更がある場合は、本ページ上部の「最終更新日」を更新して反映し、必要に応じて有効なサブスクリプション契約者にメールで通知します。変更の発効後も本ソフトウェアまたはウェブサイトの利用を継続された場合、改定後の規約に同意したものとみなされます。',
+    h14:'14. お問い合わせ',
+    p14:'<strong>株式会社ベテランIT（Veteran IT Co., Ltd.）</strong><br>大韓民国ソウル特別市瑞草区<br>サポート：<a href="mailto:support@tapevault.net">support@tapevault.net</a> · 営業：<a href="mailto:sales@tapevault.net">sales@tapevault.net</a>',
+    foot_left:'TapeVault v1.0.0 · Veteran IT製 · © 2026 株式会社ベテランIT',
+    foot_home:'ホーム', foot_privacy:'プライバシーポリシー', foot_terms:'利用規約', foot_license:'ライセンス', foot_support:'サポート'
+  }
+};
+
+function applyLang(lang) {
+  if (!T[lang]) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T[lang][el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.documentElement.lang = lang === 'ko' ? 'ko' : lang === 'ja' ? 'ja' : 'en';
+  document.getElementById('lang-current').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-menu-item').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  localStorage.setItem('tv-lang', lang);
+}
+
+function toggleLangMenu(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('lang-menu').classList.toggle('open');
+  document.getElementById('lang-globe-btn').classList.toggle('open');
+}
+document.addEventListener('click', (e) => {
+  const wrap = document.getElementById('lang-select');
+  if (wrap && !wrap.contains(e.target)) {
+    document.getElementById('lang-menu').classList.remove('open');
+    document.getElementById('lang-globe-btn').classList.remove('open');
+  }
+});
+
+applyLang(localStorage.getItem('tv-lang') || 'en');
+
 function toggleMobileNav() {
   const nav = document.getElementById('nav-links');
   const burger = document.getElementById('nav-burger');
