@@ -299,7 +299,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
   <h1 data-i18n="hero_h1">Find any file on LTO tape<br><b>in under 30 seconds.</b></h1>
   <p class="hero-sub" data-i18n="hero_sub">TapeVault is the only LTO tape archive manager built for Windows. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.</p>
   <div class="hero-platform">
-    <span class="hi" data-i18n="hero_p1">Windows Only</span>
+    <span class="hi" data-i18n="hero_p1">Windows & macOS</span>
     <span data-i18n="hero_p2">LTO-4 to LTO-9</span>
     <span data-i18n="hero_p3">Broadcast · Medical · Defense · Education</span>
   </div>
@@ -524,6 +524,11 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       <span style="font-size:11px;color:#8b96b8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#f5a623">●</span> <span data-i18n="dl_s3">~90 MB installer</span></span>
     </div>
     <p style="font-size:11px;color:#7c88a4" data-i18n="dl_ver">v1.0.0 · June 2026 · Requires Windows 10 64-bit or later</p>
+
+    <div style="font-size:11px;color:#7c88a4;font-family:monospace;margin:8px 0" data-i18n="dl_or">or</div>
+
+    <button class="btn-hero-ghost" style="font-size:14px;padding:12px 28px" data-i18n="dl_mac_btn" onclick="showDownloadWarning('mac')">🍎 Download for macOS (Apple Silicon)</button>
+    <p style="font-size:11px;color:#7c88a4" data-i18n="dl_mac_note">v0.1.0 Beta · Apple Silicon (M1/M2/M3) only · ~158 MB</p>
   </div>
 </section>
 
@@ -660,21 +665,43 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
   <div class="modal-box">
     <button class="modal-close" onclick="closeDownloadWarning()" aria-label="Close">×</button>
     <div class="modal-icon">🛡️</div>
-    <h3 data-i18n="dlw_title">Beta Notice: You may see a security warning</h3>
-    <p data-i18n="dlw_body">TapeVault v1.0.0 is in open beta. Because the installer is new and not yet code-signed, Windows SmartScreen and some browsers may flag it during download or install. This is expected for new software and does not mean the file is unsafe.</p>
-    <div class="modal-steps">
-      <div class="modal-step">
-        <div class="modal-step-num">1</div>
-        <div>
-          <div class="modal-step-title" data-i18n="dlw_step1_t">Browser download warning</div>
-          <div class="modal-step-desc" data-i18n="dlw_step1_d">If your browser flags the file, click the "···" next to the download and choose "Keep" (Chrome/Edge).</div>
+    <div id="dlw-win">
+      <h3 data-i18n="dlw_title">Beta Notice: You may see a security warning</h3>
+      <p data-i18n="dlw_body">TapeVault v1.0.0 is in open beta. Because the installer is new and not yet code-signed, Windows SmartScreen and some browsers may flag it during download or install. This is expected for new software and does not mean the file is unsafe.</p>
+      <div class="modal-steps">
+        <div class="modal-step">
+          <div class="modal-step-num">1</div>
+          <div>
+            <div class="modal-step-title" data-i18n="dlw_step1_t">Browser download warning</div>
+            <div class="modal-step-desc" data-i18n="dlw_step1_d">If your browser flags the file, click the "···" next to the download and choose "Keep" (Chrome/Edge).</div>
+          </div>
+        </div>
+        <div class="modal-step">
+          <div class="modal-step-num">2</div>
+          <div>
+            <div class="modal-step-title" data-i18n="dlw_step2_t">"Windows protected your PC" screen</div>
+            <div class="modal-step-desc" data-i18n="dlw_step2_d">Click "More info", then click "Run anyway" to start the installer.</div>
+          </div>
         </div>
       </div>
-      <div class="modal-step">
-        <div class="modal-step-num">2</div>
-        <div>
-          <div class="modal-step-title" data-i18n="dlw_step2_t">"Windows protected your PC" screen</div>
-          <div class="modal-step-desc" data-i18n="dlw_step2_d">Click "More info", then click "Run anyway" to start the installer.</div>
+    </div>
+    <div id="dlw-mac" hidden>
+      <h3 data-i18n="dlw_title_mac">macOS Notice: "Unidentified Developer" warning</h3>
+      <p data-i18n="dlw_body_mac">This is an early beta build for Apple Silicon Macs and is not yet notarized by Apple, so macOS Gatekeeper will block it on first launch. This is expected — the app is safe to run.</p>
+      <div class="modal-steps">
+        <div class="modal-step">
+          <div class="modal-step-num">1</div>
+          <div>
+            <div class="modal-step-title" data-i18n="dlw_mac_step1_t">Gatekeeper block</div>
+            <div class="modal-step-desc" data-i18n="dlw_mac_step1_d">macOS will say the app "cannot be opened because it is from an unidentified developer."</div>
+          </div>
+        </div>
+        <div class="modal-step">
+          <div class="modal-step-num">2</div>
+          <div>
+            <div class="modal-step-title" data-i18n="dlw_mac_step2_t">Allow it anyway</div>
+            <div class="modal-step-desc" data-i18n="dlw_mac_step2_d">Right-click (or Control-click) the TapeVault app → Open → click Open again in the dialog. You only need to do this once.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -684,9 +711,16 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 
 <script>
 const DOWNLOAD_URL = 'https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-Setup-1.0.0.exe';
-function showDownloadWarning() { document.getElementById('dl-warning-modal').classList.add('open'); }
+const DOWNLOAD_URL_MAC = 'https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-0.1.0-arm64.dmg';
+let dlwPlatform = 'win';
+function showDownloadWarning(platform) {
+  dlwPlatform = platform === 'mac' ? 'mac' : 'win';
+  document.getElementById('dlw-win').hidden = dlwPlatform !== 'win';
+  document.getElementById('dlw-mac').hidden = dlwPlatform !== 'mac';
+  document.getElementById('dl-warning-modal').classList.add('open');
+}
 function closeDownloadWarning() { document.getElementById('dl-warning-modal').classList.remove('open'); }
-function proceedDownload() { window.location.href = DOWNLOAD_URL; closeDownloadWarning(); }
+function proceedDownload() { window.location.href = dlwPlatform === 'mac' ? DOWNLOAD_URL_MAC : DOWNLOAD_URL; closeDownloadWarning(); }
 
 const T = {
   en: {
@@ -694,7 +728,7 @@ const T = {
     nav_signin:'Sign in', nav_trial:'Free Trial',
     hero_h1:'Find any file on LTO tape<br><b>in under 30 seconds.</b>',
     hero_sub:'TapeVault is the only LTO tape archive manager built for Windows. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.',
-    hero_p1:'Windows Only', hero_p2:'LTO-4 to LTO-9', hero_p3:'Broadcast · Medical · Defense · Education',
+    hero_p1:'Windows & macOS', hero_p2:'LTO-4 to LTO-9', hero_p3:'Broadcast · Medical · Defense · Education',
     hero_btn1:'⬇ Download Free Trial', hero_btn2:'▶ See how it works',
     stat1:'File search across all tapes', stat2:'Auto thumbnail generation', stat3:'Auto drive detection', stat4:'Offline after activation',
     pain_label:'The Problem', pain_title:'Sound familiar?', pain_sub:'Every LTO tape user faces the same frustrations. TapeVault solves all three.',
@@ -768,14 +802,19 @@ const T = {
     dlw_body:'TapeVault v1.0.0 is in open beta. Because the installer is new and not yet code-signed, Windows SmartScreen and some browsers may flag it during download or install. This is expected for new software and does not mean the file is unsafe.',
     dlw_step1_t:'Browser download warning', dlw_step1_d:'If your browser flags the file, click the "···" next to the download and choose "Keep" (Chrome/Edge).',
     dlw_step2_t:'"Windows protected your PC" screen', dlw_step2_d:'Click "More info", then click "Run anyway" to start the installer.',
-    dlw_continue:'⬇ Continue Download'
+    dlw_continue:'⬇ Continue Download',
+    dlw_title_mac:'macOS Notice: "Unidentified Developer" warning',
+    dlw_body_mac:'This is an early beta build for Apple Silicon Macs and is not yet notarized by Apple, so macOS Gatekeeper will block it on first launch. This is expected — the app is safe to run.',
+    dlw_mac_step1_t:'Gatekeeper block', dlw_mac_step1_d:'macOS will say the app "cannot be opened because it is from an unidentified developer."',
+    dlw_mac_step2_t:'Allow it anyway', dlw_mac_step2_d:'Right-click (or Control-click) the TapeVault app → Open → click Open again in the dialog. You only need to do this once.',
+    dl_or:'or', dl_mac_btn:'🍎 Download for macOS (Apple Silicon)', dl_mac_note:'v0.1.0 Beta · Apple Silicon (M1/M2/M3) only · ~158 MB'
   },
   ko: {
     nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
     nav_signin:'로그인', nav_trial:'무료 체험',
     hero_h1:'LTO 테이프의 모든 파일을<br><b>30초 안에 찾아드립니다.</b>',
     hero_sub:'TapeVault는 Windows 전용 LTO 테이프 아카이브 관리 소프트웨어입니다. 테이프를 일일이 확인하지 않고도 썸네일 탐색, 메타데이터 검색, 파일 꺼내기를 바로 할 수 있습니다.',
-    hero_p1:'Windows 전용', hero_p2:'LTO-4 ~ LTO-9', hero_p3:'방송 · 의료 · 국방 · 교육',
+    hero_p1:'Windows & macOS', hero_p2:'LTO-4 ~ LTO-9', hero_p3:'방송 · 의료 · 국방 · 교육',
     hero_btn1:'⬇ 무료 체험 다운로드', hero_btn2:'▶ 작동 방식 보기',
     stat1:'전체 테이프 검색', stat2:'썸네일 자동 생성', stat3:'드라이브 자동 인식', stat4:'활성화 후 완전 오프라인',
     pain_label:'문제점', pain_title:'익숙한가요?', pain_sub:'LTO 테이프 사용자라면 누구나 겪는 불편함입니다. TapeVault가 세 가지를 모두 해결합니다.',
@@ -849,14 +888,19 @@ const T = {
     dlw_body:'TapeVault v1.0.0은 현재 오픈 베타 기간입니다. 설치 파일이 아직 코드 서명(디지털 인증)을 받지 않아 다운로드나 설치 중 Windows SmartScreen이나 일부 브라우저에서 경고가 뜰 수 있습니다. 신규 소프트웨어에서 흔히 발생하는 정상적인 현상이며, 파일이 위험하다는 뜻이 아닙니다.',
     dlw_step1_t:'브라우저 다운로드 경고', dlw_step1_d:'브라우저가 파일을 경고하면, 다운로드 항목 옆의 "···"를 클릭하고 "유지"(Chrome/Edge)를 선택하세요.',
     dlw_step2_t:'"Windows에서 PC를 보호했습니다" 화면', dlw_step2_d:'"추가 정보"를 클릭한 다음 "실행"을 눌러 설치를 계속하세요.',
-    dlw_continue:'⬇ 다운로드 계속하기'
+    dlw_continue:'⬇ 다운로드 계속하기',
+    dlw_title_mac:'🍎 macOS 안내: "확인되지 않은 개발자" 경고',
+    dlw_body_mac:'Apple Silicon Mac용 초기 베타 빌드로, 아직 Apple 공증(notarization)을 받지 않아 첫 실행 시 macOS Gatekeeper가 차단합니다. 정상적인 현상이며 앱은 안전합니다.',
+    dlw_mac_step1_t:'Gatekeeper 차단', dlw_mac_step1_d:'"확인되지 않은 개발자"이므로 열 수 없다는 메시지가 뜹니다.',
+    dlw_mac_step2_t:'허용하고 실행하기', dlw_mac_step2_d:'TapeVault 앱을 우클릭(또는 Control+클릭) → 열기 → 다시 뜨는 대화상자에서 열기 클릭. 최초 1회만 하면 됩니다.',
+    dl_or:'또는', dl_mac_btn:'🍎 macOS용 다운로드 (Apple Silicon)', dl_mac_note:'v0.1.0 베타 · Apple Silicon(M1/M2/M3) 전용 · ~158 MB'
   },
   ja: {
     nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール',
     nav_signin:'サインイン', nav_trial:'無料トライアル',
     hero_h1:'LTOテープのすべてのファイルを<br><b>30秒以内に見つける。</b>',
     hero_sub:'TapeVaultはWindows向けの唯一のLTOテープアーカイブ管理ソフトです。テープを1本ずつ確認することなく、サムネイル閲覧・メタデータ検索・ファイル取り出しができます。',
-    hero_p1:'Windowsのみ', hero_p2:'LTO-4〜LTO-9', hero_p3:'放送・医療・防衛・教育',
+    hero_p1:'Windows & macOS', hero_p2:'LTO-4〜LTO-9', hero_p3:'放送・医療・防衛・教育',
     hero_btn1:'⬇ 無料トライアルをDL', hero_btn2:'▶ 使い方を見る',
     stat1:'全テープ横断検索', stat2:'サムネイル自動生成', stat3:'ドライブ自動認識', stat4:'アクティベーション後オフライン',
     pain_label:'課題', pain_title:'心当たりはありませんか？', pain_sub:'LTOテープを使う誰もが感じる悩みです。TapeVaultが3つすべてを解決します。',
@@ -930,7 +974,12 @@ const T = {
     dlw_body:'TapeVault v1.0.0はオープンベータ版です。インストーラーがまだコード署名されていないため、ダウンロードやインストール時にWindows SmartScreenや一部のブラウザで警告が表示されることがあります。これは新しいソフトウェアでよくある現象で、ファイルが危険という意味ではありません。',
     dlw_step1_t:'ブラウザのダウンロード警告', dlw_step1_d:'ブラウザが警告を表示した場合、ダウンロード項目の「···」をクリックして「保持」(Chrome/Edge)を選択してください。',
     dlw_step2_t:'「WindowsによってPCが保護されました」画面', dlw_step2_d:'「詳細情報」をクリックしてから「実行」をクリックしてインストールを続けてください。',
-    dlw_continue:'⬇ ダウンロードを続ける'
+    dlw_continue:'⬇ ダウンロードを続ける',
+    dlw_title_mac:'🍎 macOSのお知らせ：「開発元が未確認」の警告',
+    dlw_body_mac:'Apple Silicon Mac向けの初期ベータ版で、まだApple公証(notarization)を受けていないため、初回起動時にmacOS Gatekeeperがブロックします。これは正常な動作で、アプリ自体は安全です。',
+    dlw_mac_step1_t:'Gatekeeperのブロック', dlw_mac_step1_d:'「開発元が未確認のため開けません」と表示されます。',
+    dlw_mac_step2_t:'許可して起動', dlw_mac_step2_d:'TapeVaultアプリを右クリック(またはControlキーを押しながらクリック)→「開く」→表示されるダイアログで再度「開く」をクリック。これは初回のみ必要です。',
+    dl_or:'または', dl_mac_btn:'🍎 macOS版をダウンロード (Apple Silicon)', dl_mac_note:'v0.1.0 ベータ · Apple Silicon (M1/M2/M3) 専用 · 約158 MB'
   }
 };
 
