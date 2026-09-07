@@ -17,11 +17,22 @@
 .nav-links a:hover{color:#c8cfe0}
 .nav-links a.active{color:#f5a623}
 .nav-right{display:flex;gap:7px;align-items:center}
-.lang-grp{display:flex;gap:4px;margin-right:6px}
-.lang-btn{font-size:10px;color:#99a3c4;background:#111520;border:0.5px solid #1e2330;padding:3px 8px;border-radius:4px;cursor:pointer;font-family:monospace}
-.lang-btn.on{color:#5b9cf6;border-color:#1e3a5f}
 .btn-ghost{font-size:13px;color:#a8b2d0;background:#111827;border:0.5px solid #2a3349;padding:6px 16px;border-radius:6px;cursor:pointer}
 .btn-orange{font-size:13px;color:#0b0b0d;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer}
+
+.lang-select{position:relative;margin-right:6px}
+.lang-globe-btn{display:flex;align-items:center;gap:6px;background:#111520;border:0.5px solid #1e2330;color:#99a3c4;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-family:monospace;transition:all .15s}
+.lang-globe-btn:hover{border-color:#3a4a6a;color:#c8cfe0}
+.lang-globe-btn svg{width:15px;height:15px;flex-shrink:0;stroke:currentColor}
+.lang-globe-btn .lang-chevron{width:8px;height:8px;flex-shrink:0;stroke:currentColor;transition:transform .15s}
+.lang-globe-btn.open .lang-chevron{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:#0d1117;border:0.5px solid #2a2a35;border-radius:10px;padding:6px;min-width:150px;box-shadow:0 16px 40px rgba(0,0,0,.55);display:none;flex-direction:column;gap:2px;z-index:200}
+.lang-menu.open{display:flex}
+.lang-menu-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:none;border:none;color:#99a3c4;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:12px;text-align:left;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.lang-menu-item:hover{background:#1a1f2e;color:#c8cfe0}
+.lang-menu-item.active{color:#5b9cf6}
+.lang-menu-item .lang-check{color:#5b9cf6;font-size:12px;opacity:0}
+.lang-menu-item.active .lang-check{opacity:1}
 
 /* PAGE HEADER */
 .page-header{padding:64px 48px 48px;border-bottom:0.5px solid #1e2230;background:linear-gradient(180deg,#0d1117 0%,#0b0b0d 100%)}
@@ -139,7 +150,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
   .nav-links{display:none;order:3;width:100%;flex-direction:column;gap:0;background:#0b0b0d;border-top:0.5px solid #1e2230;margin-top:12px;padding-top:8px}
   .nav-links.open{display:flex}
   .nav-links a{padding:12px 4px;border-bottom:0.5px solid #16192480}
-  .lang-grp,.btn-ghost{display:none}
+  .btn-ghost{display:none}
   .nav-burger{display:flex}
   .nav-ver{display:none}
 
@@ -174,20 +185,27 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <span class="nav-ver">v1.0.0</span>
   </a>
   <div class="nav-links" id="nav-links">
-    <a href="index.html#features">Features</a>
-    <a href="index.html#how">How it works</a>
-    <a href="index.html#download">Download</a>
-    <a href="index.html#pricing">Pricing</a>
-    <a href="how-to-install.html" class="active">Install Guide</a>
+    <a href="index.html#features" data-i18n="nav_features">Features</a>
+    <a href="index.html#gui" data-i18n="nav_how">How it works</a>
+    <a href="index.html#download" data-i18n="nav_download">Download</a>
+    <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
+    <a href="how-to-install.html" class="active" data-i18n="nav_install">Install Guide</a>
   </div>
   <div class="nav-right">
-    <div class="lang-grp">
-      <button class="lang-btn on">EN</button>
-      <button class="lang-btn">KO</button>
-      <button class="lang-btn">JA</button>
+    <div class="lang-select" id="lang-select">
+      <button class="lang-globe-btn" id="lang-globe-btn" onclick="toggleLangMenu(event)" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
+        <span id="lang-current">EN</span>
+        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="lang-menu" id="lang-menu">
+        <button class="lang-menu-item" data-lang="en" onclick="applyLang('en');toggleLangMenu()">English<span class="lang-check">✓</span></button>
+        <button class="lang-menu-item" data-lang="ko" onclick="applyLang('ko');toggleLangMenu()">한국어<span class="lang-check">✓</span></button>
+        <button class="lang-menu-item" data-lang="ja" onclick="applyLang('ja');toggleLangMenu()">日本語<span class="lang-check">✓</span></button>
+      </div>
     </div>
-    <button class="btn-ghost">Sign in</button>
-    <button class="btn-orange">Free Trial</button>
+    <button class="btn-ghost" data-i18n="nav_signin">Sign in</button>
+    <button class="btn-orange" data-i18n="nav_trial">Free Trial</button>
     <button class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -198,15 +216,15 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
 <div class="page-header">
   <div class="page-header-inner">
     <div class="breadcrumb">
-      <a href="index.html">Home</a>
+      <a href="index.html" data-i18n="bc_home">Home</a>
       <span class="breadcrumb-sep">›</span>
-      <a href="#">Support</a>
+      <a href="#" data-i18n="bc_support">Support</a>
       <span class="breadcrumb-sep">›</span>
-      <span>How to Install</span>
+      <span data-i18n="bc_current">How to Install</span>
     </div>
-    <div class="page-label">Support · Installation Guide</div>
-    <div class="page-title">How to Install TapeVault</div>
-    <p class="page-sub">Step-by-step installation guide for TapeVault v1.0.0 on Windows 10 / 11. Get up and running with your LTO drive in under 10 minutes.</p>
+    <div class="page-label" data-i18n="page_label">Support · Installation Guide</div>
+    <div class="page-title" data-i18n="page_title">How to Install TapeVault</div>
+    <p class="page-sub" data-i18n="page_sub">Step-by-step installation guide for TapeVault v1.0.0 on Windows 10 / 11. Get up and running with your LTO drive in under 10 minutes.</p>
   </div>
 </div>
 
@@ -216,41 +234,41 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
   <!-- SIDEBAR -->
   <div class="doc-sidebar">
     <div class="sidebar-section">
-      <div class="sidebar-title">Installation</div>
+      <div class="sidebar-title" data-i18n="sb_installation">Installation</div>
       <a class="sidebar-link active" href="#requirements">
-        <span class="step-badge">1</span> System requirements
+        <span class="step-badge">1</span> <span data-i18n="sb1">System requirements</span>
       </a>
       <a class="sidebar-link" href="#download">
-        <span class="step-badge">2</span> Download installer
+        <span class="step-badge">2</span> <span data-i18n="sb2">Download installer</span>
       </a>
       <a class="sidebar-link" href="#install">
-        <span class="step-badge">3</span> Run installer
+        <span class="step-badge">3</span> <span data-i18n="sb3">Run installer</span>
       </a>
       <a class="sidebar-link" href="#driver">
-        <span class="step-badge">4</span> LTO driver setup
+        <span class="step-badge">4</span> <span data-i18n="sb4">LTO driver setup</span>
       </a>
       <a class="sidebar-link" href="#first-launch">
-        <span class="step-badge">5</span> First launch
+        <span class="step-badge">5</span> <span data-i18n="sb5">First launch</span>
       </a>
       <a class="sidebar-link" href="#activate">
-        <span class="step-badge">6</span> License activation
+        <span class="step-badge">6</span> <span data-i18n="sb6">License activation</span>
       </a>
       <a class="sidebar-link" href="#ffmpeg">
-        <span class="step-badge">7</span> FFmpeg setup
+        <span class="step-badge">7</span> <span data-i18n="sb7">FFmpeg setup</span>
       </a>
       <a class="sidebar-link" href="#mediaplayer">
-        <span class="step-badge">8</span> Windows Media Player
+        <span class="step-badge">8</span> <span data-i18n="sb8">Windows Media Player</span>
       </a>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-title">Troubleshooting</div>
-      <a class="sidebar-link" href="#trouble-drive">Drive not detected</a>
-      <a class="sidebar-link" href="#trouble-install">Installation fails</a>
-      <a class="sidebar-link" href="#trouble-license">License issues</a>
+      <div class="sidebar-title" data-i18n="sb_troubleshooting">Troubleshooting</div>
+      <a class="sidebar-link" href="#trouble-drive" data-i18n="sbt1">Drive not detected</a>
+      <a class="sidebar-link" href="#trouble-install" data-i18n="sbt2">Installation fails</a>
+      <a class="sidebar-link" href="#trouble-license" data-i18n="sbt3">License issues</a>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-title">Support</div>
-      <a class="sidebar-link" href="mailto:support@tapevault.net">Contact support</a>
+      <div class="sidebar-title" data-i18n="sb_support">Support</div>
+      <a class="sidebar-link" href="mailto:support@tapevault.net" data-i18n="sbs1">Contact support</a>
     </div>
   </div>
 
@@ -261,42 +279,42 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <div class="progress-bar">
       <div class="progress-step">
         <div class="progress-dot current">1</div>
-        <span class="progress-label">Requirements</span>
+        <span class="progress-label" data-i18n="pg1">Requirements</span>
       </div>
       <div class="progress-line"></div>
       <div class="progress-step">
         <div class="progress-dot">2</div>
-        <span class="progress-label">Download</span>
+        <span class="progress-label" data-i18n="pg2">Download</span>
       </div>
       <div class="progress-line"></div>
       <div class="progress-step">
         <div class="progress-dot">3</div>
-        <span class="progress-label">Install</span>
+        <span class="progress-label" data-i18n="pg3">Install</span>
       </div>
       <div class="progress-line"></div>
       <div class="progress-step">
         <div class="progress-dot">4</div>
-        <span class="progress-label">Driver</span>
+        <span class="progress-label" data-i18n="pg4">Driver</span>
       </div>
       <div class="progress-line"></div>
       <div class="progress-step">
         <div class="progress-dot">5</div>
-        <span class="progress-label">Launch</span>
+        <span class="progress-label" data-i18n="pg5">Launch</span>
       </div>
       <div class="progress-line"></div>
       <div class="progress-step">
         <div class="progress-dot">6</div>
-        <span class="progress-label">Activate</span>
+        <span class="progress-label" data-i18n="pg6">Activate</span>
       </div>
       <div class="progress-line"></div>
       <div class="progress-step">
         <div class="progress-dot">7</div>
-        <span class="progress-label">FFmpeg</span>
+        <span class="progress-label" data-i18n="pg7">FFmpeg</span>
       </div>
       <div class="progress-line"></div>
       <div class="progress-step">
         <div class="progress-dot">8</div>
-        <span class="progress-label">Media Player</span>
+        <span class="progress-label" data-i18n="pg8">Media Player</span>
       </div>
     </div>
 
@@ -304,38 +322,38 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <div class="step-card" id="requirements">
       <div class="step-header">
         <div class="step-number">1</div>
-        <div class="step-title">System Requirements</div>
+        <div class="step-title" data-i18n="s1_title">System Requirements</div>
       </div>
-      <p class="step-desc">Before installing TapeVault, make sure your system meets the following requirements.</p>
+      <p class="step-desc" data-i18n="s1_desc">Before installing TapeVault, make sure your system meets the following requirements.</p>
       <div class="req-grid">
         <div class="req-item">
-          <div class="req-label">Operating System</div>
-          <div class="req-value ok">Windows 10 / 11 (64-bit)</div>
+          <div class="req-label" data-i18n="s1_r1l">Operating System</div>
+          <div class="req-value ok" data-i18n="s1_r1v">Windows 10 / 11 (64-bit)</div>
         </div>
         <div class="req-item">
-          <div class="req-label">RAM</div>
-          <div class="req-value ok">8 GB or more recommended</div>
+          <div class="req-label" data-i18n="s1_r2l">RAM</div>
+          <div class="req-value ok" data-i18n="s1_r2v">8 GB or more recommended</div>
         </div>
         <div class="req-item">
-          <div class="req-label">Storage</div>
-          <div class="req-value ok">500 MB free disk space</div>
+          <div class="req-label" data-i18n="s1_r3l">Storage</div>
+          <div class="req-value ok" data-i18n="s1_r3v">500 MB free disk space</div>
         </div>
         <div class="req-item">
-          <div class="req-label">LTO Drive Interface</div>
-          <div class="req-value ok">SAS / Thunderbolt / USB</div>
+          <div class="req-label" data-i18n="s1_r4l">LTO Drive Interface</div>
+          <div class="req-value ok" data-i18n="s1_r4v">SAS / Thunderbolt / USB</div>
         </div>
         <div class="req-item">
-          <div class="req-label">Supported LTO</div>
-          <div class="req-value ok">LTO-4 through LTO-9</div>
+          <div class="req-label" data-i18n="s1_r5l">Supported LTO</div>
+          <div class="req-value ok" data-i18n="s1_r5v">LTO-4 through LTO-9</div>
         </div>
         <div class="req-item">
-          <div class="req-label">Internet</div>
-          <div class="req-value warn">Required for activation only</div>
+          <div class="req-label" data-i18n="s1_r6l">Internet</div>
+          <div class="req-value warn" data-i18n="s1_r6v">Required for activation only</div>
         </div>
       </div>
       <div class="alert alert-info">
         <span class="alert-ico">ℹ️</span>
-        TapeVault runs fully offline after initial license activation. No ongoing internet connection is required.
+        <span data-i18n="s1_alert">TapeVault runs fully offline after initial license activation. No ongoing internet connection is required.</span>
       </div>
     </div>
 
@@ -345,19 +363,19 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <div class="step-card" id="download">
       <div class="step-header">
         <div class="step-number">2</div>
-        <div class="step-title">Download the Installer</div>
+        <div class="step-title" data-i18n="s2_title">Download the Installer</div>
       </div>
-      <p class="step-desc">Download the latest TapeVault installer for Windows. The installer includes all required runtime components including Python and Electron.</p>
-      <a class="dl-btn-big" href="index.html#download">
+      <p class="step-desc" data-i18n="s2_desc">Download the latest TapeVault installer for Windows. The installer includes all required runtime components including Python and Electron.</p>
+      <a class="dl-btn-big" href="index.html#download" data-i18n="s2_btn">
         ⬇ Download TapeVault v1.0.0 for Windows
       </a>
       <div class="alert alert-ok">
         <span class="alert-ico">✅</span>
-        File: <strong>TapeVault-Setup-v1.0.0-win64.exe</strong> · ~180 MB · SHA256 verified
+        <span data-i18n="s2_file">File: <strong>TapeVault-Setup-v1.0.0-win64.exe</strong> · ~90 MB · SHA256 verified</span>
       </div>
       <div class="alert alert-warn">
         <span class="alert-ico">⚠️</span>
-        Windows SmartScreen may show a warning on first run. Click <strong>"More info" → "Run anyway"</strong> to proceed. This is normal for newly released software.
+        <span data-i18n="s2_warn">Windows SmartScreen may show a warning on first run. Click <strong>"More info" → "Run anyway"</strong> to proceed. This is normal for newly released software.</span>
       </div>
     </div>
 
@@ -367,16 +385,16 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <div class="step-card" id="install">
       <div class="step-header">
         <div class="step-number">3</div>
-        <div class="step-title">Run the Installer</div>
+        <div class="step-title" data-i18n="s3_title">Run the Installer</div>
       </div>
-      <p class="step-desc">Run the downloaded <code style="background:#1a1a20;padding:2px 6px;border-radius:3px;font-size:12px;color:#5b9cf6">TapeVault-Setup-v1.0.0-win64.exe</code> file and follow the steps below.</p>
+      <p class="step-desc" data-i18n="s3_desc">Run the downloaded <code style="background:#1a1a20;padding:2px 6px;border-radius:3px;font-size:12px;color:#5b9cf6">TapeVault-Setup-v1.0.0-win64.exe</code> file and follow the steps below.</p>
       <ul class="checklist">
-        <li>Double-click the installer file to launch the setup wizard</li>
-        <li>Accept the License Agreement and click <strong style="color:#c8cfe0">Next</strong></li>
-        <li>Choose installation folder (default: <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\Program Files\TapeVault</code>)</li>
-        <li>Select <strong style="color:#c8cfe0">Create Desktop Shortcut</strong> if desired</li>
-        <li>Click <strong style="color:#f5a623">Install</strong> and wait for completion (~2 minutes)</li>
-        <li>Click <strong style="color:#c8cfe0">Finish</strong> — TapeVault will launch automatically</li>
+        <li data-i18n="s3_c1">Double-click the installer file to launch the setup wizard</li>
+        <li data-i18n="s3_c2">Accept the License Agreement and click <strong style="color:#c8cfe0">Next</strong></li>
+        <li data-i18n="s3_c3">Choose installation folder (default: <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\Program Files\TapeVault</code>)</li>
+        <li data-i18n="s3_c4">Select <strong style="color:#c8cfe0">Create Desktop Shortcut</strong> if desired</li>
+        <li data-i18n="s3_c5">Click <strong style="color:#f5a623">Install</strong> and wait for completion (~2 minutes)</li>
+        <li data-i18n="s3_c6">Click <strong style="color:#c8cfe0">Finish</strong> — TapeVault will launch automatically</li>
       </ul>
       <div class="screen-mock">
         <div class="screen-mock-bar">
@@ -385,7 +403,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
           <div class="screen-dot" style="background:#28c840"></div>
           <span style="font-size:11px;color:#7c88a4;margin-left:8px;font-family:monospace">TapeVault Setup v1.0.0</span>
         </div>
-        <div class="screen-mock-body">
+        <div class="screen-mock-body" data-i18n="s3_mock">
           <span class="ok">✓</span> Extracting files...<br>
           <span class="ok">✓</span> Installing Python runtime...<br>
           <span class="ok">✓</span> Installing Electron framework...<br>
@@ -402,19 +420,19 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <div class="step-card" id="driver">
       <div class="step-header">
         <div class="step-number">4</div>
-        <div class="step-title">LTO Driver Setup</div>
+        <div class="step-title" data-i18n="s4_title">LTO Driver Setup</div>
       </div>
-      <p class="step-desc">TapeVault requires the appropriate SCSI/SAS or tape driver for your LTO drive. Most modern LTO drives are automatically recognized by Windows, but some may require manual driver installation.</p>
+      <p class="step-desc" data-i18n="s4_desc">TapeVault requires the appropriate SCSI/SAS or tape driver for your LTO drive. Most modern LTO drives are automatically recognized by Windows, but some may require manual driver installation.</p>
       <div class="alert alert-info">
         <span class="alert-ico">ℹ️</span>
-        Connect your LTO drive <strong>before</strong> launching TapeVault for the first time. TapeVault will detect the drive automatically on startup.
+        <span data-i18n="s4_alert">Connect your LTO drive <strong>before</strong> launching TapeVault for the first time. TapeVault will detect the drive automatically on startup.</span>
       </div>
-      <p class="step-desc" style="margin-top:16px">If your drive is not detected, install the driver manually:</p>
+      <p class="step-desc" style="margin-top:16px" data-i18n="s4_desc2">If your drive is not detected, install the driver manually:</p>
       <ul class="checklist">
-        <li>Open <strong style="color:#c8cfe0">Device Manager</strong> (Win + X → Device Manager)</li>
-        <li>Look for your LTO drive under <strong style="color:#c8cfe0">Tape drives</strong> or <strong style="color:#c8cfe0">Other devices</strong></li>
-        <li>Right-click → <strong style="color:#c8cfe0">Update driver</strong> → Search automatically</li>
-        <li>If not found, download the driver from your drive manufacturer's website</li>
+        <li data-i18n="s4_c1">Open <strong style="color:#c8cfe0">Device Manager</strong> (Win + X → Device Manager)</li>
+        <li data-i18n="s4_c2">Look for your LTO drive under <strong style="color:#c8cfe0">Tape drives</strong> or <strong style="color:#c8cfe0">Other devices</strong></li>
+        <li data-i18n="s4_c3">Right-click → <strong style="color:#c8cfe0">Update driver</strong> → Search automatically</li>
+        <li data-i18n="s4_c4">If not found, download the driver from your drive manufacturer's website</li>
       </ul>
       <div class="req-grid" style="margin-top:16px">
         <div class="req-item">
@@ -442,9 +460,9 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <div class="step-card" id="first-launch">
       <div class="step-header">
         <div class="step-number">5</div>
-        <div class="step-title">First Launch</div>
+        <div class="step-title" data-i18n="s5_title">First Launch</div>
       </div>
-      <p class="step-desc">Launch TapeVault from the Desktop shortcut or Start Menu. On first launch, TapeVault will scan for connected LTO drives and guide you through initial setup.</p>
+      <p class="step-desc" data-i18n="s5_desc">Launch TapeVault from the Desktop shortcut or Start Menu. On first launch, TapeVault will scan for connected LTO drives and guide you through initial setup.</p>
       <div class="screen-mock">
         <div class="screen-mock-bar">
           <div class="screen-dot" style="background:#ff5f57"></div>
@@ -452,7 +470,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
           <div class="screen-dot" style="background:#28c840"></div>
           <span style="font-size:11px;color:#7c88a4;margin-left:8px;font-family:monospace">TapeVault v1.0.0 — LTO Archive Manager</span>
         </div>
-        <div class="screen-mock-body">
+        <div class="screen-mock-body" data-i18n="s5_mock">
           <span class="hl">TapeVault</span> <span class="dim">v1.0.0</span><br><br>
           <span class="ok">✓</span> Python IPC bridge started<br>
           <span class="ok">✓</span> Database initialized<br>
@@ -462,10 +480,10 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
         </div>
       </div>
       <ul class="checklist" style="margin-top:16px">
-        <li>Insert an LTO tape into your drive</li>
-        <li>Click <strong style="color:#f5a623">+ 새 테이프 (New Tape)</strong> to register the tape</li>
-        <li>Create your first project folder</li>
-        <li>Drag files into the queue and click <strong style="color:#f5a623">Archive to Tape</strong></li>
+        <li data-i18n="s5_c1">Insert an LTO tape into your drive</li>
+        <li data-i18n="s5_c2">Click <strong style="color:#f5a623">+ New Tape</strong> to register the tape</li>
+        <li data-i18n="s5_c3">Create your first project folder</li>
+        <li data-i18n="s5_c4">Drag files into the queue and click <strong style="color:#f5a623">Archive to Tape</strong></li>
       </ul>
     </div>
 
@@ -475,15 +493,15 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <div class="step-card" id="activate">
       <div class="step-header">
         <div class="step-number">6</div>
-        <div class="step-title">License Activation</div>
+        <div class="step-title" data-i18n="s6_title">License Activation</div>
       </div>
-      <p class="step-desc">TapeVault includes a 30-day free trial with full features. To activate a paid license, go to <strong style="color:#c8cfe0">Settings → License</strong> and enter your license key.</p>
+      <p class="step-desc" data-i18n="s6_desc">TapeVault includes a 30-day free trial with full features. To activate a paid license, go to <strong style="color:#c8cfe0">Settings → License</strong> and enter your license key.</p>
       <div class="code-block">
         <div class="code-header">
-          <span class="code-lang">Activation steps</span>
+          <span class="code-lang" data-i18n="s6_code_label">Activation steps</span>
         </div>
-        <div class="code-body">
-          <span class="cmd">1.</span> Open TapeVault → Click <span class="hl" style="color:#f5a623">설정 (Settings)</span> in the top bar<br>
+        <div class="code-body" data-i18n="s6_code">
+          <span class="cmd">1.</span> Open TapeVault → Click <span class="hl" style="color:#f5a623">Settings</span> in the top bar<br>
           <span class="cmd">2.</span> Navigate to <span class="path">Settings → License → Activate</span><br>
           <span class="cmd">3.</span> Enter your license key from the purchase email<br>
           <span class="cmd">4.</span> Click <span class="hl" style="color:#f5a623">Activate</span> — internet required for this step only<br>
@@ -492,7 +510,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
       </div>
       <div class="alert alert-ok">
         <span class="alert-ico">✅</span>
-        After activation, TapeVault works completely offline. No recurring internet connection required.
+        <span data-i18n="s6_alert">After activation, TapeVault works completely offline. No recurring internet connection required.</span>
       </div>
     </div>
 
@@ -502,41 +520,41 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <div class="step-card" id="ffmpeg">
       <div class="step-header">
         <div class="step-number">7</div>
-        <div class="step-title">FFmpeg Setup (Thumbnail Generation)</div>
+        <div class="step-title" data-i18n="s7_title">FFmpeg Setup (Thumbnail Generation)</div>
       </div>
-      <p class="step-desc">TapeVault uses <strong style="color:#c8cfe0">FFmpeg</strong> to automatically generate preview thumbnails from video files stored on LTO tape. FFmpeg is a free, open-source multimedia framework and must be installed separately.</p>
+      <p class="step-desc" data-i18n="s7_desc">TapeVault uses <strong style="color:#c8cfe0">FFmpeg</strong> to automatically generate preview thumbnails from video files stored on LTO tape. FFmpeg is a free, open-source multimedia framework and must be installed separately.</p>
       <div class="alert alert-info">
         <span class="alert-ico">ℹ️</span>
-        Without FFmpeg, TapeVault will still work normally — but video thumbnail previews will not be generated. All other features remain fully functional.
+        <span data-i18n="s7_alert">Without FFmpeg, TapeVault will still work normally — but video thumbnail previews will not be generated. All other features remain fully functional.</span>
       </div>
-      <div style="margin:20px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Why FFmpeg?</div>
+      <div style="margin:20px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0" data-i18n="s7_why">Why FFmpeg?</div>
       <ul class="checklist">
-        <li>Generates preview thumbnails from MP4, MOV, MXF, AVI, MKV files without recalling the full file from tape</li>
-        <li>Used for video metadata extraction (duration, resolution, codec information)</li>
-        <li>Enables the visual grid view in TapeVault — browse your archive like a media browser</li>
-        <li>Runs locally on your machine — no data is sent externally</li>
+        <li data-i18n="s7_c1">Generates preview thumbnails from MP4, MOV, MXF, AVI, MKV files without recalling the full file from tape</li>
+        <li data-i18n="s7_c2">Used for video metadata extraction (duration, resolution, codec information)</li>
+        <li data-i18n="s7_c3">Enables the visual grid view in TapeVault — browse your archive like a media browser</li>
+        <li data-i18n="s7_c4">Runs locally on your machine — no data is sent externally</li>
       </ul>
-      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Installation — Method 1: Automatic (Recommended)</div>
-      <p class="step-desc">TapeVault can download and configure FFmpeg automatically on first launch:</p>
+      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0" data-i18n="s7_m1_title">Installation — Method 1: Automatic (Recommended)</div>
+      <p class="step-desc" data-i18n="s7_m1_desc">TapeVault can download and configure FFmpeg automatically on first launch:</p>
       <ul class="checklist">
-        <li>Launch TapeVault → go to <strong style="color:#f5a623">설정 (Settings)</strong> → <strong style="color:#f5a623">Video &amp; Thumbnails</strong></li>
-        <li>Click <strong style="color:#f5a623">Install FFmpeg automatically</strong></li>
-        <li>TapeVault downloads and configures FFmpeg in the background (~50 MB)</li>
-        <li>Restart TapeVault — thumbnail generation is now active</li>
+        <li data-i18n="s7_m1_c1">Launch TapeVault → go to <strong style="color:#f5a623">Settings</strong> → <strong style="color:#f5a623">Video &amp; Thumbnails</strong></li>
+        <li data-i18n="s7_m1_c2">Click <strong style="color:#f5a623">Install FFmpeg automatically</strong></li>
+        <li data-i18n="s7_m1_c3">TapeVault downloads and configures FFmpeg in the background (~50 MB)</li>
+        <li data-i18n="s7_m1_c4">Restart TapeVault — thumbnail generation is now active</li>
       </ul>
-      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Installation — Method 2: Manual</div>
-      <p class="step-desc">For air-gapped environments where internet access is restricted:</p>
+      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0" data-i18n="s7_m2_title">Installation — Method 2: Manual</div>
+      <p class="step-desc" data-i18n="s7_m2_desc">For air-gapped environments where internet access is restricted:</p>
       <ul class="checklist">
-        <li>Download FFmpeg from <strong style="color:#5b9cf6">ffmpeg.org/download.html</strong> → Windows builds → <strong style="color:#c8cfe0">ffmpeg-release-essentials.zip</strong></li>
-        <li>Extract the zip file to a folder, e.g. <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\ffmpeg</code></li>
-        <li>In TapeVault → <strong style="color:#f5a623">Settings → Video &amp; Thumbnails → FFmpeg path</strong></li>
-        <li>Set the path to <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\ffmpeg\bin\ffmpeg.exe</code></li>
-        <li>Click <strong style="color:#f5a623">Test &amp; Save</strong> to verify</li>
+        <li data-i18n="s7_m2_c1">Download FFmpeg from <strong style="color:#5b9cf6">ffmpeg.org/download.html</strong> → Windows builds → <strong style="color:#c8cfe0">ffmpeg-release-essentials.zip</strong></li>
+        <li data-i18n="s7_m2_c2">Extract the zip file to a folder, e.g. <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\ffmpeg</code></li>
+        <li data-i18n="s7_m2_c3">In TapeVault → <strong style="color:#f5a623">Settings → Video &amp; Thumbnails → FFmpeg path</strong></li>
+        <li data-i18n="s7_m2_c4">Set the path to <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\ffmpeg\bin\ffmpeg.exe</code></li>
+        <li data-i18n="s7_m2_c5">Click <strong style="color:#f5a623">Test &amp; Save</strong> to verify</li>
       </ul>
       <div class="code-block">
         <div class="code-header">
-          <span class="code-lang">Verify FFmpeg installation (Command Prompt)</span>
-          <button class="code-copy" onclick="navigator.clipboard.writeText('ffmpeg -version')">Copy</button>
+          <span class="code-lang" data-i18n="s7_verify_label">Verify FFmpeg installation (Command Prompt)</span>
+          <button class="code-copy" onclick="navigator.clipboard.writeText('ffmpeg -version')" data-i18n="s7_copy">Copy</button>
         </div>
         <div class="code-body">
 <span class="cmd">C:\></span> ffmpeg -version<br>
@@ -548,14 +566,14 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
         </div>
       </div>
       <div class="req-grid" style="margin-top:20px">
-        <div class="req-item"><div class="req-label">Supported formats</div><div class="req-value ok" style="font-size:12px">MP4, MOV, MXF, AVI, MKV, WMV</div></div>
-        <div class="req-item"><div class="req-label">Thumbnail size</div><div class="req-value ok" style="font-size:12px">320×180px (configurable)</div></div>
-        <div class="req-item"><div class="req-label">FFmpeg version</div><div class="req-value ok" style="font-size:12px">4.x or later required</div></div>
-        <div class="req-item"><div class="req-label">License</div><div class="req-value ok" style="font-size:12px">LGPL / GPL — free to use</div></div>
+        <div class="req-item"><div class="req-label" data-i18n="s7_r1l">Supported formats</div><div class="req-value ok" style="font-size:12px">MP4, MOV, MXF, AVI, MKV, WMV</div></div>
+        <div class="req-item"><div class="req-label" data-i18n="s7_r2l">Thumbnail size</div><div class="req-value ok" style="font-size:12px" data-i18n="s7_r2v">320×180px (configurable)</div></div>
+        <div class="req-item"><div class="req-label" data-i18n="s7_r3l">FFmpeg version</div><div class="req-value ok" style="font-size:12px" data-i18n="s7_r3v">4.x or later required</div></div>
+        <div class="req-item"><div class="req-label" data-i18n="s7_r4l">License</div><div class="req-value ok" style="font-size:12px" data-i18n="s7_r4v">LGPL / GPL — free to use</div></div>
       </div>
       <div class="alert alert-warn" style="margin-top:16px">
         <span class="alert-ico">⚠️</span>
-        For broadcast environments using <strong>MXF (OP1a / OP-Atom)</strong> files, make sure your FFmpeg build includes <strong>libavcodec with MXF support</strong>. The recommended "essentials" build from ffmpeg.org includes this by default.
+        <span data-i18n="s7_warn">For broadcast environments using <strong>MXF (OP1a / OP-Atom)</strong> files, make sure your FFmpeg build includes <strong>libavcodec with MXF support</strong>. The recommended "essentials" build from ffmpeg.org includes this by default.</span>
       </div>
     </div>
 
@@ -565,19 +583,19 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <div class="step-card" id="mediaplayer">
       <div class="step-header">
         <div class="step-number">8</div>
-        <div class="step-title">Windows Media Player &amp; Codec Setup</div>
+        <div class="step-title" data-i18n="s8_title">Windows Media Player &amp; Codec Setup</div>
       </div>
-      <p class="step-desc">TapeVault's built-in video preview feature uses <strong style="color:#c8cfe0">Windows Media Foundation</strong> to play back recalled video files directly within the app. On some Windows configurations, additional codec packs may be required for certain formats.</p>
-      <div style="margin:20px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Check Windows Media Player status</div>
+      <p class="step-desc" data-i18n="s8_desc">TapeVault's built-in video preview feature uses <strong style="color:#c8cfe0">Windows Media Foundation</strong> to play back recalled video files directly within the app. On some Windows configurations, additional codec packs may be required for certain formats.</p>
+      <div style="margin:20px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0" data-i18n="s8_check_label">Check Windows Media Player status</div>
       <ul class="checklist">
-        <li>Press <strong style="color:#c8cfe0">Win + R</strong> → type <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">wmplayer</code> → press Enter</li>
-        <li>If Windows Media Player opens — you are ready to go ✅</li>
-        <li>If not found — follow the steps below to enable it</li>
+        <li data-i18n="s8_c1">Press <strong style="color:#c8cfe0">Win + R</strong> → type <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">wmplayer</code> → press Enter</li>
+        <li data-i18n="s8_c2">If Windows Media Player opens — you are ready to go ✅</li>
+        <li data-i18n="s8_c3">If not found — follow the steps below to enable it</li>
       </ul>
-      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Enable Windows Media Player (if missing)</div>
+      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0" data-i18n="s8_enable_label">Enable Windows Media Player (if missing)</div>
       <div class="code-block">
-        <div class="code-header"><span class="code-lang">Windows Features — Step by step</span></div>
-        <div class="code-body">
+        <div class="code-header"><span class="code-lang" data-i18n="s8_code_label">Windows Features — Step by step</span></div>
+        <div class="code-body" data-i18n="s8_code">
 <span class="cmd">1.</span> Press <span class="hl" style="color:#f5a623">Win + R</span> → type <span class="path">optionalfeatures</span> → Enter<br>
 <span class="cmd">2.</span> Find <span class="ok">Media Features</span> → expand → check <span class="ok">Windows Media Player</span><br>
 <span class="cmd">3.</span> Click <span class="hl" style="color:#f5a623">OK</span> → Windows will install it (~1 min)<br>
@@ -585,46 +603,46 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
 <span class="cmd">5.</span> <span class="ok">✓ Windows Media Player is now active</span>
         </div>
       </div>
-      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Recommended Codec Pack — K-Lite Codec Pack</div>
+      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0" data-i18n="s8_codec_label">Recommended Codec Pack — K-Lite Codec Pack</div>
       <ul class="checklist">
-        <li>Download from <strong style="color:#5b9cf6">codecguide.com/download_k-lite_codec_pack_basic.htm</strong></li>
-        <li>Run the installer with default settings</li>
-        <li>Restart TapeVault after installation</li>
-        <li>All major video formats will now preview correctly</li>
+        <li data-i18n="s8_c4">Download from <strong style="color:#5b9cf6">codecguide.com/download_k-lite_codec_pack_basic.htm</strong></li>
+        <li data-i18n="s8_c5">Run the installer with default settings</li>
+        <li data-i18n="s8_c6">Restart TapeVault after installation</li>
+        <li data-i18n="s8_c7">All major video formats will now preview correctly</li>
       </ul>
       <div class="req-grid" style="margin-top:16px">
-        <div class="req-item"><div class="req-label">H.264 / MP4</div><div class="req-value ok">✓ Built-in Windows</div></div>
-        <div class="req-item"><div class="req-label">H.265 / HEVC</div><div class="req-value warn">K-Lite or MS Store codec</div></div>
-        <div class="req-item"><div class="req-label">MXF / ProRes</div><div class="req-value warn">K-Lite recommended</div></div>
-        <div class="req-item"><div class="req-label">AVI / WMV</div><div class="req-value ok">✓ Built-in Windows</div></div>
-        <div class="req-item"><div class="req-label">MOV / QuickTime</div><div class="req-value warn">K-Lite recommended</div></div>
-        <div class="req-item"><div class="req-label">DNxHD / DNxHR</div><div class="req-value warn">Avid codec required</div></div>
+        <div class="req-item"><div class="req-label">H.264 / MP4</div><div class="req-value ok" data-i18n="s8_r1v">✓ Built-in Windows</div></div>
+        <div class="req-item"><div class="req-label">H.265 / HEVC</div><div class="req-value warn" data-i18n="s8_r2v">K-Lite or MS Store codec</div></div>
+        <div class="req-item"><div class="req-label">MXF / ProRes</div><div class="req-value warn" data-i18n="s8_r3v">K-Lite recommended</div></div>
+        <div class="req-item"><div class="req-label">AVI / WMV</div><div class="req-value ok" data-i18n="s8_r4v">✓ Built-in Windows</div></div>
+        <div class="req-item"><div class="req-label">MOV / QuickTime</div><div class="req-value warn" data-i18n="s8_r5v">K-Lite recommended</div></div>
+        <div class="req-item"><div class="req-label">DNxHD / DNxHR</div><div class="req-value warn" data-i18n="s8_r6v">Avid codec required</div></div>
       </div>
       <div class="alert alert-info" style="margin-top:16px">
         <span class="alert-ico">ℹ️</span>
-        <strong>HEVC codec for Windows 11:</strong> Search for <strong>"HEVC Video Extensions"</strong> in the Microsoft Store. Free on Windows 11 — provides native H.265 playback without third-party codec packs.
+        <span data-i18n="s8_hevc_alert"><strong>HEVC codec for Windows 11:</strong> Search for <strong>"HEVC Video Extensions"</strong> in the Microsoft Store. Free on Windows 11 — provides native H.265 playback without third-party codec packs.</span>
       </div>
       <div class="alert alert-warn" style="margin-top:12px">
         <span class="alert-ico">⚠️</span>
-        <strong>Enterprise / Air-gapped environments:</strong> If Microsoft Store access is restricted, use K-Lite Codec Pack which can be installed offline.
+        <span data-i18n="s8_ent_alert"><strong>Enterprise / Air-gapped environments:</strong> If Microsoft Store access is restricted, use K-Lite Codec Pack which can be installed offline.</span>
       </div>
-      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0">Video preview inside TapeVault</div>
+      <div style="margin:24px 0 10px;font-size:13px;font-weight:600;color:#c8cfe0" data-i18n="s8_preview_label">Video preview inside TapeVault</div>
       <div class="screen-mock">
         <div class="screen-mock-bar">
           <div class="screen-dot" style="background:#ff5f57"></div>
           <div class="screen-dot" style="background:#febc2e"></div>
           <div class="screen-dot" style="background:#28c840"></div>
-          <span style="font-size:11px;color:#7c88a4;margin-left:8px;font-family:monospace">TapeVault — 파일 정보 패널</span>
+          <span style="font-size:11px;color:#7c88a4;margin-left:8px;font-family:monospace" data-i18n="s8_mock_title">TapeVault — File Detail Panel</span>
         </div>
-        <div class="screen-mock-body">
+        <div class="screen-mock-body" data-i18n="s8_mock">
           <span class="hl">2026_06_12_22_41(1).mp4</span><br>
           <span class="dim">/A1-1/2026_06_12_22_41_(1).mp4</span><br><br>
-          <span class="ok">▶ 동영상 미리보기</span>  <span class="dim">← Click to preview in-app</span><br><br>
-          <span class="dim">파일 유형    </span><span class="ok">h264</span><br>
-          <span class="dim">해상도       </span><span class="ok">1280×720</span><br>
-          <span class="dim">용량         </span><span class="ok">0.0 GB (31 MB / 31497 KB)</span><br>
-          <span class="dim">날짜         </span><span class="ok">2026-06-26</span><br>
-          <span class="dim">보관 테이프  </span><span class="hl" style="color:#f5a623">VT TEST</span>
+          <span class="ok">▶ Preview video</span>  <span class="dim">← Click to preview in-app</span><br><br>
+          <span class="dim">File type    </span><span class="ok">h264</span><br>
+          <span class="dim">Resolution   </span><span class="ok">1280×720</span><br>
+          <span class="dim">Size         </span><span class="ok">0.0 GB (31 MB / 31497 KB)</span><br>
+          <span class="dim">Date         </span><span class="ok">2026-06-26</span><br>
+          <span class="dim">Stored on    </span><span class="hl" style="color:#f5a623">VT TEST</span>
         </div>
       </div>
     </div>
@@ -633,51 +651,51 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
 
     <!-- TROUBLESHOOTING -->
     <div style="margin-bottom:16px">
-      <div class="sec-label" style="font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;margin-bottom:16px">Troubleshooting</div>
-      <div class="sec-title" style="font-size:26px;font-weight:500;color:#e8eaf0;margin-bottom:24px">Common issues &amp; fixes</div>
+      <div class="sec-label" style="font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;margin-bottom:16px" data-i18n="trouble_label">Troubleshooting</div>
+      <div class="sec-title" style="font-size:26px;font-weight:500;color:#e8eaf0;margin-bottom:24px" data-i18n="trouble_title">Common issues &amp; fixes</div>
     </div>
 
     <div class="step-card" id="trouble-drive">
       <div class="step-header">
         <div class="step-number" style="background:#2a1a1a;color:#ef4444;font-size:18px">!</div>
-        <div class="step-title" style="font-size:18px">LTO drive not detected</div>
+        <div class="step-title" style="font-size:18px" data-i18n="t1_title">LTO drive not detected</div>
       </div>
       <ul class="checklist">
-        <li>Make sure the LTO drive is powered on and connected before launching TapeVault</li>
-        <li>Check Device Manager — the drive should appear under <strong style="color:#c8cfe0">Tape drives</strong></li>
-        <li>Try a different SAS/USB port or cable</li>
-        <li>Reinstall the tape driver from your drive manufacturer</li>
-        <li>Click <strong style="color:#f5a623">새로고침 (Refresh)</strong> in TapeVault's top bar to re-scan</li>
+        <li data-i18n="t1_c1">Make sure the LTO drive is powered on and connected before launching TapeVault</li>
+        <li data-i18n="t1_c2">Check Device Manager — the drive should appear under <strong style="color:#c8cfe0">Tape drives</strong></li>
+        <li data-i18n="t1_c3">Try a different SAS/USB port or cable</li>
+        <li data-i18n="t1_c4">Reinstall the tape driver from your drive manufacturer</li>
+        <li data-i18n="t1_c5">Click <strong style="color:#f5a623">Refresh</strong> in TapeVault's top bar to re-scan</li>
       </ul>
     </div>
 
     <div class="step-card" id="trouble-install">
       <div class="step-header">
         <div class="step-number" style="background:#2a1a1a;color:#ef4444;font-size:18px">!</div>
-        <div class="step-title" style="font-size:18px">Installation fails or won't start</div>
+        <div class="step-title" style="font-size:18px" data-i18n="t2_title">Installation fails or won't start</div>
       </div>
       <ul class="checklist">
-        <li>Right-click the installer → <strong style="color:#c8cfe0">Run as Administrator</strong></li>
-        <li>Temporarily disable antivirus software during installation</li>
-        <li>Make sure you have at least 500 MB of free disk space</li>
-        <li>Download the installer again — the file may be corrupted</li>
+        <li data-i18n="t2_c1">Right-click the installer → <strong style="color:#c8cfe0">Run as Administrator</strong></li>
+        <li data-i18n="t2_c2">Temporarily disable antivirus software during installation</li>
+        <li data-i18n="t2_c3">Make sure you have at least 500 MB of free disk space</li>
+        <li data-i18n="t2_c4">Download the installer again — the file may be corrupted</li>
       </ul>
     </div>
 
     <div class="step-card" id="trouble-license">
       <div class="step-header">
         <div class="step-number" style="background:#2a1a1a;color:#ef4444;font-size:18px">!</div>
-        <div class="step-title" style="font-size:18px">License activation issues</div>
+        <div class="step-title" style="font-size:18px" data-i18n="t3_title">License activation issues</div>
       </div>
       <ul class="checklist">
-        <li>Make sure you have an active internet connection during activation</li>
-        <li>Check that you copied the license key correctly — no extra spaces</li>
-        <li>Each license key can be activated on up to 2 devices</li>
-        <li>If you need to transfer a license, contact support</li>
+        <li data-i18n="t3_c1">Make sure you have an active internet connection during activation</li>
+        <li data-i18n="t3_c2">Check that you copied the license key correctly — no extra spaces</li>
+        <li data-i18n="t3_c3">Each license key can be activated on up to 2 devices</li>
+        <li data-i18n="t3_c4">If you need to transfer a license, contact support</li>
       </ul>
       <div class="alert alert-info" style="margin-top:16px">
         <span class="alert-ico">ℹ️</span>
-        Still having issues? Contact us at <strong>support@tapevault.net</strong> — we respond within 24 hours on business days.
+        <span data-i18n="t3_alert">Still having issues? Contact us at <strong>support@tapevault.net</strong> — we respond within 24 hours on business days.</span>
       </div>
     </div>
 
@@ -685,24 +703,24 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
 
     <!-- NEXT STEPS -->
     <div style="margin-bottom:20px">
-      <div class="sec-label" style="font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;margin-bottom:12px">What's next</div>
-      <div class="sec-title" style="font-size:22px;font-weight:500;color:#e8eaf0;margin-bottom:20px">You're all set!</div>
+      <div class="sec-label" style="font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;margin-bottom:12px" data-i18n="next_label">What's next</div>
+      <div class="sec-title" style="font-size:22px;font-weight:500;color:#e8eaf0;margin-bottom:20px" data-i18n="next_title">You're all set!</div>
     </div>
     <div class="next-grid">
       <a class="next-card" href="index.html#features">
         <div class="next-card-ico">💾</div>
-        <div class="next-card-title">Explore Features</div>
-        <div class="next-card-desc">See everything TapeVault can do for your archive workflow.</div>
+        <div class="next-card-title" data-i18n="n1_title">Explore Features</div>
+        <div class="next-card-desc" data-i18n="n1_desc">See everything TapeVault can do for your archive workflow.</div>
       </a>
       <a class="next-card" href="index.html#pricing">
         <div class="next-card-ico">💳</div>
-        <div class="next-card-title">Choose a Plan</div>
-        <div class="next-card-desc">Start free for 30 days, then pick the plan that fits your workflow.</div>
+        <div class="next-card-title" data-i18n="n2_title">Choose a Plan</div>
+        <div class="next-card-desc" data-i18n="n2_desc">Start free for 30 days, then pick the plan that fits your workflow.</div>
       </a>
       <a class="next-card" href="mailto:support@tapevault.net">
         <div class="next-card-ico">💬</div>
-        <div class="next-card-title">Contact Support</div>
-        <div class="next-card-desc">Our team is ready to help. Response within 24 hours.</div>
+        <div class="next-card-title" data-i18n="n3_title">Contact Support</div>
+        <div class="next-card-desc" data-i18n="n3_desc">Our team is ready to help. Response within 24 hours.</div>
       </a>
     </div>
 
@@ -711,16 +729,370 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
 
 <footer>
   <div class="footer-bottom">
-    <div class="footer-left">TapeVault v1.0.0 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
+    <div class="footer-left" data-i18n="foot_left">TapeVault v1.0.0 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
     <div class="footer-right">
-      <a href="index.html">Home</a>
-      <a href="index.html#pricing">Pricing</a>
-      <a href="mailto:support@tapevault.net">Support</a>
+      <a href="index.html" data-i18n="foot_home">Home</a>
+      <a href="index.html#pricing" data-i18n="foot_pricing">Pricing</a>
+      <a href="mailto:support@tapevault.net" data-i18n="foot_support">Support</a>
     </div>
   </div>
 </footer>
 
 <script>
+const T = {
+  en: {
+    nav_features:'Features', nav_how:'How it works', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide',
+    nav_signin:'Sign in', nav_trial:'Free Trial',
+    bc_home:'Home', bc_support:'Support', bc_current:'How to Install',
+    page_label:'Support · Installation Guide', page_title:'How to Install TapeVault',
+    page_sub:'Step-by-step installation guide for TapeVault v1.0.0 on Windows 10 / 11. Get up and running with your LTO drive in under 10 minutes.',
+    sb_installation:'Installation', sb_troubleshooting:'Troubleshooting', sb_support:'Support',
+    sb1:'System requirements', sb2:'Download installer', sb3:'Run installer', sb4:'LTO driver setup',
+    sb5:'First launch', sb6:'License activation', sb7:'FFmpeg setup', sb8:'Windows Media Player',
+    sbt1:'Drive not detected', sbt2:'Installation fails', sbt3:'License issues', sbs1:'Contact support',
+    pg1:'Requirements', pg2:'Download', pg3:'Install', pg4:'Driver', pg5:'Launch', pg6:'Activate', pg7:'FFmpeg', pg8:'Media Player',
+    s1_title:'System Requirements', s1_desc:'Before installing TapeVault, make sure your system meets the following requirements.',
+    s1_r1l:'Operating System', s1_r1v:'Windows 10 / 11 (64-bit)', s1_r2l:'RAM', s1_r2v:'8 GB or more recommended',
+    s1_r3l:'Storage', s1_r3v:'500 MB free disk space', s1_r4l:'LTO Drive Interface', s1_r4v:'SAS / Thunderbolt / USB',
+    s1_r5l:'Supported LTO', s1_r5v:'LTO-4 through LTO-9', s1_r6l:'Internet', s1_r6v:'Required for activation only',
+    s1_alert:'TapeVault runs fully offline after initial license activation. No ongoing internet connection is required.',
+    s2_title:'Download the Installer', s2_desc:'Download the latest TapeVault installer for Windows. The installer includes all required runtime components including Python and Electron.',
+    s2_btn:'⬇ Download TapeVault v1.0.0 for Windows',
+    s2_file:'File: <strong>TapeVault-Setup-v1.0.0-win64.exe</strong> · ~90 MB · SHA256 verified',
+    s2_warn:'Windows SmartScreen may show a warning on first run. Click <strong>"More info" → "Run anyway"</strong> to proceed. This is normal for newly released software.',
+    s3_title:'Run the Installer', s3_desc:'Run the downloaded <code style="background:#1a1a20;padding:2px 6px;border-radius:3px;font-size:12px;color:#5b9cf6">TapeVault-Setup-v1.0.0-win64.exe</code> file and follow the steps below.',
+    s3_c1:'Double-click the installer file to launch the setup wizard',
+    s3_c2:'Accept the License Agreement and click <strong style="color:#c8cfe0">Next</strong>',
+    s3_c3:'Choose installation folder (default: <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\\Program Files\\TapeVault</code>)',
+    s3_c4:'Select <strong style="color:#c8cfe0">Create Desktop Shortcut</strong> if desired',
+    s3_c5:'Click <strong style="color:#f5a623">Install</strong> and wait for completion (~2 minutes)',
+    s3_c6:'Click <strong style="color:#c8cfe0">Finish</strong> — TapeVault will launch automatically',
+    s3_mock:'<span class="ok">✓</span> Extracting files...<br><span class="ok">✓</span> Installing Python runtime...<br><span class="ok">✓</span> Installing Electron framework...<br><span class="ok">✓</span> Registering TapeVault...<br><span class="hl">→</span> Installation complete. Click Finish to launch.<br><span class="dim">Installed to C:\\Program Files\\TapeVault</span>',
+    s4_title:'LTO Driver Setup', s4_desc:'TapeVault requires the appropriate SCSI/SAS or tape driver for your LTO drive. Most modern LTO drives are automatically recognized by Windows, but some may require manual driver installation.',
+    s4_alert:'Connect your LTO drive <strong>before</strong> launching TapeVault for the first time. TapeVault will detect the drive automatically on startup.',
+    s4_desc2:'If your drive is not detected, install the driver manually:',
+    s4_c1:'Open <strong style="color:#c8cfe0">Device Manager</strong> (Win + X → Device Manager)',
+    s4_c2:'Look for your LTO drive under <strong style="color:#c8cfe0">Tape drives</strong> or <strong style="color:#c8cfe0">Other devices</strong>',
+    s4_c3:'Right-click → <strong style="color:#c8cfe0">Update driver</strong> → Search automatically',
+    s4_c4:"If not found, download the driver from your drive manufacturer's website",
+    s5_title:'First Launch', s5_desc:'Launch TapeVault from the Desktop shortcut or Start Menu. On first launch, TapeVault will scan for connected LTO drives and guide you through initial setup.',
+    s5_mock:'<span class="hl">TapeVault</span> <span class="dim">v1.0.0</span><br><br><span class="ok">✓</span> Python IPC bridge started<br><span class="ok">✓</span> Database initialized<br><span class="hl">→</span> Scanning for LTO drives...<br><span class="ok">✓</span> Drive detected: <span class="hl">HP Ultrium 7 (LTO-7)</span><br><span class="dim">Ready. Insert tape to begin.</span>',
+    s5_c1:'Insert an LTO tape into your drive',
+    s5_c2:'Click <strong style="color:#f5a623">+ New Tape</strong> to register the tape',
+    s5_c3:'Create your first project folder',
+    s5_c4:'Drag files into the queue and click <strong style="color:#f5a623">Archive to Tape</strong>',
+    s6_title:'License Activation', s6_desc:'TapeVault includes a 30-day free trial with full features. To activate a paid license, go to <strong style="color:#c8cfe0">Settings → License</strong> and enter your license key.',
+    s6_code_label:'Activation steps',
+    s6_code:'<span class="cmd">1.</span> Open TapeVault → Click <span class="hl" style="color:#f5a623">Settings</span> in the top bar<br><span class="cmd">2.</span> Navigate to <span class="path">Settings → License → Activate</span><br><span class="cmd">3.</span> Enter your license key from the purchase email<br><span class="cmd">4.</span> Click <span class="hl" style="color:#f5a623">Activate</span> — internet required for this step only<br><span class="cmd">5.</span> <span class="ok" style="color:#4ade80">✓ Activation complete</span> — now fully offline capable',
+    s6_alert:'After activation, TapeVault works completely offline. No recurring internet connection required.',
+    s7_title:'FFmpeg Setup (Thumbnail Generation)', s7_desc:'TapeVault uses <strong style="color:#c8cfe0">FFmpeg</strong> to automatically generate preview thumbnails from video files stored on LTO tape. FFmpeg is a free, open-source multimedia framework and must be installed separately.',
+    s7_alert:'Without FFmpeg, TapeVault will still work normally — but video thumbnail previews will not be generated. All other features remain fully functional.',
+    s7_why:'Why FFmpeg?',
+    s7_c1:'Generates preview thumbnails from MP4, MOV, MXF, AVI, MKV files without recalling the full file from tape',
+    s7_c2:'Used for video metadata extraction (duration, resolution, codec information)',
+    s7_c3:'Enables the visual grid view in TapeVault — browse your archive like a media browser',
+    s7_c4:'Runs locally on your machine — no data is sent externally',
+    s7_m1_title:'Installation — Method 1: Automatic (Recommended)', s7_m1_desc:'TapeVault can download and configure FFmpeg automatically on first launch:',
+    s7_m1_c1:'Launch TapeVault → go to <strong style="color:#f5a623">Settings</strong> → <strong style="color:#f5a623">Video &amp; Thumbnails</strong>',
+    s7_m1_c2:'Click <strong style="color:#f5a623">Install FFmpeg automatically</strong>',
+    s7_m1_c3:'TapeVault downloads and configures FFmpeg in the background (~50 MB)',
+    s7_m1_c4:'Restart TapeVault — thumbnail generation is now active',
+    s7_m2_title:'Installation — Method 2: Manual', s7_m2_desc:'For air-gapped environments where internet access is restricted:',
+    s7_m2_c1:'Download FFmpeg from <strong style="color:#5b9cf6">ffmpeg.org/download.html</strong> → Windows builds → <strong style="color:#c8cfe0">ffmpeg-release-essentials.zip</strong>',
+    s7_m2_c2:'Extract the zip file to a folder, e.g. <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\\ffmpeg</code>',
+    s7_m2_c3:'In TapeVault → <strong style="color:#f5a623">Settings → Video &amp; Thumbnails → FFmpeg path</strong>',
+    s7_m2_c4:'Set the path to <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\\ffmpeg\\bin\\ffmpeg.exe</code>',
+    s7_m2_c5:'Click <strong style="color:#f5a623">Test &amp; Save</strong> to verify',
+    s7_verify_label:'Verify FFmpeg installation (Command Prompt)', s7_copy:'Copy',
+    s7_r1l:'Supported formats', s7_r2l:'Thumbnail size', s7_r2v:'320×180px (configurable)',
+    s7_r3l:'FFmpeg version', s7_r3v:'4.x or later required', s7_r4l:'License', s7_r4v:'LGPL / GPL — free to use',
+    s7_warn:'For broadcast environments using <strong>MXF (OP1a / OP-Atom)</strong> files, make sure your FFmpeg build includes <strong>libavcodec with MXF support</strong>. The recommended "essentials" build from ffmpeg.org includes this by default.',
+    s8_title:'Windows Media Player &amp; Codec Setup', s8_desc:"TapeVault's built-in video preview feature uses <strong style=\"color:#c8cfe0\">Windows Media Foundation</strong> to play back recalled video files directly within the app. On some Windows configurations, additional codec packs may be required for certain formats.",
+    s8_check_label:'Check Windows Media Player status',
+    s8_c1:'Press <strong style="color:#c8cfe0">Win + R</strong> → type <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">wmplayer</code> → press Enter',
+    s8_c2:'If Windows Media Player opens — you are ready to go ✅',
+    s8_c3:'If not found — follow the steps below to enable it',
+    s8_enable_label:'Enable Windows Media Player (if missing)', s8_code_label:'Windows Features — Step by step',
+    s8_code:'<span class="cmd">1.</span> Press <span class="hl" style="color:#f5a623">Win + R</span> → type <span class="path">optionalfeatures</span> → Enter<br><span class="cmd">2.</span> Find <span class="ok">Media Features</span> → expand → check <span class="ok">Windows Media Player</span><br><span class="cmd">3.</span> Click <span class="hl" style="color:#f5a623">OK</span> → Windows will install it (~1 min)<br><span class="cmd">4.</span> <span class="dim">Restart your computer if prompted</span><br><span class="cmd">5.</span> <span class="ok">✓ Windows Media Player is now active</span>',
+    s8_codec_label:'Recommended Codec Pack — K-Lite Codec Pack',
+    s8_c4:'Download from <strong style="color:#5b9cf6">codecguide.com/download_k-lite_codec_pack_basic.htm</strong>',
+    s8_c5:'Run the installer with default settings', s8_c6:'Restart TapeVault after installation',
+    s8_c7:'All major video formats will now preview correctly',
+    s8_r1v:'✓ Built-in Windows', s8_r2v:'K-Lite or MS Store codec', s8_r3v:'K-Lite recommended',
+    s8_r4v:'✓ Built-in Windows', s8_r5v:'K-Lite recommended', s8_r6v:'Avid codec required',
+    s8_hevc_alert:'<strong>HEVC codec for Windows 11:</strong> Search for <strong>"HEVC Video Extensions"</strong> in the Microsoft Store. Free on Windows 11 — provides native H.265 playback without third-party codec packs.',
+    s8_ent_alert:'<strong>Enterprise / Air-gapped environments:</strong> If Microsoft Store access is restricted, use K-Lite Codec Pack which can be installed offline.',
+    s8_preview_label:'Video preview inside TapeVault', s8_mock_title:'TapeVault — File Detail Panel',
+    s8_mock:'<span class="hl">2026_06_12_22_41(1).mp4</span><br><span class="dim">/A1-1/2026_06_12_22_41_(1).mp4</span><br><br><span class="ok">▶ Preview video</span>  <span class="dim">← Click to preview in-app</span><br><br><span class="dim">File type    </span><span class="ok">h264</span><br><span class="dim">Resolution   </span><span class="ok">1280×720</span><br><span class="dim">Size         </span><span class="ok">0.0 GB (31 MB / 31497 KB)</span><br><span class="dim">Date         </span><span class="ok">2026-06-26</span><br><span class="dim">Stored on    </span><span class="hl" style="color:#f5a623">VT TEST</span>',
+    trouble_label:'Troubleshooting', trouble_title:'Common issues &amp; fixes',
+    t1_title:'LTO drive not detected',
+    t1_c1:'Make sure the LTO drive is powered on and connected before launching TapeVault',
+    t1_c2:'Check Device Manager — the drive should appear under <strong style="color:#c8cfe0">Tape drives</strong>',
+    t1_c3:'Try a different SAS/USB port or cable', t1_c4:'Reinstall the tape driver from your drive manufacturer',
+    t1_c5:"Click <strong style=\"color:#f5a623\">Refresh</strong> in TapeVault's top bar to re-scan",
+    t2_title:"Installation fails or won't start",
+    t2_c1:'Right-click the installer → <strong style="color:#c8cfe0">Run as Administrator</strong>',
+    t2_c2:'Temporarily disable antivirus software during installation',
+    t2_c3:'Make sure you have at least 500 MB of free disk space',
+    t2_c4:'Download the installer again — the file may be corrupted',
+    t3_title:'License activation issues',
+    t3_c1:'Make sure you have an active internet connection during activation',
+    t3_c2:'Check that you copied the license key correctly — no extra spaces',
+    t3_c3:'Each license key can be activated on up to 2 devices',
+    t3_c4:'If you need to transfer a license, contact support',
+    t3_alert:'Still having issues? Contact us at <strong>support@tapevault.net</strong> — we respond within 24 hours on business days.',
+    next_label:"What's next", next_title:"You're all set!",
+    n1_title:'Explore Features', n1_desc:'See everything TapeVault can do for your archive workflow.',
+    n2_title:'Choose a Plan', n2_desc:'Start free for 30 days, then pick the plan that fits your workflow.',
+    n3_title:'Contact Support', n3_desc:'Our team is ready to help. Response within 24 hours.',
+    foot_left:'TapeVault v1.0.0 · Built by Veteran IT · © 2026 Veteran IT Co., Ltd.',
+    foot_home:'Home', foot_pricing:'Pricing', foot_support:'Support'
+  },
+  ko: {
+    nav_features:'기능', nav_how:'작동 방식', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
+    nav_signin:'로그인', nav_trial:'무료 체험',
+    bc_home:'홈', bc_support:'지원', bc_current:'설치 방법',
+    page_label:'지원 · 설치 가이드', page_title:'TapeVault 설치 방법',
+    page_sub:'Windows 10 / 11에서 TapeVault v1.0.0을 설치하는 단계별 가이드입니다. 10분 이내에 LTO 드라이브를 사용할 준비가 됩니다.',
+    sb_installation:'설치', sb_troubleshooting:'문제 해결', sb_support:'지원',
+    sb1:'시스템 요구사항', sb2:'설치 파일 다운로드', sb3:'설치 프로그램 실행', sb4:'LTO 드라이버 설정',
+    sb5:'첫 실행', sb6:'라이선스 활성화', sb7:'FFmpeg 설정', sb8:'Windows Media Player',
+    sbt1:'드라이브 인식 안 됨', sbt2:'설치 실패', sbt3:'라이선스 문제', sbs1:'지원팀 문의',
+    pg1:'요구사항', pg2:'다운로드', pg3:'설치', pg4:'드라이버', pg5:'실행', pg6:'활성화', pg7:'FFmpeg', pg8:'미디어 플레이어',
+    s1_title:'시스템 요구사항', s1_desc:'TapeVault를 설치하기 전에 시스템이 아래 요구사항을 충족하는지 확인하세요.',
+    s1_r1l:'운영체제', s1_r1v:'Windows 10 / 11 (64비트)', s1_r2l:'RAM', s1_r2v:'8GB 이상 권장',
+    s1_r3l:'저장공간', s1_r3v:'500MB 여유 공간', s1_r4l:'LTO 드라이브 인터페이스', s1_r4v:'SAS / Thunderbolt / USB',
+    s1_r5l:'지원 LTO', s1_r5v:'LTO-4 ~ LTO-9', s1_r6l:'인터넷', s1_r6v:'활성화 시에만 필요',
+    s1_alert:'TapeVault는 최초 라이선스 활성화 후에는 완전히 오프라인으로 동작합니다. 상시 인터넷 연결이 필요하지 않습니다.',
+    s2_title:'설치 파일 다운로드', s2_desc:'Windows용 최신 TapeVault 설치 파일을 다운로드하세요. 설치 파일에는 Python과 Electron을 포함한 모든 런타임 구성 요소가 포함되어 있습니다.',
+    s2_btn:'⬇ TapeVault v1.0.0 Windows용 다운로드',
+    s2_file:'파일: <strong>TapeVault-Setup-v1.0.0-win64.exe</strong> · 약 90MB · SHA256 검증됨',
+    s2_warn:'첫 실행 시 Windows SmartScreen 경고가 나타날 수 있습니다. <strong>"추가 정보" → "실행"</strong>을 클릭하면 계속 진행됩니다. 신규 소프트웨어에서 흔히 발생하는 정상적인 현상입니다.',
+    s3_title:'설치 프로그램 실행', s3_desc:'다운로드한 <code style="background:#1a1a20;padding:2px 6px;border-radius:3px;font-size:12px;color:#5b9cf6">TapeVault-Setup-v1.0.0-win64.exe</code> 파일을 실행하고 아래 단계를 따르세요.',
+    s3_c1:'설치 파일을 더블클릭하여 설치 마법사를 실행합니다',
+    s3_c2:'라이선스 계약에 동의하고 <strong style="color:#c8cfe0">다음</strong>을 클릭합니다',
+    s3_c3:'설치 폴더를 선택합니다 (기본값: <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\\Program Files\\TapeVault</code>)',
+    s3_c4:'원하는 경우 <strong style="color:#c8cfe0">바탕화면 바로가기 만들기</strong>를 선택합니다',
+    s3_c5:'<strong style="color:#f5a623">설치</strong>를 클릭하고 완료될 때까지 기다립니다 (약 2분)',
+    s3_c6:'<strong style="color:#c8cfe0">마침</strong>을 클릭하면 TapeVault가 자동으로 실행됩니다',
+    s3_mock:'<span class="ok">✓</span> 파일 압축 해제 중...<br><span class="ok">✓</span> Python 런타임 설치 중...<br><span class="ok">✓</span> Electron 프레임워크 설치 중...<br><span class="ok">✓</span> TapeVault 등록 중...<br><span class="hl">→</span> 설치 완료. 마침을 클릭해 실행하세요.<br><span class="dim">설치 위치: C:\\Program Files\\TapeVault</span>',
+    s4_title:'LTO 드라이버 설정', s4_desc:'TapeVault는 LTO 드라이브에 맞는 SCSI/SAS 또는 테이프 드라이버가 필요합니다. 대부분의 최신 LTO 드라이브는 Windows에서 자동으로 인식되지만, 일부는 수동 드라이버 설치가 필요할 수 있습니다.',
+    s4_alert:'TapeVault를 처음 실행하기 <strong>전에</strong> LTO 드라이브를 연결하세요. TapeVault가 시작 시 드라이브를 자동으로 인식합니다.',
+    s4_desc2:'드라이브가 인식되지 않으면 드라이버를 수동으로 설치하세요:',
+    s4_c1:'<strong style="color:#c8cfe0">장치 관리자</strong>를 엽니다 (Win + X → 장치 관리자)',
+    s4_c2:'<strong style="color:#c8cfe0">테이프 드라이브</strong> 또는 <strong style="color:#c8cfe0">기타 장치</strong> 항목에서 LTO 드라이브를 찾습니다',
+    s4_c3:'우클릭 → <strong style="color:#c8cfe0">드라이버 업데이트</strong> → 자동으로 검색',
+    s4_c4:'찾을 수 없으면 드라이브 제조사 웹사이트에서 드라이버를 다운로드하세요',
+    s5_title:'첫 실행', s5_desc:'바탕화면 바로가기나 시작 메뉴에서 TapeVault를 실행하세요. 처음 실행하면 TapeVault가 연결된 LTO 드라이브를 검색하고 초기 설정을 안내합니다.',
+    s5_mock:'<span class="hl">TapeVault</span> <span class="dim">v1.0.0</span><br><br><span class="ok">✓</span> Python IPC 브릿지 시작됨<br><span class="ok">✓</span> 데이터베이스 초기화됨<br><span class="hl">→</span> LTO 드라이브 검색 중...<br><span class="ok">✓</span> 드라이브 인식됨: <span class="hl">HP Ultrium 7 (LTO-7)</span><br><span class="dim">준비 완료. 테이프를 삽입하세요.</span>',
+    s5_c1:'드라이브에 LTO 테이프를 삽입합니다',
+    s5_c2:'<strong style="color:#f5a623">+ 새 테이프</strong>를 클릭해 테이프를 등록합니다',
+    s5_c3:'첫 프로젝트 폴더를 생성합니다',
+    s5_c4:'파일을 큐에 드래그한 뒤 <strong style="color:#f5a623">테이프에 보관</strong>을 클릭합니다',
+    s6_title:'라이선스 활성화', s6_desc:'TapeVault는 전체 기능을 포함한 30일 무료 체험을 제공합니다. 유료 라이선스를 활성화하려면 <strong style="color:#c8cfe0">설정 → 라이선스</strong>로 이동해 라이선스 키를 입력하세요.',
+    s6_code_label:'활성화 단계',
+    s6_code:'<span class="cmd">1.</span> TapeVault를 열고 상단 바에서 <span class="hl" style="color:#f5a623">설정</span> 클릭<br><span class="cmd">2.</span> <span class="path">설정 → 라이선스 → 활성화</span>로 이동<br><span class="cmd">3.</span> 구매 이메일에 있는 라이선스 키 입력<br><span class="cmd">4.</span> <span class="hl" style="color:#f5a623">활성화</span> 클릭 — 이 단계에서만 인터넷 필요<br><span class="cmd">5.</span> <span class="ok" style="color:#4ade80">✓ 활성화 완료</span> — 이제 완전히 오프라인 사용 가능',
+    s6_alert:'활성화 후 TapeVault는 완전히 오프라인으로 동작합니다. 상시 인터넷 연결이 필요하지 않습니다.',
+    s7_title:'FFmpeg 설정 (썸네일 생성)', s7_desc:'TapeVault는 LTO 테이프에 저장된 동영상 파일의 미리보기 썸네일을 자동 생성하기 위해 <strong style="color:#c8cfe0">FFmpeg</strong>를 사용합니다. FFmpeg는 무료 오픈소스 멀티미디어 프레임워크로, 별도로 설치해야 합니다.',
+    s7_alert:'FFmpeg가 없어도 TapeVault는 정상적으로 동작합니다 — 다만 동영상 썸네일 미리보기가 생성되지 않습니다. 다른 모든 기능은 그대로 사용할 수 있습니다.',
+    s7_why:'FFmpeg가 필요한 이유',
+    s7_c1:'테이프에서 전체 파일을 꺼내지 않고도 MP4, MOV, MXF, AVI, MKV 파일의 미리보기 썸네일을 생성합니다',
+    s7_c2:'동영상 메타데이터 추출에 사용됩니다 (재생 시간, 해상도, 코덱 정보)',
+    s7_c3:'TapeVault의 시각적 그리드 뷰를 지원합니다 — 미디어 브라우저처럼 아카이브를 탐색할 수 있습니다',
+    s7_c4:'컴퓨터에서 로컬로 실행되며 데이터가 외부로 전송되지 않습니다',
+    s7_m1_title:'설치 방법 1: 자동 설치 (권장)', s7_m1_desc:'TapeVault는 첫 실행 시 FFmpeg를 자동으로 다운로드하고 설정할 수 있습니다:',
+    s7_m1_c1:'TapeVault 실행 → <strong style="color:#f5a623">설정</strong> → <strong style="color:#f5a623">동영상 및 썸네일</strong>로 이동',
+    s7_m1_c2:'<strong style="color:#f5a623">FFmpeg 자동 설치</strong> 클릭',
+    s7_m1_c3:'TapeVault가 백그라운드에서 FFmpeg를 다운로드하고 설정합니다 (약 50MB)',
+    s7_m1_c4:'TapeVault를 재시작하면 썸네일 생성 기능이 활성화됩니다',
+    s7_m2_title:'설치 방법 2: 수동 설치', s7_m2_desc:'인터넷 접속이 제한된 폐쇄망 환경의 경우:',
+    s7_m2_c1:'<strong style="color:#5b9cf6">ffmpeg.org/download.html</strong>에서 FFmpeg 다운로드 → Windows builds → <strong style="color:#c8cfe0">ffmpeg-release-essentials.zip</strong>',
+    s7_m2_c2:'압축 파일을 폴더에 압축 해제합니다 (예: <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\\ffmpeg</code>)',
+    s7_m2_c3:'TapeVault → <strong style="color:#f5a623">설정 → 동영상 및 썸네일 → FFmpeg 경로</strong>로 이동',
+    s7_m2_c4:'경로를 <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\\ffmpeg\\bin\\ffmpeg.exe</code>로 설정합니다',
+    s7_m2_c5:'<strong style="color:#f5a623">테스트 및 저장</strong>을 클릭해 확인합니다',
+    s7_verify_label:'FFmpeg 설치 확인 (명령 프롬프트)', s7_copy:'복사',
+    s7_r1l:'지원 형식', s7_r2l:'썸네일 크기', s7_r2v:'320×180px (설정 가능)',
+    s7_r3l:'FFmpeg 버전', s7_r3v:'4.x 이상 필요', s7_r4l:'라이선스', s7_r4v:'LGPL / GPL — 무료 사용',
+    s7_warn:'<strong>MXF (OP1a / OP-Atom)</strong> 파일을 사용하는 방송 환경에서는 FFmpeg 빌드에 <strong>MXF를 지원하는 libavcodec</strong>이 포함되어 있는지 확인하세요. ffmpeg.org의 권장 "essentials" 빌드에는 기본적으로 포함되어 있습니다.',
+    s8_title:'Windows Media Player 및 코덱 설정', s8_desc:'TapeVault의 내장 동영상 미리보기 기능은 <strong style="color:#c8cfe0">Windows Media Foundation</strong>을 사용해 꺼낸 동영상 파일을 앱 내에서 바로 재생합니다. 일부 Windows 환경에서는 특정 형식에 추가 코덱 팩이 필요할 수 있습니다.',
+    s8_check_label:'Windows Media Player 상태 확인',
+    s8_c1:'<strong style="color:#c8cfe0">Win + R</strong>을 누르고 <code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">wmplayer</code> 입력 후 Enter',
+    s8_c2:'Windows Media Player가 열리면 준비 완료입니다 ✅',
+    s8_c3:'찾을 수 없으면 아래 단계를 따라 활성화하세요',
+    s8_enable_label:'Windows Media Player 활성화 (없는 경우)', s8_code_label:'Windows 기능 — 단계별 안내',
+    s8_code:'<span class="cmd">1.</span> <span class="hl" style="color:#f5a623">Win + R</span> → <span class="path">optionalfeatures</span> 입력 → Enter<br><span class="cmd">2.</span> <span class="ok">미디어 기능</span> 찾기 → 확장 → <span class="ok">Windows Media Player</span> 체크<br><span class="cmd">3.</span> <span class="hl" style="color:#f5a623">확인</span> 클릭 → Windows가 설치합니다 (약 1분)<br><span class="cmd">4.</span> <span class="dim">메시지가 뜨면 컴퓨터를 재시작하세요</span><br><span class="cmd">5.</span> <span class="ok">✓ Windows Media Player 활성화 완료</span>',
+    s8_codec_label:'권장 코덱 팩 — K-Lite Codec Pack',
+    s8_c4:'<strong style="color:#5b9cf6">codecguide.com/download_k-lite_codec_pack_basic.htm</strong>에서 다운로드',
+    s8_c5:'기본 설정으로 설치 프로그램을 실행합니다', s8_c6:'설치 후 TapeVault를 재시작합니다',
+    s8_c7:'이제 대부분의 동영상 형식이 정상적으로 미리보기됩니다',
+    s8_r1v:'✓ Windows 기본 내장', s8_r2v:'K-Lite 또는 MS Store 코덱', s8_r3v:'K-Lite 권장',
+    s8_r4v:'✓ Windows 기본 내장', s8_r5v:'K-Lite 권장', s8_r6v:'Avid 코덱 필요',
+    s8_hevc_alert:'<strong>Windows 11용 HEVC 코덱:</strong> Microsoft Store에서 <strong>"HEVC Video Extensions"</strong>를 검색하세요. Windows 11에서 무료이며, 타사 코덱 팩 없이 기본 H.265 재생을 지원합니다.',
+    s8_ent_alert:'<strong>기업 / 폐쇄망 환경:</strong> Microsoft Store 접속이 제한된 경우, 오프라인 설치가 가능한 K-Lite Codec Pack을 사용하세요.',
+    s8_preview_label:'TapeVault 내 동영상 미리보기', s8_mock_title:'TapeVault — 파일 정보 패널',
+    s8_mock:'<span class="hl">2026_06_12_22_41(1).mp4</span><br><span class="dim">/A1-1/2026_06_12_22_41_(1).mp4</span><br><br><span class="ok">▶ 동영상 미리보기</span>  <span class="dim">← 클릭하면 앱 내에서 미리보기</span><br><br><span class="dim">파일 유형    </span><span class="ok">h264</span><br><span class="dim">해상도       </span><span class="ok">1280×720</span><br><span class="dim">용량         </span><span class="ok">0.0 GB (31 MB / 31497 KB)</span><br><span class="dim">날짜         </span><span class="ok">2026-06-26</span><br><span class="dim">보관 테이프  </span><span class="hl" style="color:#f5a623">VT TEST</span>',
+    trouble_label:'문제 해결', trouble_title:'자주 발생하는 문제와 해결 방법',
+    t1_title:'LTO 드라이브가 인식되지 않음',
+    t1_c1:'TapeVault를 실행하기 전에 LTO 드라이브 전원이 켜져 있고 연결되어 있는지 확인하세요',
+    t1_c2:'장치 관리자를 확인하세요 — 드라이브가 <strong style="color:#c8cfe0">테이프 드라이브</strong> 항목에 나타나야 합니다',
+    t1_c3:'다른 SAS/USB 포트나 케이블을 사용해 보세요', t1_c4:'드라이브 제조사의 테이프 드라이버를 다시 설치하세요',
+    t1_c5:'TapeVault 상단 바에서 <strong style="color:#f5a623">새로고침</strong>을 클릭해 다시 검색하세요',
+    t2_title:'설치가 실패하거나 시작되지 않음',
+    t2_c1:'설치 파일을 우클릭 → <strong style="color:#c8cfe0">관리자 권한으로 실행</strong>',
+    t2_c2:'설치 중에는 백신 프로그램을 일시적으로 비활성화하세요',
+    t2_c3:'최소 500MB의 여유 디스크 공간이 있는지 확인하세요',
+    t2_c4:'설치 파일을 다시 다운로드하세요 — 파일이 손상되었을 수 있습니다',
+    t3_title:'라이선스 활성화 문제',
+    t3_c1:'활성화 중에는 인터넷 연결이 활성화되어 있는지 확인하세요',
+    t3_c2:'라이선스 키를 정확히 복사했는지 확인하세요 — 공백이 추가되지 않도록 주의하세요',
+    t3_c3:'각 라이선스 키는 최대 2대의 기기에서 활성화할 수 있습니다',
+    t3_c4:'라이선스를 이전해야 한다면 지원팀에 문의하세요',
+    t3_alert:'문제가 계속되나요? <strong>support@tapevault.net</strong>으로 문의해 주세요 — 영업일 기준 24시간 이내에 답변드립니다.',
+    next_label:'다음 단계', next_title:'모든 준비가 끝났습니다!',
+    n1_title:'기능 살펴보기', n1_desc:'TapeVault가 아카이브 워크플로우를 위해 제공하는 모든 기능을 확인하세요.',
+    n2_title:'요금제 선택', n2_desc:'30일 무료로 시작한 뒤, 워크플로우에 맞는 요금제를 선택하세요.',
+    n3_title:'지원팀 문의', n3_desc:'저희 팀이 도와드리겠습니다. 24시간 이내에 답변드립니다.',
+    foot_left:'TapeVault v1.0.0 · Veteran IT 개발 · © 2026 주식회사 베테랑아이티',
+    foot_home:'홈', foot_pricing:'요금제', foot_support:'지원'
+  },
+  ja: {
+    nav_features:'機能', nav_how:'仕組み', nav_download:'ダウンロード', nav_pricing:'料金プラン', nav_install:'インストールガイド',
+    nav_signin:'ログイン', nav_trial:'無料体験',
+    bc_home:'ホーム', bc_support:'サポート', bc_current:'インストール方法',
+    page_label:'サポート · インストールガイド', page_title:'TapeVaultのインストール方法',
+    page_sub:'Windows 10 / 11でTapeVault v1.0.0をインストールする手順です。10分以内にLTOドライブを使い始められます。',
+    sb_installation:'インストール', sb_troubleshooting:'トラブルシューティング', sb_support:'サポート',
+    sb1:'システム要件', sb2:'インストーラーのダウンロード', sb3:'インストーラーの実行', sb4:'LTOドライバー設定',
+    sb5:'初回起動', sb6:'ライセンス認証', sb7:'FFmpegの設定', sb8:'Windows Media Player',
+    sbt1:'ドライブが認識されない', sbt2:'インストールに失敗する', sbt3:'ライセンスの問題', sbs1:'サポートに連絡',
+    pg1:'要件', pg2:'ダウンロード', pg3:'インストール', pg4:'ドライバー', pg5:'起動', pg6:'認証', pg7:'FFmpeg', pg8:'メディアプレーヤー',
+    s1_title:'システム要件', s1_desc:'TapeVaultをインストールする前に、システムが以下の要件を満たしていることを確認してください。',
+    s1_r1l:'OS', s1_r1v:'Windows 10 / 11（64ビット）', s1_r2l:'RAM', s1_r2v:'8GB以上推奨',
+    s1_r3l:'ストレージ', s1_r3v:'空き容量500MB', s1_r4l:'LTOドライブ接続', s1_r4v:'SAS / Thunderbolt / USB',
+    s1_r5l:'対応LTO', s1_r5v:'LTO-4〜LTO-9', s1_r6l:'インターネット', s1_r6v:'認証時のみ必要',
+    s1_alert:'TapeVaultは初回のライセンス認証後、完全にオフラインで動作します。常時インターネット接続は不要です。',
+    s2_title:'インストーラーのダウンロード', s2_desc:'Windows用の最新TapeVaultインストーラーをダウンロードしてください。インストーラーにはPythonやElectronを含む必要なランタイムがすべて含まれています。',
+    s2_btn:'⬇ TapeVault v1.0.0 Windows版をダウンロード',
+    s2_file:'ファイル：<strong>TapeVault-Setup-v1.0.0-win64.exe</strong> · 約90MB · SHA256検証済み',
+    s2_warn:'初回実行時にWindows SmartScreenの警告が表示される場合があります。<strong>「詳細情報」→「実行」</strong>をクリックして続行してください。新しいソフトウェアでよくある現象です。',
+    s3_title:'インストーラーの実行', s3_desc:'ダウンロードした<code style="background:#1a1a20;padding:2px 6px;border-radius:3px;font-size:12px;color:#5b9cf6">TapeVault-Setup-v1.0.0-win64.exe</code>を実行し、以下の手順に従ってください。',
+    s3_c1:'インストーラーファイルをダブルクリックしてセットアップウィザードを起動します',
+    s3_c2:'使用許諾契約に同意し、<strong style="color:#c8cfe0">次へ</strong>をクリックします',
+    s3_c3:'インストール先フォルダーを選択します（既定：<code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\\Program Files\\TapeVault</code>）',
+    s3_c4:'必要に応じて<strong style="color:#c8cfe0">デスクトップにショートカットを作成</strong>を選択します',
+    s3_c5:'<strong style="color:#f5a623">インストール</strong>をクリックし、完了まで待ちます（約2分）',
+    s3_c6:'<strong style="color:#c8cfe0">完了</strong>をクリックすると、TapeVaultが自動的に起動します',
+    s3_mock:'<span class="ok">✓</span> ファイルを展開中...<br><span class="ok">✓</span> Pythonランタイムをインストール中...<br><span class="ok">✓</span> Electronフレームワークをインストール中...<br><span class="ok">✓</span> TapeVaultを登録中...<br><span class="hl">→</span> インストール完了。完了をクリックして起動してください。<br><span class="dim">インストール先: C:\\Program Files\\TapeVault</span>',
+    s4_title:'LTOドライバー設定', s4_desc:'TapeVaultにはLTOドライブに適したSCSI/SASまたはテープドライバーが必要です。ほとんどの最新LTOドライブはWindowsで自動認識されますが、一部は手動でのドライバーインストールが必要な場合があります。',
+    s4_alert:'TapeVaultを初めて起動する<strong>前に</strong>LTOドライブを接続してください。起動時にTapeVaultが自動的にドライブを検出します。',
+    s4_desc2:'ドライブが認識されない場合は、手動でドライバーをインストールしてください：',
+    s4_c1:'<strong style="color:#c8cfe0">デバイスマネージャー</strong>を開きます（Win + X → デバイスマネージャー）',
+    s4_c2:'<strong style="color:#c8cfe0">テープドライブ</strong>または<strong style="color:#c8cfe0">その他のデバイス</strong>の項目からLTOドライブを探します',
+    s4_c3:'右クリック → <strong style="color:#c8cfe0">ドライバーの更新</strong> → 自動検索',
+    s4_c4:'見つからない場合は、ドライブメーカーのWebサイトからドライバーをダウンロードしてください',
+    s5_title:'初回起動', s5_desc:'デスクトップのショートカットまたはスタートメニューからTapeVaultを起動します。初回起動時、TapeVaultは接続されているLTOドライブをスキャンし、初期設定を案内します。',
+    s5_mock:'<span class="hl">TapeVault</span> <span class="dim">v1.0.0</span><br><br><span class="ok">✓</span> Python IPCブリッジ起動<br><span class="ok">✓</span> データベース初期化完了<br><span class="hl">→</span> LTOドライブをスキャン中...<br><span class="ok">✓</span> ドライブを検出: <span class="hl">HP Ultrium 7 (LTO-7)</span><br><span class="dim">準備完了。テープを挿入してください。</span>',
+    s5_c1:'ドライブにLTOテープを挿入します',
+    s5_c2:'<strong style="color:#f5a623">+ 新規テープ</strong>をクリックしてテープを登録します',
+    s5_c3:'最初のプロジェクトフォルダーを作成します',
+    s5_c4:'ファイルをキューにドラッグし、<strong style="color:#f5a623">テープにアーカイブ</strong>をクリックします',
+    s6_title:'ライセンス認証', s6_desc:'TapeVaultには全機能が使える30日間の無料体験が含まれています。有料ライセンスを認証するには、<strong style="color:#c8cfe0">設定 → ライセンス</strong>に移動してライセンスキーを入力してください。',
+    s6_code_label:'認証手順',
+    s6_code:'<span class="cmd">1.</span> TapeVaultを開き、上部バーの<span class="hl" style="color:#f5a623">設定</span>をクリック<br><span class="cmd">2.</span> <span class="path">設定 → ライセンス → 認証</span>に移動<br><span class="cmd">3.</span> 購入時のメールに記載されたライセンスキーを入力<br><span class="cmd">4.</span> <span class="hl" style="color:#f5a623">認証</span>をクリック — この手順のみインターネットが必要<br><span class="cmd">5.</span> <span class="ok" style="color:#4ade80">✓ 認証完了</span> — 以降は完全にオフラインで利用可能',
+    s6_alert:'認証後、TapeVaultは完全にオフラインで動作します。常時インターネット接続は不要です。',
+    s7_title:'FFmpegの設定（サムネイル生成）', s7_desc:'TapeVaultはLTOテープに保存された動画ファイルからプレビューサムネイルを自動生成するために<strong style="color:#c8cfe0">FFmpeg</strong>を使用します。FFmpegは無料のオープンソースマルチメディアフレームワークで、別途インストールが必要です。',
+    s7_alert:'FFmpegがなくてもTapeVaultは通常どおり動作しますが、動画のサムネイルプレビューは生成されません。その他の機能はすべて問題なく利用できます。',
+    s7_why:'なぜFFmpegが必要か',
+    s7_c1:'テープからファイル全体を取り出すことなく、MP4、MOV、MXF、AVI、MKVファイルのプレビューサムネイルを生成します',
+    s7_c2:'動画のメタデータ抽出に使用されます（再生時間、解像度、コーデック情報）',
+    s7_c3:'TapeVaultのビジュアルグリッド表示を実現します — メディアブラウザのようにアーカイブを閲覧できます',
+    s7_c4:'お使いのマシン上でローカルに実行され、データが外部に送信されることはありません',
+    s7_m1_title:'インストール方法1：自動（推奨）', s7_m1_desc:'TapeVaultは初回起動時にFFmpegを自動的にダウンロード・設定できます：',
+    s7_m1_c1:'TapeVaultを起動 → <strong style="color:#f5a623">設定</strong> → <strong style="color:#f5a623">動画とサムネイル</strong>に移動',
+    s7_m1_c2:'<strong style="color:#f5a623">FFmpegを自動インストール</strong>をクリック',
+    s7_m1_c3:'TapeVaultがバックグラウンドでFFmpegをダウンロード・設定します（約50MB）',
+    s7_m1_c4:'TapeVaultを再起動すると、サムネイル生成が有効になります',
+    s7_m2_title:'インストール方法2：手動', s7_m2_desc:'インターネットアクセスが制限されたエアギャップ環境の場合：',
+    s7_m2_c1:'<strong style="color:#5b9cf6">ffmpeg.org/download.html</strong>からFFmpegをダウンロード → Windows builds → <strong style="color:#c8cfe0">ffmpeg-release-essentials.zip</strong>',
+    s7_m2_c2:'ZIPファイルをフォルダーに展開します（例：<code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\\ffmpeg</code>）',
+    s7_m2_c3:'TapeVault → <strong style="color:#f5a623">設定 → 動画とサムネイル → FFmpegパス</strong>に移動',
+    s7_m2_c4:'パスを<code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">C:\\ffmpeg\\bin\\ffmpeg.exe</code>に設定します',
+    s7_m2_c5:'<strong style="color:#f5a623">テストして保存</strong>をクリックして確認します',
+    s7_verify_label:'FFmpegインストールの確認（コマンドプロンプト）', s7_copy:'コピー',
+    s7_r1l:'対応フォーマット', s7_r2l:'サムネイルサイズ', s7_r2v:'320×180px（設定変更可）',
+    s7_r3l:'FFmpegバージョン', s7_r3v:'4.x以降が必要', s7_r4l:'ライセンス', s7_r4v:'LGPL / GPL — 無料で利用可能',
+    s7_warn:'<strong>MXF（OP1a / OP-Atom）</strong>ファイルを使用する放送環境では、FFmpegビルドに<strong>MXF対応のlibavcodec</strong>が含まれていることを確認してください。ffmpeg.orgの推奨「essentials」ビルドには標準で含まれています。',
+    s8_title:'Windows Media Playerとコーデック設定', s8_desc:'TapeVaultの内蔵動画プレビュー機能は<strong style="color:#c8cfe0">Windows Media Foundation</strong>を使用して、取り出した動画ファイルをアプリ内で直接再生します。Windowsの環境によっては、特定の形式に追加のコーデックパックが必要な場合があります。',
+    s8_check_label:'Windows Media Playerの状態を確認',
+    s8_c1:'<strong style="color:#c8cfe0">Win + R</strong>を押して<code style="background:#1a1a20;padding:1px 5px;border-radius:3px;font-size:11px;color:#5b9cf6">wmplayer</code>と入力しEnter',
+    s8_c2:'Windows Media Playerが開けば準備完了です ✅',
+    s8_c3:'見つからない場合は、以下の手順で有効化してください',
+    s8_enable_label:'Windows Media Playerを有効化する（ない場合）', s8_code_label:'Windowsの機能 — 手順',
+    s8_code:'<span class="cmd">1.</span> <span class="hl" style="color:#f5a623">Win + R</span> → <span class="path">optionalfeatures</span>と入力 → Enter<br><span class="cmd">2.</span> <span class="ok">メディア機能</span>を探す → 展開 → <span class="ok">Windows Media Player</span>にチェック<br><span class="cmd">3.</span> <span class="hl" style="color:#f5a623">OK</span>をクリック → Windowsがインストールします（約1分）<br><span class="cmd">4.</span> <span class="dim">表示された場合はPCを再起動してください</span><br><span class="cmd">5.</span> <span class="ok">✓ Windows Media Playerが有効になりました</span>',
+    s8_codec_label:'推奨コーデックパック — K-Lite Codec Pack',
+    s8_c4:'<strong style="color:#5b9cf6">codecguide.com/download_k-lite_codec_pack_basic.htm</strong>からダウンロード',
+    s8_c5:'既定の設定でインストーラーを実行します', s8_c6:'インストール後、TapeVaultを再起動します',
+    s8_c7:'これで主要な動画形式がすべて正しくプレビューされます',
+    s8_r1v:'✓ Windows標準搭載', s8_r2v:'K-LiteまたはMSストアのコーデック', s8_r3v:'K-Lite推奨',
+    s8_r4v:'✓ Windows標準搭載', s8_r5v:'K-Lite推奨', s8_r6v:'Avidコーデックが必要',
+    s8_hevc_alert:'<strong>Windows 11用HEVCコーデック：</strong>Microsoft Storeで<strong>「HEVC Video Extensions」</strong>を検索してください。Windows 11では無料で、サードパーティ製コーデックパックなしでH.265のネイティブ再生が可能です。',
+    s8_ent_alert:'<strong>企業 / エアギャップ環境：</strong>Microsoft Storeへのアクセスが制限されている場合は、オフラインでインストール可能なK-Lite Codec Packを使用してください。',
+    s8_preview_label:'TapeVault内での動画プレビュー', s8_mock_title:'TapeVault — ファイル詳細パネル',
+    s8_mock:'<span class="hl">2026_06_12_22_41(1).mp4</span><br><span class="dim">/A1-1/2026_06_12_22_41_(1).mp4</span><br><br><span class="ok">▶ 動画をプレビュー</span>  <span class="dim">← クリックしてアプリ内でプレビュー</span><br><br><span class="dim">ファイル形式  </span><span class="ok">h264</span><br><span class="dim">解像度       </span><span class="ok">1280×720</span><br><span class="dim">サイズ       </span><span class="ok">0.0 GB (31 MB / 31497 KB)</span><br><span class="dim">日付         </span><span class="ok">2026-06-26</span><br><span class="dim">保管テープ    </span><span class="hl" style="color:#f5a623">VT TEST</span>',
+    trouble_label:'トラブルシューティング', trouble_title:'よくある問題と解決方法',
+    t1_title:'LTOドライブが認識されない',
+    t1_c1:'TapeVaultを起動する前に、LTOドライブの電源が入っていて接続されていることを確認してください',
+    t1_c2:'デバイスマネージャーを確認してください — ドライブは<strong style="color:#c8cfe0">テープドライブ</strong>に表示されるはずです',
+    t1_c3:'別のSAS/USBポートまたはケーブルを試してください', t1_c4:'ドライブメーカーのテープドライバーを再インストールしてください',
+    t1_c5:'TapeVault上部バーの<strong style="color:#f5a623">更新</strong>をクリックして再スキャンしてください',
+    t2_title:'インストールが失敗する、または開始されない',
+    t2_c1:'インストーラーを右クリック → <strong style="color:#c8cfe0">管理者として実行</strong>',
+    t2_c2:'インストール中はウイルス対策ソフトを一時的に無効化してください',
+    t2_c3:'空き容量が少なくとも500MBあることを確認してください',
+    t2_c4:'インストーラーを再度ダウンロードしてください — ファイルが破損している可能性があります',
+    t3_title:'ライセンス認証の問題',
+    t3_c1:'認証中はインターネット接続が有効になっていることを確認してください',
+    t3_c2:'ライセンスキーを正しくコピーしたか確認してください — 余分なスペースがないように注意してください',
+    t3_c3:'各ライセンスキーは最大2台のデバイスで認証できます',
+    t3_c4:'ライセンスの移行が必要な場合は、サポートにご連絡ください',
+    t3_alert:'まだ問題が解決しませんか？<strong>support@tapevault.net</strong>までご連絡ください — 営業日24時間以内に返信いたします。',
+    next_label:'次のステップ', next_title:'これで準備完了です！',
+    n1_title:'機能を見る', n1_desc:'TapeVaultがアーカイブ業務にもたらすすべての機能をご覧ください。',
+    n2_title:'プランを選ぶ', n2_desc:'30日間無料で始めて、ワークフローに合ったプランをお選びください。',
+    n3_title:'サポートに連絡', n3_desc:'サポートチームが対応いたします。24時間以内に返信いたします。',
+    foot_left:'TapeVault v1.0.0 · Veteran IT製 · © 2026 株式会社ベテランIT',
+    foot_home:'ホーム', foot_pricing:'料金プラン', foot_support:'サポート'
+  }
+};
+
+function applyLang(lang) {
+  if (!T[lang]) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T[lang][el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.documentElement.lang = lang === 'ko' ? 'ko' : lang === 'ja' ? 'ja' : 'en';
+  document.getElementById('lang-current').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-menu-item').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  localStorage.setItem('tv-lang', lang);
+}
+
+function toggleLangMenu(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('lang-menu').classList.toggle('open');
+  document.getElementById('lang-globe-btn').classList.toggle('open');
+}
+document.addEventListener('click', (e) => {
+  const wrap = document.getElementById('lang-select');
+  if (wrap && !wrap.contains(e.target)) {
+    document.getElementById('lang-menu').classList.remove('open');
+    document.getElementById('lang-globe-btn').classList.remove('open');
+  }
+});
+
+applyLang(localStorage.getItem('tv-lang') || 'en');
+
 const links = document.querySelectorAll('.sidebar-link[href^="#"]');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
