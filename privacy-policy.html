@@ -21,6 +21,20 @@
 .btn-ghost{font-size:13px;color:#a8b2d0;background:#111827;border:0.5px solid #2a3349;padding:6px 16px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-block}
 .btn-orange{font-size:13px;color:#0b0b0d;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
 
+.lang-select{position:relative;margin-right:6px}
+.lang-globe-btn{display:flex;align-items:center;gap:6px;background:#111520;border:0.5px solid #1e2330;color:#99a3c4;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-family:monospace;transition:all .15s}
+.lang-globe-btn:hover{border-color:#3a4a6a;color:#c8cfe0}
+.lang-globe-btn svg{width:15px;height:15px;flex-shrink:0;stroke:currentColor}
+.lang-globe-btn .lang-chevron{width:8px;height:8px;flex-shrink:0;stroke:currentColor;transition:transform .15s}
+.lang-globe-btn.open .lang-chevron{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:#0d1117;border:0.5px solid #2a2a35;border-radius:10px;padding:6px;min-width:150px;box-shadow:0 16px 40px rgba(0,0,0,.55);display:none;flex-direction:column;gap:2px;z-index:200}
+.lang-menu.open{display:flex}
+.lang-menu-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:none;border:none;color:#99a3c4;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:12px;text-align:left;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.lang-menu-item:hover{background:#1a1f2e;color:#c8cfe0}
+.lang-menu-item.active{color:#5b9cf6}
+.lang-menu-item .lang-check{color:#5b9cf6;font-size:12px;opacity:0}
+.lang-menu-item.active .lang-check{opacity:1}
+
 .page-header{padding:64px 48px 48px;border-bottom:0.5px solid #1e2230;background:linear-gradient(180deg,#0d1117 0%,#0b0b0d 100%)}
 .page-header-inner{max-width:780px;margin:0 auto}
 .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:#8b96b8;margin-bottom:20px;font-family:monospace}
@@ -99,15 +113,27 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <span class="nav-ver">v1.0.0</span>
   </a>
   <div class="nav-links" id="nav-links">
-    <a href="index.html#gui">How it works</a>
-    <a href="index.html#features">Features</a>
-    <a href="index.html#download">Download</a>
-    <a href="index.html#pricing">Pricing</a>
-    <a href="how-to-install.html">Install Guide</a>
+    <a href="index.html#gui" data-i18n="nav_how">How it works</a>
+    <a href="index.html#features" data-i18n="nav_features">Features</a>
+    <a href="index.html#download" data-i18n="nav_download">Download</a>
+    <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
+    <a href="how-to-install.html" data-i18n="nav_install">Install Guide</a>
   </div>
   <div class="nav-right">
-    <a class="btn-ghost" href="mailto:support@tapevault.net">Contact</a>
-    <a class="btn-orange" href="index.html#download">Free Trial</a>
+    <div class="lang-select" id="lang-select">
+      <button class="lang-globe-btn" id="lang-globe-btn" onclick="toggleLangMenu(event)" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
+        <span id="lang-current">EN</span>
+        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="lang-menu" id="lang-menu">
+        <button class="lang-menu-item" data-lang="en" onclick="applyLang('en');toggleLangMenu()">English<span class="lang-check">✓</span></button>
+        <button class="lang-menu-item" data-lang="ko" onclick="applyLang('ko');toggleLangMenu()">한국어<span class="lang-check">✓</span></button>
+        <button class="lang-menu-item" data-lang="ja" onclick="applyLang('ja');toggleLangMenu()">日本語<span class="lang-check">✓</span></button>
+      </div>
+    </div>
+    <a class="btn-ghost" href="mailto:support@tapevault.net" data-i18n="nav_contact">Contact</a>
+    <a class="btn-orange" href="index.html#download" data-i18n="nav_trial">Free Trial</a>
     <button class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -117,148 +143,366 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
 <div class="page-header">
   <div class="page-header-inner">
     <div class="breadcrumb">
-      <a href="index.html">Home</a>
+      <a href="index.html" data-i18n="bc_home">Home</a>
       <span class="breadcrumb-sep">›</span>
-      <span>Privacy Policy</span>
+      <span data-i18n="bc_current">Privacy Policy</span>
     </div>
-    <div class="page-label">Legal</div>
-    <div class="page-title">Privacy Policy</div>
-    <p class="page-sub">How Veteran IT Co., Ltd. collects, uses, and protects personal data on tapevault.net and within the TapeVault application.</p>
+    <div class="page-label" data-i18n="page_label">Legal</div>
+    <div class="page-title" data-i18n="page_title">Privacy Policy</div>
+    <p class="page-sub" data-i18n="page_sub">How Veteran IT Co., Ltd. collects, uses, and protects personal data on tapevault.net and within the TapeVault application.</p>
   </div>
 </div>
 
 <div class="doc-content legal">
-  <div class="legal-updated">Effective date: July 18, 2026 · Last updated: July 18, 2026</div>
+  <div class="legal-updated" data-i18n="legal_updated">Effective date: July 18, 2026 · Last updated: July 18, 2026</div>
 
   <div class="legal-toc">
-    <div class="legal-toc-title">Contents</div>
+    <div class="legal-toc-title" data-i18n="toc_title">Contents</div>
     <ol>
-      <li><a href="#controller">1. Data controller</a></li>
-      <li><a href="#data-we-collect">2. Data we collect</a></li>
-      <li><a href="#how-we-use">3. How we use your data</a></li>
-      <li><a href="#legal-basis">4. Legal basis for processing (GDPR)</a></li>
-      <li><a href="#cookies">5. Cookies and tracking</a></li>
-      <li><a href="#sharing">6. Sharing with third parties</a></li>
-      <li><a href="#transfers">7. International data transfers</a></li>
-      <li><a href="#retention">8. Data retention</a></li>
-      <li><a href="#rights">9. Your rights (GDPR)</a></li>
-      <li><a href="#security">10. Data security</a></li>
-      <li><a href="#children">11. Children's privacy</a></li>
-      <li><a href="#changes">12. Changes to this policy</a></li>
-      <li><a href="#contact">13. Contact us</a></li>
+      <li><a href="#controller" data-i18n="toc1">1. Data controller</a></li>
+      <li><a href="#data-we-collect" data-i18n="toc2">2. Data we collect</a></li>
+      <li><a href="#how-we-use" data-i18n="toc3">3. How we use your data</a></li>
+      <li><a href="#legal-basis" data-i18n="toc4">4. Legal basis for processing (GDPR)</a></li>
+      <li><a href="#cookies" data-i18n="toc5">5. Cookies and tracking</a></li>
+      <li><a href="#sharing" data-i18n="toc6">6. Sharing with third parties</a></li>
+      <li><a href="#transfers" data-i18n="toc7">7. International data transfers</a></li>
+      <li><a href="#retention" data-i18n="toc8">8. Data retention</a></li>
+      <li><a href="#rights" data-i18n="toc9">9. Your rights (GDPR)</a></li>
+      <li><a href="#security" data-i18n="toc10">10. Data security</a></li>
+      <li><a href="#children" data-i18n="toc11">11. Children's privacy</a></li>
+      <li><a href="#changes" data-i18n="toc12">12. Changes to this policy</a></li>
+      <li><a href="#contact" data-i18n="toc13">13. Contact us</a></li>
     </ol>
   </div>
 
   <div class="alert alert-info">
     <div class="alert-ico">ℹ️</div>
-    <div>TapeVault is desktop software that runs fully offline after license activation. We collect the minimum data necessary to sell, activate, and support the product — we do not track your browsing or profile you for advertising.</div>
+    <div data-i18n="intro_alert">TapeVault is desktop software that runs fully offline after license activation. We collect the minimum data necessary to sell, activate, and support the product — we do not track your browsing or profile you for advertising.</div>
   </div>
 
-  <h2 id="controller">1. Data controller</h2>
-  <p>The data controller responsible for your personal data is:</p>
-  <p><strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>
+  <h2 id="controller" data-i18n="h1">1. Data controller</h2>
+  <p data-i18n="p1a">The data controller responsible for your personal data is:</p>
+  <p data-i18n="p1b"><strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>
   Seocho-gu, Seoul, Republic of Korea<br>
   Email: <a href="mailto:support@tapevault.net">support@tapevault.net</a></p>
-  <p>For all privacy questions, requests, or complaints, contact us using the details above or in Section 13.</p>
+  <p data-i18n="p1c">For all privacy questions, requests, or complaints, contact us using the details above or in Section 13.</p>
 
-  <h2 id="data-we-collect">2. Data we collect</h2>
-  <p>We collect different data depending on how you interact with us:</p>
+  <h2 id="data-we-collect" data-i18n="h2">2. Data we collect</h2>
+  <p data-i18n="p2a">We collect different data depending on how you interact with us:</p>
   <table class="legal-table">
-    <tr><th>Context</th><th>Data collected</th></tr>
-    <tr><td>Visiting tapevault.net</td><td>Standard web server logs (IP address, browser type, pages visited, referrer, timestamp) generated automatically by our hosting provider (GitHub Pages). We do not run analytics or advertising scripts on this site.</td></tr>
-    <tr><td>Contacting us by email</td><td>Your email address, name (if provided), and the content of your message.</td></tr>
-    <tr><td>Purchasing a license</td><td>Name, email, billing address, and payment details — collected and processed directly by <strong>Paddle.com Market Ltd.</strong> ("Paddle"), our authorized payment processor and Merchant of Record. We never receive or store your full card number.</td></tr>
-    <tr><td>Activating or using TapeVault</td><td>License key, a hardware fingerprint used to bind the license to one computer, application version, and activation/deactivation timestamps. The catalog database, thumbnails, and file metadata TapeVault creates while you use it are stored <strong>locally on your computer only</strong> and are never transmitted to us.</td></tr>
-    <tr><td>Support requests</td><td>Any information you voluntarily provide (e.g. screenshots, log files, description of the issue) to help us resolve your request.</td></tr>
+    <tr><th data-i18n="tb_h1">Context</th><th data-i18n="tb_h2">Data collected</th></tr>
+    <tr><td data-i18n="tb1a">Visiting tapevault.net</td><td data-i18n="tb1b">Standard web server logs (IP address, browser type, pages visited, referrer, timestamp) generated automatically by our hosting provider (GitHub Pages). We do not run analytics or advertising scripts on this site.</td></tr>
+    <tr><td data-i18n="tb2a">Contacting us by email</td><td data-i18n="tb2b">Your email address, name (if provided), and the content of your message.</td></tr>
+    <tr><td data-i18n="tb3a">Purchasing a license</td><td data-i18n="tb3b">Name, email, billing address, and payment details — collected and processed directly by <strong>Paddle.com Market Ltd.</strong> ("Paddle"), our authorized payment processor and Merchant of Record. We never receive or store your full card number.</td></tr>
+    <tr><td data-i18n="tb4a">Activating or using TapeVault</td><td data-i18n="tb4b">License key, a hardware fingerprint used to bind the license to one computer, application version, and activation/deactivation timestamps. The catalog database, thumbnails, and file metadata TapeVault creates while you use it are stored <strong>locally on your computer only</strong> and are never transmitted to us.</td></tr>
+    <tr><td data-i18n="tb5a">Support requests</td><td data-i18n="tb5b">Any information you voluntarily provide (e.g. screenshots, log files, description of the issue) to help us resolve your request.</td></tr>
   </table>
 
-  <h2 id="how-we-use">3. How we use your data</h2>
+  <h2 id="how-we-use" data-i18n="h3">3. How we use your data</h2>
   <ul>
-    <li>To provide, activate, and license the TapeVault software you purchased</li>
-    <li>To process payments and issue receipts (via Paddle)</li>
-    <li>To respond to support and sales inquiries</li>
-    <li>To send license-related notices (e.g. trial expiry reminders, renewal reminders — TapeVault has no automatic renewal)</li>
-    <li>To detect and prevent fraud, license abuse, or security incidents</li>
-    <li>To comply with legal and tax obligations</li>
+    <li data-i18n="p3a">To provide, activate, and license the TapeVault software you purchased</li>
+    <li data-i18n="p3b">To process payments and issue receipts (via Paddle)</li>
+    <li data-i18n="p3c">To respond to support and sales inquiries</li>
+    <li data-i18n="p3d">To send license-related notices (e.g. trial expiry reminders, renewal reminders — TapeVault has no automatic renewal)</li>
+    <li data-i18n="p3e">To detect and prevent fraud, license abuse, or security incidents</li>
+    <li data-i18n="p3f">To comply with legal and tax obligations</li>
   </ul>
-  <p>We do not sell your personal data, and we do not use it for third-party advertising.</p>
+  <p data-i18n="p3g">We do not sell your personal data, and we do not use it for third-party advertising.</p>
 
-  <h2 id="legal-basis">4. Legal basis for processing (GDPR)</h2>
-  <p>For visitors and customers in the EU/EEA and UK, we rely on the following legal bases under the General Data Protection Regulation (GDPR):</p>
+  <h2 id="legal-basis" data-i18n="h4">4. Legal basis for processing (GDPR)</h2>
+  <p data-i18n="p4a">For visitors and customers in the EU/EEA and UK, we rely on the following legal bases under the General Data Protection Regulation (GDPR):</p>
   <ul>
-    <li><strong>Contract</strong> — processing necessary to sell you a license and provide the software and support you requested</li>
-    <li><strong>Legitimate interest</strong> — securing our systems, preventing license fraud, and improving support quality</li>
-    <li><strong>Legal obligation</strong> — retaining invoices and tax records as required by law</li>
-    <li><strong>Consent</strong> — where you voluntarily contact us or opt in to optional communications</li>
-  </ul>
-
-  <h2 id="cookies">5. Cookies and tracking</h2>
-  <p>tapevault.net itself does not set cookies and does not use analytics, advertising, or tracking pixels. If you proceed to purchase, you will be redirected to a checkout page hosted by Paddle, which sets its own cookies for fraud prevention and payment processing. See <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">Paddle's Privacy Policy</a> for details on that processing.</p>
-
-  <h2 id="sharing">6. Sharing with third parties</h2>
-  <p>We share personal data only with the following categories of recipients, and only as needed to operate our business:</p>
-  <ul>
-    <li><strong>Paddle.com Market Ltd.</strong> — payment processing and billing, acting as Merchant of Record and independent data controller for payment data</li>
-    <li><strong>GitHub, Inc.</strong> — hosting of this website and software installer downloads</li>
-    <li><strong>Email service providers</strong> — for sending support replies and license notices</li>
-    <li><strong>Legal or regulatory authorities</strong> — where required by law, court order, or to protect our legal rights</li>
-  </ul>
-  <p>We do not share personal data with third parties for their own marketing purposes.</p>
-
-  <h2 id="transfers">7. International data transfers</h2>
-  <p>Veteran IT Co., Ltd. is based in the Republic of Korea. If you are located in the EU/EEA, UK, or elsewhere outside Korea, your data may be transferred to and processed in Korea and in the countries where our processors (such as Paddle and GitHub) operate, including the United States and United Kingdom. Where required, such transfers rely on appropriate safeguards, including standard contractual clauses used by our processors.</p>
-
-  <h2 id="retention">8. Data retention</h2>
-  <ul>
-    <li>Support emails are retained for as long as needed to resolve your request, then archived for up to 3 years for quality and legal purposes</li>
-    <li>License and activation records are retained for the duration of your license plus a reasonable period afterward for support and fraud-prevention purposes</li>
-    <li>Billing records held by Paddle are retained per Paddle's own retention policy and applicable tax law (typically 5–10 years)</li>
-    <li>Data you store locally in your TapeVault catalog database remains entirely under your control and is deleted when you delete it</li>
+    <li data-i18n="p4b"><strong>Contract</strong> — processing necessary to sell you a license and provide the software and support you requested</li>
+    <li data-i18n="p4c"><strong>Legitimate interest</strong> — securing our systems, preventing license fraud, and improving support quality</li>
+    <li data-i18n="p4d"><strong>Legal obligation</strong> — retaining invoices and tax records as required by law</li>
+    <li data-i18n="p4e"><strong>Consent</strong> — where you voluntarily contact us or opt in to optional communications</li>
   </ul>
 
-  <h2 id="rights">9. Your rights (GDPR)</h2>
-  <p>If you are located in the EU/EEA or UK, you have the right to:</p>
+  <h2 id="cookies" data-i18n="h5">5. Cookies and tracking</h2>
+  <p data-i18n="p5a">tapevault.net itself does not set cookies and does not use analytics, advertising, or tracking pixels. If you proceed to purchase, you will be redirected to a checkout page hosted by Paddle, which sets its own cookies for fraud prevention and payment processing. See <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">Paddle's Privacy Policy</a> for details on that processing.</p>
+
+  <h2 id="sharing" data-i18n="h6">6. Sharing with third parties</h2>
+  <p data-i18n="p6a">We share personal data only with the following categories of recipients, and only as needed to operate our business:</p>
   <ul>
-    <li><strong>Access</strong> the personal data we hold about you</li>
-    <li><strong>Rectify</strong> inaccurate or incomplete data</li>
-    <li><strong>Erase</strong> your personal data ("right to be forgotten"), subject to legal retention requirements</li>
-    <li><strong>Restrict or object to</strong> certain processing</li>
-    <li><strong>Data portability</strong> — receive your data in a structured, machine-readable format</li>
-    <li><strong>Withdraw consent</strong> at any time, where processing is based on consent</li>
-    <li><strong>Lodge a complaint</strong> with your local data protection supervisory authority</li>
+    <li data-i18n="p6b"><strong>Paddle.com Market Ltd.</strong> — payment processing and billing, acting as Merchant of Record and independent data controller for payment data</li>
+    <li data-i18n="p6c"><strong>GitHub, Inc.</strong> — hosting of this website and software installer downloads</li>
+    <li data-i18n="p6d"><strong>Email service providers</strong> — for sending support replies and license notices</li>
+    <li data-i18n="p6e"><strong>Legal or regulatory authorities</strong> — where required by law, court order, or to protect our legal rights</li>
   </ul>
-  <p>To exercise any of these rights, email <a href="mailto:support@tapevault.net">support@tapevault.net</a>. We will respond within 30 days. For payment data held by Paddle, you may also contact Paddle directly.</p>
+  <p data-i18n="p6f">We do not share personal data with third parties for their own marketing purposes.</p>
 
-  <h2 id="security">10. Data security</h2>
-  <p>We use reasonable technical and organizational measures to protect personal data, including encrypted connections (HTTPS) for our website, and reliance on PCI-DSS-compliant payment processing through Paddle. No system is 100% secure, and we cannot guarantee absolute security of data transmitted to us.</p>
+  <h2 id="transfers" data-i18n="h7">7. International data transfers</h2>
+  <p data-i18n="p7a">Veteran IT Co., Ltd. is based in the Republic of Korea. If you are located in the EU/EEA, UK, or elsewhere outside Korea, your data may be transferred to and processed in Korea and in the countries where our processors (such as Paddle and GitHub) operate, including the United States and United Kingdom. Where required, such transfers rely on appropriate safeguards, including standard contractual clauses used by our processors.</p>
 
-  <h2 id="children">11. Children's privacy</h2>
-  <p>TapeVault is business software intended for professional archive and broadcast environments. It is not directed at children, and we do not knowingly collect personal data from anyone under 16.</p>
+  <h2 id="retention" data-i18n="h8">8. Data retention</h2>
+  <ul>
+    <li data-i18n="p8a">Support emails are retained for as long as needed to resolve your request, then archived for up to 3 years for quality and legal purposes</li>
+    <li data-i18n="p8b">License and activation records are retained for the duration of your license plus a reasonable period afterward for support and fraud-prevention purposes</li>
+    <li data-i18n="p8c">Billing records held by Paddle are retained per Paddle's own retention policy and applicable tax law (typically 5–10 years)</li>
+    <li data-i18n="p8d">Data you store locally in your TapeVault catalog database remains entirely under your control and is deleted when you delete it</li>
+  </ul>
 
-  <h2 id="changes">12. Changes to this policy</h2>
-  <p>We may update this Privacy Policy from time to time. Material changes will be reflected by updating the "Last updated" date at the top of this page. Continued use of our website or software after changes take effect constitutes acceptance of the revised policy.</p>
+  <h2 id="rights" data-i18n="h9">9. Your rights (GDPR)</h2>
+  <p data-i18n="p9a">If you are located in the EU/EEA or UK, you have the right to:</p>
+  <ul>
+    <li data-i18n="p9b"><strong>Access</strong> the personal data we hold about you</li>
+    <li data-i18n="p9c"><strong>Rectify</strong> inaccurate or incomplete data</li>
+    <li data-i18n="p9d"><strong>Erase</strong> your personal data ("right to be forgotten"), subject to legal retention requirements</li>
+    <li data-i18n="p9e"><strong>Restrict or object to</strong> certain processing</li>
+    <li data-i18n="p9f"><strong>Data portability</strong> — receive your data in a structured, machine-readable format</li>
+    <li data-i18n="p9g"><strong>Withdraw consent</strong> at any time, where processing is based on consent</li>
+    <li data-i18n="p9h"><strong>Lodge a complaint</strong> with your local data protection supervisory authority</li>
+  </ul>
+  <p data-i18n="p9i">To exercise any of these rights, email <a href="mailto:support@tapevault.net">support@tapevault.net</a>. We will respond within 30 days. For payment data held by Paddle, you may also contact Paddle directly.</p>
 
-  <h2 id="contact">13. Contact us</h2>
-  <p>Questions about this Privacy Policy or your personal data can be sent to:</p>
-  <p><strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>
+  <h2 id="security" data-i18n="h10">10. Data security</h2>
+  <p data-i18n="p10a">We use reasonable technical and organizational measures to protect personal data, including encrypted connections (HTTPS) for our website, and reliance on PCI-DSS-compliant payment processing through Paddle. No system is 100% secure, and we cannot guarantee absolute security of data transmitted to us.</p>
+
+  <h2 id="children" data-i18n="h11">11. Children's privacy</h2>
+  <p data-i18n="p11a">TapeVault is business software intended for professional archive and broadcast environments. It is not directed at children, and we do not knowingly collect personal data from anyone under 16.</p>
+
+  <h2 id="changes" data-i18n="h12">12. Changes to this policy</h2>
+  <p data-i18n="p12a">We may update this Privacy Policy from time to time. Material changes will be reflected by updating the "Last updated" date at the top of this page. Continued use of our website or software after changes take effect constitutes acceptance of the revised policy.</p>
+
+  <h2 id="contact" data-i18n="h13">13. Contact us</h2>
+  <p data-i18n="p13a">Questions about this Privacy Policy or your personal data can be sent to:</p>
+  <p data-i18n="p13b"><strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>
   Seocho-gu, Seoul, Republic of Korea<br>
   Email: <a href="mailto:support@tapevault.net">support@tapevault.net</a></p>
 </div>
 
 <footer>
   <div class="footer-bottom">
-    <div class="footer-left">TapeVault v1.0.0 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
+    <div class="footer-left" data-i18n="foot_left">TapeVault v1.0.0 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
     <div class="footer-right">
-      <a href="index.html">Home</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms-of-service.html">Terms of Service</a>
-      <a href="license.html">License</a>
-      <a href="mailto:support@tapevault.net">Support</a>
+      <a href="index.html" data-i18n="foot_home">Home</a>
+      <a href="privacy-policy.html" data-i18n="foot_privacy">Privacy Policy</a>
+      <a href="terms-of-service.html" data-i18n="foot_terms">Terms of Service</a>
+      <a href="license.html" data-i18n="foot_license">License</a>
+      <a href="mailto:support@tapevault.net" data-i18n="foot_support">Support</a>
     </div>
   </div>
 </footer>
 
 <script>
+const T = {
+  en: {
+    nav_how:'How it works', nav_features:'Features', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide',
+    nav_contact:'Contact', nav_trial:'Free Trial',
+    bc_home:'Home', bc_current:'Privacy Policy',
+    page_label:'Legal', page_title:'Privacy Policy',
+    page_sub:'How Veteran IT Co., Ltd. collects, uses, and protects personal data on tapevault.net and within the TapeVault application.',
+    legal_updated:'Effective date: July 18, 2026 · Last updated: July 18, 2026',
+    toc_title:'Contents',
+    toc1:'1. Data controller', toc2:'2. Data we collect', toc3:'3. How we use your data', toc4:'4. Legal basis for processing (GDPR)',
+    toc5:'5. Cookies and tracking', toc6:'6. Sharing with third parties', toc7:'7. International data transfers', toc8:'8. Data retention',
+    toc9:'9. Your rights (GDPR)', toc10:'10. Data security', toc11:"11. Children's privacy", toc12:'12. Changes to this policy', toc13:'13. Contact us',
+    intro_alert:'TapeVault is desktop software that runs fully offline after license activation. We collect the minimum data necessary to sell, activate, and support the product — we do not track your browsing or profile you for advertising.',
+    h1:'1. Data controller', p1a:'The data controller responsible for your personal data is:',
+    p1b:'<strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>Seocho-gu, Seoul, Republic of Korea<br>Email: <a href="mailto:support@tapevault.net">support@tapevault.net</a>',
+    p1c:'For all privacy questions, requests, or complaints, contact us using the details above or in Section 13.',
+    h2:'2. Data we collect', p2a:'We collect different data depending on how you interact with us:',
+    tb_h1:'Context', tb_h2:'Data collected',
+    tb1a:'Visiting tapevault.net', tb1b:'Standard web server logs (IP address, browser type, pages visited, referrer, timestamp) generated automatically by our hosting provider (GitHub Pages). We do not run analytics or advertising scripts on this site.',
+    tb2a:'Contacting us by email', tb2b:'Your email address, name (if provided), and the content of your message.',
+    tb3a:'Purchasing a license', tb3b:'Name, email, billing address, and payment details — collected and processed directly by <strong>Paddle.com Market Ltd.</strong> ("Paddle"), our authorized payment processor and Merchant of Record. We never receive or store your full card number.',
+    tb4a:'Activating or using TapeVault', tb4b:'License key, a hardware fingerprint used to bind the license to one computer, application version, and activation/deactivation timestamps. The catalog database, thumbnails, and file metadata TapeVault creates while you use it are stored <strong>locally on your computer only</strong> and are never transmitted to us.',
+    tb5a:'Support requests', tb5b:'Any information you voluntarily provide (e.g. screenshots, log files, description of the issue) to help us resolve your request.',
+    h3:'3. How we use your data',
+    p3a:'To provide, activate, and license the TapeVault software you purchased', p3b:'To process payments and issue receipts (via Paddle)',
+    p3c:'To respond to support and sales inquiries', p3d:'To send license-related notices (e.g. trial expiry reminders, renewal reminders — TapeVault has no automatic renewal)',
+    p3e:'To detect and prevent fraud, license abuse, or security incidents', p3f:'To comply with legal and tax obligations',
+    p3g:'We do not sell your personal data, and we do not use it for third-party advertising.',
+    h4:'4. Legal basis for processing (GDPR)', p4a:'For visitors and customers in the EU/EEA and UK, we rely on the following legal bases under the General Data Protection Regulation (GDPR):',
+    p4b:'<strong>Contract</strong> — processing necessary to sell you a license and provide the software and support you requested',
+    p4c:'<strong>Legitimate interest</strong> — securing our systems, preventing license fraud, and improving support quality',
+    p4d:'<strong>Legal obligation</strong> — retaining invoices and tax records as required by law',
+    p4e:'<strong>Consent</strong> — where you voluntarily contact us or opt in to optional communications',
+    h5:'5. Cookies and tracking',
+    p5a:"tapevault.net itself does not set cookies and does not use analytics, advertising, or tracking pixels. If you proceed to purchase, you will be redirected to a checkout page hosted by Paddle, which sets its own cookies for fraud prevention and payment processing. See <a href=\"https://www.paddle.com/legal/privacy\" target=\"_blank\" rel=\"noopener\">Paddle's Privacy Policy</a> for details on that processing.",
+    h6:'6. Sharing with third parties', p6a:'We share personal data only with the following categories of recipients, and only as needed to operate our business:',
+    p6b:'<strong>Paddle.com Market Ltd.</strong> — payment processing and billing, acting as Merchant of Record and independent data controller for payment data',
+    p6c:'<strong>GitHub, Inc.</strong> — hosting of this website and software installer downloads',
+    p6d:'<strong>Email service providers</strong> — for sending support replies and license notices',
+    p6e:'<strong>Legal or regulatory authorities</strong> — where required by law, court order, or to protect our legal rights',
+    p6f:'We do not share personal data with third parties for their own marketing purposes.',
+    h7:'7. International data transfers',
+    p7a:'Veteran IT Co., Ltd. is based in the Republic of Korea. If you are located in the EU/EEA, UK, or elsewhere outside Korea, your data may be transferred to and processed in Korea and in the countries where our processors (such as Paddle and GitHub) operate, including the United States and United Kingdom. Where required, such transfers rely on appropriate safeguards, including standard contractual clauses used by our processors.',
+    h8:'8. Data retention',
+    p8a:'Support emails are retained for as long as needed to resolve your request, then archived for up to 3 years for quality and legal purposes',
+    p8b:'License and activation records are retained for the duration of your license plus a reasonable period afterward for support and fraud-prevention purposes',
+    p8c:"Billing records held by Paddle are retained per Paddle's own retention policy and applicable tax law (typically 5–10 years)",
+    p8d:'Data you store locally in your TapeVault catalog database remains entirely under your control and is deleted when you delete it',
+    h9:'9. Your rights (GDPR)', p9a:'If you are located in the EU/EEA or UK, you have the right to:',
+    p9b:'<strong>Access</strong> the personal data we hold about you', p9c:'<strong>Rectify</strong> inaccurate or incomplete data',
+    p9d:'<strong>Erase</strong> your personal data ("right to be forgotten"), subject to legal retention requirements',
+    p9e:'<strong>Restrict or object to</strong> certain processing', p9f:'<strong>Data portability</strong> — receive your data in a structured, machine-readable format',
+    p9g:'<strong>Withdraw consent</strong> at any time, where processing is based on consent',
+    p9h:'<strong>Lodge a complaint</strong> with your local data protection supervisory authority',
+    p9i:'To exercise any of these rights, email <a href="mailto:support@tapevault.net">support@tapevault.net</a>. We will respond within 30 days. For payment data held by Paddle, you may also contact Paddle directly.',
+    h10:'10. Data security', p10a:'We use reasonable technical and organizational measures to protect personal data, including encrypted connections (HTTPS) for our website, and reliance on PCI-DSS-compliant payment processing through Paddle. No system is 100% secure, and we cannot guarantee absolute security of data transmitted to us.',
+    h11:"11. Children's privacy", p11a:'TapeVault is business software intended for professional archive and broadcast environments. It is not directed at children, and we do not knowingly collect personal data from anyone under 16.',
+    h12:'12. Changes to this policy', p12a:'We may update this Privacy Policy from time to time. Material changes will be reflected by updating the "Last updated" date at the top of this page. Continued use of our website or software after changes take effect constitutes acceptance of the revised policy.',
+    h13:'13. Contact us', p13a:'Questions about this Privacy Policy or your personal data can be sent to:',
+    p13b:'<strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>Seocho-gu, Seoul, Republic of Korea<br>Email: <a href="mailto:support@tapevault.net">support@tapevault.net</a>',
+    foot_left:'TapeVault v1.0.0 · Built by Veteran IT · © 2026 Veteran IT Co., Ltd.',
+    foot_home:'Home', foot_privacy:'Privacy Policy', foot_terms:'Terms of Service', foot_license:'License', foot_support:'Support'
+  },
+  ko: {
+    nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
+    nav_contact:'문의하기', nav_trial:'무료 체험',
+    bc_home:'홈', bc_current:'개인정보 처리방침',
+    page_label:'법적 정보', page_title:'개인정보 처리방침',
+    page_sub:'주식회사 베테랑아이티가 tapevault.net과 TapeVault 애플리케이션 내에서 개인정보를 수집, 이용, 보호하는 방법을 안내합니다.',
+    legal_updated:'시행일: 2026년 7월 18일 · 최종 수정일: 2026년 7월 18일',
+    toc_title:'목차',
+    toc1:'1. 개인정보처리자', toc2:'2. 수집하는 정보', toc3:'3. 정보 이용 방법', toc4:'4. 처리의 법적 근거(GDPR)',
+    toc5:'5. 쿠키 및 추적', toc6:'6. 제3자 제공', toc7:'7. 국외 이전', toc8:'8. 보유 기간',
+    toc9:'9. 이용자의 권리(GDPR)', toc10:'10. 데이터 보안', toc11:'11. 아동의 개인정보', toc12:'12. 방침 변경', toc13:'13. 문의처',
+    intro_alert:'TapeVault는 라이선스 활성화 이후 완전히 오프라인으로 동작하는 데스크톱 소프트웨어입니다. 저희는 제품을 판매, 활성화, 지원하는 데 필요한 최소한의 정보만 수집하며, 귀하의 이용 행태를 추적하거나 광고 목적으로 프로파일링하지 않습니다.',
+    h1:'1. 개인정보처리자', p1a:'귀하의 개인정보를 처리하는 개인정보처리자는 다음과 같습니다:',
+    p1b:'<strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>대한민국 서울특별시 서초구<br>이메일: <a href="mailto:support@tapevault.net">support@tapevault.net</a>',
+    p1c:'개인정보 관련 문의, 요청, 불만 사항은 위 연락처 또는 13항의 연락처로 문의해 주세요.',
+    h2:'2. 수집하는 정보', p2a:'귀하와의 상호작용 방식에 따라 아래와 같이 서로 다른 정보를 수집합니다:',
+    tb_h1:'상황', tb_h2:'수집하는 정보',
+    tb1a:'tapevault.net 방문', tb1b:'호스팅 제공업체(GitHub Pages)가 자동으로 생성하는 표준 웹 서버 로그(IP 주소, 브라우저 종류, 방문 페이지, 리퍼러, 시각). 본 사이트는 분석 도구나 광고 스크립트를 사용하지 않습니다.',
+    tb2a:'이메일 문의', tb2b:'귀하의 이메일 주소, 이름(제공 시), 문의 내용.',
+    tb3a:'라이선스 구매', tb3b:'이름, 이메일, 청구 주소, 결제 정보 — 당사의 공식 결제 대행사이자 판매기록업체(Merchant of Record)인 <strong>Paddle.com Market Ltd.</strong>("Paddle")가 직접 수집 및 처리합니다. 당사는 카드 전체 번호를 받거나 저장하지 않습니다.',
+    tb4a:'TapeVault 활성화 및 사용', tb4b:'라이선스 키, 라이선스를 하나의 컴퓨터에 연결하는 데 사용되는 하드웨어 지문, 애플리케이션 버전, 활성화/비활성화 시각. 사용 중 TapeVault가 생성하는 카탈로그 데이터베이스, 썸네일, 파일 메타데이터는 <strong>오직 귀하의 컴퓨터에만 로컬로 저장</strong>되며 당사로 전송되지 않습니다.',
+    tb5a:'지원 요청', tb5b:'요청 해결을 돕기 위해 귀하가 자발적으로 제공하는 정보(예: 스크린샷, 로그 파일, 문제 설명).',
+    h3:'3. 정보 이용 방법',
+    p3a:'구매하신 TapeVault 소프트웨어의 제공, 활성화, 라이선스 부여', p3b:'결제 처리 및 영수증 발급(Paddle을 통해)',
+    p3c:'지원 및 영업 문의 응대', p3d:'라이선스 관련 안내 발송(예: 체험판 만료 안내, 갱신 안내 — TapeVault는 자동 갱신이 없습니다)',
+    p3e:'사기, 라이선스 오남용, 보안 사고의 탐지 및 방지', p3f:'법적·세무적 의무 준수',
+    p3g:'당사는 귀하의 개인정보를 판매하지 않으며, 제3자 광고 목적으로 이용하지 않습니다.',
+    h4:'4. 처리의 법적 근거(GDPR)', p4a:'EU/EEA 및 영국의 방문자와 고객에 대해서는 일반 개인정보 보호법(GDPR)에 따라 아래의 법적 근거에 의존합니다:',
+    p4b:'<strong>계약</strong> — 라이선스 판매 및 요청하신 소프트웨어·지원 제공에 필요한 처리',
+    p4c:'<strong>정당한 이익</strong> — 시스템 보안 확보, 라이선스 사기 방지, 지원 품질 개선',
+    p4d:'<strong>법적 의무</strong> — 법령에 따른 청구서 및 세무 기록 보관',
+    p4e:'<strong>동의</strong> — 귀하가 자발적으로 연락하거나 선택적 커뮤니케이션에 동의한 경우',
+    h5:'5. 쿠키 및 추적',
+    p5a:'tapevault.net 자체는 쿠키를 설정하지 않으며 분석, 광고, 추적 픽셀을 사용하지 않습니다. 구매를 진행하면 Paddle이 호스팅하는 결제 페이지로 이동하며, 이 페이지는 사기 방지와 결제 처리를 위해 자체 쿠키를 설정합니다. 자세한 내용은 <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">Paddle 개인정보 처리방침</a>을 참고하세요.',
+    h6:'6. 제3자 제공', p6a:'당사는 사업 운영에 필요한 경우에 한해 다음 유형의 수신자에게만 개인정보를 제공합니다:',
+    p6b:'<strong>Paddle.com Market Ltd.</strong> — 결제 처리 및 청구 업무, 판매기록업체 및 결제 데이터에 대한 독립적 개인정보처리자',
+    p6c:'<strong>GitHub, Inc.</strong> — 본 웹사이트 및 소프트웨어 설치 파일 다운로드 호스팅',
+    p6d:'<strong>이메일 서비스 제공업체</strong> — 지원 답변 및 라이선스 안내 발송',
+    p6e:'<strong>법적·규제 기관</strong> — 법률, 법원 명령에 따르거나 당사의 법적 권리 보호를 위해 필요한 경우',
+    p6f:'당사는 제3자의 마케팅 목적으로 개인정보를 제공하지 않습니다.',
+    h7:'7. 국외 이전',
+    p7a:'주식회사 베테랑아이티는 대한민국에 소재하고 있습니다. 귀하가 EU/EEA, 영국 또는 한국 외 지역에 거주하는 경우, 귀하의 정보는 한국 및 당사의 처리업체(Paddle, GitHub 등)가 운영하는 국가(미국, 영국 포함)로 이전되어 처리될 수 있습니다. 필요한 경우 이러한 이전은 처리업체가 사용하는 표준계약조항 등 적절한 안전장치에 따라 이루어집니다.',
+    h8:'8. 보유 기간',
+    p8a:'지원 이메일은 요청 해결에 필요한 기간 동안 보관 후, 품질 관리 및 법적 목적으로 최대 3년간 보관됩니다',
+    p8b:'라이선스 및 활성화 기록은 라이선스 유효 기간 및 지원·부정사용 방지 목적으로 합리적인 추가 기간 동안 보관됩니다',
+    p8c:'Paddle이 보관하는 결제 기록은 Paddle 자체 보관 정책 및 관련 세법(통상 5~10년)에 따릅니다',
+    p8d:'TapeVault 카탈로그 데이터베이스에 로컬로 저장하는 정보는 전적으로 귀하가 관리하며, 삭제 시 함께 삭제됩니다',
+    h9:'9. 이용자의 권리(GDPR)', p9a:'EU/EEA 또는 영국에 거주하는 경우 다음의 권리를 가집니다:',
+    p9b:'<strong>열람권</strong> — 당사가 보유한 귀하의 개인정보 열람', p9c:'<strong>정정권</strong> — 부정확하거나 불완전한 정보의 정정',
+    p9d:'<strong>삭제권</strong> — 법적 보관 의무를 조건으로 개인정보 삭제("잊혀질 권리")',
+    p9e:'<strong>처리 제한·거부권</strong> — 특정 처리에 대한 제한 또는 거부',
+    p9f:'<strong>이동권</strong> — 구조화된 기계 판독 가능 형식으로 정보 제공',
+    p9g:'<strong>동의 철회권</strong> — 동의에 기반한 처리에 대해 언제든지 철회',
+    p9h:'<strong>이의 제기권</strong> — 관할 개인정보 감독기관에 이의 제기',
+    p9i:'이러한 권리를 행사하려면 <a href="mailto:support@tapevault.net">support@tapevault.net</a>으로 이메일을 보내주세요. 30일 이내에 답변드립니다. Paddle이 보유한 결제 정보에 대해서는 Paddle에 직접 문의하실 수도 있습니다.',
+    h10:'10. 데이터 보안', p10a:'당사는 웹사이트의 암호화 연결(HTTPS)과 Paddle을 통한 PCI-DSS 준수 결제 처리 등 합리적인 기술적·관리적 조치를 통해 개인정보를 보호합니다. 어떤 시스템도 100% 안전할 수 없으며, 당사로 전송되는 정보의 절대적 보안을 보장할 수 없습니다.',
+    h11:'11. 아동의 개인정보', p11a:'TapeVault는 전문 아카이브 및 방송 환경을 위한 업무용 소프트웨어입니다. 아동을 대상으로 하지 않으며, 만 16세 미만으로부터 고의로 개인정보를 수집하지 않습니다.',
+    h12:'12. 방침 변경', p12a:'당사는 본 개인정보 처리방침을 수시로 업데이트할 수 있습니다. 중요한 변경 사항은 이 페이지 상단의 "최종 수정일"을 갱신하여 반영합니다. 변경 사항 적용 이후에도 웹사이트나 소프트웨어를 계속 이용하시면 개정된 방침에 동의한 것으로 간주됩니다.',
+    h13:'13. 문의처', p13a:'본 개인정보 처리방침이나 귀하의 개인정보에 대한 문의는 아래로 보내주세요:',
+    p13b:'<strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>대한민국 서울특별시 서초구<br>이메일: <a href="mailto:support@tapevault.net">support@tapevault.net</a>',
+    foot_left:'TapeVault v1.0.0 · Veteran IT 개발 · © 2026 주식회사 베테랑아이티',
+    foot_home:'홈', foot_privacy:'개인정보 처리방침', foot_terms:'이용약관', foot_license:'라이선스', foot_support:'지원'
+  },
+  ja: {
+    nav_how:'仕組み', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金プラン', nav_install:'インストールガイド',
+    nav_contact:'お問い合わせ', nav_trial:'無料体験',
+    bc_home:'ホーム', bc_current:'プライバシーポリシー',
+    page_label:'法的情報', page_title:'プライバシーポリシー',
+    page_sub:'株式会社ベテランITがtapevault.netおよびTapeVaultアプリケーション内で個人情報をどのように収集、利用、保護するかについて説明します。',
+    legal_updated:'発効日：2026年7月18日 · 最終更新日：2026年7月18日',
+    toc_title:'目次',
+    toc1:'1. 管理者情報', toc2:'2. 収集する情報', toc3:'3. 情報の利用方法', toc4:'4. 処理の法的根拠（GDPR）',
+    toc5:'5. Cookieとトラッキング', toc6:'6. 第三者提供', toc7:'7. 国際的なデータ移転', toc8:'8. データの保存期間',
+    toc9:'9. お客様の権利（GDPR）', toc10:'10. データセキュリティ', toc11:'11. 児童のプライバシー', toc12:'12. 本ポリシーの変更', toc13:'13. お問い合わせ',
+    intro_alert:'TapeVaultはライセンス認証後、完全にオフラインで動作するデスクトップソフトウェアです。当社は製品の販売・認証・サポートに必要な最小限の情報のみを収集し、閲覧履歴の追跡や広告目的のプロファイリングは行いません。',
+    h1:'1. 管理者情報', p1a:'お客様の個人情報を管理する事業者は以下のとおりです：',
+    p1b:'<strong>株式会社ベテランIT（Veteran IT Co., Ltd.）</strong><br>大韓民国ソウル特別市瑞草区<br>メール：<a href="mailto:support@tapevault.net">support@tapevault.net</a>',
+    p1c:'プライバシーに関するご質問、ご請求、苦情は上記の連絡先または第13項の連絡先までご連絡ください。',
+    h2:'2. 収集する情報', p2a:'当社とのやり取りの方法に応じて、以下のような異なる情報を収集します：',
+    tb_h1:'状況', tb_h2:'収集する情報',
+    tb1a:'tapevault.netへの訪問', tb1b:'ホスティングプロバイダー（GitHub Pages）が自動生成する標準的なWebサーバーログ（IPアドレス、ブラウザの種類、閲覧ページ、リファラー、日時）。本サイトではアクセス解析や広告スクリプトは使用していません。',
+    tb2a:'メールでのお問い合わせ', tb2b:'お客様のメールアドレス、氏名（提供された場合）、お問い合わせ内容。',
+    tb3a:'ライセンスの購入', tb3b:'氏名、メールアドレス、請求先住所、決済情報 — 当社の正規決済代行業者であり販売記録事業者（Merchant of Record）である<strong>Paddle.com Market Ltd.</strong>（「Paddle」）が直接収集・処理します。当社がカード番号全体を受け取ったり保存したりすることはありません。',
+    tb4a:'TapeVaultの認証・利用', tb4b:'ライセンスキー、ライセンスを1台のコンピューターに紐付けるためのハードウェアフィンガープリント、アプリケーションバージョン、認証・認証解除の日時。利用中にTapeVaultが作成するカタログデータベース、サムネイル、ファイルメタデータは<strong>お客様のコンピューター内にのみローカル保存</strong>され、当社に送信されることはありません。',
+    tb5a:'サポートへのお問い合わせ', tb5b:'お問い合わせの解決のためにお客様が任意でご提供いただく情報（スクリーンショット、ログファイル、問題の説明など）。',
+    h3:'3. 情報の利用方法',
+    p3a:'ご購入いただいたTapeVaultソフトウェアの提供・認証・ライセンス付与のため', p3b:'決済処理および領収書発行のため（Paddle経由）',
+    p3c:'サポートおよび営業に関するお問い合わせへの対応のため', p3d:'ライセンスに関する通知の送付のため（体験版の期限案内、更新案内など — TapeVaultに自動更新はありません）',
+    p3e:'不正行為、ライセンスの不正利用、セキュリティインシデントの検知・防止のため', p3f:'法令および税務上の義務を遵守するため',
+    p3g:'当社はお客様の個人情報を販売することはなく、第三者の広告目的で利用することもありません。',
+    h4:'4. 処理の法的根拠（GDPR）', p4a:'EU/EEAおよび英国のお客様については、一般データ保護規則（GDPR）に基づき、以下の法的根拠に依拠します：',
+    p4b:'<strong>契約</strong> — ライセンスの販売およびご要望のソフトウェア・サポート提供に必要な処理',
+    p4c:'<strong>正当な利益</strong> — システムの安全確保、ライセンス不正利用の防止、サポート品質の向上',
+    p4d:'<strong>法的義務</strong> — 法令に基づく請求書・税務記録の保管',
+    p4e:'<strong>同意</strong> — お客様が任意でご連絡いただいた場合や、任意のご案内に同意いただいた場合',
+    h5:'5. Cookieとトラッキング',
+    p5a:'tapevault.net自体はCookieを設定せず、アクセス解析、広告、トラッキングピクセルも使用していません。購入手続きに進むと、Paddleがホストする決済ページにリダイレクトされ、そこでは不正防止と決済処理のために独自のCookieが設定されます。詳細は<a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">Paddleのプライバシーポリシー</a>をご覧ください。',
+    h6:'6. 第三者提供', p6a:'当社は事業運営に必要な範囲でのみ、以下の種類の提供先に個人情報を共有します：',
+    p6b:'<strong>Paddle.com Market Ltd.</strong> — 決済処理・請求業務、販売記録事業者および決済データに関する独立した管理者として',
+    p6c:'<strong>GitHub, Inc.</strong> — 本ウェブサイトおよびソフトウェアインストーラーのダウンロードのホスティング',
+    p6d:'<strong>メールサービスプロバイダー</strong> — サポート返信およびライセンス通知の送付のため',
+    p6e:'<strong>法執行・監督機関</strong> — 法律、裁判所命令に基づく場合、または当社の法的権利を保護するために必要な場合',
+    p6f:'当社は第三者の独自マーケティング目的のために個人情報を共有することはありません。',
+    h7:'7. 国際的なデータ移転',
+    p7a:'株式会社ベテランITは大韓民国に所在しています。お客様がEU/EEA、英国、または韓国以外の地域にお住まいの場合、お客様のデータは韓国、および当社の処理業者（Paddle、GitHubなど）が事業を行う国（米国、英国を含む）に移転され処理される場合があります。必要な場合、これらの移転は処理業者が使用する標準契約条項などの適切な保護措置に基づいて行われます。',
+    h8:'8. データの保存期間',
+    p8a:'サポートメールはお問い合わせ解決に必要な期間保存され、その後品質管理および法的目的のため最長3年間保管されます',
+    p8b:'ライセンスおよび認証記録は、ライセンスの有効期間に加え、サポートおよび不正防止の目的で合理的な追加期間保管されます',
+    p8c:'Paddleが保有する請求記録は、Paddle独自の保存ポリシーおよび適用される税法（通常5〜10年）に従って保管されます',
+    p8d:'TapeVaultのカタログデータベースにローカル保存されるデータは完全にお客様の管理下にあり、削除すると同時に消去されます',
+    h9:'9. お客様の権利（GDPR）', p9a:'EU/EEAまたは英国にお住まいの場合、以下の権利を有します：',
+    p9b:'<strong>アクセス権</strong> — 当社が保有するお客様の個人情報を確認する権利', p9c:'<strong>訂正権</strong> — 不正確または不完全な情報を訂正する権利',
+    p9d:'<strong>消去権</strong> — 法的保存義務を条件に、個人情報を消去する権利（「忘れられる権利」）',
+    p9e:'<strong>処理の制限・異議申立権</strong> — 特定の処理を制限または拒否する権利',
+    p9f:'<strong>データポータビリティ権</strong> — 構造化された機械可読形式でデータを受け取る権利',
+    p9g:'<strong>同意撤回権</strong> — 同意に基づく処理について、いつでも同意を撤回する権利',
+    p9h:'<strong>苦情申立権</strong> — 管轄のデータ保護監督機関に苦情を申し立てる権利',
+    p9i:'これらの権利を行使するには、<a href="mailto:support@tapevault.net">support@tapevault.net</a>までメールでご連絡ください。30日以内にご返信いたします。Paddleが保有する決済データについては、Paddleに直接お問い合わせいただくことも可能です。',
+    h10:'10. データセキュリティ', p10a:'当社はウェブサイトの暗号化通信（HTTPS）や、PaddleによるPCI-DSS準拠の決済処理など、合理的な技術的・組織的対策を講じて個人情報を保護しています。完全に安全なシステムは存在せず、当社に送信されるデータの絶対的な安全性を保証することはできません。',
+    h11:'11. 児童のプライバシー', p11a:'TapeVaultは専門的なアーカイブおよび放送業務向けの業務用ソフトウェアです。児童を対象としておらず、16歳未満の方から意図的に個人情報を収集することはありません。',
+    h12:'12. 本ポリシーの変更', p12a:'当社は本プライバシーポリシーを随時更新することがあります。重要な変更がある場合は、本ページ上部の「最終更新日」を更新して反映します。変更の発効後も本ウェブサイトまたはソフトウェアの利用を継続された場合、改定後のポリシーに同意したものとみなされます。',
+    h13:'13. お問い合わせ', p13a:'本プライバシーポリシーまたはお客様の個人情報に関するご質問は、以下までお送りください：',
+    p13b:'<strong>株式会社ベテランIT（Veteran IT Co., Ltd.）</strong><br>大韓民国ソウル特別市瑞草区<br>メール：<a href="mailto:support@tapevault.net">support@tapevault.net</a>',
+    foot_left:'TapeVault v1.0.0 · Veteran IT製 · © 2026 株式会社ベテランIT',
+    foot_home:'ホーム', foot_privacy:'プライバシーポリシー', foot_terms:'利用規約', foot_license:'ライセンス', foot_support:'サポート'
+  }
+};
+
+function applyLang(lang) {
+  if (!T[lang]) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T[lang][el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.documentElement.lang = lang === 'ko' ? 'ko' : lang === 'ja' ? 'ja' : 'en';
+  document.getElementById('lang-current').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-menu-item').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  localStorage.setItem('tv-lang', lang);
+}
+
+function toggleLangMenu(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('lang-menu').classList.toggle('open');
+  document.getElementById('lang-globe-btn').classList.toggle('open');
+}
+document.addEventListener('click', (e) => {
+  const wrap = document.getElementById('lang-select');
+  if (wrap && !wrap.contains(e.target)) {
+    document.getElementById('lang-menu').classList.remove('open');
+    document.getElementById('lang-globe-btn').classList.remove('open');
+  }
+});
+
+applyLang(localStorage.getItem('tv-lang') || 'en');
+
 function toggleMobileNav() {
   const nav = document.getElementById('nav-links');
   const burger = document.getElementById('nav-burger');
