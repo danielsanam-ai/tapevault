@@ -528,7 +528,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <div style="font-size:11px;color:#7c88a4;font-family:monospace;margin:8px 0" data-i18n="dl_or">or</div>
 
     <button class="btn-hero-ghost" style="font-size:14px;padding:12px 28px" data-i18n="dl_mac_btn" onclick="showDownloadWarning('mac')">🍎 Download for macOS (Apple Silicon)</button>
-    <p style="font-size:11px;color:#7c88a4" data-i18n="dl_mac_note">v0.1.0 Beta · Apple Silicon (M1/M2/M3) only · ~158 MB</p>
+    <p style="font-size:11px;color:#7c88a4" data-i18n="dl_mac_note">v0.2.0 Beta · Apple Silicon (M1/M2/M3) only · ~158 MB</p>
   </div>
 </section>
 
@@ -686,21 +686,21 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       </div>
     </div>
     <div id="dlw-mac" hidden>
-      <h3 data-i18n="dlw_title_mac">macOS Notice: "Unidentified Developer" warning</h3>
-      <p data-i18n="dlw_body_mac">This is an early beta build for Apple Silicon Macs and is not yet notarized by Apple, so macOS Gatekeeper will block it on first launch. This is expected — the app is safe to run.</p>
+      <h3 data-i18n="dlw_title_mac">macOS Notice: First launch</h3>
+      <p data-i18n="dlw_body_mac">This beta build for Apple Silicon Macs is signed with an Apple Developer ID and notarized by Apple, so it opens normally. macOS only asks once to confirm opening an app downloaded from the internet.</p>
       <div class="modal-steps">
         <div class="modal-step">
           <div class="modal-step-num">1</div>
           <div>
-            <div class="modal-step-title" data-i18n="dlw_mac_step1_t">Gatekeeper block</div>
-            <div class="modal-step-desc" data-i18n="dlw_mac_step1_d">macOS will say the app "cannot be opened because it is from an unidentified developer."</div>
+            <div class="modal-step-title" data-i18n="dlw_mac_step1_t">Install</div>
+            <div class="modal-step-desc" data-i18n="dlw_mac_step1_d">Open the downloaded DMG and drag TapeVault into the Applications folder.</div>
           </div>
         </div>
         <div class="modal-step">
           <div class="modal-step-num">2</div>
           <div>
-            <div class="modal-step-title" data-i18n="dlw_mac_step2_t">Allow it anyway</div>
-            <div class="modal-step-desc" data-i18n="dlw_mac_step2_d">Right-click (or Control-click) the TapeVault app → Open → click Open again in the dialog. You only need to do this once.</div>
+            <div class="modal-step-title" data-i18n="dlw_mac_step2_t">Open it</div>
+            <div class="modal-step-desc" data-i18n="dlw_mac_step2_d">Launch TapeVault from Applications and click Open when macOS asks to confirm. You only see this once.</div>
           </div>
         </div>
       </div>
@@ -711,7 +711,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 
 <script>
 const DOWNLOAD_URL = 'https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-Setup-1.0.0.exe';
-const DOWNLOAD_URL_MAC = 'https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-0.1.0-arm64.dmg';
+const DOWNLOAD_URL_MAC = 'https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-0.2.0-arm64.dmg';
 let dlwPlatform = 'win';
 function showDownloadWarning(platform) {
   dlwPlatform = platform === 'mac' ? 'mac' : 'win';
@@ -803,11 +803,11 @@ const T = {
     dlw_step1_t:'Browser download warning', dlw_step1_d:'If your browser flags the file, click the "···" next to the download and choose "Keep" (Chrome/Edge).',
     dlw_step2_t:'"Windows protected your PC" screen', dlw_step2_d:'Click "More info", then click "Run anyway" to start the installer.',
     dlw_continue:'⬇ Continue Download',
-    dlw_title_mac:'macOS Notice: "Unidentified Developer" warning',
-    dlw_body_mac:'This is an early beta build for Apple Silicon Macs and is not yet notarized by Apple, so macOS Gatekeeper will block it on first launch. This is expected — the app is safe to run.',
-    dlw_mac_step1_t:'Gatekeeper block', dlw_mac_step1_d:'macOS will say the app "cannot be opened because it is from an unidentified developer."',
-    dlw_mac_step2_t:'Allow it anyway', dlw_mac_step2_d:'Right-click (or Control-click) the TapeVault app → Open → click Open again in the dialog. You only need to do this once.',
-    dl_or:'or', dl_mac_btn:'🍎 Download for macOS (Apple Silicon)', dl_mac_note:'v0.1.0 Beta · Apple Silicon (M1/M2/M3) only · ~158 MB'
+    dlw_title_mac:'macOS Notice: First launch',
+    dlw_body_mac:'This beta build for Apple Silicon Macs is signed with an Apple Developer ID and notarized by Apple, so it opens normally. macOS only asks once to confirm opening an app downloaded from the internet.',
+    dlw_mac_step1_t:'Install', dlw_mac_step1_d:'Open the downloaded DMG and drag TapeVault into the Applications folder.',
+    dlw_mac_step2_t:'Open it', dlw_mac_step2_d:'Launch TapeVault from Applications and click Open when macOS asks to confirm. You only see this once.',
+    dl_or:'or', dl_mac_btn:'🍎 Download for macOS (Apple Silicon)', dl_mac_note:'v0.2.0 Beta · Apple Silicon (M1/M2/M3) only · ~158 MB'
   },
   ko: {
     nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
@@ -889,11 +889,11 @@ const T = {
     dlw_step1_t:'브라우저 다운로드 경고', dlw_step1_d:'브라우저가 파일을 경고하면, 다운로드 항목 옆의 "···"를 클릭하고 "유지"(Chrome/Edge)를 선택하세요.',
     dlw_step2_t:'"Windows에서 PC를 보호했습니다" 화면', dlw_step2_d:'"추가 정보"를 클릭한 다음 "실행"을 눌러 설치를 계속하세요.',
     dlw_continue:'⬇ 다운로드 계속하기',
-    dlw_title_mac:'🍎 macOS 안내: "확인되지 않은 개발자" 경고',
-    dlw_body_mac:'Apple Silicon Mac용 초기 베타 빌드로, 아직 Apple 공증(notarization)을 받지 않아 첫 실행 시 macOS Gatekeeper가 차단합니다. 정상적인 현상이며 앱은 안전합니다.',
-    dlw_mac_step1_t:'Gatekeeper 차단', dlw_mac_step1_d:'"확인되지 않은 개발자"이므로 열 수 없다는 메시지가 뜹니다.',
-    dlw_mac_step2_t:'허용하고 실행하기', dlw_mac_step2_d:'TapeVault 앱을 우클릭(또는 Control+클릭) → 열기 → 다시 뜨는 대화상자에서 열기 클릭. 최초 1회만 하면 됩니다.',
-    dl_or:'또는', dl_mac_btn:'🍎 macOS용 다운로드 (Apple Silicon)', dl_mac_note:'v0.1.0 베타 · Apple Silicon(M1/M2/M3) 전용 · ~158 MB'
+    dlw_title_mac:'🍎 macOS 안내: 처음 실행할 때',
+    dlw_body_mac:'Apple Silicon Mac용 베타 빌드로, Apple Developer ID로 서명되고 Apple 공증(notarization)을 받았습니다. 별도 조치 없이 실행되며, 인터넷에서 받은 앱이라는 확인 창만 처음 한 번 나옵니다.',
+    dlw_mac_step1_t:'설치', dlw_mac_step1_d:'받은 DMG를 열고 TapeVault를 응용 프로그램(Applications) 폴더로 끌어다 놓습니다.',
+    dlw_mac_step2_t:'실행', dlw_mac_step2_d:'응용 프로그램에서 TapeVault를 실행하고, 확인 창이 뜨면 열기를 누릅니다. 처음 한 번만 나옵니다.',
+    dl_or:'또는', dl_mac_btn:'🍎 macOS용 다운로드 (Apple Silicon)', dl_mac_note:'v0.2.0 베타 · Apple Silicon(M1/M2/M3) 전용 · ~158 MB'
   },
   ja: {
     nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール',
@@ -975,11 +975,11 @@ const T = {
     dlw_step1_t:'ブラウザのダウンロード警告', dlw_step1_d:'ブラウザが警告を表示した場合、ダウンロード項目の「···」をクリックして「保持」(Chrome/Edge)を選択してください。',
     dlw_step2_t:'「WindowsによってPCが保護されました」画面', dlw_step2_d:'「詳細情報」をクリックしてから「実行」をクリックしてインストールを続けてください。',
     dlw_continue:'⬇ ダウンロードを続ける',
-    dlw_title_mac:'🍎 macOSのお知らせ：「開発元が未確認」の警告',
-    dlw_body_mac:'Apple Silicon Mac向けの初期ベータ版で、まだApple公証(notarization)を受けていないため、初回起動時にmacOS Gatekeeperがブロックします。これは正常な動作で、アプリ自体は安全です。',
-    dlw_mac_step1_t:'Gatekeeperのブロック', dlw_mac_step1_d:'「開発元が未確認のため開けません」と表示されます。',
-    dlw_mac_step2_t:'許可して起動', dlw_mac_step2_d:'TapeVaultアプリを右クリック(またはControlキーを押しながらクリック)→「開く」→表示されるダイアログで再度「開く」をクリック。これは初回のみ必要です。',
-    dl_or:'または', dl_mac_btn:'🍎 macOS版をダウンロード (Apple Silicon)', dl_mac_note:'v0.1.0 ベータ · Apple Silicon (M1/M2/M3) 専用 · 約158 MB'
+    dlw_title_mac:'🍎 macOSのお知らせ：初回起動時',
+    dlw_body_mac:'Apple Silicon Mac向けのベータ版で、Apple Developer IDで署名され、Apple公証(notarization)済みです。特別な操作なしで起動でき、インターネットからダウンロードしたアプリかどうかの確認が初回に一度だけ表示されます。',
+    dlw_mac_step1_t:'インストール', dlw_mac_step1_d:'ダウンロードしたDMGを開き、TapeVaultを「アプリケーション」フォルダにドラッグします。',
+    dlw_mac_step2_t:'起動', dlw_mac_step2_d:'「アプリケーション」からTapeVaultを起動し、確認ダイアログで「開く」をクリックします。表示されるのは初回のみです。',
+    dl_or:'または', dl_mac_btn:'🍎 macOS版をダウンロード (Apple Silicon)', dl_mac_note:'v0.2.0 ベータ · Apple Silicon (M1/M2/M3) 専用 · 約158 MB'
   }
 };
 
