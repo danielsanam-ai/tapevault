@@ -10,13 +10,13 @@
     !(navigator.maxTouchPoints > 1 && /Mac/.test(navigator.platform) && /Mobile/.test(navigator.userAgent));
 
   var L = {
-    en: { win: 'Windows', mac: 'macOS', dl: '⬇ Download TapeVault v{v} for Windows', macnote: 'v{v} Beta · Apple Silicon (M1/M2/M3) only · ~{n} MB',
+    en: { win: 'Windows', mac: 'macOS', dl: '⬇ Download TapeVault v{v} for Windows', macnote: 'v{v} · Apple Silicon (M1/M2/M3) only · ~{n} MB',
           sha: 'SHA-256', mb: 'MB', notes: 'Release notes', feat: 'Platform support', yes: '✓', no: '—',
           ver: 'v{v} · {d} · Requires {os}', foot: 'TapeVault v{v} · Built by Veteran IT · Billing by Paddle · No auto-renewal' },
-    ko: { win: 'Windows', mac: 'macOS', dl: '⬇ TapeVault v{v} Windows용 다운로드', macnote: 'v{v} 베타 · Apple Silicon(M1/M2/M3) 전용 · ~{n} MB',
+    ko: { win: 'Windows', mac: 'macOS', dl: '⬇ TapeVault v{v} Windows용 다운로드', macnote: 'v{v} · Apple Silicon(M1/M2/M3) 전용 · ~{n} MB',
           sha: 'SHA-256', mb: 'MB', notes: '릴리스 노트', feat: '플랫폼별 지원 기능', yes: '✓', no: '—',
           ver: 'v{v} · {d} · {os} 필요', foot: 'TapeVault v{v} · Veteran IT 개발 · Paddle 결제 · 자동 갱신 없음' },
-    ja: { win: 'Windows', mac: 'macOS', dl: '⬇ TapeVault v{v} Windows版をDL', macnote: 'v{v} ベータ · Apple Silicon (M1/M2/M3) 専用 · 約{n} MB',
+    ja: { win: 'Windows', mac: 'macOS', dl: '⬇ TapeVault v{v} Windows版をDL', macnote: 'v{v} · Apple Silicon (M1/M2/M3) 専用 · 約{n} MB',
           sha: 'SHA-256', mb: 'MB', notes: 'リリースノート', feat: 'プラットフォーム別の対応機能', yes: '✓', no: '—',
           ver: 'v{v} · {d} · {os}が必要', foot: 'TapeVault v{v} · Veteran IT製 · Paddle決済 · 自動更新なし' }
   };
