@@ -16,23 +16,31 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .nav-logo-text b{font-weight:700}
 .nav-ver{font-size:10px;background:#1a2340;color:#5b9cf6;padding:2px 7px;border-radius:4px;font-family:monospace}
 .nav-links{display:flex;gap:28px}
-.nav-links a{font-size:13px;color:#6b7694;text-decoration:none;cursor:pointer;transition:color .2s}
+.nav-links a{font-size:13px;color:#a8b2d0;text-decoration:none;cursor:pointer;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:#f5a623}
 .nav-right{display:flex;gap:7px;align-items:center}
-.lang-grp{display:flex;gap:4px;margin-right:6px}
-.lang-btn{font-size:10px;color:#4a5270;background:#111520;border:0.5px solid #1e2330;padding:3px 8px;border-radius:4px;cursor:pointer;font-family:monospace}
-.lang-btn.on{color:#5b9cf6;border-color:#1e3a5f}
-.btn-ghost{font-size:13px;color:#6b7694;background:#111827;border:0.5px solid #2a3349;padding:6px 16px;border-radius:6px;cursor:pointer}
+.lang-select{position:relative;margin-right:6px}
+.lang-globe-btn{display:flex;align-items:center;gap:6px;background:#111520;border:0.5px solid #1e2330;color:#99a3c4;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-family:monospace;transition:all .15s}
+.lang-globe-btn:hover{border-color:#3a4a6a;color:#c8cfe0}
+.lang-globe-btn svg{width:15px;height:15px;flex-shrink:0;stroke:currentColor}
+.lang-globe-btn .lang-chevron{width:8px;height:8px;flex-shrink:0;stroke:currentColor;transition:transform .15s}
+.lang-globe-btn.open .lang-chevron{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:#0d1117;border:0.5px solid #2a2a35;border-radius:10px;padding:6px;min-width:150px;box-shadow:0 16px 40px rgba(0,0,0,.55);display:none;flex-direction:column;gap:2px;z-index:200}
+.lang-menu.open{display:flex}
+.lang-menu-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:none;border:none;color:#99a3c4;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:12px;text-align:left;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.lang-menu-item:hover{background:#1a1f2e;color:#c8cfe0}
+.lang-menu-item.active{color:#5b9cf6}
+.lang-menu-item .lang-check{color:#5b9cf6;font-size:12px;opacity:0}
+.lang-menu-item.active .lang-check{opacity:1}
+.btn-ghost{font-size:13px;color:#a8b2d0;background:#111827;border:0.5px solid #2a3349;padding:6px 16px;border-radius:6px;cursor:pointer}
 .btn-orange{font-size:13px;color:#0b0b0d;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer}
 .btn-orange:hover{opacity:.88}
 .hero{padding:72px 48px 56px;text-align:center;position:relative}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:#111827;border:0.5px solid #1e3a5f;color:#5b9cf6;font-size:11px;padding:5px 14px;border-radius:20px;margin-bottom:28px;font-family:monospace}
-.hero-dot{width:6px;height:6px;background:#22d3ee;border-radius:50%;animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .hero h1{font-size:56px;font-weight:400;line-height:1.1;letter-spacing:-1.5px;color:#f0f2f8;margin-bottom:10px}
 .hero h1 b{font-weight:800;color:#f5a623}
-.hero-sub{font-size:17px;color:#5a6480;max-width:540px;margin:0 auto 16px;line-height:1.75}
-.hero-platform{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#3a4a5a;margin-bottom:36px;font-family:monospace}
+.hero-sub{font-size:17px;color:#99a3c4;max-width:540px;margin:0 auto 16px;line-height:1.75}
+.hero-platform{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#8b96b8;margin-bottom:36px;font-family:monospace}
 .hero-platform span{background:#1a1a20;border:0.5px solid #2a2a35;padding:3px 10px;border-radius:4px}
 .hero-platform span.hi{color:#f5a623;border-color:#3a2a05;background:#1a1508}
 .hero-btns{display:flex;gap:12px;justify-content:center;margin-bottom:56px}
@@ -42,7 +50,7 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .btn-hero-ghost:hover{border-color:#3a4a6a}
 .video-card{background:#141418;border:0.5px solid #2a2a35;border-radius:12px;overflow:hidden;display:block;transition:border-color .2s}
 .video-card:hover{border-color:#f5a623}
-.video-label{background:#1a1a1f;border-bottom:0.5px solid #2a2a35;padding:10px 16px;font-size:11px;color:#4a5270;font-family:monospace;display:flex;align-items:center;gap:6px}
+.video-label{background:#1a1a1f;border-bottom:0.5px solid #2a2a35;padding:10px 16px;font-size:11px;color:#99a3c4;font-family:monospace;display:flex;align-items:center;gap:6px}
 .video-label span{color:#f5a623}
 .video-thumb{position:relative;background:#0d0d12}
 .video-thumb img{width:100%;display:block;object-fit:cover;opacity:.85}
@@ -54,18 +62,18 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .pain-head{text-align:center;margin-bottom:48px}
 .sec-label{font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:monospace}
 .sec-title{font-size:34px;font-weight:600;color:#e8eaf0;letter-spacing:-.5px;margin-bottom:10px}
-.sec-sub{font-size:15px;color:#4a5270;max-width:520px;margin:0 auto}
+.sec-sub{font-size:15px;color:#99a3c4;max-width:520px;margin:0 auto}
 .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
 .pain-card{background:#0d1117;border:0.5px solid #2a1a1a;border-radius:12px;padding:28px}
 .pain-ico{font-size:28px;margin-bottom:14px}
 .pain-title{font-size:15px;font-weight:700;color:#ef4444;margin-bottom:10px}
-.pain-desc{font-size:13px;color:#4a5270;line-height:1.75}
+.pain-desc{font-size:13px;color:#99a3c4;line-height:1.75}
 .pain-arrow{text-align:center;padding:32px 0;font-size:32px;color:#f5a623}
 .solution-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
 .solution-card{background:#0a1a0a;border:0.5px solid #1a3a1a;border-radius:12px;padding:28px}
 .solution-ico{font-size:28px;margin-bottom:14px}
 .solution-title{font-size:15px;font-weight:700;color:#4ade80;margin-bottom:10px}
-.solution-desc{font-size:13px;color:#4a5270;line-height:1.75}
+.solution-desc{font-size:13px;color:#99a3c4;line-height:1.75}
 .gui-sec{padding:80px 48px}
 .gui-head{text-align:center;margin-bottom:64px}
 .gui-step{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:80px;max-width:1100px;margin-left:auto;margin-right:auto}
@@ -74,20 +82,20 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .gui-step-rev>*{direction:ltr}
 .gui-step-num{font-size:10px;color:#f5a623;font-family:monospace;letter-spacing:.15em;background:#1a1508;border:0.5px solid #3a2a05;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:16px}
 .gui-step-title{font-size:28px;font-weight:700;color:#e8eaf0;margin-bottom:14px;letter-spacing:-.4px;line-height:1.3}
-.gui-step-desc{font-size:14px;color:#5a6480;line-height:1.85;margin-bottom:20px}
+.gui-step-desc{font-size:14px;color:#99a3c4;line-height:1.85;margin-bottom:20px}
 .gui-checklist{list-style:none;display:flex;flex-direction:column;gap:10px}
-.gui-checklist li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#5a6480;line-height:1.6}
+.gui-checklist li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#99a3c4;line-height:1.6}
 .gui-checklist li::before{content:"✓";color:#f5a623;font-size:13px;flex-shrink:0;margin-top:1px;font-weight:700}
 .gui-tip{display:flex;align-items:flex-start;gap:8px;background:#1a1508;border:0.5px solid #3a2a05;border-radius:8px;padding:12px 16px;margin-top:20px;font-size:12px;color:#d4921a;line-height:1.65}
 .gui-screen{border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);border:0.5px solid #2a2a35}
 .gui-screen img{width:100%;display:block}
-.gui-screen-cap{font-size:11px;color:#2e3a52;text-align:center;margin-top:10px;font-family:monospace}
+.gui-screen-cap{font-size:11px;color:#7c88a4;text-align:center;margin-top:10px;font-family:monospace}
 .stats-bar{background:#0d1117;border-top:0.5px solid #1e2330;border-bottom:0.5px solid #1e2330;padding:32px 48px}
 .stats-inner{display:flex;align-items:center;justify-content:center;gap:0;max-width:900px;margin:0 auto}
 .stat-item{text-align:center;padding:0 48px}
 .stat-num{font-size:44px;font-weight:800;color:#f5a623;letter-spacing:-1px;line-height:1}
 .stat-num sup{font-size:20px;font-weight:400}
-.stat-label{font-size:11px;color:#4a5270;margin-top:6px;font-family:monospace}
+.stat-label{font-size:11px;color:#99a3c4;margin-top:6px;font-family:monospace}
 .stat-div{width:0.5px;height:52px;background:#1e2330}
 .feat-sec{padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto}
@@ -95,7 +103,7 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .feat:hover{border-color:#2e3a4a}
 .feat-ico{font-size:26px;margin-bottom:14px}
 .feat-title{font-size:14px;font-weight:700;color:#c8cfe0;margin-bottom:8px}
-.feat-desc{font-size:12px;color:#3a4a5a;line-height:1.75}
+.feat-desc{font-size:12px;color:#8b96b8;line-height:1.75}
 .baf-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:center;max-width:900px;margin:0 auto}
 .baf-card{border-radius:12px;padding:32px}
 .baf-card.before{background:#0d0808;border:1px solid #3a1a1a}
@@ -104,7 +112,7 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .baf-card.before .baf-label{color:#ef4444}
 .baf-card.after .baf-label{color:#4ade80}
 .baf-list{list-style:none;display:flex;flex-direction:column;gap:12px}
-.baf-list li{font-size:13px;color:#5a6480;line-height:1.65;display:flex;align-items:flex-start;gap:8px}
+.baf-list li{font-size:13px;color:#99a3c4;line-height:1.65;display:flex;align-items:flex-start;gap:8px}
 .baf-card.before .baf-list li::before{content:"✗";color:#ef4444;flex-shrink:0;font-weight:700}
 .baf-card.after .baf-list li::before{content:"✓";color:#4ade80;flex-shrink:0;font-weight:700}
 .baf-arrow{font-size:36px;color:#f5a623;text-align:center}
@@ -113,21 +121,21 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .pc{background:#0d1117;border:0.5px solid #1a2035;border-radius:12px;padding:30px;position:relative}
 .pc.hot{border:2px solid #f5a623}
 .pc-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#f5a623;color:#0b0b0d;font-size:10px;font-weight:800;padding:3px 16px;border-radius:20px;white-space:nowrap}
-.pc-plan{font-size:11px;color:#3a4a6a;margin-bottom:8px;font-family:monospace;letter-spacing:.1em}
+.pc-plan{font-size:11px;color:#8b96b8;margin-bottom:8px;font-family:monospace;letter-spacing:.1em}
 .pc-amount{font-size:40px;font-weight:800;color:#e8eaf0;letter-spacing:-1px}
-.pc-unit{font-size:13px;color:#3a4a6a;font-weight:400}
-.pc-desc{font-size:12px;color:#3a4a5a;margin:8px 0 16px;line-height:1.6}
+.pc-unit{font-size:13px;color:#8b96b8;font-weight:400}
+.pc-desc{font-size:12px;color:#8b96b8;margin:8px 0 16px;line-height:1.6}
 .pc-hr{border:none;border-top:0.5px solid #1a2035;margin:16px 0}
-.pc-feat{font-size:12px;color:#4a5270;padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.pc-feat{font-size:12px;color:#99a3c4;padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
 .pc-feat::before{content:'✓';color:#22d3ee;font-size:11px;flex-shrink:0;margin-top:1px}
-.pc-btn{width:100%;margin-top:22px;padding:11px;border-radius:8px;font-size:13px;cursor:pointer;border:0.5px solid #2a3349;background:none;color:#6b7694;font-weight:600;transition:all .15s}
+.pc-btn{width:100%;margin-top:22px;padding:11px;border-radius:8px;font-size:13px;cursor:pointer;border:0.5px solid #2a3349;background:none;color:#a8b2d0;font-weight:600;transition:all .15s}
 .pc-btn:hover{border-color:#3a4a6a;color:#c8cfe0}
 .pc-btn.hot{background:#f5a623;border:none;color:#0b0b0d;font-weight:800}
 .pc-btn.hot:hover{opacity:.88}
 .price-trust{text-align:center;margin-top:28px}
-.price-trust p{font-size:12px;color:#2e3a52;margin-bottom:6px}
+.price-trust p{font-size:12px;color:#7c88a4;margin-bottom:6px}
 .price-trust-items{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-.price-trust-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#3a4a5a;font-family:monospace}
+.price-trust-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#8b96b8;font-family:monospace}
 .price-trust-item::before{content:"✓";color:#4ade80}
 .faq-sec{padding:72px 48px}
 .faq-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
@@ -135,32 +143,113 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .faq-q{padding:18px 22px;font-size:14px;color:#c8cfe0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
 .faq-q .ico{color:#f5a623;font-size:18px;font-weight:300;transition:transform .2s;flex-shrink:0;margin-left:12px}
 .faq-q.open .ico{transform:rotate(45deg)}
-.faq-a{padding:0 22px 18px;font-size:13px;color:#4a5270;line-height:1.8;display:none}
+.faq-a{padding:0 22px 18px;font-size:13px;color:#99a3c4;line-height:1.8;display:none}
 .faq-a.open{display:block}
 .cta-sec{padding:80px 48px;text-align:center;background:linear-gradient(135deg,#1a1508 0%,#0b0b0d 40%,#081528 100%);border-top:0.5px solid #2a2035}
 .cta-sec h2{font-size:40px;font-weight:700;color:#f0f2f8;margin-bottom:12px;letter-spacing:-.6px}
-.cta-sec p{font-size:16px;color:#5a6480;margin-bottom:32px}
-.cta-note{font-size:12px;color:#2e3a52;margin-top:16px;font-family:monospace}
+.cta-sec p{font-size:16px;color:#99a3c4;margin-bottom:32px}
+.cta-note{font-size:12px;color:#7c88a4;margin-top:16px;font-family:monospace}
 footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 .footer-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;margin-bottom:32px}
 .footer-logo-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
 .footer-logo-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center}
 .footer-brand-name{font-size:15px;font-weight:700;color:#c8cfe0}
-.footer-copy{font-size:11px;color:#2e3a52;line-height:1.7}
+.footer-copy{font-size:11px;color:#7c88a4;line-height:1.7}
 .footer-cols{display:flex;gap:56px}
-.footer-col-title{font-size:10px;color:#4a5270;font-family:monospace;letter-spacing:.1em;margin-bottom:14px;text-transform:uppercase}
-.footer-col a{display:block;font-size:12px;color:#2e3a52;text-decoration:none;margin-bottom:10px;cursor:pointer;transition:color .15s}
-.footer-col a:hover{color:#6b7694}
+.footer-col-title{font-size:10px;color:#99a3c4;font-family:monospace;letter-spacing:.1em;margin-bottom:14px;text-transform:uppercase}
+.footer-col a{display:block;font-size:12px;color:#7c88a4;text-decoration:none;margin-bottom:10px;cursor:pointer;transition:color .15s}
+.footer-col a:hover{color:#a8b2d0}
 .footer-bottom{padding-top:24px;border-top:0.5px solid #1a2035;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.footer-bottom-left{font-size:11px;color:#2a3040}
+.footer-bottom-left{font-size:11px;color:#7c88a4}
 .footer-bottom-right{display:flex;gap:16px}
-.footer-bottom-right a{font-size:11px;color:#2a3040;text-decoration:none;cursor:pointer}
-.dl-more{font-size:12px;color:#4a5270;max-width:640px;text-align:left}
+.footer-bottom-right a{font-size:11px;color:#7c88a4;text-decoration:none;cursor:pointer}
+.dl-more{font-size:12px;color:#99a3c4;max-width:640px;text-align:left}
 .dl-more .dl-row{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;padding:4px 0;border-top:1px solid rgba(120,130,160,.18)}
 .dl-more a{color:#5b9cf6;text-decoration:none}.dl-more a:hover{text-decoration:underline}
-.dl-more code{font-size:10.5px;color:#6b7694}
+.dl-more code{font-size:10.5px;color:#8b96b8}
 .dl-feat{margin-top:8px}.dl-feat summary{cursor:pointer;color:#5b9cf6}
 .dl-feat table{border-collapse:collapse;margin-top:6px;width:100%}.dl-feat td{padding:3px 8px;border-top:1px solid rgba(120,130,160,.18)}.dl-feat td+td{text-align:center;width:70px}
+.beta-pill{display:inline-flex;align-items:center;gap:9px;background:#1a1508;border:1px solid #f5a623;color:#f5a623;font-size:14px;font-weight:800;padding:11px 24px;border-radius:24px;margin-bottom:28px;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 0 24px rgba(245,166,35,.12)}
+.beta-pill:hover{background:#241c0b;transform:translateY(-1px);box-shadow:0 0 32px rgba(245,166,35,.22)}
+.beta-pill-dot{width:7px;height:7px;background:#f5a623;border-radius:50%;animation:blink 2s infinite;flex-shrink:0}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(5,6,10,.75);backdrop-filter:blur(3px);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#0d1117;border:0.5px solid #2a2a35;border-radius:14px;padding:32px;max-width:460px;width:100%;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.6);text-align:left}
+.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:#7c88a4;font-size:22px;cursor:pointer;line-height:1;padding:6px}
+.modal-close:hover{color:#f5a623}
+.modal-icon{font-size:30px;margin-bottom:12px}
+.modal-box h3{font-size:18px;font-weight:700;color:#e8eaf0;margin-bottom:12px;letter-spacing:-.3px;line-height:1.4}
+.modal-box p{font-size:13px;color:#99a3c4;line-height:1.75;margin-bottom:22px}
+.modal-steps{display:flex;flex-direction:column;gap:14px;margin-bottom:26px}
+.modal-step{display:flex;gap:12px;align-items:flex-start}
+.modal-step-num{width:24px;height:24px;border-radius:50%;background:#1a1508;border:1px solid #3a2a05;color:#f5a623;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:monospace}
+.modal-step-title{font-size:13px;font-weight:700;color:#c8cfe0;margin-bottom:4px}
+.modal-step-desc{font-size:12px;color:#8b96b8;line-height:1.6}
+.modal-continue{width:100%;justify-content:center;font-size:14px;padding:13px}
+
+.nav-burger{display:none;background:none;border:0.5px solid #2a3349;color:#c8cfe0;padding:7px;border-radius:6px;cursor:pointer;align-items:center;justify-content:center}
+.nav-burger svg{width:18px;height:18px}
+
+/* ===== Tablet ===== */
+@media (max-width:860px){
+  .nav{padding:12px 20px;flex-wrap:wrap}
+  .nav-links{display:none;order:3;width:100%;flex-direction:column;gap:0;background:#0b0b0d;border-top:0.5px solid #1e2230;margin-top:12px;padding-top:8px}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 4px;border-bottom:0.5px solid #16192480}
+  .btn-ghost{display:none}
+  .nav-burger{display:flex}
+  .nav-ver{display:none}
+
+  .hero{padding:48px 20px 40px}
+  .hero h1{font-size:38px;letter-spacing:-1px}
+  .hero-platform{flex-wrap:wrap;justify-content:center;row-gap:6px}
+  .beta-pill{font-size:12px;padding:9px 16px;white-space:normal;text-align:center}
+
+  .pain-sec,.feat-sec,.price-sec,.faq-sec,.gui-sec,.baf-sec,#download{padding-left:20px;padding-right:20px}
+  .sec-title{font-size:26px}
+  .pain-grid,.solution-grid,.feat-grid,.price-grid{grid-template-columns:repeat(2,1fr)}
+
+  .gui-step,.gui-step-rev{grid-template-columns:1fr;gap:24px;direction:ltr;margin-bottom:56px!important}
+  .gui-step-rev>*{direction:ltr}
+  .gui-info{order:1}
+
+  .stats-bar{padding:24px 20px}
+  .stats-inner{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 0}
+  .stat-item{padding:0}
+  .stat-div{display:none}
+  .stat-num{font-size:34px}
+
+  .baf-grid{grid-template-columns:1fr;gap:16px}
+  .baf-arrow{transform:rotate(90deg)}
+
+  .cta-sec{padding:56px 20px}
+  .cta-sec h2{font-size:28px}
+
+  footer{padding:32px 20px}
+  .footer-inner{flex-direction:column;gap:28px}
+  .footer-cols{width:100%;justify-content:space-between;gap:20px}
+}
+
+/* ===== Phone ===== */
+@media (max-width:560px){
+  .hero h1{font-size:30px}
+  .hero-sub{font-size:15px}
+  .hero-btns{flex-direction:column;width:100%}
+  .hero-btns button{width:100%;justify-content:center}
+  .video-label{flex-wrap:wrap}
+
+  .sec-title{font-size:22px}
+  .pain-grid,.solution-grid,.feat-grid,.price-grid{grid-template-columns:1fr}
+
+  .stats-inner{grid-template-columns:1fr 1fr}
+
+  .gui-step-title{font-size:22px}
+
+  .footer-cols{flex-direction:column;gap:24px}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+
+  .modal-box{padding:22px}
+}
 </style>
 </head>
 <body>
@@ -178,7 +267,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <span class="nav-logo-text">Tape<b>Vault</b></span>
     <span class="nav-ver">v1.0.0</span>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="#gui" data-i18n="nav_how">How it works</a>
     <a href="#features" data-i18n="nav_features">Features</a>
     <a href="#download" data-i18n="nav_download">Download</a>
@@ -186,30 +275,42 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <a href="how-to-install.html" data-i18n="nav_install">Install Guide</a>
   </div>
   <div class="nav-right">
-    <div class="lang-grp">
-      <button class="lang-btn" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="ko">KO</button>
-      <button class="lang-btn" data-lang="ja">JA</button>
+    <div class="lang-select" id="lang-select">
+      <button class="lang-globe-btn" id="lang-globe-btn" onclick="toggleLangMenu(event)" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
+        <span id="lang-current">EN</span>
+        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="lang-menu" id="lang-menu">
+        <button class="lang-menu-item" data-lang="en" onclick="applyLang('en');toggleLangMenu()">English<span class="lang-check">✓</span></button>
+        <button class="lang-menu-item" data-lang="ko" onclick="applyLang('ko');toggleLangMenu()">한국어<span class="lang-check">✓</span></button>
+        <button class="lang-menu-item" data-lang="ja" onclick="applyLang('ja');toggleLangMenu()">日本語<span class="lang-check">✓</span></button>
+      </div>
     </div>
     <button class="btn-ghost" data-i18n="nav_signin">Sign in</button>
     <button class="btn-orange" data-i18n="nav_trial" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Free Trial</button>
+    <button class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-eyebrow">
-    <span class="hero-dot"></span>
-    <span data-i18n="hero_eyebrow">v1.0.0 — Now available for Windows</span>
+  <div>
+    <a class="beta-pill" href="#download">
+      <span class="beta-pill-dot"></span>
+      <span data-i18n="beta_pill">🧪 Try TapeVault Free for 3 Months in Beta + 50% Off →</span>
+    </a>
   </div>
   <h1 data-i18n="hero_h1">Find any file on LTO tape<br><b>in under 30 seconds.</b></h1>
   <p class="hero-sub" data-i18n="hero_sub">TapeVault is the only LTO tape archive manager built for Windows. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.</p>
   <div class="hero-platform">
-    <span class="hi" data-i18n="hero_p1">Windows Only</span>
+    <span class="hi" data-i18n="hero_p1">Windows & macOS</span>
     <span data-i18n="hero_p2">LTO-4 to LTO-9</span>
     <span data-i18n="hero_p3">Broadcast · Medical · Defense · Education</span>
   </div>
   <div class="hero-btns">
-    <button class="btn-hero-main" data-i18n="hero_btn1" onclick="window.location.href='https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-Setup-1.0.0.exe'">⬇ Download Free Trial</button>
+    <button class="btn-hero-main" data-i18n="hero_btn1" onclick="showDownloadWarning()">⬇ Download Free Trial</button>
     <button class="btn-hero-ghost" data-i18n="hero_btn2" onclick="document.getElementById('gui').scrollIntoView({behavior:'smooth'})">▶ See how it works</button>
   </div>
   <!-- APP SCREENSHOT -->
@@ -219,11 +320,11 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
         <span style="width:10px;height:10px;border-radius:50%;background:#ef4444;display:inline-block"></span>
         <span style="width:10px;height:10px;border-radius:50%;background:#f5a623;display:inline-block"></span>
         <span style="width:10px;height:10px;border-radius:50%;background:#4ade80;display:inline-block"></span>
-        <span style="font-size:11px;color:#3a4a5a;font-family:monospace;margin-left:8px">TapeVault v1.0.0 — LTO Archive Manager</span>
+        <span style="font-size:11px;color:#8b96b8;font-family:monospace;margin-left:8px">TapeVault v1.0.0 — LTO Archive Manager</span>
       </div>
       <img src="img/screen-app.png" alt="TapeVault application screenshot" style="width:100%;display:block">
     </div>
-    <div style="font-size:11px;color:#2e3a52;text-align:center;margin-top:10px;font-family:monospace">▲ Actual TapeVault v1.0.0 — no mockup</div>
+    <div style="font-size:11px;color:#7c88a4;text-align:center;margin-top:10px;font-family:monospace">▲ Actual TapeVault v1.0.0 — no mockup</div>
   </div>
 
   <div style="max-width:720px;margin:0 auto 20px">
@@ -366,7 +467,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
   </div>
 </section>
 
-<section style="padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035">
+<section class="baf-sec" style="padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035">
   <div style="text-align:center;margin-bottom:48px">
     <div class="sec-label" data-i18n="baf_label">The Difference</div>
     <div class="sec-title" data-i18n="baf_title">Before vs. After TapeVault</div>
@@ -419,16 +520,21 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 
 <section style="padding:72px 48px;text-align:center" id="download">
   <div class="sec-label" data-i18n="dl_label">Download</div>
-  <div class="sec-title" style="margin-bottom:10px" data-i18n="dl_title">Try TapeVault free for 30 days</div>
-  <p style="font-size:15px;color:#4a5270;margin-bottom:36px" data-i18n="dl_sub">No credit card. No commitment. Full features from day one.</p>
+  <div class="sec-title" style="margin-bottom:10px" data-i18n="dl_title">Try TapeVault free for 3 months in Beta</div>
+  <p style="font-size:15px;color:#99a3c4;margin-bottom:36px" data-i18n="dl_sub">No credit card. No commitment. Full features from day one — plus 50% off when you upgrade.</p>
   <div style="display:inline-flex;flex-direction:column;align-items:center;gap:16px">
-    <button class="btn-hero-main" style="font-size:16px;padding:16px 40px" data-i18n="dl_btn" onclick="window.location.href='https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-Setup-1.0.0.exe'">⬇ Download TapeVault v1.0.0 for Windows</button>
+    <button class="btn-hero-main" style="font-size:16px;padding:16px 40px" data-i18n="dl_btn" onclick="showDownloadWarning()">⬇ Download TapeVault v1.0.0 for Windows</button>
     <div style="display:flex;gap:24px">
-      <span style="font-size:11px;color:#3a4a5a;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#5b9cf6">●</span> <span data-i18n="dl_s1">Windows 10 / 11 (64-bit)</span></span>
-      <span style="font-size:11px;color:#3a4a5a;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#4ade80">●</span> <span data-i18n="dl_s2">LTO-4 through LTO-9</span></span>
-      <span style="font-size:11px;color:#3a4a5a;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#f5a623">●</span> <span data-i18n="dl_s3">~180 MB installer</span></span>
+      <span style="font-size:11px;color:#8b96b8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#5b9cf6">●</span> <span data-i18n="dl_s1">Windows 10 / 11 (64-bit)</span></span>
+      <span style="font-size:11px;color:#8b96b8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#4ade80">●</span> <span data-i18n="dl_s2">LTO-4 through LTO-9</span></span>
+      <span style="font-size:11px;color:#8b96b8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#f5a623">●</span> <span data-i18n="dl_s3">~90 MB installer</span></span>
     </div>
-    <p style="font-size:11px;color:#2e3a52" data-i18n="dl_ver">v1.0.0 · June 2026 · Requires Windows 10 64-bit or later</p>
+    <p style="font-size:11px;color:#7c88a4" data-i18n="dl_ver">v1.0.0 · June 2026 · Requires Windows 10 64-bit or later</p>
+
+    <div style="font-size:11px;color:#7c88a4;font-family:monospace;margin:8px 0" data-i18n="dl_or">or</div>
+
+    <button class="btn-hero-ghost" style="font-size:14px;padding:12px 28px" data-i18n="dl_mac_btn" onclick="showDownloadWarning('mac')">🍎 Download for macOS (Apple Silicon)</button>
+    <p style="font-size:11px;color:#7c88a4" data-i18n="dl_mac_note">v0.2.0 Beta · Apple Silicon (M1/M2/M3) only · ~158 MB</p>
     <div id="dl-more" class="dl-more" hidden></div>
   </div>
 </section>
@@ -510,7 +616,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 <section class="cta-sec">
   <h2 data-i18n="cta_h2">Stop searching tapes manually.</h2>
   <p data-i18n="cta_p">Download TapeVault and find any file in 30 seconds — starting today.</p>
-  <button class="btn-hero-main" style="margin:0 auto;font-size:16px;padding:16px 40px" data-i18n="cta_btn" onclick="window.location.href='https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-Setup-1.0.0.exe'">⬇ Download Free Trial — No Credit Card</button>
+  <button class="btn-hero-main" style="margin:0 auto;font-size:16px;padding:16px 40px" data-i18n="cta_btn" onclick="showDownloadWarning()">⬇ Download Free Trial — No Credit Card</button>
   <div class="cta-note" data-i18n="cta_note">Windows 10 / 11 · 30-day full-feature trial · LTO-4 to LTO-9</div>
 </section>
 
@@ -531,7 +637,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       <div class="footer-copy">
         © 2026 주식회사 베테랑아이티 (Veteran IT Co., Ltd.)<br>
         Seocho-gu, Seoul, Republic of Korea<br>
-        <a href="mailto:support@tapevault.net" style="color:#3a4a5a;text-decoration:none">support@tapevault.net</a>
+        <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>
       </div>
     </div>
     <div class="footer-cols">
@@ -550,9 +656,9 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       </div>
       <div class="footer-col">
         <div class="footer-col-title" data-i18n="fc_legal">Legal</div>
-        <a href="#" data-i18n="fc_privacy">Privacy policy</a>
-        <a href="#" data-i18n="fc_terms">Terms of service</a>
-        <a href="#" data-i18n="fc_license">License</a>
+        <a href="privacy-policy.html" data-i18n="fc_privacy">Privacy policy</a>
+        <a href="terms-of-service.html" data-i18n="fc_terms">Terms of service</a>
+        <a href="license.html" data-i18n="fc_license">License</a>
       </div>
     </div>
   </div>
@@ -562,15 +668,74 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
   </div>
 </footer>
 
+<div class="modal-overlay" id="dl-warning-modal" onclick="if(event.target===this) closeDownloadWarning()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeDownloadWarning()" aria-label="Close">×</button>
+    <div class="modal-icon">🛡️</div>
+    <div id="dlw-win">
+      <h3 data-i18n="dlw_title">Beta Notice: You may see a security warning</h3>
+      <p data-i18n="dlw_body">TapeVault v1.0.0 is in open beta. Because the installer is new and not yet code-signed, Windows SmartScreen and some browsers may flag it during download or install. This is expected for new software and does not mean the file is unsafe.</p>
+      <div class="modal-steps">
+        <div class="modal-step">
+          <div class="modal-step-num">1</div>
+          <div>
+            <div class="modal-step-title" data-i18n="dlw_step1_t">Browser download warning</div>
+            <div class="modal-step-desc" data-i18n="dlw_step1_d">If your browser flags the file, click the "···" next to the download and choose "Keep" (Chrome/Edge).</div>
+          </div>
+        </div>
+        <div class="modal-step">
+          <div class="modal-step-num">2</div>
+          <div>
+            <div class="modal-step-title" data-i18n="dlw_step2_t">"Windows protected your PC" screen</div>
+            <div class="modal-step-desc" data-i18n="dlw_step2_d">Click "More info", then click "Run anyway" to start the installer.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="dlw-mac" hidden>
+      <h3 data-i18n="dlw_title_mac">macOS Notice: First launch</h3>
+      <p data-i18n="dlw_body_mac">This beta build for Apple Silicon Macs is signed with an Apple Developer ID and notarized by Apple, so it opens normally. macOS only asks once to confirm opening an app downloaded from the internet.</p>
+      <div class="modal-steps">
+        <div class="modal-step">
+          <div class="modal-step-num">1</div>
+          <div>
+            <div class="modal-step-title" data-i18n="dlw_mac_step1_t">Install</div>
+            <div class="modal-step-desc" data-i18n="dlw_mac_step1_d">Open the downloaded DMG and drag TapeVault into the Applications folder.</div>
+          </div>
+        </div>
+        <div class="modal-step">
+          <div class="modal-step-num">2</div>
+          <div>
+            <div class="modal-step-title" data-i18n="dlw_mac_step2_t">Open it</div>
+            <div class="modal-step-desc" data-i18n="dlw_mac_step2_d">Launch TapeVault from Applications and click Open when macOS asks to confirm. You only see this once.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-hero-main modal-continue" data-i18n="dlw_continue" onclick="proceedDownload()">⬇ Continue Download</button>
+  </div>
+</div>
+
 <script>
+let DOWNLOAD_URL = 'https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-Setup-1.0.0.exe';
+let DOWNLOAD_URL_MAC = 'https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-0.2.0-arm64.dmg';
+let dlwPlatform = 'win';
+function showDownloadWarning(platform) {
+  dlwPlatform = platform === 'mac' ? 'mac' : 'win';
+  document.getElementById('dlw-win').hidden = dlwPlatform !== 'win';
+  document.getElementById('dlw-mac').hidden = dlwPlatform !== 'mac';
+  document.getElementById('dl-warning-modal').classList.add('open');
+}
+function closeDownloadWarning() { document.getElementById('dl-warning-modal').classList.remove('open'); }
+function proceedDownload() { window.location.href = dlwPlatform === 'mac' ? DOWNLOAD_URL_MAC : DOWNLOAD_URL; closeDownloadWarning(); }
+
 const T = {
   en: {
     nav_how:'How it works', nav_features:'Features', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide',
     nav_signin:'Sign in', nav_trial:'Free Trial',
-    hero_eyebrow:'v1.0.0 — Now available for Windows',
     hero_h1:'Find any file on LTO tape<br><b>in under 30 seconds.</b>',
     hero_sub:'TapeVault is the only LTO tape archive manager built for Windows. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.',
-    hero_p1:'Windows Only', hero_p2:'LTO-4 to LTO-9', hero_p3:'Broadcast · Medical · Defense · Education',
+    hero_p1:'Windows & macOS', hero_p2:'LTO-4 to LTO-9', hero_p3:'Broadcast · Medical · Defense · Education',
     hero_btn1:'⬇ Download Free Trial', hero_btn2:'▶ See how it works',
     stat1:'File search across all tapes', stat2:'Auto thumbnail generation', stat3:'Auto drive detection', stat4:'Offline after activation',
     pain_label:'The Problem', pain_title:'Sound familiar?', pain_sub:'Every LTO tape user faces the same frustrations. TapeVault solves all three.',
@@ -614,7 +779,7 @@ const T = {
     f7_t:'Air-Gapped Operation', f7_d:'Fully offline after activation. No cloud connection required. Built for secure broadcast and defense environments.',
     f8_t:'Checksum Verification', f8_d:'MD5/SHA256 checksum on every write. Automatically verify data integrity after each archive operation.',
     f9_t:'Multi-Language UI', f9_d:'Full English, Korean, and Japanese support. Built for global broadcast and media organizations.',
-    dl_label:'Download', dl_title:'Try TapeVault free for 30 days', dl_sub:'No credit card. No commitment. Full features from day one.',
+    dl_label:'Download', dl_title:'Try TapeVault free for 3 months in Beta', dl_sub:'No credit card. No commitment. Full features from day one — plus 50% off when you upgrade.',
     dl_btn:'⬇ Download TapeVault v1.0.0 for Windows', dl_s1:'Windows 10 / 11 (64-bit)', dl_s2:'LTO-4 through LTO-9', dl_s3:'~90 MB installer',
     dl_ver:'v1.0.0 · June 2026 · Requires Windows 10 64-bit or later',
     pr_label:'Pricing', pr_title:'Simple pricing. No surprises.', pr_sub:'Start free for 30 days. Upgrade when ready. Cancel anytime — no auto-renewal.',
@@ -638,15 +803,25 @@ const T = {
     cta_btn:'⬇ Download Free Trial — No Credit Card', cta_note:'Windows 10 / 11 · 30-day full-feature trial · LTO-4 to LTO-9',
     fc_product:'Product', fc_support:'Support', fc_legal:'Legal',
     fc_contact:'Contact support', fc_sales:'Contact sales', fc_privacy:'Privacy policy', fc_terms:'Terms of service', fc_license:'License',
-    foot_bottom:'TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle · No auto-renewal'
+    foot_bottom:'TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle · No auto-renewal',
+    beta_pill:'🧪 Try TapeVault Free for 3 Months in Beta + 50% Off →',
+    dlw_title:'🛡️ Beta Notice: You may see a security warning',
+    dlw_body:'TapeVault v1.0.0 is in open beta. Because the installer is new and not yet code-signed, Windows SmartScreen and some browsers may flag it during download or install. This is expected for new software and does not mean the file is unsafe.',
+    dlw_step1_t:'Browser download warning', dlw_step1_d:'If your browser flags the file, click the "···" next to the download and choose "Keep" (Chrome/Edge).',
+    dlw_step2_t:'"Windows protected your PC" screen', dlw_step2_d:'Click "More info", then click "Run anyway" to start the installer.',
+    dlw_continue:'⬇ Continue Download',
+    dlw_title_mac:'macOS Notice: First launch',
+    dlw_body_mac:'This beta build for Apple Silicon Macs is signed with an Apple Developer ID and notarized by Apple, so it opens normally. macOS only asks once to confirm opening an app downloaded from the internet.',
+    dlw_mac_step1_t:'Install', dlw_mac_step1_d:'Open the downloaded DMG and drag TapeVault into the Applications folder.',
+    dlw_mac_step2_t:'Open it', dlw_mac_step2_d:'Launch TapeVault from Applications and click Open when macOS asks to confirm. You only see this once.',
+    dl_or:'or', dl_mac_btn:'🍎 Download for macOS (Apple Silicon)', dl_mac_note:'v0.2.0 Beta · Apple Silicon (M1/M2/M3) only · ~158 MB'
   },
   ko: {
     nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
     nav_signin:'로그인', nav_trial:'무료 체험',
-    hero_eyebrow:'v1.0.0 — Windows용 출시',
     hero_h1:'LTO 테이프의 모든 파일을<br><b>30초 안에 찾아드립니다.</b>',
     hero_sub:'TapeVault는 Windows 전용 LTO 테이프 아카이브 관리 소프트웨어입니다. 테이프를 일일이 확인하지 않고도 썸네일 탐색, 메타데이터 검색, 파일 꺼내기를 바로 할 수 있습니다.',
-    hero_p1:'Windows 전용', hero_p2:'LTO-4 ~ LTO-9', hero_p3:'방송 · 의료 · 국방 · 교육',
+    hero_p1:'Windows & macOS', hero_p2:'LTO-4 ~ LTO-9', hero_p3:'방송 · 의료 · 국방 · 교육',
     hero_btn1:'⬇ 무료 체험 다운로드', hero_btn2:'▶ 작동 방식 보기',
     stat1:'전체 테이프 검색', stat2:'썸네일 자동 생성', stat3:'드라이브 자동 인식', stat4:'활성화 후 완전 오프라인',
     pain_label:'문제점', pain_title:'익숙한가요?', pain_sub:'LTO 테이프 사용자라면 누구나 겪는 불편함입니다. TapeVault가 세 가지를 모두 해결합니다.',
@@ -690,8 +865,8 @@ const T = {
     f7_t:'완전 오프라인 동작', f7_d:'활성화 후 완전 오프라인. 클라우드 연결 불필요. 방송·국방 환경에 최적화.',
     f8_t:'체크섬 검증', f8_d:'모든 기록에 MD5/SHA256 체크섬. 아카이브 작업 후 데이터 무결성 자동 검증.',
     f9_t:'다국어 UI', f9_d:'영어, 한국어, 일본어 완전 지원. 글로벌 방송·미디어 조직을 위해 설계.',
-    dl_label:'다운로드', dl_title:'TapeVault 30일 무료 체험', dl_sub:'신용카드 불필요. 약정 없음. 첫날부터 전체 기능 사용.',
-    dl_btn:'⬇ TapeVault v1.0.0 Windows용 다운로드', dl_s1:'Windows 10 / 11 (64비트)', dl_s2:'LTO-4 ~ LTO-9', dl_s3:'~180 MB 인스톨러',
+    dl_label:'다운로드', dl_title:'TapeVault 베타 3개월 무료 체험', dl_sub:'신용카드 불필요. 약정 없음. 첫날부터 전체 기능 사용 — 업그레이드 시 50% 할인까지.',
+    dl_btn:'⬇ TapeVault v1.0.0 Windows용 다운로드', dl_s1:'Windows 10 / 11 (64비트)', dl_s2:'LTO-4 ~ LTO-9', dl_s3:'~90 MB 인스톨러',
     dl_ver:'v1.0.0 · 2026년 6월 · Windows 10 64비트 이상 필요',
     pr_label:'요금제', pr_title:'심플한 요금제. 예상치 못한 청구 없음.', pr_sub:'30일 무료로 시작. 준비되면 업그레이드. 언제든 취소 — 자동 갱신 없음.',
     pc_mo:' / 월', pc_trial:'무료 체험 시작', pc_popular:'가장 인기',
@@ -714,15 +889,25 @@ const T = {
     cta_btn:'⬇ 무료 체험 다운로드 — 신용카드 불필요', cta_note:'Windows 10 / 11 · 30일 전체 기능 무료 체험 · LTO-4 ~ LTO-9',
     fc_product:'제품', fc_support:'지원', fc_legal:'법적 정보',
     fc_contact:'지원팀 문의', fc_sales:'영업팀 문의', fc_privacy:'개인정보 처리방침', fc_terms:'이용약관', fc_license:'라이선스',
-    foot_bottom:'TapeVault v1.0.0 · Veteran IT 개발 · Paddle 결제 · 자동 갱신 없음'
+    foot_bottom:'TapeVault v1.0.0 · Veteran IT 개발 · Paddle 결제 · 자동 갱신 없음',
+    beta_pill:'🧪 TapeVault 베타 3개월 무료 체험 + 50% 할인 →',
+    dlw_title:'🛡️ 베타 안내: 보안 경고가 나타날 수 있어요',
+    dlw_body:'TapeVault v1.0.0은 현재 오픈 베타 기간입니다. 설치 파일이 아직 코드 서명(디지털 인증)을 받지 않아 다운로드나 설치 중 Windows SmartScreen이나 일부 브라우저에서 경고가 뜰 수 있습니다. 신규 소프트웨어에서 흔히 발생하는 정상적인 현상이며, 파일이 위험하다는 뜻이 아닙니다.',
+    dlw_step1_t:'브라우저 다운로드 경고', dlw_step1_d:'브라우저가 파일을 경고하면, 다운로드 항목 옆의 "···"를 클릭하고 "유지"(Chrome/Edge)를 선택하세요.',
+    dlw_step2_t:'"Windows에서 PC를 보호했습니다" 화면', dlw_step2_d:'"추가 정보"를 클릭한 다음 "실행"을 눌러 설치를 계속하세요.',
+    dlw_continue:'⬇ 다운로드 계속하기',
+    dlw_title_mac:'🍎 macOS 안내: 처음 실행할 때',
+    dlw_body_mac:'Apple Silicon Mac용 베타 빌드로, Apple Developer ID로 서명되고 Apple 공증(notarization)을 받았습니다. 별도 조치 없이 실행되며, 인터넷에서 받은 앱이라는 확인 창만 처음 한 번 나옵니다.',
+    dlw_mac_step1_t:'설치', dlw_mac_step1_d:'받은 DMG를 열고 TapeVault를 응용 프로그램(Applications) 폴더로 끌어다 놓습니다.',
+    dlw_mac_step2_t:'실행', dlw_mac_step2_d:'응용 프로그램에서 TapeVault를 실행하고, 확인 창이 뜨면 열기를 누릅니다. 처음 한 번만 나옵니다.',
+    dl_or:'또는', dl_mac_btn:'🍎 macOS용 다운로드 (Apple Silicon)', dl_mac_note:'v0.2.0 베타 · Apple Silicon(M1/M2/M3) 전용 · ~158 MB'
   },
   ja: {
     nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール',
     nav_signin:'サインイン', nav_trial:'無料トライアル',
-    hero_eyebrow:'v1.0.0 — Windows版リリース',
     hero_h1:'LTOテープのすべてのファイルを<br><b>30秒以内に見つける。</b>',
     hero_sub:'TapeVaultはWindows向けの唯一のLTOテープアーカイブ管理ソフトです。テープを1本ずつ確認することなく、サムネイル閲覧・メタデータ検索・ファイル取り出しができます。',
-    hero_p1:'Windowsのみ', hero_p2:'LTO-4〜LTO-9', hero_p3:'放送・医療・防衛・教育',
+    hero_p1:'Windows & macOS', hero_p2:'LTO-4〜LTO-9', hero_p3:'放送・医療・防衛・教育',
     hero_btn1:'⬇ 無料トライアルをDL', hero_btn2:'▶ 使い方を見る',
     stat1:'全テープ横断検索', stat2:'サムネイル自動生成', stat3:'ドライブ自動認識', stat4:'アクティベーション後オフライン',
     pain_label:'課題', pain_title:'心当たりはありませんか？', pain_sub:'LTOテープを使う誰もが感じる悩みです。TapeVaultが3つすべてを解決します。',
@@ -766,8 +951,8 @@ const T = {
     f7_t:'エアギャップ運用', f7_d:'アクティベーション後は完全オフライン。クラウド接続不要。放送・防衛環境に最適。',
     f8_t:'チェックサム検証', f8_d:'全書込にMD5/SHA256チェックサム。アーカイブ後にデータ整合性を自動検証。',
     f9_t:'多言語UI', f9_d:'英語・韓国語・日本語に完全対応。グローバルな放送・メディア組織向けに設計。',
-    dl_label:'ダウンロード', dl_title:'TapeVaultを30日間無料でお試し', dl_sub:'クレジットカード不要。縛りなし。初日から全機能利用可。',
-    dl_btn:'⬇ TapeVault v1.0.0 Windows版をDL', dl_s1:'Windows 10 / 11 (64ビット)', dl_s2:'LTO-4〜LTO-9', dl_s3:'~180 MB インストーラー',
+    dl_label:'ダウンロード', dl_title:'TapeVaultベータ版を3ヶ月間無料でお試し', dl_sub:'クレジットカード不要。縛りなし。初日から全機能利用可 — アップグレード時50%オフ。',
+    dl_btn:'⬇ TapeVault v1.0.0 Windows版をDL', dl_s1:'Windows 10 / 11 (64ビット)', dl_s2:'LTO-4〜LTO-9', dl_s3:'~90 MB インストーラー',
     dl_ver:'v1.0.0 · 2026年6月 · Windows 10 64ビット以上が必要',
     pr_label:'料金', pr_title:'シンプルな料金。想定外の請求なし。', pr_sub:'30日間無料でスタート。準備ができたらアップグレード。いつでもキャンセル可。自動更新なし。',
     pc_mo:' / 月', pc_trial:'無料トライアル開始', pc_popular:'最も人気',
@@ -790,7 +975,18 @@ const T = {
     cta_btn:'⬇ 無料トライアルをDL — クレジットカード不要', cta_note:'Windows 10 / 11 · 30日間全機能トライアル · LTO-4〜LTO-9',
     fc_product:'製品', fc_support:'サポート', fc_legal:'法的情報',
     fc_contact:'サポートに連絡', fc_sales:'営業に連絡', fc_privacy:'プライバシーポリシー', fc_terms:'利用規約', fc_license:'ライセンス',
-    foot_bottom:'TapeVault v1.0.0 · Veteran IT製 · Paddle決済 · 自動更新なし'
+    foot_bottom:'TapeVault v1.0.0 · Veteran IT製 · Paddle決済 · 自動更新なし',
+    beta_pill:'🧪 TapeVaultベータ版を3ヶ月無料体験 + 50%割引 →',
+    dlw_title:'🛡️ ベータ版のお知らせ：セキュリティ警告が表示される場合があります',
+    dlw_body:'TapeVault v1.0.0はオープンベータ版です。インストーラーがまだコード署名されていないため、ダウンロードやインストール時にWindows SmartScreenや一部のブラウザで警告が表示されることがあります。これは新しいソフトウェアでよくある現象で、ファイルが危険という意味ではありません。',
+    dlw_step1_t:'ブラウザのダウンロード警告', dlw_step1_d:'ブラウザが警告を表示した場合、ダウンロード項目の「···」をクリックして「保持」(Chrome/Edge)を選択してください。',
+    dlw_step2_t:'「WindowsによってPCが保護されました」画面', dlw_step2_d:'「詳細情報」をクリックしてから「実行」をクリックしてインストールを続けてください。',
+    dlw_continue:'⬇ ダウンロードを続ける',
+    dlw_title_mac:'🍎 macOSのお知らせ：初回起動時',
+    dlw_body_mac:'Apple Silicon Mac向けのベータ版で、Apple Developer IDで署名され、Apple公証(notarization)済みです。特別な操作なしで起動でき、インターネットからダウンロードしたアプリかどうかの確認が初回に一度だけ表示されます。',
+    dlw_mac_step1_t:'インストール', dlw_mac_step1_d:'ダウンロードしたDMGを開き、TapeVaultを「アプリケーション」フォルダにドラッグします。',
+    dlw_mac_step2_t:'起動', dlw_mac_step2_d:'「アプリケーション」からTapeVaultを起動し、確認ダイアログで「開く」をクリックします。表示されるのは初回のみです。',
+    dl_or:'または', dl_mac_btn:'🍎 macOS版をダウンロード (Apple Silicon)', dl_mac_note:'v0.2.0 ベータ · Apple Silicon (M1/M2/M3) 専用 · 約158 MB'
   }
 };
 
@@ -801,11 +997,35 @@ function applyLang(lang) {
     if (v !== undefined) el.innerHTML = v;
   });
   document.documentElement.lang = lang === 'ko' ? 'ko' : lang === 'ja' ? 'ja' : 'en';
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('on', b.dataset.lang === lang));
+  document.getElementById('lang-current').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-menu-item').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   localStorage.setItem('tv-lang', lang);
 }
 
-document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+function toggleLangMenu(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('lang-menu').classList.toggle('open');
+  document.getElementById('lang-globe-btn').classList.toggle('open');
+}
+document.addEventListener('click', (e) => {
+  const wrap = document.getElementById('lang-select');
+  if (wrap && !wrap.contains(e.target)) {
+    document.getElementById('lang-menu').classList.remove('open');
+    document.getElementById('lang-globe-btn').classList.remove('open');
+  }
+});
+
+function toggleMobileNav() {
+  const links = document.getElementById('nav-links');
+  const burger = document.getElementById('nav-burger');
+  const open = links.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+document.querySelectorAll('#nav-links a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('nav-burger').setAttribute('aria-expanded', 'false');
+}));
+
 document.querySelectorAll('.faq-q').forEach(q => q.addEventListener('click', function() {
   this.classList.toggle('open');
   this.nextElementSibling.classList.toggle('open');
