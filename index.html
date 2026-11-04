@@ -553,7 +553,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
   <div class="price-grid">
     <div class="pc">
       <div class="pc-plan">STARTER</div>
-      <div><span class="pc-amount">$20</span><span class="pc-unit" data-i18n="pc_mo"> / month</span></div>
+      <div><span class="pc-amount" data-i18n="p1_amt">$20</span><span class="pc-unit" data-i18n="pc_mo"> / month</span></div>
       <div class="pc-desc" data-i18n="p1_desc">For single LTO drive setups — broadcast studios, small archives, individual operators.</div>
       <hr class="pc-hr">
       <div class="pc-feat" data-i18n="p1_f1">1 LTO drive (LTO-4 to LTO-9)</div>
@@ -567,7 +567,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <div class="pc hot">
       <div class="pc-badge" data-i18n="pc_popular">Most popular</div>
       <div class="pc-plan">AUTOLOADER</div>
-      <div><span class="pc-amount">$40</span><span class="pc-unit" data-i18n="pc_mo"> / month</span></div>
+      <div><span class="pc-amount" data-i18n="p2_amt">$40</span><span class="pc-unit" data-i18n="pc_mo"> / month</span></div>
       <div class="pc-desc" data-i18n="p2_desc">For tape autoloader / library setups — TV stations, hospitals, government archives.</div>
       <hr class="pc-hr">
       <div class="pc-feat" data-i18n="p2_f1">LTO Autoloader / Library support</div>
@@ -742,6 +742,7 @@ function proceedDownload() {
 
 const T = {
   en: {
+    p1_amt:'$20', p2_amt:'$40',
     biz_info:'Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
     fc_refund:'Refund policy',
     nav_how:'How it works', nav_features:'Features', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide',
@@ -830,6 +831,7 @@ const T = {
     dl_or:'or', dl_mac_btn:'🍎 Download for macOS (Apple Silicon)', dl_mac_note:'v0.2.0 Beta · Apple Silicon (M1/M2/M3) only · ~158 MB'
   },
   ko: {
+    p1_amt:'3만원', p2_amt:'6만원',
     biz_info:'상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>전화: 070-8080-4664 · 이메일: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
     fc_refund:'환불 정책',
     nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
@@ -918,6 +920,7 @@ const T = {
     dl_or:'또는', dl_mac_btn:'🍎 macOS용 다운로드 (Apple Silicon)', dl_mac_note:'v0.2.0 베타 · Apple Silicon(M1/M2/M3) 전용 · ~158 MB'
   },
   ja: {
+    p1_amt:'$20', p2_amt:'$40',
     biz_info:'会社名：株式会社ベテランIT（Veteran IT Co., Ltd.） · 代表者：오재화 · 事業者登録番号：326-86-02786<br>通信販売業申告番号：2025-서울서초-3564 · 所在地：大韓民国ソウル特別市瑞草区瑞草大路275、中央ビル202号25A<br>電話：070-8080-4664 · メール：<a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
     fc_refund:'返金ポリシー',
     nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール',
