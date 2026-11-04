@@ -163,6 +163,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 .footer-bottom-left{font-size:11px;color:#7c88a4}
 .footer-bottom-right{display:flex;gap:16px}
 .footer-bottom-right a{font-size:11px;color:#7c88a4;text-decoration:none;cursor:pointer}
+.biz-info{font-size:11px;color:#7c88a4;line-height:1.9;margin-bottom:24px}
 .dl-more{font-size:12px;color:#99a3c4;max-width:640px;text-align:left}
 .dl-more .dl-row{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;padding:4px 0;border-top:1px solid rgba(120,130,160,.18)}
 .dl-more a{color:#5b9cf6;text-decoration:none}.dl-more a:hover{text-decoration:underline}
@@ -597,7 +598,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       <span class="price-trust-item" data-i18n="tr2">Cancel anytime</span>
       <span class="price-trust-item" data-i18n="tr3">Your data always yours</span>
       <span class="price-trust-item" data-i18n="tr4">Offline after activation</span>
-      <span class="price-trust-item" data-i18n="tr5">Billing via Paddle · VAT included</span>
+      <span class="price-trust-item" data-i18n="tr5">Payments via Toss Payments</span>
     </div>
   </div>
 </section>
@@ -663,11 +664,13 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
         <a href="privacy-policy.html" data-i18n="fc_privacy">Privacy policy</a>
         <a href="terms-of-service.html" data-i18n="fc_terms">Terms of service</a>
         <a href="license.html" data-i18n="fc_license">License</a>
+        <a href="refund-policy.html" data-i18n="fc_refund">Refund policy</a>
       </div>
     </div>
   </div>
+  <div class="biz-info" data-i18n="biz_info">Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a></div>
   <div class="footer-bottom">
-    <div class="footer-bottom-left" data-i18n="foot_bottom">TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle · No auto-renewal</div>
+    <div class="footer-bottom-left" data-i18n="foot_bottom">TapeVault v1.0.0 · Built by Veteran IT · Payments by Toss Payments · No auto-renewal</div>
     <div class="footer-bottom-right"><a>EN</a><a>한국어</a><a>日本語</a></div>
   </div>
 </footer>
@@ -739,6 +742,8 @@ function proceedDownload() {
 
 const T = {
   en: {
+    biz_info:'Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
+    fc_refund:'Refund policy',
     nav_how:'How it works', nav_features:'Features', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide',
     nav_signin:'Sign in', nav_trial:'Free Trial',
     hero_h1:'Find any file on LTO tape<br><b>in under 30 seconds.</b>',
@@ -799,7 +804,7 @@ const T = {
     p3_amt:'Custom', p3_desc:'For large institutions with multi-library setups, custom deployment, and SLA requirements.',
     p3_f1:'Multiple tape libraries', p3_f2:'On-site deployment &amp; setup', p3_f3:'Custom integration support', p3_f4:'Dedicated SLA', p3_f5:'Staff training included', p3_btn:'Contact sales',
     trust_txt:'Every plan includes a <strong style="color:#c8cfe0">1-month free trial</strong> with full features — just register. No credit card required.',
-    tr1:'No automatic renewal', tr2:'Cancel anytime', tr3:'Your data always yours', tr4:'Offline after activation', tr5:'Billing via Paddle · VAT included',
+    tr1:'No automatic renewal', tr2:'Cancel anytime', tr3:'Your data always yours', tr4:'Offline after activation', tr5:'Payments via Toss Payments',
     faq_label:'FAQ', faq_title:'Questions before buying?',
     faq1_q:'Does TapeVault work without an internet connection?', faq1_a:'Yes. TapeVault is fully offline after the initial license activation. No ongoing internet connection is required. This makes it ideal for air-gapped environments in broadcast, defense, and medical sectors.',
     faq2_q:'What happens to my data when my subscription expires?', faq2_a:"Your archived data on tape is always yours — it's stored in standard LTFS format, which is readable by any LTFS-compatible software. TapeVault's database and project index remain accessible in read-only mode after expiry.",
@@ -811,7 +816,7 @@ const T = {
     cta_btn:'⬇ Download Free Trial — No Credit Card', cta_note:'Windows 10 / 11 · 1-month full-feature trial · LTO-4 to LTO-9',
     fc_product:'Product', fc_support:'Support', fc_legal:'Legal',
     fc_contact:'Contact support', fc_sales:'Contact sales', fc_privacy:'Privacy policy', fc_terms:'Terms of service', fc_license:'License',
-    foot_bottom:'TapeVault v1.0.0 · Built by Veteran IT · Billing by Paddle · No auto-renewal',
+    foot_bottom:'TapeVault v1.0.0 · Built by Veteran IT · Payments by Toss Payments · No auto-renewal',
     beta_pill:'🧪 Try TapeVault Free for 1 Month — Just Register →',
     dlw_title:'🛡️ Notice: You may see a security warning',
     dlw_body:'Because the TapeVault installer is new and not yet code-signed, Windows SmartScreen and some browsers may flag it during download or install. This is expected for new software and does not mean the file is unsafe.',
@@ -825,6 +830,8 @@ const T = {
     dl_or:'or', dl_mac_btn:'🍎 Download for macOS (Apple Silicon)', dl_mac_note:'v0.2.0 Beta · Apple Silicon (M1/M2/M3) only · ~158 MB'
   },
   ko: {
+    biz_info:'상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>전화: 070-8080-4664 · 이메일: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
+    fc_refund:'환불 정책',
     nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
     nav_signin:'로그인', nav_trial:'무료 체험',
     hero_h1:'LTO 테이프의 모든 파일을<br><b>30초 안에 찾아드립니다.</b>',
@@ -885,7 +892,7 @@ const T = {
     p3_amt:'맞춤 견적', p3_desc:'대규모 기관 — 멀티 라이브러리, 커스텀 배포, SLA 요건이 있는 환경.',
     p3_f1:'복수 테이프 라이브러리', p3_f2:'현장 배포 및 설치', p3_f3:'커스텀 통합 지원', p3_f4:'전용 SLA', p3_f5:'직원 교육 포함', p3_btn:'영업팀 문의',
     trust_txt:'모든 요금제에 <strong style="color:#c8cfe0">1개월 무료 체험</strong>이 포함됩니다. 등록만 하면 됩니다. 신용카드 불필요.',
-    tr1:'자동 갱신 없음', tr2:'언제든 취소', tr3:'데이터는 항상 귀하의 것', tr4:'활성화 후 오프라인', tr5:'Paddle 결제 · VAT 포함',
+    tr1:'자동 갱신 없음', tr2:'언제든 취소', tr3:'데이터는 항상 귀하의 것', tr4:'활성화 후 오프라인', tr5:'토스페이먼츠 결제',
     faq_label:'FAQ', faq_title:'구매 전 궁금한 점이 있으신가요?',
     faq1_q:'TapeVault는 인터넷 없이 사용할 수 있나요?', faq1_a:'네. TapeVault는 최초 라이선스 활성화 이후 완전히 오프라인으로 동작합니다. 지속적인 인터넷 연결이 필요하지 않습니다. 방송, 국방, 의료 등 에어갭 환경에 적합합니다.',
     faq2_q:'구독 만료 시 데이터는 어떻게 되나요?', faq2_a:'테이프에 보관된 데이터는 항상 귀하의 것입니다 — 표준 LTFS 형식으로 저장되어 LTFS 호환 소프트웨어라면 모두 읽을 수 있습니다. TapeVault의 DB와 프로젝트 인덱스는 만료 후 읽기 전용으로 유지됩니다.',
@@ -897,7 +904,7 @@ const T = {
     cta_btn:'⬇ 무료 체험 다운로드 — 신용카드 불필요', cta_note:'Windows 10 / 11 · 1개월 전체 기능 무료 체험 · LTO-4 ~ LTO-9',
     fc_product:'제품', fc_support:'지원', fc_legal:'법적 정보',
     fc_contact:'지원팀 문의', fc_sales:'영업팀 문의', fc_privacy:'개인정보 처리방침', fc_terms:'이용약관', fc_license:'라이선스',
-    foot_bottom:'TapeVault v1.0.0 · Veteran IT 개발 · Paddle 결제 · 자동 갱신 없음',
+    foot_bottom:'TapeVault v1.0.0 · Veteran IT 개발 · 토스페이먼츠 결제 · 자동 갱신 없음',
     beta_pill:'🧪 TapeVault 등록만 하면 1개월 무료 체험 →',
     dlw_title:'🛡️ 안내: 보안 경고가 나타날 수 있어요',
     dlw_body:'설치 파일이 아직 코드 서명(디지털 인증)을 받지 않아 다운로드나 설치 중 Windows SmartScreen이나 일부 브라우저에서 경고가 뜰 수 있습니다. 신규 소프트웨어에서 흔히 발생하는 정상적인 현상이며, 파일이 위험하다는 뜻이 아닙니다.',
@@ -911,6 +918,8 @@ const T = {
     dl_or:'또는', dl_mac_btn:'🍎 macOS용 다운로드 (Apple Silicon)', dl_mac_note:'v0.2.0 베타 · Apple Silicon(M1/M2/M3) 전용 · ~158 MB'
   },
   ja: {
+    biz_info:'会社名：株式会社ベテランIT（Veteran IT Co., Ltd.） · 代表者：오재화 · 事業者登録番号：326-86-02786<br>通信販売業申告番号：2025-서울서초-3564 · 所在地：大韓民国ソウル特別市瑞草区瑞草大路275、中央ビル202号25A<br>電話：070-8080-4664 · メール：<a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
+    fc_refund:'返金ポリシー',
     nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール',
     nav_signin:'サインイン', nav_trial:'無料トライアル',
     hero_h1:'LTOテープのすべてのファイルを<br><b>30秒以内に見つける。</b>',
@@ -971,7 +980,7 @@ const T = {
     p3_amt:'カスタム', p3_desc:'大規模機関 — マルチライブラリ・カスタム展開・SLA要件がある環境向け。',
     p3_f1:'複数テープライブラリ', p3_f2:'オンサイト展開＆セットアップ', p3_f3:'カスタム統合サポート', p3_f4:'専用SLA', p3_f5:'社員トレーニング込み', p3_btn:'営業に問い合わせ',
     trust_txt:'すべてのプランに<strong style="color:#c8cfe0">1ヶ月間の無料トライアル</strong>が含まれます。登録するだけ。クレジットカード不要。',
-    tr1:'自動更新なし', tr2:'いつでもキャンセル', tr3:'データは常にあなたのもの', tr4:'アクティベーション後オフライン', tr5:'Paddle決済 · VAT込み',
+    tr1:'自動更新なし', tr2:'いつでもキャンセル', tr3:'データは常にあなたのもの', tr4:'アクティベーション後オフライン', tr5:'Toss Payments決済',
     faq_label:'よくある質問', faq_title:'購入前のよくある質問',
     faq1_q:'TapeVaultはインターネットなしで使えますか？', faq1_a:'はい。TapeVaultは初回ライセンスアクティベーション後は完全オフラインで動作します。継続的なインターネット接続は不要です。放送・防衛・医療のエアギャップ環境に最適です。',
     faq2_q:'サブスクリプション期限切れ後、データはどうなりますか？', faq2_a:'テープ上のアーカイブデータは常にあなたのものです。標準LTFSフォーマットで保存されており、LTFS対応ソフトなら読み取り可能です。TapeVaultのDBとプロジェクトインデックスは期限切れ後も読取専用で残ります。',
@@ -983,7 +992,7 @@ const T = {
     cta_btn:'⬇ 無料トライアルをDL — クレジットカード不要', cta_note:'Windows 10 / 11 · 1ヶ月間全機能トライアル · LTO-4〜LTO-9',
     fc_product:'製品', fc_support:'サポート', fc_legal:'法的情報',
     fc_contact:'サポートに連絡', fc_sales:'営業に連絡', fc_privacy:'プライバシーポリシー', fc_terms:'利用規約', fc_license:'ライセンス',
-    foot_bottom:'TapeVault v1.0.0 · Veteran IT製 · Paddle決済 · 自動更新なし',
+    foot_bottom:'TapeVault v1.0.0 · Veteran IT製 · Toss Payments決済 · 自動更新なし',
     beta_pill:'🧪 登録するだけで1ヶ月無料体験 →',
     dlw_title:'🛡️ お知らせ：セキュリティ警告が表示される場合があります',
     dlw_body:'インストーラーがまだコード署名されていないため、ダウンロードやインストール時にWindows SmartScreenや一部のブラウザで警告が表示されることがあります。これは新しいソフトウェアでよくある現象で、ファイルが危険という意味ではありません。',

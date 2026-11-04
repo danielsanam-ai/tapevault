@@ -12,13 +12,13 @@
   var L = {
     en: { win: 'Windows', mac: 'macOS', mac_intel: 'macOS (Intel)', intelbtn: '💻 Download for Intel Mac', intelnote: 'v{v} · Intel Mac · ~{n} MB', dl: '⬇ Download TapeVault v{v} for Windows', macnote: 'v{v} · Apple Silicon (M1/M2/M3) only · ~{n} MB',
           sha: 'SHA-256', mb: 'MB', notes: 'Release notes', feat: 'Platform support', yes: '✓', no: '—',
-          ver: 'v{v} · {d} · Requires {os}', foot: 'TapeVault v{v} · Built by Veteran IT · Billing by Paddle · No auto-renewal' },
+          ver: 'v{v} · {d} · Requires {os}', foot: 'TapeVault v{v} · Built by Veteran IT · Payments by Toss Payments · No auto-renewal' },
     ko: { win: 'Windows', mac: 'macOS', mac_intel: 'macOS (Intel)', intelbtn: '💻 Intel Mac용 다운로드', intelnote: 'v{v} · Intel Mac · ~{n} MB', dl: '⬇ TapeVault v{v} Windows용 다운로드', macnote: 'v{v} · Apple Silicon(M1/M2/M3) 전용 · ~{n} MB',
           sha: 'SHA-256', mb: 'MB', notes: '릴리스 노트', feat: '플랫폼별 지원 기능', yes: '✓', no: '—',
-          ver: 'v{v} · {d} · {os} 필요', foot: 'TapeVault v{v} · Veteran IT 개발 · Paddle 결제 · 자동 갱신 없음' },
+          ver: 'v{v} · {d} · {os} 필요', foot: 'TapeVault v{v} · Veteran IT 개발 · 토스페이먼츠 결제 · 자동 갱신 없음' },
     ja: { win: 'Windows', mac: 'macOS', mac_intel: 'macOS (Intel)', intelbtn: '💻 Intel Mac版をダウンロード', intelnote: 'v{v} · Intel Mac · 約{n} MB', dl: '⬇ TapeVault v{v} Windows版をDL', macnote: 'v{v} · Apple Silicon (M1/M2/M3) 専用 · 約{n} MB',
           sha: 'SHA-256', mb: 'MB', notes: 'リリースノート', feat: 'プラットフォーム別の対応機能', yes: '✓', no: '—',
-          ver: 'v{v} · {d} · {os}が必要', foot: 'TapeVault v{v} · Veteran IT製 · Paddle決済 · 自動更新なし' }
+          ver: 'v{v} · {d} · {os}が必要', foot: 'TapeVault v{v} · Veteran IT製 · Toss Payments決済 · 自動更新なし' }
   };
   var LOCALE = { en: 'en-US', ko: 'ko-KR', ja: 'ja-JP' };
   var NAME = { windows: 'win', mac: 'mac', mac_intel: 'mac_intel' };

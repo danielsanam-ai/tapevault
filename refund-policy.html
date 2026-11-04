@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refund Policy — TapeVault</title>
+<meta name="description" content="TapeVault Refund Policy — 7-day full refund for unactivated licenses, no automatic renewal, payments via Toss Payments.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 48px;border-bottom:0.5px solid #1e2230;position:sticky;top:0;background:#0b0b0dee;backdrop-filter:blur(14px);z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
+.nav-logo-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.nav-logo-text{font-size:17px;letter-spacing:-0.02em;color:#f0f2f8;font-weight:400}
+.nav-logo-text b{font-weight:700}
+.nav-ver{font-size:10px;background:#1a2340;color:#5b9cf6;padding:2px 7px;border-radius:4px;font-family:monospace}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:13px;color:#a8b2d0;text-decoration:none;cursor:pointer;transition:color .2s}
+.nav-links a:hover{color:#c8cfe0}
+.nav-links a.active{color:#f5a623}
+.nav-right{display:flex;gap:7px;align-items:center}
+.btn-ghost{font-size:13px;color:#a8b2d0;background:#111827;border:0.5px solid #2a3349;padding:6px 16px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-orange{font-size:13px;color:#0b0b0d;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
+
+.lang-select{position:relative;margin-right:6px}
+.lang-globe-btn{display:flex;align-items:center;gap:6px;background:#111520;border:0.5px solid #1e2330;color:#99a3c4;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-family:monospace;transition:all .15s}
+.lang-globe-btn:hover{border-color:#3a4a6a;color:#c8cfe0}
+.lang-globe-btn svg{width:15px;height:15px;flex-shrink:0;stroke:currentColor}
+.lang-globe-btn .lang-chevron{width:8px;height:8px;flex-shrink:0;stroke:currentColor;transition:transform .15s}
+.lang-globe-btn.open .lang-chevron{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:#0d1117;border:0.5px solid #2a2a35;border-radius:10px;padding:6px;min-width:150px;box-shadow:0 16px 40px rgba(0,0,0,.55);display:none;flex-direction:column;gap:2px;z-index:200}
+.lang-menu.open{display:flex}
+.lang-menu-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:none;border:none;color:#99a3c4;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:12px;text-align:left;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.lang-menu-item:hover{background:#1a1f2e;color:#c8cfe0}
+.lang-menu-item.active{color:#5b9cf6}
+.lang-menu-item .lang-check{color:#5b9cf6;font-size:12px;opacity:0}
+.lang-menu-item.active .lang-check{opacity:1}
+
+.page-header{padding:64px 48px 48px;border-bottom:0.5px solid #1e2230;background:linear-gradient(180deg,#0d1117 0%,#0b0b0d 100%)}
+.page-header-inner{max-width:780px;margin:0 auto}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:#8b96b8;margin-bottom:20px;font-family:monospace}
+.breadcrumb a{color:#8b96b8;text-decoration:none}
+.breadcrumb a:hover{color:#a8b2d0}
+.breadcrumb-sep{color:#7c88a4}
+.page-label{font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:monospace}
+.page-title{font-size:36px;font-weight:500;color:#f0f2f8;margin-bottom:14px;letter-spacing:-.6px}
+.page-sub{font-size:15px;color:#99a3c4;max-width:600px;line-height:1.75}
+
+.doc-content{max-width:780px;margin:0 auto;padding:48px 48px 64px}
+.legal-updated{font-size:12px;color:#7c88a4;font-family:monospace;margin-bottom:28px}
+.legal-toc{background:#0d1117;border:0.5px solid #1e2330;border-radius:8px;padding:20px 24px;margin-bottom:40px}
+.legal-toc-title{font-size:10px;color:#8b96b8;text-transform:uppercase;letter-spacing:.1em;font-family:monospace;margin-bottom:12px}
+.legal-toc ol{padding-left:18px;display:grid;grid-template-columns:1fr 1fr;gap:4px 20px}
+.legal-toc li{font-size:13px;margin-bottom:2px}
+.legal-toc a{color:#99a3c4;text-decoration:none}
+.legal-toc a:hover{color:#f5a623}
+.legal h2{font-size:19px;font-weight:700;color:#e8eaf0;margin:38px 0 14px;letter-spacing:-.3px;scroll-margin-top:80px}
+.legal h2:first-of-type{margin-top:0}
+.legal h3{font-size:14px;font-weight:700;color:#c8cfe0;margin:20px 0 8px}
+.legal p{font-size:14px;color:#99a3c4;line-height:1.85;margin-bottom:14px}
+.legal ul{margin:0 0 14px 0;padding-left:20px}
+.legal li{font-size:14px;color:#99a3c4;line-height:1.85;margin-bottom:6px}
+.legal strong{color:#c8cfe0}
+.legal a{color:#5b9cf6;text-decoration:none}
+.legal a:hover{text-decoration:underline}
+.legal-table{width:100%;border-collapse:collapse;margin:16px 0 20px;font-size:13px}
+.legal-table th,.legal-table td{border:0.5px solid #1e2330;padding:10px 14px;text-align:left;color:#99a3c4;vertical-align:top}
+.legal-table th{background:#0d1117;color:#c8cfe0;font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-family:monospace}
+.alert{border-radius:8px;padding:14px 18px;margin:16px 0 24px;font-size:13px;line-height:1.7;display:flex;align-items:flex-start;gap:10px}
+.alert-info{background:#0d1829;border:0.5px solid #1e3a5f;color:#7ab4f0}
+.alert-ico{flex-shrink:0;font-size:16px}
+
+footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;max-width:1100px;margin:0 auto}
+.footer-left{font-size:11px;color:#7c88a4}
+.biz-info{font-size:11px;color:#7c88a4;line-height:1.9;max-width:1100px;margin:0 auto 20px}
+.footer-right{display:flex;gap:16px}
+.footer-right a{font-size:11px;color:#7c88a4;text-decoration:none;cursor:pointer}
+.nav-burger{display:none;background:none;border:0.5px solid #2a3349;color:#c8cfe0;padding:7px;border-radius:6px;cursor:pointer;align-items:center;justify-content:center}
+.nav-burger svg{width:18px;height:18px}
+.legal-table{display:block;overflow-x:auto}
+
+@media (max-width:860px){
+  .nav{padding:12px 20px;flex-wrap:wrap}
+  .nav-links{display:none;order:3;width:100%;flex-direction:column;gap:0;background:#0b0b0d;border-top:0.5px solid #1e2230;margin-top:12px;padding-top:8px}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 4px;border-bottom:0.5px solid #16192480}
+  .nav-burger{display:flex}
+  .nav-ver{display:none}
+
+  .page-header{padding:40px 20px 32px}
+  .page-title{font-size:26px}
+  .page-sub{font-size:14px}
+
+  .doc-content{padding:32px 20px 48px}
+  .legal-toc ol{grid-template-columns:1fr}
+
+  footer{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-icon">
+      <svg width="40" height="40" viewBox="0 0 120 120" fill="none" stroke="#f5a623" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="16" y="32" width="88" height="56" rx="14"/>
+        <circle cx="43" cy="58" r="13"/><circle cx="77" cy="58" r="13"/>
+        <circle cx="43" cy="58" r="4.5" fill="#f5a623" stroke="none"/><circle cx="77" cy="58" r="4.5" fill="#f5a623" stroke="none"/>
+        <path d="M56 58 H64"/><rect x="48" y="78" width="24" height="9" rx="3"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text">Tape<b>Vault</b></span>
+    <span class="nav-ver">v1.0.0</span>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html#gui" data-i18n="nav_how">How it works</a>
+    <a href="index.html#features" data-i18n="nav_features">Features</a>
+    <a href="index.html#download" data-i18n="nav_download">Download</a>
+    <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
+    <a href="how-to-install.html" data-i18n="nav_install">Install Guide</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-select" id="lang-select">
+      <button class="lang-globe-btn" id="lang-globe-btn" onclick="toggleLangMenu(event)" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9Z"/></svg>
+        <span id="lang-current">EN</span>
+        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="lang-menu" id="lang-menu">
+        <button class="lang-menu-item" data-lang="en" onclick="applyLang('en');toggleLangMenu()">English<span class="lang-check">✓</span></button>
+        <button class="lang-menu-item" data-lang="ko" onclick="applyLang('ko');toggleLangMenu()">한국어<span class="lang-check">✓</span></button>
+        <button class="lang-menu-item" data-lang="ja" onclick="applyLang('ja');toggleLangMenu()">日本語<span class="lang-check">✓</span></button>
+      </div>
+    </div>
+    <a class="btn-ghost" href="mailto:support@tapevault.net" data-i18n="nav_contact">Contact</a>
+    <a class="btn-orange" href="index.html#download" data-i18n="nav_trial">Free Trial</a>
+    <button class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="bc_home">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <span data-i18n="bc_current">Refund Policy</span>
+    </div>
+    <div class="page-label" data-i18n="page_label">Legal</div>
+    <div class="page-title" data-i18n="page_title">Refund Policy</div>
+    <p class="page-sub" data-i18n="page_sub">How refunds and cancellations work for TapeVault subscriptions purchased through tapevault.net.</p>
+  </div>
+</div>
+
+<div class="doc-content legal">
+  <div class="legal-updated" data-i18n="legal_updated">Effective date: November 4, 2026 · Last updated: November 4, 2026</div>
+
+  <div class="legal-toc">
+    <div class="legal-toc-title" data-i18n="toc_title">Contents</div>
+    <ol>
+      <li><a href="#s1" data-i18n="toc1">1. Scope</a></li>
+      <li><a href="#s2" data-i18n="toc2">2. Free trial and beta access</a></li>
+      <li><a href="#s3" data-i18n="toc3">3. Full refund within 7 days</a></li>
+      <li><a href="#s4" data-i18n="toc4">4. After activation</a></li>
+      <li><a href="#s5" data-i18n="toc5">5. Defective or misdescribed software</a></li>
+      <li><a href="#s6" data-i18n="toc6">6. Duplicate or erroneous charges</a></li>
+      <li><a href="#s7" data-i18n="toc7">7. How to request a refund</a></li>
+      <li><a href="#s8" data-i18n="toc8">8. Refund method and timing</a></li>
+      <li><a href="#s9" data-i18n="toc9">9. Statutory rights and Enterprise plans</a></li>
+      <li><a href="#s10" data-i18n="toc10">10. Contact us</a></li>
+    </ol>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="alert-ico">ℹ️</div>
+    <div data-i18n="intro_alert"><strong>In short:</strong> if you request a refund within 7 days of payment and have not activated your license, we refund the full amount. TapeVault has no automatic renewal, so you are never charged again unless you complete a new checkout.</div>
+  </div>
+
+  <h2 id="s1" data-i18n="toc1">1. Scope</h2>
+  <p data-i18n="p1">This Refund Policy applies to paid TapeVault subscriptions purchased through tapevault.net. Payments are processed by <strong>Toss Payments Co., Ltd.</strong> ("Toss Payments"), our payment service provider. This policy supplements our <a href="terms-of-service.html">Terms of Service</a>.</p>
+
+  <h2 id="s2" data-i18n="toc2">2. Free trial and beta access</h2>
+  <p data-i18n="p2a">Free trial and beta access are provided at no charge, so there is nothing to refund. We never charge your card at the end of a trial or beta period.</p>
+  <p data-i18n="p2b">TapeVault has no automatic renewal. A payment is made only when you complete a new, explicit checkout.</p>
+
+  <h2 id="s3" data-i18n="toc3">3. Full refund within 7 days</h2>
+  <p data-i18n="p3a">You may request a refund within <strong>7 days of the payment date</strong>. If your license has <strong>not been activated</strong>, we will refund the full amount you paid.</p>
+  <p data-i18n="p3b">The 7 days are counted from the day the payment was completed.</p>
+
+  <h2 id="s4" data-i18n="toc4">4. After activation</h2>
+  <p data-i18n="p4">Once a license has been activated, the paid subscription is treated as used and we do not refund the used subscription period, except as described in Sections 5 and 6 or where mandatory law requires otherwise. You can stop using TapeVault at any time, and because there is no automatic renewal, no further charges will occur.</p>
+
+  <h2 id="s5" data-i18n="toc5">5. Defective or misdescribed software</h2>
+  <p data-i18n="p5">If the Software materially differs from what was described on our website, or does not work as described and we are unable to fix the problem, you may request cancellation and a full refund within 3 months of receiving the Software and within 30 days of becoming aware of the problem.</p>
+
+  <h2 id="s6" data-i18n="toc6">6. Duplicate or erroneous charges</h2>
+  <p data-i18n="p6">If you were charged twice for the same purchase, or charged an incorrect amount, we will refund the duplicate payment or the difference in full, regardless of license activation.</p>
+
+  <h2 id="s7" data-i18n="toc7">7. How to request a refund</h2>
+  <p data-i18n="p7a">Email <a href="mailto:support@tapevault.net">support@tapevault.net</a> and include:</p>
+  <ul>
+    <li data-i18n="p7b">The email address used for the purchase</li>
+    <li data-i18n="p7c">The payment date and amount</li>
+    <li data-i18n="p7d">The reason for your request (optional, but it helps us improve)</li>
+  </ul>
+  <p data-i18n="p7e">We aim to reply within 3 business days.</p>
+
+  <h2 id="s8" data-i18n="toc8">8. Refund method and timing</h2>
+  <p data-i18n="p8a">Approved refunds are returned to the original payment method by cancelling the payment through Toss Payments. We submit the cancellation within 3 business days of approval.</p>
+  <p data-i18n="p8b">How long it takes for the refund to appear on your card statement depends on your card issuer and is outside our control; it often takes several business days.</p>
+
+  <h2 id="s9" data-i18n="toc9">9. Statutory rights and Enterprise plans</h2>
+  <p data-i18n="p9a">Nothing in this policy limits any rights you have under applicable consumer protection law, including Korea's Act on the Consumer Protection in Electronic Commerce and any mandatory rights in your country of residence.</p>
+  <p data-i18n="p9b">Enterprise plans are governed by the terms of your signed agreement, which prevail over this policy where they differ.</p>
+
+  <h2 id="s10" data-i18n="toc10">10. Contact us</h2>
+  <p data-i18n="p10"><strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>Seocho-gu, Seoul, Republic of Korea<br>Email: <a href="mailto:support@tapevault.net">support@tapevault.net</a> · Tel: 070-8080-4664</p>
+</div>
+
+<footer>
+  <div class="biz-info" data-i18n="biz_info">Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a></div>
+  <div class="footer-bottom">
+    <div class="footer-left" data-i18n="foot_left">TapeVault v1.0.0 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
+    <div class="footer-right">
+      <a href="index.html" data-i18n="foot_home">Home</a>
+      <a href="privacy-policy.html" data-i18n="foot_privacy">Privacy Policy</a>
+      <a href="terms-of-service.html" data-i18n="foot_terms">Terms of Service</a>
+      <a href="license.html" data-i18n="foot_license">License</a>
+      <a href="refund-policy.html" data-i18n="foot_refund">Refund Policy</a>
+      <a href="mailto:support@tapevault.net" data-i18n="foot_support">Support</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const T = {
+  en: {
+    nav_how:'How it works',
+    nav_features:'Features',
+    nav_download:'Download',
+    nav_pricing:'Pricing',
+    nav_install:'Install Guide',
+    nav_contact:'Contact',
+    nav_trial:'Free Trial',
+    bc_home:'Home',
+    page_label:'Legal',
+    toc_title:'Contents',
+    foot_left:'TapeVault v1.0.0 · Built by Veteran IT · © 2026 Veteran IT Co., Ltd.',
+    foot_home:'Home',
+    foot_privacy:'Privacy Policy',
+    foot_terms:'Terms of Service',
+    foot_license:'License',
+    foot_support:'Support',
+    foot_refund:'Refund Policy',
+    biz_info:'Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
+    bc_current:'Refund Policy', page_title:'Refund Policy',
+    page_sub:'How refunds and cancellations work for TapeVault subscriptions purchased through tapevault.net.',
+    legal_updated:'Effective date: November 4, 2026 · Last updated: November 4, 2026',
+    intro_alert:'<strong>In short:</strong> if you request a refund within 7 days of payment and have not activated your license, we refund the full amount. TapeVault has no automatic renewal, so you are never charged again unless you complete a new checkout.',
+    toc1:'1. Scope',
+    toc2:'2. Free trial and beta access',
+    toc3:'3. Full refund within 7 days',
+    toc4:'4. After activation',
+    toc5:'5. Defective or misdescribed software',
+    toc6:'6. Duplicate or erroneous charges',
+    toc7:'7. How to request a refund',
+    toc8:'8. Refund method and timing',
+    toc9:'9. Statutory rights and Enterprise plans',
+    toc10:'10. Contact us',
+    p1:'This Refund Policy applies to paid TapeVault subscriptions purchased through tapevault.net. Payments are processed by <strong>Toss Payments Co., Ltd.</strong> ("Toss Payments"), our payment service provider. This policy supplements our <a href="terms-of-service.html">Terms of Service</a>.',
+    p2a:'Free trial and beta access are provided at no charge, so there is nothing to refund. We never charge your card at the end of a trial or beta period.',
+    p2b:'TapeVault has no automatic renewal. A payment is made only when you complete a new, explicit checkout.',
+    p3a:'You may request a refund within <strong>7 days of the payment date</strong>. If your license has <strong>not been activated</strong>, we will refund the full amount you paid.',
+    p3b:'The 7 days are counted from the day the payment was completed.',
+    p4:'Once a license has been activated, the paid subscription is treated as used and we do not refund the used subscription period, except as described in Sections 5 and 6 or where mandatory law requires otherwise. You can stop using TapeVault at any time, and because there is no automatic renewal, no further charges will occur.',
+    p5:'If the Software materially differs from what was described on our website, or does not work as described and we are unable to fix the problem, you may request cancellation and a full refund within 3 months of receiving the Software and within 30 days of becoming aware of the problem.',
+    p6:'If you were charged twice for the same purchase, or charged an incorrect amount, we will refund the duplicate payment or the difference in full, regardless of license activation.',
+    p7a:'Email <a href="mailto:support@tapevault.net">support@tapevault.net</a> and include:',
+    p7b:'The email address used for the purchase',
+    p7c:'The payment date and amount',
+    p7d:'The reason for your request (optional, but it helps us improve)',
+    p7e:'We aim to reply within 3 business days.',
+    p8a:'Approved refunds are returned to the original payment method by cancelling the payment through Toss Payments. We submit the cancellation within 3 business days of approval.',
+    p8b:'How long it takes for the refund to appear on your card statement depends on your card issuer and is outside our control; it often takes several business days.',
+    p9a:'Nothing in this policy limits any rights you have under applicable consumer protection law, including Korea\'s Act on the Consumer Protection in Electronic Commerce and any mandatory rights in your country of residence.',
+    p9b:'Enterprise plans are governed by the terms of your signed agreement, which prevail over this policy where they differ.',
+    p10:'<strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>Seocho-gu, Seoul, Republic of Korea<br>Email: <a href="mailto:support@tapevault.net">support@tapevault.net</a> · Tel: 070-8080-4664'
+  },
+  ko: {
+    nav_how:'작동 방식',
+    nav_features:'기능',
+    nav_download:'다운로드',
+    nav_pricing:'요금제',
+    nav_install:'설치 가이드',
+    nav_contact:'문의하기',
+    nav_trial:'무료 체험',
+    bc_home:'홈',
+    page_label:'법적 정보',
+    toc_title:'목차',
+    foot_left:'TapeVault v1.0.0 · Veteran IT 개발 · © 2026 주식회사 베테랑아이티',
+    foot_home:'홈',
+    foot_privacy:'개인정보 처리방침',
+    foot_terms:'이용약관',
+    foot_license:'라이선스',
+    foot_support:'지원',
+    foot_refund:'환불 정책',
+    biz_info:'상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>전화: 070-8080-4664 · 이메일: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
+    bc_current:'환불 정책', page_title:'환불 정책',
+    page_sub:'tapevault.net에서 구매한 TapeVault 구독의 환불 및 취소 방법을 안내합니다.',
+    legal_updated:'시행일: 2026년 11월 4일 · 최종 수정일: 2026년 11월 4일',
+    intro_alert:'<strong>요약:</strong> 결제 후 7일 이내에 환불을 요청하고 라이선스를 활성화하지 않은 경우 전액 환불해 드립니다. TapeVault는 자동 갱신이 없으므로 새로 결제하지 않는 한 추가로 요금이 청구되지 않습니다.',
+    toc1:'1. 적용 범위',
+    toc2:'2. 무료 체험 및 베타',
+    toc3:'3. 7일 이내 전액 환불',
+    toc4:'4. 활성화 이후',
+    toc5:'5. 결함 또는 설명과 다른 소프트웨어',
+    toc6:'6. 중복·오류 결제',
+    toc7:'7. 환불 요청 방법',
+    toc8:'8. 환불 방식 및 시점',
+    toc9:'9. 법정 권리 및 엔터프라이즈',
+    toc10:'10. 문의처',
+    p1:'본 환불 정책은 tapevault.net에서 구매한 TapeVault 유료 구독에 적용됩니다. 결제는 당사의 결제대행사인 <strong>주식회사 토스페이먼츠</strong>("토스페이먼츠")가 처리합니다. 본 정책은 <a href="terms-of-service.html">이용약관</a>을 보완합니다.',
+    p2a:'무료 체험과 베타는 무료로 제공되므로 환불할 금액이 없습니다. 체험 또는 베타 기간이 끝났을 때 자동으로 카드에 요금이 청구되지 않습니다.',
+    p2b:'TapeVault에는 자동 갱신이 없습니다. 귀하가 새로 명시적으로 결제를 완료한 경우에만 결제가 이루어집니다.',
+    p3a:'<strong>결제일로부터 7일 이내</strong>에 환불을 요청할 수 있으며, 라이선스를 <strong>활성화하지 않은 경우</strong> 결제하신 금액을 전액 환불해 드립니다.',
+    p3b:'7일은 결제가 완료된 날을 기준으로 계산합니다.',
+    p4:'라이선스를 활성화하면 유료 구독을 사용한 것으로 보며, 5항과 6항에 해당하는 경우나 강행 법규가 달리 정한 경우를 제외하고 이미 사용한 구독 기간에 대해서는 환불하지 않습니다. 언제든지 TapeVault 사용을 중단할 수 있으며, 자동 갱신이 없으므로 추가 요금은 발생하지 않습니다.',
+    p5:'소프트웨어가 웹사이트에 설명된 내용과 현저히 다르거나 설명대로 작동하지 않고 당사가 문제를 해결하지 못하는 경우, 소프트웨어를 제공받은 날부터 3개월 이내이면서 그 사실을 안 날부터 30일 이내에 계약 취소와 전액 환불을 요청할 수 있습니다.',
+    p6:'같은 구매에 대해 두 번 결제되었거나 잘못된 금액이 청구된 경우, 라이선스 활성화 여부와 관계없이 중복 결제분 또는 차액을 전액 환불해 드립니다.',
+    p7a:'<a href="mailto:support@tapevault.net">support@tapevault.net</a>으로 이메일을 보내며 아래 내용을 포함해 주세요:',
+    p7b:'구매 시 사용한 이메일 주소',
+    p7c:'결제일과 결제 금액',
+    p7d:'환불 요청 사유(선택 사항이지만 서비스 개선에 도움이 됩니다)',
+    p7e:'영업일 기준 3일 이내에 답변드리는 것을 목표로 합니다.',
+    p8a:'승인된 환불은 토스페이먼츠를 통한 결제 취소 방식으로 원래의 결제 수단에 반환됩니다. 당사는 승인 후 영업일 기준 3일 이내에 취소를 요청합니다.',
+    p8b:'환불 금액이 카드 명세서에 반영되기까지의 기간은 카드사에 따라 다르며 당사가 통제할 수 없습니다. 보통 영업일 기준으로 며칠이 걸립니다.',
+    p9a:'본 정책의 어떠한 내용도 전자상거래 등에서의 소비자보호에 관한 법률을 비롯한 관련 소비자 보호 법령 및 귀하의 거주 국가에서 인정되는 강행 규정상의 권리를 제한하지 않습니다.',
+    p9b:'엔터프라이즈 요금제에는 체결된 계약의 조건이 적용되며, 본 정책과 다른 경우 계약이 우선합니다.',
+    p10:'<strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>대한민국 서울특별시 서초구<br>이메일: <a href="mailto:support@tapevault.net">support@tapevault.net</a> · 전화: 070-8080-4664'
+  },
+  ja: {
+    nav_how:'仕組み',
+    nav_features:'機能',
+    nav_download:'ダウンロード',
+    nav_pricing:'料金プラン',
+    nav_install:'インストールガイド',
+    nav_contact:'お問い合わせ',
+    nav_trial:'無料体験',
+    bc_home:'ホーム',
+    page_label:'法的情報',
+    toc_title:'目次',
+    foot_left:'TapeVault v1.0.0 · Veteran IT製 · © 2026 株式会社ベテランIT',
+    foot_home:'ホーム',
+    foot_privacy:'プライバシーポリシー',
+    foot_terms:'利用規約',
+    foot_license:'ライセンス',
+    foot_support:'サポート',
+    foot_refund:'返金ポリシー',
+    biz_info:'会社名：株式会社ベテランIT（Veteran IT Co., Ltd.） · 代表者：오재화 · 事業者登録番号：326-86-02786<br>通信販売業申告番号：2025-서울서초-3564 · 所在地：大韓民国ソウル特別市瑞草区瑞草大路275、中央ビル202号25A<br>電話：070-8080-4664 · メール：<a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
+    bc_current:'返金ポリシー', page_title:'返金ポリシー',
+    page_sub:'tapevault.netで購入したTapeVaultサブスクリプションの返金・キャンセルの方法をご案内します。',
+    legal_updated:'発効日：2026年11月4日 · 最終更新日：2026年11月4日',
+    intro_alert:'<strong>要点：</strong>お支払いから7日以内に返金を依頼され、ライセンスを認証していない場合は、全額を返金します。TapeVaultに自動更新はないため、新たにお支払いいただかない限り再度課金されることはありません。',
+    toc1:'1. 適用範囲',
+    toc2:'2. 無料体験とベータ',
+    toc3:'3. 7日以内の全額返金',
+    toc4:'4. 認証後',
+    toc5:'5. 不具合または説明と異なるソフトウェア',
+    toc6:'6. 二重請求・誤請求',
+    toc7:'7. 返金のお申し込み方法',
+    toc8:'8. 返金方法と時期',
+    toc9:'9. 法定の権利とエンタープライズ',
+    toc10:'10. お問い合わせ',
+    p1:'この返金ポリシーは、tapevault.netで購入したTapeVaultの有料サブスクリプションに適用されます。お支払いは、当社の決済代行会社である<strong>Toss Payments Co., Ltd.</strong>（「Toss Payments」）が処理します。本ポリシーは<a href="terms-of-service.html">利用規約</a>を補完するものです。',
+    p2a:'無料体験とベータは無料で提供されるため、返金の対象となる金額はありません。体験またはベータ期間の終了時に、自動的にカードへ課金されることはありません。',
+    p2b:'TapeVaultに自動更新はありません。お支払いは、お客様が新たに明示的にチェックアウトを完了した場合にのみ行われます。',
+    p3a:'<strong>お支払い日から7日以内</strong>に返金を依頼でき、ライセンスを<strong>認証していない場合</strong>は、お支払いいただいた金額を全額返金します。',
+    p3b:'7日間は、お支払いが完了した日から数えます。',
+    p4:'ライセンスを認証すると有料サブスクリプションを利用したものとみなし、第5項・第6項に該当する場合や強行法規が別途定める場合を除き、利用済みの期間については返金しません。TapeVaultはいつでも利用を停止でき、自動更新がないため追加の課金は発生しません。',
+    p5:'本ソフトウェアがウェブサイトでの説明と著しく異なる場合、または説明どおりに動作せず当社が問題を解決できない場合、本ソフトウェアを受け取った日から3か月以内、かつ問題を知った日から30日以内に、契約の取消しと全額返金を依頼できます。',
+    p6:'同一の購入について二重に課金された場合、または誤った金額が課金された場合は、ライセンスの認証の有無にかかわらず、二重請求分または差額を全額返金します。',
+    p7a:'<a href="mailto:support@tapevault.net">support@tapevault.net</a>までメールで、次の内容を添えてご連絡ください：',
+    p7b:'購入時に使用したメールアドレス',
+    p7c:'お支払い日と金額',
+    p7d:'返金をご希望の理由（任意ですが、サービス改善の参考になります）',
+    p7e:'営業日3日以内のご返信を目標としています。',
+    p8a:'承認された返金は、Toss Paymentsを通じて決済を取り消す方法で、元のお支払い方法に返金されます。当社は承認後、営業日3日以内に取消しを依頼します。',
+    p8b:'返金額がカード明細に反映されるまでの期間はカード会社によって異なり、当社では管理できません。通常、数営業日かかります。',
+    p9a:'本ポリシーのいかなる内容も、韓国の電子商取引等における消費者保護に関する法律を含む関連する消費者保護法令、およびお客様の居住国で認められる強行法規上の権利を制限するものではありません。',
+    p9b:'エンタープライズプランには締結した契約の条件が適用され、本ポリシーと異なる場合は契約が優先します。',
+    p10:'<strong>株式会社ベテランIT（Veteran IT Co., Ltd.）</strong><br>大韓民国ソウル特別市瑞草区<br>メール：<a href="mailto:support@tapevault.net">support@tapevault.net</a> · 電話：070-8080-4664'
+  }
+};
+
+function applyLang(lang) {
+  if (!T[lang]) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T[lang][el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.documentElement.lang = lang === 'ko' ? 'ko' : lang === 'ja' ? 'ja' : 'en';
+  document.getElementById('lang-current').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-menu-item').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  localStorage.setItem('tv-lang', lang);
+}
+
+function toggleLangMenu(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('lang-menu').classList.toggle('open');
+  document.getElementById('lang-globe-btn').classList.toggle('open');
+}
+document.addEventListener('click', (e) => {
+  const wrap = document.getElementById('lang-select');
+  if (wrap && !wrap.contains(e.target)) {
+    document.getElementById('lang-menu').classList.remove('open');
+    document.getElementById('lang-globe-btn').classList.remove('open');
+  }
+});
+
+applyLang(localStorage.getItem('tv-lang') || 'en');
+
+function toggleMobileNav() {
+  const nav = document.getElementById('nav-links');
+  const burger = document.getElementById('nav-burger');
+  const open = nav.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+document.querySelectorAll('#nav-links a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('nav-burger').setAttribute('aria-expanded', 'false');
+}));
+</script>
+</body>
+</html>
