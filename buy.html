@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TapeVault 라이선스 구매</title>
+<meta name="robots" content="noindex">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Malgun Gothic',sans-serif;line-height:1.6;padding:40px 16px 80px}
+a{color:#5b9cf6}
+.wrap{max-width:640px;margin:0 auto}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.logo{font-size:17px;color:#f0f2f8;text-decoration:none}.logo b{font-weight:700}
+h1{font-size:24px;letter-spacing:-0.02em;margin-bottom:6px}
+.sub{color:#99a3c4;font-size:14px;margin-bottom:28px}
+.card{background:#111520;border:0.5px solid #1e2330;border-radius:12px;padding:22px;margin-bottom:16px}
+.card h2{font-size:15px;margin-bottom:12px;color:#c8cfe0}
+label{display:block;font-size:13px;color:#99a3c4;margin:10px 0 4px}
+input[type=email],input[type=password]{width:100%;background:#0b0b0d;border:0.5px solid #2a3245;color:#e8eaf0;border-radius:8px;padding:10px 12px;font-size:14px}
+.btn{display:inline-block;background:#3b6fd8;color:#fff;border:none;border-radius:8px;padding:11px 18px;font-size:14px;font-weight:600;cursor:pointer;margin-top:14px}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.ghost{background:none;border:0.5px solid #2a3245;color:#a8b2d0;font-weight:400;padding:6px 12px;font-size:12px;margin:0}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){.plans{grid-template-columns:1fr}}
+.plan{border:1px solid #1e2330;border-radius:10px;padding:16px;cursor:pointer;background:#0b0b0d}
+.plan.on{border-color:#5b9cf6;background:#0f1830}
+.plan .n{font-size:12px;letter-spacing:.08em;color:#99a3c4}
+.plan .p{font-size:22px;font-weight:700;margin:4px 0}
+.plan .d{font-size:12px;color:#99a3c4}
+.who{font-size:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.msg{font-size:13px;margin-top:10px;color:#f0a0a0;white-space:pre-line}
+.ok{color:#8fd19e}
+.note{font-size:12px;color:#7d87a6;margin-top:10px}
+.test{background:#3a2a10;color:#f5c36b;border-radius:8px;padding:8px 12px;font-size:12px;margin-bottom:16px}
+#payment-method,#agreement{background:#fff;border-radius:10px;overflow:hidden}
+#agreement{margin-top:10px}
+.done dt{color:#99a3c4;font-size:13px}.done dd{font-size:16px;margin-bottom:8px}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="logo" href="/"><b>Tape</b>Vault</a><a href="/#pricing" style="font-size:13px">요금제 보기</a></div>
+  <h1>라이선스 구매</h1>
+  <p class="sub">1년 사용권 · 부가세 별도 · 국내 카드 결제 · 자동 갱신 없음. 결제가 끝나면 라이선스가 바로 발급되어 앱에 적용됩니다.</p>
+  <div id="testBanner" class="test hide">테스트 모드입니다. 실제로 청구되지 않습니다.</div>
+
+  <!-- 결과 (토스 결제창에서 돌아왔을 때) -->
+  <div id="result" class="card hide"></div>
+
+  <!-- 1) 로그인 -->
+  <div id="loginCard" class="card">
+    <h2 id="loginTitle">1. TapeVault 계정으로 로그인</h2>
+    <p class="note" style="margin-top:0" id="loginNote">앱에서 쓰는 계정으로 로그인하세요. 라이선스는 이 계정에 적용되고, 앱에 같은 계정으로 로그인하면 바로 반영됩니다. 계정이 없으면 <a href="#" id="toSignup">회원가입</a>.</p>
+    <form id="loginForm">
+      <label for="email">이메일</label><input id="email" type="email" autocomplete="email" required>
+      <label for="pw">비밀번호</label><input id="pw" type="password" autocomplete="current-password" required>
+      <div id="pw2Row" class="hide"><label for="pw2">비밀번호 확인</label><input id="pw2" type="password" autocomplete="new-password" minlength="6"></div>
+      <button class="btn" type="submit" id="loginBtn">로그인</button>
+      <div id="loginMsg" class="msg"></div>
+    </form>
+  </div>
+
+  <!-- 2) 요금제 + 결제 -->
+  <div id="buyCard" class="hide">
+    <div class="card">
+      <div class="who"><span id="who"></span><button class="btn ghost" id="logout">로그아웃</button></div>
+      <div id="current" class="note"></div>
+    </div>
+    <div class="card">
+      <h2>2. 에디션 선택</h2>
+      <div class="plans" id="plans"></div>
+      <p class="note">PC 여러 대(Copy)나 영구 라이선스는 <a href="mailto:sales@tapevault.net">sales@tapevault.net</a> 으로 문의해 주세요.</p>
+    </div>
+    <div class="card">
+      <h2>3. 결제</h2>
+      <div id="payment-method"></div>
+      <div id="agreement"></div>
+      <button class="btn" id="payBtn" disabled>결제하기</button>
+      <div id="payMsg" class="msg"></div>
+    </div>
+  </div>
+  <footer style="margin-top:40px;border-top:0.5px solid #1e2330;padding-top:18px;font-size:12px;color:#7d87a6;line-height:1.8">
+    <a href="refund-policy.html">환불 정책</a> · <a href="terms-of-service.html">이용약관</a> · <a href="privacy-policy.html">개인정보 처리방침</a><br>
+    상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>
+    통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>
+    전화: 070-8080-4664 · 이메일: <a href="mailto:support@tapevault.net">support@tapevault.net</a> · 결제대행: 토스페이먼츠
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://js.tosspayments.com/v2/standard"></script>
+<script>
+// ── 설정 ── 공개 값만 둔다(시크릿 키는 Worker 에만 있다)
+const CFG = {
+  supabaseUrl: 'https://udqtrnfkaapzgqruurgq.supabase.co',
+  supabaseAnonKey: 'sb_publishable_NhIFmUT1GboO1jLTpxFeEg_E3B9W5F0',
+  // 토스 결제위젯 클라이언트 키. 지금은 토스 문서용 공개 예제 키 — 전자결제 신청이 끝나면 내 상점 키로 바꾼다
+  tossClientKey: 'test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm',
+  workerUrl: 'https://support-mail.daniel-sanam.workers.dev',
+};
+const $ = id => document.getElementById(id);
+const won = n => '₩' + Number(n).toLocaleString('ko-KR');
+const sb = supabase.createClient(CFG.supabaseUrl, CFG.supabaseAnonKey);
+if (CFG.tossClientKey.startsWith('test_')) $('testBanner').classList.remove('hide');
+
+const ERR = {
+  EDITION_CHANGE: '사용 중인 유료 라이선스와 다른 에디션은 남은 기간 정산이 필요해 온라인으로 바꿀 수 없습니다. sales@tapevault.net 으로 문의해 주세요.',
+  ALREADY_PERPETUAL: '이미 영구 라이선스를 쓰고 계십니다. 추가 구매가 필요 없습니다.',
+  BAD_EDITION: '알 수 없는 에디션입니다.',
+};
+const errText = e => { const m = String(e && e.message || e); const k = Object.keys(ERR).find(k => m.includes(k)); return k ? ERR[k] : m; };
+
+let prices = [], edition = ['starter', 'autoloader'].includes(new URLSearchParams(location.search).get('ed')) ? new URLSearchParams(location.search).get('ed') : 'starter', widgets = null, user = null, signup = false;
+$('toSignup').onclick = e => {
+  e.preventDefault(); signup = true;
+  $('loginTitle').textContent = '1. TapeVault 회원가입';
+  $('loginNote').innerHTML = '가입하면 1개월 무료 체험이 바로 시작됩니다. 앱에서도 이 계정으로 로그인하세요.';
+  $('pw2Row').classList.remove('hide'); $('pw').autocomplete = 'new-password'; $('loginBtn').textContent = '가입하기';
+};
+
+async function showBuy(session) {
+  user = session.user;
+  $('loginCard').classList.add('hide'); $('buyCard').classList.remove('hide');
+  $('who').textContent = user.email + ' 계정';
+  const { data: lic } = await sb.from('licenses').select('license_no,edition,kind,expires_at').order('expires_at', { ascending: false }).limit(1);
+  const l = lic && lic[0];
+  if (l) {
+    const kind = { trial: '체험', beta: '베타', paid: '유료', perpetual: '영구' }[l.kind] || l.kind;
+    const ed = l.edition === 'autoloader' ? 'Autoloader' : 'Starter';
+    $('current').textContent = `현재: ${ed} ${kind}` + (l.kind === 'perpetual' ? '' : ` · ${String(l.expires_at).slice(0, 10)} 까지`)
+      + (l.kind === 'paid' ? ' — 같은 에디션을 구매하면 만료일에서 1년이 늘어납니다.' : '');
+    if (l.kind === 'paid' && new Date(l.expires_at) > new Date()) edition = l.edition;
+  }
+  const { data: p, error } = await sb.from('pay_prices').select('*').order('amount');
+  if (error) { $('payMsg').textContent = '가격 정보를 불러오지 못했습니다: ' + error.message; return; }
+  prices = p; renderPlans();
+  try {
+    const toss = TossPayments(CFG.tossClientKey);
+    widgets = toss.widgets({ customerKey: user.id });
+    await widgets.setAmount({ currency: 'KRW', value: price().amount });
+    await Promise.all([
+      widgets.renderPaymentMethods({ selector: '#payment-method', variantKey: 'DEFAULT' }),
+      widgets.renderAgreement({ selector: '#agreement', variantKey: 'AGREEMENT' }),
+    ]);
+    $('payBtn').disabled = false;
+  } catch (e) { $('payMsg').textContent = '결제창을 불러오지 못했습니다: ' + errText(e); }
+}
+const price = () => prices.find(x => x.edition === edition) || prices[0];
+function renderPlans() {
+  $('plans').innerHTML = prices.map(p => `<div class="plan ${p.edition === edition ? 'on' : ''}" data-ed="${p.edition}">
+    <div class="n">${p.edition.toUpperCase()}</div><div class="p">${won(p.supply || p.amount)}<span style="font-size:12px;font-weight:400;color:#99a3c4"> ${p.supply ? '+ 부가세' : ''}</span></div>
+    ${p.supply ? `<div class="d">결제 금액 ${won(p.amount)} (부가세 ${won(p.amount - p.supply)} 포함)</div>` : ''}
+    <div class="d">${p.months}개월 · ${p.edition === 'starter' ? '드라이브 2대까지' : '오토로더·라이브러리, 드라이브 제한 없음'}</div></div>`).join('');
+  $('plans').querySelectorAll('.plan').forEach(el => el.onclick = async () => {
+    edition = el.dataset.ed; renderPlans();
+    if (widgets) await widgets.setAmount({ currency: 'KRW', value: price().amount });
+  });
+  $('payBtn').textContent = `${won(price().amount)} 결제하기`;
+}
+
+$('loginForm').onsubmit = async e => {
+  e.preventDefault(); $('loginMsg').textContent = '';
+  if (signup) {
+    if ($('pw').value.length < 6) return $('loginMsg').textContent = '비밀번호는 6자 이상으로 정해 주세요.';
+    if ($('pw').value !== $('pw2').value) return $('loginMsg').textContent = '비밀번호 확인이 일치하지 않습니다.';
+    const { data, error } = await sb.auth.signUp({ email: $('email').value.trim(), password: $('pw').value });
+    if (error) return $('loginMsg').textContent = /registered/i.test(error.message) ? '이미 가입된 이메일입니다. 로그인해 주세요.' : error.message;
+    if (!data.session) { $('loginMsg').innerHTML = '<span class="ok">확인 메일을 보냈습니다. 메일의 링크를 누른 뒤 이 화면에서 로그인해 주세요.</span>'; return; }
+    return showBuy(data.session);
+  }
+  const { data, error } = await sb.auth.signInWithPassword({ email: $('email').value.trim(), password: $('pw').value });
+  if (error) { $('loginMsg').textContent = error.message === 'Invalid login credentials' ? '이메일 또는 비밀번호가 맞지 않습니다.' : error.message; return; }
+  if (new URLSearchParams(location.search).get('result') === 'success') return location.reload();   // 결제 확인 이어서
+  showBuy(data.session);
+};
+$('logout').onclick = async () => { await sb.auth.signOut(); location.href = location.pathname; };
+
+$('payBtn').onclick = async () => {
+  $('payBtn').disabled = true; $('payMsg').textContent = '';
+  try {
+    const { data: o, error } = await sb.rpc('pay_create_order', { p_edition: edition });
+    if (error) throw error;
+    await widgets.setAmount({ currency: 'KRW', value: o.amount });   // 서버가 정한 금액으로 결제
+    const base = location.origin + location.pathname;
+    await widgets.requestPayment({
+      orderId: o.orderId, orderName: o.orderName, customerEmail: o.email,
+      successUrl: base + '?result=success', failUrl: base + '?result=fail',
+    });
+  } catch (e) {
+    if (e && e.code !== 'USER_CANCEL') $('payMsg').textContent = errText(e);
+    $('payBtn').disabled = false;
+  }
+};
+
+// 토스 결제창에서 돌아온 경우
+async function handleReturn(params, session) {
+  const box = $('result'); box.classList.remove('hide');
+  if (params.get('result') === 'fail') {
+    box.innerHTML = `<h2>결제가 완료되지 않았습니다</h2><p class="msg"></p><button class="btn" onclick="location.href=location.pathname">다시 시도</button>`;
+    box.querySelector('.msg').textContent = params.get('message') || '결제를 취소했거나 실패했습니다.';
+    return false;
+  }
+  box.innerHTML = '<h2>결제를 확인하는 중입니다…</h2><p class="note">이 화면을 닫지 마세요.</p>';
+  if (!session) { box.innerHTML = '<h2>로그인이 풀렸습니다</h2><p class="note">다시 로그인하면 결제 확인을 이어서 합니다.</p>'; return false; }
+  try {
+    const r = await fetch(CFG.workerUrl + '/pay/confirm', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + session.access_token },
+      body: JSON.stringify({ paymentKey: params.get('paymentKey'), orderId: params.get('orderId'), amount: Number(params.get('amount')) }),
+    });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.message || ('오류 ' + r.status));
+    const ed = j.edition === 'autoloader' ? 'Autoloader' : 'Starter';
+    box.innerHTML = `<h2 class="ok">결제가 완료되었습니다</h2><dl class="done" style="margin-top:12px">
+      <dt>라이선스</dt><dd>${j.license_no} · ${ed}</dd><dt>사용 기간</dt><dd>${String(j.expires_at).slice(0, 10)} 까지</dd>
+      <dt>주문번호</dt><dd>${params.get('orderId')}</dd></dl>
+      <p class="note">앱에 같은 계정으로 로그인하면 바로 적용됩니다. 이미 로그인되어 있다면 앱을 다시 실행해 주세요. 안내 메일을 ${user ? user.email : '계정 이메일'} 로 보냈습니다.</p>`;
+    history.replaceState(null, '', location.pathname);
+    return true;
+  } catch (e) {
+    box.innerHTML = '<h2>결제 확인 중 문제가 생겼습니다</h2><p class="msg"></p><p class="note">카드 결제가 되었다면 이 화면을 새로고침해 보세요. 계속 안 되면 주문번호와 함께 support@tapevault.net 으로 알려 주세요.</p>';
+    box.querySelector('.msg').textContent = e.message + '\n주문번호: ' + (params.get('orderId') || '');
+    return false;
+  }
+}
+
+(async () => {
+  const params = new URLSearchParams(location.search);
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) user = session.user;
+  if (params.get('result')) {
+    $('loginCard').classList.add('hide');
+    const done = await handleReturn(params, session);
+    if (!session) $('loginCard').classList.remove('hide');
+    if (done || params.get('result') === 'success') return;
+  }
+  if (session) showBuy(session);
+})();
+</script>
+</body>
+</html>

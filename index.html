@@ -132,6 +132,7 @@ body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .pc-btn:hover{border-color:#3a4a6a;color:#c8cfe0}
 .pc-btn.hot{background:#f5a623;border:none;color:#0b0b0d;font-weight:800}
 .pc-btn.hot:hover{opacity:.88}
+.pc-buy{display:block;text-align:center;margin-top:10px;font-size:13px;color:#5b9cf6;text-decoration:none}.pc-buy:hover{text-decoration:underline}
 .price-trust{text-align:center;margin-top:28px}
 .price-trust p{font-size:12px;color:#7c88a4;margin-bottom:6px}
 .price-trust-items{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
@@ -563,6 +564,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       <div class="pc-feat" data-i18n="p1_f5">Built-in video player</div>
       <div class="pc-feat" data-i18n="p1_f6">Email support</div>
       <button class="pc-btn" data-i18n="pc_trial" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Start free trial</button>
+      <a class="pc-buy" href="buy.html?ed=starter" data-i18n="pc_buy">Buy 1-year license (Korean cards)</a>
     </div>
     <div class="pc hot">
       <div class="pc-badge" data-i18n="pc_popular">Most popular</div>
@@ -577,6 +579,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       <div class="pc-feat" data-i18n="p2_f5">Advanced search &amp; filters</div>
       <div class="pc-feat" data-i18n="p2_f6">Priority support</div>
       <button class="pc-btn hot" data-i18n="pc_trial" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Start free trial</button>
+      <a class="pc-buy" href="buy.html?ed=autoloader" data-i18n="pc_buy">Buy 1-year license (Korean cards)</a>
     </div>
     <div class="pc">
       <div class="pc-plan">ENTERPRISE</div>
@@ -797,7 +800,7 @@ const T = {
     dl_btn:'⬇ Download TapeVault v1.0.0 for Windows', dl_s1:'Windows 10 / 11 (64-bit)', dl_s2:'LTO-4 through LTO-9', dl_s3:'~90 MB installer',
     dl_ver:'v1.0.0 · June 2026 · Requires Windows 10 64-bit or later',
     pr_label:'Pricing', pr_title:'Simple pricing. No surprises.', pr_sub:'Register and try free for 1 month, then buy a license. No auto-renewal.',
-    pc_mo:' / month', pc_trial:'Start free trial', pc_popular:'Most popular',
+    pc_mo:' / month', pc_trial:'Start free trial', pc_buy:'Buy 1-year license (Korean cards) →', pc_popular:'Most popular',
     p1_desc:'For single LTO drive setups — broadcast studios, small archives, individual operators.',
     p1_f1:'1 LTO drive (LTO-4 to LTO-9)', p1_f2:'Unlimited tapes', p1_f3:'Auto thumbnail generation', p1_f4:'Full-text search', p1_f5:'Built-in video player', p1_f6:'Email support',
     p2_desc:'For tape autoloader / library setups — TV stations, hospitals, government archives.',
@@ -886,7 +889,7 @@ const T = {
     dl_btn:'⬇ TapeVault v1.0.0 Windows용 다운로드', dl_s1:'Windows 10 / 11 (64비트)', dl_s2:'LTO-4 ~ LTO-9', dl_s3:'~90 MB 인스톨러',
     dl_ver:'v1.0.0 · 2026년 6월 · Windows 10 64비트 이상 필요',
     pr_label:'요금제', pr_title:'심플한 요금제. 예상치 못한 청구 없음.', pr_sub:'등록하면 1개월 무료 체험, 이후 라이선스 구매. 자동 갱신 없음.',
-    pc_mo:' / 월', pc_trial:'무료 체험 시작', pc_popular:'가장 인기',
+    pc_mo:' / 월', pc_trial:'무료 체험 시작', pc_buy:'1년 라이선스 구매하기 →', pc_popular:'가장 인기',
     p1_desc:'단일 LTO 드라이브 환경 — 방송 스튜디오, 소규모 아카이브, 개인 운영자.',
     p1_f1:'LTO 드라이브 1대 (LTO-4~LTO-9)', p1_f2:'무제한 테이프', p1_f3:'썸네일 자동 생성', p1_f4:'전체 텍스트 검색', p1_f5:'내장 동영상 플레이어', p1_f6:'이메일 지원',
     p2_desc:'테이프 오토로더 / 라이브러리 환경 — TV 방송국, 병원, 정부 아카이브.',
@@ -975,7 +978,7 @@ const T = {
     dl_btn:'⬇ TapeVault v1.0.0 Windows版をDL', dl_s1:'Windows 10 / 11 (64ビット)', dl_s2:'LTO-4〜LTO-9', dl_s3:'~90 MB インストーラー',
     dl_ver:'v1.0.0 · 2026年6月 · Windows 10 64ビット以上が必要',
     pr_label:'料金', pr_title:'シンプルな料金。想定外の請求なし。', pr_sub:'登録で1ヶ月間無料体験、その後ライセンスを購入。自動更新なし。',
-    pc_mo:' / 月', pc_trial:'無料トライアル開始', pc_popular:'最も人気',
+    pc_mo:' / 月', pc_trial:'無料トライアル開始', pc_buy:'1年ライセンス購入（韓国発行カード） →', pc_popular:'最も人気',
     p1_desc:'シングルLTOドライブ環境 — 放送スタジオ・小規模アーカイブ・個人運用者向け。',
     p1_f1:'LTOドライブ1台 (LTO-4〜LTO-9)', p1_f2:'テープ枚数無制限', p1_f3:'サムネイル自動生成', p1_f4:'全文検索', p1_f5:'内蔵動画プレーヤー', p1_f6:'メールサポート',
     p2_desc:'テープオートローダー/ライブラリ環境 — テレビ局・病院・政府アーカイブ向け。',
