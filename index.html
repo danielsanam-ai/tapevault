@@ -535,6 +535,10 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 
     <button class="btn-hero-ghost" style="font-size:14px;padding:12px 28px" data-i18n="dl_mac_btn" onclick="showDownloadWarning('mac')">🍎 Download for macOS (Apple Silicon)</button>
     <p style="font-size:11px;color:#7c88a4" data-i18n="dl_mac_note">v0.2.0 Beta · Apple Silicon (M1/M2/M3) only · ~158 MB</p>
+    <div id="dl-mac-intel" hidden>
+      <button class="btn-hero-ghost" style="font-size:13px;padding:10px 24px" data-i18n="dl_mac_intel_btn" onclick="showDownloadWarning('mac_intel')">💻 Download for Intel Mac</button>
+      <p style="font-size:11px;color:#7c88a4" data-i18n="dl_mac_intel_note"></p>
+    </div>
     <div id="dl-more" class="dl-more" hidden></div>
   </div>
 </section>
@@ -719,15 +723,19 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 <script>
 let DOWNLOAD_URL = 'https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-Setup-1.0.0.exe';
 let DOWNLOAD_URL_MAC = 'https://github.com/danielsanam-ai/tapevault/releases/download/v1.0.0/TapeVault-0.2.0-arm64.dmg';
+let DOWNLOAD_URL_MAC_INTEL = '';   // Intel Mac 용 — release.js 가 latest.json 에 있을 때만 채우고 버튼을 보인다
 let dlwPlatform = 'win';
 function showDownloadWarning(platform) {
-  dlwPlatform = platform === 'mac' ? 'mac' : 'win';
+  dlwPlatform = (platform === 'mac' || platform === 'mac_intel') ? platform : 'win';
   document.getElementById('dlw-win').hidden = dlwPlatform !== 'win';
-  document.getElementById('dlw-mac').hidden = dlwPlatform !== 'mac';
+  document.getElementById('dlw-mac').hidden = dlwPlatform === 'win';
   document.getElementById('dl-warning-modal').classList.add('open');
 }
 function closeDownloadWarning() { document.getElementById('dl-warning-modal').classList.remove('open'); }
-function proceedDownload() { window.location.href = dlwPlatform === 'mac' ? DOWNLOAD_URL_MAC : DOWNLOAD_URL; closeDownloadWarning(); }
+function proceedDownload() {
+  window.location.href = dlwPlatform === 'mac' ? DOWNLOAD_URL_MAC : dlwPlatform === 'mac_intel' ? DOWNLOAD_URL_MAC_INTEL : DOWNLOAD_URL;
+  closeDownloadWarning();
+}
 
 const T = {
   en: {

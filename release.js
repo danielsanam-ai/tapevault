@@ -10,24 +10,25 @@
     !(navigator.maxTouchPoints > 1 && /Mac/.test(navigator.platform) && /Mobile/.test(navigator.userAgent));
 
   var L = {
-    en: { win: 'Windows', mac: 'macOS', dl: '⬇ Download TapeVault v{v} for Windows', macnote: 'v{v} · Apple Silicon (M1/M2/M3) only · ~{n} MB',
+    en: { win: 'Windows', mac: 'macOS', mac_intel: 'macOS (Intel)', intelbtn: '💻 Download for Intel Mac', intelnote: 'v{v} · Intel Mac · ~{n} MB', dl: '⬇ Download TapeVault v{v} for Windows', macnote: 'v{v} · Apple Silicon (M1/M2/M3) only · ~{n} MB',
           sha: 'SHA-256', mb: 'MB', notes: 'Release notes', feat: 'Platform support', yes: '✓', no: '—',
           ver: 'v{v} · {d} · Requires {os}', foot: 'TapeVault v{v} · Built by Veteran IT · Billing by Paddle · No auto-renewal' },
-    ko: { win: 'Windows', mac: 'macOS', dl: '⬇ TapeVault v{v} Windows용 다운로드', macnote: 'v{v} · Apple Silicon(M1/M2/M3) 전용 · ~{n} MB',
+    ko: { win: 'Windows', mac: 'macOS', mac_intel: 'macOS (Intel)', intelbtn: '💻 Intel Mac용 다운로드', intelnote: 'v{v} · Intel Mac · ~{n} MB', dl: '⬇ TapeVault v{v} Windows용 다운로드', macnote: 'v{v} · Apple Silicon(M1/M2/M3) 전용 · ~{n} MB',
           sha: 'SHA-256', mb: 'MB', notes: '릴리스 노트', feat: '플랫폼별 지원 기능', yes: '✓', no: '—',
           ver: 'v{v} · {d} · {os} 필요', foot: 'TapeVault v{v} · Veteran IT 개발 · Paddle 결제 · 자동 갱신 없음' },
-    ja: { win: 'Windows', mac: 'macOS', dl: '⬇ TapeVault v{v} Windows版をDL', macnote: 'v{v} · Apple Silicon (M1/M2/M3) 専用 · 約{n} MB',
+    ja: { win: 'Windows', mac: 'macOS', mac_intel: 'macOS (Intel)', intelbtn: '💻 Intel Mac版をダウンロード', intelnote: 'v{v} · Intel Mac · 約{n} MB', dl: '⬇ TapeVault v{v} Windows版をDL', macnote: 'v{v} · Apple Silicon (M1/M2/M3) 専用 · 約{n} MB',
           sha: 'SHA-256', mb: 'MB', notes: 'リリースノート', feat: 'プラットフォーム別の対応機能', yes: '✓', no: '—',
           ver: 'v{v} · {d} · {os}が必要', foot: 'TapeVault v{v} · Veteran IT製 · Paddle決済 · 自動更新なし' }
   };
   var LOCALE = { en: 'en-US', ko: 'ko-KR', ja: 'ja-JP' };
-  var NAME = { windows: 'win', mac: 'mac' };
+  var NAME = { windows: 'win', mac: 'mac', mac_intel: 'mac_intel' };
 
   // 최소 사양 문구 — latest.json 에는 언어와 무관한 값(os_name, min_os_version)만 두고 여기서 번역한다
   function osText(p, lang) {
     var n = p.os_name || '', v = p.min_os_version || '';
     if (!n || !v) return p.min_os || '';
-    var arch = n === 'macOS' ? ' (Apple Silicon)' : ' (64-bit)';
+    var arch = n.indexOf('macOS') === 0 ? (p.arch === 'x64' ? ' (Intel)' : ' (Apple Silicon)') : ' (64-bit)';
+    n = n.replace(/ \(Intel\)$/, '');
     if (lang === 'ko') return n + ' ' + v + ' 이상' + arch;
     if (lang === 'ja') return n + ' ' + v + ' 以上' + arch;
     return n + ' ' + v + ' or later' + arch;
@@ -43,12 +44,18 @@
   }
 
   function apply(d) {
-    var keys = Object.keys(d.platforms);                       // 'windows' | 'mac'
-    var win = d.platforms.windows, mac = d.platforms.mac, both = !!(win && mac);
+    var keys = Object.keys(d.platforms);                       // 'windows' | 'mac' | 'mac_intel'
+    var win = d.platforms.windows, mac = d.platforms.mac, intel = d.platforms.mac_intel, both = !!(win && mac);
 
     // 1) 다운로드 주소: 버튼은 그대로 두고(보안 경고 팝업을 거친다) 팝업이 쓰는 주소만 바꾼다
     if (win) DOWNLOAD_URL = win.url;
     if (mac) DOWNLOAD_URL_MAC = mac.url;
+    //    Intel Mac 버튼은 latest.json 에 mac_intel 이 있을 때만 보인다 (브라우저로는 Intel/Apple Silicon 을 구분할 수 없어 위쪽 버튼은 Apple Silicon 그대로)
+    var intelBox = document.getElementById('dl-mac-intel');
+    if (intel && intelBox && typeof DOWNLOAD_URL_MAC_INTEL !== 'undefined') {
+      DOWNLOAD_URL_MAC_INTEL = intel.url;
+      intelBox.hidden = false;
+    }
     //    맥에서 열면 위쪽 "무료 체험" 버튼도 맥 파일로
     if (isMac && mac) {
       ['hero_btn1', 'cta_btn'].forEach(function (k) {
@@ -68,6 +75,10 @@
         T[lang].dl_s3 = '~' + Math.round(win.size / 1048576) + ' MB';
       }
       if (mac) T[lang].dl_mac_note = fmt(t.macnote, { v: d.version, n: Math.round(mac.size / 1048576) });
+      if (intel) {
+        T[lang].dl_mac_intel_btn = t.intelbtn;
+        T[lang].dl_mac_intel_note = fmt(t.intelnote, { v: d.version, n: Math.round(intel.size / 1048576) });
+      }
       T[lang].foot_bottom = fmt(t.foot, { v: d.version });
     });
     var nav = document.querySelector('.nav-ver');
