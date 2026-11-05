@@ -147,7 +147,8 @@ const sb = supabase.createClient('https://udqtrnfkaapzgqruurgq.supabase.co', 'sb
 const $ = id => document.getElementById(id);
 const params = new URLSearchParams(location.search);
 // 로그인 후 돌아갈 곳: 같은 사이트 안의 경로만 허용(외부 주소로 보내는 것을 막는다)
-const next = (() => { const n = params.get('next') || ''; return /^[a-z0-9_-]+\.html(\?[\w=&.-]*)?$/i.test(n) ? n : ''; })();
+// 기본은 구매 페이지(현재 라이선스 상태 + 요금제 + 결제창)
+const next = (() => { const n = params.get('next') || ''; return /^[a-z0-9_-]+\.html(\?[\w=&.-]*)?$/i.test(n) ? n : 'buy.html'; })();
 let mode = params.get('mode') === 'signup' ? 'signup' : 'login';
 
 function view(id) { ['authView', 'resetView', 'newPwView', 'accountView'].forEach(v => $(v).classList.toggle('hide', v !== id)); }

@@ -37,6 +37,12 @@ input[type=email],input[type=password]{width:100%;background:#0b0b0d;border:0.5p
 #agreement{margin-top:10px}
 .done dt{color:#99a3c4;font-size:13px}.done dd{font-size:16px;margin-bottom:8px}
 .hide{display:none}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+@media (max-width:520px){.stat{grid-template-columns:1fr}}
+.stat div{background:#0b0b0d;border:0.5px solid #1e2330;border-radius:10px;padding:12px 14px}
+.stat span{display:block;font-size:12px;color:#99a3c4}.stat b{font-size:16px;font-weight:600}
+.badge{display:inline-block;font-size:11px;padding:1px 8px;border-radius:20px;background:#1b2a1e;color:#8fd19e;margin-left:6px;vertical-align:2px}
+.badge.warn{background:#3a2a10;color:#f5c36b}
 </style>
 </head>
 <body>
@@ -64,7 +70,7 @@ input[type=email],input[type=password]{width:100%;background:#0b0b0d;border:0.5p
   <div id="buyCard">
     <div class="card hide" id="whoCard">
       <div class="who"><span id="who"></span><button class="btn ghost" id="logout">로그아웃</button></div>
-      <div id="current" class="note"></div>
+      <div id="current"></div>
     </div>
     <div class="card">
       <h2>2. 에디션 선택</h2>
@@ -134,14 +140,21 @@ async function initShop() {
 async function showBuy(session) {
   user = session.user;
   $('loginCard').classList.add('hide'); $('whoCard').classList.remove('hide');
-  $('who').textContent = user.email + ' 계정';
-  const { data: lic } = await sb.from('licenses').select('license_no,edition,kind,expires_at').order('expires_at', { ascending: false }).limit(1);
+  $('who').innerHTML = '<b style="font-size:15px">내 라이선스</b> <span style="color:#99a3c4">· ' + user.email.replace(/[<>&"]/g, '') + '</span>';
+  const { data: lic } = await sb.from('licenses').select('license_no,edition,kind,status,expires_at').order('expires_at', { ascending: false }).limit(1);
   const l = lic && lic[0];
   if (l) {
     const kind = { trial: '체험', beta: '베타', paid: '유료', perpetual: '영구' }[l.kind] || l.kind;
     const ed = l.edition === 'autoloader' ? 'Autoloader' : 'Starter';
-    $('current').textContent = `현재: ${ed} ${kind}` + (l.kind === 'perpetual' ? '' : ` · ${String(l.expires_at).slice(0, 10)} 까지`)
-      + (l.kind === 'paid' ? ' — 같은 에디션을 구매하면 만료일에서 1년이 늘어납니다.' : '');
+    const expired = l.kind !== 'perpetual' && new Date(l.expires_at) < new Date();
+    const left = Math.ceil((new Date(l.expires_at) - new Date()) / 864e5);
+    const badge = l.status !== 'active' ? '<span class="badge warn">정지</span>' : expired ? '<span class="badge warn">만료</span>' : '<span class="badge">사용 중</span>';
+    const esc = v => String(v ?? '').replace(/[&<>"]/g, '');
+    $('current').innerHTML = `<div class="stat">
+        <div><span>에디션</span><b>${ed} ${esc(kind)}</b>${badge}</div>
+        <div><span>라이선스 번호</span><b>${esc(l.license_no || '—')}</b></div>
+        <div><span>사용 기간</span><b>${l.kind === 'perpetual' ? '제한 없음' : esc(String(l.expires_at).slice(0, 10)) + ' 까지'}</b>${!expired && l.kind !== 'perpetual' ? `<span>${left}일 남음</span>` : ''}</div>
+      </div>` + (l.kind === 'paid' && !expired ? '<p class="note">같은 에디션을 구매하면 만료일에서 1년이 늘어납니다.</p>' : l.kind === 'trial' || l.kind === 'beta' ? '<p class="note">아래에서 구매하면 오늘부터 1년 유료 라이선스로 바뀝니다.</p>' : '');
     if (l.kind === 'paid' && new Date(l.expires_at) > new Date() && edition !== l.edition) {
       edition = l.edition;
       if (prices.length) { renderPlans(); if (widgets) await widgets.setAmount({ currency: 'KRW', value: price().amount }); }
