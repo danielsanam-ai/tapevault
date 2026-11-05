@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TapeVault 로그인</title>
+<meta name="robots" content="noindex">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b0b0d;--panel:#11141c;--line:#1e2330;--line2:#2a3245;--txt:#e8eaf0;--sub:#99a3c4;--dim:#6f7894;--acc:#f5a623;--blue:#5b9cf6;--err:#f28b82;--ok:#8fd19e}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Malgun Gothic',sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;border-bottom:0.5px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;color:#f0f2f8;font-size:17px;letter-spacing:-0.02em}.logo:hover{text-decoration:none}.logo b{font-weight:700}
+.nav a.back{font-size:13px;color:#a8b2d0}
+main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:56px 16px 64px;
+  background:radial-gradient(600px 300px at 50% 0%,#f5a62312,transparent 70%)}
+.box{width:100%;max-width:420px}
+.head{text-align:center;margin-bottom:24px}
+.head h1{font-size:24px;letter-spacing:-0.02em}
+.head p{color:var(--sub);font-size:14px;margin-top:4px}
+.card{background:var(--panel);border:0.5px solid var(--line);border-radius:14px;padding:28px;box-shadow:0 20px 60px #0007}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border:0.5px solid var(--line);border-radius:10px;padding:4px;margin-bottom:22px}
+.tabs button{background:none;border:none;color:var(--sub);font-size:14px;padding:9px;border-radius:7px;cursor:pointer;font-family:inherit}
+.tabs button.on{background:#1b2030;color:#fff;font-weight:600}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px}
+.input{position:relative}
+.input input{width:100%;background:var(--bg);border:1px solid var(--line2);color:var(--txt);border-radius:9px;padding:12px 14px;font-size:15px;font-family:inherit;transition:border-color .15s}
+.input input:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px #f5a62322}
+.input .eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--dim);font-size:12px;cursor:pointer;padding:6px}
+.hint{font-size:12px;color:var(--dim);margin-top:5px}
+.row{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin:-2px 0 18px}
+.row label{color:var(--sub);display:flex;gap:6px;align-items:center;cursor:pointer}
+.agree{background:var(--bg);border:0.5px solid var(--line);border-radius:10px;padding:12px 14px;margin:6px 0 18px;font-size:13px}
+.agree label{display:flex;gap:8px;align-items:flex-start;color:var(--sub);cursor:pointer;padding:4px 0}
+.agree label.all{color:var(--txt);font-weight:600;border-bottom:0.5px solid var(--line);padding-bottom:9px;margin-bottom:5px}
+.agree input{margin-top:4px;accent-color:var(--acc)}
+.btn{width:100%;background:var(--acc);color:#0b0b0d;border:none;border-radius:9px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn:hover{opacity:.9}.btn:disabled{opacity:.5;cursor:default}
+.btn.line{background:none;border:1px solid var(--line2);color:var(--txt);font-weight:600}
+.msg{font-size:13px;margin-top:12px;min-height:1px;white-space:pre-line}
+.msg.err{color:var(--err)}.msg.ok{color:var(--ok)}
+.foot{text-align:center;font-size:13px;color:var(--sub);margin-top:18px}
+.info{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;margin:4px 0 20px}
+.info dt{color:var(--sub)}.info dd{color:var(--txt)}
+.badge{display:inline-block;font-size:12px;padding:1px 8px;border-radius:20px;background:#1b2a1e;color:var(--ok);margin-left:6px}
+.badge.warn{background:#3a2a10;color:#f5c36b}
+.stack{display:grid;gap:10px}
+.hide{display:none!important}
+footer{border-top:0.5px solid var(--line);padding:18px 16px;font-size:12px;color:var(--dim);text-align:center;line-height:1.8}
+footer a{color:#8b96b8}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="logo" href="/">
+    <svg width="34" height="34" viewBox="0 0 120 120" fill="none" stroke="#f5a623" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="16" y="32" width="88" height="56" rx="14"/><circle cx="43" cy="58" r="13"/><circle cx="77" cy="58" r="13"/>
+      <circle cx="43" cy="58" r="4.5" fill="#f5a623" stroke="none"/><circle cx="77" cy="58" r="4.5" fill="#f5a623" stroke="none"/>
+      <path d="M56 58 H64"/><rect x="48" y="78" width="24" height="9" rx="3"/>
+    </svg>
+    <span>Tape<b>Vault</b></span>
+  </a>
+  <a class="back" href="/">← 홈으로</a>
+</nav>
+
+<main>
+<div class="box">
+  <!-- 로그인 / 회원가입 -->
+  <section id="authView">
+    <div class="head"><h1 id="title">로그인</h1><p id="subtitle">TapeVault 앱과 같은 계정으로 로그인하세요.</p></div>
+    <div class="card">
+      <div class="tabs" role="tablist">
+        <button type="button" id="tabLogin" class="on" role="tab">로그인</button>
+        <button type="button" id="tabSignup" role="tab">회원가입</button>
+      </div>
+      <form id="authForm" novalidate>
+        <div class="field"><label for="email">이메일</label><div class="input"><input id="email" type="email" autocomplete="email" placeholder="name@company.com" required></div></div>
+        <div class="field"><label for="pw">비밀번호</label><div class="input"><input id="pw" type="password" autocomplete="current-password" placeholder="비밀번호" required><button type="button" class="eye" data-for="pw">보기</button></div>
+          <div class="hint hide" id="pwHint">8자 이상, 영문과 숫자를 섞어 주세요.</div></div>
+        <div class="field hide" id="pw2Field"><label for="pw2">비밀번호 확인</label><div class="input"><input id="pw2" type="password" autocomplete="new-password" placeholder="비밀번호 다시 입력"><button type="button" class="eye" data-for="pw2">보기</button></div></div>
+        <div class="row" id="loginRow"><span></span><a href="#" id="toReset">비밀번호를 잊으셨나요?</a></div>
+        <div class="agree hide" id="agreeBox">
+          <label class="all"><input type="checkbox" id="agAll"> 모두 동의합니다</label>
+          <label><input type="checkbox" class="ag" required> <span>[필수] <a href="terms-of-service.html" target="_blank">이용약관</a> 동의</span></label>
+          <label><input type="checkbox" class="ag" required> <span>[필수] <a href="privacy-policy.html" target="_blank">개인정보 수집·이용</a> 동의</span></label>
+        </div>
+        <button class="btn" type="submit" id="submitBtn">로그인</button>
+        <div class="msg" id="msg" role="alert"></div>
+      </form>
+    </div>
+    <p class="foot" id="foot">계정이 없으신가요? <a href="#" id="footSwitch">회원가입</a> · 가입하면 1개월 무료 체험</p>
+  </section>
+
+  <!-- 비밀번호 찾기 -->
+  <section id="resetView" class="hide">
+    <div class="head"><h1>비밀번호 재설정</h1><p>가입한 이메일로 재설정 링크를 보내 드립니다.</p></div>
+    <div class="card">
+      <form id="resetForm">
+        <div class="field"><label for="rEmail">이메일</label><div class="input"><input id="rEmail" type="email" autocomplete="email" required></div></div>
+        <button class="btn" type="submit">재설정 링크 보내기</button>
+        <div class="msg" id="rMsg" role="alert"></div>
+      </form>
+    </div>
+    <p class="foot"><a href="#" id="backLogin">← 로그인으로 돌아가기</a></p>
+  </section>
+
+  <!-- 새 비밀번호 (메일 링크로 들어온 경우) -->
+  <section id="newPwView" class="hide">
+    <div class="head"><h1>새 비밀번호 설정</h1><p>앞으로 앱과 홈페이지에서 이 비밀번호를 씁니다.</p></div>
+    <div class="card">
+      <form id="newPwForm">
+        <div class="field"><label for="nPw">새 비밀번호</label><div class="input"><input id="nPw" type="password" autocomplete="new-password" required><button type="button" class="eye" data-for="nPw">보기</button></div><div class="hint">8자 이상, 영문과 숫자를 섞어 주세요.</div></div>
+        <div class="field"><label for="nPw2">새 비밀번호 확인</label><div class="input"><input id="nPw2" type="password" autocomplete="new-password" required></div></div>
+        <button class="btn" type="submit">비밀번호 변경</button>
+        <div class="msg" id="nMsg" role="alert"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 로그인된 상태: 내 계정 -->
+  <section id="accountView" class="hide">
+    <div class="head"><h1>내 계정</h1><p id="accEmail"></p></div>
+    <div class="card">
+      <dl class="info" id="accInfo"><dt>라이선스</dt><dd>불러오는 중…</dd></dl>
+      <div class="stack">
+        <a class="btn" href="buy.html" id="accBuy" style="text-align:center;text-decoration:none">라이선스 구매 · 연장</a>
+        <a class="btn line" href="/#download" style="text-align:center;text-decoration:none">앱 내려받기</a>
+        <button class="btn line" id="logout" type="button">로그아웃</button>
+      </div>
+    </div>
+    <p class="foot">문의: <a href="mailto:support@tapevault.net">support@tapevault.net</a></p>
+  </section>
+</div>
+</main>
+
+<footer>
+  <a href="refund-policy.html">환불 정책</a> · <a href="terms-of-service.html">이용약관</a> · <a href="privacy-policy.html">개인정보 처리방침</a><br>
+  상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786 · 통신판매업 신고번호: 2025-서울서초-3564<br>
+  주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동) · 전화: 070-8080-4664 · 이메일: <a href="mailto:support@tapevault.net">support@tapevault.net</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const sb = supabase.createClient('https://udqtrnfkaapzgqruurgq.supabase.co', 'sb_publishable_NhIFmUT1GboO1jLTpxFeEg_E3B9W5F0');
+const $ = id => document.getElementById(id);
+const params = new URLSearchParams(location.search);
+// 로그인 후 돌아갈 곳: 같은 사이트 안의 경로만 허용(외부 주소로 보내는 것을 막는다)
+const next = (() => { const n = params.get('next') || ''; return /^[a-z0-9_-]+\.html(\?[\w=&.-]*)?$/i.test(n) ? n : ''; })();
+let mode = params.get('mode') === 'signup' ? 'signup' : 'login';
+
+function view(id) { ['authView', 'resetView', 'newPwView', 'accountView'].forEach(v => $(v).classList.toggle('hide', v !== id)); }
+function say(el, text, ok) { el.textContent = text; el.className = 'msg ' + (ok ? 'ok' : 'err'); }
+
+function setMode(m) {
+  mode = m; const s = m === 'signup';
+  $('tabLogin').classList.toggle('on', !s); $('tabSignup').classList.toggle('on', s);
+  $('title').textContent = s ? '회원가입' : '로그인';
+  $('subtitle').textContent = s ? '가입하면 1개월 무료 체험이 바로 시작됩니다.' : 'TapeVault 앱과 같은 계정으로 로그인하세요.';
+  ['pw2Field', 'agreeBox', 'pwHint'].forEach(id => $(id).classList.toggle('hide', !s));
+  $('loginRow').classList.toggle('hide', s);
+  $('pw').autocomplete = s ? 'new-password' : 'current-password';
+  $('submitBtn').textContent = s ? '가입하기' : '로그인';
+  $('foot').innerHTML = s ? '이미 계정이 있으신가요? <a href="#" id="footSwitch">로그인</a>' : '계정이 없으신가요? <a href="#" id="footSwitch">회원가입</a> · 가입하면 1개월 무료 체험';
+  $('footSwitch').onclick = e => { e.preventDefault(); setMode(s ? 'login' : 'signup'); };
+  $('msg').textContent = '';
+}
+$('tabLogin').onclick = () => setMode('login');
+$('tabSignup').onclick = () => setMode('signup');
+document.querySelectorAll('.eye').forEach(b => b.onclick = () => { const i = $(b.dataset.for); i.type = i.type === 'password' ? 'text' : 'password'; b.textContent = i.type === 'password' ? '보기' : '숨기기'; });
+$('agAll').onchange = () => document.querySelectorAll('.ag').forEach(c => c.checked = $('agAll').checked);
+document.querySelectorAll('.ag').forEach(c => c.onchange = () => $('agAll').checked = [...document.querySelectorAll('.ag')].every(x => x.checked));
+
+const strong = p => p.length >= 8 && /[a-z]/i.test(p) && /\d/.test(p);
+const authErr = m => /invalid login/i.test(m) ? '이메일 또는 비밀번호가 맞지 않습니다.'
+  : /not confirmed/i.test(m) ? '이메일 인증이 아직 안 됐습니다. 가입 때 받은 메일의 링크를 눌러 주세요.'
+  : /registered|already/i.test(m) ? '이미 가입된 이메일입니다. 로그인해 주세요.'
+  : /rate limit|too many/i.test(m) ? '시도가 너무 많습니다. 잠시 뒤 다시 해 주세요.' : m;
+
+$('authForm').onsubmit = async e => {
+  e.preventDefault();
+  const email = $('email').value.trim(), pw = $('pw').value, btn = $('submitBtn');
+  if (!/^\S+@\S+\.\S+$/.test(email)) return say($('msg'), '이메일 주소를 확인해 주세요.');
+  if (!pw) return say($('msg'), '비밀번호를 입력해 주세요.');
+  if (mode === 'signup') {
+    if (!strong(pw)) return say($('msg'), '비밀번호는 8자 이상, 영문과 숫자를 섞어 주세요.');
+    if (pw !== $('pw2').value) return say($('msg'), '비밀번호 확인이 일치하지 않습니다.');
+    if (![...document.querySelectorAll('.ag')].every(c => c.checked)) return say($('msg'), '필수 약관에 동의해 주세요.');
+  }
+  btn.disabled = true; $('msg').textContent = '';
+  try {
+    if (mode === 'signup') {
+      const { data, error } = await sb.auth.signUp({ email, password: pw, options: { emailRedirectTo: location.origin + '/login.html' + (next ? '?next=' + encodeURIComponent(next) : '') } });
+      if (error) throw error;
+      if (!data.session) { say($('msg'), `${email} 로 인증 메일을 보냈습니다.\n메일의 링크를 누르면 가입이 끝납니다.`, true); return; }
+      return done(data.session);
+    }
+    const { data, error } = await sb.auth.signInWithPassword({ email, password: pw });
+    if (error) throw error;
+    done(data.session);
+  } catch (err) { say($('msg'), authErr(err.message)); }
+  finally { btn.disabled = false; }
+};
+
+$('toReset').onclick = e => { e.preventDefault(); $('rEmail').value = $('email').value; view('resetView'); };
+$('backLogin').onclick = e => { e.preventDefault(); view('authView'); };
+$('resetForm').onsubmit = async e => {
+  e.preventDefault();
+  const { error } = await sb.auth.resetPasswordForEmail($('rEmail').value.trim(), { redirectTo: location.origin + '/login.html?mode=recovery' });
+  if (error) return say($('rMsg'), authErr(error.message));
+  say($('rMsg'), '메일을 보냈습니다. 받은편지함(스팸함 포함)을 확인해 주세요.', true);
+};
+$('newPwForm').onsubmit = async e => {
+  e.preventDefault();
+  if (!strong($('nPw').value)) return say($('nMsg'), '비밀번호는 8자 이상, 영문과 숫자를 섞어 주세요.');
+  if ($('nPw').value !== $('nPw2').value) return say($('nMsg'), '비밀번호 확인이 일치하지 않습니다.');
+  const { error } = await sb.auth.updateUser({ password: $('nPw').value });
+  if (error) return say($('nMsg'), authErr(error.message));
+  say($('nMsg'), '비밀번호를 바꿨습니다.', true);
+  setTimeout(async () => { const { data } = await sb.auth.getSession(); if (data.session) done(data.session); }, 900);
+};
+$('logout').onclick = async () => { await sb.auth.signOut(); location.href = 'login.html'; };
+
+async function done(session) {
+  if (next) { location.href = next; return; }
+  view('accountView');
+  $('accEmail').textContent = session.user.email;
+  const { data } = await sb.from('licenses').select('license_no,edition,kind,status,expires_at').order('expires_at', { ascending: false }).limit(1);
+  const l = data && data[0];
+  if (!l) { $('accInfo').innerHTML = '<dt>라이선스</dt><dd>없음</dd>'; return; }
+  const kind = { trial: '체험', beta: '베타', paid: '유료', perpetual: '영구' }[l.kind] || l.kind;
+  const expired = l.kind !== 'perpetual' && new Date(l.expires_at) < new Date();
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  $('accInfo').innerHTML = `<dt>에디션</dt><dd>${l.edition === 'autoloader' ? 'Autoloader' : 'Starter'} ${esc(kind)}
+      <span class="badge ${expired || l.status !== 'active' ? 'warn' : ''}">${l.status !== 'active' ? '정지' : expired ? '만료' : '사용 중'}</span></dd>
+    <dt>번호</dt><dd>${esc(l.license_no || '—')}</dd>
+    <dt>사용 기간</dt><dd>${l.kind === 'perpetual' ? '제한 없음' : esc(String(l.expires_at).slice(0, 10)) + ' 까지'}</dd>`;
+  if (l.kind === 'perpetual') $('accBuy').classList.add('hide');
+}
+
+(async () => {
+  setMode(mode);
+  sb.auth.onAuthStateChange(ev => { if (ev === 'PASSWORD_RECOVERY') view('newPwView'); });
+  if (params.get('mode') === 'recovery' || /type=recovery/.test(location.hash)) { view('newPwView'); return; }
+  const { data } = await sb.auth.getSession();
+  if (data.session) done(data.session);
+})();
+</script>
+</body>
+</html>

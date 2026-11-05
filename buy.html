@@ -51,15 +51,13 @@ input[type=email],input[type=password]{width:100%;background:#0b0b0d;border:0.5p
 
   <!-- 1) 로그인 -->
   <div id="loginCard" class="card">
-    <h2 id="loginTitle">1. TapeVault 계정으로 로그인</h2>
-    <p class="note" style="margin-top:0" id="loginNote">앱에서 쓰는 계정으로 로그인하세요. 라이선스는 이 계정에 적용되고, 앱에 같은 계정으로 로그인하면 바로 반영됩니다. 계정이 없으면 <a href="#" id="toSignup">회원가입</a>.</p>
-    <form id="loginForm">
-      <label for="email">이메일</label><input id="email" type="email" autocomplete="email" required>
-      <label for="pw">비밀번호</label><input id="pw" type="password" autocomplete="current-password" required>
-      <div id="pw2Row" class="hide"><label for="pw2">비밀번호 확인</label><input id="pw2" type="password" autocomplete="new-password" minlength="6"></div>
-      <button class="btn" type="submit" id="loginBtn">로그인</button>
-      <div id="loginMsg" class="msg"></div>
-    </form>
+    <h2>1. 로그인</h2>
+    <p class="note" style="margin-top:0">결제한 라이선스는 로그인한 계정에 적용됩니다. TapeVault 앱과 같은 계정으로 로그인하세요.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <a class="btn" id="goLogin" href="login.html?next=buy.html" style="text-decoration:none">로그인</a>
+      <a class="btn" id="goSignup" href="login.html?mode=signup&next=buy.html" style="text-decoration:none;background:none;border:0.5px solid #2a3245;color:#e8eaf0">회원가입 (1개월 무료 체험)</a>
+    </div>
+    <div id="loginMsg" class="msg"></div>
   </div>
 
   <!-- 2) 요금제 + 결제 -->
@@ -112,13 +110,9 @@ const ERR = {
 };
 const errText = e => { const m = String(e && e.message || e); const k = Object.keys(ERR).find(k => m.includes(k)); return k ? ERR[k] : m; };
 
-let prices = [], edition = ['starter', 'autoloader'].includes(new URLSearchParams(location.search).get('ed')) ? new URLSearchParams(location.search).get('ed') : 'starter', widgets = null, user = null, signup = false;
-$('toSignup').onclick = e => {
-  e.preventDefault(); signup = true;
-  $('loginTitle').textContent = '1. TapeVault 회원가입';
-  $('loginNote').innerHTML = '가입하면 1개월 무료 체험이 바로 시작됩니다. 앱에서도 이 계정으로 로그인하세요.';
-  $('pw2Row').classList.remove('hide'); $('pw').autocomplete = 'new-password'; $('loginBtn').textContent = '가입하기';
-};
+{ const ed = new URLSearchParams(location.search).get('ed'); if (ed) { const n = encodeURIComponent('buy.html?ed=' + ed); document.getElementById('goLogin').href = 'login.html?next=' + n; document.getElementById('goSignup').href = 'login.html?mode=signup&next=' + n; } }
+let prices = [], edition = ['starter', 'autoloader'].includes(new URLSearchParams(location.search).get('ed')) ? new URLSearchParams(location.search).get('ed') : 'starter', widgets = null, user = null;
+
 
 // 상품·결제창은 로그인 전에도 보여 준다(결제 버튼을 누를 때 로그인 확인)
 async function initShop() {
@@ -167,28 +161,13 @@ function renderPlans() {
   $('payBtn').textContent = `${won(price().amount)} 결제하기`;
 }
 
-$('loginForm').onsubmit = async e => {
-  e.preventDefault(); $('loginMsg').textContent = '';
-  if (signup) {
-    if ($('pw').value.length < 6) return $('loginMsg').textContent = '비밀번호는 6자 이상으로 정해 주세요.';
-    if ($('pw').value !== $('pw2').value) return $('loginMsg').textContent = '비밀번호 확인이 일치하지 않습니다.';
-    const { data, error } = await sb.auth.signUp({ email: $('email').value.trim(), password: $('pw').value });
-    if (error) return $('loginMsg').textContent = /registered/i.test(error.message) ? '이미 가입된 이메일입니다. 로그인해 주세요.' : error.message;
-    if (!data.session) { $('loginMsg').innerHTML = '<span class="ok">확인 메일을 보냈습니다. 메일의 링크를 누른 뒤 이 화면에서 로그인해 주세요.</span>'; return; }
-    return showBuy(data.session);
-  }
-  const { data, error } = await sb.auth.signInWithPassword({ email: $('email').value.trim(), password: $('pw').value });
-  if (error) { $('loginMsg').textContent = error.message === 'Invalid login credentials' ? '이메일 또는 비밀번호가 맞지 않습니다.' : error.message; return; }
-  if (new URLSearchParams(location.search).get('result') === 'success') return location.reload();   // 결제 확인 이어서
-  showBuy(data.session);
-};
 $('logout').onclick = async () => { await sb.auth.signOut(); location.href = location.pathname; };
 
 $('payBtn').onclick = async () => {
   $('payMsg').textContent = '';
   if (!user) {
     $('loginMsg').textContent = '결제하려면 먼저 로그인하거나 회원가입해 주세요.';
-    $('loginCard').scrollIntoView({ behavior: 'smooth' }); $('email').focus();
+    $('loginCard').scrollIntoView({ behavior: 'smooth' });
     return;
   }
   $('payBtn').disabled = true;
@@ -216,7 +195,7 @@ async function handleReturn(params, session) {
     return false;
   }
   box.innerHTML = '<h2>결제를 확인하는 중입니다…</h2><p class="note">이 화면을 닫지 마세요.</p>';
-  if (!session) { box.innerHTML = '<h2>로그인이 풀렸습니다</h2><p class="note">다시 로그인하면 결제 확인을 이어서 합니다.</p>'; return false; }
+  if (!session) { box.innerHTML = '<h2>로그인이 풀렸습니다</h2><p class="note">다시 로그인하면 결제 확인을 이어서 합니다.</p><a class="btn" style="text-decoration:none" href="login.html?next=' + encodeURIComponent('buy.html' + location.search) + '">로그인</a>'; return false; }
   try {
     const r = await fetch(CFG.workerUrl + '/pay/confirm', {
       method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + session.access_token },
