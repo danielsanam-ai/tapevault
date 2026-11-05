@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://udqtrnfkaapzgqruurgq.supabase.co; base-uri 'self'; object-src 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<style id="antiClickjack">body{display:none!important}</style>
+<script>if (self === top) { var s = document.getElementById("antiClickjack"); s.parentNode.removeChild(s); } else { top.location = self.location; }</script>
 <title>TapeVault 로그인</title>
 <meta name="robots" content="noindex">
 <style>
@@ -83,8 +87,8 @@ footer a{color:#8b96b8}
         <div class="row" id="loginRow"><span></span><a href="#" id="toReset">비밀번호를 잊으셨나요?</a></div>
         <div class="agree hide" id="agreeBox">
           <label class="all"><input type="checkbox" id="agAll"> 모두 동의합니다</label>
-          <label><input type="checkbox" class="ag" required> <span>[필수] <a href="terms-of-service.html" target="_blank">이용약관</a> 동의</span></label>
-          <label><input type="checkbox" class="ag" required> <span>[필수] <a href="privacy-policy.html" target="_blank">개인정보 수집·이용</a> 동의</span></label>
+          <label><input type="checkbox" class="ag" required> <span>[필수] <a href="terms-of-service.html" target="_blank" rel="noopener">이용약관</a> 동의</span></label>
+          <label><input type="checkbox" class="ag" required> <span>[필수] <a href="privacy-policy.html" target="_blank" rel="noopener">개인정보 수집·이용</a> 동의</span></label>
         </div>
         <button class="btn" type="submit" id="submitBtn">로그인</button>
         <div class="msg" id="msg" role="alert"></div>
@@ -141,7 +145,7 @@ footer a{color:#8b96b8}
   주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동) · 전화: 070-8080-4664 · 이메일: <a href="mailto:support@tapevault.net">support@tapevault.net</a>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="vendor/supabase-js-2.45.4.min.js"></script>
 <script>
 const sb = supabase.createClient('https://udqtrnfkaapzgqruurgq.supabase.co', 'sb_publishable_NhIFmUT1GboO1jLTpxFeEg_E3B9W5F0');
 const $ = id => document.getElementById(id);

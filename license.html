@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://danielsanam-ai.github.io; base-uri 'self'; object-src 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>License — TapeVault</title>
 <meta name="description" content="TapeVault Software License Agreement (EULA) — license grant, restrictions, and third-party component notices.">
 <style>
@@ -111,7 +113,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
       </svg>
     </div>
     <span class="nav-logo-text">Tape<b>Vault</b></span>
-    <span class="nav-ver">v1.0.0</span>
+    <span class="nav-ver">v1.2.6</span>
   </a>
   <div class="nav-links" id="nav-links">
     <a href="index.html#gui" data-i18n="nav_how">How it works</a>
@@ -180,7 +182,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
   </div>
 
   <h2 id="grant" data-i18n="h1">1. License grant</h2>
-  <p data-i18n="p1a">Subject to your active, paid subscription (or active free trial) and compliance with this Agreement, <strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong> ("Licensor") grants you a limited, non-exclusive, non-transferable (except as permitted in Section 1.1), revocable license to install and use one copy of TapeVault ("Software") on one Windows computer at a time, for your internal business or personal archive-management purposes.</p>
+  <p data-i18n="p1a">Subject to your active, paid subscription (or active free trial) and compliance with this Agreement, <strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong> ("Licensor") grants you a limited, non-exclusive, non-transferable (except as permitted in Section 1.1), revocable license to install and use one copy of TapeVault ("Software") on one Windows or macOS computer at a time, for your internal business or personal archive-management purposes.</p>
   <p data-i18n="p1b"><strong>1.1 License transfer.</strong> You may transfer your license to a different computer by deactivating it on the original machine and activating it on the new one. Simultaneous activation on more than one machine under a single license is not permitted.</p>
 
   <h2 id="restrictions" data-i18n="h2">2. Restrictions</h2>
@@ -198,7 +200,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
   <p data-i18n="p3">The Software is licensed, not sold. Licensor and its licensors retain all right, title, and interest in and to the Software, including all intellectual property rights. No rights are granted to you other than as expressly set out in this Agreement.</p>
 
   <h2 id="term" data-i18n="h4">4. Term &amp; termination</h2>
-  <p data-i18n="p4">This license is effective for as long as your subscription or trial remains active. It terminates automatically if your subscription lapses (there is no automatic renewal — see the <a href="terms-of-service.html">Terms of Service</a>) or if you breach this Agreement. Upon termination, you must stop using the Software; local data already stored in your TapeVault catalog database remains yours and accessible in read-only mode as described in Section 7.</p>
+  <p data-i18n="p4">This license is effective for as long as your paid license term or free trial remains active. It terminates automatically when the license term ends (there is no automatic renewal — see the <a href="terms-of-service.html">Terms of Service</a>) or if you breach this Agreement. Upon termination, you must stop using the Software; local data already stored in your TapeVault catalog database remains yours and is never deleted by us, as described in Section 7.</p>
 
   <h2 id="updates" data-i18n="h5">5. Updates</h2>
   <p data-i18n="p5">Licensor may release updates, patches, or new versions of the Software from time to time. Updates may be required to maintain full functionality and may be subject to additional or updated terms, which will be presented to you at the time of update.</p>
@@ -234,7 +236,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
 <footer>
   <div class="biz-info" data-i18n="biz_info">Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a></div>
   <div class="footer-bottom">
-    <div class="footer-left" data-i18n="foot_left">TapeVault v1.0.0 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
+    <div class="footer-left" data-i18n="foot_left">TapeVault v1.2.6 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
     <div class="footer-right">
       <a href="index.html" data-i18n="foot_home">Home</a>
       <a href="privacy-policy.html" data-i18n="foot_privacy">Privacy Policy</a>
@@ -263,7 +265,7 @@ const T = {
     toc9:'9. Limitation of liability', toc10:'10. Governing law', toc11:'11. Contact us',
     intro_alert:'This is a proprietary license (UNLICENSED / all rights reserved) — TapeVault is <strong>not</strong> open-source software. This page governs your right to install and run the application; your billing relationship is governed separately by the <a href="terms-of-service.html">Terms of Service</a>.',
     h1:'1. License grant',
-    p1a:'Subject to your active, paid subscription (or active free trial) and compliance with this Agreement, <strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong> ("Licensor") grants you a limited, non-exclusive, non-transferable (except as permitted in Section 1.1), revocable license to install and use one copy of TapeVault ("Software") on one Windows computer at a time, for your internal business or personal archive-management purposes.',
+    p1a:'Subject to your active, paid subscription (or active free trial) and compliance with this Agreement, <strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong> ("Licensor") grants you a limited, non-exclusive, non-transferable (except as permitted in Section 1.1), revocable license to install and use one copy of TapeVault ("Software") on one Windows or macOS computer at a time, for your internal business or personal archive-management purposes.',
     p1b:'<strong>1.1 License transfer.</strong> You may transfer your license to a different computer by deactivating it on the original machine and activating it on the new one. Simultaneous activation on more than one machine under a single license is not permitted.',
     h2:'2. Restrictions', p2a:'You shall not, and shall not permit any third party to:',
     p2b:'Copy, modify, or create derivative works of the Software',
@@ -273,7 +275,7 @@ const T = {
     p2f:'Circumvent or attempt to circumvent license activation, trial limitations, or any other technical protection measures',
     p2g:'Use the Software to build a competing product or service',
     h3:'3. Ownership', p3:'The Software is licensed, not sold. Licensor and its licensors retain all right, title, and interest in and to the Software, including all intellectual property rights. No rights are granted to you other than as expressly set out in this Agreement.',
-    h4:'4. Term &amp; termination', p4:'This license is effective for as long as your subscription or trial remains active. It terminates automatically if your subscription lapses (there is no automatic renewal — see the <a href="terms-of-service.html">Terms of Service</a>) or if you breach this Agreement. Upon termination, you must stop using the Software; local data already stored in your TapeVault catalog database remains yours and accessible in read-only mode as described in Section 7.',
+    h4:'4. Term &amp; termination', p4:'This license is effective for as long as your paid license term or free trial remains active. It terminates automatically when the license term ends (there is no automatic renewal — see the <a href="terms-of-service.html">Terms of Service</a>) or if you breach this Agreement. Upon termination, you must stop using the Software; local data already stored in your TapeVault catalog database remains yours and is never deleted by us, as described in Section 7.',
     h5:'5. Updates', p5:'Licensor may release updates, patches, or new versions of the Software from time to time. Updates may be required to maintain full functionality and may be subject to additional or updated terms, which will be presented to you at the time of update.',
     h6:'6. Third-party &amp; open-source components', p6a:'The Software may interoperate with the following third-party components, each governed by its own license, independent of this Agreement:',
     tb_h1:'Component', tb_h2:'Purpose', tb_h3:'License',
@@ -288,7 +290,7 @@ const T = {
     h10:'10. Governing law', p10:'This Agreement is governed by the laws of the Republic of Korea. Any dispute shall be subject to the exclusive jurisdiction of the courts having jurisdiction over Seocho-gu, Seoul, Republic of Korea, except where mandatory local law grants you the right to bring proceedings in your own country of residence.',
     h11:'11. Contact us',
     p11:'<strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>Seocho-gu, Seoul, Republic of Korea<br>Email: <a href="mailto:support@tapevault.net">support@tapevault.net</a>',
-    foot_left:'TapeVault v1.0.0 · Built by Veteran IT · © 2026 Veteran IT Co., Ltd.',
+    foot_left:'TapeVault v1.2.6 · Built by Veteran IT · © 2026 Veteran IT Co., Ltd.',
     foot_home:'Home', foot_privacy:'Privacy Policy', foot_terms:'Terms of Service', foot_license:'License', foot_support:'Support'
   },
   ko: {
@@ -306,7 +308,7 @@ const T = {
     toc9:'9. 책임의 제한', toc10:'10. 준거법', toc11:'11. 문의처',
     intro_alert:'본 라이선스는 독점적 라이선스(UNLICENSED / 모든 권리 보유)이며, TapeVault는 오픈소스 소프트웨어가 <strong>아닙니다</strong>. 이 페이지는 애플리케이션을 설치하고 실행할 귀하의 권리를 규율하며, 결제 관계는 별도로 <a href="terms-of-service.html">이용약관</a>의 적용을 받습니다.',
     h1:'1. 라이선스 부여',
-    p1a:'활성 상태의 유료 구독(또는 활성 무료 체험)을 유지하고 본 계약을 준수하는 것을 조건으로, <strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong>("라이선서")는 귀하에게 내부 업무 또는 개인적인 아카이브 관리 목적으로, 한 번에 한 대의 Windows 컴퓨터에서 TapeVault("소프트웨어") 1부를 설치 및 사용할 수 있는 제한적, 비독점적, 양도 불가능한(제1.1항에서 허용하는 경우 제외), 철회 가능한 라이선스를 부여합니다.',
+    p1a:'활성 상태의 유료 구독(또는 활성 무료 체험)을 유지하고 본 계약을 준수하는 것을 조건으로, <strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong>("라이선서")는 귀하에게 내부 업무 또는 개인적인 아카이브 관리 목적으로, 한 번에 한 대의 Windows 또는 macOS 컴퓨터에서 TapeVault("소프트웨어") 1부를 설치 및 사용할 수 있는 제한적, 비독점적, 양도 불가능한(제1.1항에서 허용하는 경우 제외), 철회 가능한 라이선스를 부여합니다.',
     p1b:'<strong>1.1 라이선스 이전.</strong> 기존 컴퓨터에서 비활성화한 후 새 컴퓨터에서 활성화함으로써 라이선스를 다른 컴퓨터로 이전할 수 있습니다. 하나의 라이선스로 둘 이상의 기기에서 동시에 활성화하는 것은 허용되지 않습니다.',
     h2:'2. 제한 사항', p2a:'귀하는 다음 행위를 하거나 제3자로 하여금 하게 해서는 안 됩니다:',
     p2b:'소프트웨어를 복제, 수정하거나 2차적 저작물을 작성하는 행위',
@@ -316,7 +318,7 @@ const T = {
     p2f:'라이선스 활성화, 체험판 제한 또는 그 밖의 기술적 보호 조치를 우회하거나 우회를 시도하는 행위',
     p2g:'경쟁 제품이나 서비스를 만들기 위해 소프트웨어를 이용하는 행위',
     h3:'3. 소유권', p3:'소프트웨어는 판매가 아닌 라이선스 부여의 대상입니다. 라이선서와 그 라이선스 제공자는 모든 지적재산권을 포함하여 소프트웨어에 대한 모든 권리, 소유권, 이익을 보유합니다. 본 계약에 명시적으로 규정된 것 외에는 어떠한 권리도 귀하에게 부여되지 않습니다.',
-    h4:'4. 기간 및 해지', p4:'본 라이선스는 귀하의 구독 또는 체험이 활성 상태인 동안 유효합니다. 구독이 만료되거나(자동 갱신이 없습니다 — <a href="terms-of-service.html">이용약관</a> 참고) 귀하가 본 계약을 위반하는 경우 자동으로 종료됩니다. 종료 시 소프트웨어 사용을 중단해야 하며, TapeVault 카탈로그 데이터베이스에 이미 저장된 로컬 데이터는 계속 귀하의 소유로 남아 제7항에 설명된 대로 읽기 전용으로 접근할 수 있습니다.',
+    h4:'4. 기간 및 해지', p4:'본 라이선스는 귀하의 유료 사용 기간 또는 무료 체험이 활성 상태인 동안 유효합니다. 사용 기간이 끝나거나(자동 갱신이 없습니다 — <a href="terms-of-service.html">이용약관</a> 참고) 귀하가 본 계약을 위반하는 경우 자동으로 종료됩니다. 종료 시 소프트웨어 사용을 중단해야 하며, TapeVault 카탈로그 데이터베이스에 이미 저장된 로컬 데이터는 계속 귀하의 소유로 남고 제7항에 설명된 대로 당사가 삭제하지 않습니다.',
     h5:'5. 업데이트', p5:'라이선서는 수시로 소프트웨어의 업데이트, 패치, 새 버전을 배포할 수 있습니다. 전체 기능을 유지하기 위해 업데이트가 필요할 수 있으며, 업데이트 시점에 제시되는 추가 또는 개정된 약관이 적용될 수 있습니다.',
     h6:'6. 제3자 및 오픈소스 구성 요소', p6a:'본 소프트웨어는 본 계약과는 별개로 각자의 라이선스가 적용되는 아래 제3자 구성 요소와 상호 운용될 수 있습니다:',
     tb_h1:'구성 요소', tb_h2:'용도', tb_h3:'라이선스',
@@ -331,7 +333,7 @@ const T = {
     h10:'10. 준거법', p10:'본 계약은 대한민국 법률의 적용을 받습니다. 모든 분쟁은 대한민국 서울특별시 서초구를 관할하는 법원의 전속 관할에 따르며, 다만 강행 규정에 따라 귀하의 거주국에서 소송을 제기할 권리가 인정되는 경우는 예외로 합니다.',
     h11:'11. 문의처',
     p11:'<strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>대한민국 서울특별시 서초구<br>이메일: <a href="mailto:support@tapevault.net">support@tapevault.net</a>',
-    foot_left:'TapeVault v1.0.0 · Veteran IT 개발 · © 2026 주식회사 베테랑아이티',
+    foot_left:'TapeVault v1.2.6 · Veteran IT 개발 · © 2026 주식회사 베테랑아이티',
     foot_home:'홈', foot_privacy:'개인정보 처리방침', foot_terms:'이용약관', foot_license:'라이선스', foot_support:'지원'
   },
   ja: {
@@ -349,7 +351,7 @@ const T = {
     toc9:'9. 責任の制限', toc10:'10. 準拠法', toc11:'11. お問い合わせ',
     intro_alert:'本ライセンスは独占的ライセンス（UNLICENSED / 全著作権留保）であり、TapeVaultはオープンソースソフトウェア<strong>ではありません</strong>。本ページはアプリケーションをインストールし実行するお客様の権利を規律するものであり、ご請求に関する契約関係は別途<a href="terms-of-service.html">利用規約</a>の適用を受けます。',
     h1:'1. ライセンスの許諾',
-    p1a:'有効な有料サブスクリプション（または有効な無料体験）を維持し、本契約を遵守することを条件として、<strong>株式会社ベテランIT（Veteran IT Co., Ltd.）</strong>（「ライセンサー」）は、お客様の社内業務または個人的なアーカイブ管理目的のために、一度に1台のWindowsコンピューターでTapeVault（「本ソフトウェア」）を1部インストールおよび使用する、限定的、非独占的、譲渡不可（第1.1項で許容される場合を除く）、取消可能なライセンスをお客様に許諾します。',
+    p1a:'有効な有料サブスクリプション（または有効な無料体験）を維持し、本契約を遵守することを条件として、<strong>株式会社ベテランIT（Veteran IT Co., Ltd.）</strong>（「ライセンサー」）は、お客様の社内業務または個人的なアーカイブ管理目的のために、一度に1台のWindowsまたはmacOSコンピューターでTapeVault（「本ソフトウェア」）を1部インストールおよび使用する、限定的、非独占的、譲渡不可（第1.1項で許容される場合を除く）、取消可能なライセンスをお客様に許諾します。',
     p1b:'<strong>1.1 ライセンスの移行。</strong>元のコンピューターで無効化し、新しいコンピューターで有効化することにより、ライセンスを別のコンピューターに移行できます。1つのライセンスで複数の端末を同時に有効化することはできません。',
     h2:'2. 制限事項', p2a:'お客様は、以下の行為を行ってはならず、また第三者に行わせてはなりません：',
     p2b:'本ソフトウェアを複製、改変し、または二次的著作物を作成する行為',
@@ -359,7 +361,7 @@ const T = {
     p2f:'ライセンス認証、体験版の制限、その他の技術的保護手段を回避し、または回避を試みる行為',
     p2g:'競合する製品やサービスを構築するために本ソフトウェアを使用する行為',
     h3:'3. 所有権', p3:'本ソフトウェアは販売ではなくライセンス供与されるものです。ライセンサーおよびそのライセンサーは、すべての知的財産権を含め、本ソフトウェアに関するすべての権利、権原、利益を保持します。本契約に明示的に定める場合を除き、いかなる権利もお客様に付与されません。',
-    h4:'4. 期間および解除', p4:'本ライセンスは、お客様のサブスクリプションまたは体験が有効である限り効力を有します。サブスクリプションが失効した場合（自動更新はありません — <a href="terms-of-service.html">利用規約</a>参照）、または本契約に違反した場合、自動的に終了します。終了時にはソフトウェアの使用を停止する必要がありますが、TapeVaultのカタログデータベースに既に保存されているローカルデータは引き続きお客様のものであり、第7項に定めるとおり読み取り専用でアクセス可能です。',
+    h4:'4. 期間および解除', p4:'本ライセンスは、お客様の有料の使用期間または無料体験が有効である限り効力を有します。使用期間が終了した場合（自動更新はありません — <a href="terms-of-service.html">利用規約</a>参照）、または本契約に違反した場合、自動的に終了します。終了時にはソフトウェアの使用を停止する必要がありますが、TapeVaultのカタログデータベースに既に保存されているローカルデータは引き続きお客様のものであり、第7項に定めるとおり当社が削除することはありません。',
     h5:'5. アップデート', p5:'ライセンサーは随時、本ソフトウェアのアップデート、パッチ、新バージョンをリリースすることがあります。完全な機能を維持するためにアップデートが必要となる場合があり、アップデート時に追加または改定された条項が提示され、これが適用される場合があります。',
     h6:'6. サードパーティ・オープンソースコンポーネント', p6a:'本ソフトウェアは、本契約とは別に、それぞれ独自のライセンスが適用される以下のサードパーティコンポーネントと連携する場合があります：',
     tb_h1:'コンポーネント', tb_h2:'用途', tb_h3:'ライセンス',
@@ -374,7 +376,7 @@ const T = {
     h10:'10. 準拠法', p10:'本契約は大韓民国の法律に準拠します。すべての紛争は大韓民国ソウル特別市瑞草区を管轄する裁判所の専属管轄に服するものとします。ただし、強行法規によりお客様が居住国で訴訟を提起する権利が認められる場合はこの限りではありません。',
     h11:'11. お問い合わせ',
     p11:'<strong>株式会社ベテランIT（Veteran IT Co., Ltd.）</strong><br>大韓民国ソウル特別市瑞草区<br>メール：<a href="mailto:support@tapevault.net">support@tapevault.net</a>',
-    foot_left:'TapeVault v1.0.0 · Veteran IT製 · © 2026 株式会社ベテランIT',
+    foot_left:'TapeVault v1.2.6 · Veteran IT製 · © 2026 株式会社ベテランIT',
     foot_home:'ホーム', foot_privacy:'プライバシーポリシー', foot_terms:'利用規約', foot_license:'ライセンス', foot_support:'サポート'
   }
 };

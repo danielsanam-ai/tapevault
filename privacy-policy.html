@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://danielsanam-ai.github.io; base-uri 'self'; object-src 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Privacy Policy — TapeVault</title>
 <meta name="description" content="TapeVault Privacy Policy — how Veteran IT Co., Ltd. collects, uses, and protects your personal data, including GDPR rights for EU/EEA users.">
 <style>
@@ -111,7 +113,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
       </svg>
     </div>
     <span class="nav-logo-text">Tape<b>Vault</b></span>
-    <span class="nav-ver">v1.0.0</span>
+    <span class="nav-ver">v1.2.6</span>
   </a>
   <div class="nav-links" id="nav-links">
     <a href="index.html#gui" data-i18n="nav_how">How it works</a>
@@ -195,7 +197,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <tr><td data-i18n="tb1a">Visiting tapevault.net</td><td data-i18n="tb1b">Standard web server logs (IP address, browser type, pages visited, referrer, timestamp) generated automatically by our hosting provider (GitHub Pages). We do not run analytics or advertising scripts on this site.</td></tr>
     <tr><td data-i18n="tb2a">Contacting us by email</td><td data-i18n="tb2b">Your email address, name (if provided), and the content of your message.</td></tr>
     <tr><td data-i18n="tb3a">Purchasing a license</td><td data-i18n="tb3b">Name, email, billing address, and payment details — collected and processed directly by <strong>Toss Payments Co., Ltd.</strong> ("Toss Payments"), our payment service provider. We never receive or store your full card number.</td></tr>
-    <tr><td data-i18n="tb4a">Activating or using TapeVault</td><td data-i18n="tb4b">License key, a hardware fingerprint used to bind the license to one computer, application version, and activation/deactivation timestamps. The catalog database, thumbnails, and file metadata TapeVault creates while you use it are stored <strong>locally on your computer only</strong> and are never transmitted to us.</td></tr>
+    <tr><td data-i18n="tb4a">Activating or using TapeVault</td><td data-i18n="tb4b">Account email address, an account identifier, license number and status (trial, active, expiry date), a machine ID used to bind the license to one computer, platform, application version, and sign-in/activation timestamps. Your password is handled by our authentication provider and is not visible to us. The catalog database, thumbnails, and file metadata TapeVault creates while you use it are stored <strong>locally on your computer only</strong> and are never transmitted to us.</td></tr>
     <tr><td data-i18n="tb5a">Support requests</td><td data-i18n="tb5b">Any information you voluntarily provide (e.g. screenshots, log files, description of the issue) to help us resolve your request.</td></tr>
   </table>
 
@@ -204,7 +206,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <li data-i18n="p3a">To provide, activate, and license the TapeVault software you purchased</li>
     <li data-i18n="p3b">To process payments and issue receipts (via Toss Payments)</li>
     <li data-i18n="p3c">To respond to support and sales inquiries</li>
-    <li data-i18n="p3d">To send license-related notices (e.g. trial expiry reminders, renewal reminders — TapeVault has no automatic renewal)</li>
+    <li data-i18n="p3d">To send account and license-related notices (e.g. email verification, license issuance and payment confirmation — TapeVault has no automatic renewal)</li>
     <li data-i18n="p3e">To detect and prevent fraud, license abuse, or security incidents</li>
     <li data-i18n="p3f">To comply with legal and tax obligations</li>
   </ul>
@@ -220,20 +222,20 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
   </ul>
 
   <h2 id="cookies" data-i18n="h5">5. Cookies and tracking</h2>
-  <p data-i18n="p5a">tapevault.net itself does not set cookies and does not use analytics, advertising, or tracking pixels. If you proceed to purchase, you will use a payment window provided by Toss Payments, which may set its own cookies or similar technologies for fraud prevention and payment processing. See Toss Payments' privacy policy for details on that processing.</p>
+  <p data-i18n="p5a">tapevault.net does not use analytics, advertising, or tracking pixels. The sign-in and purchase pages store your sign-in session in your browser's local storage so you stay signed in; it is not used for tracking and is removed when you sign out. The demo video on the home page loads from YouTube (privacy-enhanced mode, youtube-nocookie.com) only after you press play; before that, no connection to YouTube/Google is made. If you proceed to purchase, you will use a payment window provided by Toss Payments, which may set its own cookies or similar technologies for fraud prevention and payment processing. See Toss Payments' privacy policy for details on that processing.</p>
 
   <h2 id="sharing" data-i18n="h6">6. Sharing with third parties</h2>
   <p data-i18n="p6a">We share personal data only with the following categories of recipients, and only as needed to operate our business:</p>
   <ul>
     <li data-i18n="p6b"><strong>Toss Payments Co., Ltd.</strong> — payment processing and billing, acting as our payment service provider (processor) for payment data</li>
     <li data-i18n="p6c"><strong>GitHub, Inc.</strong> — hosting of this website and software installer downloads</li>
-    <li data-i18n="p6d"><strong>Email service providers</strong> — for sending support replies and license notices</li>
+    <li data-i18n="p6d"><strong>Infrastructure and email providers</strong> — Supabase (account authentication and license database), Cloudflare (payment confirmation and email relay), and email delivery for support replies and license notices</li>
     <li data-i18n="p6e"><strong>Legal or regulatory authorities</strong> — where required by law, court order, or to protect our legal rights</li>
   </ul>
   <p data-i18n="p6f">We do not share personal data with third parties for their own marketing purposes.</p>
 
   <h2 id="transfers" data-i18n="h7">7. International data transfers</h2>
-  <p data-i18n="p7a">Veteran IT Co., Ltd. is based in the Republic of Korea. If you are located in the EU/EEA, UK, or elsewhere outside Korea, your data may be transferred to and processed in Korea and in the countries where our processors (such as GitHub) operate, including the United States. Where required, such transfers rely on appropriate safeguards, including standard contractual clauses used by our processors.</p>
+  <p data-i18n="p7a">Veteran IT Co., Ltd. is based in the Republic of Korea. If you are located in the EU/EEA, UK, or elsewhere outside Korea, your data may be transferred to and processed in Korea and in the countries where our processors (such as GitHub, Supabase, Cloudflare and Google) operate, including the United States. Where required, such transfers rely on appropriate safeguards, including standard contractual clauses used by our processors.</p>
 
   <h2 id="retention" data-i18n="h8">8. Data retention</h2>
   <ul>
@@ -275,7 +277,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
 <footer>
   <div class="biz-info" data-i18n="biz_info">Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a></div>
   <div class="footer-bottom">
-    <div class="footer-left" data-i18n="foot_left">TapeVault v1.0.0 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
+    <div class="footer-left" data-i18n="foot_left">TapeVault v1.2.6 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
     <div class="footer-right">
       <a href="index.html" data-i18n="foot_home">Home</a>
       <a href="privacy-policy.html" data-i18n="foot_privacy">Privacy Policy</a>
@@ -311,11 +313,11 @@ const T = {
     tb1a:'Visiting tapevault.net', tb1b:'Standard web server logs (IP address, browser type, pages visited, referrer, timestamp) generated automatically by our hosting provider (GitHub Pages). We do not run analytics or advertising scripts on this site.',
     tb2a:'Contacting us by email', tb2b:'Your email address, name (if provided), and the content of your message.',
     tb3a:'Purchasing a license', tb3b:'Name, email, billing address, and payment details — collected and processed directly by <strong>Toss Payments Co., Ltd.</strong> ("Toss Payments"), our payment service provider. We never receive or store your full card number.',
-    tb4a:'Activating or using TapeVault', tb4b:'License key, a hardware fingerprint used to bind the license to one computer, application version, and activation/deactivation timestamps. The catalog database, thumbnails, and file metadata TapeVault creates while you use it are stored <strong>locally on your computer only</strong> and are never transmitted to us.',
+    tb4a:'Activating or using TapeVault', tb4b:'Account email address, an account identifier, license number and status (trial, active, expiry date), a machine ID used to bind the license to one computer, platform, application version, and sign-in/activation timestamps. Your password is handled by our authentication provider and is not visible to us. The catalog database, thumbnails, and file metadata TapeVault creates while you use it are stored <strong>locally on your computer only</strong> and are never transmitted to us.',
     tb5a:'Support requests', tb5b:'Any information you voluntarily provide (e.g. screenshots, log files, description of the issue) to help us resolve your request.',
     h3:'3. How we use your data',
     p3a:'To provide, activate, and license the TapeVault software you purchased', p3b:'To process payments and issue receipts (via Toss Payments)',
-    p3c:'To respond to support and sales inquiries', p3d:'To send license-related notices (e.g. trial expiry reminders, renewal reminders — TapeVault has no automatic renewal)',
+    p3c:'To respond to support and sales inquiries', p3d:'To send account and license-related notices (e.g. email verification, license issuance and payment confirmation — TapeVault has no automatic renewal)',
     p3e:'To detect and prevent fraud, license abuse, or security incidents', p3f:'To comply with legal and tax obligations',
     p3g:'We do not sell your personal data, and we do not use it for third-party advertising.',
     h4:'4. Legal basis for processing (GDPR)', p4a:'For visitors and customers in the EU/EEA and UK, we rely on the following legal bases under the General Data Protection Regulation (GDPR):',
@@ -324,15 +326,15 @@ const T = {
     p4d:'<strong>Legal obligation</strong> — retaining invoices and tax records as required by law',
     p4e:'<strong>Consent</strong> — where you voluntarily contact us or opt in to optional communications',
     h5:'5. Cookies and tracking',
-    p5a:'tapevault.net itself does not set cookies and does not use analytics, advertising, or tracking pixels. If you proceed to purchase, you will use a payment window provided by Toss Payments, which may set its own cookies or similar technologies for fraud prevention and payment processing. See Toss Payments\' privacy policy for details on that processing.',
+    p5a:'tapevault.net does not use analytics, advertising, or tracking pixels. The sign-in and purchase pages store your sign-in session in your browser\'s local storage so you stay signed in; it is not used for tracking and is removed when you sign out. The demo video on the home page loads from YouTube (privacy-enhanced mode, youtube-nocookie.com) only after you press play; before that, no connection to YouTube/Google is made. If you proceed to purchase, you will use a payment window provided by Toss Payments, which may set its own cookies or similar technologies for fraud prevention and payment processing. See Toss Payments\' privacy policy for details on that processing.',
     h6:'6. Sharing with third parties', p6a:'We share personal data only with the following categories of recipients, and only as needed to operate our business:',
     p6b:'<strong>Toss Payments Co., Ltd.</strong> — payment processing and billing, acting as our payment service provider (processor) for payment data',
     p6c:'<strong>GitHub, Inc.</strong> — hosting of this website and software installer downloads',
-    p6d:'<strong>Email service providers</strong> — for sending support replies and license notices',
+    p6d:'<strong>Infrastructure and email providers</strong> — Supabase (account authentication and license database), Cloudflare (payment confirmation and email relay), and email delivery for support replies and license notices',
     p6e:'<strong>Legal or regulatory authorities</strong> — where required by law, court order, or to protect our legal rights',
     p6f:'We do not share personal data with third parties for their own marketing purposes.',
     h7:'7. International data transfers',
-    p7a:'Veteran IT Co., Ltd. is based in the Republic of Korea. If you are located in the EU/EEA, UK, or elsewhere outside Korea, your data may be transferred to and processed in Korea and in the countries where our processors (such as GitHub) operate, including the United States. Where required, such transfers rely on appropriate safeguards, including standard contractual clauses used by our processors.',
+    p7a:'Veteran IT Co., Ltd. is based in the Republic of Korea. If you are located in the EU/EEA, UK, or elsewhere outside Korea, your data may be transferred to and processed in Korea and in the countries where our processors (such as GitHub, Supabase, Cloudflare and Google) operate, including the United States. Where required, such transfers rely on appropriate safeguards, including standard contractual clauses used by our processors.',
     h8:'8. Data retention',
     p8a:'Support emails are retained for as long as needed to resolve your request, then archived for up to 3 years for quality and legal purposes',
     p8b:'License and activation records are retained for the duration of your license plus a reasonable period afterward for support and fraud-prevention purposes',
@@ -350,7 +352,7 @@ const T = {
     h12:'12. Changes to this policy', p12a:'We may update this Privacy Policy from time to time. Material changes will be reflected by updating the "Last updated" date at the top of this page. Continued use of our website or software after changes take effect constitutes acceptance of the revised policy.',
     h13:'13. Contact us', p13a:'Questions about this Privacy Policy or your personal data can be sent to:',
     p13b:'<strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>Seocho-gu, Seoul, Republic of Korea<br>Email: <a href="mailto:support@tapevault.net">support@tapevault.net</a>',
-    foot_left:'TapeVault v1.0.0 · Built by Veteran IT · © 2026 Veteran IT Co., Ltd.',
+    foot_left:'TapeVault v1.2.6 · Built by Veteran IT · © 2026 Veteran IT Co., Ltd.',
     foot_home:'Home', foot_privacy:'Privacy Policy', foot_terms:'Terms of Service', foot_license:'License', foot_support:'Support'
   },
   ko: {
@@ -375,11 +377,11 @@ const T = {
     tb1a:'tapevault.net 방문', tb1b:'호스팅 제공업체(GitHub Pages)가 자동으로 생성하는 표준 웹 서버 로그(IP 주소, 브라우저 종류, 방문 페이지, 리퍼러, 시각). 본 사이트는 분석 도구나 광고 스크립트를 사용하지 않습니다.',
     tb2a:'이메일 문의', tb2b:'귀하의 이메일 주소, 이름(제공 시), 문의 내용.',
     tb3a:'라이선스 구매', tb3b:'이름, 이메일, 청구 주소, 결제 정보 — 당사의 결제대행사인 <strong>주식회사 토스페이먼츠</strong>("토스페이먼츠")가 직접 수집 및 처리합니다. 당사는 카드 전체 번호를 받거나 저장하지 않습니다.',
-    tb4a:'TapeVault 활성화 및 사용', tb4b:'라이선스 키, 라이선스를 하나의 컴퓨터에 연결하는 데 사용되는 하드웨어 지문, 애플리케이션 버전, 활성화/비활성화 시각. 사용 중 TapeVault가 생성하는 카탈로그 데이터베이스, 썸네일, 파일 메타데이터는 <strong>오직 귀하의 컴퓨터에만 로컬로 저장</strong>되며 당사로 전송되지 않습니다.',
+    tb4a:'TapeVault 활성화 및 사용', tb4b:'계정 이메일 주소, 계정 식별자, 라이선스 번호와 상태(체험·사용 중·만료일), 라이선스를 한 대의 컴퓨터에 연결하는 데 사용되는 머신 ID, 플랫폼, 애플리케이션 버전, 로그인·활성화 시각. 비밀번호는 인증 서비스 제공업체가 처리하며 당사는 볼 수 없습니다. 사용 중 TapeVault가 생성하는 카탈로그 데이터베이스, 썸네일, 파일 메타데이터는 <strong>오직 귀하의 컴퓨터에만 로컬로 저장</strong>되며 당사로 전송되지 않습니다.',
     tb5a:'지원 요청', tb5b:'요청 해결을 돕기 위해 귀하가 자발적으로 제공하는 정보(예: 스크린샷, 로그 파일, 문제 설명).',
     h3:'3. 정보 이용 방법',
     p3a:'구매하신 TapeVault 소프트웨어의 제공, 활성화, 라이선스 부여', p3b:'결제 처리 및 영수증 발급(토스페이먼츠를 통해)',
-    p3c:'지원 및 영업 문의 응대', p3d:'라이선스 관련 안내 발송(예: 체험판 만료 안내, 갱신 안내 — TapeVault는 자동 갱신이 없습니다)',
+    p3c:'지원 및 영업 문의 응대', p3d:'계정 및 라이선스 관련 안내 발송(예: 이메일 인증, 라이선스 발급·결제 확인 — TapeVault는 자동 갱신이 없습니다)',
     p3e:'사기, 라이선스 오남용, 보안 사고의 탐지 및 방지', p3f:'법적·세무적 의무 준수',
     p3g:'당사는 귀하의 개인정보를 판매하지 않으며, 제3자 광고 목적으로 이용하지 않습니다.',
     h4:'4. 처리의 법적 근거(GDPR)', p4a:'EU/EEA 및 영국의 방문자와 고객에 대해서는 일반 개인정보 보호법(GDPR)에 따라 아래의 법적 근거에 의존합니다:',
@@ -388,15 +390,15 @@ const T = {
     p4d:'<strong>법적 의무</strong> — 법령에 따른 청구서 및 세무 기록 보관',
     p4e:'<strong>동의</strong> — 귀하가 자발적으로 연락하거나 선택적 커뮤니케이션에 동의한 경우',
     h5:'5. 쿠키 및 추적',
-    p5a:'tapevault.net 자체는 쿠키를 설정하지 않으며 분석, 광고, 추적 픽셀을 사용하지 않습니다. 구매를 진행하면 토스페이먼츠가 제공하는 결제창을 이용하게 되며, 이 결제창은 사기 방지와 결제 처리를 위해 자체 쿠키 또는 유사 기술을 사용할 수 있습니다. 자세한 내용은 토스페이먼츠의 개인정보 처리방침을 참고하세요.',
+    p5a:'tapevault.net은 분석, 광고, 추적 픽셀을 사용하지 않습니다. 로그인·구매 페이지는 로그인 상태를 유지하기 위해 로그인 세션을 브라우저의 로컬 저장소에 보관하며, 이는 추적에 사용되지 않고 로그아웃하면 삭제됩니다. 홈페이지의 데모 영상은 재생 버튼을 누른 후에만 YouTube(개인정보 보호 모드, youtube-nocookie.com)에서 불러오며, 그 전에는 YouTube/Google에 접속하지 않습니다. 구매를 진행하면 토스페이먼츠가 제공하는 결제창을 이용하게 되며, 이 결제창은 사기 방지와 결제 처리를 위해 자체 쿠키 또는 유사 기술을 사용할 수 있습니다. 자세한 내용은 토스페이먼츠의 개인정보 처리방침을 참고하세요.',
     h6:'6. 제3자 제공', p6a:'당사는 사업 운영에 필요한 경우에 한해 다음 유형의 수신자에게만 개인정보를 제공합니다:',
     p6b:'<strong>주식회사 토스페이먼츠</strong> — 결제 처리 및 청구 업무(결제대행사로서 결제 정보 처리를 위탁받음)',
     p6c:'<strong>GitHub, Inc.</strong> — 본 웹사이트 및 소프트웨어 설치 파일 다운로드 호스팅',
-    p6d:'<strong>이메일 서비스 제공업체</strong> — 지원 답변 및 라이선스 안내 발송',
+    p6d:'<strong>인프라 및 이메일 서비스 제공업체</strong> — Supabase(계정 인증 및 라이선스 데이터베이스), Cloudflare(결제 확인 및 이메일 중계), 지원 답변·라이선스 안내 메일 발송',
     p6e:'<strong>법적·규제 기관</strong> — 법률, 법원 명령에 따르거나 당사의 법적 권리 보호를 위해 필요한 경우',
     p6f:'당사는 제3자의 마케팅 목적으로 개인정보를 제공하지 않습니다.',
     h7:'7. 국외 이전',
-    p7a:'주식회사 베테랑아이티는 대한민국에 소재하고 있습니다. 귀하가 EU/EEA, 영국 또는 한국 외 지역에 거주하는 경우, 귀하의 정보는 한국 및 당사의 처리업체(GitHub 등)가 운영하는 국가(미국 포함)로 이전되어 처리될 수 있습니다. 필요한 경우 이러한 이전은 처리업체가 사용하는 표준계약조항 등 적절한 안전장치에 따라 이루어집니다.',
+    p7a:'주식회사 베테랑아이티는 대한민국에 소재하고 있습니다. 귀하가 EU/EEA, 영국 또는 한국 외 지역에 거주하는 경우, 귀하의 정보는 한국 및 당사의 처리업체(GitHub, Supabase, Cloudflare, Google 등)가 운영하는 국가(미국 포함)로 이전되어 처리될 수 있습니다. 필요한 경우 이러한 이전은 처리업체가 사용하는 표준계약조항 등 적절한 안전장치에 따라 이루어집니다.',
     h8:'8. 보유 기간',
     p8a:'지원 이메일은 요청 해결에 필요한 기간 동안 보관 후, 품질 관리 및 법적 목적으로 최대 3년간 보관됩니다',
     p8b:'라이선스 및 활성화 기록은 라이선스 유효 기간 및 지원·부정사용 방지 목적으로 합리적인 추가 기간 동안 보관됩니다',
@@ -415,7 +417,7 @@ const T = {
     h12:'12. 방침 변경', p12a:'당사는 본 개인정보 처리방침을 수시로 업데이트할 수 있습니다. 중요한 변경 사항은 이 페이지 상단의 "최종 수정일"을 갱신하여 반영합니다. 변경 사항 적용 이후에도 웹사이트나 소프트웨어를 계속 이용하시면 개정된 방침에 동의한 것으로 간주됩니다.',
     h13:'13. 문의처', p13a:'본 개인정보 처리방침이나 귀하의 개인정보에 대한 문의는 아래로 보내주세요:',
     p13b:'<strong>주식회사 베테랑아이티 (Veteran IT Co., Ltd.)</strong><br>대한민국 서울특별시 서초구<br>이메일: <a href="mailto:support@tapevault.net">support@tapevault.net</a>',
-    foot_left:'TapeVault v1.0.0 · Veteran IT 개발 · © 2026 주식회사 베테랑아이티',
+    foot_left:'TapeVault v1.2.6 · Veteran IT 개발 · © 2026 주식회사 베테랑아이티',
     foot_home:'홈', foot_privacy:'개인정보 처리방침', foot_terms:'이용약관', foot_license:'라이선스', foot_support:'지원'
   },
   ja: {
@@ -440,11 +442,11 @@ const T = {
     tb1a:'tapevault.netへの訪問', tb1b:'ホスティングプロバイダー（GitHub Pages）が自動生成する標準的なWebサーバーログ（IPアドレス、ブラウザの種類、閲覧ページ、リファラー、日時）。本サイトではアクセス解析や広告スクリプトは使用していません。',
     tb2a:'メールでのお問い合わせ', tb2b:'お客様のメールアドレス、氏名（提供された場合）、お問い合わせ内容。',
     tb3a:'ライセンスの購入', tb3b:'氏名、メールアドレス、請求先住所、決済情報 — 当社の決済代行会社である<strong>Toss Payments Co., Ltd.</strong>（「Toss Payments」）が直接収集・処理します。当社がカード番号全体を受け取ったり保存したりすることはありません。',
-    tb4a:'TapeVaultの認証・利用', tb4b:'ライセンスキー、ライセンスを1台のコンピューターに紐付けるためのハードウェアフィンガープリント、アプリケーションバージョン、認証・認証解除の日時。利用中にTapeVaultが作成するカタログデータベース、サムネイル、ファイルメタデータは<strong>お客様のコンピューター内にのみローカル保存</strong>され、当社に送信されることはありません。',
+    tb4a:'TapeVaultの認証・利用', tb4b:'アカウントのメールアドレス、アカウント識別子、ライセンス番号と状態（体験・有効・有効期限）、ライセンスを1台のコンピューターに紐づけるためのマシンID、プラットフォーム、アプリのバージョン、ログイン・認証の日時。パスワードは認証サービス提供事業者が処理し、当社には見えません。ご利用中にTapeVaultが作成するカタログデータベース、サムネイル、ファイルのメタデータは<strong>お客様のコンピューター上にのみローカル保存</strong>され、当社へ送信されることはありません。',
     tb5a:'サポートへのお問い合わせ', tb5b:'お問い合わせの解決のためにお客様が任意でご提供いただく情報（スクリーンショット、ログファイル、問題の説明など）。',
     h3:'3. 情報の利用方法',
     p3a:'ご購入いただいたTapeVaultソフトウェアの提供・認証・ライセンス付与のため', p3b:'決済処理および領収書発行のため（Toss Payments経由）',
-    p3c:'サポートおよび営業に関するお問い合わせへの対応のため', p3d:'ライセンスに関する通知の送付のため（体験版の期限案内、更新案内など — TapeVaultに自動更新はありません）',
+    p3c:'サポートおよび営業に関するお問い合わせへの対応のため', p3d:'アカウントおよびライセンスに関する通知の送信（例：メール認証、ライセンス発行・決済確認 — TapeVaultに自動更新はありません）',
     p3e:'不正行為、ライセンスの不正利用、セキュリティインシデントの検知・防止のため', p3f:'法令および税務上の義務を遵守するため',
     p3g:'当社はお客様の個人情報を販売することはなく、第三者の広告目的で利用することもありません。',
     h4:'4. 処理の法的根拠（GDPR）', p4a:'EU/EEAおよび英国のお客様については、一般データ保護規則（GDPR）に基づき、以下の法的根拠に依拠します：',
@@ -453,15 +455,15 @@ const T = {
     p4d:'<strong>法的義務</strong> — 法令に基づく請求書・税務記録の保管',
     p4e:'<strong>同意</strong> — お客様が任意でご連絡いただいた場合や、任意のご案内に同意いただいた場合',
     h5:'5. Cookieとトラッキング',
-    p5a:'tapevault.net自体はCookieを設定せず、アクセス解析、広告、トラッキングピクセルも使用していません。購入手続きに進むと、Toss Paymentsが提供する決済画面を利用することになり、そこでは不正防止と決済処理のために独自のCookieまたは類似の技術が使用される場合があります。詳細はToss Paymentsのプライバシーポリシーをご覧ください。',
+    p5a:'tapevault.netは、分析、広告、トラッキングピクセルを使用しません。ログインページと購入ページは、ログイン状態を維持するためにログインセッションをブラウザーのローカルストレージに保存します。これはトラッキングには使用されず、ログアウトすると削除されます。トップページのデモ動画は、再生ボタンを押した後にのみYouTube（プライバシー強化モード、youtube-nocookie.com）から読み込まれ、それまでYouTube/Googleには接続しません。購入手続きに進むと、Toss Paymentsが提供する決済ウィンドウを利用します。決済ウィンドウは不正防止と決済処理のために独自のCookieまたは類似の技術を使用する場合があります。詳細はToss Paymentsのプライバシーポリシーをご確認ください。',
     h6:'6. 第三者提供', p6a:'当社は事業運営に必要な範囲でのみ、以下の種類の提供先に個人情報を共有します：',
     p6b:'<strong>Toss Payments Co., Ltd.</strong> — 決済処理・請求業務（決済代行会社として決済データの処理を受託）',
     p6c:'<strong>GitHub, Inc.</strong> — 本ウェブサイトおよびソフトウェアインストーラーのダウンロードのホスティング',
-    p6d:'<strong>メールサービスプロバイダー</strong> — サポート返信およびライセンス通知の送付のため',
+    p6d:'<strong>インフラおよびメール配信事業者</strong> — Supabase（アカウント認証とライセンスデータベース）、Cloudflare（決済確認とメール中継）、サポート返信・ライセンス通知のメール配信',
     p6e:'<strong>法執行・監督機関</strong> — 法律、裁判所命令に基づく場合、または当社の法的権利を保護するために必要な場合',
     p6f:'当社は第三者の独自マーケティング目的のために個人情報を共有することはありません。',
     h7:'7. 国際的なデータ移転',
-    p7a:'株式会社ベテランITは大韓民国に所在しています。お客様がEU/EEA、英国、または韓国以外の地域にお住まいの場合、お客様のデータは韓国、および当社の処理業者（GitHubなど）が事業を行う国（米国を含む）に移転され処理される場合があります。必要な場合、これらの移転は処理業者が使用する標準契約条項などの適切な保護措置に基づいて行われます。',
+    p7a:'株式会社ベテランITは大韓民国に所在しています。EU/EEA、英国、または韓国国外にお住まいの場合、お客様のデータは韓国および当社の処理業者（GitHub、Supabase、Cloudflare、Googleなど）が運営する国（米国を含む）に移転され、処理される場合があります。必要な場合、かかる移転は処理業者が用いる標準契約条項などの適切な保護措置に基づいて行われます。',
     h8:'8. データの保存期間',
     p8a:'サポートメールはお問い合わせ解決に必要な期間保存され、その後品質管理および法的目的のため最長3年間保管されます',
     p8b:'ライセンスおよび認証記録は、ライセンスの有効期間に加え、サポートおよび不正防止の目的で合理的な追加期間保管されます',
@@ -480,7 +482,7 @@ const T = {
     h12:'12. 本ポリシーの変更', p12a:'当社は本プライバシーポリシーを随時更新することがあります。重要な変更がある場合は、本ページ上部の「最終更新日」を更新して反映します。変更の発効後も本ウェブサイトまたはソフトウェアの利用を継続された場合、改定後のポリシーに同意したものとみなされます。',
     h13:'13. お問い合わせ', p13a:'本プライバシーポリシーまたはお客様の個人情報に関するご質問は、以下までお送りください：',
     p13b:'<strong>株式会社ベテランIT（Veteran IT Co., Ltd.）</strong><br>大韓民国ソウル特別市瑞草区<br>メール：<a href="mailto:support@tapevault.net">support@tapevault.net</a>',
-    foot_left:'TapeVault v1.0.0 · Veteran IT製 · © 2026 株式会社ベテランIT',
+    foot_left:'TapeVault v1.2.6 · Veteran IT製 · © 2026 株式会社ベテランIT',
     foot_home:'ホーム', foot_privacy:'プライバシーポリシー', foot_terms:'利用規約', foot_license:'ライセンス', foot_support:'サポート'
   }
 };

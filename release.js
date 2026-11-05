@@ -1,6 +1,6 @@
 /* 최신 릴리스 정보를 읽어 다운로드 버튼·버전 표기를 갱신한다.
  * 출처: tapevault-releases 의 Pages (latest.json) — scripts/release.py 가 만들고 릴리스 게시 때 공개된다.
- * 읽기에 실패하면 아무것도 바꾸지 않는다 → 페이지에 적힌 기본 값(v1.0.0 버튼)이 그대로 동작한다. */
+ * 읽기에 실패하면 아무것도 바꾸지 않는다 → 페이지에 적힌 기본 값(기본 버튼)이 그대로 동작한다. */
 (function () {
   var LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   var URL_LATEST = (LOCAL && new URLSearchParams(location.search).get('tvlatest')) ||
@@ -11,13 +11,13 @@
 
   var L = {
     en: { win: 'Windows', mac: 'macOS', mac_intel: 'macOS (Intel)', intelbtn: '💻 Download for Intel Mac', intelnote: 'v{v} · Intel Mac · ~{n} MB', dl: '⬇ Download TapeVault v{v} for Windows', macnote: 'v{v} · Apple Silicon (M1/M2/M3) only · ~{n} MB',
-          sha: 'SHA-256', mb: 'MB', notes: 'Release notes', feat: 'Platform support', yes: '✓', no: '—',
+          sha: 'SHA-256', mb: 'MB', notes: 'Release notes', verify: 'How to verify the checksum', feat: 'Platform support', yes: '✓', no: '—',
           ver: 'v{v} · {d} · Requires {os}', foot: 'TapeVault v{v} · Built by Veteran IT · Payments by Toss Payments · No auto-renewal' },
     ko: { win: 'Windows', mac: 'macOS', mac_intel: 'macOS (Intel)', intelbtn: '💻 Intel Mac용 다운로드', intelnote: 'v{v} · Intel Mac · ~{n} MB', dl: '⬇ TapeVault v{v} Windows용 다운로드', macnote: 'v{v} · Apple Silicon(M1/M2/M3) 전용 · ~{n} MB',
-          sha: 'SHA-256', mb: 'MB', notes: '릴리스 노트', feat: '플랫폼별 지원 기능', yes: '✓', no: '—',
+          sha: 'SHA-256', mb: 'MB', notes: '릴리스 노트', verify: '체크섬 확인 방법', feat: '플랫폼별 지원 기능', yes: '✓', no: '—',
           ver: 'v{v} · {d} · {os} 필요', foot: 'TapeVault v{v} · Veteran IT 개발 · 토스페이먼츠 결제 · 자동 갱신 없음' },
     ja: { win: 'Windows', mac: 'macOS', mac_intel: 'macOS (Intel)', intelbtn: '💻 Intel Mac版をダウンロード', intelnote: 'v{v} · Intel Mac · 約{n} MB', dl: '⬇ TapeVault v{v} Windows版をDL', macnote: 'v{v} · Apple Silicon (M1/M2/M3) 専用 · 約{n} MB',
-          sha: 'SHA-256', mb: 'MB', notes: 'リリースノート', feat: 'プラットフォーム別の対応機能', yes: '✓', no: '—',
+          sha: 'SHA-256', mb: 'MB', notes: 'リリースノート', verify: 'チェックサムの確認方法', feat: 'プラットフォーム別の対応機能', yes: '✓', no: '—',
           ver: 'v{v} · {d} · {os}が必要', foot: 'TapeVault v{v} · Veteran IT製 · Toss Payments決済 · 自動更新なし' }
   };
   var LOCALE = { en: 'en-US', ko: 'ko-KR', ja: 'ja-JP' };
@@ -40,7 +40,8 @@
     return Object.keys(d.platforms).every(function (k) {
       var p = d.platforms[k];
       return /^https:\/\/github\.com\/danielsanam-ai\/tapevault-releases\/releases\/download\//.test(p.url || '') && /^[0-9a-f]{64}$/.test(p.sha256 || '');
-    }) && Object.keys(d.platforms).length > 0;
+    }) && Object.keys(d.platforms).length > 0 &&
+      (!d.page || /^https:\/\/github\.com\/danielsanam-ai\/tapevault-releases\//.test(d.page));
   }
 
   function apply(d) {
@@ -64,7 +65,7 @@
       });
     }
 
-    // 2) 번역 문구의 버전 표기 (스크린샷 캡션의 "v1.0.0" 은 실제 촬영 버전이라 건드리지 않는다)
+    // 2) 번역 문구의 버전 표기 (스크린샷 캡션에는 버전을 적지 않는다)
     Object.keys(L).forEach(function (lang) {
       if (typeof T === 'undefined' || !T[lang]) return;
       var t = L[lang];
@@ -93,7 +94,7 @@
         var p = d.platforms[k];
         return '<div class="dl-row"><a href="' + esc(p.url) + '" rel="noopener">' + esc(t[NAME[k]]) + ' · ' + esc(p.file) +
           '</a> <span>' + Math.round(p.size / 1048576) + ' ' + t.mb + ' · ' + esc(osText(p, lang)) + '</span><code title="' + t.sha + '">' +
-          t.sha + ' ' + esc(p.sha256.slice(0, 16)) + '…</code></div>';
+          t.sha + ' ' + esc(p.sha256) + '</code></div>';
       }).join('');
       var feats = '';
       if (d.features && d.features.length && both) {
@@ -101,7 +102,7 @@
           return '<tr><td>' + esc(f[lang] || f.en) + '</td><td>' + (f.windows ? t.yes : t.no) + '</td><td>' + (f.mac ? t.yes : t.no) + '</td></tr>';
         }).join('') + '</table></details>';
       }
-      host.innerHTML = rows + (d.page ? '<div class="dl-row"><a href="' + esc(d.page) + '" rel="noopener">' + t.notes + ' →</a></div>' : '') + feats;
+      host.innerHTML = rows + '<div class="dl-row"><a href="how-to-install.html#verify">' + t.verify + '</a></div>' + (d.page ? '<div class="dl-row"><a href="' + esc(d.page) + '" rel="noopener">' + t.notes + ' →</a></div>' : '') + feats;
       host.hidden = false;
     }
     if (typeof applyLang === 'function') {
