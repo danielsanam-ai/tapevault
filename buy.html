@@ -63,8 +63,8 @@ input[type=email],input[type=password]{width:100%;background:#0b0b0d;border:0.5p
   </div>
 
   <!-- 2) 요금제 + 결제 -->
-  <div id="buyCard" class="hide">
-    <div class="card">
+  <div id="buyCard">
+    <div class="card hide" id="whoCard">
       <div class="who"><span id="who"></span><button class="btn ghost" id="logout">로그아웃</button></div>
       <div id="current" class="note"></div>
     </div>
@@ -120,9 +120,26 @@ $('toSignup').onclick = e => {
   $('pw2Row').classList.remove('hide'); $('pw').autocomplete = 'new-password'; $('loginBtn').textContent = '가입하기';
 };
 
+// 상품·결제창은 로그인 전에도 보여 준다(결제 버튼을 누를 때 로그인 확인)
+async function initShop() {
+  const { data: p, error } = await sb.from('pay_prices').select('*').order('amount');
+  if (error) { $('payMsg').textContent = '가격 정보를 불러오지 못했습니다: ' + error.message; return; }
+  prices = p; renderPlans();
+  try {
+    const toss = TossPayments(CFG.tossClientKey);
+    widgets = toss.widgets({ customerKey: TossPayments.ANONYMOUS });
+    await widgets.setAmount({ currency: 'KRW', value: price().amount });
+    await Promise.all([
+      widgets.renderPaymentMethods({ selector: '#payment-method', variantKey: 'DEFAULT' }),
+      widgets.renderAgreement({ selector: '#agreement', variantKey: 'AGREEMENT' }),
+    ]);
+    $('payBtn').disabled = false;
+  } catch (e) { $('payMsg').textContent = '결제창을 불러오지 못했습니다: ' + errText(e); }
+}
+
 async function showBuy(session) {
   user = session.user;
-  $('loginCard').classList.add('hide'); $('buyCard').classList.remove('hide');
+  $('loginCard').classList.add('hide'); $('whoCard').classList.remove('hide');
   $('who').textContent = user.email + ' 계정';
   const { data: lic } = await sb.from('licenses').select('license_no,edition,kind,expires_at').order('expires_at', { ascending: false }).limit(1);
   const l = lic && lic[0];
@@ -131,21 +148,11 @@ async function showBuy(session) {
     const ed = l.edition === 'autoloader' ? 'Autoloader' : 'Starter';
     $('current').textContent = `현재: ${ed} ${kind}` + (l.kind === 'perpetual' ? '' : ` · ${String(l.expires_at).slice(0, 10)} 까지`)
       + (l.kind === 'paid' ? ' — 같은 에디션을 구매하면 만료일에서 1년이 늘어납니다.' : '');
-    if (l.kind === 'paid' && new Date(l.expires_at) > new Date()) edition = l.edition;
+    if (l.kind === 'paid' && new Date(l.expires_at) > new Date() && edition !== l.edition) {
+      edition = l.edition;
+      if (prices.length) { renderPlans(); if (widgets) await widgets.setAmount({ currency: 'KRW', value: price().amount }); }
+    }
   }
-  const { data: p, error } = await sb.from('pay_prices').select('*').order('amount');
-  if (error) { $('payMsg').textContent = '가격 정보를 불러오지 못했습니다: ' + error.message; return; }
-  prices = p; renderPlans();
-  try {
-    const toss = TossPayments(CFG.tossClientKey);
-    widgets = toss.widgets({ customerKey: user.id });
-    await widgets.setAmount({ currency: 'KRW', value: price().amount });
-    await Promise.all([
-      widgets.renderPaymentMethods({ selector: '#payment-method', variantKey: 'DEFAULT' }),
-      widgets.renderAgreement({ selector: '#agreement', variantKey: 'AGREEMENT' }),
-    ]);
-    $('payBtn').disabled = false;
-  } catch (e) { $('payMsg').textContent = '결제창을 불러오지 못했습니다: ' + errText(e); }
 }
 const price = () => prices.find(x => x.edition === edition) || prices[0];
 function renderPlans() {
@@ -178,7 +185,13 @@ $('loginForm').onsubmit = async e => {
 $('logout').onclick = async () => { await sb.auth.signOut(); location.href = location.pathname; };
 
 $('payBtn').onclick = async () => {
-  $('payBtn').disabled = true; $('payMsg').textContent = '';
+  $('payMsg').textContent = '';
+  if (!user) {
+    $('loginMsg').textContent = '결제하려면 먼저 로그인하거나 회원가입해 주세요.';
+    $('loginCard').scrollIntoView({ behavior: 'smooth' }); $('email').focus();
+    return;
+  }
+  $('payBtn').disabled = true;
   try {
     const { data: o, error } = await sb.rpc('pay_create_order', { p_edition: edition });
     if (error) throw error;
@@ -233,8 +246,9 @@ async function handleReturn(params, session) {
     $('loginCard').classList.add('hide');
     const done = await handleReturn(params, session);
     if (!session) $('loginCard').classList.remove('hide');
-    if (done || params.get('result') === 'success') return;
+    if (done || params.get('result') === 'success') { $('buyCard').classList.add('hide'); return; }
   }
+  await initShop();
   if (session) showBuy(session);
 })();
 </script>
