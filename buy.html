@@ -67,7 +67,7 @@ input[type=email],input[type=password]{width:100%;background:#0b0b0d;border:0.5p
   </div>
 
   <!-- 2) 요금제 + 결제 -->
-  <div id="buyCard">
+  <div id="buyCard" class="hide">
     <div class="card hide" id="whoCard">
       <div class="who"><span id="who"></span><button class="btn ghost" id="logout">로그아웃</button></div>
       <div id="current"></div>
@@ -240,8 +240,8 @@ async function handleReturn(params, session) {
     if (!session) $('loginCard').classList.remove('hide');
     if (done || params.get('result') === 'success') { $('buyCard').classList.add('hide'); return; }
   }
-  await initShop();
-  if (session) showBuy(session);
+  // 요금제·결제창은 로그인한 경우에만 보여 준다
+  if (session) { $('buyCard').classList.remove('hide'); await initShop(); showBuy(session); }
 })();
 </script>
 </body>
