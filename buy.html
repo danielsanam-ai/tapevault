@@ -35,6 +35,19 @@ input[type=email],input[type=password]{width:100%;background:#0b0b0d;border:0.5p
 .msg{font-size:13px;margin-top:10px;color:#f0a0a0;white-space:pre-line}
 .ok{color:#8fd19e}
 .note{font-size:12px;color:#7d87a6;margin-top:10px}
+.done-head{display:flex;align-items:center;gap:12px}
+.done-ic{width:40px;height:40px;border-radius:50%;background:#16351f;color:#8fd19e;display:flex;align-items:center;justify-content:center;font-size:22px;flex:none;animation:pop .35s ease-out}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.fadein{animation:fadein .4s ease-out}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+.step{display:block;background:#0b0b0d;border:0.5px solid #2a3245;border-radius:10px;padding:12px 14px;color:#e8eaf0;text-decoration:none;transition:border-color .15s,transform .15s}
+a.step:hover{border-color:#3b6fd8;transform:translateY(-1px)}
+.step .n{font-size:11px;color:#7d87a6}
+.step b{display:block;font-size:14px;margin:4px 0 2px}
+.step span{font-size:12px;color:#99a3c4}
+.links{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:13px}
 .test{background:#3a2a10;color:#f5c36b;border-radius:8px;padding:8px 12px;font-size:12px;margin-bottom:16px}
 #payment-method,#agreement{background:#fff;border-radius:10px;overflow:hidden}
 #agreement{margin-top:10px}
@@ -221,10 +234,17 @@ async function handleReturn(params, session) {
     const j = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(j.message || ('오류 ' + r.status));
     const ed = j.edition === 'autoloader' ? 'Autoloader' : 'Starter';
-    box.innerHTML = `<h2 class="ok">결제가 완료되었습니다</h2><dl class="done" style="margin-top:12px">
+    box.classList.add('fadein');
+    box.innerHTML = `<div class="done-head"><div class="done-ic">✓</div><div><h2 class="ok" style="margin:0">결제가 완료되었습니다</h2><div class="note" style="margin-top:2px">라이선스가 계정에 바로 적용되었습니다.</div></div></div><dl class="done" style="margin-top:14px">
       <dt>라이선스</dt><dd>${H(j.license_no)} · ${ed}</dd><dt>사용 기간</dt><dd>${H(String(j.expires_at).slice(0, 10))} 까지</dd>
       <dt>주문번호</dt><dd>${H(params.get('orderId'))}</dd></dl>
-      <p class="note">앱에 같은 계정으로 로그인하면 바로 적용됩니다. 이미 로그인되어 있다면 앱을 다시 실행해 주세요. 안내 메일을 ${user ? H(user.email) : '계정 이메일'} 로 보냈습니다.</p>`;
+      <p class="note">앱에 같은 계정으로 로그인하면 바로 적용됩니다. 이미 로그인되어 있다면 앱을 다시 실행해 주세요. 안내 메일을 ${user ? H(user.email) : '계정 이메일'} 로 보냈습니다.</p>
+      <div class="steps">
+        <a class="step" href="/#download"><div class="n">1단계</div><b>앱 다운로드 →</b><span>Windows · macOS</span></a>
+        <a class="step" href="how-to-install.html"><div class="n">2단계</div><b>설치 가이드 →</b><span>설치와 첫 실행 방법</span></a>
+        <div class="step"><div class="n">3단계</div><b>같은 계정으로 로그인</b><span>${user ? H(user.email) : '결제한 계정'}</span></div>
+      </div>
+      <div class="links"><a href="buy.html">내 라이선스 보기</a><a href="/">홈으로</a><a href="mailto:support@tapevault.net">문의하기</a></div>`;
     history.replaceState(null, '', location.pathname);
     return true;
   } catch (e) {
