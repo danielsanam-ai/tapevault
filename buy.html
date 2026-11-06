@@ -244,7 +244,7 @@ async function handleReturn(params, session) {
         <a class="step" href="how-to-install.html"><div class="n">2단계</div><b>설치 가이드 →</b><span>설치와 첫 실행 방법</span></a>
         <div class="step"><div class="n">3단계</div><b>같은 계정으로 로그인</b><span>${user ? H(user.email) : '결제한 계정'}</span></div>
       </div>
-      <div class="links"><a href="buy.html">내 라이선스 보기</a><a href="/">홈으로</a><a href="mailto:support@tapevault.net">문의하기</a></div>`;
+      <div class="links"><a href="buy.html">내 라이선스 보기</a><a href="/">홈으로</a><a href="mailto:support@tapevault.net">문의하기</a><a href="#" style="margin-left:auto;color:#99a3c4" onclick="document.getElementById('logout').click();return false">로그아웃</a></div>`;
     history.replaceState(null, '', location.pathname);
     return true;
   } catch (e) {
