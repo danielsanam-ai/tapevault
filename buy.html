@@ -58,15 +58,38 @@ a.step:hover{border-color:#3b6fd8;transform:translateY(-1px)}
 .stat div{background:#0b0b0d;border:0.5px solid #1e2330;border-radius:10px;padding:12px 14px}
 .stat span:not(.badge){display:block;font-size:12px;color:#99a3c4}.stat b{font-size:16px;font-weight:600}
 .badge{display:inline-block;font-size:11px;padding:1px 8px;border-radius:20px;background:#1b2a1e;color:#8fd19e;margin-left:6px;vertical-align:2px}
+.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:620px){.cmp{grid-template-columns:1fr}}
+.cmp>div{background:#0b0b0d;border:0.5px solid #2a3245;border-radius:10px;padding:14px}
+.cmp .hot{border-color:#f5a623}
+.cmp h3{margin:0;font-size:12px;letter-spacing:.06em;color:#99a3c4;font-weight:600}
+.cmp .pr{font-size:20px;font-weight:800;margin:6px 0 2px}
+.cmp .pr small{font-size:12px;font-weight:400;color:#99a3c4}
+.cmp ul{list-style:none;padding:0;margin:10px 0 0;font-size:12.5px;line-height:1.9;color:#c8cfe0}
+.cmp li:before{content:"✓ ";color:#8fd19e}
 .badge.warn{background:#3a2a10;color:#f5c36b}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><a class="logo" href="/"><b>Tape</b>Vault</a><span style="display:flex;gap:16px;font-size:13px"><a href="how-to-install.html">설치 가이드</a><a href="/#download">앱 다운로드</a></span></div>
+  <div class="top"><a class="logo" href="/"><b>Tape</b>Vault</a><a href="#" id="planToggle" style="font-size:13px">요금제 보기</a></div>
   <h1>라이선스 구매</h1>
   <p class="sub">1년 사용권 · 부가세 별도 · 국내 카드 결제 · 자동 갱신 없음. 결제가 끝나면 라이선스가 바로 발급되어 앱에 적용됩니다.</p>
   <div id="testBanner" class="test hide">테스트 모드입니다. 실제로 청구되지 않습니다.</div>
+
+  <!-- 요금제 비교 (상단 '요금제 보기') -->
+  <div id="planPanel" class="card hide fadein">
+    <div class="who" style="margin-bottom:12px"><h2 style="margin:0">요금제 비교</h2><button class="btn ghost" id="planClose">닫기</button></div>
+    <div class="cmp">
+      <div class="hot"><h3>STARTER</h3><div class="pr">연 36만원 <small>부가세 별도</small></div><div class="note" style="margin:0">단독 LTO 드라이브 환경(최대 2대)</div>
+        <ul><li>LTO 드라이브 최대 2대 (LTO-4~LTO-9)</li><li>무제한 테이프</li><li>썸네일 자동 생성</li><li>전체 텍스트 검색</li><li>내장 동영상 플레이어</li><li>이메일 지원</li></ul></div>
+      <div><h3>AUTOLOADER</h3><div class="pr">연 72만원 <small>부가세 별도</small></div><div class="note" style="margin:0">테이프 오토로더 / 라이브러리 환경</div>
+        <ul><li>LTO 오토로더 / 라이브러리 지원</li><li>LTO 드라이브 수 제한 없음</li><li>자동화된 테이프 슬롯 관리</li><li>일괄 아카이브 및 복원 작업</li><li>고급 검색 및 필터</li><li>우선 지원</li></ul></div>
+      <div><h3>ENTERPRISE</h3><div class="pr">맞춤 견적</div><div class="note" style="margin:0">멀티 라이브러리 · 커스텀 배포 · SLA</div>
+        <ul><li>복수 테이프 라이브러리</li><li>현장 배포 및 설치</li><li>커스텀 통합 지원</li><li>전용 SLA</li><li>직원 교육 포함</li></ul>
+        <p class="note">견적 상품은 별도 계약·세금계산서로 결제되며, 토스페이먼츠 온라인 카드 결제(PG)를 이용하지 않습니다. <a href="mailto:sales@tapevault.net">영업팀 문의</a></p></div>
+    </div>
+  </div>
 
   <!-- 결과 (토스 결제창에서 돌아왔을 때) -->
   <div id="result" class="card hide"></div>
@@ -100,6 +123,7 @@ a.step:hover{border-color:#3b6fd8;transform:translateY(-1px)}
       <button class="btn" id="payBtn" disabled>결제하기</button>
       <div id="payMsg" class="msg"></div>
     </div>
+    <div class="links" style="margin-top:4px"><a href="how-to-install.html">설치 가이드</a><a href="/#download">앱 다운로드</a><a href="/">홈으로</a><a href="mailto:support@tapevault.net">문의하기</a><a href="#" style="margin-left:auto;color:#99a3c4" onclick="document.getElementById('logout').click();return false">로그아웃</a></div>
   </div>
   <footer style="margin-top:40px;border-top:0.5px solid #1e2330;padding-top:18px;font-size:12px;color:#7d87a6;line-height:1.8">
     <a href="refund-policy.html">환불 정책</a> · <a href="terms-of-service.html">이용약관</a> · <a href="privacy-policy.html">개인정보 처리방침</a><br>
@@ -191,6 +215,8 @@ function renderPlans() {
   $('payBtn').textContent = `${won(price().amount)} 결제하기`;
 }
 
+$('planToggle').onclick = (e) => { e.preventDefault(); const p = $('planPanel'); p.classList.toggle('hide'); if (!p.classList.contains('hide')) p.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+$('planClose').onclick = () => $('planPanel').classList.add('hide');
 $('logout').onclick = async () => { await sb.auth.signOut(); location.href = location.pathname; };
 
 $('payBtn').onclick = async () => {
