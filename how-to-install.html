@@ -387,7 +387,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
       </div>
       <div class="alert alert-warn">
         <span class="alert-ico">⚠️</span>
-        <span data-i18n="s2_warn">Windows SmartScreen may show a warning on first run because the installer is not yet code-signed. Once you have verified the checksum (below), click <strong>"More info" → "Run anyway"</strong> to proceed.</span>
+        <span data-i18n="s2_warn">Windows SmartScreen may show a warning on first run because the installer is not yet code-signed. Once you have verified the checksum (below), click <strong>"More info" → "Run anyway"</strong> to proceed. If Edge blocks the download, open the downloads list and click <strong>"…" → "Keep" → "Show more" → "Keep anyway"</strong>.</span>
       </div>
       <div id="verify" style="scroll-margin-top:80px">
         <div style="margin:24px 0 8px;font-size:13px;font-weight:600;color:#c8cfe0" data-i18n="s2_verify_t">Verify your download (recommended)</div>
@@ -820,7 +820,7 @@ const T = {
     s2_title:'Download the Installer', s2_desc:'Download the latest TapeVault installer from the <a href="index.html#download" style="color:#5b9cf6">Download section</a> of this website or from the official GitHub releases page (<strong style="color:#c8cfe0">github.com/danielsanam-ai/tapevault-releases</strong>). Do not use copies from other sites. The installer includes all required runtime components, including Python and Electron.',
     s2_btn:'⬇ Download TapeVault for Windows',
     s2_file:'File: <strong>TapeVault-Setup-&lt;version&gt;.exe</strong> · about 90 MB · the SHA-256 checksum is shown under the download buttons',
-    s2_warn:'Windows SmartScreen may show a warning on first run because the installer is not yet code-signed. Once you have verified the checksum (below), click <strong>"More info" → "Run anyway"</strong> to proceed.',
+    s2_warn:'Windows SmartScreen may show a warning on first run because the installer is not yet code-signed. Once you have verified the checksum (below), click <strong>"More info" → "Run anyway"</strong> to proceed. If Edge blocks the download, open the downloads list and click <strong>"…" → "Keep" → "Show more" → "Keep anyway"</strong>.',
     s3_title:'Run the Installer', s3_desc:'Run the downloaded <code style="background:#1a1a20;padding:2px 6px;border-radius:3px;font-size:12px;color:#5b9cf6">TapeVault-Setup-&lt;version&gt;.exe</code> file and follow the steps below.',
     s3_c1:'Double-click the installer file to launch the setup wizard',
     s3_c2:'Accept the License Agreement and click <strong style="color:#c8cfe0">Next</strong>',
@@ -943,7 +943,7 @@ const T = {
     s2_title:'설치 파일 다운로드', s2_desc:'이 웹사이트의 <a href="index.html#download" style="color:#5b9cf6">다운로드 섹션</a> 또는 공식 GitHub 릴리스 페이지(<strong style="color:#c8cfe0">github.com/danielsanam-ai/tapevault-releases</strong>)에서 최신 설치 파일을 받으세요. 다른 사이트의 사본은 사용하지 마세요. 설치 파일에는 Python과 Electron을 포함한 필요한 런타임이 모두 들어 있습니다.',
     s2_btn:'⬇ TapeVault Windows용 다운로드',
     s2_file:'파일: <strong>TapeVault-Setup-&lt;버전&gt;.exe</strong> · 약 90MB · SHA-256 체크섬은 다운로드 버튼 아래에 표시됩니다',
-    s2_warn:'설치 파일에 아직 코드 서명이 없어서 첫 실행 시 Windows SmartScreen 경고가 나타날 수 있습니다. 아래에서 체크섬을 확인한 뒤 <strong>"추가 정보" → "실행"</strong>을 클릭해 진행하세요.',
+    s2_warn:'설치 파일에 아직 코드 서명이 없어서 첫 실행 시 Windows SmartScreen 경고가 나타날 수 있습니다. 아래에서 체크섬을 확인한 뒤 <strong>"추가 정보" → "실행"</strong>을 클릭해 진행하세요. Edge가 다운로드를 막으면 다운로드 목록에서 <strong>"…" → "유지" → "자세히 표시" → "그래도 유지"</strong>를 누르세요.',
     s3_title:'설치 프로그램 실행', s3_desc:'다운로드한 <code style="background:#1a1a20;padding:2px 6px;border-radius:3px;font-size:12px;color:#5b9cf6">TapeVault-Setup-&lt;버전&gt;.exe</code> 파일을 실행하고 아래 단계를 따르세요.',
     s3_c1:'설치 파일을 더블클릭하여 설치 마법사를 실행합니다',
     s3_c2:'라이선스 계약에 동의하고 <strong style="color:#c8cfe0">다음</strong>을 클릭합니다',
@@ -1066,7 +1066,7 @@ const T = {
     s2_title:'インストーラーのダウンロード', s2_desc:'このウェブサイトの<a href="index.html#download" style="color:#5b9cf6">ダウンロードセクション</a>、または公式のGitHubリリースページ（<strong style="color:#c8cfe0">github.com/danielsanam-ai/tapevault-releases</strong>）から最新のインストーラーをダウンロードしてください。他のサイトのコピーは使用しないでください。インストーラーにはPythonやElectronを含む必要なランタイムがすべて含まれています。',
     s2_btn:'⬇ TapeVault Windows版をダウンロード',
     s2_file:'ファイル：<strong>TapeVault-Setup-&lt;バージョン&gt;.exe</strong> · 約90MB · SHA-256チェックサムはダウンロードボタンの下に表示されます',
-    s2_warn:'インストーラーにまだコード署名がないため、初回実行時にWindows SmartScreenの警告が表示される場合があります。下記でチェックサムを確認したうえで、<strong>「詳細情報」→「実行」</strong>をクリックして続行してください。',
+    s2_warn:'インストーラーにまだコード署名がないため、初回実行時にWindows SmartScreenの警告が表示される場合があります。下記でチェックサムを確認したうえで、<strong>「詳細情報」→「実行」</strong>をクリックして続行してください。Edgeがダウンロードをブロックした場合は、ダウンロード一覧で<strong>「…」→「保持する」→「詳細を表示」→「保持する」</strong>をクリックしてください。',
     s3_title:'インストーラーの実行', s3_desc:'ダウンロードした<code style="background:#1a1a20;padding:2px 6px;border-radius:3px;font-size:12px;color:#5b9cf6">TapeVault-Setup-&lt;バージョン&gt;.exe</code>を実行し、以下の手順に従ってください。',
     s3_c1:'インストーラーファイルをダブルクリックしてセットアップウィザードを起動します',
     s3_c2:'使用許諾契約に同意し、<strong style="color:#c8cfe0">次へ</strong>をクリックします',
