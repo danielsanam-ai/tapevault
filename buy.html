@@ -211,6 +211,7 @@ function renderPlans() {
   $('plans').querySelectorAll('.plan').forEach(el => el.onclick = async () => {
     edition = el.dataset.ed; renderPlans();
     if (widgets) await widgets.setAmount({ currency: 'KRW', value: price().amount });
+    prepareOrder();
   });
   $('payBtn').textContent = `${won(price().amount)} 결제하기`;
 }
@@ -219,27 +220,48 @@ $('planToggle').onclick = (e) => { e.preventDefault(); const p = $('planPanel');
 $('planClose').onclick = () => $('planPanel').classList.add('hide');
 $('logout').onclick = async () => { await sb.auth.signOut(); location.href = location.pathname; };
 
-$('payBtn').onclick = async () => {
+// 주문은 미리 만들어 둔다. BC카드(ISP/페이북) 등은 PC에서 인증 팝업을 여는데,
+// 클릭 뒤 서버 호출을 await 하고 나서 requestPayment 를 부르면 브라우저가 사용자 클릭으로
+// 인정하지 않아 팝업이 차단된다 → 클릭 핸들러에서는 await 없이 바로 결제창을 연다.
+let order = null, orderJob = null;
+function prepareOrder() {
+  order = null;
+  if (!user || !widgets) return null;
+  const ed = edition;
+  const job = orderJob = (async () => {
+    const { data: o, error } = await sb.rpc('pay_create_order', { p_edition: ed });
+    if (error) throw error;
+    await widgets.setAmount({ currency: 'KRW', value: o.amount });   // 서버가 정한 금액으로 결제
+    if (orderJob === job && edition === ed) { order = o; $('payBtn').textContent = `${won(o.amount)} 결제하기`; }
+    return o;
+  })();
+  job.catch(e => { if (orderJob === job) { orderJob = null; $('payMsg').textContent = errText(e); } });
+  return job;
+}
+
+$('payBtn').onclick = () => {
   $('payMsg').textContent = '';
   if (!user) {
     $('loginMsg').textContent = '결제하려면 먼저 로그인하거나 회원가입해 주세요.';
     $('loginCard').scrollIntoView({ behavior: 'smooth' });
     return;
   }
-  $('payBtn').disabled = true;
-  try {
-    const { data: o, error } = await sb.rpc('pay_create_order', { p_edition: edition });
-    if (error) throw error;
-    await widgets.setAmount({ currency: 'KRW', value: o.amount });   // 서버가 정한 금액으로 결제
-    const base = location.origin + location.pathname;
-    await widgets.requestPayment({
-      orderId: o.orderId, orderName: o.orderName, customerEmail: o.email,
-      successUrl: base + '?result=success', failUrl: base + '?result=fail',
-    });
-  } catch (e) {
-    if (e && e.code !== 'USER_CANCEL') $('payMsg').textContent = errText(e);
-    $('payBtn').disabled = false;
+  if (!order) {   // 아직 준비 중이면 끝난 뒤 다시 누르도록 안내
+    $('payMsg').textContent = '결제 준비 중입니다. 잠시 후 다시 눌러 주세요.';
+    if (!orderJob) prepareOrder();
+    return;
   }
+  const o = order;
+  $('payBtn').disabled = true;
+  const base = location.origin + location.pathname;
+  // await 없이 클릭 이벤트 안에서 곧바로 호출
+  widgets.requestPayment({
+    orderId: o.orderId, orderName: o.orderName, customerEmail: o.email,
+    successUrl: base + '?result=success', failUrl: base + '?result=fail',
+  }).catch(e => {
+    if (e && e.code !== 'USER_CANCEL') $('payMsg').textContent = errText(e);
+    prepareOrder();   // 같은 주문번호를 다시 쓰지 않도록 새 주문
+  }).finally(() => { $('payBtn').disabled = false; });
 };
 
 // 토스 결제창에서 돌아온 경우
@@ -291,7 +313,7 @@ async function handleReturn(params, session) {
     if (done || params.get('result') === 'success') { $('buyCard').classList.add('hide'); return; }
   }
   // 요금제·결제창은 로그인한 경우에만 보여 준다
-  if (session) { $('buyCard').classList.remove('hide'); await initShop(); showBuy(session); }
+  if (session) { $('buyCard').classList.remove('hide'); await initShop(); await showBuy(session); prepareOrder(); }
 })();
 </script>
 </body>
