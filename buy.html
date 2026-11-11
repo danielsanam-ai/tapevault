@@ -211,6 +211,7 @@ function renderPlans() {
   $('plans').querySelectorAll('.plan').forEach(el => el.onclick = async () => {
     edition = el.dataset.ed; renderPlans();
     if (widgets) await widgets.setAmount({ currency: 'KRW', value: price().amount });
+    prepareOrder();
   });
   $('payBtn').textContent = `${won(price().amount)} 결제하기`;
 }
@@ -219,27 +220,43 @@ $('planToggle').onclick = (e) => { e.preventDefault(); const p = $('planPanel');
 $('planClose').onclick = () => $('planPanel').classList.add('hide');
 $('logout').onclick = async () => { await sb.auth.signOut(); location.href = location.pathname; };
 
-$('payBtn').onclick = async () => {
+// 주문은 버튼을 누르기 '전에' 미리 만들어 둔다.
+// 클릭 후 await(주문 생성 등)를 거치면 브라우저가 사용자 클릭으로 보지 않아
+// BC카드(ISP/페이북)처럼 새 창을 여는 결제창이 팝업 차단으로 열리지 않는다.
+let order = null, orderErr = null, orderSeq = 0;
+async function prepareOrder() {
+  if (!user || !widgets) return;
+  const seq = ++orderSeq, ed = edition;
+  order = null; orderErr = null;
+  try {
+    const { data: o, error } = await sb.rpc('pay_create_order', { p_edition: ed });
+    if (error) throw error;
+    await widgets.setAmount({ currency: 'KRW', value: o.amount });   // 서버가 정한 금액으로 결제
+    if (seq === orderSeq) order = { ...o, edition: ed };
+  } catch (e) { if (seq === orderSeq) orderErr = e; }
+}
+
+$('payBtn').onclick = () => {
   $('payMsg').textContent = '';
   if (!user) {
     $('loginMsg').textContent = '결제하려면 먼저 로그인하거나 회원가입해 주세요.';
     $('loginCard').scrollIntoView({ behavior: 'smooth' });
     return;
   }
+  if (orderErr) { $('payMsg').textContent = errText(orderErr); prepareOrder(); return; }
+  if (!order || order.edition !== edition) { $('payMsg').textContent = '결제를 준비하고 있습니다. 잠시 후 다시 눌러 주세요.'; if (!order) prepareOrder(); return; }
+  const o = order; order = null;            // 주문번호는 한 번만 사용
   $('payBtn').disabled = true;
-  try {
-    const { data: o, error } = await sb.rpc('pay_create_order', { p_edition: edition });
-    if (error) throw error;
-    await widgets.setAmount({ currency: 'KRW', value: o.amount });   // 서버가 정한 금액으로 결제
-    const base = location.origin + location.pathname;
-    await widgets.requestPayment({
-      orderId: o.orderId, orderName: o.orderName, customerEmail: o.email,
-      successUrl: base + '?result=success', failUrl: base + '?result=fail',
-    });
-  } catch (e) {
+  const base = location.origin + location.pathname;
+  // 클릭 직후 await 없이 바로 호출 (팝업 차단 방지)
+  widgets.requestPayment({
+    orderId: o.orderId, orderName: o.orderName, customerEmail: o.email,
+    successUrl: base + '?result=success', failUrl: base + '?result=fail',
+  }).catch((e) => {
     if (e && e.code !== 'USER_CANCEL') $('payMsg').textContent = errText(e);
     $('payBtn').disabled = false;
-  }
+    prepareOrder();                          // 취소·실패 후 새 주문 준비
+  });
 };
 
 // 토스 결제창에서 돌아온 경우
@@ -291,7 +308,7 @@ async function handleReturn(params, session) {
     if (done || params.get('result') === 'success') { $('buyCard').classList.add('hide'); return; }
   }
   // 요금제·결제창은 로그인한 경우에만 보여 준다
-  if (session) { $('buyCard').classList.remove('hide'); await initShop(); showBuy(session); }
+  if (session) { $('buyCard').classList.remove('hide'); await initShop(); await showBuy(session); prepareOrder(); }
 })();
 </script>
 </body>
