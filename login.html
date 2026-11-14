@@ -248,6 +248,8 @@ async function done(session) {
   setMode(mode);
   sb.auth.onAuthStateChange(ev => { if (ev === 'PASSWORD_RECOVERY') view('newPwView'); });
   if (params.get('mode') === 'recovery' || /type=recovery/.test(location.hash)) { view('newPwView'); return; }
+  // 앱의 '비밀번호를 잊으셨나요?' 에서 열린 경우: 바로 재설정 메일 화면 (앱에 입력한 이메일을 채워 둔다)
+  if (params.get('mode') === 'forgot') { const em = params.get('email') || ''; if (/^[^\s@]+@[^\s@]+$/.test(em)) { $('rEmail').value = em; $('email').value = em; } view('resetView'); return; }
   const { data } = await sb.auth.getSession();
   if (data.session) done(data.session);
 })();
