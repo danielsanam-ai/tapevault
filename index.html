@@ -258,7 +258,42 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 
   .modal-box{padding:22px}
 }
+/* sign-up funnel */
+.nav-links a,.btn-ghost,.btn-orange{white-space:nowrap}
+@media (max-width:1180px){
+  .nav{flex-wrap:wrap}
+  .nav-links{display:none;order:3;width:100%;flex-direction:column;gap:0;background:#0b0b0d;border-top:0.5px solid #1e2230;margin-top:12px;padding-top:8px}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 4px;border-bottom:0.5px solid #16192480}
+  .nav-burger{display:flex}
+}
+.nav-links a.nav-only-mobile{display:none}
+.hero-signup{margin:-38px 0 44px;font-size:13.5px;color:#99a3c4}
+.hero-signup a{color:#f5a623;font-weight:700;text-decoration:none}
+.hero-signup a:hover{text-decoration:underline}
+.start-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px;margin:0 auto 36px;text-align:left}
+.start-step{background:#111318;border:0.5px solid #2a2d38;border-radius:12px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.start-step.first{border-color:#f5a623;background:#161208}
+.start-num{width:26px;height:26px;border-radius:50%;background:#f5a623;color:#0b0b0d;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.start-t{font-size:15px;font-weight:700;color:#e6eaf5}
+.start-d{font-size:12.5px;color:#99a3c4;line-height:1.55}
+.start-btn{align-self:flex-start;margin-top:8px;background:#f5a623;color:#0b0b0d;font-weight:700;font-size:13px;padding:8px 16px;border-radius:6px;text-decoration:none}
+.start-btn:hover{opacity:.88}
+.start-done{display:none;margin-top:8px;font-size:13px;font-weight:700;color:#4ade80}
+.cta-signup{display:block;margin-top:14px;font-size:13.5px;color:#f5a623;text-decoration:none;font-weight:700}
+.cta-signup:hover{text-decoration:underline}
+.welcome-bar{display:flex;align-items:center;justify-content:center;gap:12px;max-width:900px;margin:0 auto 28px;padding:14px 18px;border-radius:10px;background:#0f1f16;border:1px solid #2f7d4f;color:#c9f2d8;font-size:14px;line-height:1.5}
+.welcome-bar[hidden]{display:none}
+.welcome-bar button{background:none;border:0;color:#c9f2d8;font-size:18px;cursor:pointer;line-height:1}
+.has-account .signup-only{display:none!important}
+.has-account .start-done{display:block}
+@media (max-width:860px){
+  .nav-links a.nav-only-mobile{display:block;color:#f5a623;font-weight:700}
+  .start-steps{grid-template-columns:1fr}
+  .hero-signup{margin:-30px 0 36px}
+}
 </style>
+<script src="lang.js"></script>
 </head>
 <body>
 
@@ -282,6 +317,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
     <a href="how-to-install.html" data-i18n="nav_install">Install Guide</a>
     <a href="manual.html" data-i18n="nav_manual">User Manual</a>
+    <a href="login.html" class="nav-only-mobile" data-i18n="nav_signin">Sign in / Sign up</a>
   </div>
   <div class="nav-right">
     <div class="lang-select" id="lang-select">
@@ -296,8 +332,8 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
         <button class="lang-menu-item" data-lang="ja" onclick="applyLang('ja');toggleLangMenu()">日本語<span class="lang-check">✓</span></button>
       </div>
     </div>
-    <button class="btn-ghost" data-i18n="nav_signin" onclick="location.href='login.html'">Sign in</button>
-    <button class="btn-orange" data-i18n="nav_trial" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Free Trial</button>
+    <button class="btn-ghost" data-i18n="nav_signin" onclick="location.href='login.html'">Sign in / Sign up</button>
+    <button class="btn-orange" data-i18n="nav_trial" onclick="goTrial()">Free Trial</button>
     <button class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -306,9 +342,9 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 
 <section class="hero">
   <div>
-    <a class="beta-pill" href="#download">
+    <a class="beta-pill" id="beta-pill-link" href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1">
       <span class="beta-pill-dot"></span>
-      <span data-i18n="beta_pill">🧪 Try TapeVault Free for 1 Month — Just Register →</span>
+      <span data-i18n="beta_pill">🎁 Sign up and get a free 1-month license →</span>
     </a>
   </div>
   <h1 data-i18n="hero_h1">Find any file on LTO tape<br><b>in under 30 seconds.</b></h1>
@@ -322,6 +358,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <button class="btn-hero-main" data-i18n="hero_btn1" onclick="showDownloadWarning()">⬇ Download Free Trial</button>
     <button class="btn-hero-ghost" data-i18n="hero_btn2" onclick="document.getElementById('gui').scrollIntoView({behavior:'smooth'})">▶ See how it works</button>
   </div>
+  <p class="hero-signup signup-only"><span data-i18n="hs_q">New to TapeVault?</span> <a href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1" data-i18n="hs_a">Sign up and get a free 1-month license — no credit card →</a></p>
   <!-- APP SCREENSHOT -->
   <div style="max-width:960px;margin:0 auto 40px">
     <div style="background:#0d1117;border:0.5px solid #2a2a35;border-radius:14px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.7)">
@@ -530,7 +567,27 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 <section style="padding:72px 48px;text-align:center" id="download">
   <div class="sec-label" data-i18n="dl_label">Download</div>
   <div class="sec-title" style="margin-bottom:10px" data-i18n="dl_title">Try TapeVault free for 1 month</div>
-  <p style="font-size:15px;color:#99a3c4;margin-bottom:36px" data-i18n="dl_sub">Just register — no credit card. Full features from day one. Buy a license after your trial.</p>
+  <p style="font-size:15px;color:#99a3c4;margin-bottom:36px" data-i18n="dl_sub">Sign up and get a free 1-month license — no credit card. Full features from day one. Buy a license after your trial.</p>
+  <div class="welcome-bar" id="welcome-bar" hidden role="status"><span data-i18n="welcome_t">🎉 Your account is ready. Now download the app and sign in with the same account.</span><button type="button" onclick="this.parentNode.hidden=true" aria-label="Close">×</button></div>
+  <div class="start-steps">
+    <div class="start-step first">
+      <div class="start-num">1</div>
+      <div class="start-t" data-i18n="st1_t">Create a free account</div>
+      <div class="start-d" data-i18n="st1_d">Sign up and get a free 1-month license. Email and password only — no credit card.</div>
+      <a class="start-btn signup-only" href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1" data-i18n="st1_btn">Sign up free</a>
+      <div class="start-done" data-i18n="st1_done">✓ You are signed in</div>
+    </div>
+    <div class="start-step">
+      <div class="start-num">2</div>
+      <div class="start-t" data-i18n="st2_t">Download and install</div>
+      <div class="start-d" data-i18n="st2_d">For Windows 10 / 11 and macOS. Use the buttons below.</div>
+    </div>
+    <div class="start-step">
+      <div class="start-num">3</div>
+      <div class="start-t" data-i18n="st3_t">Sign in to the app</div>
+      <div class="start-d" data-i18n="st3_d">Sign in with the same account and your free 1-month license is applied — every feature included.</div>
+    </div>
+  </div>
   <div style="display:inline-flex;flex-direction:column;align-items:center;gap:16px">
     <button class="btn-hero-main" style="font-size:16px;padding:16px 40px" data-i18n="dl_btn" onclick="showDownloadWarning()">⬇ Download TapeVault v1.2.6 for Windows</button>
     <div style="display:flex;gap:24px">
@@ -572,7 +629,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       <div class="pc-feat" data-i18n="p1_f4">Full-text search</div>
       <div class="pc-feat" data-i18n="p1_f5">Built-in video player</div>
       <div class="pc-feat" data-i18n="p1_f6">Email support</div>
-      <button class="pc-btn hot" data-i18n="pc_trial" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Start free trial</button>
+      <button class="pc-btn hot" data-i18n="pc_trial" onclick="goTrial()">Start free trial</button>
       <a class="pc-buy" href="buy.html?ed=starter" data-i18n="pc_buy">Buy 1-year license (Korean cards)</a>
     </div>
     <div class="pc">
@@ -587,7 +644,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       <div class="pc-feat" data-i18n="p2_f4">Batch archive &amp; restore jobs</div>
       <div class="pc-feat" data-i18n="p2_f5">Advanced search &amp; filters</div>
       <div class="pc-feat" data-i18n="p2_f6">Priority support</div>
-      <button class="pc-btn" data-i18n="pc_trial" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Start free trial</button>
+      <button class="pc-btn" data-i18n="pc_trial" onclick="goTrial()">Start free trial</button>
       <a class="pc-buy" href="buy.html?ed=autoloader" data-i18n="pc_buy">Buy 1-year license (Korean cards)</a>
     </div>
     <div class="pc">
@@ -605,7 +662,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     </div>
   </div>
   <div class="price-trust">
-    <p data-i18n="trust_txt">Every plan includes a <strong style="color:#c8cfe0">1-month free trial</strong> with full features — just register. No credit card required.</p>
+    <p data-i18n="trust_txt">Sign up and get a <strong style="color:#c8cfe0">free 1-month license</strong> with full features on every plan. No credit card required.</p>
     <div class="price-trust-items" style="margin-top:12px">
       <span class="price-trust-item" data-i18n="tr1">No automatic renewal</span>
       <span class="price-trust-item" data-i18n="tr2">Nothing to cancel</span>
@@ -635,6 +692,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
   <h2 data-i18n="cta_h2">Stop searching tapes manually.</h2>
   <p data-i18n="cta_p">Download TapeVault and find any file in 30 seconds — starting today.</p>
   <button class="btn-hero-main" style="margin:0 auto;font-size:16px;padding:16px 40px" data-i18n="cta_btn" onclick="showDownloadWarning()">⬇ Download Free Trial — No Credit Card</button>
+  <a class="cta-signup signup-only" href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1" data-i18n="cta_signup">Or create your free account first →</a>
   <div class="cta-note" data-i18n="cta_note">Windows 10 / 11 · 1-month full-feature trial · LTO-4 to LTO-9</div>
 </section>
 
@@ -734,6 +792,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       </div>
     </div>
     <p class="modal-note" data-i18n="dlw_verify">🔐 Tip: before running the file, compare the SHA-256 checksum listed under the download buttons with your download — see the <a href="how-to-install.html#verify">install guide</a>.</p>
+    <p class="modal-note signup-only" data-i18n="dlw_signup">👤 The app asks for a free account at first launch. <a href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1">Sign up now</a>, or register inside the app.</p>
     <button class="btn-hero-main modal-continue" data-i18n="dlw_continue" onclick="proceedDownload()">⬇ Continue Download</button>
   </div>
 </div>
@@ -771,6 +830,19 @@ function proceedDownload() {
 
 const T = {
   en: {
+    hs_q:'New to TapeVault?',
+    hs_a:'Sign up and get a free 1-month license — no credit card →',
+    welcome_t:'🎉 Your account is ready. Now download the app and sign in with the same account.',
+    st1_t:'Create a free account',
+    st1_d:'Sign up and get a free 1-month license. Email and password only — no credit card.',
+    st1_btn:'Sign up free',
+    st1_done:'✓ You are signed in',
+    st2_t:'Download and install',
+    st2_d:'For Windows 10 / 11 and macOS. Use the buttons below.',
+    st3_t:'Sign in to the app',
+    st3_d:'Sign in with the same account and your free 1-month license is applied — every feature included.',
+    dlw_signup:'👤 The app asks for a free account at first launch. <a href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1">Sign up now</a>, or register inside the app.',
+    cta_signup:'Or create your free account first →',
     p1_note:'Billed as one 12-month license: ₩360,000 + VAT (Korean cards)',
     p2_note:'Billed as one 12-month license: ₩720,000 + VAT (Korean cards)',
     dlw_verify:'🔐 Tip: before running the file, compare the SHA-256 checksum listed under the download buttons with your download — see the <a href="how-to-install.html#verify">install guide</a>.',
@@ -778,7 +850,7 @@ const T = {
     biz_info:'Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
     fc_refund:'Refund policy',
     nav_how:'How it works', nav_features:'Features', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide', nav_manual:'User Manual',
-    nav_signin:'Sign in', nav_trial:'Free Trial',
+    nav_signin:'Sign in / Sign up', nav_trial:'Free Trial',
     hero_h1:'Find any file on LTO tape<br><b>in under 30 seconds.</b>',
     hero_sub:'TapeVault is an LTO tape archive manager for Windows and macOS. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.',
     hero_p1:'Windows & macOS', hero_p2:'LTO-4 to LTO-9', hero_p3:'Broadcast · Medical · Defense · Education',
@@ -825,7 +897,7 @@ const T = {
     f7_t:'Air-Gapped Operation', f7_d:'Works fully offline after activation — your catalog and files stay on your computer and tapes, never in the cloud. Offline license files are available for air-gapped sites.',
     f8_t:'Checksum Verification', f8_d:'xxHash64 checksum on every write (SHA-256 or MD5 selectable). Integrity is verified automatically after each archive operation.',
     f9_t:'Korean & English UI', f9_d:'The app interface is available in Korean and English. This website is available in English, Korean, and Japanese.',
-    dl_label:'Download', dl_title:'Try TapeVault free for 1 month', dl_sub:'Just register — no credit card. Full features from day one. Buy a license after your trial.',
+    dl_label:'Download', dl_title:'Try TapeVault free for 1 month', dl_sub:'Sign up and get a free 1-month license — no credit card. Full features from day one. Buy a license after your trial.',
     dl_btn:'⬇ Download TapeVault v1.2.6 for Windows', dl_s1:'Windows 10 / 11 (64-bit)', dl_s2:'LTO-4 through LTO-9', dl_s3:'~90 MB installer',
     dl_ver:'v1.2.6 · 2026 · Requires Windows 10 64-bit or later',
     pr_label:'Pricing', pr_title:'Simple pricing. No surprises.', pr_sub:'Register and try free for 1 month, then buy a license. No auto-renewal.',
@@ -836,7 +908,7 @@ const T = {
     p2_f1:'LTO Autoloader / Library support', p2_f2:'No limit on the number of LTO drives', p2_f3:'Automated tape slot management', p2_f4:'Batch archive &amp; restore jobs', p2_f5:'Advanced search &amp; filters', p2_f6:'Priority support',
     p3_amt:'Custom', p3_desc:'For large institutions with multi-library setups, custom deployment, and SLA requirements.',
     p3_f1:'Multiple tape libraries', p3_f2:'On-site deployment &amp; setup', p3_f3:'Custom integration support', p3_f4:'Dedicated SLA', p3_f5:'Staff training included', p3_btn:'Contact sales', p3_note:'Quoted plans are invoiced separately and are not paid through the online card checkout (Toss Payments).',
-    trust_txt:'Every plan includes a <strong style="color:#c8cfe0">1-month free trial</strong> with full features — just register. No credit card required.',
+    trust_txt:'Sign up and get a <strong style="color:#c8cfe0">free 1-month license</strong> with full features on every plan. No credit card required.',
     tr1:'No automatic renewal', tr2:'Nothing to cancel', tr3:'Your data always yours', tr4:'Offline after activation', tr5:'Payments via Toss Payments · VAT excluded',
     faq_label:'FAQ', faq_title:'Questions before buying?',
     faq1_q:'Does TapeVault work without an internet connection?', faq1_a:'Yes. TapeVault is fully offline after the initial license activation. No ongoing internet connection is required. This makes it ideal for air-gapped environments in broadcast, defense, and medical sectors.',
@@ -850,7 +922,7 @@ const T = {
     fc_product:'Product', fc_support:'Support', fc_legal:'Legal',
     fc_contact:'Contact support', fc_sales:'Contact sales', fc_privacy:'Privacy policy', fc_terms:'Terms of service', fc_license:'License',
     foot_bottom:'TapeVault v1.2.6 · Built by Veteran IT · Payments by Toss Payments · No auto-renewal',
-    beta_pill:'🧪 Try TapeVault Free for 1 Month — Just Register →',
+    beta_pill:'🎁 Sign up and get a free 1-month license →',
     dlw_title:'🛡️ Notice: You may see a security warning',
     dlw_body:'The TapeVault installer is code-signed by VETERAN IT, but because the certificate is new, Windows SmartScreen and some browsers may still flag it during download or install for a while. This is expected for new software and does not mean the file is unsafe. If Edge blocks the download, open the downloads list and click <strong>"…" → "Keep" → "Show more" → "Keep anyway"</strong>.',
     dlw_step1_t:'Browser download warning', dlw_step1_d:'If your browser flags the file, click the "···" next to the download and choose "Keep" (Chrome/Edge).',
@@ -863,6 +935,19 @@ const T = {
     dl_or:'or', dl_mac_btn:'🍎 Download for macOS (Apple Silicon)', dl_mac_note:'v1.2.6 · Apple Silicon (M1/M2/M3) only · ~158 MB'
   },
   ko: {
+    hs_q:'처음이신가요?',
+    hs_a:'회원가입만 해도 1개월 무료 라이선스 — 신용카드 불필요 →',
+    welcome_t:'🎉 계정이 준비됐습니다. 이제 앱을 내려받아 같은 계정으로 로그인하세요.',
+    st1_t:'무료 회원가입',
+    st1_d:'회원가입만 해도 1개월 무료 라이선스를 드립니다. 이메일과 비밀번호만 있으면 되고 신용카드는 필요 없습니다.',
+    st1_btn:'무료로 가입하기',
+    st1_done:'✓ 로그인되어 있습니다',
+    st2_t:'앱 다운로드 · 설치',
+    st2_d:'Windows 10 / 11과 macOS를 지원합니다. 아래 버튼으로 내려받으세요.',
+    st3_t:'앱에서 로그인',
+    st3_d:'같은 계정으로 로그인하면 1개월 무료 라이선스가 적용되어 모든 기능을 쓸 수 있습니다.',
+    dlw_signup:'👤 앱을 처음 실행하면 무료 계정이 필요합니다. <a href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1">지금 가입</a>해 두거나, 앱 안에서 등록해도 됩니다.',
+    cta_signup:'또는 먼저 무료 회원가입 →',
     p1_note:'1년 사용권 360,000원(부가세 별도)을 한 번에 결제합니다',
     p2_note:'1년 사용권 720,000원(부가세 별도)을 한 번에 결제합니다',
     dlw_verify:'🔐 팁: 실행하기 전에 다운로드 버튼 아래에 표시된 SHA-256 체크섬과 내려받은 파일의 값을 비교해 보세요 — <a href="how-to-install.html#verify">설치 가이드</a> 참고.',
@@ -870,7 +955,7 @@ const T = {
     biz_info:'상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>전화: 070-8080-4664 · 이메일: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
     fc_refund:'환불 정책',
     nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드', nav_manual:'사용자 매뉴얼',
-    nav_signin:'로그인', nav_trial:'무료 체험',
+    nav_signin:'로그인 · 회원가입', nav_trial:'무료 체험',
     hero_h1:'LTO 테이프의 모든 파일을<br><b>30초 안에 찾아드립니다.</b>',
     hero_sub:'TapeVault는 Windows와 macOS에서 쓰는 LTO 테이프 아카이브 관리 소프트웨어입니다. 테이프를 일일이 확인하지 않고도 썸네일 탐색, 메타데이터 검색, 파일 꺼내기를 바로 할 수 있습니다.',
     hero_p1:'Windows & macOS', hero_p2:'LTO-4 ~ LTO-9', hero_p3:'방송 · 의료 · 국방 · 교육',
@@ -917,7 +1002,7 @@ const T = {
     f7_t:'완전 오프라인 동작', f7_d:'활성화 후에는 완전히 오프라인으로 동작하며, 카탈로그와 파일은 클라우드가 아닌 사용자의 PC와 테이프에만 저장됩니다. 폐쇄망 환경을 위한 오프라인 라이선스 파일도 제공됩니다.',
     f8_t:'체크섬 검증', f8_d:'모든 기록에 xxHash64 체크섬(SHA-256·MD5 선택 가능). 아카이브 작업 후 무결성을 자동으로 검증합니다.',
     f9_t:'한국어·영어 UI', f9_d:'앱 화면은 한국어와 영어를 지원합니다. 이 웹사이트는 영어, 한국어, 일본어로 볼 수 있습니다.',
-    dl_label:'다운로드', dl_title:'TapeVault 1개월 무료 체험', dl_sub:'등록만 하면 신용카드 없이 시작. 첫날부터 전체 기능 사용. 체험 후 라이선스를 구매하세요.',
+    dl_label:'다운로드', dl_title:'TapeVault 1개월 무료 체험', dl_sub:'회원가입만 해도 1개월 무료 라이선스를 드립니다. 신용카드 없이 첫날부터 전체 기능을 쓸 수 있고, 체험 후 라이선스를 구매하면 됩니다.',
     dl_btn:'⬇ TapeVault v1.2.6 Windows용 다운로드', dl_s1:'Windows 10 / 11 (64비트)', dl_s2:'LTO-4 ~ LTO-9', dl_s3:'~90 MB 인스톨러',
     dl_ver:'v1.2.6 · 2026년 6월 · Windows 10 64비트 이상 필요',
     pr_label:'요금제', pr_title:'심플한 요금제. 예상치 못한 청구 없음.', pr_sub:'등록하면 1개월 무료 체험, 이후 라이선스 구매. 자동 갱신 없음.',
@@ -928,7 +1013,7 @@ const T = {
     p2_f1:'LTO 오토로더 / 라이브러리 지원', p2_f2:'LTO 드라이브 수 제한 없음', p2_f3:'자동화된 테이프 슬롯 관리', p2_f4:'일괄 아카이브 및 복원 작업', p2_f5:'고급 검색 및 필터', p2_f6:'우선 지원',
     p3_amt:'맞춤 견적', p3_desc:'대규모 기관 — 멀티 라이브러리, 커스텀 배포, SLA 요건이 있는 환경.',
     p3_f1:'복수 테이프 라이브러리', p3_f2:'현장 배포 및 설치', p3_f3:'커스텀 통합 지원', p3_f4:'전용 SLA', p3_f5:'직원 교육 포함', p3_btn:'영업팀 문의', p3_note:'견적 상품은 별도 계약·세금계산서로 결제되며, 토스페이먼츠 온라인 카드 결제(PG)를 이용하지 않습니다.',
-    trust_txt:'모든 요금제에 <strong style="color:#c8cfe0">1개월 무료 체험</strong>이 포함됩니다. 등록만 하면 됩니다. 신용카드 불필요.',
+    trust_txt:'회원가입만 해도 모든 요금제의 전체 기능을 쓸 수 있는 <strong style="color:#c8cfe0">1개월 무료 라이선스</strong>를 드립니다. 신용카드는 필요 없습니다.',
     tr1:'자동 갱신 없음', tr2:'해지할 필요 없음', tr3:'데이터는 항상 귀하의 것', tr4:'활성화 후 오프라인', tr5:'토스페이먼츠 결제 · 부가세 별도',
     faq_label:'FAQ', faq_title:'구매 전 궁금한 점이 있으신가요?',
     faq1_q:'TapeVault는 인터넷 없이 사용할 수 있나요?', faq1_a:'네. TapeVault는 최초 라이선스 활성화 이후 완전히 오프라인으로 동작합니다. 지속적인 인터넷 연결이 필요하지 않습니다. 방송, 국방, 의료 등 에어갭 환경에 적합합니다.',
@@ -942,7 +1027,7 @@ const T = {
     fc_product:'제품', fc_support:'지원', fc_legal:'법적 정보',
     fc_contact:'지원팀 문의', fc_sales:'영업팀 문의', fc_privacy:'개인정보 처리방침', fc_terms:'이용약관', fc_license:'라이선스',
     foot_bottom:'TapeVault v1.2.6 · Veteran IT 개발 · 토스페이먼츠 결제 · 자동 갱신 없음',
-    beta_pill:'🧪 TapeVault 등록만 하면 1개월 무료 체험 →',
+    beta_pill:'🎁 회원가입만 해도 1개월 무료 라이선스를 드립니다 →',
     dlw_title:'🛡️ 안내: 보안 경고가 나타날 수 있어요',
     dlw_body:'설치 파일은 VETERAN IT 명의로 코드 서명(디지털 인증)되어 있지만, 새 인증서라 처음 얼마간은 다운로드나 설치 중 Windows SmartScreen이나 일부 브라우저에서 경고가 뜰 수 있습니다. 신규 소프트웨어에서 흔히 발생하는 정상적인 현상이며, 파일이 위험하다는 뜻이 아닙니다. Edge가 다운로드를 막으면 다운로드 목록에서 <strong>"…" → "유지" → "자세히 표시" → "그래도 유지"</strong>를 누르세요.',
     dlw_step1_t:'브라우저 다운로드 경고', dlw_step1_d:'브라우저가 파일을 경고하면, 다운로드 항목 옆의 "···"를 클릭하고 "유지"(Chrome/Edge)를 선택하세요.',
@@ -955,6 +1040,19 @@ const T = {
     dl_or:'또는', dl_mac_btn:'🍎 macOS용 다운로드 (Apple Silicon)', dl_mac_note:'v1.2.6 · Apple Silicon(M1/M2/M3) 전용 · ~158 MB'
   },
   ja: {
+    hs_q:'初めての方へ：',
+    hs_a:'会員登録だけで1か月無料ライセンス — クレジットカード不要 →',
+    welcome_t:'🎉 アカウントの準備ができました。アプリをダウンロードして、同じアカウントでログインしてください。',
+    st1_t:'無料アカウント登録',
+    st1_d:'会員登録だけで1か月無料ライセンスを進呈します。メールアドレスとパスワードだけで、クレジットカードは不要です。',
+    st1_btn:'無料で登録する',
+    st1_done:'✓ ログイン済みです',
+    st2_t:'ダウンロードとインストール',
+    st2_d:'Windows 10 / 11とmacOSに対応。下のボタンからダウンロードできます。',
+    st3_t:'アプリでログイン',
+    st3_d:'同じアカウントでログインすると1か月無料ライセンスが適用され、すべての機能を利用できます。',
+    dlw_signup:'👤 アプリの初回起動時に無料アカウントが必要です。<a href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1">今すぐ登録</a>するか、アプリ内で登録できます。',
+    cta_signup:'または、先に無料アカウントを作成 →',
     p1_note:'12か月ライセンスを一括払い：360,000ウォン＋VAT（韓国国内カード）',
     p2_note:'12か月ライセンスを一括払い：720,000ウォン＋VAT（韓国国内カード）',
     dlw_verify:'🔐 ヒント：実行する前に、ダウンロードボタンの下に表示されているSHA-256チェックサムとダウンロードしたファイルの値を比較してください — <a href="how-to-install.html#verify">インストールガイド</a>参照。',
@@ -962,7 +1060,7 @@ const T = {
     biz_info:'会社名：株式会社ベテランIT（Veteran IT Co., Ltd.） · 代表者：오재화 · 事業者登録番号：326-86-02786<br>通信販売業申告番号：2025-서울서초-3564 · 所在地：大韓民国ソウル特別市瑞草区瑞草大路275、中央ビル202号25A<br>電話：070-8080-4664 · メール：<a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
     fc_refund:'返金ポリシー',
     nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール', nav_manual:'マニュアル',
-    nav_signin:'サインイン', nav_trial:'無料トライアル',
+    nav_signin:'ログイン・新規登録', nav_trial:'無料トライアル',
     hero_h1:'LTOテープのすべてのファイルを<br><b>30秒以内に見つける。</b>',
     hero_sub:'TapeVaultはWindowsとmacOSで使えるLTOテープアーカイブ管理ソフトです。テープを1本ずつ確認しなくても、サムネイルの閲覧、メタデータ検索、ファイルの取り出しがすぐにできます。',
     hero_p1:'Windows & macOS', hero_p2:'LTO-4〜LTO-9', hero_p3:'放送・医療・防衛・教育',
@@ -1009,7 +1107,7 @@ const T = {
     f7_t:'エアギャップ運用', f7_d:'アクティベーション後は完全オフラインで動作し、カタログとファイルはクラウドではなくお使いのPCとテープにのみ保存されます。エアギャップ環境向けにオフラインライセンスファイルも用意しています。',
     f8_t:'チェックサム検証', f8_d:'全書込にxxHash64チェックサム（SHA-256・MD5も選択可）。アーカイブ後に整合性を自動検証します。',
     f9_t:'韓国語・英語UI', f9_d:'アプリの画面は韓国語と英語に対応しています。このウェブサイトは英語・韓国語・日本語でご覧いただけます。',
-    dl_label:'ダウンロード', dl_title:'TapeVaultを1ヶ月間無料でお試し', dl_sub:'登録するだけ、クレジットカード不要。初日から全機能利用可。体験後にライセンスをご購入ください。',
+    dl_label:'ダウンロード', dl_title:'TapeVaultを1ヶ月間無料でお試し', dl_sub:'会員登録だけで1か月無料ライセンスを進呈します。クレジットカード不要で、初日から全機能を利用できます。体験後にライセンスをご購入ください。',
     dl_btn:'⬇ TapeVault v1.2.6 Windows版をDL', dl_s1:'Windows 10 / 11 (64ビット)', dl_s2:'LTO-4〜LTO-9', dl_s3:'~90 MB インストーラー',
     dl_ver:'v1.2.6 · 2026年6月 · Windows 10 64ビット以上が必要',
     pr_label:'料金', pr_title:'シンプルな料金。想定外の請求なし。', pr_sub:'登録で1ヶ月間無料体験、その後ライセンスを購入。自動更新なし。',
@@ -1020,7 +1118,7 @@ const T = {
     p2_f1:'LTOオートローダー/ライブラリ対応', p2_f2:'LTOドライブ台数の制限なし', p2_f3:'テープスロット自動管理', p2_f4:'バッチアーカイブ＆復元ジョブ', p2_f5:'高度な検索＆フィルター', p2_f6:'優先サポート',
     p3_amt:'カスタム', p3_desc:'大規模機関 — マルチライブラリ・カスタム展開・SLA要件がある環境向け。',
     p3_f1:'複数テープライブラリ', p3_f2:'オンサイト展開＆セットアップ', p3_f3:'カスタム統合サポート', p3_f4:'専用SLA', p3_f5:'社員トレーニング込み', p3_btn:'営業に問い合わせ', p3_note:'お見積りプランは別途契約・請求となり、オンラインカード決済（Toss Payments）は利用しません。',
-    trust_txt:'すべてのプランに<strong style="color:#c8cfe0">1ヶ月間の無料トライアル</strong>が含まれます。登録するだけ。クレジットカード不要。',
+    trust_txt:'会員登録だけで、すべてのプランの全機能を使える<strong style="color:#c8cfe0">1か月無料ライセンス</strong>を進呈します。クレジットカードは不要です。',
     tr1:'自動更新なし', tr2:'解約手続き不要', tr3:'データは常にあなたのもの', tr4:'アクティベーション後オフライン', tr5:'Toss Payments決済 · VAT別途',
     faq_label:'よくある質問', faq_title:'購入前のよくある質問',
     faq1_q:'TapeVaultはインターネットなしで使えますか？', faq1_a:'はい。TapeVaultは初回ライセンスアクティベーション後は完全オフラインで動作します。継続的なインターネット接続は不要です。放送・防衛・医療のエアギャップ環境に最適です。',
@@ -1034,7 +1132,7 @@ const T = {
     fc_product:'製品', fc_support:'サポート', fc_legal:'法的情報',
     fc_contact:'サポートに連絡', fc_sales:'営業に連絡', fc_privacy:'プライバシーポリシー', fc_terms:'利用規約', fc_license:'ライセンス',
     foot_bottom:'TapeVault v1.2.6 · Veteran IT製 · Toss Payments決済 · 自動更新なし',
-    beta_pill:'🧪 登録するだけで1ヶ月無料体験 →',
+    beta_pill:'🎁 会員登録だけで1か月無料ライセンスを進呈 →',
     dlw_title:'🛡️ お知らせ：セキュリティ警告が表示される場合があります',
     dlw_body:'インストーラーはVETERAN ITのコード署名付きですが、新しい証明書のため、しばらくはダウンロードやインストール時にWindows SmartScreenや一部のブラウザで警告が表示されることがあります。これは新しいソフトウェアでよくある現象で、ファイルが危険という意味ではありません。Edgeがダウンロードをブロックした場合は、ダウンロード一覧で<strong>「…」→「保持する」→「詳細を表示」→「保持する」</strong>をクリックしてください。',
     dlw_step1_t:'ブラウザのダウンロード警告', dlw_step1_d:'ブラウザが警告を表示した場合、ダウンロード項目の「···」をクリックして「保持」(Chrome/Edge)を選択してください。',
@@ -1095,7 +1193,32 @@ document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
 });
 
-applyLang(localStorage.getItem('tv-lang') || 'en');
+// ── 회원가입 유도 ──
+const SIGNUP_URL = 'login.html?mode=signup&next=' + encodeURIComponent('index.html?welcome=1');
+// 이 브라우저에 로그인 세션이 남아 있는지(supabase-js 가 localStorage 에 둔다). 토큰 값은 읽지 않는다.
+function tvHasAccount() { try { return Object.keys(localStorage).some(k => /^sb-.+-auth-token$/.test(k)); } catch (e) { return false; } }
+function goTrial() {
+  if (tvHasAccount()) document.getElementById('download').scrollIntoView({ behavior: 'smooth' });
+  else location.href = SIGNUP_URL;
+}
+if (tvHasAccount()) {
+  document.body.classList.add('has-account');
+  const my = { en: 'My account', ko: '내 계정', ja: 'マイアカウント' };
+  Object.keys(my).forEach(l => { if (T[l]) T[l].nav_signin = my[l]; });
+  document.querySelectorAll('[data-i18n="nav_signin"]').forEach(el => { if (el.tagName === 'A') el.href = 'buy.html'; else el.onclick = () => { location.href = 'buy.html'; }; });
+  const pill = document.getElementById('beta-pill-link'); if (pill) pill.href = '#download';
+}
+// 가입·로그인을 마치고 돌아온 경우: 안내를 보여 주고 다운로드로 이동
+if (new URLSearchParams(location.search).get('welcome') === '1') {
+  history.replaceState(null, '', location.pathname);
+  window.addEventListener('load', () => {
+    document.getElementById('welcome-bar').hidden = false;
+    document.getElementById('download').scrollIntoView({ behavior: 'smooth' });
+    (window.dataLayer = window.dataLayer || []).push({ event: 'tv_account_ready' });
+  });
+}
+
+applyLang(typeof tvInitialLang === 'function' ? tvInitialLang() : (localStorage.getItem('tv-lang') || 'en'));
 </script>
 <script src="release.js"></script>
 <script src="consent.js"></script>

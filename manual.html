@@ -183,7 +183,51 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
 .m-tbl td{padding:9px 10px;border-bottom:0.5px solid #1e2230;vertical-align:top;color:#99a3c4}
 .m-tbl td:first-child{color:#c8cfe0;white-space:nowrap;padding-right:16px}
 @media (max-width:760px){.m-tbl td:first-child{white-space:normal}.m-tbl,.m-tbl tbody,.m-tbl tr,.m-tbl td{display:block;width:100%}.m-tbl thead{display:none}.m-tbl tr{border-bottom:0.5px solid #1e2230;padding:6px 0}.m-tbl td{border:none;padding:3px 0}}
+.nav-links a,.btn-ghost,.btn-orange{white-space:nowrap}
+.nav-links a.nav-only-mobile{display:none}
+@media (max-width:1180px){
+  .nav{flex-wrap:wrap}
+  .nav-links{display:none;order:3;width:100%;flex-direction:column;gap:0;background:#0b0b0d;border-top:0.5px solid #1e2230;margin-top:12px;padding-top:8px}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 4px;border-bottom:0.5px solid #16192480}
+  .nav-burger{display:flex}
+}
+@media (max-width:860px){.nav-links a.nav-only-mobile{display:block;color:#f5a623;font-weight:700}}
+/* PDF download + print (the PDFs in docs/ are printed from this page) */
+.pdf-btn{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:10px 18px;border:1px solid #f5a623;border-radius:8px;color:#f5a623;font-size:13.5px;font-weight:700;text-decoration:none;background:#1a1508}
+.pdf-btn:hover{background:#f5a623;color:#0b0b0d}
+.print-only{display:none}
+@media print{
+  @page{size:A4;margin:16mm 15mm}
+  html,body{background:#fff!important;color:#1a1a1a!important}
+  nav,.nav,.doc-sidebar,.breadcrumb,footer,#tv-consent,.pdf-btn,.step-divider{display:none!important}
+  .page-header{background:none!important;border-bottom:2px solid #f5a623!important;padding:0 0 12px!important;margin:0 0 20px!important}
+  .page-header-inner,.doc-layout,.doc-content{display:block!important;max-width:none!important;margin:0!important;padding:0!important;min-height:0!important}
+  .page-label{color:#a35f00!important}
+  .page-title{color:#000!important;font-size:26pt!important}
+  .page-sub{color:#333!important;max-width:none!important;font-size:11pt!important}
+  .step-card{margin-bottom:20px!important}
+  .step-header{break-after:avoid;margin-bottom:10px!important}
+  .step-number{width:28px!important;height:28px!important;font-size:12px!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .step-title{color:#000!important;font-size:15pt!important}
+  .m-body{font-size:10.5pt!important;line-height:1.65!important}
+  .m-body,.m-body *{color:#1a1a1a!important}
+  .m-body a{color:#0b57d0!important}
+  .m-body h3{color:#000!important;break-after:avoid;font-size:11.5pt!important}
+  .m-body li,.m-tbl tr{break-inside:avoid}
+  .m-body code{background:#f2f2f2!important;border:1px solid #ccc!important}
+  .m-tbl{display:table!important;width:100%!important;font-size:9.5pt!important}
+  .m-tbl thead{display:table-header-group!important}
+  .m-tbl tbody{display:table-row-group!important}
+  .m-tbl tr{display:table-row!important;border:0!important}
+  .m-tbl th,.m-tbl td{display:table-cell!important;width:auto!important;border:1px solid #bbb!important;padding:6px 8px!important}
+  .m-tbl th{background:#eee!important;color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .m-tbl td:first-child{white-space:normal!important;width:30%!important;font-weight:600}
+  .alert{background:#f7f7f7!important;border:1px solid #bbb!important}
+  .print-only{display:block!important;margin-top:24px;padding-top:10px;border-top:1px solid #bbb;font-size:9pt;color:#555!important}
+}
 </style>
+<script src="lang.js"></script>
 </head>
 <body>
 
@@ -208,6 +252,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
     <a href="how-to-install.html" data-i18n="nav_install">Install Guide</a>
     <a href="manual.html" class="active" data-i18n="nav_manual">User Manual</a>
+    <a href="login.html" class="nav-only-mobile" data-i18n="nav_signin">Sign in / Sign up</a>
   </div>
   <div class="nav-right">
     <div class="lang-select" id="lang-select">
@@ -222,7 +267,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
         <button class="lang-menu-item" data-lang="ja" onclick="applyLang('ja');toggleLangMenu()">日本語<span class="lang-check">✓</span></button>
       </div>
     </div>
-    <button class="btn-ghost" data-i18n="nav_signin" onclick="location.href='login.html'">Sign in</button>
+    <button class="btn-ghost" data-i18n="nav_signin" onclick="location.href='login.html'">Sign in / Sign up</button>
     <button class="btn-orange" data-i18n="nav_trial" onclick="location.href='index.html#download'">Free Trial</button>
     <button class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -243,6 +288,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
     <div class="page-label" data-i18n="page_label">Support · User Manual</div>
     <div class="page-title" data-i18n="page_title">TapeVault User Manual</div>
     <p class="page-sub" data-i18n="page_sub">How to prepare tapes, write and verify, restore, and deliver with TapeVault 1.2.9 on Windows and macOS.</p>
+    <a class="pdf-btn" id="manual-pdf" href="docs/TapeVault-User-Manual-en.pdf" download>📄 Download PDF</a>
   </div>
 </div>
 
@@ -379,6 +425,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
       <div class="m-body" data-i18n="m13_body"><p>For questions or problems, email <a href="mailto:support@tapevault.net">support@tapevault.net</a>. Including a screenshot and the log file helps us respond faster.</p></div>
     </div>
 
+    <div class="print-only">TapeVault · https://tapevault.net · support@tapevault.net · © 2026 Veteran IT Co., Ltd. (주식회사 베테랑아이티)</div>
   </div>
 </div>
 
@@ -403,7 +450,7 @@ const T = {
   "nav_download": "Download",
   "nav_pricing": "Pricing",
   "nav_install": "Install Guide",
-  "nav_signin": "Sign in",
+  "nav_signin": "Sign in / Sign up",
   "nav_trial": "Free Trial",
   "bc_home": "Home",
   "bc_support": "Support",
@@ -467,7 +514,7 @@ const T = {
   "nav_download": "다운로드",
   "nav_pricing": "요금제",
   "nav_install": "설치 가이드",
-  "nav_signin": "로그인",
+  "nav_signin": "로그인 · 회원가입",
   "nav_trial": "무료 체험",
   "bc_home": "홈",
   "bc_support": "지원",
@@ -531,7 +578,7 @@ const T = {
   "nav_download": "ダウンロード",
   "nav_pricing": "料金プラン",
   "nav_install": "インストールガイド",
-  "nav_signin": "ログイン",
+  "nav_signin": "ログイン・新規登録",
   "nav_trial": "無料体験",
   "bc_home": "ホーム",
   "bc_support": "サポート",
@@ -615,7 +662,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-applyLang(localStorage.getItem('tv-lang') || 'en');
+applyLang(typeof tvInitialLang === 'function' ? tvInitialLang() : (localStorage.getItem('tv-lang') || 'en'));
 
 const links = document.querySelectorAll('.sidebar-link[href^="#"]');
 const observer = new IntersectionObserver(entries => {
@@ -642,6 +689,21 @@ document.querySelectorAll('#nav-links a').forEach(a => a.addEventListener('click
 }));
 </script>
 
+<script>
+// PDF 버튼: 보고 있는 언어의 PDF 로 연결한다 (docs/ 의 PDF 는 이 페이지를 인쇄해 만든 것)
+(function () {
+  var P = { en: ['📄 Download PDF', 'en'], ko: ['📄 PDF로 내려받기', 'ko'], ja: ['📄 PDFをダウンロード', 'ja'] };
+  function upd() {
+    var p = P[document.documentElement.lang] || P.en, a = document.getElementById('manual-pdf');
+    if (!a) return;
+    a.textContent = p[0];
+    a.href = 'docs/TapeVault-User-Manual-' + p[1] + '.pdf';
+  }
+  var orig = window.applyLang;
+  window.applyLang = function (l) { orig(l); upd(); };
+  upd();
+})();
+</script>
 <script src="consent.js"></script>
 </body>
 </html>

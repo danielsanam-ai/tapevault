@@ -99,6 +99,7 @@ footer{padding:32px 48px;border-top:0.5px solid #1a2035;margin-top:48px}
   footer{padding:24px 20px}
 }
 </style>
+<script src="lang.js"></script>
 </head>
 <body>
 
@@ -407,7 +408,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-applyLang(localStorage.getItem('tv-lang') || 'en');
+applyLang(typeof tvInitialLang === 'function' ? tvInitialLang() : (localStorage.getItem('tv-lang') || 'en'));
 
 function toggleMobileNav() {
   const nav = document.getElementById('nav-links');
