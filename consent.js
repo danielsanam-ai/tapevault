@@ -63,7 +63,7 @@
     bar.setAttribute('role', 'dialog');
     bar.setAttribute('aria-label', s.label);
     bar.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:760px;margin:0 auto;' +
-      'background:#14161d;border:1px solid #2e3240;border-radius:12px;padding:14px 16px;display:flex;flex-wrap:wrap;' +
+      'background:#30343e;border:1px solid #505667;border-radius:12px;padding:14px 16px;display:flex;flex-wrap:wrap;' +
       'align-items:center;gap:12px;box-shadow:0 10px 40px rgba(0,0,0,.55);font:13px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;color:#c8cfe0';
     var p = document.createElement('div');
     p.style.cssText = 'flex:1 1 280px;min-width:0';
@@ -71,7 +71,7 @@
     var a = document.createElement('a');
     a.href = 'privacy-policy.html#cookies';
     a.textContent = s.more;
-    a.style.cssText = 'color:#5b9cf6;text-decoration:underline';
+    a.style.cssText = 'color:#7db2ff;text-decoration:underline';
     p.appendChild(a);
     var box = document.createElement('div');
     box.style.cssText = 'display:flex;gap:8px;flex:0 0 auto;margin-left:auto';
@@ -80,7 +80,7 @@
       b.type = 'button';
       b.textContent = label;
       b.style.cssText = 'cursor:pointer;border-radius:8px;padding:8px 16px;font:600 13px system-ui,-apple-system,"Segoe UI",sans-serif;' +
-        (primary ? 'background:#f5a623;color:#14161d;border:1px solid #f5a623' : 'background:transparent;color:#c8cfe0;border:1px solid #3a3f50');
+        (primary ? 'background:#f5a623;color:#30343e;border:1px solid #f5a623' : 'background:transparent;color:#c8cfe0;border:1px solid #5c6274');
       b.onclick = function () { choose(v); };
       return b;
     }
@@ -98,6 +98,7 @@
     link.href = '#';
     link.id = 'tv-consent-link';
     link.textContent = t().settings;
+    link.style.cssText = 'color:inherit;font-size:12px;text-decoration:underline;margin-left:14px;cursor:pointer';
     link.onclick = function (e) { e.preventDefault(); show(); };
     host.appendChild(link);
   }
