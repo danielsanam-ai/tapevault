@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self' https://danielsanam-ai.github.io; base-uri 'self'; object-src 'none'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google.com https://www.google.co.kr https://*.g.doubleclick.net https://*.doubleclick.net; frame-src https://www.youtube-nocookie.com https://www.googletagmanager.com https://td.doubleclick.net https://bid.g.doubleclick.net; connect-src 'self' https://danielsanam-ai.github.io https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://www.google.com https://google.com https://www.googleadservices.com https://pagead2.googlesyndication.com; base-uri 'self'; object-src 'none'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>TapeVault — Find Any File on LTO Tape in 30 Seconds</title>
 <meta name="description" content="TapeVault is an LTO tape archive manager for Windows and macOS. Browse thumbnails, search, and retrieve media files from LTO tape in seconds.">
@@ -1098,5 +1098,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
 applyLang(localStorage.getItem('tv-lang') || 'en');
 </script>
 <script src="release.js"></script>
+<script src="consent.js"></script>
 </body>
 </html>
