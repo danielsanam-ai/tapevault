@@ -10,49 +10,49 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:#23262e;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;overflow-x:hidden}
+body{background:#23262e;color:#f7f8fc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;overflow-x:hidden}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 48px;border-bottom:0.5px solid #424857;position:sticky;top:0;background:#23262eee;backdrop-filter:blur(14px);z-index:100}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-logo-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center}
-.nav-logo-text{font-size:17px;letter-spacing:-0.02em;color:#f0f2f8}
+.nav-logo-text{font-size:17px;letter-spacing:-0.02em;color:#ffffff}
 .nav-logo-text b{font-weight:700}
-.nav-ver{font-size:10px;background:#333e5c;color:#7db2ff;padding:2px 7px;border-radius:4px;font-family:monospace}
+.nav-ver{font-size:11px;background:#333e5c;color:#7db2ff;padding:2px 7px;border-radius:4px;font-family:monospace}
 .nav-links{display:flex;gap:28px}
-.nav-links a{font-size:13px;color:#c0c9e0;text-decoration:none;cursor:pointer;transition:color .2s}
+.nav-links a{font-size:13px;color:#e8ecf5;text-decoration:none;cursor:pointer;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:#f5a623}
 .nav-right{display:flex;gap:7px;align-items:center}
 .lang-select{position:relative;margin-right:6px}
-.lang-globe-btn{display:flex;align-items:center;gap:6px;background:#2f343f;border:0.5px solid #424857;color:#b6bfd8;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-family:monospace;transition:all .15s}
-.lang-globe-btn:hover{border-color:#55668e;color:#c8cfe0}
+.lang-globe-btn{display:flex;align-items:center;gap:6px;background:#2f343f;border:0.5px solid #424857;color:#dfe4f0;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:12px;font-family:monospace;transition:all .15s}
+.lang-globe-btn:hover{border-color:#93a4cc;color:#eef1f8}
 .lang-globe-btn svg{width:15px;height:15px;flex-shrink:0;stroke:currentColor}
 .lang-globe-btn .lang-chevron{width:8px;height:8px;flex-shrink:0;stroke:currentColor;transition:transform .15s}
 .lang-globe-btn.open .lang-chevron{transform:rotate(180deg)}
 .lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:#2a2e37;border:0.5px solid #4d5364;border-radius:10px;padding:6px;min-width:150px;box-shadow:0 16px 40px rgba(0,0,0,.55);display:none;flex-direction:column;gap:2px;z-index:200}
 .lang-menu.open{display:flex}
-.lang-menu-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:none;border:none;color:#b6bfd8;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:12px;text-align:left;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-.lang-menu-item:hover{background:#343a47;color:#c8cfe0}
+.lang-menu-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:none;border:none;color:#dfe4f0;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:13px;text-align:left;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.lang-menu-item:hover{background:#343a47;color:#eef1f8}
 .lang-menu-item.active{color:#7db2ff}
-.lang-menu-item .lang-check{color:#7db2ff;font-size:12px;opacity:0}
+.lang-menu-item .lang-check{color:#7db2ff;font-size:13px;opacity:0}
 .lang-menu-item.active .lang-check{opacity:1}
-.btn-ghost{font-size:13px;color:#c0c9e0;background:#333946;border:0.5px solid #505a72;padding:6px 16px;border-radius:6px;cursor:pointer}
-.btn-orange{font-size:13px;color:#23262e;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer}
+.btn-ghost{font-size:13px;color:#e8ecf5;background:#333946;border:0.5px solid #505a72;padding:6px 16px;border-radius:6px;cursor:pointer}
+.btn-orange{font-size:13px;color:#111318;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer}
 .btn-orange:hover{opacity:.88}
 .hero{padding:72px 48px 56px;text-align:center;position:relative}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.hero h1{font-size:56px;font-weight:400;line-height:1.1;letter-spacing:-1.5px;color:#f0f2f8;margin-bottom:10px}
+.hero h1{font-size:56px;font-weight:600;line-height:1.1;letter-spacing:-1.5px;color:#ffffff;margin-bottom:10px}
 .hero h1 b{font-weight:800;color:#f5a623}
-.hero-sub{font-size:17px;color:#b6bfd8;max-width:540px;margin:0 auto 16px;line-height:1.75}
-.hero-platform{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#aab4ce;margin-bottom:36px;font-family:monospace}
+.hero-sub{font-size:17px;color:#dfe4f0;max-width:540px;margin:0 auto 16px;line-height:1.75}
+.hero-platform{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#d3d9e8;margin-bottom:36px;font-family:monospace}
 .hero-platform span{background:#333741;border:0.5px solid #4d5364;padding:3px 10px;border-radius:4px}
 .hero-platform span.hi{color:#f5a623;border-color:#5e4612;background:#372e19}
 .hero-btns{display:flex;gap:12px;justify-content:center;margin-bottom:56px}
-.btn-hero-main{background:#f5a623;color:#23262e;border:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px}
+.btn-hero-main{background:#f5a623;color:#111318;border:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px}
 .btn-hero-main:hover{opacity:.88}
-.btn-hero-ghost{background:#333946;color:#c8cfe0;border:0.5px solid #505a72;padding:14px 24px;border-radius:8px;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:8px}
-.btn-hero-ghost:hover{border-color:#55668e}
+.btn-hero-ghost{background:#333946;color:#eef1f8;border:0.5px solid #505a72;padding:14px 24px;border-radius:8px;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.btn-hero-ghost:hover{border-color:#93a4cc}
 .video-card{background:#30343e;border:0.5px solid #4d5364;border-radius:12px;overflow:hidden;display:block;transition:border-color .2s}
 .video-card:hover{border-color:#f5a623}
-.video-label{background:#333741;border-bottom:0.5px solid #4d5364;padding:10px 16px;font-size:11px;color:#b6bfd8;font-family:monospace;display:flex;align-items:center;gap:6px}
+.video-label{background:#333741;border-bottom:0.5px solid #4d5364;padding:10px 16px;font-size:12px;color:#dfe4f0;font-family:monospace;display:flex;align-items:center;gap:6px}
 .video-label span{color:#f5a623}
 .video-thumb{position:relative;background:#24272f;display:block;width:100%;padding:0;border:0;cursor:pointer;color:inherit}
 .video-thumb:focus-visible{outline:2px solid #f5a623;outline-offset:-2px}
@@ -63,50 +63,50 @@ body{background:#23262e;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .video-play-btn svg{width:20px;height:20px;fill:#23262e;margin-left:3px}
 .pain-sec{padding:72px 48px;background:#1d2027;border-top:0.5px solid #313a54;border-bottom:0.5px solid #313a54}
 .pain-head{text-align:center;margin-bottom:48px}
-.sec-label{font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:monospace}
-.sec-title{font-size:34px;font-weight:600;color:#e8eaf0;letter-spacing:-.5px;margin-bottom:10px}
-.sec-sub{font-size:15px;color:#b6bfd8;max-width:520px;margin:0 auto}
+.sec-label{font-size:12px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:monospace}
+.sec-title{font-size:34px;font-weight:600;color:#f7f8fc;letter-spacing:-.5px;margin-bottom:10px}
+.sec-sub{font-size:15px;color:#dfe4f0;max-width:520px;margin:0 auto}
 .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
 .pain-card{background:#2a2e37;border:0.5px solid #422d2e;border-radius:12px;padding:28px}
 .pain-ico{font-size:28px;margin-bottom:14px}
 .pain-title{font-size:15px;font-weight:700;color:#f87171;margin-bottom:10px}
-.pain-desc{font-size:13px;color:#b6bfd8;line-height:1.75}
+.pain-desc{font-size:13px;color:#dfe4f0;line-height:1.75}
 .pain-arrow{text-align:center;padding:32px 0;font-size:32px;color:#f5a623}
 .solution-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
 .solution-card{background:#253626;border:0.5px solid #2c4c2c;border-radius:12px;padding:28px}
 .solution-ico{font-size:28px;margin-bottom:14px}
 .solution-title{font-size:15px;font-weight:700;color:#4ade80;margin-bottom:10px}
-.solution-desc{font-size:13px;color:#b6bfd8;line-height:1.75}
+.solution-desc{font-size:13px;color:#dfe4f0;line-height:1.75}
 .gui-sec{padding:80px 48px}
 .gui-head{text-align:center;margin-bottom:64px}
 .gui-step{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:80px;max-width:1100px;margin-left:auto;margin-right:auto}
 .gui-step:last-child{margin-bottom:0}
 .gui-step-rev{direction:rtl}
 .gui-step-rev>*{direction:ltr}
-.gui-step-num{font-size:10px;color:#f5a623;font-family:monospace;letter-spacing:.15em;background:#372e19;border:0.5px solid #5e4612;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:16px}
-.gui-step-title{font-size:28px;font-weight:700;color:#e8eaf0;margin-bottom:14px;letter-spacing:-.4px;line-height:1.3}
-.gui-step-desc{font-size:14px;color:#b6bfd8;line-height:1.85;margin-bottom:20px}
+.gui-step-num{font-size:11px;color:#f5a623;font-family:monospace;letter-spacing:.15em;background:#372e19;border:0.5px solid #5e4612;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:16px}
+.gui-step-title{font-size:28px;font-weight:700;color:#f7f8fc;margin-bottom:14px;letter-spacing:-.4px;line-height:1.3}
+.gui-step-desc{font-size:14px;color:#dfe4f0;line-height:1.85;margin-bottom:20px}
 .gui-checklist{list-style:none;display:flex;flex-direction:column;gap:10px}
-.gui-checklist li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#b6bfd8;line-height:1.6}
+.gui-checklist li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#dfe4f0;line-height:1.6}
 .gui-checklist li::before{content:"✓";color:#f5a623;font-size:13px;flex-shrink:0;margin-top:1px;font-weight:700}
-.gui-tip{display:flex;align-items:flex-start;gap:8px;background:#372e19;border:0.5px solid #5e4612;border-radius:8px;padding:12px 16px;margin-top:20px;font-size:12px;color:#d4921a;line-height:1.65}
+.gui-tip{display:flex;align-items:flex-start;gap:8px;background:#372e19;border:0.5px solid #5e4612;border-radius:8px;padding:12px 16px;margin-top:20px;font-size:13px;color:#f2b84b;line-height:1.65}
 .gui-screen{border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);border:0.5px solid #4d5364}
 .gui-screen img{width:100%;display:block}
-.gui-screen-cap{font-size:11px;color:#9fa9c3;text-align:center;margin-top:10px;font-family:monospace}
+.gui-screen-cap{font-size:12px;color:#c2cadc;text-align:center;margin-top:10px;font-family:monospace}
 .stats-bar{background:#2a2e37;border-top:0.5px solid #424857;border-bottom:0.5px solid #424857;padding:32px 48px}
 .stats-inner{display:flex;align-items:center;justify-content:center;gap:0;max-width:900px;margin:0 auto}
 .stat-item{text-align:center;padding:0 48px}
 .stat-num{font-size:44px;font-weight:800;color:#f5a623;letter-spacing:-1px;line-height:1}
 .stat-num sup{font-size:20px;font-weight:400}
-.stat-label{font-size:11px;color:#b6bfd8;margin-top:6px;font-family:monospace}
+.stat-label{font-size:12px;color:#dfe4f0;margin-top:6px;font-family:monospace}
 .stat-div{width:0.5px;height:52px;background:#424857}
 .feat-sec{padding:72px 48px;background:#1d2027;border-top:0.5px solid #313a54;border-bottom:0.5px solid #313a54}
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto}
 .feat{background:#2a2e37;border:0.5px solid #424857;border-radius:10px;padding:24px;transition:border-color .2s}
 .feat:hover{border-color:#546073}
 .feat-ico{font-size:26px;margin-bottom:14px}
-.feat-title{font-size:14px;font-weight:700;color:#c8cfe0;margin-bottom:8px}
-.feat-desc{font-size:12px;color:#aab4ce;line-height:1.75}
+.feat-title{font-size:14px;font-weight:700;color:#eef1f8;margin-bottom:8px}
+.feat-desc{font-size:13px;color:#d3d9e8;line-height:1.75}
 .baf-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:center;max-width:900px;margin:0 auto}
 .baf-card{border-radius:12px;padding:32px}
 .baf-card.before{background:#282020;border:1px solid #532c2c}
@@ -115,7 +115,7 @@ body{background:#23262e;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .baf-card.before .baf-label{color:#f87171}
 .baf-card.after .baf-label{color:#4ade80}
 .baf-list{list-style:none;display:flex;flex-direction:column;gap:12px}
-.baf-list li{font-size:13px;color:#b6bfd8;line-height:1.65;display:flex;align-items:flex-start;gap:8px}
+.baf-list li{font-size:13px;color:#dfe4f0;line-height:1.65;display:flex;align-items:flex-start;gap:8px}
 .baf-card.before .baf-list li::before{content:"✗";color:#f87171;flex-shrink:0;font-weight:700}
 .baf-card.after .baf-list li::before{content:"✓";color:#4ade80;flex-shrink:0;font-weight:700}
 .baf-arrow{font-size:36px;color:#f5a623;text-align:center}
@@ -123,57 +123,57 @@ body{background:#23262e;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFo
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:820px;margin:0 auto}
 .pc{background:#2a2e37;border:0.5px solid #313a54;border-radius:12px;padding:30px;position:relative}
 .pc.hot{border:2px solid #f5a623}
-.pc-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#f5a623;color:#23262e;font-size:10px;font-weight:800;padding:3px 16px;border-radius:20px;white-space:nowrap}
-.pc-plan{font-size:11px;color:#aab4ce;margin-bottom:8px;font-family:monospace;letter-spacing:.1em}
-.pc-amount{font-size:40px;font-weight:800;color:#e8eaf0;letter-spacing:-1px}
-.pc-unit{font-size:13px;color:#aab4ce;font-weight:400}
-.pc-note{font-size:11px;color:#aab4ce;margin-top:4px;line-height:1.5}
-.pc-desc{font-size:12px;color:#aab4ce;margin:8px 0 16px;line-height:1.6}
+.pc-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#f5a623;color:#111318;font-size:11px;font-weight:800;padding:3px 16px;border-radius:20px;white-space:nowrap}
+.pc-plan{font-size:12px;color:#d3d9e8;margin-bottom:8px;font-family:monospace;letter-spacing:.1em}
+.pc-amount{font-size:40px;font-weight:800;color:#f7f8fc;letter-spacing:-1px}
+.pc-unit{font-size:13px;color:#d3d9e8;font-weight:400}
+.pc-note{font-size:12px;color:#d3d9e8;margin-top:4px;line-height:1.5}
+.pc-desc{font-size:13px;color:#d3d9e8;margin:8px 0 16px;line-height:1.6}
 .pc-hr{border:none;border-top:0.5px solid #313a54;margin:16px 0}
-.pc-feat{font-size:12px;color:#b6bfd8;padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
-.pc-feat::before{content:'✓';color:#22d3ee;font-size:11px;flex-shrink:0;margin-top:1px}
-.pc-btn{width:100%;margin-top:22px;padding:11px;border-radius:8px;font-size:13px;cursor:pointer;border:0.5px solid #505a72;background:none;color:#c0c9e0;font-weight:600;transition:all .15s}
-.pc-btn:hover{border-color:#55668e;color:#c8cfe0}
-.pc-btn.hot{background:#f5a623;border:none;color:#23262e;font-weight:800}
+.pc-feat{font-size:13px;color:#dfe4f0;padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.pc-feat::before{content:'✓';color:#22d3ee;font-size:12px;flex-shrink:0;margin-top:1px}
+.pc-btn{width:100%;margin-top:22px;padding:11px;border-radius:8px;font-size:13px;cursor:pointer;border:0.5px solid #505a72;background:none;color:#e8ecf5;font-weight:600;transition:all .15s}
+.pc-btn:hover{border-color:#93a4cc;color:#eef1f8}
+.pc-btn.hot{background:#f5a623;border:none;color:#111318;font-weight:800}
 .pc-btn.hot:hover{opacity:.88}
 .pc-buy{display:block;text-align:center;margin-top:10px;font-size:13px;color:#7db2ff;text-decoration:none}.pc-buy:hover{text-decoration:underline}
 .price-trust{text-align:center;margin-top:28px}
-.price-trust p{font-size:12px;color:#9fa9c3;margin-bottom:6px}
+.price-trust p{font-size:13px;color:#c2cadc;margin-bottom:6px}
 .price-trust-items{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-.price-trust-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#aab4ce;font-family:monospace}
+.price-trust-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#d3d9e8;font-family:monospace}
 .price-trust-item::before{content:"✓";color:#4ade80}
 .faq-sec{padding:72px 48px}
 .faq-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
 .faq-item{background:#2a2e37;border:0.5px solid #424857;border-radius:8px;overflow:hidden}
-.faq-q{padding:18px 22px;font-size:14px;color:#c8cfe0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q{padding:18px 22px;font-size:14px;color:#eef1f8;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
 .faq-q .ico{color:#f5a623;font-size:18px;font-weight:300;transition:transform .2s;flex-shrink:0;margin-left:12px}
 .faq-q.open .ico{transform:rotate(45deg)}
 .faq-q:focus-visible{outline:2px solid #f5a623;outline-offset:-2px;border-radius:8px}
-.faq-a{padding:0 22px 18px;font-size:13px;color:#b6bfd8;line-height:1.8;display:none}
+.faq-a{padding:0 22px 18px;font-size:13px;color:#dfe4f0;line-height:1.8;display:none}
 .faq-a.open{display:block}
 .cta-sec{padding:80px 48px;text-align:center;background:linear-gradient(135deg,#372e19 0%,#23262e 40%,#212e48 100%);border-top:0.5px solid #40364e}
-.cta-sec h2{font-size:40px;font-weight:700;color:#f0f2f8;margin-bottom:12px;letter-spacing:-.6px}
-.cta-sec p{font-size:16px;color:#b6bfd8;margin-bottom:32px}
-.cta-note{font-size:12px;color:#9fa9c3;margin-top:16px;font-family:monospace}
+.cta-sec h2{font-size:40px;font-weight:700;color:#ffffff;margin-bottom:12px;letter-spacing:-.6px}
+.cta-sec p{font-size:16px;color:#dfe4f0;margin-bottom:32px}
+.cta-note{font-size:13px;color:#c2cadc;margin-top:16px;font-family:monospace}
 footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
 .footer-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;margin-bottom:32px}
 .footer-logo-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
 .footer-logo-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center}
-.footer-brand-name{font-size:15px;font-weight:700;color:#c8cfe0}
-.footer-copy{font-size:11px;color:#9fa9c3;line-height:1.7}
+.footer-brand-name{font-size:15px;font-weight:700;color:#eef1f8}
+.footer-copy{font-size:12px;color:#c2cadc;line-height:1.7}
 .footer-cols{display:flex;gap:56px}
-.footer-col-title{font-size:10px;color:#b6bfd8;font-family:monospace;letter-spacing:.1em;margin-bottom:14px;text-transform:uppercase}
-.footer-col a{display:block;font-size:12px;color:#9fa9c3;text-decoration:none;margin-bottom:10px;cursor:pointer;transition:color .15s}
-.footer-col a:hover{color:#c0c9e0}
+.footer-col-title{font-size:11px;color:#dfe4f0;font-family:monospace;letter-spacing:.1em;margin-bottom:14px;text-transform:uppercase}
+.footer-col a{display:block;font-size:13px;color:#c2cadc;text-decoration:none;margin-bottom:10px;cursor:pointer;transition:color .15s}
+.footer-col a:hover{color:#e8ecf5}
 .footer-bottom{padding-top:24px;border-top:0.5px solid #313a54;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.footer-bottom-left{font-size:11px;color:#9fa9c3}
-.footer-bottom-right{display:flex;gap:16px}
-.footer-bottom-right a{font-size:11px;color:#9fa9c3;text-decoration:none;cursor:pointer}
-.biz-info{font-size:11px;color:#9fa9c3;line-height:1.9;margin-bottom:24px}
-.dl-more{font-size:12px;color:#b6bfd8;max-width:640px;text-align:left}
+.footer-bottom-left{font-size:12px;color:#c2cadc}
+.footer-bottom-right{display:flex;gap:8px 16px;flex-wrap:wrap}
+.footer-bottom-right a{font-size:12px;color:#c2cadc;text-decoration:none;cursor:pointer}
+.biz-info{font-size:12px;color:#c2cadc;line-height:1.9;margin-bottom:24px}
+.dl-more{font-size:13px;color:#dfe4f0;max-width:640px;text-align:left}
 .dl-more .dl-row{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;padding:4px 0;border-top:1px solid rgba(120,130,160,.18)}
 .dl-more a{color:#7db2ff;text-decoration:none}.dl-more a:hover{text-decoration:underline}
-.dl-more code{font-size:10.5px;color:#aab4ce;word-break:break-all;user-select:all}
+.dl-more code{font-size:11.5px;color:#d3d9e8;word-break:break-all;user-select:all}
 .dl-feat{margin-top:8px}.dl-feat summary{cursor:pointer;color:#7db2ff}
 .dl-feat table{border-collapse:collapse;margin-top:6px;width:100%}.dl-feat td{padding:3px 8px;border-top:1px solid rgba(120,130,160,.18)}.dl-feat td+td{text-align:center;width:70px}
 .beta-pill{display:inline-flex;align-items:center;gap:9px;background:#372e19;border:1px solid #f5a623;color:#f5a623;font-size:14px;font-weight:800;padding:11px 24px;border-radius:24px;margin-bottom:28px;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 0 24px rgba(245,166,35,.12)}
@@ -182,20 +182,20 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(14,16,22,.72);backdrop-filter:blur(3px);z-index:1000;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.open{display:flex}
 .modal-box{background:#2a2e37;border:0.5px solid #4d5364;border-radius:14px;padding:32px;max-width:460px;width:100%;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.6);text-align:left}
-.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:#9fa9c3;font-size:22px;cursor:pointer;line-height:1;padding:6px}
+.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:#c2cadc;font-size:22px;cursor:pointer;line-height:1;padding:6px}
 .modal-close:hover{color:#f5a623}
 .modal-icon{font-size:30px;margin-bottom:12px}
-.modal-box h3{font-size:18px;font-weight:700;color:#e8eaf0;margin-bottom:12px;letter-spacing:-.3px;line-height:1.4}
-.modal-box p{font-size:13px;color:#b6bfd8;line-height:1.75;margin-bottom:22px}
+.modal-box h3{font-size:18px;font-weight:700;color:#f7f8fc;margin-bottom:12px;letter-spacing:-.3px;line-height:1.4}
+.modal-box p{font-size:13px;color:#dfe4f0;line-height:1.75;margin-bottom:22px}
 .modal-steps{display:flex;flex-direction:column;gap:14px;margin-bottom:26px}
 .modal-step{display:flex;gap:12px;align-items:flex-start}
-.modal-step-num{width:24px;height:24px;border-radius:50%;background:#372e19;border:1px solid #5e4612;color:#f5a623;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:monospace}
-.modal-step-title{font-size:13px;font-weight:700;color:#c8cfe0;margin-bottom:4px}
-.modal-step-desc{font-size:12px;color:#aab4ce;line-height:1.6}
-.modal-note{font-size:11.5px;color:#aab4ce;line-height:1.6;margin:-10px 0 16px}.modal-note a{color:#7db2ff}
+.modal-step-num{width:24px;height:24px;border-radius:50%;background:#372e19;border:1px solid #5e4612;color:#f5a623;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:monospace}
+.modal-step-title{font-size:13px;font-weight:700;color:#eef1f8;margin-bottom:4px}
+.modal-step-desc{font-size:13px;color:#d3d9e8;line-height:1.6}
+.modal-note{font-size:12.5px;color:#d3d9e8;line-height:1.6;margin:-10px 0 16px}.modal-note a{color:#7db2ff}
 .modal-continue{width:100%;justify-content:center;font-size:14px;padding:13px}
 
-.nav-burger{display:none;background:none;border:0.5px solid #505a72;color:#c8cfe0;padding:7px;border-radius:6px;cursor:pointer;align-items:center;justify-content:center}
+.nav-burger{display:none;background:none;border:0.5px solid #505a72;color:#eef1f8;padding:7px;border-radius:6px;cursor:pointer;align-items:center;justify-content:center}
 .nav-burger svg{width:18px;height:18px}
 
 /* ===== Tablet ===== */
@@ -211,7 +211,7 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
   .hero{padding:48px 20px 40px}
   .hero h1{font-size:38px;letter-spacing:-1px}
   .hero-platform{flex-wrap:wrap;justify-content:center;row-gap:6px}
-  .beta-pill{font-size:12px;padding:9px 16px;white-space:normal;text-align:center}
+  .beta-pill{font-size:12px;padding:9px 14px;white-space:normal;text-align:center}
 
   .pain-sec,.feat-sec,.price-sec,.faq-sec,.gui-sec,.baf-sec,#download{padding-left:20px;padding-right:20px}
   .sec-title{font-size:26px}
@@ -268,16 +268,16 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
   .nav-burger{display:flex}
 }
 .nav-links a.nav-only-mobile{display:none}
-.hero-signup{margin:-38px 0 44px;font-size:13.5px;color:#b6bfd8}
+.hero-signup{margin:-38px 0 44px;font-size:13.5px;color:#dfe4f0}
 .hero-signup a{color:#f5a623;font-weight:700;text-decoration:none}
 .hero-signup a:hover{text-decoration:underline}
 .start-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px;margin:0 auto 36px;text-align:left}
 .start-step{background:#2e323c;border:0.5px solid #4d5364;border-radius:12px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
 .start-step.first{border-color:#f5a623;background:#332b17}
-.start-num{width:26px;height:26px;border-radius:50%;background:#f5a623;color:#23262e;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
-.start-t{font-size:15px;font-weight:700;color:#e6eaf5}
-.start-d{font-size:12.5px;color:#b6bfd8;line-height:1.55}
-.start-btn{align-self:flex-start;margin-top:8px;background:#f5a623;color:#23262e;font-weight:700;font-size:13px;padding:8px 16px;border-radius:6px;text-decoration:none}
+.start-num{width:26px;height:26px;border-radius:50%;background:#f5a623;color:#111318;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.start-t{font-size:15px;font-weight:700;color:#f7f8fc}
+.start-d{font-size:13.5px;color:#dfe4f0;line-height:1.55}
+.start-btn{align-self:flex-start;margin-top:8px;background:#f5a623;color:#111318;font-weight:700;font-size:13px;padding:8px 16px;border-radius:6px;text-decoration:none}
 .start-btn:hover{opacity:.88}
 .start-done{display:none;margin-top:8px;font-size:13px;font-weight:700;color:#4ade80}
 .cta-signup{display:block;margin-top:14px;font-size:13.5px;color:#f5a623;text-decoration:none;font-weight:700}
@@ -366,11 +366,11 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
         <span style="width:10px;height:10px;border-radius:50%;background:#f87171;display:inline-block"></span>
         <span style="width:10px;height:10px;border-radius:50%;background:#f5a623;display:inline-block"></span>
         <span style="width:10px;height:10px;border-radius:50%;background:#4ade80;display:inline-block"></span>
-        <span style="font-size:11px;color:#aab4ce;font-family:monospace;margin-left:8px">TapeVault v1.2.6 — LTO Archive Manager</span>
+        <span style="font-size:12px;color:#d3d9e8;font-family:monospace;margin-left:8px">TapeVault v1.2.6 — LTO Archive Manager</span>
       </div>
       <img src="img/screen-app.png" alt="TapeVault application screenshot" style="width:100%;display:block">
     </div>
-    <div style="font-size:11px;color:#9fa9c3;text-align:center;margin-top:10px;font-family:monospace">▲ Actual TapeVault — no mockup</div>
+    <div style="font-size:12px;color:#c2cadc;text-align:center;margin-top:10px;font-family:monospace">▲ Actual TapeVault — no mockup</div>
   </div>
 
   <div style="max-width:720px;margin:0 auto 20px" id="yt-wrap">
@@ -522,7 +522,7 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
     <div class="baf-card before">
       <div class="baf-label" data-i18n="baf_bl">❌ Without TapeVault</div>
       <ul class="baf-list">
-        <li data-i18n="baf_b1">Check tape labels manually — <strong style="color:#c8cfe0">hours per search</strong></li>
+        <li data-i18n="baf_b1">Check tape labels manually — <strong style="color:#eef1f8">hours per search</strong></li>
         <li data-i18n="baf_b2">No file index — must check every tape one by one</li>
         <li data-i18n="baf_b3">No thumbnails — full recall required just to preview</li>
         <li data-i18n="baf_b4">Archive becomes unusable when key staff leaves</li>
@@ -534,7 +534,7 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
     <div class="baf-card after">
       <div class="baf-label" data-i18n="baf_al">✅ With TapeVault</div>
       <ul class="baf-list">
-        <li data-i18n="baf_a1">Search by filename → <strong style="color:#c8cfe0">location found in 30 sec</strong></li>
+        <li data-i18n="baf_a1">Search by filename → <strong style="color:#eef1f8">location found in 30 sec</strong></li>
         <li data-i18n="baf_a2">Full library indexed — any file found instantly</li>
         <li data-i18n="baf_a3">Thumbnails generated automatically — preview before recall</li>
         <li data-i18n="baf_a4">Metadata database survives any staff change</li>
@@ -567,7 +567,7 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
 <section style="padding:72px 48px;text-align:center" id="download">
   <div class="sec-label" data-i18n="dl_label">Download</div>
   <div class="sec-title" style="margin-bottom:10px" data-i18n="dl_title">Try TapeVault free for 1 month</div>
-  <p style="font-size:15px;color:#b6bfd8;margin-bottom:36px" data-i18n="dl_sub">Sign up and get a free 1-month license — no credit card. Full features from day one. Buy a license after your trial.</p>
+  <p style="font-size:15px;color:#dfe4f0;margin-bottom:36px" data-i18n="dl_sub">Sign up and get a free 1-month license — no credit card. Full features from day one. Buy a license after your trial.</p>
   <div class="welcome-bar" id="welcome-bar" hidden role="status"><span data-i18n="welcome_t">🎉 Your account is ready. Now download the app and sign in with the same account.</span><button type="button" onclick="this.parentNode.hidden=true" aria-label="Close">×</button></div>
   <div class="start-steps">
     <div class="start-step first">
@@ -591,19 +591,19 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
   <div style="display:inline-flex;flex-direction:column;align-items:center;gap:16px">
     <button class="btn-hero-main" style="font-size:16px;padding:16px 40px" data-i18n="dl_btn" onclick="showDownloadWarning()">⬇ Download TapeVault v1.2.6 for Windows</button>
     <div style="display:flex;gap:24px">
-      <span style="font-size:11px;color:#aab4ce;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#7db2ff">●</span> <span data-i18n="dl_s1">Windows 10 / 11 (64-bit)</span></span>
-      <span style="font-size:11px;color:#aab4ce;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#4ade80">●</span> <span data-i18n="dl_s2">LTO-4 through LTO-9</span></span>
-      <span style="font-size:11px;color:#aab4ce;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#f5a623">●</span> <span data-i18n="dl_s3">~90 MB installer</span></span>
+      <span style="font-size:12px;color:#d3d9e8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#7db2ff">●</span> <span data-i18n="dl_s1">Windows 10 / 11 (64-bit)</span></span>
+      <span style="font-size:12px;color:#d3d9e8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#4ade80">●</span> <span data-i18n="dl_s2">LTO-4 through LTO-9</span></span>
+      <span style="font-size:12px;color:#d3d9e8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#f5a623">●</span> <span data-i18n="dl_s3">~90 MB installer</span></span>
     </div>
-    <p style="font-size:11px;color:#9fa9c3" data-i18n="dl_ver">v1.2.6 · 2026 · Requires Windows 10 64-bit or later</p>
+    <p style="font-size:12px;color:#c2cadc" data-i18n="dl_ver">v1.2.6 · 2026 · Requires Windows 10 64-bit or later</p>
 
-    <div style="font-size:11px;color:#9fa9c3;font-family:monospace;margin:8px 0" data-i18n="dl_or">or</div>
+    <div style="font-size:12px;color:#c2cadc;font-family:monospace;margin:8px 0" data-i18n="dl_or">or</div>
 
     <button class="btn-hero-ghost" style="font-size:14px;padding:12px 28px" data-i18n="dl_mac_btn" onclick="showDownloadWarning('mac')">🍎 Download for macOS (Apple Silicon)</button>
-    <p style="font-size:11px;color:#9fa9c3" data-i18n="dl_mac_note">v1.2.6 · Apple Silicon (M1/M2/M3) only · ~158 MB</p>
+    <p style="font-size:12px;color:#c2cadc" data-i18n="dl_mac_note">v1.2.6 · Apple Silicon (M1/M2/M3) only · ~158 MB</p>
     <div id="dl-mac-intel" hidden>
       <button class="btn-hero-ghost" style="font-size:13px;padding:10px 24px" data-i18n="dl_mac_intel_btn" onclick="showDownloadWarning('mac_intel')">💻 Download for Intel Mac</button>
-      <p style="font-size:11px;color:#9fa9c3" data-i18n="dl_mac_intel_note"></p>
+      <p style="font-size:12px;color:#c2cadc" data-i18n="dl_mac_intel_note"></p>
     </div>
     <div id="dl-more" class="dl-more" hidden></div>
   </div>
@@ -658,11 +658,11 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
       <div class="pc-feat" data-i18n="p3_f4">Dedicated SLA</div>
       <div class="pc-feat" data-i18n="p3_f5">Staff training included</div>
       <button class="pc-btn" data-i18n="p3_btn" onclick="window.location.href='mailto:sales@tapevault.net'">Contact sales</button>
-      <div class="pc-note" data-i18n="p3_note" style="margin-top:12px;font-size:11.5px;line-height:1.5;color:#9fa9c3;text-align:center">Quoted plans are invoiced separately and are not paid through the online card checkout (Toss Payments).</div>
+      <div class="pc-note" data-i18n="p3_note" style="margin-top:12px;font-size:12.5px;line-height:1.5;color:#c2cadc;text-align:center">Quoted plans are invoiced separately and are not paid through the online card checkout (Toss Payments).</div>
     </div>
   </div>
   <div class="price-trust">
-    <p data-i18n="trust_txt">Sign up and get a <strong style="color:#c8cfe0">free 1-month license</strong> with full features on every plan. No credit card required.</p>
+    <p data-i18n="trust_txt">Sign up and get a <strong style="color:#eef1f8">free 1-month license</strong> with full features on every plan. No credit card required.</p>
     <div class="price-trust-items" style="margin-top:12px">
       <span class="price-trust-item" data-i18n="tr1">No automatic renewal</span>
       <span class="price-trust-item" data-i18n="tr2">Nothing to cancel</span>
@@ -713,7 +713,7 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
       <div class="footer-copy">
         © 2026 주식회사 베테랑아이티 (Veteran IT Co., Ltd.)<br>
         Seocho-gu, Seoul, Republic of Korea<br>
-        <a href="mailto:support@tapevault.net" style="color:#aab4ce;text-decoration:none">support@tapevault.net</a>
+        <a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>
       </div>
     </div>
     <div class="footer-cols">
@@ -740,7 +740,7 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
       </div>
     </div>
   </div>
-  <div class="biz-info" data-i18n="biz_info">Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#aab4ce;text-decoration:none">support@tapevault.net</a></div>
+  <div class="biz-info" data-i18n="biz_info">Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a></div>
   <div class="footer-bottom">
     <div class="footer-bottom-left" data-i18n="foot_bottom">TapeVault v1.2.6 · Built by Veteran IT · Payments by Toss Payments · No auto-renewal</div>
     <div class="footer-bottom-right"><a href="#" onclick="applyLang('en');return false">EN</a><a href="#" onclick="applyLang('ko');return false">한국어</a><a href="#" onclick="applyLang('ja');return false">日本語</a></div>
@@ -847,7 +847,7 @@ const T = {
     p2_note:'Billed as one 12-month license: ₩720,000 + VAT (Korean cards)',
     dlw_verify:'🔐 Tip: before running the file, compare the SHA-256 checksum listed under the download buttons with your download — see the <a href="how-to-install.html#verify">install guide</a>.',
     p1_amt:'$20', p2_amt:'$40',
-    biz_info:'Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#aab4ce;text-decoration:none">support@tapevault.net</a>',
+    biz_info:'Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>',
     fc_refund:'Refund policy',
     nav_how:'How it works', nav_features:'Features', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide', nav_manual:'User Manual',
     nav_signin:'Sign in / Sign up', nav_trial:'Free Trial',
@@ -881,10 +881,10 @@ const T = {
     s5_tip:'💡 New tape registered and ready to archive in under 60 seconds.', s5_cap:'▲ New tape registration — actual TapeVault screenshot',
     baf_label:'The Difference', baf_title:'Before vs. After TapeVault',
     baf_bl:'❌ Without TapeVault', baf_al:'✅ With TapeVault',
-    baf_b1:'Check tape labels manually — <strong style="color:#c8cfe0">hours per search</strong>',
+    baf_b1:'Check tape labels manually — <strong style="color:#eef1f8">hours per search</strong>',
     baf_b2:'No file index — must check every tape one by one', baf_b3:'No thumbnails — full recall required just to preview',
     baf_b4:'Archive becomes unusable when key staff leaves', baf_b5:'Tape capacity tracked manually in spreadsheets', baf_b6:'No checksum — never know if files are corrupted',
-    baf_a1:'Search by filename → <strong style="color:#c8cfe0">location found in 30 sec</strong>',
+    baf_a1:'Search by filename → <strong style="color:#eef1f8">location found in 30 sec</strong>',
     baf_a2:'Full library indexed — any file found instantly', baf_a3:'Thumbnails generated automatically — preview before recall',
     baf_a4:'Metadata database survives any staff change', baf_a5:'Tape capacity tracked and predicted automatically', baf_a6:'Checksum on every write, verified automatically after each archive job',
     feat_label:'Features', feat_title:'Everything in one app', feat_sub:'No plugins. No separate tools. No cloud required.',
@@ -908,7 +908,7 @@ const T = {
     p2_f1:'LTO Autoloader / Library support', p2_f2:'No limit on the number of LTO drives', p2_f3:'Automated tape slot management', p2_f4:'Batch archive &amp; restore jobs', p2_f5:'Advanced search &amp; filters', p2_f6:'Priority support',
     p3_amt:'Custom', p3_desc:'For large institutions with multi-library setups, custom deployment, and SLA requirements.',
     p3_f1:'Multiple tape libraries', p3_f2:'On-site deployment &amp; setup', p3_f3:'Custom integration support', p3_f4:'Dedicated SLA', p3_f5:'Staff training included', p3_btn:'Contact sales', p3_note:'Quoted plans are invoiced separately and are not paid through the online card checkout (Toss Payments).',
-    trust_txt:'Sign up and get a <strong style="color:#c8cfe0">free 1-month license</strong> with full features on every plan. No credit card required.',
+    trust_txt:'Sign up and get a <strong style="color:#eef1f8">free 1-month license</strong> with full features on every plan. No credit card required.',
     tr1:'No automatic renewal', tr2:'Nothing to cancel', tr3:'Your data always yours', tr4:'Offline after activation', tr5:'Payments via Toss Payments · VAT excluded',
     faq_label:'FAQ', faq_title:'Questions before buying?',
     faq1_q:'Does TapeVault work without an internet connection?', faq1_a:'Yes. TapeVault is fully offline after the initial license activation. No ongoing internet connection is required. This makes it ideal for air-gapped environments in broadcast, defense, and medical sectors.',
@@ -952,7 +952,7 @@ const T = {
     p2_note:'1년 사용권 720,000원(부가세 별도)을 한 번에 결제합니다',
     dlw_verify:'🔐 팁: 실행하기 전에 다운로드 버튼 아래에 표시된 SHA-256 체크섬과 내려받은 파일의 값을 비교해 보세요 — <a href="how-to-install.html#verify">설치 가이드</a> 참고.',
     p1_amt:'3만원', p2_amt:'6만원',
-    biz_info:'상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>전화: 070-8080-4664 · 이메일: <a href="mailto:support@tapevault.net" style="color:#aab4ce;text-decoration:none">support@tapevault.net</a>',
+    biz_info:'상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>전화: 070-8080-4664 · 이메일: <a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>',
     fc_refund:'환불 정책',
     nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드', nav_manual:'사용자 매뉴얼',
     nav_signin:'로그인 · 회원가입', nav_trial:'무료 체험',
@@ -986,10 +986,10 @@ const T = {
     s5_tip:'💡 새 테이프 등록 및 아카이브 준비 완료 — 60초 이내.', s5_cap:'▲ 새 테이프 등록 — TapeVault 실제 스크린샷',
     baf_label:'도입 전후 비교', baf_title:'TapeVault 도입 전 vs. 후',
     baf_bl:'❌ TapeVault 미사용', baf_al:'✅ TapeVault 사용',
-    baf_b1:'테이프 라벨 수작업 확인 — <strong style="color:#c8cfe0">검색에 몇 시간</strong>',
+    baf_b1:'테이프 라벨 수작업 확인 — <strong style="color:#eef1f8">검색에 몇 시간</strong>',
     baf_b2:'파일 인덱스 없음 — 테이프 전수 확인', baf_b3:'썸네일 없음 — 미리보기에 전체 리콜 필요',
     baf_b4:'핵심 담당자 퇴사 시 아카이브 사용 불가', baf_b5:'테이프 용량 엑셀로 수작업 관리', baf_b6:'체크섬 없음 — 파일 손상 여부 알 수 없음',
-    baf_a1:'파일명 검색 → <strong style="color:#c8cfe0">30초 안에 위치 확인</strong>',
+    baf_a1:'파일명 검색 → <strong style="color:#eef1f8">30초 안에 위치 확인</strong>',
     baf_a2:'전체 라이브러리 인덱싱 — 모든 파일 즉시 검색', baf_a3:'썸네일 자동 생성 — 리콜 전 미리보기 가능',
     baf_a4:'메타데이터 DB — 담당자 교체 무관', baf_a5:'테이프 용량 자동 추적 및 예측', baf_a6:'모든 기록에 체크섬, 아카이브 작업마다 자동 검증',
     feat_label:'기능', feat_title:'하나의 앱에 모든 것', feat_sub:'플러그인 없음. 별도 도구 없음. 클라우드 불필요.',
@@ -1013,7 +1013,7 @@ const T = {
     p2_f1:'LTO 오토로더 / 라이브러리 지원', p2_f2:'LTO 드라이브 수 제한 없음', p2_f3:'자동화된 테이프 슬롯 관리', p2_f4:'일괄 아카이브 및 복원 작업', p2_f5:'고급 검색 및 필터', p2_f6:'우선 지원',
     p3_amt:'맞춤 견적', p3_desc:'대규모 기관 — 멀티 라이브러리, 커스텀 배포, SLA 요건이 있는 환경.',
     p3_f1:'복수 테이프 라이브러리', p3_f2:'현장 배포 및 설치', p3_f3:'커스텀 통합 지원', p3_f4:'전용 SLA', p3_f5:'직원 교육 포함', p3_btn:'영업팀 문의', p3_note:'견적 상품은 별도 계약·세금계산서로 결제되며, 토스페이먼츠 온라인 카드 결제(PG)를 이용하지 않습니다.',
-    trust_txt:'회원가입만 해도 모든 요금제의 전체 기능을 쓸 수 있는 <strong style="color:#c8cfe0">1개월 무료 라이선스</strong>를 드립니다. 신용카드는 필요 없습니다.',
+    trust_txt:'회원가입만 해도 모든 요금제의 전체 기능을 쓸 수 있는 <strong style="color:#eef1f8">1개월 무료 라이선스</strong>를 드립니다. 신용카드는 필요 없습니다.',
     tr1:'자동 갱신 없음', tr2:'해지할 필요 없음', tr3:'데이터는 항상 귀하의 것', tr4:'활성화 후 오프라인', tr5:'토스페이먼츠 결제 · 부가세 별도',
     faq_label:'FAQ', faq_title:'구매 전 궁금한 점이 있으신가요?',
     faq1_q:'TapeVault는 인터넷 없이 사용할 수 있나요?', faq1_a:'네. TapeVault는 최초 라이선스 활성화 이후 완전히 오프라인으로 동작합니다. 지속적인 인터넷 연결이 필요하지 않습니다. 방송, 국방, 의료 등 에어갭 환경에 적합합니다.',
@@ -1057,7 +1057,7 @@ const T = {
     p2_note:'12か月ライセンスを一括払い：720,000ウォン＋VAT（韓国国内カード）',
     dlw_verify:'🔐 ヒント：実行する前に、ダウンロードボタンの下に表示されているSHA-256チェックサムとダウンロードしたファイルの値を比較してください — <a href="how-to-install.html#verify">インストールガイド</a>参照。',
     p1_amt:'$20', p2_amt:'$40',
-    biz_info:'会社名：株式会社ベテランIT（Veteran IT Co., Ltd.） · 代表者：오재화 · 事業者登録番号：326-86-02786<br>通信販売業申告番号：2025-서울서초-3564 · 所在地：大韓民国ソウル特別市瑞草区瑞草大路275、中央ビル202号25A<br>電話：070-8080-4664 · メール：<a href="mailto:support@tapevault.net" style="color:#aab4ce;text-decoration:none">support@tapevault.net</a>',
+    biz_info:'会社名：株式会社ベテランIT（Veteran IT Co., Ltd.） · 代表者：오재화 · 事業者登録番号：326-86-02786<br>通信販売業申告番号：2025-서울서초-3564 · 所在地：大韓民国ソウル特別市瑞草区瑞草大路275、中央ビル202号25A<br>電話：070-8080-4664 · メール：<a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>',
     fc_refund:'返金ポリシー',
     nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール', nav_manual:'マニュアル',
     nav_signin:'ログイン・新規登録', nav_trial:'無料トライアル',
@@ -1091,10 +1091,10 @@ const T = {
     s5_tip:'💡 新テープの登録からアーカイブ開始まで60秒以内。', s5_cap:'▲ 新テープ登録 — TapeVault 実際のスクリーンショット',
     baf_label:'導入前後の違い', baf_title:'TapeVault導入前 vs 後',
     baf_bl:'❌ TapeVaultなし', baf_al:'✅ TapeVaultあり',
-    baf_b1:'テープラベルを手作業で確認 — <strong style="color:#c8cfe0">1回の検索に数時間</strong>',
+    baf_b1:'テープラベルを手作業で確認 — <strong style="color:#eef1f8">1回の検索に数時間</strong>',
     baf_b2:'ファイルインデックスなし — テープを1本ずつ確認', baf_b3:'サムネイルなし — 確認だけで全リコールが必要',
     baf_b4:'担当者退職でアーカイブが使えなくなる', baf_b5:'テープ容量をExcelで手動管理', baf_b6:'チェックサムなし — ファイル破損を検知できない',
-    baf_a1:'ファイル名検索 → <strong style="color:#c8cfe0">30秒で場所を特定</strong>',
+    baf_a1:'ファイル名検索 → <strong style="color:#eef1f8">30秒で場所を特定</strong>',
     baf_a2:'全ライブラリ登録 — どのファイルも即座に検索', baf_a3:'サムネイル自動生成 — リコール前にプレビュー可能',
     baf_a4:'メタデータDB — 担当者交代の影響なし', baf_a5:'テープ容量を自動追跡・予測', baf_a6:'全書込にチェックサム、アーカイブごとに自動検証',
     feat_label:'機能', feat_title:'すべてひとつのアプリに', feat_sub:'プラグイン不要。別途ツール不要。クラウド不要。',
@@ -1118,7 +1118,7 @@ const T = {
     p2_f1:'LTOオートローダー/ライブラリ対応', p2_f2:'LTOドライブ台数の制限なし', p2_f3:'テープスロット自動管理', p2_f4:'バッチアーカイブ＆復元ジョブ', p2_f5:'高度な検索＆フィルター', p2_f6:'優先サポート',
     p3_amt:'カスタム', p3_desc:'大規模機関 — マルチライブラリ・カスタム展開・SLA要件がある環境向け。',
     p3_f1:'複数テープライブラリ', p3_f2:'オンサイト展開＆セットアップ', p3_f3:'カスタム統合サポート', p3_f4:'専用SLA', p3_f5:'社員トレーニング込み', p3_btn:'営業に問い合わせ', p3_note:'お見積りプランは別途契約・請求となり、オンラインカード決済（Toss Payments）は利用しません。',
-    trust_txt:'会員登録だけで、すべてのプランの全機能を使える<strong style="color:#c8cfe0">1か月無料ライセンス</strong>を進呈します。クレジットカードは不要です。',
+    trust_txt:'会員登録だけで、すべてのプランの全機能を使える<strong style="color:#eef1f8">1か月無料ライセンス</strong>を進呈します。クレジットカードは不要です。',
     tr1:'自動更新なし', tr2:'解約手続き不要', tr3:'データは常にあなたのもの', tr4:'アクティベーション後オフライン', tr5:'Toss Payments決済 · VAT別途',
     faq_label:'よくある質問', faq_title:'購入前のよくある質問',
     faq1_q:'TapeVaultはインターネットなしで使えますか？', faq1_a:'はい。TapeVaultは初回ライセンスアクティベーション後は完全オフラインで動作します。継続的なインターネット接続は不要です。放送・防衛・医療のエアギャップ環境に最適です。',

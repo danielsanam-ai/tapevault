@@ -7,45 +7,45 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>User Manual — TapeVault</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:#23262e;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:#23262e;color:#f7f8fc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 48px;border-bottom:0.5px solid #424857;position:sticky;top:0;background:#23262eee;backdrop-filter:blur(14px);z-index:100}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
 .nav-logo-icon{width:40px;height:40px;background:transparent;border:none;display:flex;align-items:center;justify-content:center}
-.nav-logo-text{font-size:17px;letter-spacing:-0.02em;color:#f0f2f8;font-weight:400}
+.nav-logo-text{font-size:17px;letter-spacing:-0.02em;color:#ffffff;font-weight:400}
 .nav-logo-text b{font-weight:700}
-.nav-ver{font-size:10px;background:#333e5c;color:#7db2ff;padding:2px 7px;border-radius:4px;font-family:monospace}
+.nav-ver{font-size:11px;background:#333e5c;color:#7db2ff;padding:2px 7px;border-radius:4px;font-family:monospace}
 .nav-links{display:flex;gap:28px}
-.nav-links a{font-size:13px;color:#c0c9e0;text-decoration:none;cursor:pointer;transition:color .2s}
-.nav-links a:hover{color:#c8cfe0}
+.nav-links a{font-size:13px;color:#e8ecf5;text-decoration:none;cursor:pointer;transition:color .2s}
+.nav-links a:hover{color:#eef1f8}
 .nav-links a.active{color:#f5a623}
 .nav-right{display:flex;gap:7px;align-items:center}
-.btn-ghost{font-size:13px;color:#c0c9e0;background:#333946;border:0.5px solid #505a72;padding:6px 16px;border-radius:6px;cursor:pointer}
-.btn-orange{font-size:13px;color:#23262e;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer}
+.btn-ghost{font-size:13px;color:#e8ecf5;background:#333946;border:0.5px solid #505a72;padding:6px 16px;border-radius:6px;cursor:pointer}
+.btn-orange{font-size:13px;color:#111318;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer}
 
 .lang-select{position:relative;margin-right:6px}
-.lang-globe-btn{display:flex;align-items:center;gap:6px;background:#2f343f;border:0.5px solid #424857;color:#b6bfd8;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-family:monospace;transition:all .15s}
-.lang-globe-btn:hover{border-color:#55668e;color:#c8cfe0}
+.lang-globe-btn{display:flex;align-items:center;gap:6px;background:#2f343f;border:0.5px solid #424857;color:#dfe4f0;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:12px;font-family:monospace;transition:all .15s}
+.lang-globe-btn:hover{border-color:#93a4cc;color:#eef1f8}
 .lang-globe-btn svg{width:15px;height:15px;flex-shrink:0;stroke:currentColor}
 .lang-globe-btn .lang-chevron{width:8px;height:8px;flex-shrink:0;stroke:currentColor;transition:transform .15s}
 .lang-globe-btn.open .lang-chevron{transform:rotate(180deg)}
 .lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:#2a2e37;border:0.5px solid #4d5364;border-radius:10px;padding:6px;min-width:150px;box-shadow:0 16px 40px rgba(0,0,0,.55);display:none;flex-direction:column;gap:2px;z-index:200}
 .lang-menu.open{display:flex}
-.lang-menu-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:none;border:none;color:#b6bfd8;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:12px;text-align:left;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-.lang-menu-item:hover{background:#343a47;color:#c8cfe0}
+.lang-menu-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:none;border:none;color:#dfe4f0;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:13px;text-align:left;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.lang-menu-item:hover{background:#343a47;color:#eef1f8}
 .lang-menu-item.active{color:#7db2ff}
-.lang-menu-item .lang-check{color:#7db2ff;font-size:12px;opacity:0}
+.lang-menu-item .lang-check{color:#7db2ff;font-size:13px;opacity:0}
 .lang-menu-item.active .lang-check{opacity:1}
 
 /* PAGE HEADER */
 .page-header{padding:64px 48px 48px;border-bottom:0.5px solid #424857;background:linear-gradient(180deg,#2a2e37 0%,#23262e 100%)}
 .page-header-inner{max-width:860px;margin:0 auto}
-.breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:#aab4ce;margin-bottom:20px;font-family:monospace}
-.breadcrumb a{color:#aab4ce;text-decoration:none}
-.breadcrumb a:hover{color:#c0c9e0}
-.breadcrumb-sep{color:#9fa9c3}
-.page-label{font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:monospace}
-.page-title{font-size:40px;font-weight:500;color:#f0f2f8;margin-bottom:14px;letter-spacing:-.6px}
-.page-sub{font-size:16px;color:#b6bfd8;max-width:560px;line-height:1.75}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:#d3d9e8;margin-bottom:20px;font-family:monospace}
+.breadcrumb a{color:#d3d9e8;text-decoration:none}
+.breadcrumb a:hover{color:#e8ecf5}
+.breadcrumb-sep{color:#c2cadc}
+.page-label{font-size:12px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:monospace}
+.page-title{font-size:40px;font-weight:500;color:#ffffff;margin-bottom:14px;letter-spacing:-.6px}
+.page-sub{font-size:16px;color:#dfe4f0;max-width:560px;line-height:1.75}
 
 /* LAYOUT */
 .doc-layout{display:grid;grid-template-columns:240px 1fr;gap:0;max-width:1100px;margin:0 auto;min-height:calc(100vh - 300px)}
@@ -57,12 +57,12 @@
 /* SIDEBAR */
 .doc-sidebar{border-right:0.5px solid #424857;padding:32px 0;position:sticky;top:65px;height:fit-content}
 .sidebar-section{margin-bottom:28px}
-.sidebar-title{font-size:10px;color:#9fa9c3;text-transform:uppercase;letter-spacing:.12em;padding:0 24px;margin-bottom:10px;font-family:monospace}
-.sidebar-link{display:flex;align-items:center;gap:8px;padding:7px 24px;font-size:13px;color:#b6bfd8;text-decoration:none;cursor:pointer;transition:all .15s;border-left:2px solid transparent}
-.sidebar-link:hover{color:#c8cfe0;background:#2a2e37}
+.sidebar-title{font-size:11px;color:#c2cadc;text-transform:uppercase;letter-spacing:.12em;padding:0 24px;margin-bottom:10px;font-family:monospace}
+.sidebar-link{display:flex;align-items:center;gap:8px;padding:7px 24px;font-size:13px;color:#dfe4f0;text-decoration:none;cursor:pointer;transition:all .15s;border-left:2px solid transparent}
+.sidebar-link:hover{color:#eef1f8;background:#2a2e37}
 .sidebar-link.active{color:#f5a623;border-left-color:#f5a623;background:#372e19}
-.sidebar-link .step-badge{width:18px;height:18px;background:#424857;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:#b6bfd8;font-family:monospace;flex-shrink:0}
-.sidebar-link.active .step-badge{background:#f5a623;color:#23262e}
+.sidebar-link .step-badge{width:18px;height:18px;background:#424857;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:#dfe4f0;font-family:monospace;flex-shrink:0}
+.sidebar-link.active .step-badge{background:#f5a623;color:#111318}
 
 /* CONTENT */
 .doc-content{padding:48px 56px;max-width:780px}
@@ -70,54 +70,54 @@
 /* STEP CARDS */
 .step-card{margin-bottom:48px;scroll-margin-top:80px}
 .step-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
-.step-number{width:40px;height:40px;border-radius:50%;background:#f5a623;color:#23262e;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:monospace;flex-shrink:0}
-.step-title{font-size:22px;font-weight:600;color:#e8eaf0;letter-spacing:-.3px}
-.step-desc{font-size:14px;color:#b6bfd8;line-height:1.8;margin-bottom:20px}
+.step-number{width:40px;height:40px;border-radius:50%;background:#f5a623;color:#111318;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:monospace;flex-shrink:0}
+.step-title{font-size:22px;font-weight:600;color:#f7f8fc;letter-spacing:-.3px}
+.step-desc{font-size:14px;color:#dfe4f0;line-height:1.8;margin-bottom:20px}
 .step-divider{border:none;border-top:0.5px solid #424857;margin:48px 0}
 
 /* REQ BOX */
 .req-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
 .req-item{background:#2a2e37;border:0.5px solid #424857;border-radius:8px;padding:16px}
-.req-label{font-size:10px;color:#aab4ce;text-transform:uppercase;letter-spacing:.1em;font-family:monospace;margin-bottom:6px}
-.req-value{font-size:13px;color:#c8cfe0;font-weight:500}
+.req-label{font-size:11px;color:#d3d9e8;text-transform:uppercase;letter-spacing:.1em;font-family:monospace;margin-bottom:6px}
+.req-value{font-size:13px;color:#eef1f8;font-weight:500}
 .req-value.ok{color:#4ade80}
 .req-value.warn{color:#f5a623}
 
 /* CODE BLOCK */
 .code-block{background:#2a2e37;border:0.5px solid #424857;border-radius:8px;overflow:hidden;margin:16px 0}
 .code-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#2f343f;border-bottom:0.5px solid #424857}
-.code-lang{font-size:10px;color:#aab4ce;font-family:monospace;text-transform:uppercase;letter-spacing:.08em}
-.code-copy{font-size:11px;color:#b6bfd8;background:none;border:none;cursor:pointer;font-family:monospace;padding:2px 8px;border-radius:4px;transition:all .15s}
-.code-copy:hover{color:#c8cfe0;background:#424857}
-.code-body{padding:16px;font-family:monospace;font-size:13px;color:#c8cfe0;line-height:1.7;overflow-x:auto}
+.code-lang{font-size:11px;color:#d3d9e8;font-family:monospace;text-transform:uppercase;letter-spacing:.08em}
+.code-copy{font-size:12px;color:#dfe4f0;background:none;border:none;cursor:pointer;font-family:monospace;padding:2px 8px;border-radius:4px;transition:all .15s}
+.code-copy:hover{color:#eef1f8;background:#424857}
+.code-body{padding:16px;font-family:monospace;font-size:13px;color:#eef1f8;line-height:1.7;overflow-x:auto}
 .code-body .cmd{color:#4ade80}
-.code-body .cmt{color:#7aa57a}
+.code-body .cmt{color:#9cc79c}
 .code-body .path{color:#7db2ff}
 .code-body .warn{color:#f5a623}
 
 /* DOWNLOAD BTN */
-.dl-btn-big{display:inline-flex;align-items:center;gap:10px;background:#f5a623;color:#23262e;border:none;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;margin:16px 0;text-decoration:none;transition:opacity .15s}
+.dl-btn-big{display:inline-flex;align-items:center;gap:10px;background:#f5a623;color:#111318;border:none;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;margin:16px 0;text-decoration:none;transition:opacity .15s}
 .dl-btn-big:hover{opacity:.88}
 
 /* CHECKLIST */
 .checklist{list-style:none;display:flex;flex-direction:column;gap:10px;margin:16px 0}
-.checklist li{position:relative;display:block;padding-left:24px;font-size:13px;color:#b6bfd8;line-height:1.6}
+.checklist li{position:relative;display:block;padding-left:24px;font-size:13px;color:#dfe4f0;line-height:1.6}
 .checklist li::before{content:'✓';position:absolute;left:0;top:0;color:#22d3ee;font-size:13px}
 
 /* ALERT BOX */
 .alert{border-radius:8px;padding:14px 18px;margin:16px 0;font-size:13px;line-height:1.7;display:flex;align-items:flex-start;gap:10px}
-.alert-info{background:#27344c;border:0.5px solid #335788;color:#7ab4f0}
-.alert-warn{background:#372e19;border:0.5px solid #5e4612;color:#d4921a}
+.alert-info{background:#27344c;border:0.5px solid #335788;color:#a8cffb}
+.alert-warn{background:#372e19;border:0.5px solid #5e4612;color:#f2b84b}
 .alert-ok{background:#253626;border:0.5px solid #2c4c2c;color:#4ade80}
 .alert-ico{flex-shrink:0;font-size:16px}
 
 /* PROGRESS STEPS */
 .progress-bar{display:flex;align-items:center;gap:0;margin:24px 0 32px;overflow-x:auto}
 .progress-step{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.progress-dot{width:28px;height:28px;border-radius:50%;background:#424857;border:1.5px solid #505a72;display:flex;align-items:center;justify-content:center;font-size:11px;color:#b6bfd8;font-family:monospace;font-weight:700;flex-shrink:0}
-.progress-dot.done{background:#f5a623;border-color:#f5a623;color:#23262e}
+.progress-dot{width:28px;height:28px;border-radius:50%;background:#424857;border:1.5px solid #505a72;display:flex;align-items:center;justify-content:center;font-size:12px;color:#dfe4f0;font-family:monospace;font-weight:700;flex-shrink:0}
+.progress-dot.done{background:#f5a623;border-color:#f5a623;color:#111318}
 .progress-dot.current{background:#2a2e37;border-color:#f5a623;color:#f5a623}
-.progress-label{font-size:11px;color:#b6bfd8;white-space:nowrap}
+.progress-label{font-size:12px;color:#dfe4f0;white-space:nowrap}
 .progress-label.done{color:#f5a623}
 .progress-line{width:32px;height:1px;background:#424857;flex-shrink:0;margin:0 4px}
 
@@ -125,27 +125,27 @@
 .screen-mock{background:#30343e;border:0.5px solid #4d5364;border-radius:8px;overflow:hidden;margin:20px 0}
 .screen-mock-bar{background:#333741;border-bottom:0.5px solid #4d5364;padding:8px 14px;display:flex;align-items:center;gap:6px}
 .screen-dot{width:9px;height:9px;border-radius:50%}
-.screen-mock-body{padding:24px;font-size:12px;color:#b6bfd8;font-family:monospace}
+.screen-mock-body{padding:24px;font-size:13px;color:#dfe4f0;font-family:monospace}
 .screen-mock-body .hl{color:#f5a623}
 .screen-mock-body .ok{color:#4ade80}
-.screen-mock-body .dim{color:#9fa9c3}
+.screen-mock-body .dim{color:#c2cadc}
 
 /* NEXT STEPS */
 .next-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px}
 .next-card{background:#2a2e37;border:0.5px solid #424857;border-radius:8px;padding:20px;text-decoration:none;transition:border-color .2s}
 .next-card:hover{border-color:#546073}
 .next-card-ico{font-size:20px;margin-bottom:10px}
-.next-card-title{font-size:13px;font-weight:600;color:#c8cfe0;margin-bottom:6px}
-.next-card-desc{font-size:11px;color:#aab4ce;line-height:1.6}
+.next-card-title{font-size:13px;font-weight:600;color:#eef1f8;margin-bottom:6px}
+.next-card-desc{font-size:12px;color:#d3d9e8;line-height:1.6}
 
 /* FOOTER */
 footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.footer-left{font-size:11px;color:#9fa9c3}
-.biz-info{font-size:11px;color:#9fa9c3;line-height:1.9;max-width:1100px;margin:0 auto 20px}
-.footer-right{display:flex;gap:16px}
-.footer-right a{font-size:11px;color:#9fa9c3;text-decoration:none;cursor:pointer}
-.nav-burger{display:none;background:none;border:0.5px solid #505a72;color:#c8cfe0;padding:7px;border-radius:6px;cursor:pointer;align-items:center;justify-content:center}
+.footer-left{font-size:12px;color:#c2cadc}
+.biz-info{font-size:12px;color:#c2cadc;line-height:1.9;max-width:1100px;margin:0 auto 20px}
+.footer-right{display:flex;gap:8px 16px;flex-wrap:wrap}
+.footer-right a{font-size:12px;color:#c2cadc;text-decoration:none;cursor:pointer}
+.nav-burger{display:none;background:none;border:0.5px solid #505a72;color:#eef1f8;padding:7px;border-radius:6px;cursor:pointer;align-items:center;justify-content:center}
 .nav-burger svg{width:18px;height:18px}
 
 @media (max-width:860px){
@@ -180,23 +180,59 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
 }
 @media (max-width:860px){.nav-links a.nav-only-mobile{display:block;color:#f5a623;font-weight:700}}
 
-.m-body{font-size:14px;color:#99a3c4;line-height:1.8}
+.m-body{font-size:14px;color:#dfe4f0;line-height:1.8}
 .m-body p{margin:0 0 14px}
-.m-body h3{font-size:15px;color:#e8eaf0;font-weight:600;margin:22px 0 10px}
+.m-body h3{font-size:15px;color:#f7f8fc;font-weight:600;margin:22px 0 10px}
 .m-body ul,.m-body ol{margin:0 0 16px 20px}
 .m-body li{margin:4px 0}
-.m-body strong{color:#c8cfe0}
-.m-body a{color:#5b9cf6}
-.m-body code{font-family:monospace;font-size:12.5px;background:#111520;border:0.5px solid #1e2330;border-radius:4px;padding:1px 5px;color:#c8cfe0}
+.m-body strong{color:#eef1f8}
+.m-body a{color:#7db2ff}
+.m-body code{font-family:monospace;font-size:13.5px;background:#2f343f;border:0.5px solid #424857;border-radius:4px;padding:1px 5px;color:#eef1f8}
 .m-fig{margin:18px 0 22px}
-.m-fig img{display:block;max-width:100%;height:auto;border:0.5px solid #2a3349;border-radius:8px;background:#0d1117}
+.m-fig img{display:block;max-width:100%;height:auto;border:0.5px solid #505a72;border-radius:8px;background:#2a2e37}
 .m-fig.small img{max-width:420px;width:100%}
-.m-fig figcaption{font-size:12.5px;color:#7c88a4;line-height:1.7;margin-top:8px}
+.m-fig figcaption{font-size:13.5px;color:#c2cadc;line-height:1.7;margin-top:8px}
 .m-tbl{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:13px}
-.m-tbl th{text-align:left;color:#7c88a4;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:8px 10px;border-bottom:0.5px solid #2a3349}
-.m-tbl td{padding:9px 10px;border-bottom:0.5px solid #1e2230;vertical-align:top;color:#99a3c4}
-.m-tbl td:first-child{color:#c8cfe0;white-space:nowrap;padding-right:16px}
-@media (max-width:760px){.m-tbl td:first-child{white-space:normal}.m-tbl,.m-tbl tbody,.m-tbl tr,.m-tbl td{display:block;width:100%}.m-tbl thead{display:none}.m-tbl tr{border-bottom:0.5px solid #1e2230;padding:6px 0}.m-tbl td{border:none;padding:3px 0}}
+.m-tbl th{text-align:left;color:#c2cadc;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.06em;padding:8px 10px;border-bottom:0.5px solid #505a72}
+.m-tbl td{padding:9px 10px;border-bottom:0.5px solid #424857;vertical-align:top;color:#dfe4f0}
+.m-tbl td:first-child{color:#eef1f8;white-space:nowrap;padding-right:16px}
+@media (max-width:760px){.m-tbl td:first-child{white-space:normal}.m-tbl,.m-tbl tbody,.m-tbl tr,.m-tbl td{display:block;width:100%}.m-tbl thead{display:none}.m-tbl tr{border-bottom:0.5px solid #424857;padding:6px 0}.m-tbl td{border:none;padding:3px 0}}
+/* PDF download + print (the PDFs in docs/ are printed from this page) */
+.pdf-btn{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:10px 18px;border:1px solid #f5a623;border-radius:8px;color:#f5a623;font-size:13.5px;font-weight:700;text-decoration:none;background:#372e19}
+.pdf-btn:hover{background:#f5a623;color:#111318}
+.print-only{display:none}
+@media print{
+  @page{size:A4;margin:16mm 15mm}
+  html,body{background:#fff!important;color:#1a1a1a!important}
+  nav,.nav,.doc-sidebar,.breadcrumb,footer,#tv-consent,.pdf-btn,.step-divider{display:none!important}
+  .page-header{background:none!important;border-bottom:2px solid #f5a623!important;padding:0 0 12px!important;margin:0 0 20px!important}
+  .page-header-inner,.doc-layout,.doc-content{display:block!important;max-width:none!important;margin:0!important;padding:0!important;min-height:0!important}
+  .page-label{color:#a35f00!important}
+  .page-title{color:#000!important;font-size:26pt!important}
+  .page-sub{color:#333!important;max-width:none!important;font-size:11pt!important}
+  .step-card{margin-bottom:20px!important}
+  .step-header{break-after:avoid;margin-bottom:10px!important}
+  .step-number{width:28px!important;height:28px!important;font-size:12px!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .step-title{color:#000!important;font-size:15pt!important}
+  .m-body{font-size:10.5pt!important;line-height:1.65!important}
+  .m-body,.m-body *{color:#1a1a1a!important}
+  .m-body a{color:#0b57d0!important}
+  .m-body h3{color:#000!important;break-after:avoid;font-size:11.5pt!important}
+  .m-body li,.m-tbl tr{break-inside:avoid}
+  .m-body code{background:#f2f2f2!important;border:1px solid #ccc!important}
+  .m-tbl{display:table!important;width:100%!important;font-size:9.5pt!important}
+  .m-tbl thead{display:table-header-group!important}
+  .m-tbl tbody{display:table-row-group!important}
+  .m-tbl tr{display:table-row!important;border:0!important}
+  .m-tbl th,.m-tbl td{display:table-cell!important;width:auto!important;border:1px solid #bbb!important;padding:6px 8px!important}
+  .m-tbl th{background:#eee!important;color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .m-tbl td:first-child{white-space:normal!important;width:30%!important;font-weight:600}
+  .alert{background:#f7f7f7!important;border:1px solid #bbb!important}
+  .m-fig{break-inside:avoid;margin:10px 0 14px!important}
+  .m-fig img{border:1px solid #bbb!important;background:#fff!important;max-width:100%!important;max-height:105mm;width:auto!important}
+  .m-fig.small img{max-width:55%!important}
+  .print-only{display:block!important;margin-top:24px;padding-top:10px;border-top:1px solid #bbb;font-size:9pt;color:#555!important}
+}
 </style>
 <script src="lang.js"></script>
 </head>
@@ -259,6 +295,7 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
     <div class="page-label" data-i18n="page_label">Support · User Manual</div>
     <div class="page-title" data-i18n="page_title">TapeVault User Manual</div>
     <p class="page-sub" data-i18n="page_sub">How to prepare tapes, write and verify, restore, and deliver with TapeVault 1.2.9 on Windows and macOS.</p>
+    <a class="pdf-btn" id="manual-pdf" href="docs/TapeVault-User-Manual-en.pdf" download>📄 Download PDF</a>
   </div>
 </div>
 
@@ -395,11 +432,12 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
       <div class="m-body" data-i18n="m13_body"><p>For questions or problems, email <a href="mailto:support@tapevault.net">support@tapevault.net</a>. Including a screenshot and the log file helps us respond faster.</p></div>
     </div>
 
+    <div class="print-only">TapeVault · https://tapevault.net · support@tapevault.net · © 2026 Veteran IT Co., Ltd. (주식회사 베테랑아이티)</div>
   </div>
 </div>
 
 <footer>
-  <div class="biz-info" data-i18n="biz_info">Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#aab4ce;text-decoration:none">support@tapevault.net</a></div>
+  <div class="biz-info" data-i18n="biz_info">Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a></div>
   <div class="footer-bottom">
     <div class="footer-left" data-i18n="foot_left">TapeVault v1.2.6 · Built by Veteran IT · © 2026 주식회사 베테랑아이티</div>
     <div class="footer-right">
@@ -413,7 +451,7 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
 <script>
 const T = {
  "en": {
-  "biz_info": "Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href=\"mailto:support@tapevault.net\" style=\"color:#aab4ce;text-decoration:none\">support@tapevault.net</a>",
+  "biz_info": "Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href=\"mailto:support@tapevault.net\" style=\"color:#d3d9e8;text-decoration:none\">support@tapevault.net</a>",
   "nav_features": "Features",
   "nav_how": "How it works",
   "nav_download": "Download",
@@ -477,7 +515,7 @@ const T = {
   "m13_body": "<p>For questions or problems, email <a href=\"mailto:support@tapevault.net\">support@tapevault.net</a>. Including a screenshot and the log file helps us respond faster.</p>"
  },
  "ko": {
-  "biz_info": "상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>전화: 070-8080-4664 · 이메일: <a href=\"mailto:support@tapevault.net\" style=\"color:#aab4ce;text-decoration:none\">support@tapevault.net</a>",
+  "biz_info": "상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>전화: 070-8080-4664 · 이메일: <a href=\"mailto:support@tapevault.net\" style=\"color:#d3d9e8;text-decoration:none\">support@tapevault.net</a>",
   "nav_features": "기능",
   "nav_how": "작동 방식",
   "nav_download": "다운로드",
@@ -541,7 +579,7 @@ const T = {
   "m13_body": "<p>사용 중 궁금한 점이나 문제가 있으면 <a href=\"mailto:support@tapevault.net\">support@tapevault.net</a>으로 보내 주세요. 화면 캡처와 로그 파일을 함께 보내 주시면 빠르게 확인할 수 있습니다.</p>"
  },
  "ja": {
-  "biz_info": "会社名：株式会社ベテランIT（Veteran IT Co., Ltd.） · 代表者：오재화 · 事業者登録番号：326-86-02786<br>通信販売業申告番号：2025-서울서초-3564 · 所在地：大韓民国ソウル特別市瑞草区瑞草大路275、中央ビル202号25A<br>電話：070-8080-4664 · メール：<a href=\"mailto:support@tapevault.net\" style=\"color:#aab4ce;text-decoration:none\">support@tapevault.net</a>",
+  "biz_info": "会社名：株式会社ベテランIT（Veteran IT Co., Ltd.） · 代表者：오재화 · 事業者登録番号：326-86-02786<br>通信販売業申告番号：2025-서울서초-3564 · 所在地：大韓民国ソウル特別市瑞草区瑞草大路275、中央ビル202号25A<br>電話：070-8080-4664 · メール：<a href=\"mailto:support@tapevault.net\" style=\"color:#d3d9e8;text-decoration:none\">support@tapevault.net</a>",
   "nav_features": "機能",
   "nav_how": "仕組み",
   "nav_download": "ダウンロード",
@@ -658,6 +696,26 @@ document.querySelectorAll('#nav-links a').forEach(a => a.addEventListener('click
 }));
 </script>
 
+<script>
+// PDF 버튼: 보고 있는 언어의 PDF 로 연결한다 (docs/ 의 PDF 는 이 페이지를 인쇄해 만든 것)
+(function () {
+  var P = { en: ['📄 Download PDF', 'en'], ko: ['📄 PDF로 내려받기', 'ko'], ja: ['📄 PDFをダウンロード', 'ja'] };
+  // 인쇄(PDF 만들기)할 때는 화면 밖 그림도 미리 불러온다 (그림은 평소 loading="lazy")
+  var PRINT = /[?&]print=1/.test(location.search);
+  function eager() { document.querySelectorAll('img[loading="lazy"]').forEach(function (i) { i.loading = 'eager'; }); }
+  window.addEventListener('beforeprint', eager);
+  function upd() {
+    if (PRINT) eager();
+    var p = P[document.documentElement.lang] || P.en, a = document.getElementById('manual-pdf');
+    if (!a) return;
+    a.textContent = p[0];
+    a.href = 'docs/TapeVault-User-Manual-' + p[1] + '.pdf';
+  }
+  var orig = window.applyLang;
+  window.applyLang = function (l) { orig(l); upd(); };
+  upd();
+})();
+</script>
 <script src="consent.js"></script>
 </body>
 </html>
