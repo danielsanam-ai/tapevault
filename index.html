@@ -292,6 +292,11 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
   .start-steps{grid-template-columns:1fr}
   .hero-signup{margin:-30px 0 36px}
 }
+.dl-manual{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 18px;margin-top:10px;font-size:13.5px}
+.dl-manual a{color:#7db2ff;text-decoration:none}
+.dl-manual a:hover{text-decoration:underline}
+.dl-manual a.dl-manual-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid #f5a623;border-radius:8px;color:#f5a623;font-weight:700;background:#372e19}
+.dl-manual a.dl-manual-btn:hover{background:#f5a623;color:#111318;text-decoration:none}
 </style>
 <script src="lang.js"></script>
 </head>
@@ -606,6 +611,7 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
       <p style="font-size:12px;color:#c2cadc" data-i18n="dl_mac_intel_note"></p>
     </div>
     <div id="dl-more" class="dl-more" hidden></div>
+    <div class="dl-manual" data-i18n="dl_manual"><a class="dl-manual-btn" href="docs/TapeVault-User-Manual-en.pdf" download>📄 User manual (PDF)</a><a href="manual.html">Read it online →</a></div>
   </div>
 </section>
 
@@ -830,6 +836,7 @@ function proceedDownload() {
 
 const T = {
   en: {
+    dl_manual:'<a class="dl-manual-btn" href="docs/TapeVault-User-Manual-en.pdf" download>📄 User manual (PDF)</a><a href="manual.html">Read it online →</a>',
     hs_q:'New to TapeVault?',
     hs_a:'Sign up and get a free 1-month license — no credit card →',
     welcome_t:'🎉 Your account is ready. Now download the app and sign in with the same account.',
@@ -935,6 +942,7 @@ const T = {
     dl_or:'or', dl_mac_btn:'🍎 Download for macOS (Apple Silicon)', dl_mac_note:'v1.2.6 · Apple Silicon (M1/M2/M3) only · ~158 MB'
   },
   ko: {
+    dl_manual:'<a class="dl-manual-btn" href="docs/TapeVault-User-Manual-ko.pdf" download>📄 사용자 매뉴얼 PDF 내려받기</a><a href="manual.html">웹에서 보기 →</a>',
     hs_q:'처음이신가요?',
     hs_a:'회원가입만 해도 1개월 무료 라이선스 — 신용카드 불필요 →',
     welcome_t:'🎉 계정이 준비됐습니다. 이제 앱을 내려받아 같은 계정으로 로그인하세요.',
@@ -1040,6 +1048,7 @@ const T = {
     dl_or:'또는', dl_mac_btn:'🍎 macOS용 다운로드 (Apple Silicon)', dl_mac_note:'v1.2.6 · Apple Silicon(M1/M2/M3) 전용 · ~158 MB'
   },
   ja: {
+    dl_manual:'<a class="dl-manual-btn" href="docs/TapeVault-User-Manual-ja.pdf" download>📄 ユーザーマニュアル（PDF）</a><a href="manual.html">オンラインで読む →</a>',
     hs_q:'初めての方へ：',
     hs_a:'会員登録だけで1か月無料ライセンス — クレジットカード不要 →',
     welcome_t:'🎉 アカウントの準備ができました。アプリをダウンロードして、同じアカウントでログインしてください。',
