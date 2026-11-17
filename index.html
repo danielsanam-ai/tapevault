@@ -371,11 +371,11 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
         <span style="width:10px;height:10px;border-radius:50%;background:#f87171;display:inline-block"></span>
         <span style="width:10px;height:10px;border-radius:50%;background:#f5a623;display:inline-block"></span>
         <span style="width:10px;height:10px;border-radius:50%;background:#4ade80;display:inline-block"></span>
-        <span style="font-size:12px;color:#d3d9e8;font-family:monospace;margin-left:8px">TapeVault v1.2.6 — LTO Archive Manager</span>
+        <span style="font-size:12px;color:#d3d9e8;font-family:monospace;margin-left:8px">TapeVault v1.2.9 — LTO Archive Manager</span>
       </div>
       <img src="img/screen-app.png" alt="TapeVault application screenshot" style="width:100%;display:block">
     </div>
-    <div style="font-size:12px;color:#c2cadc;text-align:center;margin-top:10px;font-family:monospace">▲ Actual TapeVault — no mockup</div>
+    <div style="font-size:12px;color:#c2cadc;text-align:center;margin-top:10px;font-family:monospace" data-i18n="hw_hero">▲ The real TapeVault interface (sample data)</div>
   </div>
 
   <div style="max-width:720px;margin:0 auto 20px" id="yt-wrap">
@@ -422,100 +422,119 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
 
 <section class="gui-sec" id="gui">
   <div class="gui-head">
-    <div class="sec-label" data-i18n="gui_label">Real Software. Real UI.</div>
-    <div class="sec-title" data-i18n="gui_title">See exactly what you get</div>
-    <p class="sec-sub" style="margin:0 auto" data-i18n="gui_sub">These are actual screenshots from TapeVault — no mockups, no illustrations.</p>
+    <div class="sec-label" data-i18n="hw_label">How it works</div>
+    <div class="sec-title" data-i18n="hw_title">From shoot to shelf — and back</div>
+    <p class="sec-sub" style="margin:0 auto" data-i18n="hw_sub">Six steps cover the whole archive workflow. The screens below are the real TapeVault 1.2.9 interface, shown with sample project data.</p>
   </div>
   <div class="gui-step" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 01</div>
-      <div class="gui-step-title" data-i18n="s1_title">All your files,<br>visible at a glance</div>
-      <div class="gui-step-desc" data-i18n="s1_desc">Open any project folder and see every file as a thumbnail — videos, PDFs, images, ZIP files — all organized exactly as you archived them. Switch between grid view and list view instantly.</div>
+      <div class="gui-step-title" data-i18n="hw1_t">Prepare a tape<br>in a few clicks</div>
+      <div class="gui-step-desc" data-i18n="hw1_d">Insert a new tape and TapeVault offers to format it as LTFS. Give it a volume name and it is registered in your catalog. From then on the tape is recognized automatically whenever you insert it.</div>
       <ul class="gui-checklist">
-        <li data-i18n="s1_c1">Thumbnail grid view for visual browsing</li>
-        <li data-i18n="s1_c2">List view with filename, size, date, and status</li>
-        <li data-i18n="s1_c3">Color-coded tape status badges (archived / queued)</li>
-        <li data-i18n="s1_c4">Filter by file type, date, or tape</li>
+        <li data-i18n="hw1_c1">LTFS format — readable on Windows, macOS and Linux</li>
+        <li data-i18n="hw1_c2">LTO-5 to LTO-9 drives detected automatically</li>
+        <li data-i18n="hw1_c3">Tape name, capacity and free space shown in the top bar</li>
+        <li data-i18n="hw1_c4">Two drives? Each drive gets its own status row</li>
       </ul>
-      <div class="gui-tip" data-i18n="s1_tip">💡 Green badge = already on tape. Blue = waiting in queue. You always know the status of every file.</div>
+      <div class="gui-tip" data-i18n="hw1_tip">💡 The catalog remembers every tape, so you can browse its contents even when the tape is on the shelf.</div>
     </div>
     <div>
-      <div class="gui-screen"><img src="img/screen-grid.png" alt="TapeVault grid view"></div>
-      <div class="gui-screen-cap" data-i18n="s1_cap">▲ Grid view — actual TapeVault screenshot</div>
+      <div class="gui-screen"><a href="img/how-1-tape.png" target="_blank" rel="noopener"><img src="img/how-1-tape.png" alt="Prepare a tape in a few clicks" loading="lazy"></a></div>
+      <div class="gui-screen-cap" data-i18n="hw1_cap">▲ New tape registration</div>
     </div>
   </div>
   <div class="gui-step gui-step-rev" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 02</div>
-      <div class="gui-step-title" data-i18n="s2_title">Click any file.<br>See everything about it.</div>
-      <div class="gui-step-desc" data-i18n="s2_desc">Select any file and the right panel instantly shows the video thumbnail preview, file type, resolution, size, tape location, checksum, and your custom metadata notes. No waiting. No recalling.</div>
+      <div class="gui-step-title" data-i18n="hw2_t">Drag folders in.<br>Your structure is kept.</div>
+      <div class="gui-step-desc" data-i18n="hw2_d">Drop shoot folders from Explorer or Finder onto the tree. The whole subfolder structure is recreated, and that same structure is what gets written to tape. Thumbnails for video and images are generated automatically.</div>
       <ul class="gui-checklist">
-        <li data-i18n="s2_c1">Auto-generated video thumbnail preview</li>
-        <li data-i18n="s2_c2">Full file metadata: codec, resolution, date, size</li>
-        <li data-i18n="s2_c3">Exact tape path and tape name shown</li>
-        <li data-i18n="s2_c4">Custom notes: cameraman, location, owner</li>
+        <li data-i18n="hw2_c1">Drag and drop folders or files — subfolders included</li>
+        <li data-i18n="hw2_c2">Unlimited folder depth; rename, move or add any time</li>
+        <li data-i18n="hw2_c3">Hidden and zero-byte files are skipped automatically</li>
+        <li data-i18n="hw2_c4">Right-click menu for every folder action</li>
       </ul>
-      <div class="gui-tip" data-i18n="s2_tip">💡 Know exactly what's on the tape before you eject it and insert a new one. Zero guesswork.</div>
+      <div class="gui-tip" data-i18n="hw2_tip">💡 Organize by year, project and camera roll once — everyone on the team finds files the same way.</div>
     </div>
     <div>
-      <div class="gui-screen"><img src="img/screen-thumb.png" alt="TapeVault file detail panel"></div>
-      <div class="gui-screen-cap" data-i18n="s2_cap">▲ File detail panel — actual TapeVault screenshot</div>
+      <div class="gui-screen"><a href="img/how-2-register.png" target="_blank" rel="noopener"><img src="img/how-2-register.png" alt="Drag folders in. Your structure is kept." loading="lazy"></a></div>
+      <div class="gui-screen-cap" data-i18n="hw2_cap">▲ Folder tree and right-click menu</div>
     </div>
   </div>
   <div class="gui-step" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 03</div>
-      <div class="gui-step-title" data-i18n="s3_title">List view for<br>power users</div>
-      <div class="gui-step-desc" data-i18n="s3_desc">Switch to list view to see all files in a sortable table. Sort by name, size, date, or archive status. Instantly identify which files are on tape and which are still queued.</div>
+      <div class="gui-step-title" data-i18n="hw3_t">Write to tape.<br>Every file verified.</div>
+      <div class="gui-step-desc" data-i18n="hw3_d">Select files or whole folders, add them to the write queue and press start. Each file is written, read back from the tape and compared by checksum — only verified files are marked done.</div>
       <ul class="gui-checklist">
-        <li data-i18n="s3_c1">Sort by any column — name, size, date, status</li>
-        <li data-i18n="s3_c2">VT TEST badge = confirmed on tape</li>
-        <li data-i18n="s3_c3">One-click select multiple files</li>
-        <li data-i18n="s3_c4">Batch add to tape write queue</li>
+        <li data-i18n="hw3_c1">xxHash64 + MD5 calculated while copying</li>
+        <li data-i18n="hw3_c2">Read-back verification of every file on tape</li>
+        <li data-i18n="hw3_c3">Progress with speed and time remaining</li>
+        <li data-i18n="hw3_c4">Optional second copy to another tape, or two drives at once</li>
       </ul>
-      <div class="gui-tip" data-i18n="s3_tip">💡 Select 50 files, add to queue, and start writing — in under 30 seconds.</div>
+      <div class="gui-tip" data-i18n="hw3_tip">💡 If the app is closed or the connection drops mid-write, TapeVault resumes with the remaining files next time.</div>
     </div>
     <div>
-      <div class="gui-screen"><img src="img/screen-list.png" alt="TapeVault list view"></div>
-      <div class="gui-screen-cap" data-i18n="s3_cap">▲ List view — actual TapeVault screenshot</div>
+      <div class="gui-screen"><a href="img/how-3-write.png" target="_blank" rel="noopener"><img src="img/how-3-write.png" alt="Write to tape. Every file verified." loading="lazy"></a></div>
+      <div class="gui-screen-cap" data-i18n="hw3_cap">▲ Write queue</div>
     </div>
   </div>
   <div class="gui-step gui-step-rev" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 04</div>
-      <div class="gui-step-title" data-i18n="s4_title">Play video directly<br>from tape. Instantly.</div>
-      <div class="gui-step-desc" data-i18n="s4_desc">Double-click any video file to open the built-in player. Watch the content directly — no need to copy the file first, no external player needed. Works with MP4, MOV, MXF, AVI and more.</div>
+      <div class="gui-step-title" data-i18n="hw4_t">Find any file<br>without loading a tape</div>
+      <div class="gui-step-desc" data-i18n="hw4_d">Browse thumbnails or type in the search box — the catalog covers every tape you have written. Click a file to see its resolution, codec, size, checksum and exactly which tape and path it is on.</div>
       <ul class="gui-checklist">
-        <li data-i18n="s4_c1">Built-in video player — no external software</li>
-        <li data-i18n="s4_c2">Supports MP4, MOV, MXF, AVI, H.264, H.265</li>
-        <li data-i18n="s4_c3">Confirm the right file before recalling to storage</li>
-        <li data-i18n="s4_c4">26-minute files play smoothly from tape</li>
+        <li data-i18n="hw4_c1">Thumbnail cards or a compact list view</li>
+        <li data-i18n="hw4_c2">Search across all tapes at once</li>
+        <li data-i18n="hw4_c3">Tape name and path shown for every file</li>
+        <li data-i18n="hw4_c4">Your own notes: shoot date, location, owner</li>
       </ul>
-      <div class="gui-tip" data-i18n="s4_tip">💡 Stop wasting time recalling wrong files. Preview first, recall only what you need.</div>
+      <div class="gui-tip" data-i18n="hw4_tip">💡 The badge on each card shows the tape name once the file is safely on tape; gray means it is still waiting.</div>
     </div>
     <div>
-      <div class="gui-screen"><img src="img/screen-player.png" alt="TapeVault built-in video player"></div>
-      <div class="gui-screen-cap" data-i18n="s4_cap">▲ Built-in video player — actual TapeVault screenshot</div>
+      <div class="gui-screen"><a href="img/how-4-find.png" target="_blank" rel="noopener"><img src="img/how-4-find.png" alt="Find any file without loading a tape" loading="lazy"></a></div>
+      <div class="gui-screen-cap" data-i18n="hw4_cap">▲ File cards and the info panel</div>
     </div>
   </div>
-  <div class="gui-step">
+  <div class="gui-step" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 05</div>
-      <div class="gui-step-title" data-i18n="s5_title">New tape registered<br>in 3 clicks</div>
-      <div class="gui-step-desc" data-i18n="s5_desc">Insert a new tape, click New Tape, enter a volume label and serial number, select your LTO generation, and click Format. TapeVault formats it as LTFS and registers it in your database. Done.</div>
+      <div class="gui-step-title" data-i18n="hw5_t">Restore files or<br>whole folders, verified</div>
+      <div class="gui-step-desc" data-i18n="hw5_d">Pick the files — or right-click a folder to restore it with all its subfolders. TapeVault tells you which tape to insert, copies the files back in their original structure and verifies them against the checksums recorded at write time.</div>
       <ul class="gui-checklist">
-        <li data-i18n="s5_c1">LTFS format — cross-platform compatible</li>
-        <li data-i18n="s5_c2">LTO-4 through LTO-9 supported</li>
-        <li data-i18n="s5_c3">Volume label auto-recognized on future inserts</li>
-        <li data-i18n="s5_c4">Tape serial number linked to physical label</li>
+        <li data-i18n="hw5_c1">Restore single files, selections or entire folders</li>
+        <li data-i18n="hw5_c2">Tells you which tape to insert</li>
+        <li data-i18n="hw5_c3">Checksum verification after restore</li>
+        <li data-i18n="hw5_c4">Files spread over several tapes are restored tape by tape</li>
       </ul>
-      <div class="gui-tip" data-i18n="s5_tip">💡 New tape registered and ready to archive in under 60 seconds.</div>
+      <div class="gui-tip" data-i18n="hw5_tip">💡 Restoring a whole project years later is one right-click — no need to remember which tape holds what.</div>
     </div>
     <div>
-      <div class="gui-screen"><img src="img/screen-new-tape.png" alt="TapeVault new tape registration"></div>
-      <div class="gui-screen-cap" data-i18n="s5_cap">▲ New tape registration — actual TapeVault screenshot</div>
+      <div class="gui-screen"><a href="img/how-5-restore.png" target="_blank" rel="noopener"><img src="img/how-5-restore.png" alt="Restore files or whole folders, verified" loading="lazy"></a></div>
+      <div class="gui-screen-cap" data-i18n="hw5_cap">▲ Restore dialog</div>
     </div>
   </div>
+  <div class="gui-step gui-step-rev">
+    <div class="gui-info">
+      <div class="gui-step-num">STEP 06</div>
+      <div class="gui-step-title" data-i18n="hw6_t">Reports and<br>delivery manifests</div>
+      <div class="gui-step-desc" data-i18n="hw6_d">Export a CSV file list of any folder with size, tape, checksum and media details for clients or audits. For studio deliveries, TapeVault can write MD5 manifests or ASC MHL files to the tape automatically.</div>
+      <ul class="gui-checklist">
+        <li data-i18n="hw6_c1">File list export (CSV, subfolders included)</li>
+        <li data-i18n="hw6_c2">MD5 manifest written to tape for studio delivery</li>
+        <li data-i18n="hw6_c3">ASC MHL v2.0 per roll</li>
+        <li data-i18n="hw6_c4">Catalog and error reports</li>
+      </ul>
+      <div class="gui-tip" data-i18n="hw6_tip">💡 Hand over the tape with a file list and manifest the receiving side can verify on their own.</div>
+    </div>
+    <div>
+      <div class="gui-screen"><a href="img/how-6-report.png" target="_blank" rel="noopener"><img src="img/how-6-report.png" alt="Reports and delivery manifests" loading="lazy"></a></div>
+      <div class="gui-screen-cap" data-i18n="hw6_cap">▲ List view with tape status</div>
+    </div>
+  </div>
+  <p style="text-align:center;margin:56px auto 0;font-size:14px"><a href="manual.html" style="color:#5b9cf6;text-decoration:none" data-i18n="hw_more">Read the full user manual →</a></p>
 </section>
 
 <section class="baf-sec" style="padding:72px 48px;background:#1d2027;border-top:0.5px solid #313a54;border-bottom:0.5px solid #313a54">
@@ -870,6 +889,7 @@ const T = {
     sol1_t:'Search in 30 seconds', sol1_d:'Type the filename, date, or metadata. TapeVault searches all tapes instantly and shows exactly where the file is.',
     sol2_t:'Permanent metadata database', sol2_d:'Every file is indexed with metadata, checksum, and location. Staff changes never affect your archive organization.',
     sol3_t:'Thumbnails without recall', sol3_d:'TapeVault auto-generates thumbnails for every video file. Browse visually and confirm before recalling from tape.',
+    hw_label:'How it works', hw_title:'From shoot to shelf — and back', hw_sub:'Six steps cover the whole archive workflow. The screens below are the real TapeVault 1.2.9 interface, shown with sample project data.', hw_hero:'▲ The real TapeVault interface (sample data)', hw_more:'Read the full user manual →', hw1_t:'Prepare a tape<br>in a few clicks', hw1_d:'Insert a new tape and TapeVault offers to format it as LTFS. Give it a volume name and it is registered in your catalog. From then on the tape is recognized automatically whenever you insert it.', hw1_c1:'LTFS format — readable on Windows, macOS and Linux', hw1_c2:'LTO-5 to LTO-9 drives detected automatically', hw1_c3:'Tape name, capacity and free space shown in the top bar', hw1_c4:'Two drives? Each drive gets its own status row', hw1_tip:'💡 The catalog remembers every tape, so you can browse its contents even when the tape is on the shelf.', hw1_cap:'▲ New tape registration', hw2_t:'Drag folders in.<br>Your structure is kept.', hw2_d:'Drop shoot folders from Explorer or Finder onto the tree. The whole subfolder structure is recreated, and that same structure is what gets written to tape. Thumbnails for video and images are generated automatically.', hw2_c1:'Drag and drop folders or files — subfolders included', hw2_c2:'Unlimited folder depth; rename, move or add any time', hw2_c3:'Hidden and zero-byte files are skipped automatically', hw2_c4:'Right-click menu for every folder action', hw2_tip:'💡 Organize by year, project and camera roll once — everyone on the team finds files the same way.', hw2_cap:'▲ Folder tree and right-click menu', hw3_t:'Write to tape.<br>Every file verified.', hw3_d:'Select files or whole folders, add them to the write queue and press start. Each file is written, read back from the tape and compared by checksum — only verified files are marked done.', hw3_c1:'xxHash64 + MD5 calculated while copying', hw3_c2:'Read-back verification of every file on tape', hw3_c3:'Progress with speed and time remaining', hw3_c4:'Optional second copy to another tape, or two drives at once', hw3_tip:'💡 If the app is closed or the connection drops mid-write, TapeVault resumes with the remaining files next time.', hw3_cap:'▲ Write queue', hw4_t:'Find any file<br>without loading a tape', hw4_d:'Browse thumbnails or type in the search box — the catalog covers every tape you have written. Click a file to see its resolution, codec, size, checksum and exactly which tape and path it is on.', hw4_c1:'Thumbnail cards or a compact list view', hw4_c2:'Search across all tapes at once', hw4_c3:'Tape name and path shown for every file', hw4_c4:'Your own notes: shoot date, location, owner', hw4_tip:'💡 The badge on each card shows the tape name once the file is safely on tape; gray means it is still waiting.', hw4_cap:'▲ File cards and the info panel', hw5_t:'Restore files or<br>whole folders, verified', hw5_d:'Pick the files — or right-click a folder to restore it with all its subfolders. TapeVault tells you which tape to insert, copies the files back in their original structure and verifies them against the checksums recorded at write time.', hw5_c1:'Restore single files, selections or entire folders', hw5_c2:'Tells you which tape to insert', hw5_c3:'Checksum verification after restore', hw5_c4:'Files spread over several tapes are restored tape by tape', hw5_tip:'💡 Restoring a whole project years later is one right-click — no need to remember which tape holds what.', hw5_cap:'▲ Restore dialog', hw6_t:'Reports and<br>delivery manifests', hw6_d:'Export a CSV file list of any folder with size, tape, checksum and media details for clients or audits. For studio deliveries, TapeVault can write MD5 manifests or ASC MHL files to the tape automatically.', hw6_c1:'File list export (CSV, subfolders included)', hw6_c2:'MD5 manifest written to tape for studio delivery', hw6_c3:'ASC MHL v2.0 per roll', hw6_c4:'Catalog and error reports', hw6_tip:'💡 Hand over the tape with a file list and manifest the receiving side can verify on their own.', hw6_cap:'▲ List view with tape status',
     gui_label:'Real Software. Real UI.', gui_title:'See exactly what you get', gui_sub:'These are actual screenshots from TapeVault — no mockups, no illustrations.',
     s1_title:'All your files,<br>visible at a glance', s1_desc:'Open any project folder and see every file as a thumbnail — videos, PDFs, images, ZIP files — all organized exactly as you archived them. Switch between grid view and list view instantly.',
     s1_c1:'Thumbnail grid view for visual browsing', s1_c2:'List view with filename, size, date, and status', s1_c3:'Color-coded tape status badges (archived / queued)', s1_c4:'Filter by file type, date, or tape',
@@ -976,6 +996,7 @@ const T = {
     sol1_t:'30초 안에 검색', sol1_d:'파일명, 날짜, 메타데이터를 입력하면 모든 테이프를 즉시 검색해 정확한 위치를 알려줍니다.',
     sol2_t:'영구 메타데이터 DB', sol2_d:'모든 파일이 메타데이터, 체크섬, 위치 정보와 함께 인덱싱됩니다. 담당자가 바뀌어도 아카이브는 안전합니다.',
     sol3_t:'리콜 없이 썸네일 미리보기', sol3_d:'동영상 파일마다 썸네일이 자동 생성됩니다. 테이프에서 꺼내기 전에 시각적으로 확인할 수 있습니다.',
+    hw_label:'작동 방식', hw_title:'촬영 원본을 테이프로, 그리고 다시 꺼내기까지', hw_sub:'아카이브 작업 전체를 6단계로 보여 드립니다. 아래 화면은 실제 TapeVault 1.2.9 화면이며, 예시 프로젝트 데이터로 표시했습니다.', hw_hero:'▲ 실제 TapeVault 화면 (예시 데이터)', hw_more:'사용자 매뉴얼 전체 보기 →', hw1_t:'테이프 준비는<br>클릭 몇 번으로', hw1_d:'새 테이프를 넣으면 LTFS로 포맷할지 물어봅니다. 볼륨 이름만 정하면 카탈로그에 등록되고, 다음부터는 넣기만 해도 자동으로 인식합니다.', hw1_c1:'LTFS 포맷 — Windows·macOS·Linux 어디서나 읽을 수 있음', hw1_c2:'LTO-5~LTO-9 드라이브 자동 인식', hw1_c3:'상단 바에서 테이프 이름·용량·남은 공간 확인', hw1_c4:'드라이브가 2대면 드라이브마다 상태를 따로 표시', hw1_tip:'💡 카탈로그가 모든 테이프를 기억하므로, 테이프가 선반에 있어도 안의 내용을 찾아볼 수 있습니다.', hw1_cap:'▲ 새 테이프 등록', hw2_t:'폴더를 끌어다 놓으면<br>구조 그대로 등록', hw2_d:'탐색기나 Finder에서 촬영 폴더를 트리에 끌어다 놓으세요. 하위 폴더 구조가 그대로 만들어지고, 그 구조 그대로 테이프에 기록됩니다. 영상과 이미지는 썸네일이 자동으로 만들어집니다.', hw2_c1:'폴더·파일 끌어다 놓기 — 하위 폴더 포함', hw2_c2:'폴더 단계 제한 없음, 언제든 이름 변경·이동·추가', hw2_c3:'숨김 파일과 0바이트 파일은 자동 제외', hw2_c4:'폴더 우클릭 메뉴로 모든 작업', hw2_tip:'💡 연도·프로젝트·카메라 롤 순으로 한 번 정리해 두면, 팀 누구나 같은 방식으로 파일을 찾습니다.', hw2_cap:'▲ 폴더 트리와 우클릭 메뉴', hw3_t:'테이프에 기록하고<br>파일마다 검증', hw3_d:'파일이나 폴더를 골라 기록 대기열에 넣고 시작을 누르세요. 파일마다 테이프에 쓴 뒤 다시 읽어 체크섬을 비교하고, 검증을 통과한 파일만 완료로 표시합니다.', hw3_c1:'복사하면서 xxHash64 + MD5 계산', hw3_c2:'테이프에서 다시 읽어 파일마다 검증', hw3_c3:'속도와 남은 시간이 보이는 진행 표시', hw3_c4:'다른 테이프로 복본 만들기, 드라이브 2대 동시 기록', hw3_tip:'💡 기록 중에 앱이 닫히거나 연결이 끊겨도, 다음 실행 때 남은 파일부터 이어서 진행합니다.', hw3_cap:'▲ 기록 대기열', hw4_t:'테이프를 넣지 않고도<br>파일 찾기', hw4_d:'썸네일을 훑어보거나 검색창에 입력하세요. 카탈로그에는 지금까지 기록한 모든 테이프가 들어 있습니다. 파일을 누르면 해상도·코덱·크기·체크섬과 함께 어느 테이프의 어느 경로에 있는지 바로 보입니다.', hw4_c1:'썸네일 카드 보기와 목록 보기', hw4_c2:'모든 테이프를 한 번에 검색', hw4_c3:'파일마다 테이프 이름과 경로 표시', hw4_c4:'촬영일자·장소·담당자 메모', hw4_tip:'💡 테이프에 안전하게 기록된 파일은 카드에 테이프 이름 배지가 붙고, 회색은 아직 대기 중인 파일입니다.', hw4_cap:'▲ 파일 카드와 정보 패널', hw5_t:'파일도 폴더도<br>검증하며 복원', hw5_d:'파일을 고르거나, 폴더를 우클릭해 하위 폴더까지 통째로 복원하세요. 어느 테이프를 넣어야 하는지 알려 주고, 원래 폴더 구조대로 꺼낸 뒤 기록할 때의 체크섬과 비교해 검증합니다.', hw5_c1:'파일 하나, 여러 개, 폴더 전체 복원', hw5_c2:'넣어야 할 테이프를 안내', hw5_c3:'복원 후 체크섬 검증', hw5_c4:'여러 테이프에 나뉜 파일은 테이프별로 차례로 복원', hw5_tip:'💡 몇 년 뒤 프로젝트 전체를 꺼낼 때도 우클릭 한 번이면 됩니다. 어느 테이프에 무엇이 있는지 기억할 필요가 없습니다.', hw5_cap:'▲ 복원 창', hw6_t:'보고서와<br>납품용 매니페스트', hw6_d:'폴더의 파일 목록을 크기·테이프·체크섬·영상 정보와 함께 CSV로 내보내 고객이나 감사에 제출할 수 있습니다. 스튜디오 납품용으로는 MD5 매니페스트나 ASC MHL을 테이프에 자동으로 만들어 줍니다.', hw6_c1:'파일 목록 내보내기 (CSV, 하위 폴더 포함)', hw6_c2:'스튜디오 납품용 MD5 매니페스트를 테이프에 저장', hw6_c3:'롤별 ASC MHL v2.0', hw6_c4:'카탈로그·오류 보고서', hw6_tip:'💡 받는 쪽이 직접 검증할 수 있는 파일 목록과 매니페스트를 테이프와 함께 넘기세요.', hw6_cap:'▲ 테이프 상태가 보이는 목록 보기',
     gui_label:'실제 소프트웨어. 실제 UI.', gui_title:'실제로 이렇게 생겼습니다', gui_sub:'전부 TapeVault의 실제 스크린샷입니다 — 목업이나 일러스트가 아닙니다.',
     s1_title:'모든 파일을<br>한눈에 확인', s1_desc:'프로젝트 폴더를 열면 동영상, PDF, 이미지, ZIP 등 모든 파일을 썸네일로 확인할 수 있습니다. 그리드 뷰와 리스트 뷰를 즉시 전환할 수 있습니다.',
     s1_c1:'시각적 탐색을 위한 썸네일 그리드 뷰', s1_c2:'파일명, 크기, 날짜, 상태 포함 리스트 뷰', s1_c3:'색상 코딩된 테이프 상태 배지 (보관됨 / 대기 중)', s1_c4:'파일 유형, 날짜, 테이프로 필터링',
@@ -1082,6 +1103,7 @@ const T = {
     sol1_t:'30秒で検索', sol1_d:'ファイル名・日付・メタデータを入力するだけで全テープを瞬時に検索し、場所を特定します。',
     sol2_t:'永続的なメタデータDB', sol2_d:'全ファイルがメタデータ・チェックサム・場所とともに登録されます。担当者交代の影響を受けません。',
     sol3_t:'リコール不要でサムネイル確認', sol3_d:'動画ファイルのサムネイルが自動生成されます。リコール前に内容を視覚的に確認できます。',
+    hw_label:'使い方', hw_title:'撮影素材をテープへ、そして再び取り出すまで', hw_sub:'アーカイブ作業の全体を6つのステップでご紹介します。以下は実際のTapeVault 1.2.9の画面で、サンプルのプロジェクトデータを表示しています。', hw_hero:'▲ 実際のTapeVaultの画面（サンプルデータ）', hw_more:'ユーザーマニュアルを見る →', hw1_t:'テープの準備は<br>数クリックで', hw1_d:'新しいテープを入れると、LTFSでフォーマットするか確認されます。ボリューム名を決めるだけでカタログに登録され、次回からは入れるだけで自動認識されます。', hw1_c1:'LTFSフォーマット — Windows・macOS・Linuxで読み取り可能', hw1_c2:'LTO-5〜LTO-9ドライブを自動認識', hw1_c3:'上部バーでテープ名・容量・空き容量を確認', hw1_c4:'ドライブが2台なら、ドライブごとに状態を表示', hw1_tip:'💡 カタログがすべてのテープを記憶するので、テープが棚にあっても中身を確認できます。', hw1_cap:'▲ 新規テープの登録', hw2_t:'フォルダをドラッグするだけ。<br>構成はそのまま', hw2_d:'エクスプローラーやFinderから撮影フォルダをツリーにドラッグします。サブフォルダ構成がそのまま作成され、その構成のままテープに書き込まれます。動画と画像のサムネイルは自動で作成されます。', hw2_c1:'フォルダ・ファイルをドラッグ＆ドロップ — サブフォルダを含む', hw2_c2:'階層の制限なし。名前変更・移動・追加はいつでも可能', hw2_c3:'隠しファイルと0バイトのファイルは自動で除外', hw2_c4:'右クリックメニューからすべての操作', hw2_tip:'💡 年・プロジェクト・カメラロールの順に一度整理すれば、チームの誰もが同じ方法でファイルを見つけられます。', hw2_cap:'▲ フォルダツリーと右クリックメニュー', hw3_t:'テープに書き込み、<br>全ファイルを検証', hw3_d:'ファイルやフォルダを選んで書き込みキューに追加し、開始を押します。ファイルごとにテープへ書き込み、読み戻してチェックサムを比較し、検証に合格したファイルだけを完了と表示します。', hw3_c1:'コピー中にxxHash64 + MD5を計算', hw3_c2:'テープから読み戻して全ファイルを検証', hw3_c3:'速度と残り時間がわかる進捗表示', hw3_c4:'別のテープへの複製、2台のドライブでの同時書き込み', hw3_tip:'💡 書き込み中にアプリが閉じたり接続が切れたりしても、次回起動時に残りのファイルから再開します。', hw3_cap:'▲ 書き込みキュー', hw4_t:'テープを入れなくても<br>ファイルを検索', hw4_d:'サムネイルを眺めるか、検索欄に入力します。カタログにはこれまで書き込んだすべてのテープが含まれています。ファイルをクリックすると、解像度・コーデック・サイズ・チェックサムと、どのテープのどのパスにあるかがすぐにわかります。', hw4_c1:'サムネイルカード表示と一覧表示', hw4_c2:'すべてのテープを一度に検索', hw4_c3:'ファイルごとにテープ名とパスを表示', hw4_c4:'撮影日・場所・担当者のメモ', hw4_tip:'💡 テープに安全に書き込まれたファイルにはテープ名のバッジが付き、グレーはまだ待機中のファイルです。', hw4_cap:'▲ ファイルカードと情報パネル', hw5_t:'ファイルもフォルダも<br>検証しながら復元', hw5_d:'ファイルを選ぶか、フォルダを右クリックしてサブフォルダごと復元します。どのテープを入れるかを案内し、元のフォルダ構成のまま取り出して、書き込み時のチェックサムと照合して検証します。', hw5_c1:'単一ファイル、複数選択、フォルダ全体の復元', hw5_c2:'入れるべきテープを案内', hw5_c3:'復元後のチェックサム検証', hw5_c4:'複数のテープに分かれたファイルはテープごとに順に復元', hw5_tip:'💡 数年後にプロジェクト全体を取り出すときも右クリック1回。どのテープに何があるかを覚えておく必要はありません。', hw5_cap:'▲ 復元ダイアログ', hw6_t:'レポートと<br>納品用マニフェスト', hw6_d:'フォルダのファイル一覧を、サイズ・テープ・チェックサム・メディア情報とともにCSVで出力し、クライアントや監査に提出できます。スタジオ納品向けには、MD5マニフェストやASC MHLをテープ上に自動で作成します。', hw6_c1:'ファイル一覧のエクスポート（CSV、サブフォルダを含む）', hw6_c2:'スタジオ納品用のMD5マニフェストをテープに保存', hw6_c3:'ロールごとのASC MHL v2.0', hw6_c4:'カタログ・エラーレポート', hw6_tip:'💡 受け取り側が自分で検証できるファイル一覧とマニフェストを、テープと一緒に渡せます。', hw6_cap:'▲ テープ状態がわかる一覧表示',
     gui_label:'リアルなソフト。リアルなUI。', gui_title:'実際の画面をご確認ください', gui_sub:'すべてTapeVaultの実際のスクリーンショットです。モックアップではありません。',
     s1_title:'すべてのファイルを<br>一目で把握', s1_desc:'プロジェクトフォルダを開くと、動画・PDF・画像・ZIPなど全ファイルがサムネイル表示されます。グリッドとリスト表示を即時切替できます。',
     s1_c1:'視覚的ブラウジング用サムネイルグリッド', s1_c2:'ファイル名・サイズ・日付・状態つきリスト表示', s1_c3:'カラーコードのテープステータスバッジ', s1_c4:'ファイル種別・日付・テープでフィルター',
