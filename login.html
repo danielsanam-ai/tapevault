@@ -153,6 +153,8 @@ const params = new URLSearchParams(location.search);
 // 로그인 후 돌아갈 곳: 같은 사이트 안의 경로만 허용(외부 주소로 보내는 것을 막는다)
 // 기본은 구매 페이지(현재 라이선스 상태 + 요금제 + 결제창)
 const next = (() => { const n = params.get('next') || ''; return /^[a-z0-9_-]+\.html(\?[\w=&.-]*)?$/i.test(n) ? n : 'buy.html'; })();
+// 가입을 마친 뒤 갈 곳: 호출한 쪽이 next 를 줬으면 그대로, 아니면 홈페이지의 "계정 준비 완료 → 다운로드" 안내
+const signupNext = /^[a-z0-9_-]+\.html(\?[\w=&.-]*)?$/i.test(params.get('next') || '') ? next : 'index.html?welcome=1';
 let mode = params.get('mode') === 'signup' ? 'signup' : 'login';
 
 function view(id) { ['authView', 'resetView', 'newPwView', 'accountView'].forEach(v => $(v).classList.toggle('hide', v !== id)); }
@@ -196,10 +198,10 @@ $('authForm').onsubmit = async e => {
   btn.disabled = true; $('msg').textContent = '';
   try {
     if (mode === 'signup') {
-      const { data, error } = await sb.auth.signUp({ email, password: pw, options: { emailRedirectTo: location.origin + '/login.html' + (next ? '?next=' + encodeURIComponent(next) : '') } });
+      const { data, error } = await sb.auth.signUp({ email, password: pw, options: { emailRedirectTo: location.origin + '/login.html?next=' + encodeURIComponent(signupNext) } });
       if (error) throw error;
       if (!data.session) { say($('msg'), `${email} 로 인증 메일을 보냈습니다.\n메일의 링크를 누르면 가입이 끝납니다.`, true); return; }
-      return done(data.session);
+      location.href = signupNext; return;
     }
     const { data, error } = await sb.auth.signInWithPassword({ email, password: pw });
     if (error) throw error;
