@@ -834,17 +834,17 @@ function showDownloadWarning(platform) {
   document.getElementById('dl-warning-modal').classList.add('open');
 }
 function playDemo() {
+  // 데모 영상은 홈페이지에 직접 올린 파일로 재생한다 (예전에는 YouTube 영상을 불러왔다)
   var host = document.getElementById('yt-thumb');
-  var f = document.createElement('iframe');
-  f.src = 'https://www.youtube-nocookie.com/embed/gq-fioGNzgo?autoplay=1&rel=0';
-  f.title = 'TapeVault demo video';
-  f.allow = 'autoplay; encrypted-media; picture-in-picture';
-  f.referrerPolicy = 'strict-origin-when-cross-origin';
-  f.allowFullscreen = true;
-  f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0';
+  var v = document.createElement('video');
+  v.src = 'video/tapevault-demo.mp4';
+  v.poster = 'img/demo-thumb.jpg';
+  v.controls = true; v.autoplay = true; v.playsInline = true; v.preload = 'auto';
+  v.title = 'TapeVault demo video';
+  v.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;background:#000';
   var box = document.createElement('div');
   box.style.cssText = 'position:relative;padding-bottom:56.25%;height:0';
-  box.appendChild(f);
+  box.appendChild(v);
   host.replaceWith(box);
 }
 function closeDownloadWarning() { document.getElementById('dl-warning-modal').classList.remove('open'); }
