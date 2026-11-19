@@ -5,7 +5,7 @@
  * 선택은 localStorage 'tv-consent' ('granted' | 'denied') 에 저장하고, 푸터의 "쿠키 설정" 링크로 언제든 바꿀 수 있다.
  * 로그인·구매 페이지에는 넣지 않는다(계정·결제 정보가 있는 화면). */
 (function () {
-  var GTM_ID = 'GTM-PSCRJSDG', KEY = 'tv-consent', loaded = false, bar = null, link = null;
+  var GTM_ID = 'GTM-PSCRJSDG', ADS_ID = 'AW-18561496445', KEY = 'tv-consent', loaded = false, bar = null, link = null;
 
   var L = {
     en: { text: 'We use Google tags to measure visits and the performance of our ads. They load only if you accept.',
@@ -44,6 +44,12 @@
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
     document.head.appendChild(s);
+    // Google 애즈 태그(전환 추적·리마케팅). GTM 과 같은 동의 조건으로만 불러온다
+    var a = document.createElement('script');
+    a.async = true;
+    a.src = 'https://www.googletagmanager.com/gtag/js?id=' + ADS_ID;
+    document.head.appendChild(a);
+    gtag('config', ADS_ID);
   }
 
   // 거부로 바꾸면 Google 이 만든 1st-party 쿠키(_ga, _gid, _gcl…)를 지운다
