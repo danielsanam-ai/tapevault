@@ -49,6 +49,8 @@ a.step:hover{border-color:#3b6fd8;transform:translateY(-1px)}
 .step span{font-size:13px;color:#dfe4f0}
 .links{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:13px}
 .test{background:#5c461f;color:#f5c36b;border-radius:8px;padding:8px 12px;font-size:13px;margin-bottom:16px}
+#payment-method,#agreement{background:#fff;border-radius:10px;overflow:hidden}
+#agreement{margin-top:10px}
 .done dt{color:#dfe4f0;font-size:13px}.done dd{font-size:16px;margin-bottom:8px}
 .hide{display:none}
 .stat{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
@@ -116,7 +118,8 @@ a.step:hover{border-color:#3b6fd8;transform:translateY(-1px)}
     </div>
     <div class="card">
       <h2>3. 결제</h2>
-      <p class="note" style="margin-top:0">결제하기를 누르면 토스페이먼츠 카드 결제창이 열립니다. 국내 발급 신용·체크카드로 일시불 또는 할부 결제할 수 있습니다.</p>
+      <div id="payment-method"></div>
+      <div id="agreement"></div>
       <button class="btn" id="payBtn" disabled>결제하기</button>
       <div id="payMsg" class="msg"></div>
     </div>
@@ -137,8 +140,8 @@ a.step:hover{border-color:#3b6fd8;transform:translateY(-1px)}
 const CFG = {
   supabaseUrl: 'https://udqtrnfkaapzgqruurgq.supabase.co',
   supabaseAnonKey: 'sb_publishable_NhIFmUT1GboO1jLTpxFeEg_E3B9W5F0',
-  // 토스페이먼츠 결제창(API 개별 연동) 라이브 클라이언트 키 — 공개 값. 짝이 되는 시크릿 키(live_sk_)는 Worker 에만 둔다
-  tossClientKey: 'live_ck_c19wcbghUYNgQaQciN5n1dS1gZYwJLY1zT',
+  // 토스 결제위젯 라이브 클라이언트 키 — 공개 값. 짝이 되는 시크릿 키(live_gsk_)는 Worker 에만 둔다
+  tossClientKey: 'live_gck_c19wcWaxJdmvYZEIaei6GPy73yjur1b5db',
   workerUrl: 'https://support-mail.daniel-sanam.workers.dev',
 };
 const $ = id => document.getElementById(id);
@@ -155,7 +158,7 @@ const ERR = {
 const errText = e => { const m = String(e && e.message || e); const k = Object.keys(ERR).find(k => m.includes(k)); return k ? ERR[k] : m; };
 
 { const ed = new URLSearchParams(location.search).get('ed'); if (ed) { const n = encodeURIComponent('buy.html?ed=' + ed); document.getElementById('goLogin').href = 'login.html?next=' + n; document.getElementById('goSignup').href = 'login.html?mode=signup&next=' + n; } }
-let prices = [], edition = ['starter', 'autoloader'].includes(new URLSearchParams(location.search).get('ed')) ? new URLSearchParams(location.search).get('ed') : 'starter', payment = null, user = null;
+let prices = [], edition = ['starter', 'autoloader'].includes(new URLSearchParams(location.search).get('ed')) ? new URLSearchParams(location.search).get('ed') : 'starter', widgets = null, user = null;
 
 
 // 상품·결제창은 로그인 전에도 보여 준다(결제 버튼을 누를 때 로그인 확인)
@@ -165,7 +168,12 @@ async function initShop() {
   prices = p; renderPlans();
   try {
     const toss = TossPayments(CFG.tossClientKey);
-    payment = toss.payment({ customerKey: TossPayments.ANONYMOUS });   // 결제창(카드)
+    widgets = toss.widgets({ customerKey: TossPayments.ANONYMOUS });
+    await widgets.setAmount({ currency: 'KRW', value: price().amount });
+    await Promise.all([
+      widgets.renderPaymentMethods({ selector: '#payment-method', variantKey: 'DEFAULT' }),
+      widgets.renderAgreement({ selector: '#agreement', variantKey: 'AGREEMENT' }),
+    ]);
     $('payBtn').disabled = false;
   } catch (e) { $('payMsg').textContent = '결제창을 불러오지 못했습니다: ' + errText(e); }
 }
@@ -190,7 +198,7 @@ async function showBuy(session) {
       </div>` + (l.kind === 'paid' && !expired ? '<p class="note">같은 에디션을 구매하면 만료일에서 1년이 늘어납니다.</p>' : l.kind === 'trial' || l.kind === 'beta' ? '<p class="note">아래에서 구매하면 오늘부터 1년 유료 라이선스로 바뀝니다.</p>' : '');
     if (l.kind === 'paid' && new Date(l.expires_at) > new Date() && edition !== l.edition) {
       edition = l.edition;
-      if (prices.length) renderPlans();
+      if (prices.length) { renderPlans(); if (widgets) await widgets.setAmount({ currency: 'KRW', value: price().amount }); }
     }
   }
 }
@@ -202,6 +210,7 @@ function renderPlans() {
     <div class="d">${H(p.months)}개월 · ${p.edition === 'starter' ? '드라이브 2대까지' : '오토로더·라이브러리, 드라이브 제한 없음'}</div></div>`).join('');
   $('plans').querySelectorAll('.plan').forEach(el => el.onclick = async () => {
     edition = el.dataset.ed; renderPlans();
+    if (widgets) await widgets.setAmount({ currency: 'KRW', value: price().amount });
     prepareOrder();
   });
   $('payBtn').textContent = `${won(price().amount)} 결제하기`;
@@ -216,12 +225,13 @@ $('logout').onclick = async () => { await sb.auth.signOut(); location.href = loc
 // BC카드(ISP/페이북)처럼 새 창을 여는 결제창이 팝업 차단으로 열리지 않는다.
 let order = null, orderErr = null, orderSeq = 0;
 async function prepareOrder() {
-  if (!user || !payment) return;
+  if (!user || !widgets) return;
   const seq = ++orderSeq, ed = edition;
   order = null; orderErr = null;
   try {
     const { data: o, error } = await sb.rpc('pay_create_order', { p_edition: ed });
     if (error) throw error;
+    await widgets.setAmount({ currency: 'KRW', value: o.amount });   // 서버가 정한 금액으로 결제
     if (seq === orderSeq) order = { ...o, edition: ed };
   } catch (e) { if (seq === orderSeq) orderErr = e; }
 }
@@ -239,12 +249,9 @@ $('payBtn').onclick = () => {
   $('payBtn').disabled = true;
   const base = location.origin + location.pathname;
   // 클릭 직후 await 없이 바로 호출 (팝업 차단 방지)
-  payment.requestPayment({
-    method: 'CARD',
-    amount: { currency: 'KRW', value: o.amount },   // 서버가 정한 금액으로 결제
+  widgets.requestPayment({
     orderId: o.orderId, orderName: o.orderName, customerEmail: o.email,
     successUrl: base + '?result=success', failUrl: base + '?result=fail',
-    card: { flowMode: 'DEFAULT', useEscrow: false, useCardPoint: false, useAppCardOnly: false },
   }).catch((e) => {
     if (e && e.code !== 'USER_CANCEL') $('payMsg').textContent = errText(e);
     $('payBtn').disabled = false;
