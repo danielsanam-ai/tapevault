@@ -221,7 +221,7 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
       </div>
     </div>
     <button class="btn-ghost" data-i18n="nav_signin" onclick="location.href='login.html'">Sign in / Sign up</button>
-    <button class="btn-orange" data-i18n="nav_trial" onclick="location.href='index.html#download'">Free Trial</button>
+    <button class="btn-orange" data-i18n="nav_trial" onclick="location.href='index.html#download'">1-Month Trial</button>
     <button class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -277,6 +277,9 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
       </a>
       <a class="sidebar-link" href="#macos">
         <span class="step-badge" style="font-size:7px">Mac</span> <span data-i18n="sb9">macOS install</span>
+      </a>
+      <a class="sidebar-link" href="#uninstall">
+        <span class="step-badge" style="font-size:9px">✕</span> <span data-i18n="sb10">Uninstall</span>
       </a>
     </div>
     <div class="sidebar-section">
@@ -533,7 +536,7 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
         <div class="step-number">6</div>
         <div class="step-title" data-i18n="s6_title">Sign-in & License Activation</div>
       </div>
-      <p class="step-desc" data-i18n="s6_desc">TapeVault is activated with your account — the same email and password you use on this website. Registering starts a 1-month free trial with full features; after that, buy a license on the <a href="buy.html" style="color:#7db2ff">purchase page</a> (Korean cards) or contact sales.</p>
+      <p class="step-desc" data-i18n="s6_desc">TapeVault is activated with your account — the same email and password you use on this website. Registering starts a 1-month trial with full features; after that, buy a license on the <a href="buy.html" style="color:#7db2ff">purchase page</a> (Korean cards) or contact sales.</p>
       <div class="code-block">
         <div class="code-header">
           <span class="code-lang" data-i18n="s6_code_label">Registration & sign-in steps</span>
@@ -655,6 +658,32 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
 
     <hr class="step-divider">
 
+    <div class="step-card" id="uninstall">
+      <div class="step-header">
+        <div class="step-number" style="font-size:18px">✕</div>
+        <div class="step-title" data-i18n="u_title">Uninstalling TapeVault</div>
+      </div>
+      <p class="step-desc" data-i18n="u_desc">You can remove TapeVault at any time. Uninstalling the app does not erase or change any data written to your LTO tapes, and your license stays on your account — sign in again after reinstalling to use it.</p>
+      <p class="step-desc" style="margin-bottom:6px"><strong style="color:#eef1f8" data-i18n="u_win">Windows</strong></p>
+      <ul class="checklist">
+        <li data-i18n="u_w1">Close TapeVault first</li>
+        <li data-i18n="u_w2">Open <strong style="color:#eef1f8">Settings → Apps → Installed apps</strong>, find <strong style="color:#eef1f8">TapeVault</strong>, click <strong style="color:#eef1f8">··· (More) → Uninstall</strong> (on Windows 10: Settings → Apps → TapeVault → Uninstall). Control Panel → Programs and Features also works</li>
+        <li data-i18n="u_w3">The uninstaller removes the program files and the Desktop / Start Menu shortcuts</li>
+      </ul>
+      <p class="step-desc" style="margin-bottom:6px"><strong style="color:#eef1f8" data-i18n="u_mac">macOS</strong></p>
+      <ul class="checklist">
+        <li data-i18n="u_m1">Quit TapeVault (TapeVault menu → Quit)</li>
+        <li data-i18n="u_m2">In Finder, open <strong style="color:#eef1f8">Applications</strong> and drag <strong style="color:#eef1f8">TapeVault</strong> to the Trash, then empty the Trash</li>
+        <li data-i18n="u_m3">macFUSE, LTFS and ffmpeg added by the Install Assistant are separate programs and stay installed. Remove them only if no other software uses them — for example <code style="background:#333741;padding:1px 5px;border-radius:3px;font-size:12px;color:#7db2ff">brew uninstall ffmpeg</code>, and macFUSE with its own uninstaller</li>
+      </ul>
+      <div class="alert alert-info">
+        <span class="alert-ico">ℹ️</span>
+        <span data-i18n="u_alert">The tape drive driver from your drive or adapter manufacturer is not removed. If you are moving TapeVault to another PC and your license limits the number of computers, contact support@tapevault.net to release the old PC.</span>
+      </div>
+    </div>
+
+    <hr class="step-divider">
+
     <!-- TROUBLESHOOTING -->
     <div style="margin-bottom:16px">
       <div class="sec-label" style="font-size:12px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;font-family:monospace;margin-bottom:16px" data-i18n="trouble_label">Troubleshooting</div>
@@ -764,6 +793,7 @@ const T = {
     m_c4:'Install the driver for your SAS / Thunderbolt adapter (for example ATTO) from the manufacturer\'s website — the assistant only tells you where to get it',
     m_c5:'First launch: open TapeVault from Applications and click <strong>Open</strong> when macOS asks to confirm an app downloaded from the internet. If it does not open, allow it under <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>',
     m_alert:'TapeVault runs on macOS 13 or later (Apple Silicon and Intel). For an Apple Silicon Mac without internet access, an offline install kit (guide in Korean) is available on the releases page — email support@tapevault.net if you need help in English or Japanese.',
+    sb10:'Uninstall', u_title:'Uninstalling TapeVault', u_desc:'You can remove TapeVault at any time. Uninstalling the app does not erase or change any data written to your LTO tapes, and your license stays on your account — sign in again after reinstalling to use it.', u_win:'Windows', u_w1:'Close TapeVault first', u_w2:'Open <strong style="color:#eef1f8">Settings → Apps → Installed apps</strong>, find <strong style="color:#eef1f8">TapeVault</strong>, click <strong style="color:#eef1f8">··· (More) → Uninstall</strong> (on Windows 10: Settings → Apps → TapeVault → Uninstall). Control Panel → Programs and Features also works', u_w3:'The uninstaller removes the program files and the Desktop / Start Menu shortcuts', u_mac:'macOS', u_m1:'Quit TapeVault (TapeVault menu → Quit)', u_m2:'In Finder, open <strong style="color:#eef1f8">Applications</strong> and drag <strong style="color:#eef1f8">TapeVault</strong> to the Trash, then empty the Trash', u_m3:'macFUSE, LTFS and ffmpeg added by the Install Assistant are separate programs and stay installed. Remove them only if no other software uses them — for example <code style="background:#333741;padding:1px 5px;border-radius:3px;font-size:12px;color:#7db2ff">brew uninstall ffmpeg</code>, and macFUSE with its own uninstaller', u_alert:'The tape drive driver from your drive or adapter manufacturer is not removed. If you are moving TapeVault to another PC and your license limits the number of computers, contact support@tapevault.net to release the old PC.',
     s6_offline:'<strong>No internet on this PC?</strong> Open the <strong>Offline</strong> tab, copy the PC\'s <strong>Machine ID</strong>, email it to <strong>support@tapevault.net</strong>, then load the <strong>.tvlic</strong> license file you receive.',
     s2_verify_t:'Verify your download (recommended)',
     s2_verify_d:'Compare the SHA-256 checksum of your file with the value shown under the download buttons on the <a href="index.html#download" style="color:#7db2ff">homepage</a>. If they differ, do not run the file — delete it and contact support.',
@@ -772,7 +802,7 @@ const T = {
     s7_m1_c5:'Restart TapeVault — thumbnail generation is now active',
     biz_info:'Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>',
     nav_features:'Features', nav_how:'How it works', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide', nav_manual:'User Manual',
-    nav_signin:'Sign in / Sign up', nav_trial:'Free Trial',
+    nav_signin:'Sign in / Sign up', nav_trial:'1-Month Trial',
     bc_home:'Home', bc_support:'Support', bc_current:'How to Install',
     page_label:'Support · Installation Guide', page_title:'How to Install TapeVault',
     page_sub:'Step-by-step installation guide for TapeVault on Windows 10 / 11 and macOS, from drivers and LTFS to your first archive.',
@@ -813,7 +843,7 @@ const T = {
     s5_c2:'Click <strong style="color:#f5a623">+ New Tape</strong> to format and register a new tape',
     s5_c3:'Create a folder in the tree and drag your footage folder onto it to register the files',
     s5_c4:'Add the files to the write queue and click <strong style="color:#f5a623">▶ Start writing</strong>',
-    s6_title:'Sign-in & License Activation', s6_desc:'TapeVault is activated with your account — the same email and password you use on this website. Registering starts a 1-month free trial with full features; after that, buy a license on the <a href="buy.html" style="color:#7db2ff">purchase page</a> (Korean cards) or contact sales.',
+    s6_title:'Sign-in & License Activation', s6_desc:'TapeVault is activated with your account — the same email and password you use on this website. Registering starts a 1-month trial with full features; after that, buy a license on the <a href="buy.html" style="color:#7db2ff">purchase page</a> (Korean cards) or contact sales.',
     s6_code_label:'Registration & sign-in steps',
     s6_code:'<span class="cmd">1.</span> Open TapeVault — the sign-in window appears on first launch<br><span class="cmd">2.</span> New user: open the <span class="hl" style="color:#f5a623">Register</span> tab and enter your email and password<br><span class="cmd">3.</span> If you receive a verification email, click the link in it<br><span class="cmd">4.</span> Sign in on the <span class="hl" style="color:#f5a623">Sign in</span> tab — internet required for this step<br><span class="cmd">5.</span> <span class="ok" style="color:#4ade80">✓ Activated</span> — after buying a license, sign in again or restart the app to apply it',
     s6_alert:'After activation, TapeVault keeps working offline. When a connection is available, it refreshes your license status in the background.',
@@ -877,6 +907,7 @@ const T = {
     m_c4:'SAS / Thunderbolt 어댑터(예: ATTO) 드라이버는 제조사 사이트에서 직접 설치합니다 — 설치 도우미는 받는 곳만 안내합니다',
     m_c5:'첫 실행: 응용 프로그램에서 TapeVault를 실행하고, 인터넷에서 받은 앱이라는 확인 창이 뜨면 <strong>열기</strong>를 누릅니다. 열리지 않으면 <strong>시스템 설정 → 개인정보 보호 및 보안 → 그래도 열기</strong>에서 허용합니다',
     m_alert:'TapeVault는 macOS 13 이상(Apple Silicon·Intel)에서 실행됩니다. 인터넷이 없는 Apple Silicon Mac은 릴리스 페이지의 오프라인 설치 키트(한국어 안내서)를 쓸 수 있습니다. 영어·일본어 지원이 필요하면 support@tapevault.net으로 문의하세요.',
+    sb10:'프로그램 제거', u_title:'TapeVault 제거하기', u_desc:'TapeVault는 언제든지 제거할 수 있습니다. 앱을 제거해도 LTO 테이프에 기록된 데이터는 지워지거나 바뀌지 않으며, 라이선스는 계정에 그대로 남아 다시 설치한 뒤 로그인하면 이어서 쓸 수 있습니다.', u_win:'Windows', u_w1:'먼저 TapeVault를 종료합니다', u_w2:'<strong style="color:#eef1f8">설정 → 앱 → 설치된 앱</strong>에서 <strong style="color:#eef1f8">TapeVault</strong>를 찾아 <strong style="color:#eef1f8">오른쪽 점 3개(···) → 제거</strong>를 누릅니다(Windows 10: 설정 → 앱 → TapeVault → 제거). 제어판 → 프로그램 및 기능에서도 제거할 수 있습니다', u_w3:'제거 프로그램이 프로그램 파일과 바탕화면·시작 메뉴 바로가기를 삭제합니다', u_mac:'macOS', u_m1:'TapeVault를 종료합니다(TapeVault 메뉴 → 종료)', u_m2:'Finder에서 <strong style="color:#eef1f8">응용 프로그램</strong> 폴더를 열고 <strong style="color:#eef1f8">TapeVault</strong>를 휴지통으로 끌어다 놓은 뒤 휴지통을 비웁니다', u_m3:'설치 도우미가 설치한 macFUSE, LTFS, ffmpeg는 별도 프로그램이라 그대로 남습니다. 다른 프로그램이 쓰지 않을 때만 제거하세요. 예: <code style="background:#333741;padding:1px 5px;border-radius:3px;font-size:12px;color:#7db2ff">brew uninstall ffmpeg</code>, macFUSE는 자체 제거 방법 사용', u_alert:'드라이브·어댑터 제조사의 테이프 드라이버는 함께 제거되지 않습니다. 다른 PC로 옮기는데 라이선스의 PC 대수 제한에 걸리면 support@tapevault.net 으로 기존 PC 해제를 요청해 주세요.',
     s6_offline:'<strong>이 PC에 인터넷이 없나요?</strong> <strong>오프라인</strong> 탭에서 PC의 <strong>머신 ID</strong>를 복사해 <strong>support@tapevault.net</strong>으로 보내고, 받은 <strong>.tvlic</strong> 라이선스 파일을 불러오세요.',
     s2_verify_t:'다운로드 파일 확인하기 (권장)',
     s2_verify_d:'내려받은 파일의 SHA-256 체크섬을 <a href="index.html#download" style="color:#7db2ff">홈페이지</a> 다운로드 버튼 아래에 표시된 값과 비교하세요. 다르면 파일을 실행하지 말고 삭제한 뒤 지원팀에 문의하세요.',
@@ -885,7 +916,7 @@ const T = {
     s7_m1_c5:'TapeVault를 재시작하면 썸네일 생성 기능이 활성화됩니다',
     biz_info:'상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>전화: 070-8080-4664 · 이메일: <a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>',
     nav_features:'기능', nav_how:'작동 방식', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드', nav_manual:'사용자 매뉴얼',
-    nav_signin:'로그인 · 회원가입', nav_trial:'무료 체험',
+    nav_signin:'로그인 · 회원가입', nav_trial:'1개월 체험',
     bc_home:'홈', bc_support:'지원', bc_current:'설치 방법',
     page_label:'지원 · 설치 가이드', page_title:'TapeVault 설치 방법',
     page_sub:'Windows 10 / 11과 macOS에서 TapeVault를 설치하는 단계별 가이드입니다. 드라이버·LTFS 준비부터 첫 기록까지 안내합니다.',
@@ -926,7 +957,7 @@ const T = {
     s5_c2:'<strong style="color:#f5a623">+ 새 테이프</strong>를 눌러 새 테이프를 포맷하고 등록합니다',
     s5_c3:'폴더 트리에 폴더를 만들고, 촬영 폴더를 끌어다 놓아 파일을 등록합니다',
     s5_c4:'파일을 기록 대기열에 넣고 <strong style="color:#f5a623">▶ 기록 시작</strong>을 누릅니다',
-    s6_title:'로그인 및 라이선스 활성화', s6_desc:'TapeVault는 이 웹사이트와 같은 이메일·비밀번호 계정으로 활성화합니다. 등록하면 전체 기능을 쓸 수 있는 1개월 무료 체험이 시작되고, 이후에는 <a href="buy.html" style="color:#7db2ff">구매 페이지</a>(국내 카드)에서 라이선스를 구매하거나 영업팀에 문의하세요.',
+    s6_title:'로그인 및 라이선스 활성화', s6_desc:'TapeVault는 이 웹사이트와 같은 이메일·비밀번호 계정으로 활성화합니다. 등록하면 전체 기능을 쓸 수 있는 1개월 체험이 시작되고, 이후에는 <a href="buy.html" style="color:#7db2ff">구매 페이지</a>(국내 카드)에서 라이선스를 구매하거나 영업팀에 문의하세요.',
     s6_code_label:'등록 및 로그인 단계',
     s6_code:'<span class="cmd">1.</span> TapeVault를 실행합니다 — 처음에는 로그인 창이 나타납니다<br><span class="cmd">2.</span> 처음이라면 <span class="hl" style="color:#f5a623">신규 등록</span> 탭에서 이메일과 비밀번호를 입력합니다<br><span class="cmd">3.</span> 인증 메일을 받았다면 메일의 링크를 클릭합니다<br><span class="cmd">4.</span> <span class="hl" style="color:#f5a623">로그인</span> 탭에서 로그인합니다 — 이 단계에서는 인터넷이 필요합니다<br><span class="cmd">5.</span> <span class="ok" style="color:#4ade80">✓ 활성화 완료</span> — 라이선스를 구매한 뒤에는 다시 로그인하거나 앱을 재시작하면 적용됩니다',
     s6_alert:'활성화 후에도 TapeVault는 오프라인으로 계속 동작합니다. 인터넷에 연결되어 있으면 백그라운드에서 라이선스 상태를 갱신합니다.',
@@ -968,7 +999,7 @@ const T = {
     t3_alert:'문제가 계속되나요? <strong>support@tapevault.net</strong>으로 문의해 주세요 — 영업일 기준 24시간 이내에 답변드립니다.',
     next_label:'다음 단계', next_title:'모든 준비가 끝났습니다!',
     n1_title:'기능 살펴보기', n1_desc:'TapeVault가 아카이브 워크플로우를 위해 제공하는 모든 기능을 확인하세요.',
-    n2_title:'요금제 선택', n2_desc:'등록 후 1개월 무료로 체험한 뒤, 워크플로우에 맞는 라이선스를 구매하세요.',
+    n2_title:'요금제 선택', n2_desc:'등록 후 1개월 체험한 뒤, 워크플로우에 맞는 라이선스를 구매하세요.',
     n3_title:'지원팀 문의', n3_desc:'저희 팀이 도와드리겠습니다. 24시간 이내에 답변드립니다.',
     foot_left:'TapeVault · Veteran IT 개발 · © 2026 주식회사 베테랑아이티',
     foot_home:'홈', foot_pricing:'요금제', foot_support:'지원'
@@ -990,6 +1021,7 @@ const T = {
     m_c4:'SAS／Thunderboltアダプター（例：ATTO）のドライバーは、メーカーのサイトから直接インストールします。アシスタントは入手先のみ案内します',
     m_c5:'初回起動：アプリケーションからTapeVaultを起動し、インターネットからダウンロードしたアプリの確認が表示されたら<strong>開く</strong>をクリックします。開けない場合は<strong>システム設定 → プライバシーとセキュリティ → このまま開く</strong>で許可します',
     m_alert:'TapeVaultはmacOS 13以降（Apple Silicon・Intel）で動作します。インターネットに接続できないApple Silicon Macでは、リリースページのオフラインインストールキット（ガイドは韓国語）を利用できます。英語・日本語でのサポートが必要な場合は、support@tapevault.netまでご連絡ください。',
+    sb10:'アンインストール', u_title:'TapeVaultのアンインストール', u_desc:'TapeVaultはいつでも削除できます。アプリを削除してもLTOテープに書き込まれたデータは消えたり変わったりせず、ライセンスはアカウントに残るため、再インストール後にログインすれば引き続き使えます。', u_win:'Windows', u_w1:'まずTapeVaultを終了します', u_w2:'<strong style="color:#eef1f8">設定 → アプリ → インストールされているアプリ</strong>で<strong style="color:#eef1f8">TapeVault</strong>を探し、<strong style="color:#eef1f8">右の「···」→ アンインストール</strong>をクリックします（Windows 10：設定 → アプリ → TapeVault → アンインストール）。コントロールパネル → プログラムと機能からも削除できます', u_w3:'アンインストーラーがプログラムファイルとデスクトップ・スタートメニューのショートカットを削除します', u_mac:'macOS', u_m1:'TapeVaultを終了します（TapeVaultメニュー → 終了）', u_m2:'Finderで<strong style="color:#eef1f8">アプリケーション</strong>フォルダを開き、<strong style="color:#eef1f8">TapeVault</strong>をゴミ箱にドラッグしてゴミ箱を空にします', u_m3:'インストールアシスタントが追加したmacFUSE、LTFS、ffmpegは別のプログラムのため残ります。他のソフトが使っていない場合のみ削除してください。例：<code style="background:#333741;padding:1px 5px;border-radius:3px;font-size:12px;color:#7db2ff">brew uninstall ffmpeg</code>、macFUSEは専用のアンインストール方法を使用', u_alert:'ドライブ・アダプタメーカーのテープドライバーは削除されません。別のPCへ移す際にライセンスのPC台数制限にかかる場合は、support@tapevault.net に旧PCの解除をご依頼ください。',
     s6_offline:'<strong>このPCにインターネットがない場合：</strong><strong>オフライン</strong>タブでPCの<strong>マシンID</strong>をコピーし、<strong>support@tapevault.net</strong>へ送信して、受け取った<strong>.tvlic</strong>ライセンスファイルを読み込んでください。',
     s2_verify_t:'ダウンロードの確認（推奨）',
     s2_verify_d:'ダウンロードしたファイルのSHA-256チェックサムを、<a href="index.html#download" style="color:#7db2ff">ホームページ</a>のダウンロードボタンの下に表示されている値と比較してください。異なる場合は実行せず、削除してサポートにご連絡ください。',
@@ -998,7 +1030,7 @@ const T = {
     s7_m1_c5:'TapeVaultを再起動すると、サムネイル生成が有効になります',
     biz_info:'会社名：株式会社ベテランIT（Veteran IT Co., Ltd.） · 代表者：오재화 · 事業者登録番号：326-86-02786<br>通信販売業申告番号：2025-서울서초-3564 · 所在地：大韓民国ソウル特別市瑞草区瑞草大路275、中央ビル202号25A<br>電話：070-8080-4664 · メール：<a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>',
     nav_features:'機能', nav_how:'仕組み', nav_download:'ダウンロード', nav_pricing:'料金プラン', nav_install:'インストールガイド', nav_manual:'ユーザーマニュアル',
-    nav_signin:'ログイン・新規登録', nav_trial:'無料体験',
+    nav_signin:'ログイン・新規登録', nav_trial:'1か月体験',
     bc_home:'ホーム', bc_support:'サポート', bc_current:'インストール方法',
     page_label:'サポート · インストールガイド', page_title:'TapeVaultのインストール方法',
     page_sub:'Windows 10 / 11およびmacOSでTapeVaultをインストールする手順です。ドライバーとLTFSの準備から最初の書き込みまでご案内します。',
@@ -1039,7 +1071,7 @@ const T = {
     s5_c2:'<strong style="color:#f5a623">＋ 新しいテープ</strong>をクリックして、新しいテープをフォーマット・登録します',
     s5_c3:'ツリーにフォルダーを作成し、撮影フォルダーをドラッグして登録します',
     s5_c4:'ファイルを書き込みキューに追加し、<strong style="color:#f5a623">▶ 書き込み開始</strong>をクリックします',
-    s6_title:'ログインとライセンス認証', s6_desc:'TapeVaultは、このウェブサイトと同じメールアドレス・パスワードのアカウントで認証します。登録すると全機能が使える1か月間の無料体験が始まり、その後は<a href="buy.html" style="color:#7db2ff">購入ページ</a>（韓国国内カード）でライセンスを購入するか、営業にお問い合わせください。',
+    s6_title:'ログインとライセンス認証', s6_desc:'TapeVaultは、このウェブサイトと同じメールアドレス・パスワードのアカウントで認証します。登録すると全機能が使える1か月間の体験が始まり、その後は<a href="buy.html" style="color:#7db2ff">購入ページ</a>（韓国国内カード）でライセンスを購入するか、営業にお問い合わせください。',
     s6_code_label:'登録とログインの手順',
     s6_code:'<span class="cmd">1.</span> TapeVaultを起動します — 初回はログインウィンドウが表示されます<br><span class="cmd">2.</span> 初めての場合は<span class="hl" style="color:#f5a623">新規登録</span>タブでメールアドレスとパスワードを入力します<br><span class="cmd">3.</span> 確認メールが届いた場合は、メール内のリンクをクリックします<br><span class="cmd">4.</span> <span class="hl" style="color:#f5a623">ログイン</span>タブでログインします — この手順ではインターネットが必要です<br><span class="cmd">5.</span> <span class="ok" style="color:#4ade80">✓ 認証完了</span> — ライセンス購入後は、再ログインまたはアプリの再起動で反映されます',
     s6_alert:'認証後もTapeVaultはオフラインで動作し続けます。インターネットに接続されている場合は、バックグラウンドでライセンス状態を更新します。',
@@ -1081,7 +1113,7 @@ const T = {
     t3_alert:'まだ問題が解決しませんか？<strong>support@tapevault.net</strong>までご連絡ください — 営業日24時間以内に返信いたします。',
     next_label:'次のステップ', next_title:'これで準備完了です！',
     n1_title:'機能を見る', n1_desc:'TapeVaultがアーカイブ業務にもたらすすべての機能をご覧ください。',
-    n2_title:'プランを選ぶ', n2_desc:'登録後1ヶ月間無料でお試しいただき、ワークフローに合ったライセンスをご購入ください。',
+    n2_title:'プランを選ぶ', n2_desc:'登録後1ヶ月間お試しいただき、ワークフローに合ったライセンスをご購入ください。',
     n3_title:'サポートに連絡', n3_desc:'サポートチームが対応いたします。24時間以内に返信いたします。',
     foot_left:'TapeVault · Veteran IT製 · © 2026 株式会社ベテランIT',
     foot_home:'ホーム', foot_pricing:'料金プラン', foot_support:'サポート'
