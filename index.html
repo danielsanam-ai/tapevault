@@ -3,207 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com https://www.google.co.kr https://pagead2.googlesyndication.com https://www.googleadservices.com; frame-src https://www.youtube-nocookie.com https://bid.g.doubleclick.net https://td.doubleclick.net https://www.googletagmanager.com; connect-src 'self' https://danielsanam-ai.github.io https://www.google.com https://www.google.co.kr https://www.googletagmanager.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.googleadservices.com; base-uri 'self'; object-src 'none'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google.com https://www.google.co.kr https://*.g.doubleclick.net https://*.doubleclick.net; frame-src https://www.youtube-nocookie.com https://www.googletagmanager.com https://td.doubleclick.net https://bid.g.doubleclick.net; connect-src 'self' https://danielsanam-ai.github.io https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://www.google.com https://google.com https://www.googleadservices.com https://pagead2.googlesyndication.com; base-uri 'self'; object-src 'none'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>TapeVault — Find Any File on LTO Tape in 30 Seconds</title>
 <meta name="description" content="TapeVault is an LTO tape archive manager for Windows and macOS. Browse thumbnails, search, and retrieve media files from LTO tape in seconds.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;overflow-x:hidden}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 48px;border-bottom:0.5px solid #1e2230;position:sticky;top:0;background:#0b0b0dee;backdrop-filter:blur(14px);z-index:100}
+body{background:#23262e;color:#f7f8fc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;overflow-x:hidden}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 48px;border-bottom:0.5px solid #424857;position:sticky;top:0;background:#23262eee;backdrop-filter:blur(14px);z-index:100}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-logo-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center}
-.nav-logo-text{font-size:17px;letter-spacing:-0.02em;color:#f0f2f8}
+.nav-logo-text{font-size:17px;letter-spacing:-0.02em;color:#ffffff}
 .nav-logo-text b{font-weight:700}
-.nav-ver{font-size:10px;background:#1a2340;color:#5b9cf6;padding:2px 7px;border-radius:4px;font-family:monospace}
+.nav-ver{font-size:11px;background:#333e5c;color:#7db2ff;padding:2px 7px;border-radius:4px;font-family:monospace}
 .nav-links{display:flex;gap:28px}
-.nav-links a{font-size:13px;color:#a8b2d0;text-decoration:none;cursor:pointer;transition:color .2s}
+.nav-links a{font-size:13px;color:#e8ecf5;text-decoration:none;cursor:pointer;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:#f5a623}
 .nav-right{display:flex;gap:7px;align-items:center}
 .lang-select{position:relative;margin-right:6px}
-.lang-globe-btn{display:flex;align-items:center;gap:6px;background:#111520;border:0.5px solid #1e2330;color:#99a3c4;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-family:monospace;transition:all .15s}
-.lang-globe-btn:hover{border-color:#3a4a6a;color:#c8cfe0}
+.lang-globe-btn{display:flex;align-items:center;gap:6px;background:#2f343f;border:0.5px solid #424857;color:#dfe4f0;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:12px;font-family:monospace;transition:all .15s}
+.lang-globe-btn:hover{border-color:#93a4cc;color:#eef1f8}
 .lang-globe-btn svg{width:15px;height:15px;flex-shrink:0;stroke:currentColor}
 .lang-globe-btn .lang-chevron{width:8px;height:8px;flex-shrink:0;stroke:currentColor;transition:transform .15s}
 .lang-globe-btn.open .lang-chevron{transform:rotate(180deg)}
-.lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:#0d1117;border:0.5px solid #2a2a35;border-radius:10px;padding:6px;min-width:150px;box-shadow:0 16px 40px rgba(0,0,0,.55);display:none;flex-direction:column;gap:2px;z-index:200}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:#2a2e37;border:0.5px solid #4d5364;border-radius:10px;padding:6px;min-width:150px;box-shadow:0 16px 40px rgba(0,0,0,.55);display:none;flex-direction:column;gap:2px;z-index:200}
 .lang-menu.open{display:flex}
-.lang-menu-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:none;border:none;color:#99a3c4;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:12px;text-align:left;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-.lang-menu-item:hover{background:#1a1f2e;color:#c8cfe0}
-.lang-menu-item.active{color:#5b9cf6}
-.lang-menu-item .lang-check{color:#5b9cf6;font-size:12px;opacity:0}
+.lang-menu-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:none;border:none;color:#dfe4f0;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:13px;text-align:left;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.lang-menu-item:hover{background:#343a47;color:#eef1f8}
+.lang-menu-item.active{color:#7db2ff}
+.lang-menu-item .lang-check{color:#7db2ff;font-size:13px;opacity:0}
 .lang-menu-item.active .lang-check{opacity:1}
-.btn-ghost{font-size:13px;color:#a8b2d0;background:#111827;border:0.5px solid #2a3349;padding:6px 16px;border-radius:6px;cursor:pointer}
-.btn-orange{font-size:13px;color:#0b0b0d;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer}
+.btn-ghost{font-size:13px;color:#e8ecf5;background:#333946;border:0.5px solid #505a72;padding:6px 16px;border-radius:6px;cursor:pointer}
+.btn-orange{font-size:13px;color:#111318;background:#f5a623;border:none;padding:7px 18px;border-radius:6px;font-weight:700;cursor:pointer}
 .btn-orange:hover{opacity:.88}
 .hero{padding:72px 48px 56px;text-align:center;position:relative}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.hero h1{font-size:56px;font-weight:400;line-height:1.1;letter-spacing:-1.5px;color:#f0f2f8;margin-bottom:10px}
+.hero h1{font-size:56px;font-weight:600;line-height:1.1;letter-spacing:-1.5px;color:#ffffff;margin-bottom:10px}
 .hero h1 b{font-weight:800;color:#f5a623}
-.hero-sub{font-size:17px;color:#99a3c4;max-width:540px;margin:0 auto 16px;line-height:1.75}
-.hero-platform{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#8b96b8;margin-bottom:36px;font-family:monospace}
-.hero-platform span{background:#1a1a20;border:0.5px solid #2a2a35;padding:3px 10px;border-radius:4px}
-.hero-platform span.hi{color:#f5a623;border-color:#3a2a05;background:#1a1508}
+.hero-sub{font-size:17px;color:#dfe4f0;max-width:540px;margin:0 auto 16px;line-height:1.75}
+.hero-platform{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#d3d9e8;margin-bottom:36px;font-family:monospace}
+.hero-platform span{background:#333741;border:0.5px solid #4d5364;padding:3px 10px;border-radius:4px}
+.hero-platform span.hi{color:#f5a623;border-color:#5e4612;background:#372e19}
 .hero-btns{display:flex;gap:12px;justify-content:center;margin-bottom:56px}
-.btn-hero-main{background:#f5a623;color:#0b0b0d;border:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px}
+.btn-hero-main{background:#f5a623;color:#111318;border:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px}
 .btn-hero-main:hover{opacity:.88}
-.btn-hero-ghost{background:#111827;color:#c8cfe0;border:0.5px solid #2a3349;padding:14px 24px;border-radius:8px;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:8px}
-.btn-hero-ghost:hover{border-color:#3a4a6a}
-.video-card{background:#141418;border:0.5px solid #2a2a35;border-radius:12px;overflow:hidden;display:block;transition:border-color .2s}
+.btn-hero-ghost{background:#333946;color:#eef1f8;border:0.5px solid #505a72;padding:14px 24px;border-radius:8px;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.btn-hero-ghost:hover{border-color:#93a4cc}
+.video-card{background:#30343e;border:0.5px solid #4d5364;border-radius:12px;overflow:hidden;display:block;transition:border-color .2s}
 .video-card:hover{border-color:#f5a623}
-.video-label{background:#1a1a1f;border-bottom:0.5px solid #2a2a35;padding:10px 16px;font-size:11px;color:#99a3c4;font-family:monospace;display:flex;align-items:center;gap:6px}
+.video-label{background:#333741;border-bottom:0.5px solid #4d5364;padding:10px 16px;font-size:12px;color:#dfe4f0;font-family:monospace;display:flex;align-items:center;gap:6px}
 .video-label span{color:#f5a623}
-.video-thumb{position:relative;background:#0d0d12;display:block;width:100%;padding:0;border:0;cursor:pointer;color:inherit}
+.video-thumb{position:relative;background:#24272f;display:block;width:100%;padding:0;border:0;cursor:pointer;color:inherit}
 .video-thumb:focus-visible{outline:2px solid #f5a623;outline-offset:-2px}
 .video-thumb img{width:100%;display:block;object-fit:cover;opacity:.85}
 .video-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .video-play-btn{width:52px;height:52px;background:rgba(245,166,35,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .15s}
 .video-card:hover .video-play-btn{transform:scale(1.1)}
-.video-play-btn svg{width:20px;height:20px;fill:#0b0b0d;margin-left:3px}
-.pain-sec{padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
+.video-play-btn svg{width:20px;height:20px;fill:#23262e;margin-left:3px}
+.pain-sec{padding:72px 48px;background:#1d2027;border-top:0.5px solid #313a54;border-bottom:0.5px solid #313a54}
 .pain-head{text-align:center;margin-bottom:48px}
-.sec-label{font-size:11px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:monospace}
-.sec-title{font-size:34px;font-weight:600;color:#e8eaf0;letter-spacing:-.5px;margin-bottom:10px}
-.sec-sub{font-size:15px;color:#99a3c4;max-width:520px;margin:0 auto}
+.sec-label{font-size:12px;color:#f5a623;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:monospace}
+.sec-title{font-size:34px;font-weight:600;color:#f7f8fc;letter-spacing:-.5px;margin-bottom:10px}
+.sec-sub{font-size:15px;color:#dfe4f0;max-width:520px;margin:0 auto}
 .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
-.pain-card{background:#0d1117;border:0.5px solid #2a1a1a;border-radius:12px;padding:28px}
+.pain-card{background:#2a2e37;border:0.5px solid #422d2e;border-radius:12px;padding:28px}
 .pain-ico{font-size:28px;margin-bottom:14px}
-.pain-title{font-size:15px;font-weight:700;color:#ef4444;margin-bottom:10px}
-.pain-desc{font-size:13px;color:#99a3c4;line-height:1.75}
+.pain-title{font-size:15px;font-weight:700;color:#f87171;margin-bottom:10px}
+.pain-desc{font-size:13px;color:#dfe4f0;line-height:1.75}
 .pain-arrow{text-align:center;padding:32px 0;font-size:32px;color:#f5a623}
 .solution-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
-.solution-card{background:#0a1a0a;border:0.5px solid #1a3a1a;border-radius:12px;padding:28px}
+.solution-card{background:#253626;border:0.5px solid #2c4c2c;border-radius:12px;padding:28px}
 .solution-ico{font-size:28px;margin-bottom:14px}
 .solution-title{font-size:15px;font-weight:700;color:#4ade80;margin-bottom:10px}
-.solution-desc{font-size:13px;color:#99a3c4;line-height:1.75}
+.solution-desc{font-size:13px;color:#dfe4f0;line-height:1.75}
 .gui-sec{padding:80px 48px}
 .gui-head{text-align:center;margin-bottom:64px}
 .gui-step{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:80px;max-width:1100px;margin-left:auto;margin-right:auto}
 .gui-step:last-child{margin-bottom:0}
 .gui-step-rev{direction:rtl}
 .gui-step-rev>*{direction:ltr}
-.gui-step-num{font-size:10px;color:#f5a623;font-family:monospace;letter-spacing:.15em;background:#1a1508;border:0.5px solid #3a2a05;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:16px}
-.gui-step-title{font-size:28px;font-weight:700;color:#e8eaf0;margin-bottom:14px;letter-spacing:-.4px;line-height:1.3}
-.gui-step-desc{font-size:14px;color:#99a3c4;line-height:1.85;margin-bottom:20px}
+.gui-step-num{font-size:11px;color:#f5a623;font-family:monospace;letter-spacing:.15em;background:#372e19;border:0.5px solid #5e4612;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:16px}
+.gui-step-title{font-size:28px;font-weight:700;color:#f7f8fc;margin-bottom:14px;letter-spacing:-.4px;line-height:1.3}
+.gui-step-desc{font-size:14px;color:#dfe4f0;line-height:1.85;margin-bottom:20px}
 .gui-checklist{list-style:none;display:flex;flex-direction:column;gap:10px}
-.gui-checklist li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#99a3c4;line-height:1.6}
+.gui-checklist li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#dfe4f0;line-height:1.6}
 .gui-checklist li::before{content:"✓";color:#f5a623;font-size:13px;flex-shrink:0;margin-top:1px;font-weight:700}
-.gui-tip{display:flex;align-items:flex-start;gap:8px;background:#1a1508;border:0.5px solid #3a2a05;border-radius:8px;padding:12px 16px;margin-top:20px;font-size:12px;color:#d4921a;line-height:1.65}
-.gui-screen{border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);border:0.5px solid #2a2a35}
+.gui-tip{display:flex;align-items:flex-start;gap:8px;background:#372e19;border:0.5px solid #5e4612;border-radius:8px;padding:12px 16px;margin-top:20px;font-size:13px;color:#f2b84b;line-height:1.65}
+.gui-screen{border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);border:0.5px solid #4d5364}
 .gui-screen img{width:100%;display:block}
-.gui-screen-cap{font-size:11px;color:#7c88a4;text-align:center;margin-top:10px;font-family:monospace}
-.stats-bar{background:#0d1117;border-top:0.5px solid #1e2330;border-bottom:0.5px solid #1e2330;padding:32px 48px}
+.gui-screen-cap{font-size:12px;color:#c2cadc;text-align:center;margin-top:10px;font-family:monospace}
+.stats-bar{background:#2a2e37;border-top:0.5px solid #424857;border-bottom:0.5px solid #424857;padding:32px 48px}
 .stats-inner{display:flex;align-items:center;justify-content:center;gap:0;max-width:900px;margin:0 auto}
 .stat-item{text-align:center;padding:0 48px}
 .stat-num{font-size:44px;font-weight:800;color:#f5a623;letter-spacing:-1px;line-height:1}
 .stat-num sup{font-size:20px;font-weight:400}
-.stat-label{font-size:11px;color:#99a3c4;margin-top:6px;font-family:monospace}
-.stat-div{width:0.5px;height:52px;background:#1e2330}
-.feat-sec{padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
+.stat-label{font-size:12px;color:#dfe4f0;margin-top:6px;font-family:monospace}
+.stat-div{width:0.5px;height:52px;background:#424857}
+.feat-sec{padding:72px 48px;background:#1d2027;border-top:0.5px solid #313a54;border-bottom:0.5px solid #313a54}
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto}
-.feat{background:#0d1117;border:0.5px solid #1e2330;border-radius:10px;padding:24px;transition:border-color .2s}
-.feat:hover{border-color:#2e3a4a}
+.feat{background:#2a2e37;border:0.5px solid #424857;border-radius:10px;padding:24px;transition:border-color .2s}
+.feat:hover{border-color:#546073}
 .feat-ico{font-size:26px;margin-bottom:14px}
-.feat-title{font-size:14px;font-weight:700;color:#c8cfe0;margin-bottom:8px}
-.feat-desc{font-size:12px;color:#8b96b8;line-height:1.75}
+.feat-title{font-size:14px;font-weight:700;color:#eef1f8;margin-bottom:8px}
+.feat-desc{font-size:13px;color:#d3d9e8;line-height:1.75}
 .baf-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:center;max-width:900px;margin:0 auto}
 .baf-card{border-radius:12px;padding:32px}
-.baf-card.before{background:#0d0808;border:1px solid #3a1a1a}
-.baf-card.after{background:#080d08;border:1px solid #1a3a1a}
+.baf-card.before{background:#282020;border:1px solid #532c2c}
+.baf-card.after{background:#1f271f;border:1px solid #2c4c2c}
 .baf-label{font-size:13px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px}
-.baf-card.before .baf-label{color:#ef4444}
+.baf-card.before .baf-label{color:#f87171}
 .baf-card.after .baf-label{color:#4ade80}
 .baf-list{list-style:none;display:flex;flex-direction:column;gap:12px}
-.baf-list li{font-size:13px;color:#99a3c4;line-height:1.65;display:flex;align-items:flex-start;gap:8px}
-.baf-card.before .baf-list li::before{content:"✗";color:#ef4444;flex-shrink:0;font-weight:700}
+.baf-list li{font-size:13px;color:#dfe4f0;line-height:1.65;display:flex;align-items:flex-start;gap:8px}
+.baf-card.before .baf-list li::before{content:"✗";color:#f87171;flex-shrink:0;font-weight:700}
 .baf-card.after .baf-list li::before{content:"✓";color:#4ade80;flex-shrink:0;font-weight:700}
 .baf-arrow{font-size:36px;color:#f5a623;text-align:center}
-.price-sec{padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035}
+.price-sec{padding:72px 48px;background:#1d2027;border-top:0.5px solid #313a54;border-bottom:0.5px solid #313a54}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:820px;margin:0 auto}
-.pc{background:#0d1117;border:0.5px solid #1a2035;border-radius:12px;padding:30px;position:relative}
+.pc{background:#2a2e37;border:0.5px solid #313a54;border-radius:12px;padding:30px;position:relative}
 .pc.hot{border:2px solid #f5a623}
-.pc-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#f5a623;color:#0b0b0d;font-size:10px;font-weight:800;padding:3px 16px;border-radius:20px;white-space:nowrap}
-.pc-plan{font-size:11px;color:#8b96b8;margin-bottom:8px;font-family:monospace;letter-spacing:.1em}
-.pc-amount{font-size:40px;font-weight:800;color:#e8eaf0;letter-spacing:-1px}
-.pc-unit{font-size:13px;color:#8b96b8;font-weight:400}
-.pc-note{font-size:11px;color:#8b96b8;margin-top:4px;line-height:1.5}
-.pc-desc{font-size:12px;color:#8b96b8;margin:8px 0 16px;line-height:1.6}
-.pc-hr{border:none;border-top:0.5px solid #1a2035;margin:16px 0}
-.pc-feat{font-size:12px;color:#99a3c4;padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
-.pc-feat::before{content:'✓';color:#22d3ee;font-size:11px;flex-shrink:0;margin-top:1px}
-.pc-btn{width:100%;margin-top:22px;padding:11px;border-radius:8px;font-size:13px;cursor:pointer;border:0.5px solid #2a3349;background:none;color:#a8b2d0;font-weight:600;transition:all .15s}
-.pc-btn:hover{border-color:#3a4a6a;color:#c8cfe0}
-.pc-btn.hot{background:#f5a623;border:none;color:#0b0b0d;font-weight:800}
+.pc-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#f5a623;color:#111318;font-size:11px;font-weight:800;padding:3px 16px;border-radius:20px;white-space:nowrap}
+.pc-plan{font-size:12px;color:#d3d9e8;margin-bottom:8px;font-family:monospace;letter-spacing:.1em}
+.pc-amount{font-size:40px;font-weight:800;color:#f7f8fc;letter-spacing:-1px}
+.pc-unit{font-size:13px;color:#d3d9e8;font-weight:400}
+.pc-note{font-size:12px;color:#d3d9e8;margin-top:4px;line-height:1.5}
+.pc-desc{font-size:13px;color:#d3d9e8;margin:8px 0 16px;line-height:1.6}
+.pc-hr{border:none;border-top:0.5px solid #313a54;margin:16px 0}
+.pc-feat{font-size:13px;color:#dfe4f0;padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.pc-feat::before{content:'✓';color:#22d3ee;font-size:12px;flex-shrink:0;margin-top:1px}
+.pc-btn{width:100%;margin-top:22px;padding:11px;border-radius:8px;font-size:13px;cursor:pointer;border:0.5px solid #505a72;background:none;color:#e8ecf5;font-weight:600;transition:all .15s}
+.pc-btn:hover{border-color:#93a4cc;color:#eef1f8}
+.pc-btn.hot{background:#f5a623;border:none;color:#111318;font-weight:800}
 .pc-btn.hot:hover{opacity:.88}
-.pc-buy{display:block;text-align:center;margin-top:10px;font-size:13px;color:#5b9cf6;text-decoration:none}.pc-buy:hover{text-decoration:underline}
+.pc-buy{display:block;text-align:center;margin-top:10px;font-size:13px;color:#7db2ff;text-decoration:none}.pc-buy:hover{text-decoration:underline}
 .price-trust{text-align:center;margin-top:28px}
-.price-trust p{font-size:12px;color:#7c88a4;margin-bottom:6px}
+.price-trust p{font-size:13px;color:#c2cadc;margin-bottom:6px}
 .price-trust-items{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-.price-trust-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#8b96b8;font-family:monospace}
+.price-trust-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#d3d9e8;font-family:monospace}
 .price-trust-item::before{content:"✓";color:#4ade80}
 .faq-sec{padding:72px 48px}
 .faq-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
-.faq-item{background:#0d1117;border:0.5px solid #1e2330;border-radius:8px;overflow:hidden}
-.faq-q{padding:18px 22px;font-size:14px;color:#c8cfe0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-item{background:#2a2e37;border:0.5px solid #424857;border-radius:8px;overflow:hidden}
+.faq-q{padding:18px 22px;font-size:14px;color:#eef1f8;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
 .faq-q .ico{color:#f5a623;font-size:18px;font-weight:300;transition:transform .2s;flex-shrink:0;margin-left:12px}
 .faq-q.open .ico{transform:rotate(45deg)}
 .faq-q:focus-visible{outline:2px solid #f5a623;outline-offset:-2px;border-radius:8px}
-.faq-a{padding:0 22px 18px;font-size:13px;color:#99a3c4;line-height:1.8;display:none}
+.faq-a{padding:0 22px 18px;font-size:13px;color:#dfe4f0;line-height:1.8;display:none}
 .faq-a.open{display:block}
-.cta-sec{padding:80px 48px;text-align:center;background:linear-gradient(135deg,#1a1508 0%,#0b0b0d 40%,#081528 100%);border-top:0.5px solid #2a2035}
-.cta-sec h2{font-size:40px;font-weight:700;color:#f0f2f8;margin-bottom:12px;letter-spacing:-.6px}
-.cta-sec p{font-size:16px;color:#99a3c4;margin-bottom:32px}
-.cta-note{font-size:12px;color:#7c88a4;margin-top:16px;font-family:monospace}
-footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
+.cta-sec{padding:80px 48px;text-align:center;background:linear-gradient(135deg,#372e19 0%,#23262e 40%,#212e48 100%);border-top:0.5px solid #40364e}
+.cta-sec h2{font-size:40px;font-weight:700;color:#ffffff;margin-bottom:12px;letter-spacing:-.6px}
+.cta-sec p{font-size:16px;color:#dfe4f0;margin-bottom:32px}
+.cta-note{font-size:13px;color:#c2cadc;margin-top:16px;font-family:monospace}
+footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
 .footer-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;margin-bottom:32px}
 .footer-logo-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
 .footer-logo-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center}
-.footer-brand-name{font-size:15px;font-weight:700;color:#c8cfe0}
-.footer-copy{font-size:11px;color:#7c88a4;line-height:1.7}
+.footer-brand-name{font-size:15px;font-weight:700;color:#eef1f8}
+.footer-copy{font-size:12px;color:#c2cadc;line-height:1.7}
 .footer-cols{display:flex;gap:56px}
-.footer-col-title{font-size:10px;color:#99a3c4;font-family:monospace;letter-spacing:.1em;margin-bottom:14px;text-transform:uppercase}
-.footer-col a{display:block;font-size:12px;color:#7c88a4;text-decoration:none;margin-bottom:10px;cursor:pointer;transition:color .15s}
-.footer-col a:hover{color:#a8b2d0}
-.footer-bottom{padding-top:24px;border-top:0.5px solid #1a2035;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.footer-bottom-left{font-size:11px;color:#7c88a4}
-.footer-bottom-right{display:flex;gap:16px}
-.footer-bottom-right a{font-size:11px;color:#7c88a4;text-decoration:none;cursor:pointer}
-.biz-info{font-size:11px;color:#7c88a4;line-height:1.9;margin-bottom:24px}
-.dl-more{font-size:12px;color:#99a3c4;max-width:640px;text-align:left}
+.footer-col-title{font-size:11px;color:#dfe4f0;font-family:monospace;letter-spacing:.1em;margin-bottom:14px;text-transform:uppercase}
+.footer-col a{display:block;font-size:13px;color:#c2cadc;text-decoration:none;margin-bottom:10px;cursor:pointer;transition:color .15s}
+.footer-col a:hover{color:#e8ecf5}
+.footer-bottom{padding-top:24px;border-top:0.5px solid #313a54;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-bottom-left{font-size:12px;color:#c2cadc}
+.footer-bottom-right{display:flex;gap:8px 16px;flex-wrap:wrap}
+.footer-bottom-right a{font-size:12px;color:#c2cadc;text-decoration:none;cursor:pointer}
+.biz-info{font-size:12px;color:#c2cadc;line-height:1.9;margin-bottom:24px}
+.dl-more{font-size:13px;color:#dfe4f0;max-width:640px;text-align:left}
 .dl-more .dl-row{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;padding:4px 0;border-top:1px solid rgba(120,130,160,.18)}
-.dl-more a{color:#5b9cf6;text-decoration:none}.dl-more a:hover{text-decoration:underline}
-.dl-more code{font-size:10.5px;color:#8b96b8;word-break:break-all;user-select:all}
-.dl-feat{margin-top:8px}.dl-feat summary{cursor:pointer;color:#5b9cf6}
+.dl-more a{color:#7db2ff;text-decoration:none}.dl-more a:hover{text-decoration:underline}
+.dl-more code{font-size:11.5px;color:#d3d9e8;word-break:break-all;user-select:all}
+.dl-feat{margin-top:8px}.dl-feat summary{cursor:pointer;color:#7db2ff}
 .dl-feat table{border-collapse:collapse;margin-top:6px;width:100%}.dl-feat td{padding:3px 8px;border-top:1px solid rgba(120,130,160,.18)}.dl-feat td+td{text-align:center;width:70px}
-.beta-pill{display:inline-flex;align-items:center;gap:9px;background:#1a1508;border:1px solid #f5a623;color:#f5a623;font-size:14px;font-weight:800;padding:11px 24px;border-radius:24px;margin-bottom:28px;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 0 24px rgba(245,166,35,.12)}
-.beta-pill:hover{background:#241c0b;transform:translateY(-1px);box-shadow:0 0 32px rgba(245,166,35,.22)}
+.beta-pill{display:inline-flex;align-items:center;gap:9px;background:#372e19;border:1px solid #f5a623;color:#f5a623;font-size:14px;font-weight:800;padding:11px 24px;border-radius:24px;margin-bottom:28px;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 0 24px rgba(245,166,35,.12)}
+.beta-pill:hover{background:#3f331a;transform:translateY(-1px);box-shadow:0 0 32px rgba(245,166,35,.22)}
 .beta-pill-dot{width:7px;height:7px;background:#f5a623;border-radius:50%;animation:blink 2s infinite;flex-shrink:0}
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(5,6,10,.75);backdrop-filter:blur(3px);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(14,16,22,.72);backdrop-filter:blur(3px);z-index:1000;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.open{display:flex}
-.modal-box{background:#0d1117;border:0.5px solid #2a2a35;border-radius:14px;padding:32px;max-width:460px;width:100%;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.6);text-align:left}
-.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:#7c88a4;font-size:22px;cursor:pointer;line-height:1;padding:6px}
+.modal-box{background:#2a2e37;border:0.5px solid #4d5364;border-radius:14px;padding:32px;max-width:460px;width:100%;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.6);text-align:left}
+.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:#c2cadc;font-size:22px;cursor:pointer;line-height:1;padding:6px}
 .modal-close:hover{color:#f5a623}
 .modal-icon{font-size:30px;margin-bottom:12px}
-.modal-box h3{font-size:18px;font-weight:700;color:#e8eaf0;margin-bottom:12px;letter-spacing:-.3px;line-height:1.4}
-.modal-box p{font-size:13px;color:#99a3c4;line-height:1.75;margin-bottom:22px}
+.modal-box h3{font-size:18px;font-weight:700;color:#f7f8fc;margin-bottom:12px;letter-spacing:-.3px;line-height:1.4}
+.modal-box p{font-size:13px;color:#dfe4f0;line-height:1.75;margin-bottom:22px}
 .modal-steps{display:flex;flex-direction:column;gap:14px;margin-bottom:26px}
 .modal-step{display:flex;gap:12px;align-items:flex-start}
-.modal-step-num{width:24px;height:24px;border-radius:50%;background:#1a1508;border:1px solid #3a2a05;color:#f5a623;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:monospace}
-.modal-step-title{font-size:13px;font-weight:700;color:#c8cfe0;margin-bottom:4px}
-.modal-step-desc{font-size:12px;color:#8b96b8;line-height:1.6}
-.modal-note{font-size:11.5px;color:#8b96b8;line-height:1.6;margin:-10px 0 16px}.modal-note a{color:#5b9cf6}
+.modal-step-num{width:24px;height:24px;border-radius:50%;background:#372e19;border:1px solid #5e4612;color:#f5a623;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:monospace}
+.modal-step-title{font-size:13px;font-weight:700;color:#eef1f8;margin-bottom:4px}
+.modal-step-desc{font-size:13px;color:#d3d9e8;line-height:1.6}
+.modal-note{font-size:12.5px;color:#d3d9e8;line-height:1.6;margin:-10px 0 16px}.modal-note a{color:#7db2ff}
 .modal-continue{width:100%;justify-content:center;font-size:14px;padding:13px}
 
-.nav-burger{display:none;background:none;border:0.5px solid #2a3349;color:#c8cfe0;padding:7px;border-radius:6px;cursor:pointer;align-items:center;justify-content:center}
+.nav-burger{display:none;background:none;border:0.5px solid #505a72;color:#eef1f8;padding:7px;border-radius:6px;cursor:pointer;align-items:center;justify-content:center}
 .nav-burger svg{width:18px;height:18px}
 
 /* ===== Tablet ===== */
 @media (max-width:860px){
   .nav{padding:12px 20px;flex-wrap:wrap}
-  .nav-links{display:none;order:3;width:100%;flex-direction:column;gap:0;background:#0b0b0d;border-top:0.5px solid #1e2230;margin-top:12px;padding-top:8px}
+  .nav-links{display:none;order:3;width:100%;flex-direction:column;gap:0;background:#23262e;border-top:0.5px solid #424857;margin-top:12px;padding-top:8px}
   .nav-links.open{display:flex}
-  .nav-links a{padding:12px 4px;border-bottom:0.5px solid #16192480}
+  .nav-links a{padding:12px 4px;border-bottom:0.5px solid #42485780}
   .btn-ghost{display:none}
   .nav-burger{display:flex}
   .nav-ver{display:none}
@@ -211,7 +211,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
   .hero{padding:48px 20px 40px}
   .hero h1{font-size:38px;letter-spacing:-1px}
   .hero-platform{flex-wrap:wrap;justify-content:center;row-gap:6px}
-  .beta-pill{font-size:12px;padding:9px 16px;white-space:normal;text-align:center}
+  .beta-pill{font-size:12px;padding:9px 14px;white-space:normal;text-align:center}
 
   .pain-sec,.feat-sec,.price-sec,.faq-sec,.gui-sec,.baf-sec,#download{padding-left:20px;padding-right:20px}
   .sec-title{font-size:26px}
@@ -258,16 +258,47 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 
   .modal-box{padding:22px}
 }
+/* sign-up funnel */
+.nav-links a,.btn-ghost,.btn-orange{white-space:nowrap}
+@media (max-width:1180px){
+  .nav{flex-wrap:wrap}
+  .nav-links{display:none;order:3;width:100%;flex-direction:column;gap:0;background:#23262e;border-top:0.5px solid #424857;margin-top:12px;padding-top:8px}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 4px;border-bottom:0.5px solid #42485780}
+  .nav-burger{display:flex}
+}
+.nav-links a.nav-only-mobile{display:none}
+.hero-signup{margin:-38px 0 44px;font-size:13.5px;color:#dfe4f0}
+.hero-signup a{color:#f5a623;font-weight:700;text-decoration:none}
+.hero-signup a:hover{text-decoration:underline}
+.start-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px;margin:0 auto 36px;text-align:left}
+.start-step{background:#2e323c;border:0.5px solid #4d5364;border-radius:12px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.start-step.first{border-color:#f5a623;background:#332b17}
+.start-num{width:26px;height:26px;border-radius:50%;background:#f5a623;color:#111318;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.start-t{font-size:15px;font-weight:700;color:#f7f8fc}
+.start-d{font-size:13.5px;color:#dfe4f0;line-height:1.55}
+.start-btn{align-self:flex-start;margin-top:8px;background:#f5a623;color:#111318;font-weight:700;font-size:13px;padding:8px 16px;border-radius:6px;text-decoration:none}
+.start-btn:hover{opacity:.88}
+.start-done{display:none;margin-top:8px;font-size:13px;font-weight:700;color:#4ade80}
+.cta-signup{display:block;margin-top:14px;font-size:13.5px;color:#f5a623;text-decoration:none;font-weight:700}
+.cta-signup:hover{text-decoration:underline}
+.welcome-bar{display:flex;align-items:center;justify-content:center;gap:12px;max-width:900px;margin:0 auto 28px;padding:14px 18px;border-radius:10px;background:#263a2e;border:1px solid #2f7d4f;color:#c9f2d8;font-size:14px;line-height:1.5}
+.welcome-bar[hidden]{display:none}
+.welcome-bar button{background:none;border:0;color:#c9f2d8;font-size:18px;cursor:pointer;line-height:1}
+.has-account .signup-only{display:none!important}
+.has-account .start-done{display:block}
+@media (max-width:860px){
+  .nav-links a.nav-only-mobile{display:block;color:#f5a623;font-weight:700}
+  .start-steps{grid-template-columns:1fr}
+  .hero-signup{margin:-30px 0 36px}
+}
+.dl-manual{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 18px;margin-top:10px;font-size:13.5px}
+.dl-manual a{color:#7db2ff;text-decoration:none}
+.dl-manual a:hover{text-decoration:underline}
+.dl-manual a.dl-manual-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid #f5a623;border-radius:8px;color:#f5a623;font-weight:700;background:#372e19}
+.dl-manual a.dl-manual-btn:hover{background:#f5a623;color:#111318;text-decoration:none}
 </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18561496445"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-18561496445');
-</script>
+<script src="lang.js"></script>
 </head>
 <body>
 
@@ -282,7 +313,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       </svg>
     </div>
     <span class="nav-logo-text">Tape<b>Vault</b></span>
-    <span class="nav-ver">v1.2.6</span>
+    <span class="nav-ver">v1.2.9</span>
   </a>
   <div class="nav-links" id="nav-links">
     <a href="#gui" data-i18n="nav_how">How it works</a>
@@ -290,6 +321,8 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <a href="#download" data-i18n="nav_download">Download</a>
     <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
     <a href="how-to-install.html" data-i18n="nav_install">Install Guide</a>
+    <a href="manual.html" data-i18n="nav_manual">User Manual</a>
+    <a href="login.html" class="nav-only-mobile" data-i18n="nav_signin">Sign in / Sign up</a>
   </div>
   <div class="nav-right">
     <div class="lang-select" id="lang-select">
@@ -304,8 +337,8 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
         <button class="lang-menu-item" data-lang="ja" onclick="applyLang('ja');toggleLangMenu()">日本語<span class="lang-check">✓</span></button>
       </div>
     </div>
-    <button class="btn-ghost" data-i18n="nav_signin" onclick="location.href='login.html'">Sign in</button>
-    <button class="btn-orange" data-i18n="nav_trial" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Free Trial</button>
+    <button class="btn-ghost" data-i18n="nav_signin" onclick="location.href='login.html'">Sign in / Sign up</button>
+    <button class="btn-orange" data-i18n="nav_trial" onclick="goTrial()">Free Trial</button>
     <button class="nav-burger" id="nav-burger" onclick="toggleMobileNav()" aria-label="Menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -314,34 +347,35 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 
 <section class="hero">
   <div>
-    <a class="beta-pill" href="#download">
+    <a class="beta-pill" id="beta-pill-link" href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1">
       <span class="beta-pill-dot"></span>
-      <span data-i18n="beta_pill">🧪 Try TapeVault Free for 1 Month — Just Register →</span>
+      <span data-i18n="beta_pill">🎁 Sign up and get a free 1-month license →</span>
     </a>
   </div>
   <h1 data-i18n="hero_h1">Find any file on LTO tape<br><b>in under 30 seconds.</b></h1>
   <p class="hero-sub" data-i18n="hero_sub">TapeVault is an LTO tape archive manager for Windows and macOS. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.</p>
   <div class="hero-platform">
     <span class="hi" data-i18n="hero_p1">Windows & macOS</span>
-    <span data-i18n="hero_p2">LTO-4 to LTO-9</span>
+    <span data-i18n="hero_p2">LTO-5 to LTO-9</span>
     <span data-i18n="hero_p3">Broadcast · Medical · Defense · Education</span>
   </div>
   <div class="hero-btns">
     <button class="btn-hero-main" data-i18n="hero_btn1" onclick="showDownloadWarning()">⬇ Download Free Trial</button>
     <button class="btn-hero-ghost" data-i18n="hero_btn2" onclick="document.getElementById('gui').scrollIntoView({behavior:'smooth'})">▶ See how it works</button>
   </div>
+  <p class="hero-signup signup-only"><span data-i18n="hs_q">New to TapeVault?</span> <a href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1" data-i18n="hs_a">Sign up and get a free 1-month license — no credit card →</a></p>
   <!-- APP SCREENSHOT -->
   <div style="max-width:960px;margin:0 auto 40px">
-    <div style="background:#0d1117;border:0.5px solid #2a2a35;border-radius:14px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.7)">
-      <div style="background:#141418;border-bottom:0.5px solid #2a2a35;padding:10px 16px;display:flex;align-items:center;gap:8px">
-        <span style="width:10px;height:10px;border-radius:50%;background:#ef4444;display:inline-block"></span>
+    <div style="background:#2a2e37;border:0.5px solid #4d5364;border-radius:14px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.7)">
+      <div style="background:#30343e;border-bottom:0.5px solid #4d5364;padding:10px 16px;display:flex;align-items:center;gap:8px">
+        <span style="width:10px;height:10px;border-radius:50%;background:#f87171;display:inline-block"></span>
         <span style="width:10px;height:10px;border-radius:50%;background:#f5a623;display:inline-block"></span>
         <span style="width:10px;height:10px;border-radius:50%;background:#4ade80;display:inline-block"></span>
-        <span style="font-size:11px;color:#8b96b8;font-family:monospace;margin-left:8px">TapeVault v1.2.6 — LTO Archive Manager</span>
+        <span style="font-size:12px;color:#d3d9e8;font-family:monospace;margin-left:8px">TapeVault v1.2.9 — LTO Archive Manager</span>
       </div>
       <img src="img/screen-app.png" alt="TapeVault application screenshot" style="width:100%;display:block">
     </div>
-    <div style="font-size:11px;color:#7c88a4;text-align:center;margin-top:10px;font-family:monospace">▲ Actual TapeVault — no mockup</div>
+    <div style="font-size:12px;color:#c2cadc;text-align:center;margin-top:10px;font-family:monospace" data-i18n="hw_hero">▲ The real TapeVault interface (sample data)</div>
   </div>
 
   <div style="max-width:720px;margin:0 auto 20px" id="yt-wrap">
@@ -361,7 +395,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <div class="stat-div"></div>
     <div class="stat-item"><div class="stat-num">3<sup>sec</sup></div><div class="stat-label" data-i18n="stat2">Auto thumbnail generation</div></div>
     <div class="stat-div"></div>
-    <div class="stat-item"><div class="stat-num">LTO<sup>4-9</sup></div><div class="stat-label" data-i18n="stat3">Auto drive detection</div></div>
+    <div class="stat-item"><div class="stat-num">LTO<sup>5-9</sup></div><div class="stat-label" data-i18n="stat3">Auto drive detection</div></div>
     <div class="stat-div"></div>
     <div class="stat-item"><div class="stat-num">100<sup>%</sup></div><div class="stat-label" data-i18n="stat4">Offline after activation</div></div>
   </div>
@@ -388,103 +422,122 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 
 <section class="gui-sec" id="gui">
   <div class="gui-head">
-    <div class="sec-label" data-i18n="gui_label">Real Software. Real UI.</div>
-    <div class="sec-title" data-i18n="gui_title">See exactly what you get</div>
-    <p class="sec-sub" style="margin:0 auto" data-i18n="gui_sub">These are actual screenshots from TapeVault — no mockups, no illustrations.</p>
+    <div class="sec-label" data-i18n="hw_label">How it works</div>
+    <div class="sec-title" data-i18n="hw_title">From shoot to shelf — and back</div>
+    <p class="sec-sub" style="margin:0 auto" data-i18n="hw_sub">Six steps cover the whole archive workflow. The screens below are the real TapeVault 1.2.9 interface, shown with sample project data.</p>
   </div>
   <div class="gui-step" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 01</div>
-      <div class="gui-step-title" data-i18n="s1_title">All your files,<br>visible at a glance</div>
-      <div class="gui-step-desc" data-i18n="s1_desc">Open any project folder and see every file as a thumbnail — videos, PDFs, images, ZIP files — all organized exactly as you archived them. Switch between grid view and list view instantly.</div>
+      <div class="gui-step-title" data-i18n="hw1_t">Prepare a tape<br>in a few clicks</div>
+      <div class="gui-step-desc" data-i18n="hw1_d">Insert a new tape and TapeVault offers to format it as LTFS. Give it a volume name and it is registered in your catalog. From then on the tape is recognized automatically whenever you insert it.</div>
       <ul class="gui-checklist">
-        <li data-i18n="s1_c1">Thumbnail grid view for visual browsing</li>
-        <li data-i18n="s1_c2">List view with filename, size, date, and status</li>
-        <li data-i18n="s1_c3">Color-coded tape status badges (archived / queued)</li>
-        <li data-i18n="s1_c4">Filter by file type, date, or tape</li>
+        <li data-i18n="hw1_c1">LTFS format — readable on Windows, macOS and Linux</li>
+        <li data-i18n="hw1_c2">LTO-5 to LTO-9 drives detected automatically</li>
+        <li data-i18n="hw1_c3">Tape name, capacity and free space shown in the top bar</li>
+        <li data-i18n="hw1_c4">Two drives? Each drive gets its own status row</li>
       </ul>
-      <div class="gui-tip" data-i18n="s1_tip">💡 Green badge = already on tape. Blue = waiting in queue. You always know the status of every file.</div>
+      <div class="gui-tip" data-i18n="hw1_tip">💡 The catalog remembers every tape, so you can browse its contents even when the tape is on the shelf.</div>
     </div>
     <div>
-      <div class="gui-screen"><img src="img/screen-grid.png" alt="TapeVault grid view"></div>
-      <div class="gui-screen-cap" data-i18n="s1_cap">▲ Grid view — actual TapeVault screenshot</div>
+      <div class="gui-screen"><a href="img/how-1-tape.png" target="_blank" rel="noopener"><img src="img/how-1-tape.png" alt="Prepare a tape in a few clicks" loading="lazy"></a></div>
+      <div class="gui-screen-cap" data-i18n="hw1_cap">▲ New tape registration</div>
     </div>
   </div>
   <div class="gui-step gui-step-rev" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 02</div>
-      <div class="gui-step-title" data-i18n="s2_title">Click any file.<br>See everything about it.</div>
-      <div class="gui-step-desc" data-i18n="s2_desc">Select any file and the right panel instantly shows the video thumbnail preview, file type, resolution, size, tape location, checksum, and your custom metadata notes. No waiting. No recalling.</div>
+      <div class="gui-step-title" data-i18n="hw2_t">Drag folders in.<br>Your structure is kept.</div>
+      <div class="gui-step-desc" data-i18n="hw2_d">Drop shoot folders from Explorer or Finder onto the tree. The whole subfolder structure is recreated, and that same structure is what gets written to tape. Thumbnails for video and images are generated automatically.</div>
       <ul class="gui-checklist">
-        <li data-i18n="s2_c1">Auto-generated video thumbnail preview</li>
-        <li data-i18n="s2_c2">Full file metadata: codec, resolution, date, size</li>
-        <li data-i18n="s2_c3">Exact tape path and tape name shown</li>
-        <li data-i18n="s2_c4">Custom notes: cameraman, location, owner</li>
+        <li data-i18n="hw2_c1">Drag and drop folders or files — subfolders included</li>
+        <li data-i18n="hw2_c2">Unlimited folder depth; rename, move or add any time</li>
+        <li data-i18n="hw2_c3">Hidden and zero-byte files are skipped automatically</li>
+        <li data-i18n="hw2_c4">Right-click menu for every folder action</li>
       </ul>
-      <div class="gui-tip" data-i18n="s2_tip">💡 Know exactly what's on the tape before you eject it and insert a new one. Zero guesswork.</div>
+      <div class="gui-tip" data-i18n="hw2_tip">💡 Organize by year, project and camera roll once — everyone on the team finds files the same way.</div>
     </div>
     <div>
-      <div class="gui-screen"><img src="img/screen-thumb.png" alt="TapeVault file detail panel"></div>
-      <div class="gui-screen-cap" data-i18n="s2_cap">▲ File detail panel — actual TapeVault screenshot</div>
+      <div class="gui-screen"><a href="img/how-2-register.png" target="_blank" rel="noopener"><img src="img/how-2-register.png" alt="Drag folders in. Your structure is kept." loading="lazy"></a></div>
+      <div class="gui-screen-cap" data-i18n="hw2_cap">▲ Folder tree and right-click menu</div>
     </div>
   </div>
   <div class="gui-step" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 03</div>
-      <div class="gui-step-title" data-i18n="s3_title">List view for<br>power users</div>
-      <div class="gui-step-desc" data-i18n="s3_desc">Switch to list view to see all files in a sortable table. Sort by name, size, date, or archive status. Instantly identify which files are on tape and which are still queued.</div>
+      <div class="gui-step-title" data-i18n="hw3_t">Write to tape.<br>Every file verified.</div>
+      <div class="gui-step-desc" data-i18n="hw3_d">Select files or whole folders, add them to the write queue and press start. Each file is written, read back from the tape and compared by checksum — only verified files are marked done.</div>
       <ul class="gui-checklist">
-        <li data-i18n="s3_c1">Sort by any column — name, size, date, status</li>
-        <li data-i18n="s3_c2">VT TEST badge = confirmed on tape</li>
-        <li data-i18n="s3_c3">One-click select multiple files</li>
-        <li data-i18n="s3_c4">Batch add to tape write queue</li>
+        <li data-i18n="hw3_c1">xxHash64 + MD5 calculated while copying</li>
+        <li data-i18n="hw3_c2">Read-back verification of every file on tape</li>
+        <li data-i18n="hw3_c3">Progress with speed and time remaining</li>
+        <li data-i18n="hw3_c4">Optional second copy to another tape, or two drives at once</li>
       </ul>
-      <div class="gui-tip" data-i18n="s3_tip">💡 Select 50 files, add to queue, and start writing — in under 30 seconds.</div>
+      <div class="gui-tip" data-i18n="hw3_tip">💡 If the app is closed or the connection drops mid-write, TapeVault resumes with the remaining files next time.</div>
     </div>
     <div>
-      <div class="gui-screen"><img src="img/screen-list.png" alt="TapeVault list view"></div>
-      <div class="gui-screen-cap" data-i18n="s3_cap">▲ List view — actual TapeVault screenshot</div>
+      <div class="gui-screen"><a href="img/how-3-write.png" target="_blank" rel="noopener"><img src="img/how-3-write.png" alt="Write to tape. Every file verified." loading="lazy"></a></div>
+      <div class="gui-screen-cap" data-i18n="hw3_cap">▲ Write queue</div>
     </div>
   </div>
   <div class="gui-step gui-step-rev" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 04</div>
-      <div class="gui-step-title" data-i18n="s4_title">Play video directly<br>from tape. Instantly.</div>
-      <div class="gui-step-desc" data-i18n="s4_desc">Double-click any video file to open the built-in player. Watch the content directly — no need to copy the file first, no external player needed. Works with MP4, MOV, MXF, AVI and more.</div>
+      <div class="gui-step-title" data-i18n="hw4_t">Find any file<br>without loading a tape</div>
+      <div class="gui-step-desc" data-i18n="hw4_d">Browse thumbnails or type in the search box — the catalog covers every tape you have written. Click a file to see its resolution, codec, size, checksum and exactly which tape and path it is on.</div>
       <ul class="gui-checklist">
-        <li data-i18n="s4_c1">Built-in video player — no external software</li>
-        <li data-i18n="s4_c2">Supports MP4, MOV, MXF, AVI, H.264, H.265</li>
-        <li data-i18n="s4_c3">Confirm the right file before recalling to storage</li>
-        <li data-i18n="s4_c4">26-minute files play smoothly from tape</li>
+        <li data-i18n="hw4_c1">Thumbnail cards or a compact list view</li>
+        <li data-i18n="hw4_c2">Search across all tapes at once</li>
+        <li data-i18n="hw4_c3">Tape name and path shown for every file</li>
+        <li data-i18n="hw4_c4">Your own notes: shoot date, location, owner</li>
       </ul>
-      <div class="gui-tip" data-i18n="s4_tip">💡 Stop wasting time recalling wrong files. Preview first, recall only what you need.</div>
+      <div class="gui-tip" data-i18n="hw4_tip">💡 The badge on each card shows the tape name once the file is safely on tape; gray means it is still waiting.</div>
     </div>
     <div>
-      <div class="gui-screen"><img src="img/screen-player.png" alt="TapeVault built-in video player"></div>
-      <div class="gui-screen-cap" data-i18n="s4_cap">▲ Built-in video player — actual TapeVault screenshot</div>
+      <div class="gui-screen"><a href="img/how-4-find.png" target="_blank" rel="noopener"><img src="img/how-4-find.png" alt="Find any file without loading a tape" loading="lazy"></a></div>
+      <div class="gui-screen-cap" data-i18n="hw4_cap">▲ File cards and the info panel</div>
     </div>
   </div>
-  <div class="gui-step">
+  <div class="gui-step" style="margin-bottom:80px">
     <div class="gui-info">
       <div class="gui-step-num">STEP 05</div>
-      <div class="gui-step-title" data-i18n="s5_title">New tape registered<br>in 3 clicks</div>
-      <div class="gui-step-desc" data-i18n="s5_desc">Insert a new tape, click New Tape, enter a volume label and serial number, select your LTO generation, and click Format. TapeVault formats it as LTFS and registers it in your database. Done.</div>
+      <div class="gui-step-title" data-i18n="hw5_t">Restore files or<br>whole folders, verified</div>
+      <div class="gui-step-desc" data-i18n="hw5_d">Pick the files — or right-click a folder to restore it with all its subfolders. TapeVault tells you which tape to insert, copies the files back in their original structure and verifies them against the checksums recorded at write time.</div>
       <ul class="gui-checklist">
-        <li data-i18n="s5_c1">LTFS format — cross-platform compatible</li>
-        <li data-i18n="s5_c2">LTO-4 through LTO-9 supported</li>
-        <li data-i18n="s5_c3">Volume label auto-recognized on future inserts</li>
-        <li data-i18n="s5_c4">Tape serial number linked to physical label</li>
+        <li data-i18n="hw5_c1">Restore single files, selections or entire folders</li>
+        <li data-i18n="hw5_c2">Tells you which tape to insert</li>
+        <li data-i18n="hw5_c3">Checksum verification after restore</li>
+        <li data-i18n="hw5_c4">Files spread over several tapes are restored tape by tape</li>
       </ul>
-      <div class="gui-tip" data-i18n="s5_tip">💡 New tape registered and ready to archive in under 60 seconds.</div>
+      <div class="gui-tip" data-i18n="hw5_tip">💡 Restoring a whole project years later is one right-click — no need to remember which tape holds what.</div>
     </div>
     <div>
-      <div class="gui-screen"><img src="img/screen-new-tape.png" alt="TapeVault new tape registration"></div>
-      <div class="gui-screen-cap" data-i18n="s5_cap">▲ New tape registration — actual TapeVault screenshot</div>
+      <div class="gui-screen"><a href="img/how-5-restore.png" target="_blank" rel="noopener"><img src="img/how-5-restore.png" alt="Restore files or whole folders, verified" loading="lazy"></a></div>
+      <div class="gui-screen-cap" data-i18n="hw5_cap">▲ Restore dialog</div>
     </div>
   </div>
+  <div class="gui-step gui-step-rev">
+    <div class="gui-info">
+      <div class="gui-step-num">STEP 06</div>
+      <div class="gui-step-title" data-i18n="hw6_t">Reports and<br>delivery manifests</div>
+      <div class="gui-step-desc" data-i18n="hw6_d">Export a CSV file list of any folder with size, tape, checksum and media details for clients or audits. For studio deliveries, TapeVault can write MD5 manifests or ASC MHL files to the tape automatically.</div>
+      <ul class="gui-checklist">
+        <li data-i18n="hw6_c1">File list export (CSV, subfolders included)</li>
+        <li data-i18n="hw6_c2">MD5 manifest written to tape for studio delivery</li>
+        <li data-i18n="hw6_c3">ASC MHL v2.0 per roll</li>
+        <li data-i18n="hw6_c4">Catalog and error reports</li>
+      </ul>
+      <div class="gui-tip" data-i18n="hw6_tip">💡 Hand over the tape with a file list and manifest the receiving side can verify on their own.</div>
+    </div>
+    <div>
+      <div class="gui-screen"><a href="img/how-6-report.png" target="_blank" rel="noopener"><img src="img/how-6-report.png" alt="Reports and delivery manifests" loading="lazy"></a></div>
+      <div class="gui-screen-cap" data-i18n="hw6_cap">▲ List view with tape status</div>
+    </div>
+  </div>
+  <p style="text-align:center;margin:56px auto 0;font-size:14px"><a href="manual.html" style="color:#5b9cf6;text-decoration:none" data-i18n="hw_more">Read the full user manual →</a></p>
 </section>
 
-<section class="baf-sec" style="padding:72px 48px;background:#080b10;border-top:0.5px solid #1a2035;border-bottom:0.5px solid #1a2035">
+<section class="baf-sec" style="padding:72px 48px;background:#1d2027;border-top:0.5px solid #313a54;border-bottom:0.5px solid #313a54">
   <div style="text-align:center;margin-bottom:48px">
     <div class="sec-label" data-i18n="baf_label">The Difference</div>
     <div class="sec-title" data-i18n="baf_title">Before vs. After TapeVault</div>
@@ -493,7 +546,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <div class="baf-card before">
       <div class="baf-label" data-i18n="baf_bl">❌ Without TapeVault</div>
       <ul class="baf-list">
-        <li data-i18n="baf_b1">Check tape labels manually — <strong style="color:#c8cfe0">hours per search</strong></li>
+        <li data-i18n="baf_b1">Check tape labels manually — <strong style="color:#eef1f8">hours per search</strong></li>
         <li data-i18n="baf_b2">No file index — must check every tape one by one</li>
         <li data-i18n="baf_b3">No thumbnails — full recall required just to preview</li>
         <li data-i18n="baf_b4">Archive becomes unusable when key staff leaves</li>
@@ -505,11 +558,11 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <div class="baf-card after">
       <div class="baf-label" data-i18n="baf_al">✅ With TapeVault</div>
       <ul class="baf-list">
-        <li data-i18n="baf_a1">Search by filename → <strong style="color:#c8cfe0">location found in 30 sec</strong></li>
+        <li data-i18n="baf_a1">Search by filename → <strong style="color:#eef1f8">location found in 30 sec</strong></li>
         <li data-i18n="baf_a2">Full library indexed — any file found instantly</li>
         <li data-i18n="baf_a3">Thumbnails generated automatically — preview before recall</li>
         <li data-i18n="baf_a4">Metadata database survives any staff change</li>
-        <li data-i18n="baf_a5">Tape capacity tracked and predicted automatically</li>
+        <li data-i18n="baf_a5">Tape capacity tracked automatically</li>
         <li data-i18n="baf_a6">Checksum on every write, verified automatically after each archive job</li>
       </ul>
     </div>
@@ -523,14 +576,14 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <p class="sec-sub" style="margin:0 auto" data-i18n="feat_sub">No plugins. No separate tools. No cloud required.</p>
   </div>
   <div class="feat-grid">
-    <div class="feat"><div class="feat-ico">💾</div><div class="feat-title" data-i18n="f1_t">LTO Drive Control</div><div class="feat-desc" data-i18n="f1_d">Automatic LTFS drive detection for LTO-4 through LTO-9. Write, verify and eject — all from one interface.</div></div>
+    <div class="feat"><div class="feat-ico">💾</div><div class="feat-title" data-i18n="f1_t">LTO Drive Control</div><div class="feat-desc" data-i18n="f1_d">Automatic LTFS drive detection for LTO-5 through LTO-9. Write, verify and eject — all from one interface.</div></div>
     <div class="feat"><div class="feat-ico">🖼️</div><div class="feat-title" data-i18n="f2_t">Auto Thumbnail Generation</div><div class="feat-desc" data-i18n="f2_d">FFmpeg-powered thumbnails for every video file. Browse your archive visually without recalling from tape.</div></div>
-    <div class="feat"><div class="feat-ico">🔍</div><div class="feat-title" data-i18n="f3_t">Full-Text Search</div><div class="feat-desc" data-i18n="f3_d">Search across all tapes by filename, date, resolution, or custom metadata. Results in under a second.</div></div>
+    <div class="feat"><div class="feat-ico">🔍</div><div class="feat-title" data-i18n="f3_t">Full-Text Search</div><div class="feat-desc" data-i18n="f3_d">Search every tape by filename, date, resolution, or your own notes — straight from the catalog, without loading a tape.</div></div>
     <div class="feat"><div class="feat-ico">📁</div><div class="feat-title" data-i18n="f4_t">Project Management</div><div class="feat-desc" data-i18n="f4_d">Organize by project, year, department, or client. Hierarchical folder structure mirrors your real workflow.</div></div>
-    <div class="feat"><div class="feat-ico">▶️</div><div class="feat-title" data-i18n="f5_t">Built-in Video Player</div><div class="feat-desc" data-i18n="f5_d">Preview any video file directly in TapeVault. MP4, MOV, MXF, AVI — no external player needed.</div></div>
-    <div class="feat"><div class="feat-ico">📊</div><div class="feat-title" data-i18n="f6_t">Tape Usage Analytics</div><div class="feat-desc" data-i18n="f6_d">Real-time capacity tracking across all tapes. Know exactly when to order new tapes before you run out.</div></div>
+    <div class="feat"><div class="feat-ico">▶️</div><div class="feat-title" data-i18n="f5_t">In-app Video Preview</div><div class="feat-desc" data-i18n="f5_d">Preview a video right inside TapeVault while the original is still on your computer. Formats the app cannot play open in your default player with one click.</div></div>
+    <div class="feat"><div class="feat-ico">📊</div><div class="feat-title" data-i18n="f6_t">Tape Usage Analytics</div><div class="feat-desc" data-i18n="f6_d">See capacity and free space for every tape, so you know when to order new tapes before running out.</div></div>
     <div class="feat"><div class="feat-ico">🔒</div><div class="feat-title" data-i18n="f7_t">Air-Gapped Operation</div><div class="feat-desc" data-i18n="f7_d">Works fully offline after activation — your catalog and files stay on your computer and tapes, never in the cloud. Offline license files are available for air-gapped sites.</div></div>
-    <div class="feat"><div class="feat-ico">✅</div><div class="feat-title" data-i18n="f8_t">Checksum Verification</div><div class="feat-desc" data-i18n="f8_d">xxHash64 checksum on every write (SHA-256 or MD5 selectable). Integrity is verified automatically after each archive operation.</div></div>
+    <div class="feat"><div class="feat-ico">✅</div><div class="feat-title" data-i18n="f8_t">Checksum Verification</div><div class="feat-desc" data-i18n="f8_d">Every file gets an xxHash64 checksum, with MD5 calculated alongside for delivery. After writing, each file is read back from tape and compared.</div></div>
     <div class="feat"><div class="feat-ico">🌐</div><div class="feat-title" data-i18n="f9_t">Korean & English UI</div><div class="feat-desc" data-i18n="f9_d">The app interface is available in Korean and English. This website is available in English, Korean, and Japanese.</div></div>
   </div>
 </section>
@@ -538,25 +591,46 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
 <section style="padding:72px 48px;text-align:center" id="download">
   <div class="sec-label" data-i18n="dl_label">Download</div>
   <div class="sec-title" style="margin-bottom:10px" data-i18n="dl_title">Try TapeVault free for 1 month</div>
-  <p style="font-size:15px;color:#99a3c4;margin-bottom:36px" data-i18n="dl_sub">Just register — no credit card. Full features from day one. Buy a license after your trial.</p>
-  <div style="display:inline-flex;flex-direction:column;align-items:center;gap:16px">
-    <button class="btn-hero-main" style="font-size:16px;padding:16px 40px" data-i18n="dl_btn" onclick="showDownloadWarning()">⬇ Download TapeVault v1.2.6 for Windows</button>
-    <div style="display:flex;gap:24px">
-      <span style="font-size:11px;color:#8b96b8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#5b9cf6">●</span> <span data-i18n="dl_s1">Windows 10 / 11 (64-bit)</span></span>
-      <span style="font-size:11px;color:#8b96b8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#4ade80">●</span> <span data-i18n="dl_s2">LTO-4 through LTO-9</span></span>
-      <span style="font-size:11px;color:#8b96b8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#f5a623">●</span> <span data-i18n="dl_s3">~90 MB installer</span></span>
+  <p style="font-size:15px;color:#dfe4f0;margin-bottom:36px" data-i18n="dl_sub">Sign up and get a free 1-month license — no credit card. Full features from day one. Buy a license after your trial.</p>
+  <div class="welcome-bar" id="welcome-bar" hidden role="status"><span data-i18n="welcome_t">🎉 Your account is ready. Now download the app and sign in with the same account.</span><button type="button" onclick="this.parentNode.hidden=true" aria-label="Close">×</button></div>
+  <div class="start-steps">
+    <div class="start-step first">
+      <div class="start-num">1</div>
+      <div class="start-t" data-i18n="st1_t">Create a free account</div>
+      <div class="start-d" data-i18n="st1_d">Sign up and get a free 1-month license. Email and password only — no credit card.</div>
+      <a class="start-btn signup-only" href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1" data-i18n="st1_btn">Sign up free</a>
+      <div class="start-done" data-i18n="st1_done">✓ You are signed in</div>
     </div>
-    <p style="font-size:11px;color:#7c88a4" data-i18n="dl_ver">v1.2.6 · 2026 · Requires Windows 10 64-bit or later</p>
+    <div class="start-step">
+      <div class="start-num">2</div>
+      <div class="start-t" data-i18n="st2_t">Download and install</div>
+      <div class="start-d" data-i18n="st2_d">For Windows 10 / 11 and macOS. Use the buttons below.</div>
+    </div>
+    <div class="start-step">
+      <div class="start-num">3</div>
+      <div class="start-t" data-i18n="st3_t">Sign in to the app</div>
+      <div class="start-d" data-i18n="st3_d">Sign in with the same account and your free 1-month license is applied — every feature included.</div>
+    </div>
+  </div>
+  <div style="display:inline-flex;flex-direction:column;align-items:center;gap:16px">
+    <button class="btn-hero-main" style="font-size:16px;padding:16px 40px" data-i18n="dl_btn" onclick="showDownloadWarning()">⬇ Download TapeVault v1.2.9 for Windows</button>
+    <div style="display:flex;gap:24px">
+      <span style="font-size:12px;color:#d3d9e8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#7db2ff">●</span> <span data-i18n="dl_s1">Windows 10 / 11 (64-bit)</span></span>
+      <span style="font-size:12px;color:#d3d9e8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#4ade80">●</span> <span data-i18n="dl_s2">LTO-5 through LTO-9</span></span>
+      <span style="font-size:12px;color:#d3d9e8;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="color:#f5a623">●</span> <span data-i18n="dl_s3">~90 MB installer</span></span>
+    </div>
+    <p style="font-size:12px;color:#c2cadc" data-i18n="dl_ver">v1.2.9 · November 2026 · Requires Windows 10 64-bit or later</p>
 
-    <div style="font-size:11px;color:#7c88a4;font-family:monospace;margin:8px 0" data-i18n="dl_or">or</div>
+    <div style="font-size:12px;color:#c2cadc;font-family:monospace;margin:8px 0" data-i18n="dl_or">or</div>
 
     <button class="btn-hero-ghost" style="font-size:14px;padding:12px 28px" data-i18n="dl_mac_btn" onclick="showDownloadWarning('mac')">🍎 Download for macOS (Apple Silicon)</button>
-    <p style="font-size:11px;color:#7c88a4" data-i18n="dl_mac_note">v1.2.6 · Apple Silicon (M1/M2/M3) only · ~158 MB</p>
+    <p style="font-size:12px;color:#c2cadc" data-i18n="dl_mac_note">v1.2.9 · Apple Silicon (M1 or later) · ~116 MB</p>
     <div id="dl-mac-intel" hidden>
       <button class="btn-hero-ghost" style="font-size:13px;padding:10px 24px" data-i18n="dl_mac_intel_btn" onclick="showDownloadWarning('mac_intel')">💻 Download for Intel Mac</button>
-      <p style="font-size:11px;color:#7c88a4" data-i18n="dl_mac_intel_note"></p>
+      <p style="font-size:12px;color:#c2cadc" data-i18n="dl_mac_intel_note"></p>
     </div>
     <div id="dl-more" class="dl-more" hidden></div>
+    <div class="dl-manual" data-i18n="dl_manual"><a class="dl-manual-btn" href="docs/TapeVault-User-Manual-en.pdf" download>📄 User manual (PDF)</a><a href="manual.html">Read it online →</a></div>
   </div>
 </section>
 
@@ -574,13 +648,13 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       <div class="pc-note" data-i18n="p1_note">Billed as one 12-month license: ₩360,000 + VAT (Korean cards)</div>
       <div class="pc-desc" data-i18n="p1_desc">For standalone LTO drive setups (up to 2 drives) — broadcast studios, small archives, individual operators.</div>
       <hr class="pc-hr">
-      <div class="pc-feat" data-i18n="p1_f1">Up to 2 LTO drives (LTO-4 to LTO-9)</div>
+      <div class="pc-feat" data-i18n="p1_f1">Up to 2 LTO drives (LTO-5 to LTO-9)</div>
       <div class="pc-feat" data-i18n="p1_f2">Unlimited tapes</div>
       <div class="pc-feat" data-i18n="p1_f3">Auto thumbnail generation</div>
       <div class="pc-feat" data-i18n="p1_f4">Full-text search</div>
-      <div class="pc-feat" data-i18n="p1_f5">Built-in video player</div>
+      <div class="pc-feat" data-i18n="p1_f5">In-app video preview</div>
       <div class="pc-feat" data-i18n="p1_f6">Email support</div>
-      <button class="pc-btn hot" data-i18n="pc_trial" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Start free trial</button>
+      <button class="pc-btn hot" data-i18n="pc_trial" onclick="goTrial()">Start free trial</button>
       <a class="pc-buy" href="buy.html?ed=starter" data-i18n="pc_buy">Buy 1-year license (Korean cards)</a>
     </div>
     <div class="pc">
@@ -589,13 +663,13 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       <div class="pc-note" data-i18n="p2_note">Billed as one 12-month license: ₩720,000 + VAT (Korean cards)</div>
       <div class="pc-desc" data-i18n="p2_desc">For tape autoloader / library setups — TV stations, hospitals, government archives.</div>
       <hr class="pc-hr">
-      <div class="pc-feat" data-i18n="p2_f1">LTO Autoloader / Library support</div>
+      <div class="pc-feat" data-i18n="p2_f1">LTO autoloader / library control (Windows)</div>
       <div class="pc-feat" data-i18n="p2_f2">No limit on the number of LTO drives</div>
       <div class="pc-feat" data-i18n="p2_f3">Automated tape slot management</div>
-      <div class="pc-feat" data-i18n="p2_f4">Batch archive &amp; restore jobs</div>
-      <div class="pc-feat" data-i18n="p2_f5">Advanced search &amp; filters</div>
+      <div class="pc-feat" data-i18n="p2_f4">Everything in Starter</div>
+      <div class="pc-feat" data-i18n="p2_f5">Duplicate copies and spanning across drives</div>
       <div class="pc-feat" data-i18n="p2_f6">Priority support</div>
-      <button class="pc-btn" data-i18n="pc_trial" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Start free trial</button>
+      <button class="pc-btn" data-i18n="pc_trial" onclick="goTrial()">Start free trial</button>
       <a class="pc-buy" href="buy.html?ed=autoloader" data-i18n="pc_buy">Buy 1-year license (Korean cards)</a>
     </div>
     <div class="pc">
@@ -608,12 +682,12 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       <div class="pc-feat" data-i18n="p3_f3">Custom integration support</div>
       <div class="pc-feat" data-i18n="p3_f4">Dedicated SLA</div>
       <div class="pc-feat" data-i18n="p3_f5">Staff training included</div>
-      <button class="pc-btn" data-i18n="p3_btn" onclick="window.location.href='mailto:sales@tapevault.net'">Contact sales</button>
-      <div class="pc-note" data-i18n="p3_note" style="margin-top:12px;font-size:11.5px;line-height:1.5;color:#7d87a6;text-align:center">Quoted plans are invoiced separately and are not paid through the online card checkout (Toss Payments).</div>
+      <button class="pc-btn" data-i18n="p3_btn" onclick="window.location.href='mailto:support@tapevault.net'">Contact sales</button>
+      <div class="pc-note" data-i18n="p3_note" style="margin-top:12px;font-size:12.5px;line-height:1.5;color:#c2cadc;text-align:center">Quoted plans are invoiced separately and are not paid through the online card checkout (Toss Payments).</div>
     </div>
   </div>
   <div class="price-trust">
-    <p data-i18n="trust_txt">Every plan includes a <strong style="color:#c8cfe0">1-month free trial</strong> with full features — just register. No credit card required.</p>
+    <p data-i18n="trust_txt">Sign up and get a <strong style="color:#eef1f8">free 1-month license</strong> with full features on every plan. No credit card required.</p>
     <div class="price-trust-items" style="margin-top:12px">
       <span class="price-trust-item" data-i18n="tr1">No automatic renewal</span>
       <span class="price-trust-item" data-i18n="tr2">Nothing to cancel</span>
@@ -631,11 +705,11 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
   </div>
   <div class="faq-list">
     <div class="faq-item"><div class="faq-q"><span data-i18n="faq1_q">Does TapeVault work without an internet connection?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq1_a">Yes. TapeVault is fully offline after the initial license activation. No ongoing internet connection is required. This makes it ideal for air-gapped environments in broadcast, defense, and medical sectors.</div></div>
-    <div class="faq-item"><div class="faq-q"><span data-i18n="faq2_q">What happens to my data when my subscription expires?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq2_a">Your archived data on tape is always yours — it's stored in standard LTFS format, which is readable by any LTFS-compatible software. After a license expires, TapeVault asks you to renew before it can be used again; nothing on your tapes or in the catalog stored on your computer is deleted.</div></div>
+    <div class="faq-item"><div class="faq-q"><span data-i18n="faq2_q">What happens to my data when my license expires?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq2_a">Your archived data on tape is always yours — it's stored in standard LTFS format, which is readable by any LTFS-compatible software. After a license expires, TapeVault asks you to renew before it can be used again; nothing on your tapes or in the catalog stored on your computer is deleted.</div></div>
     <div class="faq-item"><div class="faq-q"><span data-i18n="faq3_q">Is there automatic renewal?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq3_a">No. There is no automatic renewal. TapeVault does not store credit card details. When your license expires, you can renew manually at any time from the purchase page.</div></div>
-    <div class="faq-item"><div class="faq-q"><span data-i18n="faq4_q">Which LTO generations are supported?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq4_a">TapeVault supports LTO-4 through LTO-9 drives. LTO-10 support is planned. Both standalone drives and autoloaders (AUTOLOADER plan) are supported.</div></div>
-    <div class="faq-item"><div class="faq-q"><span data-i18n="faq5_q">What is the difference between Starter and AutoLoader?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq5_a">Starter is designed for standalone LTO drives (up to 2 drives). AutoLoader adds support for tape autoloaders and libraries, with no limit on the number of drives. If you have a tape library (e.g. Quantum, Overland), you need the AutoLoader plan.</div></div>
-    <div class="faq-item"><div class="faq-q"><span data-i18n="faq6_q">Can I install TapeVault on multiple computers?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq6_a">Each license covers one computer at a time. You can transfer the license to a different machine as needed — just deactivate on the old machine and activate on the new one. An internet connection is required only during the transfer.</div></div>
+    <div class="faq-item"><div class="faq-q"><span data-i18n="faq4_q">Which LTO generations are supported?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq4_a">TapeVault supports LTO-5 through LTO-9 drives. LTO-10 support is planned. Both standalone drives and autoloaders (AUTOLOADER plan) are supported.</div></div>
+    <div class="faq-item"><div class="faq-q"><span data-i18n="faq5_q">What is the difference between Starter and AutoLoader?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq5_a">Starter is designed for standalone LTO drives (up to 2 drives). AutoLoader removes the drive limit and adds control of tape autoloaders and libraries. Library control is currently available on Windows; on macOS, AutoLoader removes the drive limit only.</div></div>
+    <div class="faq-item"><div class="faq-q"><span data-i18n="faq6_q">Can I install TapeVault on multiple computers?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq6_a">A license is tied to the computer it was activated on. How many computers you can register depends on the licenses you bought. To move a license to a different computer, contact <a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a>.</div></div>
   </div>
 </section>
 
@@ -643,7 +717,8 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
   <h2 data-i18n="cta_h2">Stop searching tapes manually.</h2>
   <p data-i18n="cta_p">Download TapeVault and find any file in 30 seconds — starting today.</p>
   <button class="btn-hero-main" style="margin:0 auto;font-size:16px;padding:16px 40px" data-i18n="cta_btn" onclick="showDownloadWarning()">⬇ Download Free Trial — No Credit Card</button>
-  <div class="cta-note" data-i18n="cta_note">Windows 10 / 11 · 1-month full-feature trial · LTO-4 to LTO-9</div>
+  <a class="cta-signup signup-only" href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1" data-i18n="cta_signup">Or create your free account first →</a>
+  <div class="cta-note" data-i18n="cta_note">Windows 10 / 11 · macOS · free 1-month license with every feature · LTO-5 to LTO-9</div>
 </section>
 
 <footer>
@@ -663,7 +738,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       <div class="footer-copy">
         © 2026 주식회사 베테랑아이티 (Veteran IT Co., Ltd.)<br>
         Seocho-gu, Seoul, Republic of Korea<br>
-        <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>
+        <a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>
       </div>
     </div>
     <div class="footer-cols">
@@ -677,8 +752,9 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       <div class="footer-col">
         <div class="footer-col-title" data-i18n="fc_support">Support</div>
         <a href="how-to-install.html" data-i18n="nav_install">Install Guide</a>
+        <a href="manual.html" data-i18n="nav_manual">User Manual</a>
         <a href="mailto:support@tapevault.net" data-i18n="fc_contact">Contact support</a>
-        <a href="mailto:sales@tapevault.net" data-i18n="fc_sales">Contact sales</a>
+        <a href="mailto:support@tapevault.net" data-i18n="fc_sales">Contact sales</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title" data-i18n="fc_legal">Legal</div>
@@ -689,9 +765,9 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       </div>
     </div>
   </div>
-  <div class="biz-info" data-i18n="biz_info">Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a></div>
+  <div class="biz-info" data-i18n="biz_info">Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a></div>
   <div class="footer-bottom">
-    <div class="footer-bottom-left" data-i18n="foot_bottom">TapeVault v1.2.6 · Built by Veteran IT · Payments by Toss Payments · No auto-renewal</div>
+    <div class="footer-bottom-left" data-i18n="foot_bottom">TapeVault v1.2.9 · Built by Veteran IT · Payments by Toss Payments · No auto-renewal</div>
     <div class="footer-bottom-right"><a href="#" onclick="applyLang('en');return false">EN</a><a href="#" onclick="applyLang('ko');return false">한국어</a><a href="#" onclick="applyLang('ja');return false">日本語</a></div>
   </div>
 </footer>
@@ -702,7 +778,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
     <div class="modal-icon">🛡️</div>
     <div id="dlw-win">
       <h3 data-i18n="dlw_title">Notice: You may see a security warning</h3>
-      <p data-i18n="dlw_body">Because the TapeVault installer is new and not yet code-signed, Windows SmartScreen and some browsers may flag it during download or install. This is expected for new software and does not mean the file is unsafe. If Edge blocks the download, open the downloads list and click <strong>"…" → "Keep" → "Show more" → "Keep anyway"</strong>.</p>
+      <p data-i18n="dlw_body">The TapeVault installer is code-signed by VETERAN IT, but because the certificate is new, Windows SmartScreen and some browsers may still flag it during download or install for a while. This is expected for new software and does not mean the file is unsafe. If Edge blocks the download, open the downloads list and click <strong>"…" → "Keep" → "Show more" → "Keep anyway"</strong>.</p>
       <div class="modal-steps">
         <div class="modal-step">
           <div class="modal-step-num">1</div>
@@ -741,6 +817,7 @@ footer{padding:40px 48px;border-top:0.5px solid #1a2035;background:#080b10}
       </div>
     </div>
     <p class="modal-note" data-i18n="dlw_verify">🔐 Tip: before running the file, compare the SHA-256 checksum listed under the download buttons with your download — see the <a href="how-to-install.html#verify">install guide</a>.</p>
+    <p class="modal-note signup-only" data-i18n="dlw_signup">👤 The app asks for a free account at first launch. <a href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1">Sign up now</a>, or register inside the app.</p>
     <button class="btn-hero-main modal-continue" data-i18n="dlw_continue" onclick="proceedDownload()">⬇ Continue Download</button>
   </div>
 </div>
@@ -757,17 +834,17 @@ function showDownloadWarning(platform) {
   document.getElementById('dl-warning-modal').classList.add('open');
 }
 function playDemo() {
+  // 데모 영상은 홈페이지에 직접 올린 파일로 재생한다 (예전에는 YouTube 영상을 불러왔다)
   var host = document.getElementById('yt-thumb');
-  var f = document.createElement('iframe');
-  f.src = 'https://www.youtube-nocookie.com/embed/gq-fioGNzgo?autoplay=1&rel=0';
-  f.title = 'TapeVault demo video';
-  f.allow = 'autoplay; encrypted-media; picture-in-picture';
-  f.referrerPolicy = 'strict-origin-when-cross-origin';
-  f.allowFullscreen = true;
-  f.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0';
+  var v = document.createElement('video');
+  v.src = 'video/tapevault-demo.mp4';
+  v.poster = 'img/demo-thumb.jpg';
+  v.controls = true; v.autoplay = true; v.playsInline = true; v.preload = 'auto';
+  v.title = 'TapeVault demo video';
+  v.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;background:#000';
   var box = document.createElement('div');
   box.style.cssText = 'position:relative;padding-bottom:56.25%;height:0';
-  box.appendChild(f);
+  box.appendChild(v);
   host.replaceWith(box);
 }
 function closeDownloadWarning() { document.getElementById('dl-warning-modal').classList.remove('open'); }
@@ -778,17 +855,31 @@ function proceedDownload() {
 
 const T = {
   en: {
+    dl_manual:'<a class="dl-manual-btn" href="docs/TapeVault-User-Manual-en.pdf" download>📄 User manual (PDF)</a><a href="manual.html">Read it online →</a>',
+    hs_q:'New to TapeVault?',
+    hs_a:'Sign up and get a free 1-month license — no credit card →',
+    welcome_t:'🎉 Your account is ready. Now download the app and sign in with the same account.',
+    st1_t:'Create a free account',
+    st1_d:'Sign up and get a free 1-month license. Email and password only — no credit card.',
+    st1_btn:'Sign up free',
+    st1_done:'✓ You are signed in',
+    st2_t:'Download and install',
+    st2_d:'For Windows 10 / 11 and macOS. Use the buttons below.',
+    st3_t:'Sign in to the app',
+    st3_d:'Sign in with the same account and your free 1-month license is applied — every feature included.',
+    dlw_signup:'👤 The app asks for a free account at first launch. <a href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1">Sign up now</a>, or register inside the app.',
+    cta_signup:'Or create your free account first →',
     p1_note:'Billed as one 12-month license: ₩360,000 + VAT (Korean cards)',
     p2_note:'Billed as one 12-month license: ₩720,000 + VAT (Korean cards)',
     dlw_verify:'🔐 Tip: before running the file, compare the SHA-256 checksum listed under the download buttons with your download — see the <a href="how-to-install.html#verify">install guide</a>.',
     p1_amt:'$20', p2_amt:'$40',
-    biz_info:'Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
+    biz_info:'Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>',
     fc_refund:'Refund policy',
-    nav_how:'How it works', nav_features:'Features', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide',
-    nav_signin:'Sign in', nav_trial:'Free Trial',
+    nav_how:'How it works', nav_features:'Features', nav_download:'Download', nav_pricing:'Pricing', nav_install:'Install Guide', nav_manual:'User Manual',
+    nav_signin:'Sign in / Sign up', nav_trial:'Free Trial',
     hero_h1:'Find any file on LTO tape<br><b>in under 30 seconds.</b>',
     hero_sub:'TapeVault is an LTO tape archive manager for Windows and macOS. Browse thumbnails, search metadata, and retrieve files — without manually checking every tape.',
-    hero_p1:'Windows & macOS', hero_p2:'LTO-4 to LTO-9', hero_p3:'Broadcast · Medical · Defense · Education',
+    hero_p1:'Windows & macOS', hero_p2:'LTO-5 to LTO-9', hero_p3:'Broadcast · Medical · Defense · Education',
     hero_btn1:'⬇ Download Free Trial', hero_btn2:'▶ See how it works',
     stat1:'File search across all tapes', stat2:'Auto thumbnail generation', stat3:'Auto drive detection', stat4:'Offline after activation',
     pain_label:'The Problem', pain_title:'Sound familiar?', pain_sub:'Every LTO tape user faces the same frustrations. TapeVault solves all three.',
@@ -798,68 +889,53 @@ const T = {
     sol1_t:'Search in 30 seconds', sol1_d:'Type the filename, date, or metadata. TapeVault searches all tapes instantly and shows exactly where the file is.',
     sol2_t:'Permanent metadata database', sol2_d:'Every file is indexed with metadata, checksum, and location. Staff changes never affect your archive organization.',
     sol3_t:'Thumbnails without recall', sol3_d:'TapeVault auto-generates thumbnails for every video file. Browse visually and confirm before recalling from tape.',
-    gui_label:'Real Software. Real UI.', gui_title:'See exactly what you get', gui_sub:'These are actual screenshots from TapeVault — no mockups, no illustrations.',
-    s1_title:'All your files,<br>visible at a glance', s1_desc:'Open any project folder and see every file as a thumbnail — videos, PDFs, images, ZIP files — all organized exactly as you archived them. Switch between grid view and list view instantly.',
-    s1_c1:'Thumbnail grid view for visual browsing', s1_c2:'List view with filename, size, date, and status', s1_c3:'Color-coded tape status badges (archived / queued)', s1_c4:'Filter by file type, date, or tape',
-    s1_tip:'💡 Green badge = already on tape. Blue = waiting in queue. You always know the status of every file.', s1_cap:'▲ Grid view — actual TapeVault screenshot',
-    s2_title:'Click any file.<br>See everything about it.', s2_desc:'Select any file and the right panel instantly shows the video thumbnail preview, file type, resolution, size, tape location, checksum, and your custom metadata notes. No waiting. No recalling.',
-    s2_c1:'Auto-generated video thumbnail preview', s2_c2:'Full file metadata: codec, resolution, date, size', s2_c3:'Exact tape path and tape name shown', s2_c4:'Custom notes: cameraman, location, owner',
-    s2_tip:"💡 Know exactly what's on the tape before you eject it and insert a new one. Zero guesswork.", s2_cap:'▲ File detail panel — actual TapeVault screenshot',
-    s3_title:'List view for<br>power users', s3_desc:'Switch to list view to see all files in a sortable table. Sort by name, size, date, or archive status. Instantly identify which files are on tape and which are still queued.',
-    s3_c1:'Sort by any column — name, size, date, status', s3_c2:'VT TEST badge = confirmed on tape', s3_c3:'One-click select multiple files', s3_c4:'Batch add to tape write queue',
-    s3_tip:'💡 Select 50 files, add to queue, and start writing — in under 30 seconds.', s3_cap:'▲ List view — actual TapeVault screenshot',
-    s4_title:'Play video directly<br>from tape. Instantly.', s4_desc:'Double-click any video file to open the built-in player. Watch the content directly — no need to copy the file first, no external player needed. Works with MP4, MOV, MXF, AVI and more.',
-    s4_c1:'Built-in video player — no external software', s4_c2:'Supports MP4, MOV, MXF, AVI, H.264, H.265', s4_c3:'Confirm the right file before recalling to storage', s4_c4:'26-minute files play smoothly from tape',
-    s4_tip:'💡 Stop wasting time recalling wrong files. Preview first, recall only what you need.', s4_cap:'▲ Built-in video player — actual TapeVault screenshot',
-    s5_title:'New tape registered<br>in 3 clicks', s5_desc:'Insert a new tape, click New Tape, enter a volume label and serial number, select your LTO generation, and click Format. TapeVault formats it as LTFS and registers it in your database. Done.',
-    s5_c1:'LTFS format — cross-platform compatible', s5_c2:'LTO-4 through LTO-9 supported', s5_c3:'Volume label auto-recognized on future inserts', s5_c4:'Tape serial number linked to physical label',
-    s5_tip:'💡 New tape registered and ready to archive in under 60 seconds.', s5_cap:'▲ New tape registration — actual TapeVault screenshot',
+    hw_label:'How it works', hw_title:'From shoot to shelf — and back', hw_sub:'Six steps cover the whole archive workflow. The screens below are the real TapeVault 1.2.9 interface, shown with sample project data.', hw_hero:'▲ The real TapeVault interface (sample data)', hw_more:'Read the full user manual →', hw1_t:'Prepare a tape<br>in a few clicks', hw1_d:'Insert a new tape and TapeVault offers to format it as LTFS. Give it a volume name and it is registered in your catalog. From then on the tape is recognized automatically whenever you insert it.', hw1_c1:'LTFS format — readable on Windows, macOS and Linux', hw1_c2:'LTO-5 to LTO-9 drives detected automatically', hw1_c3:'Tape name, capacity and free space shown in the top bar', hw1_c4:'Two drives? Each drive gets its own status row', hw1_tip:'💡 The catalog remembers every tape, so you can browse its contents even when the tape is on the shelf.', hw1_cap:'▲ New tape registration', hw2_t:'Drag folders in.<br>Your structure is kept.', hw2_d:'Drop shoot folders from Explorer or Finder onto the tree. The whole subfolder structure is recreated, and that same structure is what gets written to tape. Thumbnails for video and images are generated automatically.', hw2_c1:'Drag and drop folders or files — subfolders included', hw2_c2:'Unlimited folder depth; rename, move or add any time', hw2_c3:'Hidden and zero-byte files are skipped automatically', hw2_c4:'Right-click menu for every folder action', hw2_tip:'💡 Organize by year, project and camera roll once — everyone on the team finds files the same way.', hw2_cap:'▲ Folder tree and right-click menu', hw3_t:'Write to tape.<br>Every file verified.', hw3_d:'Select files or whole folders, add them to the write queue and press start. Each file is written, read back from the tape and compared by checksum — only verified files are marked done.', hw3_c1:'xxHash64 + MD5 calculated while copying', hw3_c2:'Read-back verification of every file on tape', hw3_c3:'Progress with speed and time remaining', hw3_c4:'Optional second copy to another tape, or two drives at once', hw3_tip:'💡 If the app is closed or the connection drops mid-write, TapeVault resumes with the remaining files next time.', hw3_cap:'▲ Write queue', hw4_t:'Find any file<br>without loading a tape', hw4_d:'Browse thumbnails or type in the search box — the catalog covers every tape you have written. Click a file to see its resolution, codec, size, checksum and exactly which tape and path it is on.', hw4_c1:'Thumbnail cards or a compact list view', hw4_c2:'Search across all tapes at once', hw4_c3:'Tape name and path shown for every file', hw4_c4:'Your own notes: shoot date, location, owner', hw4_tip:'💡 The badge on each card shows the tape name once the file is safely on tape; gray means it is still waiting.', hw4_cap:'▲ File cards and the info panel', hw5_t:'Restore files or<br>whole folders, verified', hw5_d:'Pick the files — or right-click a folder to restore it with all its subfolders. TapeVault tells you which tape to insert, copies the files back in their original structure and verifies them against the checksums recorded at write time.', hw5_c1:'Restore single files, selections or entire folders', hw5_c2:'Tells you which tape to insert', hw5_c3:'Checksum verification after restore', hw5_c4:'Files spread over several tapes are restored tape by tape', hw5_tip:'💡 Restoring a whole project years later is one right-click — no need to remember which tape holds what.', hw5_cap:'▲ Restore dialog', hw6_t:'Reports and<br>delivery manifests', hw6_d:'Export a CSV file list of any folder with size, tape, checksum and media details for clients or audits. For studio deliveries, TapeVault can write MD5 manifests or ASC MHL files to the tape automatically.', hw6_c1:'File list export (CSV, subfolders included)', hw6_c2:'MD5 manifest written to tape for studio delivery', hw6_c3:'ASC MHL v2.0 per roll', hw6_c4:'Catalog and error reports', hw6_tip:'💡 Hand over the tape with a file list and manifest the receiving side can verify on their own.', hw6_cap:'▲ List view with tape status',
     baf_label:'The Difference', baf_title:'Before vs. After TapeVault',
     baf_bl:'❌ Without TapeVault', baf_al:'✅ With TapeVault',
-    baf_b1:'Check tape labels manually — <strong style="color:#c8cfe0">hours per search</strong>',
+    baf_b1:'Check tape labels manually — <strong style="color:#eef1f8">hours per search</strong>',
     baf_b2:'No file index — must check every tape one by one', baf_b3:'No thumbnails — full recall required just to preview',
     baf_b4:'Archive becomes unusable when key staff leaves', baf_b5:'Tape capacity tracked manually in spreadsheets', baf_b6:'No checksum — never know if files are corrupted',
-    baf_a1:'Search by filename → <strong style="color:#c8cfe0">location found in 30 sec</strong>',
+    baf_a1:'Search by filename → <strong style="color:#eef1f8">location found in 30 sec</strong>',
     baf_a2:'Full library indexed — any file found instantly', baf_a3:'Thumbnails generated automatically — preview before recall',
-    baf_a4:'Metadata database survives any staff change', baf_a5:'Tape capacity tracked and predicted automatically', baf_a6:'Checksum on every write, verified automatically after each archive job',
+    baf_a4:'Metadata database survives any staff change', baf_a5:'Tape capacity tracked automatically', baf_a6:'Checksum on every write, verified automatically after each archive job',
     feat_label:'Features', feat_title:'Everything in one app', feat_sub:'No plugins. No separate tools. No cloud required.',
-    f1_t:'LTO Drive Control', f1_d:'Automatic LTFS drive detection for LTO-4 through LTO-9. Write, verify and eject — all from one interface.',
+    f1_t:'LTO Drive Control', f1_d:'Automatic LTFS drive detection for LTO-5 through LTO-9. Write, verify and eject — all from one interface.',
     f2_t:'Auto Thumbnail Generation', f2_d:'FFmpeg-powered thumbnails for every video file. Browse your archive visually without recalling from tape.',
-    f3_t:'Full-Text Search', f3_d:'Search across all tapes by filename, date, resolution, or custom metadata. Results in under a second.',
+    f3_t:'Full-Text Search', f3_d:'Search every tape by filename, date, resolution, or your own notes — straight from the catalog, without loading a tape.',
     f4_t:'Project Management', f4_d:'Organize by project, year, department, or client. Hierarchical folder structure mirrors your real workflow.',
-    f5_t:'Built-in Video Player', f5_d:'Preview any video file directly in TapeVault. MP4, MOV, MXF, AVI — no external player needed.',
-    f6_t:'Tape Usage Analytics', f6_d:'Real-time capacity tracking across all tapes. Know exactly when to order new tapes before you run out.',
+    f5_t:'In-app Video Preview', f5_d:'Preview a video right inside TapeVault while the original is still on your computer. Formats the app cannot play open in your default player with one click.',
+    f6_t:'Tape Usage Analytics', f6_d:'See capacity and free space for every tape, so you know when to order new tapes before running out.',
     f7_t:'Air-Gapped Operation', f7_d:'Works fully offline after activation — your catalog and files stay on your computer and tapes, never in the cloud. Offline license files are available for air-gapped sites.',
-    f8_t:'Checksum Verification', f8_d:'xxHash64 checksum on every write (SHA-256 or MD5 selectable). Integrity is verified automatically after each archive operation.',
+    f8_t:'Checksum Verification', f8_d:'Every file gets an xxHash64 checksum, with MD5 calculated alongside for delivery. After writing, each file is read back from tape and compared.',
     f9_t:'Korean & English UI', f9_d:'The app interface is available in Korean and English. This website is available in English, Korean, and Japanese.',
-    dl_label:'Download', dl_title:'Try TapeVault free for 1 month', dl_sub:'Just register — no credit card. Full features from day one. Buy a license after your trial.',
-    dl_btn:'⬇ Download TapeVault v1.2.6 for Windows', dl_s1:'Windows 10 / 11 (64-bit)', dl_s2:'LTO-4 through LTO-9', dl_s3:'~90 MB installer',
-    dl_ver:'v1.2.6 · 2026 · Requires Windows 10 64-bit or later',
+    dl_label:'Download', dl_title:'Try TapeVault free for 1 month', dl_sub:'Sign up and get a free 1-month license — no credit card. Full features from day one. Buy a license after your trial.',
+    dl_btn:'⬇ Download TapeVault v1.2.9 for Windows', dl_s1:'Windows 10 / 11 (64-bit)', dl_s2:'LTO-5 through LTO-9', dl_s3:'~90 MB installer',
+    dl_ver:'v1.2.9 · November 2026 · Requires Windows 10 64-bit or later',
     pr_label:'Pricing', pr_title:'Simple pricing. No surprises.', pr_sub:'Register and try free for 1 month, then buy a license. No auto-renewal.',
     pc_mo:' / month', pc_trial:'Start free trial', pc_buy:'Buy 1-year license (Korean cards) →', pc_popular:'Most popular',
     p1_desc:'For standalone LTO drive setups (up to 2 drives) — broadcast studios, small archives, individual operators.',
-    p1_f1:'Up to 2 LTO drives (LTO-4 to LTO-9)', p1_f2:'Unlimited tapes', p1_f3:'Auto thumbnail generation', p1_f4:'Full-text search', p1_f5:'Built-in video player', p1_f6:'Email support',
+    p1_f1:'Up to 2 LTO drives (LTO-5 to LTO-9)', p1_f2:'Unlimited tapes', p1_f3:'Auto thumbnail generation', p1_f4:'Full-text search', p1_f5:'In-app video preview', p1_f6:'Email support',
     p2_desc:'For tape autoloader / library setups — TV stations, hospitals, government archives.',
-    p2_f1:'LTO Autoloader / Library support', p2_f2:'No limit on the number of LTO drives', p2_f3:'Automated tape slot management', p2_f4:'Batch archive &amp; restore jobs', p2_f5:'Advanced search &amp; filters', p2_f6:'Priority support',
+    p2_f1:'LTO autoloader / library control (Windows)', p2_f2:'No limit on the number of LTO drives', p2_f3:'Automated tape slot management', p2_f4:'Everything in Starter', p2_f5:'Duplicate copies and spanning across drives', p2_f6:'Priority support',
     p3_amt:'Custom', p3_desc:'For large institutions with multi-library setups, custom deployment, and SLA requirements.',
     p3_f1:'Multiple tape libraries', p3_f2:'On-site deployment &amp; setup', p3_f3:'Custom integration support', p3_f4:'Dedicated SLA', p3_f5:'Staff training included', p3_btn:'Contact sales', p3_note:'Quoted plans are invoiced separately and are not paid through the online card checkout (Toss Payments).',
-    trust_txt:'Every plan includes a <strong style="color:#c8cfe0">1-month free trial</strong> with full features — just register. No credit card required.',
+    trust_txt:'Sign up and get a <strong style="color:#eef1f8">free 1-month license</strong> with full features on every plan. No credit card required.',
     tr1:'No automatic renewal', tr2:'Nothing to cancel', tr3:'Your data always yours', tr4:'Offline after activation', tr5:'Payments via Toss Payments · VAT excluded',
     faq_label:'FAQ', faq_title:'Questions before buying?',
     faq1_q:'Does TapeVault work without an internet connection?', faq1_a:'Yes. TapeVault is fully offline after the initial license activation. No ongoing internet connection is required. This makes it ideal for air-gapped environments in broadcast, defense, and medical sectors.',
-    faq2_q:'What happens to my data when my subscription expires?', faq2_a:'Your archived data on tape is always yours — it\'s stored in standard LTFS format, which is readable by any LTFS-compatible software. After a license expires, TapeVault asks you to renew before it can be used again; nothing on your tapes or in the catalog stored on your computer is deleted.',
+    faq2_q:'What happens to my data when my license expires?', faq2_a:'Your archived data on tape is always yours — it\'s stored in standard LTFS format, which is readable by any LTFS-compatible software. After a license expires, TapeVault asks you to renew before it can be used again; nothing on your tapes or in the catalog stored on your computer is deleted.',
     faq3_q:'Is there automatic renewal?', faq3_a:'No. There is no automatic renewal. TapeVault does not store credit card details. When your license expires, you can renew manually at any time from the purchase page.',
-    faq4_q:'Which LTO generations are supported?', faq4_a:'TapeVault supports LTO-4 through LTO-9 drives. LTO-10 support is planned. Both standalone drives and autoloaders (AUTOLOADER plan) are supported.',
-    faq5_q:'What is the difference between Starter and AutoLoader?', faq5_a:'Starter is designed for standalone LTO drives (up to 2 drives). AutoLoader adds support for tape autoloaders and libraries, with no limit on the number of drives. If you have a tape library (e.g. Quantum, Overland), you need the AutoLoader plan.',
-    faq6_q:'Can I install TapeVault on multiple computers?', faq6_a:'Each license covers one computer at a time. You can transfer the license to a different machine as needed — just deactivate on the old machine and activate on the new one. An internet connection is required only during the transfer.',
+    faq4_q:'Which LTO generations are supported?', faq4_a:'TapeVault supports LTO-5 through LTO-9 drives. LTO-10 support is planned. Both standalone drives and autoloaders (AUTOLOADER plan) are supported.',
+    faq5_q:'What is the difference between Starter and AutoLoader?', faq5_a:'Starter is designed for standalone LTO drives (up to 2 drives). AutoLoader removes the drive limit and adds control of tape autoloaders and libraries. Library control is currently available on Windows; on macOS, AutoLoader removes the drive limit only.',
+    faq6_q:'Can I install TapeVault on multiple computers?', faq6_a:'A license is tied to the computer it was activated on. How many computers you can register depends on the licenses you bought. To move a license to a different computer, contact <a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a>.',
     cta_h2:'Stop searching tapes manually.', cta_p:'Download TapeVault and find any file in 30 seconds — starting today.',
-    cta_btn:'⬇ Download Free Trial — No Credit Card', cta_note:'Windows 10 / 11 · 1-month full-feature trial · LTO-4 to LTO-9',
+    cta_btn:'⬇ Download Free Trial — No Credit Card', cta_note:'Windows 10 / 11 · macOS · free 1-month license with every feature · LTO-5 to LTO-9',
     fc_product:'Product', fc_support:'Support', fc_legal:'Legal',
     fc_contact:'Contact support', fc_sales:'Contact sales', fc_privacy:'Privacy policy', fc_terms:'Terms of service', fc_license:'License',
-    foot_bottom:'TapeVault v1.2.6 · Built by Veteran IT · Payments by Toss Payments · No auto-renewal',
-    beta_pill:'🧪 Try TapeVault Free for 1 Month — Just Register →',
+    foot_bottom:'TapeVault v1.2.9 · Built by Veteran IT · Payments by Toss Payments · No auto-renewal',
+    beta_pill:'🎁 Sign up and get a free 1-month license →',
     dlw_title:'🛡️ Notice: You may see a security warning',
-    dlw_body:'Because the TapeVault installer is new and not yet code-signed, Windows SmartScreen and some browsers may flag it during download or install. This is expected for new software and does not mean the file is unsafe. If Edge blocks the download, open the downloads list and click <strong>"…" → "Keep" → "Show more" → "Keep anyway"</strong>.',
+    dlw_body:'The TapeVault installer is code-signed by VETERAN IT, but because the certificate is new, Windows SmartScreen and some browsers may still flag it during download or install for a while. This is expected for new software and does not mean the file is unsafe. If Edge blocks the download, open the downloads list and click <strong>"…" → "Keep" → "Show more" → "Keep anyway"</strong>.',
     dlw_step1_t:'Browser download warning', dlw_step1_d:'If your browser flags the file, click the "···" next to the download and choose "Keep" (Chrome/Edge).',
     dlw_step2_t:'"Windows protected your PC" screen', dlw_step2_d:'Click "More info", then click "Run anyway" to start the installer.',
     dlw_continue:'⬇ Continue Download',
@@ -867,20 +943,34 @@ const T = {
     dlw_body_mac:'This build for Apple Silicon Macs is signed with an Apple Developer ID and notarized by Apple, so it opens normally. macOS only asks once to confirm opening an app downloaded from the internet.',
     dlw_mac_step1_t:'Install', dlw_mac_step1_d:'Open the downloaded DMG and drag TapeVault into the Applications folder.',
     dlw_mac_step2_t:'Open it', dlw_mac_step2_d:'Launch TapeVault from Applications and click Open when macOS asks to confirm. You only see this once.',
-    dl_or:'or', dl_mac_btn:'🍎 Download for macOS (Apple Silicon)', dl_mac_note:'v1.2.6 · Apple Silicon (M1/M2/M3) only · ~158 MB'
+    dl_or:'or', dl_mac_btn:'🍎 Download for macOS (Apple Silicon)', dl_mac_note:'v1.2.9 · Apple Silicon (M1 or later) · ~116 MB'
   },
   ko: {
+    dl_manual:'<a class="dl-manual-btn" href="docs/TapeVault-User-Manual-ko.pdf" download>📄 사용자 매뉴얼 PDF 내려받기</a><a href="manual.html">웹에서 보기 →</a>',
+    hs_q:'처음이신가요?',
+    hs_a:'회원가입만 해도 1개월 무료 라이선스 — 신용카드 불필요 →',
+    welcome_t:'🎉 계정이 준비됐습니다. 이제 앱을 내려받아 같은 계정으로 로그인하세요.',
+    st1_t:'무료 회원가입',
+    st1_d:'회원가입만 해도 1개월 무료 라이선스를 드립니다. 이메일과 비밀번호만 있으면 되고 신용카드는 필요 없습니다.',
+    st1_btn:'무료로 가입하기',
+    st1_done:'✓ 로그인되어 있습니다',
+    st2_t:'앱 다운로드 · 설치',
+    st2_d:'Windows 10 / 11과 macOS를 지원합니다. 아래 버튼으로 내려받으세요.',
+    st3_t:'앱에서 로그인',
+    st3_d:'같은 계정으로 로그인하면 1개월 무료 라이선스가 적용되어 모든 기능을 쓸 수 있습니다.',
+    dlw_signup:'👤 앱을 처음 실행하면 무료 계정이 필요합니다. <a href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1">지금 가입</a>해 두거나, 앱 안에서 등록해도 됩니다.',
+    cta_signup:'또는 먼저 무료 회원가입 →',
     p1_note:'1년 사용권 360,000원(부가세 별도)을 한 번에 결제합니다',
     p2_note:'1년 사용권 720,000원(부가세 별도)을 한 번에 결제합니다',
     dlw_verify:'🔐 팁: 실행하기 전에 다운로드 버튼 아래에 표시된 SHA-256 체크섬과 내려받은 파일의 값을 비교해 보세요 — <a href="how-to-install.html#verify">설치 가이드</a> 참고.',
     p1_amt:'3만원', p2_amt:'6만원',
-    biz_info:'상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>전화: 070-8080-4664 · 이메일: <a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
+    biz_info:'상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>전화: 070-8080-4664 · 이메일: <a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>',
     fc_refund:'환불 정책',
-    nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드',
-    nav_signin:'로그인', nav_trial:'무료 체험',
+    nav_how:'작동 방식', nav_features:'기능', nav_download:'다운로드', nav_pricing:'요금제', nav_install:'설치 가이드', nav_manual:'사용자 매뉴얼',
+    nav_signin:'로그인 · 회원가입', nav_trial:'무료 체험',
     hero_h1:'LTO 테이프의 모든 파일을<br><b>30초 안에 찾아드립니다.</b>',
     hero_sub:'TapeVault는 Windows와 macOS에서 쓰는 LTO 테이프 아카이브 관리 소프트웨어입니다. 테이프를 일일이 확인하지 않고도 썸네일 탐색, 메타데이터 검색, 파일 꺼내기를 바로 할 수 있습니다.',
-    hero_p1:'Windows & macOS', hero_p2:'LTO-4 ~ LTO-9', hero_p3:'방송 · 의료 · 국방 · 교육',
+    hero_p1:'Windows & macOS', hero_p2:'LTO-5 ~ LTO-9', hero_p3:'방송 · 의료 · 국방 · 교육',
     hero_btn1:'⬇ 무료 체험 다운로드', hero_btn2:'▶ 작동 방식 보기',
     stat1:'전체 테이프 검색', stat2:'썸네일 자동 생성', stat3:'드라이브 자동 인식', stat4:'활성화 후 완전 오프라인',
     pain_label:'문제점', pain_title:'익숙한가요?', pain_sub:'LTO 테이프 사용자라면 누구나 겪는 불편함입니다. TapeVault가 세 가지를 모두 해결합니다.',
@@ -890,68 +980,53 @@ const T = {
     sol1_t:'30초 안에 검색', sol1_d:'파일명, 날짜, 메타데이터를 입력하면 모든 테이프를 즉시 검색해 정확한 위치를 알려줍니다.',
     sol2_t:'영구 메타데이터 DB', sol2_d:'모든 파일이 메타데이터, 체크섬, 위치 정보와 함께 인덱싱됩니다. 담당자가 바뀌어도 아카이브는 안전합니다.',
     sol3_t:'리콜 없이 썸네일 미리보기', sol3_d:'동영상 파일마다 썸네일이 자동 생성됩니다. 테이프에서 꺼내기 전에 시각적으로 확인할 수 있습니다.',
-    gui_label:'실제 소프트웨어. 실제 UI.', gui_title:'실제로 이렇게 생겼습니다', gui_sub:'전부 TapeVault의 실제 스크린샷입니다 — 목업이나 일러스트가 아닙니다.',
-    s1_title:'모든 파일을<br>한눈에 확인', s1_desc:'프로젝트 폴더를 열면 동영상, PDF, 이미지, ZIP 등 모든 파일을 썸네일로 확인할 수 있습니다. 그리드 뷰와 리스트 뷰를 즉시 전환할 수 있습니다.',
-    s1_c1:'시각적 탐색을 위한 썸네일 그리드 뷰', s1_c2:'파일명, 크기, 날짜, 상태 포함 리스트 뷰', s1_c3:'색상 코딩된 테이프 상태 배지 (보관됨 / 대기 중)', s1_c4:'파일 유형, 날짜, 테이프로 필터링',
-    s1_tip:'💡 초록 배지 = 테이프에 저장됨. 파란 배지 = 대기 중. 모든 파일의 상태를 항상 알 수 있습니다.', s1_cap:'▲ 그리드 뷰 — TapeVault 실제 스크린샷',
-    s2_title:'파일을 클릭하면<br>모든 정보가 표시됩니다.', s2_desc:'파일을 선택하면 오른쪽 패널에 썸네일 미리보기, 파일 유형, 해상도, 크기, 테이프 위치, 체크섬, 메모가 즉시 표시됩니다.',
-    s2_c1:'자동 생성된 동영상 썸네일 미리보기', s2_c2:'전체 파일 메타데이터: 코덱, 해상도, 날짜, 크기', s2_c3:'정확한 테이프 경로와 테이프 이름 표시', s2_c4:'커스텀 메모: 촬영자, 장소, 담당자',
-    s2_tip:'💡 꺼내기 전에 테이프에 무엇이 있는지 정확히 파악하세요. 추측이 필요 없습니다.', s2_cap:'▲ 파일 상세 패널 — TapeVault 실제 스크린샷',
-    s3_title:'파워 유저를 위한<br>리스트 뷰', s3_desc:'리스트 뷰로 전환하면 모든 파일을 정렬 가능한 테이블로 볼 수 있습니다. 이름, 크기, 날짜, 보관 상태 기준으로 정렬하고 상태를 즉시 파악하세요.',
-    s3_c1:'모든 컬럼 정렬 — 이름, 크기, 날짜, 상태', s3_c2:'VT TEST 배지 = 테이프에 확인된 파일', s3_c3:'한 번의 클릭으로 여러 파일 선택', s3_c4:'테이프 기록 대기열에 일괄 추가',
-    s3_tip:'💡 파일 50개 선택, 대기열 추가, 기록 시작 — 30초 안에 완료.', s3_cap:'▲ 리스트 뷰 — TapeVault 실제 스크린샷',
-    s4_title:'테이프에서 직접<br>바로 재생.', s4_desc:'동영상 파일을 더블클릭하면 내장 플레이어가 열립니다. 파일을 먼저 복사하거나 외부 플레이어 없이 바로 재생 가능. MP4, MOV, MXF, AVI 지원.',
-    s4_c1:'내장 동영상 플레이어 — 외부 소프트웨어 불필요', s4_c2:'MP4, MOV, MXF, AVI, H.264, H.265 지원', s4_c3:'스토리지로 리콜하기 전에 올바른 파일 확인', s4_c4:'26분 파일도 테이프에서 끊김 없이 재생',
-    s4_tip:'💡 잘못된 파일을 리콜하느라 시간 낭비하지 마세요. 먼저 미리보기, 필요한 것만 리콜.', s4_cap:'▲ 내장 동영상 플레이어 — TapeVault 실제 스크린샷',
-    s5_title:'새 테이프 등록<br>클릭 3번이면 끝', s5_desc:'새 테이프를 삽입하고, 새 테이프 클릭, 볼륨 레이블과 시리얼 번호 입력, LTO 세대 선택, 포맷 클릭. TapeVault가 LTFS로 포맷하고 DB에 등록합니다.',
-    s5_c1:'LTFS 포맷 — 크로스 플랫폼 호환', s5_c2:'LTO-4~LTO-9 지원', s5_c3:'이후 삽입 시 볼륨 레이블 자동 인식', s5_c4:'테이프 시리얼 번호와 물리 라벨 연동',
-    s5_tip:'💡 새 테이프 등록 및 아카이브 준비 완료 — 60초 이내.', s5_cap:'▲ 새 테이프 등록 — TapeVault 실제 스크린샷',
+    hw_label:'작동 방식', hw_title:'촬영 원본을 테이프로, 그리고 다시 꺼내기까지', hw_sub:'아카이브 작업 전체를 6단계로 보여 드립니다. 아래 화면은 실제 TapeVault 1.2.9 화면이며, 예시 프로젝트 데이터로 표시했습니다.', hw_hero:'▲ 실제 TapeVault 화면 (예시 데이터)', hw_more:'사용자 매뉴얼 전체 보기 →', hw1_t:'테이프 준비는<br>클릭 몇 번으로', hw1_d:'새 테이프를 넣으면 LTFS로 포맷할지 물어봅니다. 볼륨 이름만 정하면 카탈로그에 등록되고, 다음부터는 넣기만 해도 자동으로 인식합니다.', hw1_c1:'LTFS 포맷 — Windows·macOS·Linux 어디서나 읽을 수 있음', hw1_c2:'LTO-5~LTO-9 드라이브 자동 인식', hw1_c3:'상단 바에서 테이프 이름·용량·남은 공간 확인', hw1_c4:'드라이브가 2대면 드라이브마다 상태를 따로 표시', hw1_tip:'💡 카탈로그가 모든 테이프를 기억하므로, 테이프가 선반에 있어도 안의 내용을 찾아볼 수 있습니다.', hw1_cap:'▲ 새 테이프 등록', hw2_t:'폴더를 끌어다 놓으면<br>구조 그대로 등록', hw2_d:'탐색기나 Finder에서 촬영 폴더를 트리에 끌어다 놓으세요. 하위 폴더 구조가 그대로 만들어지고, 그 구조 그대로 테이프에 기록됩니다. 영상과 이미지는 썸네일이 자동으로 만들어집니다.', hw2_c1:'폴더·파일 끌어다 놓기 — 하위 폴더 포함', hw2_c2:'폴더 단계 제한 없음, 언제든 이름 변경·이동·추가', hw2_c3:'숨김 파일과 0바이트 파일은 자동 제외', hw2_c4:'폴더 우클릭 메뉴로 모든 작업', hw2_tip:'💡 연도·프로젝트·카메라 롤 순으로 한 번 정리해 두면, 팀 누구나 같은 방식으로 파일을 찾습니다.', hw2_cap:'▲ 폴더 트리와 우클릭 메뉴', hw3_t:'테이프에 기록하고<br>파일마다 검증', hw3_d:'파일이나 폴더를 골라 기록 대기열에 넣고 시작을 누르세요. 파일마다 테이프에 쓴 뒤 다시 읽어 체크섬을 비교하고, 검증을 통과한 파일만 완료로 표시합니다.', hw3_c1:'복사하면서 xxHash64 + MD5 계산', hw3_c2:'테이프에서 다시 읽어 파일마다 검증', hw3_c3:'속도와 남은 시간이 보이는 진행 표시', hw3_c4:'다른 테이프로 복본 만들기, 드라이브 2대 동시 기록', hw3_tip:'💡 기록 중에 앱이 닫히거나 연결이 끊겨도, 다음 실행 때 남은 파일부터 이어서 진행합니다.', hw3_cap:'▲ 기록 대기열', hw4_t:'테이프를 넣지 않고도<br>파일 찾기', hw4_d:'썸네일을 훑어보거나 검색창에 입력하세요. 카탈로그에는 지금까지 기록한 모든 테이프가 들어 있습니다. 파일을 누르면 해상도·코덱·크기·체크섬과 함께 어느 테이프의 어느 경로에 있는지 바로 보입니다.', hw4_c1:'썸네일 카드 보기와 목록 보기', hw4_c2:'모든 테이프를 한 번에 검색', hw4_c3:'파일마다 테이프 이름과 경로 표시', hw4_c4:'촬영일자·장소·담당자 메모', hw4_tip:'💡 테이프에 안전하게 기록된 파일은 카드에 테이프 이름 배지가 붙고, 회색은 아직 대기 중인 파일입니다.', hw4_cap:'▲ 파일 카드와 정보 패널', hw5_t:'파일도 폴더도<br>검증하며 복원', hw5_d:'파일을 고르거나, 폴더를 우클릭해 하위 폴더까지 통째로 복원하세요. 어느 테이프를 넣어야 하는지 알려 주고, 원래 폴더 구조대로 꺼낸 뒤 기록할 때의 체크섬과 비교해 검증합니다.', hw5_c1:'파일 하나, 여러 개, 폴더 전체 복원', hw5_c2:'넣어야 할 테이프를 안내', hw5_c3:'복원 후 체크섬 검증', hw5_c4:'여러 테이프에 나뉜 파일은 테이프별로 차례로 복원', hw5_tip:'💡 몇 년 뒤 프로젝트 전체를 꺼낼 때도 우클릭 한 번이면 됩니다. 어느 테이프에 무엇이 있는지 기억할 필요가 없습니다.', hw5_cap:'▲ 복원 창', hw6_t:'보고서와<br>납품용 매니페스트', hw6_d:'폴더의 파일 목록을 크기·테이프·체크섬·영상 정보와 함께 CSV로 내보내 고객이나 감사에 제출할 수 있습니다. 스튜디오 납품용으로는 MD5 매니페스트나 ASC MHL을 테이프에 자동으로 만들어 줍니다.', hw6_c1:'파일 목록 내보내기 (CSV, 하위 폴더 포함)', hw6_c2:'스튜디오 납품용 MD5 매니페스트를 테이프에 저장', hw6_c3:'롤별 ASC MHL v2.0', hw6_c4:'카탈로그·오류 보고서', hw6_tip:'💡 받는 쪽이 직접 검증할 수 있는 파일 목록과 매니페스트를 테이프와 함께 넘기세요.', hw6_cap:'▲ 테이프 상태가 보이는 목록 보기',
     baf_label:'도입 전후 비교', baf_title:'TapeVault 도입 전 vs. 후',
     baf_bl:'❌ TapeVault 미사용', baf_al:'✅ TapeVault 사용',
-    baf_b1:'테이프 라벨 수작업 확인 — <strong style="color:#c8cfe0">검색에 몇 시간</strong>',
+    baf_b1:'테이프 라벨 수작업 확인 — <strong style="color:#eef1f8">검색에 몇 시간</strong>',
     baf_b2:'파일 인덱스 없음 — 테이프 전수 확인', baf_b3:'썸네일 없음 — 미리보기에 전체 리콜 필요',
     baf_b4:'핵심 담당자 퇴사 시 아카이브 사용 불가', baf_b5:'테이프 용량 엑셀로 수작업 관리', baf_b6:'체크섬 없음 — 파일 손상 여부 알 수 없음',
-    baf_a1:'파일명 검색 → <strong style="color:#c8cfe0">30초 안에 위치 확인</strong>',
+    baf_a1:'파일명 검색 → <strong style="color:#eef1f8">30초 안에 위치 확인</strong>',
     baf_a2:'전체 라이브러리 인덱싱 — 모든 파일 즉시 검색', baf_a3:'썸네일 자동 생성 — 리콜 전 미리보기 가능',
-    baf_a4:'메타데이터 DB — 담당자 교체 무관', baf_a5:'테이프 용량 자동 추적 및 예측', baf_a6:'모든 기록에 체크섬, 아카이브 작업마다 자동 검증',
+    baf_a4:'메타데이터 DB — 담당자 교체 무관', baf_a5:'테이프 용량 자동 추적', baf_a6:'모든 기록에 체크섬, 아카이브 작업마다 자동 검증',
     feat_label:'기능', feat_title:'하나의 앱에 모든 것', feat_sub:'플러그인 없음. 별도 도구 없음. 클라우드 불필요.',
-    f1_t:'LTO 드라이브 제어', f1_d:'LTO-4~LTO-9 LTFS 드라이브 자동 인식. 기록, 검증, 꺼내기를 하나의 인터페이스에서.',
+    f1_t:'LTO 드라이브 제어', f1_d:'LTO-5~LTO-9 LTFS 드라이브 자동 인식. 기록, 검증, 꺼내기를 하나의 인터페이스에서.',
     f2_t:'썸네일 자동 생성', f2_d:'FFmpeg 기반 썸네일 자동 생성. 테이프에서 꺼내지 않고도 아카이브를 시각적으로 탐색.',
-    f3_t:'전체 텍스트 검색', f3_d:'파일명, 날짜, 해상도, 커스텀 메타데이터로 전체 테이프 검색. 1초 이내 결과.',
+    f3_t:'전체 텍스트 검색', f3_d:'파일명, 날짜, 해상도, 직접 적은 메모로 전체 테이프를 검색합니다. 테이프를 넣지 않고 카탈로그에서 바로 찾습니다.',
     f4_t:'프로젝트 관리', f4_d:'프로젝트, 연도, 부서, 고객별로 구성. 계층형 폴더 구조가 실제 워크플로를 그대로 반영.',
-    f5_t:'내장 동영상 플레이어', f5_d:'TapeVault에서 직접 동영상 미리보기. MP4, MOV, MXF, AVI — 외부 플레이어 불필요.',
-    f6_t:'테이프 사용량 분석', f6_d:'전체 테이프 실시간 용량 추적. 소진 전에 새 테이프 주문 시기를 정확히 파악.',
+    f5_t:'앱 안에서 동영상 미리보기', f5_d:'원본이 컴퓨터에 있는 동안 TapeVault 안에서 동영상을 바로 미리 볼 수 있습니다. 앱에서 재생할 수 없는 형식은 버튼 하나로 기본 플레이어에서 엽니다.',
+    f6_t:'테이프 사용량 분석', f6_d:'테이프마다 용량과 남은 공간을 보여 줍니다. 부족해지기 전에 새 테이프 주문 시기를 알 수 있습니다.',
     f7_t:'완전 오프라인 동작', f7_d:'활성화 후에는 완전히 오프라인으로 동작하며, 카탈로그와 파일은 클라우드가 아닌 사용자의 PC와 테이프에만 저장됩니다. 폐쇄망 환경을 위한 오프라인 라이선스 파일도 제공됩니다.',
-    f8_t:'체크섬 검증', f8_d:'모든 기록에 xxHash64 체크섬(SHA-256·MD5 선택 가능). 아카이브 작업 후 무결성을 자동으로 검증합니다.',
+    f8_t:'체크섬 검증', f8_d:'모든 파일에 xxHash64 체크섬을 남기고 납품용 MD5도 함께 계산합니다. 기록한 뒤 테이프에서 다시 읽어 파일마다 비교합니다.',
     f9_t:'한국어·영어 UI', f9_d:'앱 화면은 한국어와 영어를 지원합니다. 이 웹사이트는 영어, 한국어, 일본어로 볼 수 있습니다.',
-    dl_label:'다운로드', dl_title:'TapeVault 1개월 무료 체험', dl_sub:'등록만 하면 신용카드 없이 시작. 첫날부터 전체 기능 사용. 체험 후 라이선스를 구매하세요.',
-    dl_btn:'⬇ TapeVault v1.2.6 Windows용 다운로드', dl_s1:'Windows 10 / 11 (64비트)', dl_s2:'LTO-4 ~ LTO-9', dl_s3:'~90 MB 인스톨러',
-    dl_ver:'v1.2.6 · 2026년 6월 · Windows 10 64비트 이상 필요',
+    dl_label:'다운로드', dl_title:'TapeVault 1개월 무료 체험', dl_sub:'회원가입만 해도 1개월 무료 라이선스를 드립니다. 신용카드 없이 첫날부터 전체 기능을 쓸 수 있고, 체험 후 라이선스를 구매하면 됩니다.',
+    dl_btn:'⬇ TapeVault v1.2.9 Windows용 다운로드', dl_s1:'Windows 10 / 11 (64비트)', dl_s2:'LTO-5 ~ LTO-9', dl_s3:'~90 MB 인스톨러',
+    dl_ver:'v1.2.9 · 2026년 11월 · Windows 10 64비트 이상 필요',
     pr_label:'요금제', pr_title:'심플한 요금제. 예상치 못한 청구 없음.', pr_sub:'등록하면 1개월 무료 체험, 이후 라이선스 구매. 자동 갱신 없음.',
     pc_mo:' / 월', pc_trial:'무료 체험 시작', pc_buy:'1년 라이선스 구매하기 →', pc_popular:'가장 인기',
     p1_desc:'단독 LTO 드라이브 환경(최대 2대) — 방송 스튜디오, 소규모 아카이브, 개인 운영자.',
-    p1_f1:'LTO 드라이브 최대 2대 (LTO-4~LTO-9)', p1_f2:'무제한 테이프', p1_f3:'썸네일 자동 생성', p1_f4:'전체 텍스트 검색', p1_f5:'내장 동영상 플레이어', p1_f6:'이메일 지원',
+    p1_f1:'LTO 드라이브 최대 2대 (LTO-5~LTO-9)', p1_f2:'무제한 테이프', p1_f3:'썸네일 자동 생성', p1_f4:'전체 텍스트 검색', p1_f5:'앱 안에서 동영상 미리보기', p1_f6:'이메일 지원',
     p2_desc:'테이프 오토로더 / 라이브러리 환경 — TV 방송국, 병원, 정부 아카이브.',
-    p2_f1:'LTO 오토로더 / 라이브러리 지원', p2_f2:'LTO 드라이브 수 제한 없음', p2_f3:'자동화된 테이프 슬롯 관리', p2_f4:'일괄 아카이브 및 복원 작업', p2_f5:'고급 검색 및 필터', p2_f6:'우선 지원',
+    p2_f1:'LTO 오토로더 / 라이브러리 제어 (Windows)', p2_f2:'LTO 드라이브 수 제한 없음', p2_f3:'자동화된 테이프 슬롯 관리', p2_f4:'Starter의 모든 기능 포함', p2_f5:'여러 드라이브로 복본·이어쓰기', p2_f6:'우선 지원',
     p3_amt:'맞춤 견적', p3_desc:'대규모 기관 — 멀티 라이브러리, 커스텀 배포, SLA 요건이 있는 환경.',
     p3_f1:'복수 테이프 라이브러리', p3_f2:'현장 배포 및 설치', p3_f3:'커스텀 통합 지원', p3_f4:'전용 SLA', p3_f5:'직원 교육 포함', p3_btn:'영업팀 문의', p3_note:'견적 상품은 별도 계약·세금계산서로 결제되며, 토스페이먼츠 온라인 카드 결제(PG)를 이용하지 않습니다.',
-    trust_txt:'모든 요금제에 <strong style="color:#c8cfe0">1개월 무료 체험</strong>이 포함됩니다. 등록만 하면 됩니다. 신용카드 불필요.',
+    trust_txt:'회원가입만 해도 모든 요금제의 전체 기능을 쓸 수 있는 <strong style="color:#eef1f8">1개월 무료 라이선스</strong>를 드립니다. 신용카드는 필요 없습니다.',
     tr1:'자동 갱신 없음', tr2:'해지할 필요 없음', tr3:'데이터는 항상 귀하의 것', tr4:'활성화 후 오프라인', tr5:'토스페이먼츠 결제 · 부가세 별도',
     faq_label:'FAQ', faq_title:'구매 전 궁금한 점이 있으신가요?',
     faq1_q:'TapeVault는 인터넷 없이 사용할 수 있나요?', faq1_a:'네. TapeVault는 최초 라이선스 활성화 이후 완전히 오프라인으로 동작합니다. 지속적인 인터넷 연결이 필요하지 않습니다. 방송, 국방, 의료 등 에어갭 환경에 적합합니다.',
-    faq2_q:'구독 만료 시 데이터는 어떻게 되나요?', faq2_a:'테이프에 보관된 데이터는 항상 귀하의 것입니다 — 표준 LTFS 형식으로 저장되어 LTFS 호환 소프트웨어라면 모두 읽을 수 있습니다. 라이선스가 만료되면 갱신하기 전까지 TapeVault를 사용할 수 없지만, 테이프와 PC에 저장된 카탈로그 데이터는 삭제되지 않습니다.',
+    faq2_q:'라이선스가 만료되면 데이터는 어떻게 되나요?', faq2_a:'테이프에 보관된 데이터는 항상 귀하의 것입니다 — 표준 LTFS 형식으로 저장되어 LTFS 호환 소프트웨어라면 모두 읽을 수 있습니다. 라이선스가 만료되면 갱신하기 전까지 TapeVault를 사용할 수 없지만, 테이프와 PC에 저장된 카탈로그 데이터는 삭제되지 않습니다.',
     faq3_q:'자동 갱신이 있나요?', faq3_a:'없습니다. 자동 갱신 없음. TapeVault는 신용카드 정보를 저장하지 않습니다. 라이선스가 만료되면 구매 페이지에서 언제든지 수동으로 갱신하실 수 있습니다.',
-    faq4_q:'어떤 LTO 세대를 지원하나요?', faq4_a:'TapeVault는 LTO-4~LTO-9 드라이브를 지원합니다. LTO-10 지원은 예정되어 있습니다. 단독 드라이브와 오토로더(AUTOLOADER 요금제) 모두 지원합니다.',
-    faq5_q:'Starter와 AutoLoader의 차이는 무엇인가요?', faq5_a:'Starter는 단독 LTO 드라이브(최대 2대)용입니다. AutoLoader는 테이프 오토로더·라이브러리를 지원하며 드라이브 수에 제한이 없습니다. 테이프 라이브러리(Quantum, Overland 등)를 보유하고 있다면 AutoLoader 요금제가 필요합니다.',
-    faq6_q:'여러 컴퓨터에 설치할 수 있나요?', faq6_a:'각 라이선스는 동시에 1대의 컴퓨터에서만 사용 가능합니다. 이전 기기에서 비활성화 후 새 기기에서 활성화하세요. 이전 시에만 인터넷 연결이 필요합니다.',
+    faq4_q:'어떤 LTO 세대를 지원하나요?', faq4_a:'TapeVault는 LTO-5~LTO-9 드라이브를 지원합니다. LTO-10 지원은 예정되어 있습니다. 단독 드라이브와 오토로더(AUTOLOADER 요금제) 모두 지원합니다.',
+    faq5_q:'Starter와 AutoLoader의 차이는 무엇인가요?', faq5_a:'Starter는 단독 LTO 드라이브(최대 2대)용입니다. AutoLoader는 드라이브 수 제한이 없고 테이프 오토로더·라이브러리 제어를 지원합니다. 라이브러리 제어는 현재 Windows에서 지원하며, macOS에서는 드라이브 수 제한 해제만 적용됩니다.',
+    faq6_q:'여러 컴퓨터에 설치할 수 있나요?', faq6_a:'라이선스는 활성화한 컴퓨터에 연결됩니다. 등록할 수 있는 컴퓨터 수는 구매한 라이선스 수에 따라 정해집니다. 다른 컴퓨터로 옮기려면 <a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a>으로 문의해 주세요.',
     cta_h2:'테이프를 일일이 뒤지는 것, 이제 그만.', cta_p:'TapeVault를 다운로드하고 오늘부터 30초 안에 모든 파일을 찾으세요.',
-    cta_btn:'⬇ 무료 체험 다운로드 — 신용카드 불필요', cta_note:'Windows 10 / 11 · 1개월 전체 기능 무료 체험 · LTO-4 ~ LTO-9',
+    cta_btn:'⬇ 무료 체험 다운로드 — 신용카드 불필요', cta_note:'Windows 10 / 11 · macOS · 전체 기능 1개월 무료 라이선스 · LTO-5 ~ LTO-9',
     fc_product:'제품', fc_support:'지원', fc_legal:'법적 정보',
     fc_contact:'지원팀 문의', fc_sales:'영업팀 문의', fc_privacy:'개인정보 처리방침', fc_terms:'이용약관', fc_license:'라이선스',
-    foot_bottom:'TapeVault v1.2.6 · Veteran IT 개발 · 토스페이먼츠 결제 · 자동 갱신 없음',
-    beta_pill:'🧪 TapeVault 등록만 하면 1개월 무료 체험 →',
+    foot_bottom:'TapeVault v1.2.9 · Veteran IT 개발 · 토스페이먼츠 결제 · 자동 갱신 없음',
+    beta_pill:'🎁 회원가입만 해도 1개월 무료 라이선스를 드립니다 →',
     dlw_title:'🛡️ 안내: 보안 경고가 나타날 수 있어요',
-    dlw_body:'설치 파일이 아직 코드 서명(디지털 인증)을 받지 않아 다운로드나 설치 중 Windows SmartScreen이나 일부 브라우저에서 경고가 뜰 수 있습니다. 신규 소프트웨어에서 흔히 발생하는 정상적인 현상이며, 파일이 위험하다는 뜻이 아닙니다. Edge가 다운로드를 막으면 다운로드 목록에서 <strong>"…" → "유지" → "자세히 표시" → "그래도 유지"</strong>를 누르세요.',
+    dlw_body:'설치 파일은 VETERAN IT 명의로 코드 서명(디지털 인증)되어 있지만, 새 인증서라 처음 얼마간은 다운로드나 설치 중 Windows SmartScreen이나 일부 브라우저에서 경고가 뜰 수 있습니다. 신규 소프트웨어에서 흔히 발생하는 정상적인 현상이며, 파일이 위험하다는 뜻이 아닙니다. Edge가 다운로드를 막으면 다운로드 목록에서 <strong>"…" → "유지" → "자세히 표시" → "그래도 유지"</strong>를 누르세요.',
     dlw_step1_t:'브라우저 다운로드 경고', dlw_step1_d:'브라우저가 파일을 경고하면, 다운로드 항목 옆의 "···"를 클릭하고 "유지"(Chrome/Edge)를 선택하세요.',
     dlw_step2_t:'"Windows에서 PC를 보호했습니다" 화면', dlw_step2_d:'"추가 정보"를 클릭한 다음 "실행"을 눌러 설치를 계속하세요.',
     dlw_continue:'⬇ 다운로드 계속하기',
@@ -959,20 +1034,34 @@ const T = {
     dlw_body_mac:'Apple Silicon Mac용 빌드로, Apple Developer ID로 서명되고 Apple 공증(notarization)을 받았습니다. 별도 조치 없이 실행되며, 인터넷에서 받은 앱이라는 확인 창만 처음 한 번 나옵니다.',
     dlw_mac_step1_t:'설치', dlw_mac_step1_d:'받은 DMG를 열고 TapeVault를 응용 프로그램(Applications) 폴더로 끌어다 놓습니다.',
     dlw_mac_step2_t:'실행', dlw_mac_step2_d:'응용 프로그램에서 TapeVault를 실행하고, 확인 창이 뜨면 열기를 누릅니다. 처음 한 번만 나옵니다.',
-    dl_or:'또는', dl_mac_btn:'🍎 macOS용 다운로드 (Apple Silicon)', dl_mac_note:'v1.2.6 · Apple Silicon(M1/M2/M3) 전용 · ~158 MB'
+    dl_or:'또는', dl_mac_btn:'🍎 macOS용 다운로드 (Apple Silicon)', dl_mac_note:'v1.2.9 · Apple Silicon(M1 이후) · ~116 MB'
   },
   ja: {
+    dl_manual:'<a class="dl-manual-btn" href="docs/TapeVault-User-Manual-ja.pdf" download>📄 ユーザーマニュアル（PDF）</a><a href="manual.html">オンラインで読む →</a>',
+    hs_q:'初めての方へ：',
+    hs_a:'会員登録だけで1か月無料ライセンス — クレジットカード不要 →',
+    welcome_t:'🎉 アカウントの準備ができました。アプリをダウンロードして、同じアカウントでログインしてください。',
+    st1_t:'無料アカウント登録',
+    st1_d:'会員登録だけで1か月無料ライセンスを進呈します。メールアドレスとパスワードだけで、クレジットカードは不要です。',
+    st1_btn:'無料で登録する',
+    st1_done:'✓ ログイン済みです',
+    st2_t:'ダウンロードとインストール',
+    st2_d:'Windows 10 / 11とmacOSに対応。下のボタンからダウンロードできます。',
+    st3_t:'アプリでログイン',
+    st3_d:'同じアカウントでログインすると1か月無料ライセンスが適用され、すべての機能を利用できます。',
+    dlw_signup:'👤 アプリの初回起動時に無料アカウントが必要です。<a href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1">今すぐ登録</a>するか、アプリ内で登録できます。',
+    cta_signup:'または、先に無料アカウントを作成 →',
     p1_note:'12か月ライセンスを一括払い：360,000ウォン＋VAT（韓国国内カード）',
     p2_note:'12か月ライセンスを一括払い：720,000ウォン＋VAT（韓国国内カード）',
     dlw_verify:'🔐 ヒント：実行する前に、ダウンロードボタンの下に表示されているSHA-256チェックサムとダウンロードしたファイルの値を比較してください — <a href="how-to-install.html#verify">インストールガイド</a>参照。',
     p1_amt:'$20', p2_amt:'$40',
-    biz_info:'会社名：株式会社ベテランIT（Veteran IT Co., Ltd.） · 代表者：오재화 · 事業者登録番号：326-86-02786<br>通信販売業申告番号：2025-서울서초-3564 · 所在地：大韓民国ソウル特別市瑞草区瑞草大路275、中央ビル202号25A<br>電話：070-8080-4664 · メール：<a href="mailto:support@tapevault.net" style="color:#8b96b8;text-decoration:none">support@tapevault.net</a>',
+    biz_info:'会社名：株式会社ベテランIT（Veteran IT Co., Ltd.） · 代表者：오재화 · 事業者登録番号：326-86-02786<br>通信販売業申告番号：2025-서울서초-3564 · 所在地：大韓民国ソウル特別市瑞草区瑞草大路275、中央ビル202号25A<br>電話：070-8080-4664 · メール：<a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>',
     fc_refund:'返金ポリシー',
-    nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール',
-    nav_signin:'サインイン', nav_trial:'無料トライアル',
+    nav_how:'使い方', nav_features:'機能', nav_download:'ダウンロード', nav_pricing:'料金', nav_install:'インストール', nav_manual:'マニュアル',
+    nav_signin:'ログイン・新規登録', nav_trial:'無料トライアル',
     hero_h1:'LTOテープのすべてのファイルを<br><b>30秒以内に見つける。</b>',
     hero_sub:'TapeVaultはWindowsとmacOSで使えるLTOテープアーカイブ管理ソフトです。テープを1本ずつ確認しなくても、サムネイルの閲覧、メタデータ検索、ファイルの取り出しがすぐにできます。',
-    hero_p1:'Windows & macOS', hero_p2:'LTO-4〜LTO-9', hero_p3:'放送・医療・防衛・教育',
+    hero_p1:'Windows & macOS', hero_p2:'LTO-5〜LTO-9', hero_p3:'放送・医療・防衛・教育',
     hero_btn1:'⬇ 無料トライアルをDL', hero_btn2:'▶ 使い方を見る',
     stat1:'全テープ横断検索', stat2:'サムネイル自動生成', stat3:'ドライブ自動認識', stat4:'アクティベーション後オフライン',
     pain_label:'課題', pain_title:'心当たりはありませんか？', pain_sub:'LTOテープを使う誰もが感じる悩みです。TapeVaultが3つすべてを解決します。',
@@ -982,68 +1071,53 @@ const T = {
     sol1_t:'30秒で検索', sol1_d:'ファイル名・日付・メタデータを入力するだけで全テープを瞬時に検索し、場所を特定します。',
     sol2_t:'永続的なメタデータDB', sol2_d:'全ファイルがメタデータ・チェックサム・場所とともに登録されます。担当者交代の影響を受けません。',
     sol3_t:'リコール不要でサムネイル確認', sol3_d:'動画ファイルのサムネイルが自動生成されます。リコール前に内容を視覚的に確認できます。',
-    gui_label:'リアルなソフト。リアルなUI。', gui_title:'実際の画面をご確認ください', gui_sub:'すべてTapeVaultの実際のスクリーンショットです。モックアップではありません。',
-    s1_title:'すべてのファイルを<br>一目で把握', s1_desc:'プロジェクトフォルダを開くと、動画・PDF・画像・ZIPなど全ファイルがサムネイル表示されます。グリッドとリスト表示を即時切替できます。',
-    s1_c1:'視覚的ブラウジング用サムネイルグリッド', s1_c2:'ファイル名・サイズ・日付・状態つきリスト表示', s1_c3:'カラーコードのテープステータスバッジ', s1_c4:'ファイル種別・日付・テープでフィルター',
-    s1_tip:'💡 緑のバッジ＝テープ保存済。青＝キュー待ち。全ファイルの状態を常に把握できます。', s1_cap:'▲ グリッド表示 — TapeVault 実際のスクリーンショット',
-    s2_title:'ファイルをクリックすると<br>すべての情報が表示される。', s2_desc:'ファイルを選択すると、右パネルにサムネイル・ファイル種別・解像度・サイズ・テープ場所・チェックサム・メモが即表示されます。',
-    s2_c1:'自動生成された動画サムネイルプレビュー', s2_c2:'完全なファイルメタデータ：コーデック・解像度・日付・サイズ', s2_c3:'正確なテープパスとテープ名を表示', s2_c4:'カスタムメモ：カメラマン・場所・担当者',
-    s2_tip:'💡 テープを取り出す前に内容を正確に把握できます。推測不要。', s2_cap:'▲ ファイル詳細パネル — TapeVault 実際のスクリーンショット',
-    s3_title:'パワーユーザー向け<br>リスト表示', s3_desc:'リスト表示に切り替えると、全ファイルをソート可能なテーブルで確認できます。名前・サイズ・日付・状態でソートできます。',
-    s3_c1:'全列でソート — 名前・サイズ・日付・状態', s3_c2:'VT TESTバッジ＝テープ保存確認済', s3_c3:'ワンクリックで複数ファイル選択', s3_c4:'テープ書込キューに一括追加',
-    s3_tip:'💡 50ファイル選択→キュー追加→書込開始、30秒以内で完了。', s3_cap:'▲ リスト表示 — TapeVault 実際のスクリーンショット',
-    s4_title:'テープから直接<br>即時再生。', s4_desc:'動画ファイルをダブルクリックすると内蔵プレーヤーが開きます。コピー不要・外部プレーヤー不要。MP4・MOV・MXF・AVI対応。',
-    s4_c1:'内蔵動画プレーヤー — 外部ソフト不要', s4_c2:'MP4・MOV・MXF・AVI・H.264・H.265対応', s4_c3:'ストレージにリコールする前に正しいファイルを確認', s4_c4:'26分のファイルもテープからスムーズに再生',
-    s4_tip:'💡 間違ったファイルのリコールで時間を無駄にしないで。先に確認、必要なものだけリコール。', s4_cap:'▲ 内蔵動画プレーヤー — TapeVault 実際のスクリーンショット',
-    s5_title:'新しいテープを<br>3クリックで登録', s5_desc:'新テープを挿入し、新規テープをクリック、ボリュームラベルとシリアル番号を入力、LTFSでフォーマット。TapeVaultが自動でDBに登録します。完了。',
-    s5_c1:'LTFSフォーマット — クロスプラットフォーム互換', s5_c2:'LTO-4〜LTO-9対応', s5_c3:'次回以降の挿入時にボリュームラベルを自動認識', s5_c4:'テープシリアル番号と物理ラベルを紐付け',
-    s5_tip:'💡 新テープの登録からアーカイブ開始まで60秒以内。', s5_cap:'▲ 新テープ登録 — TapeVault 実際のスクリーンショット',
+    hw_label:'使い方', hw_title:'撮影素材をテープへ、そして再び取り出すまで', hw_sub:'アーカイブ作業の全体を6つのステップでご紹介します。以下は実際のTapeVault 1.2.9の画面で、サンプルのプロジェクトデータを表示しています。', hw_hero:'▲ 実際のTapeVaultの画面（サンプルデータ）', hw_more:'ユーザーマニュアルを見る →', hw1_t:'テープの準備は<br>数クリックで', hw1_d:'新しいテープを入れると、LTFSでフォーマットするか確認されます。ボリューム名を決めるだけでカタログに登録され、次回からは入れるだけで自動認識されます。', hw1_c1:'LTFSフォーマット — Windows・macOS・Linuxで読み取り可能', hw1_c2:'LTO-5〜LTO-9ドライブを自動認識', hw1_c3:'上部バーでテープ名・容量・空き容量を確認', hw1_c4:'ドライブが2台なら、ドライブごとに状態を表示', hw1_tip:'💡 カタログがすべてのテープを記憶するので、テープが棚にあっても中身を確認できます。', hw1_cap:'▲ 新規テープの登録', hw2_t:'フォルダをドラッグするだけ。<br>構成はそのまま', hw2_d:'エクスプローラーやFinderから撮影フォルダをツリーにドラッグします。サブフォルダ構成がそのまま作成され、その構成のままテープに書き込まれます。動画と画像のサムネイルは自動で作成されます。', hw2_c1:'フォルダ・ファイルをドラッグ＆ドロップ — サブフォルダを含む', hw2_c2:'階層の制限なし。名前変更・移動・追加はいつでも可能', hw2_c3:'隠しファイルと0バイトのファイルは自動で除外', hw2_c4:'右クリックメニューからすべての操作', hw2_tip:'💡 年・プロジェクト・カメラロールの順に一度整理すれば、チームの誰もが同じ方法でファイルを見つけられます。', hw2_cap:'▲ フォルダツリーと右クリックメニュー', hw3_t:'テープに書き込み、<br>全ファイルを検証', hw3_d:'ファイルやフォルダを選んで書き込みキューに追加し、開始を押します。ファイルごとにテープへ書き込み、読み戻してチェックサムを比較し、検証に合格したファイルだけを完了と表示します。', hw3_c1:'コピー中にxxHash64 + MD5を計算', hw3_c2:'テープから読み戻して全ファイルを検証', hw3_c3:'速度と残り時間がわかる進捗表示', hw3_c4:'別のテープへの複製、2台のドライブでの同時書き込み', hw3_tip:'💡 書き込み中にアプリが閉じたり接続が切れたりしても、次回起動時に残りのファイルから再開します。', hw3_cap:'▲ 書き込みキュー', hw4_t:'テープを入れなくても<br>ファイルを検索', hw4_d:'サムネイルを眺めるか、検索欄に入力します。カタログにはこれまで書き込んだすべてのテープが含まれています。ファイルをクリックすると、解像度・コーデック・サイズ・チェックサムと、どのテープのどのパスにあるかがすぐにわかります。', hw4_c1:'サムネイルカード表示と一覧表示', hw4_c2:'すべてのテープを一度に検索', hw4_c3:'ファイルごとにテープ名とパスを表示', hw4_c4:'撮影日・場所・担当者のメモ', hw4_tip:'💡 テープに安全に書き込まれたファイルにはテープ名のバッジが付き、グレーはまだ待機中のファイルです。', hw4_cap:'▲ ファイルカードと情報パネル', hw5_t:'ファイルもフォルダも<br>検証しながら復元', hw5_d:'ファイルを選ぶか、フォルダを右クリックしてサブフォルダごと復元します。どのテープを入れるかを案内し、元のフォルダ構成のまま取り出して、書き込み時のチェックサムと照合して検証します。', hw5_c1:'単一ファイル、複数選択、フォルダ全体の復元', hw5_c2:'入れるべきテープを案内', hw5_c3:'復元後のチェックサム検証', hw5_c4:'複数のテープに分かれたファイルはテープごとに順に復元', hw5_tip:'💡 数年後にプロジェクト全体を取り出すときも右クリック1回。どのテープに何があるかを覚えておく必要はありません。', hw5_cap:'▲ 復元ダイアログ', hw6_t:'レポートと<br>納品用マニフェスト', hw6_d:'フォルダのファイル一覧を、サイズ・テープ・チェックサム・メディア情報とともにCSVで出力し、クライアントや監査に提出できます。スタジオ納品向けには、MD5マニフェストやASC MHLをテープ上に自動で作成します。', hw6_c1:'ファイル一覧のエクスポート（CSV、サブフォルダを含む）', hw6_c2:'スタジオ納品用のMD5マニフェストをテープに保存', hw6_c3:'ロールごとのASC MHL v2.0', hw6_c4:'カタログ・エラーレポート', hw6_tip:'💡 受け取り側が自分で検証できるファイル一覧とマニフェストを、テープと一緒に渡せます。', hw6_cap:'▲ テープ状態がわかる一覧表示',
     baf_label:'導入前後の違い', baf_title:'TapeVault導入前 vs 後',
     baf_bl:'❌ TapeVaultなし', baf_al:'✅ TapeVaultあり',
-    baf_b1:'テープラベルを手作業で確認 — <strong style="color:#c8cfe0">1回の検索に数時間</strong>',
+    baf_b1:'テープラベルを手作業で確認 — <strong style="color:#eef1f8">1回の検索に数時間</strong>',
     baf_b2:'ファイルインデックスなし — テープを1本ずつ確認', baf_b3:'サムネイルなし — 確認だけで全リコールが必要',
     baf_b4:'担当者退職でアーカイブが使えなくなる', baf_b5:'テープ容量をExcelで手動管理', baf_b6:'チェックサムなし — ファイル破損を検知できない',
-    baf_a1:'ファイル名検索 → <strong style="color:#c8cfe0">30秒で場所を特定</strong>',
+    baf_a1:'ファイル名検索 → <strong style="color:#eef1f8">30秒で場所を特定</strong>',
     baf_a2:'全ライブラリ登録 — どのファイルも即座に検索', baf_a3:'サムネイル自動生成 — リコール前にプレビュー可能',
-    baf_a4:'メタデータDB — 担当者交代の影響なし', baf_a5:'テープ容量を自動追跡・予測', baf_a6:'全書込にチェックサム、アーカイブごとに自動検証',
+    baf_a4:'メタデータDB — 担当者交代の影響なし', baf_a5:'テープ容量を自動で追跡', baf_a6:'全書込にチェックサム、アーカイブごとに自動検証',
     feat_label:'機能', feat_title:'すべてひとつのアプリに', feat_sub:'プラグイン不要。別途ツール不要。クラウド不要。',
-    f1_t:'LTOドライブ制御', f1_d:'LTO-4〜LTO-9のLTFSドライブを自動検出。書込・検証・排出をひとつのUIで。',
+    f1_t:'LTOドライブ制御', f1_d:'LTO-5〜LTO-9のLTFSドライブを自動検出。書込・検証・排出をひとつのUIで。',
     f2_t:'サムネイル自動生成', f2_d:'FFmpeg対応の自動サムネイル生成。テープをリコールせずにアーカイブを視覚的に閲覧。',
-    f3_t:'全文検索', f3_d:'ファイル名・日付・解像度・メタデータで全テープを検索。1秒以内に結果表示。',
+    f3_t:'全文検索', f3_d:'ファイル名、日付、解像度、メモですべてのテープを検索します。テープを入れなくても、カタログからすぐに見つかります。',
     f4_t:'プロジェクト管理', f4_d:'プロジェクト・年度・部署・クライアント別に整理。階層フォルダ構造が実際の業務フローを反映。',
-    f5_t:'内蔵動画プレーヤー', f5_d:'TapeVaultで直接動画をプレビュー。MP4・MOV・MXF・AVI — 外部プレーヤー不要。',
-    f6_t:'テープ使用量分析', f6_d:'全テープのリアルタイム容量追跡。在庫切れ前に新テープの注文タイミングを把握。',
+    f5_t:'アプリ内動画プレビュー', f5_d:'元ファイルがコンピューターにある間は、TapeVault内で動画をそのままプレビューできます。アプリで再生できない形式は、ワンクリックで既定のプレーヤーで開きます。',
+    f6_t:'テープ使用量分析', f6_d:'テープごとの容量と空き容量を表示します。不足する前に新しいテープの注文時期がわかります。',
     f7_t:'エアギャップ運用', f7_d:'アクティベーション後は完全オフラインで動作し、カタログとファイルはクラウドではなくお使いのPCとテープにのみ保存されます。エアギャップ環境向けにオフラインライセンスファイルも用意しています。',
-    f8_t:'チェックサム検証', f8_d:'全書込にxxHash64チェックサム（SHA-256・MD5も選択可）。アーカイブ後に整合性を自動検証します。',
+    f8_t:'チェックサム検証', f8_d:'すべてのファイルにxxHash64チェックサムを記録し、納品用のMD5も同時に計算します。書き込み後、テープから読み直してファイルごとに照合します。',
     f9_t:'韓国語・英語UI', f9_d:'アプリの画面は韓国語と英語に対応しています。このウェブサイトは英語・韓国語・日本語でご覧いただけます。',
-    dl_label:'ダウンロード', dl_title:'TapeVaultを1ヶ月間無料でお試し', dl_sub:'登録するだけ、クレジットカード不要。初日から全機能利用可。体験後にライセンスをご購入ください。',
-    dl_btn:'⬇ TapeVault v1.2.6 Windows版をDL', dl_s1:'Windows 10 / 11 (64ビット)', dl_s2:'LTO-4〜LTO-9', dl_s3:'~90 MB インストーラー',
-    dl_ver:'v1.2.6 · 2026年6月 · Windows 10 64ビット以上が必要',
+    dl_label:'ダウンロード', dl_title:'TapeVaultを1ヶ月間無料でお試し', dl_sub:'会員登録だけで1か月無料ライセンスを進呈します。クレジットカード不要で、初日から全機能を利用できます。体験後にライセンスをご購入ください。',
+    dl_btn:'⬇ TapeVault v1.2.9 Windows版をDL', dl_s1:'Windows 10 / 11 (64ビット)', dl_s2:'LTO-5〜LTO-9', dl_s3:'~90 MB インストーラー',
+    dl_ver:'v1.2.9 · 2026年11月 · Windows 10 64ビット以降が必要',
     pr_label:'料金', pr_title:'シンプルな料金。想定外の請求なし。', pr_sub:'登録で1ヶ月間無料体験、その後ライセンスを購入。自動更新なし。',
     pc_mo:' / 月', pc_trial:'無料トライアル開始', pc_buy:'1年ライセンス購入（韓国発行カード） →', pc_popular:'最も人気',
     p1_desc:'単体LTOドライブ環境（最大2台） — 放送スタジオ・小規模アーカイブ・個人運用者向け。',
-    p1_f1:'LTOドライブ最大2台 (LTO-4〜LTO-9)', p1_f2:'テープ枚数無制限', p1_f3:'サムネイル自動生成', p1_f4:'全文検索', p1_f5:'内蔵動画プレーヤー', p1_f6:'メールサポート',
+    p1_f1:'LTOドライブ最大2台 (LTO-5〜LTO-9)', p1_f2:'テープ枚数無制限', p1_f3:'サムネイル自動生成', p1_f4:'全文検索', p1_f5:'アプリ内での動画プレビュー', p1_f6:'メールサポート',
     p2_desc:'テープオートローダー/ライブラリ環境 — テレビ局・病院・政府アーカイブ向け。',
-    p2_f1:'LTOオートローダー/ライブラリ対応', p2_f2:'LTOドライブ台数の制限なし', p2_f3:'テープスロット自動管理', p2_f4:'バッチアーカイブ＆復元ジョブ', p2_f5:'高度な検索＆フィルター', p2_f6:'優先サポート',
+    p2_f1:'LTOオートローダー／ライブラリ制御（Windows）', p2_f2:'LTOドライブ台数の制限なし', p2_f3:'テープスロット自動管理', p2_f4:'Starterの全機能を含む', p2_f5:'複数ドライブでの複製・スパン書き込み', p2_f6:'優先サポート',
     p3_amt:'カスタム', p3_desc:'大規模機関 — マルチライブラリ・カスタム展開・SLA要件がある環境向け。',
     p3_f1:'複数テープライブラリ', p3_f2:'オンサイト展開＆セットアップ', p3_f3:'カスタム統合サポート', p3_f4:'専用SLA', p3_f5:'社員トレーニング込み', p3_btn:'営業に問い合わせ', p3_note:'お見積りプランは別途契約・請求となり、オンラインカード決済（Toss Payments）は利用しません。',
-    trust_txt:'すべてのプランに<strong style="color:#c8cfe0">1ヶ月間の無料トライアル</strong>が含まれます。登録するだけ。クレジットカード不要。',
+    trust_txt:'会員登録だけで、すべてのプランの全機能を使える<strong style="color:#eef1f8">1か月無料ライセンス</strong>を進呈します。クレジットカードは不要です。',
     tr1:'自動更新なし', tr2:'解約手続き不要', tr3:'データは常にあなたのもの', tr4:'アクティベーション後オフライン', tr5:'Toss Payments決済 · VAT別途',
     faq_label:'よくある質問', faq_title:'購入前のよくある質問',
     faq1_q:'TapeVaultはインターネットなしで使えますか？', faq1_a:'はい。TapeVaultは初回ライセンスアクティベーション後は完全オフラインで動作します。継続的なインターネット接続は不要です。放送・防衛・医療のエアギャップ環境に最適です。',
-    faq2_q:'サブスクリプション期限切れ後、データはどうなりますか？', faq2_a:'テープ上のアーカイブデータは常にあなたのものです。標準LTFSフォーマットで保存されており、LTFS対応ソフトなら読み取り可能です。ライセンスが失効すると、更新するまでTapeVaultは利用できませんが、テープやPCに保存されたカタログデータが削除されることはありません。',
+    faq2_q:'ライセンスの有効期限が切れるとデータはどうなりますか？', faq2_a:'テープ上のアーカイブデータは常にあなたのものです。標準LTFSフォーマットで保存されており、LTFS対応ソフトなら読み取り可能です。ライセンスが失効すると、更新するまでTapeVaultは利用できませんが、テープやPCに保存されたカタログデータが削除されることはありません。',
     faq3_q:'自動更新はありますか？', faq3_a:'いいえ。自動更新はありません。TapeVaultはクレジットカード情報を保存しません。ライセンスが失効したら、購入ページからいつでも手動で更新できます。',
-    faq4_q:'どのLTO世代に対応していますか？', faq4_a:'TapeVaultはLTO-4〜LTO-9ドライブに対応しています。LTO-10への対応は予定されています。シングルドライブとオートローダー（AUTOLOADERプラン）の両方をサポートします。',
-    faq5_q:'StarterとAutoLoaderの違いは何ですか？', faq5_a:'Starterは単体のLTOドライブ（最大2台）向けです。AutoLoaderはテープオートローダー/ライブラリに対応し、ドライブ台数の制限はありません。テープライブラリ（Quantum、Overlandなど）をお持ちの場合はAutoLoaderプランが必要です。',
-    faq6_q:'複数のコンピューターにインストールできますか？', faq6_a:'各ライセンスは同時に1台のコンピューターで使用できます。別のマシンへの移転も可能です。古いマシンで無効化してから新しいマシンで有効化してください。移転時のみインターネット接続が必要です。',
+    faq4_q:'どのLTO世代に対応していますか？', faq4_a:'TapeVaultはLTO-5〜LTO-9ドライブに対応しています。LTO-10への対応は予定されています。シングルドライブとオートローダー（AUTOLOADERプラン）の両方をサポートします。',
+    faq5_q:'StarterとAutoLoaderの違いは何ですか？', faq5_a:'Starterは単体LTOドライブ（最大2台）向けです。AutoLoaderはドライブ台数の制限がなく、テープオートローダー／ライブラリの制御に対応します。ライブラリ制御は現在Windowsで利用でき、macOSではドライブ台数の制限解除のみが適用されます。',
+    faq6_q:'複数のコンピューターにインストールできますか？', faq6_a:'ライセンスは認証したコンピューターに紐づきます。登録できるコンピューターの台数は、購入したライセンス数によって決まります。別のコンピューターへ移す場合は<a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a>までご連絡ください。',
     cta_h2:'テープを手動で探すのはもうやめよう。', cta_p:'TapeVaultをダウンロードして、今日から30秒で任意のファイルを見つけましょう。',
-    cta_btn:'⬇ 無料トライアルをDL — クレジットカード不要', cta_note:'Windows 10 / 11 · 1ヶ月間全機能トライアル · LTO-4〜LTO-9',
+    cta_btn:'⬇ 無料トライアルをDL — クレジットカード不要', cta_note:'Windows 10 / 11 · macOS · 全機能の1か月無料ライセンス · LTO-5〜LTO-9',
     fc_product:'製品', fc_support:'サポート', fc_legal:'法的情報',
     fc_contact:'サポートに連絡', fc_sales:'営業に連絡', fc_privacy:'プライバシーポリシー', fc_terms:'利用規約', fc_license:'ライセンス',
-    foot_bottom:'TapeVault v1.2.6 · Veteran IT製 · Toss Payments決済 · 自動更新なし',
-    beta_pill:'🧪 登録するだけで1ヶ月無料体験 →',
+    foot_bottom:'TapeVault v1.2.9 · Veteran IT製 · Toss Payments決済 · 自動更新なし',
+    beta_pill:'🎁 会員登録だけで1か月無料ライセンスを進呈 →',
     dlw_title:'🛡️ お知らせ：セキュリティ警告が表示される場合があります',
-    dlw_body:'インストーラーがまだコード署名されていないため、ダウンロードやインストール時にWindows SmartScreenや一部のブラウザで警告が表示されることがあります。これは新しいソフトウェアでよくある現象で、ファイルが危険という意味ではありません。Edgeがダウンロードをブロックした場合は、ダウンロード一覧で<strong>「…」→「保持する」→「詳細を表示」→「保持する」</strong>をクリックしてください。',
+    dlw_body:'インストーラーはVETERAN ITのコード署名付きですが、新しい証明書のため、しばらくはダウンロードやインストール時にWindows SmartScreenや一部のブラウザで警告が表示されることがあります。これは新しいソフトウェアでよくある現象で、ファイルが危険という意味ではありません。Edgeがダウンロードをブロックした場合は、ダウンロード一覧で<strong>「…」→「保持する」→「詳細を表示」→「保持する」</strong>をクリックしてください。',
     dlw_step1_t:'ブラウザのダウンロード警告', dlw_step1_d:'ブラウザが警告を表示した場合、ダウンロード項目の「···」をクリックして「保持」(Chrome/Edge)を選択してください。',
     dlw_step2_t:'「WindowsによってPCが保護されました」画面', dlw_step2_d:'「詳細情報」をクリックしてから「実行」をクリックしてインストールを続けてください。',
     dlw_continue:'⬇ ダウンロードを続ける',
@@ -1051,7 +1125,7 @@ const T = {
     dlw_body_mac:'Apple Silicon Mac向けのビルドで、Apple Developer IDで署名され、Apple公証(notarization)済みです。特別な操作なしで起動でき、インターネットからダウンロードしたアプリかどうかの確認が初回に一度だけ表示されます。',
     dlw_mac_step1_t:'インストール', dlw_mac_step1_d:'ダウンロードしたDMGを開き、TapeVaultを「アプリケーション」フォルダにドラッグします。',
     dlw_mac_step2_t:'起動', dlw_mac_step2_d:'「アプリケーション」からTapeVaultを起動し、確認ダイアログで「開く」をクリックします。表示されるのは初回のみです。',
-    dl_or:'または', dl_mac_btn:'🍎 macOS版をダウンロード (Apple Silicon)', dl_mac_note:'v1.2.6 · Apple Silicon (M1/M2/M3) 専用 · 約158 MB'
+    dl_or:'または', dl_mac_btn:'🍎 macOS版をダウンロード (Apple Silicon)', dl_mac_note:'v1.2.9 · Apple Silicon（M1以降）· 約116 MB'
   }
 };
 
@@ -1102,8 +1176,34 @@ document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
 });
 
-applyLang(localStorage.getItem('tv-lang') || 'en');
+// ── 회원가입 유도 ──
+const SIGNUP_URL = 'login.html?mode=signup&next=' + encodeURIComponent('index.html?welcome=1');
+// 이 브라우저에 로그인 세션이 남아 있는지(supabase-js 가 localStorage 에 둔다). 토큰 값은 읽지 않는다.
+function tvHasAccount() { try { return Object.keys(localStorage).some(k => /^sb-.+-auth-token$/.test(k)); } catch (e) { return false; } }
+function goTrial() {
+  if (tvHasAccount()) document.getElementById('download').scrollIntoView({ behavior: 'smooth' });
+  else location.href = SIGNUP_URL;
+}
+if (tvHasAccount()) {
+  document.body.classList.add('has-account');
+  const my = { en: 'My account', ko: '내 계정', ja: 'マイアカウント' };
+  Object.keys(my).forEach(l => { if (T[l]) T[l].nav_signin = my[l]; });
+  document.querySelectorAll('[data-i18n="nav_signin"]').forEach(el => { if (el.tagName === 'A') el.href = 'buy.html'; else el.onclick = () => { location.href = 'buy.html'; }; });
+  const pill = document.getElementById('beta-pill-link'); if (pill) pill.href = '#download';
+}
+// 가입·로그인을 마치고 돌아온 경우: 안내를 보여 주고 다운로드로 이동
+if (new URLSearchParams(location.search).get('welcome') === '1') {
+  history.replaceState(null, '', location.pathname);
+  window.addEventListener('load', () => {
+    document.getElementById('welcome-bar').hidden = false;
+    document.getElementById('download').scrollIntoView({ behavior: 'smooth' });
+    (window.dataLayer = window.dataLayer || []).push({ event: 'tv_account_ready' });
+  });
+}
+
+applyLang(typeof tvInitialLang === 'function' ? tvInitialLang() : (localStorage.getItem('tv-lang') || 'en'));
 </script>
 <script src="release.js"></script>
+<script src="consent.js"></script>
 </body>
 </html>

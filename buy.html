@@ -10,74 +10,65 @@
 <meta name="robots" content="noindex">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#0b0b0d;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Malgun Gothic',sans-serif;line-height:1.6;padding:40px 16px 80px}
-a{color:#5b9cf6}
+body{background:#23262e;color:#f7f8fc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Malgun Gothic',sans-serif;line-height:1.6;padding:40px 16px 80px}
+a{color:#7db2ff}
 .wrap{max-width:640px;margin:0 auto}
 .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
-.logo{font-size:17px;color:#f0f2f8;text-decoration:none}.logo b{font-weight:700}
+.logo{font-size:17px;color:#ffffff;text-decoration:none}.logo b{font-weight:700}
 h1{font-size:24px;letter-spacing:-0.02em;margin-bottom:6px}
-.sub{color:#99a3c4;font-size:14px;margin-bottom:28px}
-.card{background:#111520;border:0.5px solid #1e2330;border-radius:12px;padding:22px;margin-bottom:16px}
-.card h2{font-size:15px;margin-bottom:12px;color:#c8cfe0}
-label{display:block;font-size:13px;color:#99a3c4;margin:10px 0 4px}
-input[type=email],input[type=password]{width:100%;background:#0b0b0d;border:0.5px solid #2a3245;color:#e8eaf0;border-radius:8px;padding:10px 12px;font-size:14px}
+.sub{color:#dfe4f0;font-size:14px;margin-bottom:28px}
+.card{background:#2f343f;border:0.5px solid #424857;border-radius:12px;padding:22px;margin-bottom:16px}
+.card h2{font-size:15px;margin-bottom:12px;color:#eef1f8}
+label{display:block;font-size:13px;color:#dfe4f0;margin:10px 0 4px}
+input[type=email],input[type=password]{width:100%;background:#23262e;border:0.5px solid #4e576c;color:#f7f8fc;border-radius:8px;padding:10px 12px;font-size:14px}
 .btn{display:inline-block;background:#3b6fd8;color:#fff;border:none;border-radius:8px;padding:11px 18px;font-size:14px;font-weight:600;cursor:pointer;margin-top:14px}
 .btn:disabled{opacity:.5;cursor:default}
-.btn.ghost{background:none;border:0.5px solid #2a3245;color:#a8b2d0;font-weight:400;padding:6px 12px;font-size:12px;margin:0}
+.btn.ghost{background:none;border:0.5px solid #4e576c;color:#e8ecf5;font-weight:400;padding:6px 12px;font-size:13px;margin:0}
 .plans{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media (max-width:520px){.plans{grid-template-columns:1fr}}
-.plan{border:1px solid #1e2330;border-radius:10px;padding:16px;cursor:pointer;background:#0b0b0d}
-.plan.on{border-color:#5b9cf6;background:#0f1830}
-.plan .n{font-size:12px;letter-spacing:.08em;color:#99a3c4}
+.plan{border:1px solid #424857;border-radius:10px;padding:16px;cursor:pointer;background:#23262e}
+.plan.on{border-color:#7db2ff;background:#2a3654}
+.plan .n{font-size:13px;letter-spacing:.08em;color:#dfe4f0}
 .plan .p{font-size:22px;font-weight:700;margin:4px 0}
-.plan .d{font-size:12px;color:#99a3c4}
+.plan .d{font-size:13px;color:#dfe4f0}
 .who{font-size:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .msg{font-size:13px;margin-top:10px;color:#f0a0a0;white-space:pre-line}
 .ok{color:#8fd19e}
-.note{font-size:12px;color:#7d87a6;margin-top:10px}
+.note{font-size:13px;color:#c2cadc;margin-top:10px}
 .done-head{display:flex;align-items:center;gap:12px}
-.done-ic{width:40px;height:40px;border-radius:50%;background:#16351f;color:#8fd19e;display:flex;align-items:center;justify-content:center;font-size:22px;flex:none;animation:pop .35s ease-out}
+.done-ic{width:40px;height:40px;border-radius:50%;background:#22492d;color:#8fd19e;display:flex;align-items:center;justify-content:center;font-size:22px;flex:none;animation:pop .35s ease-out}
 @keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
 .fadein{animation:fadein .4s ease-out}
 @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
 @media (max-width:560px){.steps{grid-template-columns:1fr}}
-.step{display:block;background:#0b0b0d;border:0.5px solid #2a3245;border-radius:10px;padding:12px 14px;color:#e8eaf0;text-decoration:none;transition:border-color .15s,transform .15s}
+.step{display:block;background:#23262e;border:0.5px solid #4e576c;border-radius:10px;padding:12px 14px;color:#f7f8fc;text-decoration:none;transition:border-color .15s,transform .15s}
 a.step:hover{border-color:#3b6fd8;transform:translateY(-1px)}
-.step .n{font-size:11px;color:#7d87a6}
+.step .n{font-size:12px;color:#c2cadc}
 .step b{display:block;font-size:14px;margin:4px 0 2px}
-.step span{font-size:12px;color:#99a3c4}
+.step span{font-size:13px;color:#dfe4f0}
 .links{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:13px}
-.test{background:#3a2a10;color:#f5c36b;border-radius:8px;padding:8px 12px;font-size:12px;margin-bottom:16px}
+.test{background:#5c461f;color:#f5c36b;border-radius:8px;padding:8px 12px;font-size:13px;margin-bottom:16px}
 #payment-method,#agreement{background:#fff;border-radius:10px;overflow:hidden}
 #agreement{margin-top:10px}
-.done dt{color:#99a3c4;font-size:13px}.done dd{font-size:16px;margin-bottom:8px}
+.done dt{color:#dfe4f0;font-size:13px}.done dd{font-size:16px;margin-bottom:8px}
 .hide{display:none}
 .stat{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
 @media (max-width:520px){.stat{grid-template-columns:1fr}}
-.stat div{background:#0b0b0d;border:0.5px solid #1e2330;border-radius:10px;padding:12px 14px}
-.stat span:not(.badge){display:block;font-size:12px;color:#99a3c4}.stat b{font-size:16px;font-weight:600}
-.badge{display:inline-block;font-size:11px;padding:1px 8px;border-radius:20px;background:#1b2a1e;color:#8fd19e;margin-left:6px;vertical-align:2px}
+.stat div{background:#23262e;border:0.5px solid #424857;border-radius:10px;padding:12px 14px}
+.stat span:not(.badge){display:block;font-size:13px;color:#dfe4f0}.stat b{font-size:16px;font-weight:600}
+.badge{display:inline-block;font-size:12px;padding:1px 8px;border-radius:20px;background:#2d4233;color:#8fd19e;margin-left:6px;vertical-align:2px}
 .cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 @media (max-width:620px){.cmp{grid-template-columns:1fr}}
-.cmp>div{background:#0b0b0d;border:0.5px solid #2a3245;border-radius:10px;padding:14px}
+.cmp>div{background:#23262e;border:0.5px solid #4e576c;border-radius:10px;padding:14px}
 .cmp .hot{border-color:#f5a623}
-.cmp h3{margin:0;font-size:12px;letter-spacing:.06em;color:#99a3c4;font-weight:600}
+.cmp h3{margin:0;font-size:13px;letter-spacing:.06em;color:#dfe4f0;font-weight:600}
 .cmp .pr{font-size:20px;font-weight:800;margin:6px 0 2px}
-.cmp .pr small{font-size:12px;font-weight:400;color:#99a3c4}
-.cmp ul{list-style:none;padding:0;margin:10px 0 0;font-size:12.5px;line-height:1.9;color:#c8cfe0}
+.cmp .pr small{font-size:13px;font-weight:400;color:#dfe4f0}
+.cmp ul{list-style:none;padding:0;margin:10px 0 0;font-size:13.5px;line-height:1.9;color:#eef1f8}
 .cmp li:before{content:"✓ ";color:#8fd19e}
-.badge.warn{background:#3a2a10;color:#f5c36b}
+.badge.warn{background:#5c461f;color:#f5c36b}
 </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18561496445"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-18561496445');
-</script>
 </head>
 <body>
 <div class="wrap">
@@ -91,12 +82,12 @@ a.step:hover{border-color:#3b6fd8;transform:translateY(-1px)}
     <div class="who" style="margin-bottom:12px"><h2 style="margin:0">요금제 비교</h2><button class="btn ghost" id="planClose">닫기</button></div>
     <div class="cmp">
       <div class="hot"><h3>STARTER</h3><div class="pr">연 36만원 <small>부가세 별도</small></div><div class="note" style="margin:0">단독 LTO 드라이브 환경(최대 2대)</div>
-        <ul><li>LTO 드라이브 최대 2대 (LTO-4~LTO-9)</li><li>무제한 테이프</li><li>썸네일 자동 생성</li><li>전체 텍스트 검색</li><li>내장 동영상 플레이어</li><li>이메일 지원</li></ul></div>
+        <ul><li>LTO 드라이브 최대 2대 (LTO-5~LTO-9)</li><li>무제한 테이프</li><li>썸네일 자동 생성</li><li>전체 텍스트 검색</li><li>내장 동영상 플레이어</li><li>이메일 지원</li></ul></div>
       <div><h3>AUTOLOADER</h3><div class="pr">연 72만원 <small>부가세 별도</small></div><div class="note" style="margin:0">테이프 오토로더 / 라이브러리 환경</div>
         <ul><li>LTO 오토로더 / 라이브러리 지원</li><li>LTO 드라이브 수 제한 없음</li><li>자동화된 테이프 슬롯 관리</li><li>일괄 아카이브 및 복원 작업</li><li>고급 검색 및 필터</li><li>우선 지원</li></ul></div>
       <div><h3>ENTERPRISE</h3><div class="pr">맞춤 견적</div><div class="note" style="margin:0">멀티 라이브러리 · 커스텀 배포 · SLA</div>
         <ul><li>복수 테이프 라이브러리</li><li>현장 배포 및 설치</li><li>커스텀 통합 지원</li><li>전용 SLA</li><li>직원 교육 포함</li></ul>
-        <p class="note">견적 상품은 별도 계약·세금계산서로 결제되며, 토스페이먼츠 온라인 카드 결제(PG)를 이용하지 않습니다. <a href="mailto:sales@tapevault.net">영업팀 문의</a></p></div>
+        <p class="note">견적 상품은 별도 계약·세금계산서로 결제되며, 토스페이먼츠 온라인 카드 결제(PG)를 이용하지 않습니다. <a href="mailto:support@tapevault.net">영업팀 문의</a></p></div>
     </div>
   </div>
 
@@ -109,7 +100,7 @@ a.step:hover{border-color:#3b6fd8;transform:translateY(-1px)}
     <p class="note" style="margin-top:0">결제한 라이선스는 로그인한 계정에 적용됩니다. TapeVault 앱과 같은 계정으로 로그인하세요.</p>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <a class="btn" id="goLogin" href="login.html?next=buy.html" style="text-decoration:none">로그인</a>
-      <a class="btn" id="goSignup" href="login.html?mode=signup&next=buy.html" style="text-decoration:none;background:none;border:0.5px solid #2a3245;color:#e8eaf0">회원가입 (1개월 무료 체험)</a>
+      <a class="btn" id="goSignup" href="login.html?mode=signup&next=buy.html" style="text-decoration:none;background:none;border:0.5px solid #4e576c;color:#f7f8fc">회원가입 (1개월 무료 체험)</a>
     </div>
     <div id="loginMsg" class="msg"></div>
   </div>
@@ -132,9 +123,9 @@ a.step:hover{border-color:#3b6fd8;transform:translateY(-1px)}
       <button class="btn" id="payBtn" disabled>결제하기</button>
       <div id="payMsg" class="msg"></div>
     </div>
-    <div class="links" style="margin-top:4px"><a href="how-to-install.html">설치 가이드</a><a href="/#download">앱 다운로드</a><a href="/">홈으로</a><a href="mailto:support@tapevault.net">문의하기</a><a href="#" style="margin-left:auto;color:#99a3c4" onclick="document.getElementById('logout').click();return false">로그아웃</a></div>
+    <div class="links" style="margin-top:4px"><a href="how-to-install.html">설치 가이드</a><a href="/#download">앱 다운로드</a><a href="/">홈으로</a><a href="mailto:support@tapevault.net">문의하기</a><a href="#" style="margin-left:auto;color:#dfe4f0" onclick="document.getElementById('logout').click();return false">로그아웃</a></div>
   </div>
-  <footer style="margin-top:40px;border-top:0.5px solid #1e2330;padding-top:18px;font-size:12px;color:#7d87a6;line-height:1.8">
+  <footer style="margin-top:40px;border-top:0.5px solid #424857;padding-top:18px;font-size:13px;color:#c2cadc;line-height:1.8">
     <a href="refund-policy.html">환불 정책</a> · <a href="terms-of-service.html">이용약관</a> · <a href="privacy-policy.html">개인정보 처리방침</a><br>
     상호: 주식회사 베테랑아이티 · 대표자: 오재화 · 사업자등록번호: 326-86-02786<br>
     통신판매업 신고번호: 2025-서울서초-3564 · 주소: 서울특별시 서초구 서초대로 275, 중앙빌딩 202호25A (서초동)<br>
@@ -190,7 +181,7 @@ async function initShop() {
 async function showBuy(session) {
   user = session.user;
   $('loginCard').classList.add('hide'); $('whoCard').classList.remove('hide');
-  $('who').innerHTML = '<b style="font-size:15px">내 라이선스</b> <span style="color:#99a3c4">· ' + H(user.email) + '</span>';
+  $('who').innerHTML = '<b style="font-size:15px">내 라이선스</b> <span style="color:#dfe4f0">· ' + H(user.email) + '</span>';
   const { data: lic } = await sb.from('licenses').select('license_no,edition,kind,status,expires_at').order('expires_at', { ascending: false }).limit(1);
   const l = lic && lic[0];
   if (l) {
@@ -214,7 +205,7 @@ async function showBuy(session) {
 const price = () => prices.find(x => x.edition === edition) || prices[0];
 function renderPlans() {
   $('plans').innerHTML = prices.map(p => `<div class="plan ${p.edition === edition ? 'on' : ''}" data-ed="${H(p.edition)}">
-    <div class="n">${H(p.edition.toUpperCase())}</div><div class="p">${won(p.supply || p.amount)}<span style="font-size:12px;font-weight:400;color:#99a3c4"> ${p.supply ? '+ 부가세' : ''}</span></div>
+    <div class="n">${H(p.edition.toUpperCase())}</div><div class="p">${won(p.supply || p.amount)}<span style="font-size:13px;font-weight:400;color:#dfe4f0"> ${p.supply ? '+ 부가세' : ''}</span></div>
     ${p.supply ? `<div class="d">결제 금액 ${won(p.amount)} (부가세 ${won(p.amount - p.supply)} 포함)</div>` : ''}
     <div class="d">${H(p.months)}개월 · ${p.edition === 'starter' ? '드라이브 2대까지' : '오토로더·라이브러리, 드라이브 제한 없음'}</div></div>`).join('');
   $('plans').querySelectorAll('.plan').forEach(el => el.onclick = async () => {
@@ -229,23 +220,20 @@ $('planToggle').onclick = (e) => { e.preventDefault(); const p = $('planPanel');
 $('planClose').onclick = () => $('planPanel').classList.add('hide');
 $('logout').onclick = async () => { await sb.auth.signOut(); location.href = location.pathname; };
 
-// 주문은 미리 만들어 둔다. BC카드(ISP/페이북) 등은 PC에서 인증 팝업을 여는데,
-// 클릭 뒤 서버 호출을 await 하고 나서 requestPayment 를 부르면 브라우저가 사용자 클릭으로
-// 인정하지 않아 팝업이 차단된다 → 클릭 핸들러에서는 await 없이 바로 결제창을 연다.
-let order = null, orderJob = null;
-function prepareOrder() {
-  order = null;
-  if (!user || !widgets) return null;
-  const ed = edition;
-  const job = orderJob = (async () => {
+// 주문은 버튼을 누르기 '전에' 미리 만들어 둔다.
+// 클릭 후 await(주문 생성 등)를 거치면 브라우저가 사용자 클릭으로 보지 않아
+// BC카드(ISP/페이북)처럼 새 창을 여는 결제창이 팝업 차단으로 열리지 않는다.
+let order = null, orderErr = null, orderSeq = 0;
+async function prepareOrder() {
+  if (!user || !widgets) return;
+  const seq = ++orderSeq, ed = edition;
+  order = null; orderErr = null;
+  try {
     const { data: o, error } = await sb.rpc('pay_create_order', { p_edition: ed });
     if (error) throw error;
     await widgets.setAmount({ currency: 'KRW', value: o.amount });   // 서버가 정한 금액으로 결제
-    if (orderJob === job && edition === ed) { order = o; $('payBtn').textContent = `${won(o.amount)} 결제하기`; }
-    return o;
-  })();
-  job.catch(e => { if (orderJob === job) { orderJob = null; $('payMsg').textContent = errText(e); } });
-  return job;
+    if (seq === orderSeq) order = { ...o, edition: ed };
+  } catch (e) { if (seq === orderSeq) orderErr = e; }
 }
 
 $('payBtn').onclick = () => {
@@ -255,22 +243,20 @@ $('payBtn').onclick = () => {
     $('loginCard').scrollIntoView({ behavior: 'smooth' });
     return;
   }
-  if (!order) {   // 아직 준비 중이면 끝난 뒤 다시 누르도록 안내
-    $('payMsg').textContent = '결제 준비 중입니다. 잠시 후 다시 눌러 주세요.';
-    if (!orderJob) prepareOrder();
-    return;
-  }
-  const o = order;
+  if (orderErr) { $('payMsg').textContent = errText(orderErr); prepareOrder(); return; }
+  if (!order || order.edition !== edition) { $('payMsg').textContent = '결제를 준비하고 있습니다. 잠시 후 다시 눌러 주세요.'; if (!order) prepareOrder(); return; }
+  const o = order; order = null;            // 주문번호는 한 번만 사용
   $('payBtn').disabled = true;
   const base = location.origin + location.pathname;
-  // await 없이 클릭 이벤트 안에서 곧바로 호출
+  // 클릭 직후 await 없이 바로 호출 (팝업 차단 방지)
   widgets.requestPayment({
     orderId: o.orderId, orderName: o.orderName, customerEmail: o.email,
     successUrl: base + '?result=success', failUrl: base + '?result=fail',
-  }).catch(e => {
+  }).catch((e) => {
     if (e && e.code !== 'USER_CANCEL') $('payMsg').textContent = errText(e);
-    prepareOrder();   // 같은 주문번호를 다시 쓰지 않도록 새 주문
-  }).finally(() => { $('payBtn').disabled = false; });
+    $('payBtn').disabled = false;
+    prepareOrder();                          // 취소·실패 후 새 주문 준비
+  });
 };
 
 // 토스 결제창에서 돌아온 경우
@@ -301,7 +287,7 @@ async function handleReturn(params, session) {
         <a class="step" href="how-to-install.html"><div class="n">2단계</div><b>설치 가이드 →</b><span>설치와 첫 실행 방법</span></a>
         <div class="step"><div class="n">3단계</div><b>같은 계정으로 로그인</b><span>${user ? H(user.email) : '결제한 계정'}</span></div>
       </div>
-      <div class="links"><a href="buy.html">내 라이선스 보기</a><a href="/">홈으로</a><a href="mailto:support@tapevault.net">문의하기</a><a href="#" style="margin-left:auto;color:#99a3c4" onclick="document.getElementById('logout').click();return false">로그아웃</a></div>`;
+      <div class="links"><a href="buy.html">내 라이선스 보기</a><a href="/">홈으로</a><a href="mailto:support@tapevault.net">문의하기</a><a href="#" style="margin-left:auto;color:#dfe4f0" onclick="document.getElementById('logout').click();return false">로그아웃</a></div>`;
     history.replaceState(null, '', location.pathname);
     return true;
   } catch (e) {
