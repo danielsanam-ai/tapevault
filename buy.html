@@ -140,8 +140,8 @@ a.step:hover{border-color:#3b6fd8;transform:translateY(-1px)}
 const CFG = {
   supabaseUrl: 'https://udqtrnfkaapzgqruurgq.supabase.co',
   supabaseAnonKey: 'sb_publishable_NhIFmUT1GboO1jLTpxFeEg_E3B9W5F0',
-  // 토스 결제위젯 클라이언트 키. 지금은 토스 문서용 공개 예제 키 — 전자결제 신청이 끝나면 내 상점 키로 바꾼다
-  tossClientKey: 'test_gck_c19wcWaCHbleR370h92ltLhOvbQJgGILdw',
+  // 토스 결제위젯 라이브 클라이언트 키 — 공개 값. 짝이 되는 시크릿 키(live_gsk_)는 Worker 에만 둔다
+  tossClientKey: 'live_gck_c19wcWaxJdmvYZEIaei6GPy73yjur1b5db',
   workerUrl: 'https://support-mail.daniel-sanam.workers.dev',
 };
 const $ = id => document.getElementById(id);
