@@ -297,6 +297,7 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
 .dl-manual a:hover{text-decoration:underline}
 .dl-manual a.dl-manual-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid #f5a623;border-radius:8px;color:#f5a623;font-weight:700;background:#372e19}
 .dl-manual a.dl-manual-btn:hover{background:#f5a623;color:#111318;text-decoration:none}
+.intl-note{max-width:720px;margin:16px auto 0;font-size:13px;line-height:1.7;color:#c2cadc}
 </style>
 <script src="lang.js"></script>
 </head>
@@ -645,7 +646,7 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
       <div class="pc-badge" data-i18n="pc_popular">Most popular</div>
       <div class="pc-plan">STARTER</div>
       <div><span class="pc-amount" data-i18n="p1_amt">$30</span><span class="pc-unit" data-i18n="pc_mo"> / month</span></div>
-      <div class="pc-note" data-i18n="p1_note">Billed as one 12-month license: ₩360,000 + VAT (Korean cards)</div>
+      <div class="pc-note" data-i18n="p1_note">Billed as one 12-month license: $360, with no Korean VAT. In Korea: ₩360,000 + VAT.</div>
       <div class="pc-desc" data-i18n="p1_desc">For standalone LTO drive setups (up to 2 drives) — broadcast studios, small archives, individual operators.</div>
       <hr class="pc-hr">
       <div class="pc-feat" data-i18n="p1_f1">Up to 2 LTO drives (LTO-5 to LTO-9)</div>
@@ -660,7 +661,7 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
     <div class="pc">
       <div class="pc-plan">AUTOLOADER</div>
       <div><span class="pc-amount" data-i18n="p2_amt">$60</span><span class="pc-unit" data-i18n="pc_mo"> / month</span></div>
-      <div class="pc-note" data-i18n="p2_note">Billed as one 12-month license: ₩720,000 + VAT (Korean cards)</div>
+      <div class="pc-note" data-i18n="p2_note">Billed as one 12-month license: $720, with no Korean VAT. In Korea: ₩720,000 + VAT.</div>
       <div class="pc-desc" data-i18n="p2_desc">For tape autoloader / library setups — TV stations, hospitals, government archives.</div>
       <hr class="pc-hr">
       <div class="pc-feat" data-i18n="p2_f1">LTO autoloader / library control (Windows)</div>
@@ -693,8 +694,9 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
       <span class="price-trust-item" data-i18n="tr2">Nothing to cancel</span>
       <span class="price-trust-item" data-i18n="tr3">Your data always yours</span>
       <span class="price-trust-item" data-i18n="tr4">Offline after activation</span>
-      <span class="price-trust-item" data-i18n="tr5">Payments via Toss Payments · VAT excluded</span>
+      <span class="price-trust-item" data-i18n="tr5">Payments via Toss Payments</span>
     </div>
+    <p class="intl-note" data-i18n="intl_note">Paying from outside Korea? Checkout in US dollars is being set up. Until it opens, email <a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a> to purchase. Prices outside Korea carry no Korean VAT and do not include taxes that may apply in your country.</p>
   </div>
 </section>
 
@@ -855,6 +857,7 @@ function proceedDownload() {
 
 const T = {
   en: {
+    intl_note:'Paying from outside Korea? Checkout in US dollars is being set up. Until it opens, email <a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a> to purchase. Prices outside Korea carry no Korean VAT and do not include taxes that may apply in your country.',
     dl_manual:'<a class="dl-manual-btn" href="docs/TapeVault-User-Manual-en.pdf" download>📄 User manual (PDF)</a><a href="manual.html">Read it online →</a>',
     hs_q:'New to TapeVault?',
     hs_a:'Sign up and get a 1-month trial license — no credit card →',
@@ -869,8 +872,8 @@ const T = {
     st3_d:'Sign in with the same account and your 1-month trial license is applied — every feature included.',
     dlw_signup:'👤 The app asks for an account at first launch. <a href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1">Sign up now</a>, or register inside the app.',
     cta_signup:'Or create your account first →',
-    p1_note:'Billed as one 12-month license: ₩360,000 + VAT (Korean cards)',
-    p2_note:'Billed as one 12-month license: ₩720,000 + VAT (Korean cards)',
+    p1_note:'Billed as one 12-month license: $360, with no Korean VAT. In Korea: ₩360,000 + VAT.',
+    p2_note:'Billed as one 12-month license: $720, with no Korean VAT. In Korea: ₩720,000 + VAT.',
     dlw_verify:'🔐 Tip: before running the file, compare the SHA-256 checksum listed under the download buttons with your download — see the <a href="how-to-install.html#verify">install guide</a>.',
     p1_amt:'$30', p2_amt:'$60',
     biz_info:'Company: Veteran IT Co., Ltd. · CEO: 오재화 · Business Reg. No.: 326-86-02786<br>E-commerce Business Reg. No.: 2025-서울서초-3564 · Address: Jungang Bldg. Unit 202-25A, 275 Seocho-daero, Seocho-gu, Seoul, Republic of Korea<br>Tel: 070-8080-4664 · Email: <a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>',
@@ -920,7 +923,7 @@ const T = {
     p3_amt:'Custom', p3_desc:'For large institutions with multi-library setups, custom deployment, and SLA requirements.',
     p3_f1:'Multiple tape libraries', p3_f2:'On-site deployment &amp; setup', p3_f3:'Custom integration support', p3_f4:'Dedicated SLA', p3_f5:'Staff training included', p3_btn:'Contact sales', p3_note:'Quoted plans are invoiced separately and are not paid through the online card checkout (Toss Payments).',
     trust_txt:'Sign up and get a <strong style="color:#eef1f8">1-month trial license</strong> with full features on every plan. No credit card required.',
-    tr1:'No automatic renewal', tr2:'Nothing to cancel', tr3:'Your data always yours', tr4:'Offline after activation', tr5:'Payments via Toss Payments · VAT excluded',
+    tr1:'No automatic renewal', tr2:'Nothing to cancel', tr3:'Your data always yours', tr4:'Offline after activation', tr5:'Payments via Toss Payments',
     faq_label:'FAQ', faq_title:'Questions before buying?',
     faq1_q:'Does TapeVault work without an internet connection?', faq1_a:'Yes. TapeVault is fully offline after the initial license activation. No ongoing internet connection is required. This makes it ideal for air-gapped environments in broadcast, defense, and medical sectors.',
     faq2_q:'What happens to my data when my license expires?', faq2_a:'Your archived data on tape is always yours — it\'s stored in standard LTFS format, which is readable by any LTFS-compatible software. After a license expires, TapeVault asks you to renew before it can be used again; nothing on your tapes or in the catalog stored on your computer is deleted.',
@@ -946,6 +949,7 @@ const T = {
     dl_or:'or', dl_mac_btn:'🍎 Download for macOS (Apple Silicon)', dl_mac_note:'v1.2.9 · Apple Silicon (M1 or later) · ~116 MB'
   },
   ko: {
+    intl_note:'해외에서 결제하시나요? 달러 결제는 준비 중이며, 열리기 전까지는 <a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a>으로 구매를 문의해 주세요. 해외 가격(Starter 연 $360, AutoLoader 연 $720)에는 한국 부가세가 붙지 않으며, 구매자 국가에서 부과될 수 있는 세금은 포함되어 있지 않습니다.',
     dl_manual:'<a class="dl-manual-btn" href="docs/TapeVault-User-Manual-ko.pdf" download>📄 사용자 매뉴얼 PDF 내려받기</a><a href="manual.html">웹에서 보기 →</a>',
     hs_q:'처음이신가요?',
     hs_a:'회원가입만 해도 1개월 체험 라이선스 — 신용카드 불필요 →',
@@ -1037,6 +1041,7 @@ const T = {
     dl_or:'또는', dl_mac_btn:'🍎 macOS용 다운로드 (Apple Silicon)', dl_mac_note:'v1.2.9 · Apple Silicon(M1 이후) · ~116 MB'
   },
   ja: {
+    intl_note:'韓国国外からのお支払いですか？米ドルでの決済は現在準備中です。開始までは<a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a>までご購入をお問い合わせください。韓国国外向けの価格には韓国の付加価値税はかからず、お客様の国で課される可能性のある税金は含まれていません。',
     dl_manual:'<a class="dl-manual-btn" href="docs/TapeVault-User-Manual-ja.pdf" download>📄 ユーザーマニュアル（PDF）</a><a href="manual.html">オンラインで読む →</a>',
     hs_q:'初めての方へ：',
     hs_a:'会員登録だけで1か月体験ライセンス — クレジットカード不要 →',
@@ -1051,8 +1056,8 @@ const T = {
     st3_d:'同じアカウントでログインすると1か月体験ライセンスが適用され、すべての機能を利用できます。',
     dlw_signup:'👤 アプリの初回起動時にアカウントが必要です。<a href="login.html?mode=signup&amp;next=index.html%3Fwelcome%3D1">今すぐ登録</a>するか、アプリ内で登録できます。',
     cta_signup:'または、先にアカウントを作成 →',
-    p1_note:'12か月ライセンスを一括払い：360,000ウォン＋VAT（韓国国内カード）',
-    p2_note:'12か月ライセンスを一括払い：720,000ウォン＋VAT（韓国国内カード）',
+    p1_note:'12か月ライセンスを一括払い：$360（韓国の付加価値税なし）。韓国国内：360,000ウォン＋VAT。',
+    p2_note:'12か月ライセンスを一括払い：$720（韓国の付加価値税なし）。韓国国内：720,000ウォン＋VAT。',
     dlw_verify:'🔐 ヒント：実行する前に、ダウンロードボタンの下に表示されているSHA-256チェックサムとダウンロードしたファイルの値を比較してください — <a href="how-to-install.html#verify">インストールガイド</a>参照。',
     p1_amt:'$30', p2_amt:'$60',
     biz_info:'会社名：株式会社ベテランIT（Veteran IT Co., Ltd.） · 代表者：오재화 · 事業者登録番号：326-86-02786<br>通信販売業申告番号：2025-서울서초-3564 · 所在地：大韓民国ソウル特別市瑞草区瑞草大路275、中央ビル202号25A<br>電話：070-8080-4664 · メール：<a href="mailto:support@tapevault.net" style="color:#d3d9e8;text-decoration:none">support@tapevault.net</a>',
@@ -1102,7 +1107,7 @@ const T = {
     p3_amt:'カスタム', p3_desc:'大規模機関 — マルチライブラリ・カスタム展開・SLA要件がある環境向け。',
     p3_f1:'複数テープライブラリ', p3_f2:'オンサイト展開＆セットアップ', p3_f3:'カスタム統合サポート', p3_f4:'専用SLA', p3_f5:'社員トレーニング込み', p3_btn:'営業に問い合わせ', p3_note:'お見積りプランは別途契約・請求となり、オンラインカード決済（Toss Payments）は利用しません。',
     trust_txt:'会員登録だけで、すべてのプランの全機能を使える<strong style="color:#eef1f8">1か月体験ライセンス</strong>を進呈します。クレジットカードは不要です。',
-    tr1:'自動更新なし', tr2:'解約手続き不要', tr3:'データは常にあなたのもの', tr4:'アクティベーション後オフライン', tr5:'Toss Payments決済 · VAT別途',
+    tr1:'自動更新なし', tr2:'解約手続き不要', tr3:'データは常にあなたのもの', tr4:'アクティベーション後オフライン', tr5:'Toss Payments決済',
     faq_label:'よくある質問', faq_title:'購入前のよくある質問',
     faq1_q:'TapeVaultはインターネットなしで使えますか？', faq1_a:'はい。TapeVaultは初回ライセンスアクティベーション後は完全オフラインで動作します。継続的なインターネット接続は不要です。放送・防衛・医療のエアギャップ環境に最適です。',
     faq2_q:'ライセンスの有効期限が切れるとデータはどうなりますか？', faq2_a:'テープ上のアーカイブデータは常にあなたのものです。標準LTFSフォーマットで保存されており、LTFS対応ソフトなら読み取り可能です。ライセンスが失効すると、更新するまでTapeVaultは利用できませんが、テープやPCに保存されたカタログデータが削除されることはありません。',
