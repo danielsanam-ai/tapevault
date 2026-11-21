@@ -298,6 +298,37 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
 .dl-manual a.dl-manual-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid #f5a623;border-radius:8px;color:#f5a623;font-weight:700;background:#372e19}
 .dl-manual a.dl-manual-btn:hover{background:#f5a623;color:#111318;text-decoration:none}
 .intl-note{max-width:720px;margin:16px auto 0;font-size:13px;line-height:1.7;color:#c2cadc}
+/* setup at a glance (photos with callouts) */
+.setup-sec{padding:72px 48px;border-top:0.5px solid #424857}
+.setup-head{text-align:center;margin-bottom:36px}
+.setup-head .sec-sub{max-width:640px}
+.setup-card{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:32px;align-items:center;max-width:1100px;margin:0 auto 20px;background:#2a2e37;border:0.5px solid #4d5364;border-radius:16px;padding:20px}
+.setup-card.wide{grid-template-columns:minmax(0,1fr);gap:22px}
+.setup-card.wide .setup-info{padding:0 8px 8px}
+.setup-card.wide .setup-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.setup-photo{position:relative;margin:0;border-radius:12px;overflow:hidden}
+.setup-photo img{display:block;width:100%;height:auto}
+.setup-pin{position:absolute;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 5px;border-radius:20px;background:rgba(17,19,24,.86);border:1px solid #f5a623;color:#ffffff;font-size:13px;font-weight:700;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.setup-pin b,.setup-list li::before{width:22px;height:22px;border-radius:50%;background:#f5a623;color:#111318;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.setup-pin b{animation:setupPulse 2.4s ease-out infinite}
+@keyframes setupPulse{0%{box-shadow:0 0 0 0 rgba(245,166,35,.6)}70%,100%{box-shadow:0 0 0 9px rgba(245,166,35,0)}}
+.setup-info{padding:8px 12px 8px 0;min-width:0}
+.setup-tag{display:inline-block;font-size:12px;font-weight:700;color:#f5a623;border:1px solid #f5a623;border-radius:12px;padding:3px 11px;margin-bottom:16px;text-decoration:none}
+.setup-list{list-style:none;counter-reset:su;display:flex;flex-direction:column;gap:16px}
+.setup-list li{counter-increment:su;position:relative;padding-left:34px}
+.setup-list li::before{content:counter(su);position:absolute;left:0;top:1px}
+.setup-list strong{display:block;font-size:16px;font-weight:700;color:#ffffff;margin-bottom:3px}
+.setup-list span{display:block;font-size:13.5px;line-height:1.7;color:#dfe4f0}
+.setup-note{max-width:1100px;margin:4px auto 0;text-align:center;font-size:12px;line-height:1.6;color:#aab4ce}
+@media (max-width:860px){
+  .setup-sec{padding:48px 20px}
+  .setup-card{grid-template-columns:1fr;gap:18px;padding:14px}
+  .setup-info,.setup-card.wide .setup-info{padding:0 4px 6px}
+  .setup-card.wide .setup-list{grid-template-columns:minmax(0,1fr);gap:16px}
+  .setup-pin{font-size:11px;padding:3px 9px 3px 3px;gap:5px}
+  .setup-pin b{width:18px;height:18px;font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){.setup-pin b{animation:none}}
 </style>
 <script src="lang.js"></script>
 </head>
@@ -401,6 +432,47 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
     <div class="stat-item"><div class="stat-num">100<sup>%</sup></div><div class="stat-label" data-i18n="stat4">Offline after activation</div></div>
   </div>
 </div>
+
+<section class="setup-sec" id="setup">
+  <div class="setup-head">
+    <div class="sec-label" data-i18n="su_label">Setup at a glance</div>
+    <div class="sec-title" data-i18n="su_title">This is what a TapeVault setup looks like</div>
+    <p class="sec-sub" data-i18n="su_sub">TapeVault is a program you install on a PC or Mac. It drives your LTO tape hardware and remembers which file is on which tape.</p>
+  </div>
+  <div class="setup-card">
+    <figure class="setup-photo">
+      <img src="img/setup-desk.jpg" width="1024" height="874" loading="lazy" alt="A desk with a laptop running TapeVault, an external LTO tape drive with a cartridge in the slot, and LTO tape cartridges">
+      <span class="setup-pin" style="left:57.6%;top:11.0%"><b>1</b><span data-i18n="su_p1">TapeVault</span></span>
+      <span class="setup-pin" style="left:22.7%;top:42.3%"><b>2</b><span data-i18n="su_p2">LTO drive</span></span>
+      <span class="setup-pin" style="left:42.0%;top:92.7%"><b>3</b><span data-i18n="su_p3">LTO tapes</span></span>
+    </figure>
+    <div class="setup-info">
+      <a class="setup-tag" href="#pricing" data-i18n="su_tag">Single-drive setup · Starter</a>
+      <ol class="setup-list">
+        <li><strong data-i18n="su_i1_t">TapeVault on your PC or Mac</strong><span data-i18n="su_i1_d">Drag your footage in, write it to tape, verify it and search for it later — all from this one window. The screen in the photo is the real TapeVault.</span></li>
+        <li><strong data-i18n="su_i2_t">LTO tape drive</strong><span data-i18n="su_i2_d">The device that reads and writes tapes, connected to the computer by cable. Starter works with up to two drives (LTO-5 to LTO-9).</span></li>
+        <li><strong data-i18n="su_i3_t">LTO tapes</strong><span data-i18n="su_i3_d">One LTO-9 tape holds 18 TB (uncompressed). Finished tapes go on a shelf; TapeVault keeps the catalog and thumbnails, so you can find a file without loading every tape.</span></li>
+      </ol>
+    </div>
+  </div>
+  <div class="setup-card wide">
+    <figure class="setup-photo">
+      <img src="img/setup-library.jpg" width="1376" height="768" loading="lazy" alt="A machine room with rack-mounted LTO tape libraries, a tape shelf, and a desk with a monitor running TapeVault">
+      <span class="setup-pin" style="left:66.3%;top:31.0%"><b>1</b><span data-i18n="su2_p1">TapeVault</span></span>
+      <span class="setup-pin" style="left:29.1%;top:39.1%"><b>2</b><span data-i18n="su2_p2">Tape library</span></span>
+      <span class="setup-pin" style="left:58.1%;top:89.6%"><b>3</b><span data-i18n="su2_p3">LTO tapes</span></span>
+    </figure>
+    <div class="setup-info">
+      <a class="setup-tag" href="#pricing" data-i18n="su2_tag">Tape library setup · AutoLoader</a>
+      <ol class="setup-list">
+        <li><strong data-i18n="su2_i1_t">TapeVault controls the library</strong><span data-i18n="su2_i1_d">From the computer, TapeVault works with the slots and drives of the library. The left monitor in the photo shows the real TapeVault.</span></li>
+        <li><strong data-i18n="su2_i2_t">Tape library (autoloader)</strong><span data-i18n="su2_i2_d">One unit holds many tape slots, one or more drives, and a robot that moves tapes between them. AutoLoader has no limit on the number of drives.</span></li>
+        <li><strong data-i18n="su2_i3_t">Tapes and the storage shelf</strong><span data-i18n="su2_i3_d">Tapes taken out of the library go on the shelf. The catalog stays in TapeVault, so you only put back the tape that holds the file you need.</span></li>
+      </ol>
+    </div>
+  </div>
+  <p class="setup-note" data-i18n="su_note">Illustrative images created with AI. Drives, libraries and tapes are separate products and are not included with TapeVault.</p>
+</section>
 
 <section class="pain-sec" id="pain">
   <div class="pain-head">
@@ -664,7 +736,7 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
       <div class="pc-note" data-i18n="p2_note">Billed as one 12-month license: $720, with no Korean VAT. In Korea: ₩720,000 + VAT.</div>
       <div class="pc-desc" data-i18n="p2_desc">For tape autoloader / library setups — TV stations, hospitals, government archives.</div>
       <hr class="pc-hr">
-      <div class="pc-feat" data-i18n="p2_f1">LTO autoloader / library control (Windows)</div>
+      <div class="pc-feat" data-i18n="p2_f1">LTO autoloader / library control</div>
       <div class="pc-feat" data-i18n="p2_f2">No limit on the number of LTO drives</div>
       <div class="pc-feat" data-i18n="p2_f3">Automated tape slot management</div>
       <div class="pc-feat" data-i18n="p2_f4">Everything in Starter</div>
@@ -710,7 +782,7 @@ footer{padding:40px 48px;border-top:0.5px solid #313a54;background:#1d2027}
     <div class="faq-item"><div class="faq-q"><span data-i18n="faq2_q">What happens to my data when my license expires?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq2_a">Your archived data on tape is always yours — it's stored in standard LTFS format, which is readable by any LTFS-compatible software. After a license expires, TapeVault asks you to renew before it can be used again; nothing on your tapes or in the catalog stored on your computer is deleted.</div></div>
     <div class="faq-item"><div class="faq-q"><span data-i18n="faq3_q">Is there automatic renewal?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq3_a">No. There is no automatic renewal. TapeVault does not store credit card details. When your license expires, you can renew manually at any time from the purchase page.</div></div>
     <div class="faq-item"><div class="faq-q"><span data-i18n="faq4_q">Which LTO generations are supported?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq4_a">TapeVault supports LTO-5 through LTO-9 drives. LTO-10 support is planned. Both standalone drives and autoloaders (AUTOLOADER plan) are supported.</div></div>
-    <div class="faq-item"><div class="faq-q"><span data-i18n="faq5_q">What is the difference between Starter and AutoLoader?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq5_a">Starter is designed for standalone LTO drives (up to 2 drives). AutoLoader removes the drive limit and adds control of tape autoloaders and libraries. Library control is currently available on Windows; on macOS, AutoLoader removes the drive limit only.</div></div>
+    <div class="faq-item"><div class="faq-q"><span data-i18n="faq5_q">What is the difference between Starter and AutoLoader?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq5_a">Starter is designed for standalone LTO drives (up to 2 drives). AutoLoader removes the drive limit and adds control of tape autoloaders and libraries. If you have a tape library (e.g. Quantum, Overland), you need the AutoLoader plan.</div></div>
     <div class="faq-item"><div class="faq-q"><span data-i18n="faq6_q">Can I install TapeVault on multiple computers?</span><span class="ico">+</span></div><div class="faq-a" data-i18n="faq6_a">A license is tied to the computer it was activated on. How many computers you can register depends on the licenses you bought. To move a license to a different computer, contact <a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a>.</div></div>
   </div>
 </section>
@@ -857,6 +929,30 @@ function proceedDownload() {
 
 const T = {
   en: {
+    su_label:'Setup at a glance',
+    su_title:'This is what a TapeVault setup looks like',
+    su_sub:'TapeVault is a program you install on a PC or Mac. It drives your LTO tape hardware and remembers which file is on which tape.',
+    su_tag:'Single-drive setup · Starter',
+    su_p1:'TapeVault',
+    su_p2:'LTO drive',
+    su_p3:'LTO tapes',
+    su_i1_t:'TapeVault on your PC or Mac',
+    su_i1_d:'Drag your footage in, write it to tape, verify it and search for it later — all from this one window. The screen in the photo is the real TapeVault.',
+    su_i2_t:'LTO tape drive',
+    su_i2_d:'The device that reads and writes tapes, connected to the computer by cable. Starter works with up to two drives (LTO-5 to LTO-9).',
+    su_i3_t:'LTO tapes',
+    su_i3_d:'One LTO-9 tape holds 18 TB (uncompressed). Finished tapes go on a shelf; TapeVault keeps the catalog and thumbnails, so you can find a file without loading every tape.',
+    su2_tag:'Tape library setup · AutoLoader',
+    su2_p1:'TapeVault',
+    su2_p2:'Tape library',
+    su2_p3:'LTO tapes',
+    su2_i1_t:'TapeVault controls the library',
+    su2_i1_d:'From the computer, TapeVault works with the slots and drives of the library. The left monitor in the photo shows the real TapeVault.',
+    su2_i2_t:'Tape library (autoloader)',
+    su2_i2_d:'One unit holds many tape slots, one or more drives, and a robot that moves tapes between them. AutoLoader has no limit on the number of drives.',
+    su2_i3_t:'Tapes and the storage shelf',
+    su2_i3_d:'Tapes taken out of the library go on the shelf. The catalog stays in TapeVault, so you only put back the tape that holds the file you need.',
+    su_note:'Illustrative images created with AI. Drives, libraries and tapes are separate products and are not included with TapeVault.',
     intl_note:'Paying from outside Korea? Checkout in US dollars is being set up. Until it opens, email <a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a> to purchase. Prices outside Korea carry no Korean VAT and do not include taxes that may apply in your country.',
     dl_manual:'<a class="dl-manual-btn" href="docs/TapeVault-User-Manual-en.pdf" download>📄 User manual (PDF)</a><a href="manual.html">Read it online →</a>',
     hs_q:'New to TapeVault?',
@@ -919,7 +1015,7 @@ const T = {
     p1_desc:'For standalone LTO drive setups (up to 2 drives) — broadcast studios, small archives, individual operators.',
     p1_f1:'Up to 2 LTO drives (LTO-5 to LTO-9)', p1_f2:'Unlimited tapes', p1_f3:'Auto thumbnail generation', p1_f4:'Full-text search', p1_f5:'In-app video preview', p1_f6:'Email support',
     p2_desc:'For tape autoloader / library setups — TV stations, hospitals, government archives.',
-    p2_f1:'LTO autoloader / library control (Windows)', p2_f2:'No limit on the number of LTO drives', p2_f3:'Automated tape slot management', p2_f4:'Everything in Starter', p2_f5:'Duplicate copies and spanning across drives', p2_f6:'Priority support',
+    p2_f1:'LTO autoloader / library control', p2_f2:'No limit on the number of LTO drives', p2_f3:'Automated tape slot management', p2_f4:'Everything in Starter', p2_f5:'Duplicate copies and spanning across drives', p2_f6:'Priority support',
     p3_amt:'Custom', p3_desc:'For large institutions with multi-library setups, custom deployment, and SLA requirements.',
     p3_f1:'Multiple tape libraries', p3_f2:'On-site deployment &amp; setup', p3_f3:'Custom integration support', p3_f4:'Dedicated SLA', p3_f5:'Staff training included', p3_btn:'Contact sales', p3_note:'Quoted plans are invoiced separately and are not paid through the online card checkout (Toss Payments).',
     trust_txt:'Sign up and get a <strong style="color:#eef1f8">1-month trial license</strong> with full features on every plan. No credit card required.',
@@ -929,7 +1025,7 @@ const T = {
     faq2_q:'What happens to my data when my license expires?', faq2_a:'Your archived data on tape is always yours — it\'s stored in standard LTFS format, which is readable by any LTFS-compatible software. After a license expires, TapeVault asks you to renew before it can be used again; nothing on your tapes or in the catalog stored on your computer is deleted.',
     faq3_q:'Is there automatic renewal?', faq3_a:'No. There is no automatic renewal. TapeVault does not store credit card details. When your license expires, you can renew manually at any time from the purchase page.',
     faq4_q:'Which LTO generations are supported?', faq4_a:'TapeVault supports LTO-5 through LTO-9 drives. LTO-10 support is planned. Both standalone drives and autoloaders (AUTOLOADER plan) are supported.',
-    faq5_q:'What is the difference between Starter and AutoLoader?', faq5_a:'Starter is designed for standalone LTO drives (up to 2 drives). AutoLoader removes the drive limit and adds control of tape autoloaders and libraries. Library control is currently available on Windows; on macOS, AutoLoader removes the drive limit only.',
+    faq5_q:'What is the difference between Starter and AutoLoader?', faq5_a:'Starter is designed for standalone LTO drives (up to 2 drives). AutoLoader removes the drive limit and adds control of tape autoloaders and libraries. If you have a tape library (e.g. Quantum, Overland), you need the AutoLoader plan.',
     faq6_q:'Can I install TapeVault on multiple computers?', faq6_a:'A license is tied to the computer it was activated on. How many computers you can register depends on the licenses you bought. To move a license to a different computer, contact <a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a>.',
     cta_h2:'Stop searching tapes manually.', cta_p:'Download TapeVault and find any file in 30 seconds — starting today.',
     cta_btn:'⬇ Download — 1-month trial, then annual license', cta_note:'Windows 10 / 11 · macOS · 1-month trial with every feature · annual license · LTO-5 to LTO-9',
@@ -949,6 +1045,30 @@ const T = {
     dl_or:'or', dl_mac_btn:'🍎 Download for macOS (Apple Silicon)', dl_mac_note:'v1.2.9 · Apple Silicon (M1 or later) · ~116 MB'
   },
   ko: {
+    su_label:'구성 한눈에 보기',
+    su_title:'TapeVault는 이렇게 쓰입니다',
+    su_sub:'TapeVault는 PC·Mac에 설치하는 프로그램입니다. LTO 테이프 장비를 제어하고, 어떤 파일이 어느 테이프에 있는지 기억합니다.',
+    su_tag:'단독 드라이브 구성 · Starter',
+    su_p1:'TapeVault',
+    su_p2:'LTO 드라이브',
+    su_p3:'LTO 테이프',
+    su_i1_t:'PC·Mac에 설치한 TapeVault',
+    su_i1_d:'촬영 원본을 끌어다 놓고, 테이프에 기록하고, 검증하고, 나중에 찾는 일을 모두 이 화면에서 합니다. 사진 속 화면은 실제 TapeVault입니다.',
+    su_i2_t:'LTO 테이프 드라이브',
+    su_i2_d:'테이프를 읽고 쓰는 장비이며 케이블로 컴퓨터에 연결합니다. Starter는 드라이브 2대까지 쓸 수 있습니다(LTO-5 ~ LTO-9).',
+    su_i3_t:'LTO 테이프',
+    su_i3_d:'LTO-9 테이프 한 개에 18TB(비압축 기준)가 들어갑니다. 기록이 끝난 테이프는 선반에 보관하고, 목록과 썸네일은 TapeVault에 남아 테이프를 일일이 넣지 않아도 파일을 찾을 수 있습니다.',
+    su2_tag:'테이프 라이브러리 구성 · AutoLoader',
+    su2_p1:'TapeVault',
+    su2_p2:'테이프 라이브러리',
+    su2_p3:'LTO 테이프',
+    su2_i1_t:'TapeVault가 라이브러리를 제어합니다',
+    su2_i1_d:'컴퓨터의 TapeVault에서 라이브러리의 슬롯과 드라이브를 다룹니다. 사진 속 왼쪽 모니터는 실제 TapeVault 화면입니다.',
+    su2_i2_t:'테이프 라이브러리(오토로더)',
+    su2_i2_d:'여러 개의 테이프 슬롯과 드라이브, 테이프를 옮기는 로봇이 한 장비에 들어 있습니다. AutoLoader는 드라이브 수에 제한이 없습니다.',
+    su2_i3_t:'테이프와 보관 선반',
+    su2_i3_d:'라이브러리에서 꺼낸 테이프는 선반에 보관합니다. 어느 테이프에 무엇이 있는지는 TapeVault에 남아 있어, 필요한 파일이 든 테이프만 다시 넣으면 됩니다.',
+    su_note:'이해를 돕기 위해 AI로 만든 연출 이미지입니다. 드라이브·라이브러리·테이프는 별도 제품이며 TapeVault에 포함되지 않습니다.',
     intl_note:'해외에서 결제하시나요? 달러 결제는 준비 중이며, 열리기 전까지는 <a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a>으로 구매를 문의해 주세요. 해외 가격(Starter 연 $360, AutoLoader 연 $720)에는 한국 부가세가 붙지 않으며, 구매자 국가에서 부과될 수 있는 세금은 포함되어 있지 않습니다.',
     dl_manual:'<a class="dl-manual-btn" href="docs/TapeVault-User-Manual-ko.pdf" download>📄 사용자 매뉴얼 PDF 내려받기</a><a href="manual.html">웹에서 보기 →</a>',
     hs_q:'처음이신가요?',
@@ -1011,7 +1131,7 @@ const T = {
     p1_desc:'단독 LTO 드라이브 환경(최대 2대) — 방송 스튜디오, 소규모 아카이브, 개인 운영자.',
     p1_f1:'LTO 드라이브 최대 2대 (LTO-5~LTO-9)', p1_f2:'무제한 테이프', p1_f3:'썸네일 자동 생성', p1_f4:'전체 텍스트 검색', p1_f5:'앱 안에서 동영상 미리보기', p1_f6:'이메일 지원',
     p2_desc:'테이프 오토로더 / 라이브러리 환경 — TV 방송국, 병원, 정부 아카이브.',
-    p2_f1:'LTO 오토로더 / 라이브러리 제어 (Windows)', p2_f2:'LTO 드라이브 수 제한 없음', p2_f3:'자동화된 테이프 슬롯 관리', p2_f4:'Starter의 모든 기능 포함', p2_f5:'여러 드라이브로 복본·이어쓰기', p2_f6:'우선 지원',
+    p2_f1:'LTO 오토로더 / 라이브러리 제어', p2_f2:'LTO 드라이브 수 제한 없음', p2_f3:'자동화된 테이프 슬롯 관리', p2_f4:'Starter의 모든 기능 포함', p2_f5:'여러 드라이브로 복본·이어쓰기', p2_f6:'우선 지원',
     p3_amt:'맞춤 견적', p3_desc:'대규모 기관 — 멀티 라이브러리, 커스텀 배포, SLA 요건이 있는 환경.',
     p3_f1:'복수 테이프 라이브러리', p3_f2:'현장 배포 및 설치', p3_f3:'커스텀 통합 지원', p3_f4:'전용 SLA', p3_f5:'직원 교육 포함', p3_btn:'영업팀 문의', p3_note:'견적 상품은 별도 계약·세금계산서로 결제되며, 토스페이먼츠 온라인 카드 결제(PG)를 이용하지 않습니다.',
     trust_txt:'회원가입만 해도 모든 요금제의 전체 기능을 쓸 수 있는 <strong style="color:#eef1f8">1개월 체험 라이선스</strong>를 드립니다. 신용카드는 필요 없습니다.',
@@ -1021,7 +1141,7 @@ const T = {
     faq2_q:'라이선스가 만료되면 데이터는 어떻게 되나요?', faq2_a:'테이프에 보관된 데이터는 항상 귀하의 것입니다 — 표준 LTFS 형식으로 저장되어 LTFS 호환 소프트웨어라면 모두 읽을 수 있습니다. 라이선스가 만료되면 갱신하기 전까지 TapeVault를 사용할 수 없지만, 테이프와 PC에 저장된 카탈로그 데이터는 삭제되지 않습니다.',
     faq3_q:'자동 갱신이 있나요?', faq3_a:'없습니다. 자동 갱신 없음. TapeVault는 신용카드 정보를 저장하지 않습니다. 라이선스가 만료되면 구매 페이지에서 언제든지 수동으로 갱신하실 수 있습니다.',
     faq4_q:'어떤 LTO 세대를 지원하나요?', faq4_a:'TapeVault는 LTO-5~LTO-9 드라이브를 지원합니다. LTO-10 지원은 예정되어 있습니다. 단독 드라이브와 오토로더(AUTOLOADER 요금제) 모두 지원합니다.',
-    faq5_q:'Starter와 AutoLoader의 차이는 무엇인가요?', faq5_a:'Starter는 단독 LTO 드라이브(최대 2대)용입니다. AutoLoader는 드라이브 수 제한이 없고 테이프 오토로더·라이브러리 제어를 지원합니다. 라이브러리 제어는 현재 Windows에서 지원하며, macOS에서는 드라이브 수 제한 해제만 적용됩니다.',
+    faq5_q:'Starter와 AutoLoader의 차이는 무엇인가요?', faq5_a:'Starter는 단독 LTO 드라이브(최대 2대)용입니다. AutoLoader는 드라이브 수 제한이 없고 테이프 오토로더·라이브러리 제어를 지원합니다. 테이프 라이브러리(Quantum, Overland 등)를 보유하고 있다면 AutoLoader 요금제가 필요합니다.',
     faq6_q:'여러 컴퓨터에 설치할 수 있나요?', faq6_a:'라이선스는 활성화한 컴퓨터에 연결됩니다. 등록할 수 있는 컴퓨터 수는 구매한 라이선스 수에 따라 정해집니다. 다른 컴퓨터로 옮기려면 <a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a>으로 문의해 주세요.',
     cta_h2:'테이프를 일일이 뒤지는 것, 이제 그만.', cta_p:'TapeVault를 다운로드하고 오늘부터 30초 안에 모든 파일을 찾으세요.',
     cta_btn:'⬇ 다운로드 — 1개월 체험 후 연 36만원부터', cta_note:'Windows 10 / 11 · macOS · 전체 기능 1개월 체험 · 연간 라이선스(부가세 별도) · LTO-5 ~ LTO-9',
@@ -1041,6 +1161,30 @@ const T = {
     dl_or:'또는', dl_mac_btn:'🍎 macOS용 다운로드 (Apple Silicon)', dl_mac_note:'v1.2.9 · Apple Silicon(M1 이후) · ~116 MB'
   },
   ja: {
+    su_label:'構成をひと目で',
+    su_title:'TapeVaultの使用イメージ',
+    su_sub:'TapeVaultはPC・Macにインストールするプログラムです。LTOテープ機器を制御し、どのファイルがどのテープにあるかを記憶します。',
+    su_tag:'単体ドライブ構成 · Starter',
+    su_p1:'TapeVault',
+    su_p2:'LTOドライブ',
+    su_p3:'LTOテープ',
+    su_i1_t:'PC・MacにインストールしたTapeVault',
+    su_i1_d:'撮影素材をドラッグし、テープに書き込み、検証し、後から検索するまでをこの画面ひとつで行います。写真の画面は実際のTapeVaultです。',
+    su_i2_t:'LTOテープドライブ',
+    su_i2_d:'テープを読み書きする機器で、ケーブルでコンピューターに接続します。Starterはドライブ2台まで使用できます（LTO-5〜LTO-9）。',
+    su_i3_t:'LTOテープ',
+    su_i3_d:'LTO-9テープ1本に18TB（非圧縮）を保存できます。書き込みが終わったテープは棚に保管し、カタログとサムネイルはTapeVaultに残るため、テープを1本ずつ入れなくてもファイルを探せます。',
+    su2_tag:'テープライブラリ構成 · AutoLoader',
+    su2_p1:'TapeVault',
+    su2_p2:'テープライブラリ',
+    su2_p3:'LTOテープ',
+    su2_i1_t:'TapeVaultがライブラリを制御します',
+    su2_i1_d:'コンピューター上のTapeVaultから、ライブラリのスロットとドライブを操作します。写真の左のモニターは実際のTapeVaultの画面です。',
+    su2_i2_t:'テープライブラリ（オートローダー）',
+    su2_i2_d:'1台の機器に多数のテープスロット、1台以上のドライブ、テープを移動するロボットが収められています。AutoLoaderはドライブ台数に制限がありません。',
+    su2_i3_t:'テープと保管棚',
+    su2_i3_d:'ライブラリから取り出したテープは棚に保管します。どのテープに何があるかはTapeVaultに残るため、必要なファイルが入ったテープだけを戻せば済みます。',
+    su_note:'説明用にAIで作成したイメージ画像です。ドライブ・ライブラリ・テープは別製品で、TapeVaultには含まれません。',
     intl_note:'韓国国外からのお支払いですか？米ドルでの決済は現在準備中です。開始までは<a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a>までご購入をお問い合わせください。韓国国外向けの価格には韓国の付加価値税はかからず、お客様の国で課される可能性のある税金は含まれていません。',
     dl_manual:'<a class="dl-manual-btn" href="docs/TapeVault-User-Manual-ja.pdf" download>📄 ユーザーマニュアル（PDF）</a><a href="manual.html">オンラインで読む →</a>',
     hs_q:'初めての方へ：',
@@ -1103,7 +1247,7 @@ const T = {
     p1_desc:'単体LTOドライブ環境（最大2台） — 放送スタジオ・小規模アーカイブ・個人運用者向け。',
     p1_f1:'LTOドライブ最大2台 (LTO-5〜LTO-9)', p1_f2:'テープ枚数無制限', p1_f3:'サムネイル自動生成', p1_f4:'全文検索', p1_f5:'アプリ内での動画プレビュー', p1_f6:'メールサポート',
     p2_desc:'テープオートローダー/ライブラリ環境 — テレビ局・病院・政府アーカイブ向け。',
-    p2_f1:'LTOオートローダー／ライブラリ制御（Windows）', p2_f2:'LTOドライブ台数の制限なし', p2_f3:'テープスロット自動管理', p2_f4:'Starterの全機能を含む', p2_f5:'複数ドライブでの複製・スパン書き込み', p2_f6:'優先サポート',
+    p2_f1:'LTOオートローダー／ライブラリ制御', p2_f2:'LTOドライブ台数の制限なし', p2_f3:'テープスロット自動管理', p2_f4:'Starterの全機能を含む', p2_f5:'複数ドライブでの複製・スパン書き込み', p2_f6:'優先サポート',
     p3_amt:'カスタム', p3_desc:'大規模機関 — マルチライブラリ・カスタム展開・SLA要件がある環境向け。',
     p3_f1:'複数テープライブラリ', p3_f2:'オンサイト展開＆セットアップ', p3_f3:'カスタム統合サポート', p3_f4:'専用SLA', p3_f5:'社員トレーニング込み', p3_btn:'営業に問い合わせ', p3_note:'お見積りプランは別途契約・請求となり、オンラインカード決済（Toss Payments）は利用しません。',
     trust_txt:'会員登録だけで、すべてのプランの全機能を使える<strong style="color:#eef1f8">1か月体験ライセンス</strong>を進呈します。クレジットカードは不要です。',
@@ -1113,7 +1257,7 @@ const T = {
     faq2_q:'ライセンスの有効期限が切れるとデータはどうなりますか？', faq2_a:'テープ上のアーカイブデータは常にあなたのものです。標準LTFSフォーマットで保存されており、LTFS対応ソフトなら読み取り可能です。ライセンスが失効すると、更新するまでTapeVaultは利用できませんが、テープやPCに保存されたカタログデータが削除されることはありません。',
     faq3_q:'自動更新はありますか？', faq3_a:'いいえ。自動更新はありません。TapeVaultはクレジットカード情報を保存しません。ライセンスが失効したら、購入ページからいつでも手動で更新できます。',
     faq4_q:'どのLTO世代に対応していますか？', faq4_a:'TapeVaultはLTO-5〜LTO-9ドライブに対応しています。LTO-10への対応は予定されています。シングルドライブとオートローダー（AUTOLOADERプラン）の両方をサポートします。',
-    faq5_q:'StarterとAutoLoaderの違いは何ですか？', faq5_a:'Starterは単体LTOドライブ（最大2台）向けです。AutoLoaderはドライブ台数の制限がなく、テープオートローダー／ライブラリの制御に対応します。ライブラリ制御は現在Windowsで利用でき、macOSではドライブ台数の制限解除のみが適用されます。',
+    faq5_q:'StarterとAutoLoaderの違いは何ですか？', faq5_a:'Starterは単体LTOドライブ（最大2台）向けです。AutoLoaderはドライブ台数の制限がなく、テープオートローダー／ライブラリの制御に対応します。テープライブラリ（Quantum、Overlandなど）をお持ちの場合は、AutoLoaderプランが必要です。',
     faq6_q:'複数のコンピューターにインストールできますか？', faq6_a:'ライセンスは認証したコンピューターに紐づきます。登録できるコンピューターの台数は、購入したライセンス数によって決まります。別のコンピューターへ移す場合は<a href="mailto:support@tapevault.net" style="color:#7db2ff">support@tapevault.net</a>までご連絡ください。',
     cta_h2:'テープを手動で探すのはもうやめよう。', cta_p:'TapeVaultをダウンロードして、今日から30秒で任意のファイルを見つけましょう。',
     cta_btn:'⬇ ダウンロード — 1か月体験後は年間ライセンス', cta_note:'Windows 10 / 11 · macOS · 全機能の1か月体験ライセンス · LTO-5〜LTO-9',
