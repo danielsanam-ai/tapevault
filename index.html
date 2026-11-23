@@ -913,8 +913,9 @@ function playDemo() {
   // 데모 영상은 홈페이지에 직접 올린 파일로 재생한다 (예전에는 YouTube 영상을 불러왔다)
   var host = document.getElementById('yt-thumb');
   var v = document.createElement('video');
-  v.src = 'video/tapevault-demo.mp4';
-  v.poster = 'img/demo-thumb.jpg';
+  var ko = document.documentElement.lang === 'ko';   // 한국어 화면은 한국어 자막판, 그 외(영어·일본어)는 영어 자막판
+  v.src = ko ? 'video/tapevault-demo.mp4' : 'video/tapevault-demo-en.mp4';
+  v.poster = ko ? 'img/demo-thumb.jpg' : 'img/demo-thumb-en.jpg';
   v.controls = true; v.autoplay = true; v.playsInline = true; v.preload = 'auto';
   v.title = 'TapeVault demo video';
   v.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;background:#000';
@@ -1289,6 +1290,8 @@ function applyLang(lang) {
   document.documentElement.lang = lang === 'ko' ? 'ko' : lang === 'ja' ? 'ja' : 'en';
   document.getElementById('lang-current').textContent = lang.toUpperCase();
   document.querySelectorAll('.lang-menu-item').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  const demoThumb = document.querySelector('#yt-thumb img');
+  if (demoThumb) demoThumb.src = lang === 'ko' ? 'img/demo-thumb.jpg' : 'img/demo-thumb-en.jpg';
   localStorage.setItem('tv-lang', lang);
 }
 
