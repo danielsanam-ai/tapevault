@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google.com https://www.google.co.kr https://*.g.doubleclick.net https://*.doubleclick.net; frame-src https://www.googletagmanager.com https://td.doubleclick.net https://bid.g.doubleclick.net; connect-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://www.google.com https://google.com https://www.googleadservices.com https://pagead2.googlesyndication.com; base-uri 'self'; object-src 'none'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google.com https://www.google.co.kr https://*.g.doubleclick.net https://*.doubleclick.net; frame-src https://www.googletagmanager.com https://td.doubleclick.net https://bid.g.doubleclick.net; connect-src 'self' https://danielsanam-ai.github.io https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://www.google.com https://google.com https://www.googleadservices.com https://pagead2.googlesyndication.com; base-uri 'self'; object-src 'none'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>How to Install — TapeVault</title>
 <style>
@@ -196,7 +196,7 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
       </svg>
     </div>
     <span class="nav-logo-text">Tape<b>Vault</b></span>
-    <span class="nav-ver">v1.2.9</span>
+    <span class="nav-ver">v1.3.1</span>
   </a>
   <div class="nav-links" id="nav-links">
     <a href="index.html#features" data-i18n="nav_features">Features</a>
@@ -441,7 +441,7 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
           <div class="screen-dot" style="background:#ff5f57"></div>
           <div class="screen-dot" style="background:#febc2e"></div>
           <div class="screen-dot" style="background:#28c840"></div>
-          <span style="font-size:12px;color:#c2cadc;margin-left:8px;font-family:monospace">TapeVault Setup v1.2.9</span>
+          <span style="font-size:12px;color:#c2cadc;margin-left:8px;font-family:monospace">TapeVault Setup <span data-tv-ver>v1.3.1</span></span>
         </div>
         <div class="screen-mock-body" data-i18n="s3_mock">
           <span class="ok">✓</span> Extracting files...<br>
@@ -509,10 +509,10 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
           <div class="screen-dot" style="background:#ff5f57"></div>
           <div class="screen-dot" style="background:#febc2e"></div>
           <div class="screen-dot" style="background:#28c840"></div>
-          <span style="font-size:12px;color:#c2cadc;margin-left:8px;font-family:monospace">TapeVault v1.2.9 — LTO Archive Manager</span>
+          <span style="font-size:12px;color:#c2cadc;margin-left:8px;font-family:monospace">TapeVault <span data-tv-ver>v1.3.1</span> — LTO Archive Manager</span>
         </div>
         <div class="screen-mock-body" data-i18n="s5_mock">
-          <span class="hl">TapeVault</span> <span class="dim">v1.2.9</span><br><br>
+          <span class="hl">TapeVault</span> <span class="dim" data-tv-ver>v1.3.1</span><br><br>
           <span class="ok">✓</span> Python IPC bridge started<br>
           <span class="ok">✓</span> Database initialized<br>
           <span class="hl">→</span> Scanning for LTO drives...<br>
@@ -838,7 +838,7 @@ const T = {
     s4_c3:'Right-click → <strong style="color:#eef1f8">Update driver</strong> → Search automatically',
     s4_c4:"If not found, download the driver from your drive manufacturer's website",
     s5_title:'First Launch', s5_desc:'Launch TapeVault from the Desktop shortcut or Start Menu. The license screen appears first (Step 6). Once activated, TapeVault finds your connected LTO drive automatically.',
-    s5_mock:'<span class="hl">TapeVault</span> <span class="dim">v1.2.9</span><br><br><span class="ok">✓</span> Python IPC bridge started<br><span class="ok">✓</span> Database initialized<br><span class="hl">→</span> Scanning for LTO drives...<br><span class="ok">✓</span> Drive detected: <span class="hl">HP Ultrium 7 (LTO-7)</span><br><span class="dim">Ready. Insert tape to begin.</span>',
+    s5_mock:'<span class="hl">TapeVault</span> <span class="dim" data-tv-ver>v1.3.1</span><br><br><span class="ok">✓</span> Python IPC bridge started<br><span class="ok">✓</span> Database initialized<br><span class="hl">→</span> Scanning for LTO drives...<br><span class="ok">✓</span> Drive detected: <span class="hl">HP Ultrium 7 (LTO-7)</span><br><span class="dim">Ready. Insert tape to begin.</span>',
     s5_c1:'Insert an LTO tape into your drive',
     s5_c2:'Click <strong style="color:#f5a623">+ New Tape</strong> to format and register a new tape',
     s5_c3:'Create a folder in the tree and drag your footage folder onto it to register the files',
@@ -952,7 +952,7 @@ const T = {
     s4_c3:'우클릭 → <strong style="color:#eef1f8">드라이버 업데이트</strong> → 자동으로 검색',
     s4_c4:'찾을 수 없으면 드라이브 제조사 웹사이트에서 드라이버를 다운로드하세요',
     s5_title:'첫 실행', s5_desc:'바탕화면 바로가기나 시작 메뉴에서 TapeVault를 실행하세요. 처음에는 라이선스 화면이 먼저 나옵니다(6단계). 활성화가 끝나면 연결된 LTO 드라이브를 자동으로 찾습니다.',
-    s5_mock:'<span class="hl">TapeVault</span> <span class="dim">v1.2.9</span><br><br><span class="ok">✓</span> Python IPC 브릿지 시작됨<br><span class="ok">✓</span> 데이터베이스 초기화됨<br><span class="hl">→</span> LTO 드라이브 검색 중...<br><span class="ok">✓</span> 드라이브 인식됨: <span class="hl">HP Ultrium 7 (LTO-7)</span><br><span class="dim">준비 완료. 테이프를 삽입하세요.</span>',
+    s5_mock:'<span class="hl">TapeVault</span> <span class="dim" data-tv-ver>v1.3.1</span><br><br><span class="ok">✓</span> Python IPC 브릿지 시작됨<br><span class="ok">✓</span> 데이터베이스 초기화됨<br><span class="hl">→</span> LTO 드라이브 검색 중...<br><span class="ok">✓</span> 드라이브 인식됨: <span class="hl">HP Ultrium 7 (LTO-7)</span><br><span class="dim">준비 완료. 테이프를 삽입하세요.</span>',
     s5_c1:'드라이브에 LTO 테이프를 삽입합니다',
     s5_c2:'<strong style="color:#f5a623">+ 새 테이프</strong>를 눌러 새 테이프를 포맷하고 등록합니다',
     s5_c3:'폴더 트리에 폴더를 만들고, 촬영 폴더를 끌어다 놓아 파일을 등록합니다',
@@ -1066,7 +1066,7 @@ const T = {
     s4_c3:'右クリック → <strong style="color:#eef1f8">ドライバーの更新</strong> → 自動検索',
     s4_c4:'見つからない場合は、ドライブメーカーのWebサイトからドライバーをダウンロードしてください',
     s5_title:'初回起動', s5_desc:'デスクトップのショートカットまたはスタートメニューからTapeVaultを起動します。最初にライセンス画面が表示されます（手順6）。認証が終わると、接続されたLTOドライブを自動的に検出します。',
-    s5_mock:'<span class="hl">TapeVault</span> <span class="dim">v1.2.9</span><br><br><span class="ok">✓</span> Python IPCブリッジ起動<br><span class="ok">✓</span> データベース初期化完了<br><span class="hl">→</span> LTOドライブをスキャン中...<br><span class="ok">✓</span> ドライブを検出: <span class="hl">HP Ultrium 7 (LTO-7)</span><br><span class="dim">準備完了。テープを挿入してください。</span>',
+    s5_mock:'<span class="hl">TapeVault</span> <span class="dim" data-tv-ver>v1.3.1</span><br><br><span class="ok">✓</span> Python IPCブリッジ起動<br><span class="ok">✓</span> データベース初期化完了<br><span class="hl">→</span> LTOドライブをスキャン中...<br><span class="ok">✓</span> ドライブを検出: <span class="hl">HP Ultrium 7 (LTO-7)</span><br><span class="dim">準備完了。テープを挿入してください。</span>',
     s5_c1:'ドライブにLTOテープを挿入します',
     s5_c2:'<strong style="color:#f5a623">＋ 新しいテープ</strong>をクリックして、新しいテープをフォーマット・登録します',
     s5_c3:'ツリーにフォルダーを作成し、撮影フォルダーをドラッグして登録します',
@@ -1173,5 +1173,6 @@ document.querySelectorAll('#nav-links a').forEach(a => a.addEventListener('click
 </script>
 
 <script src="consent.js"></script>
+<script src="ver.js"></script>
 </body>
 </html>
