@@ -436,22 +436,6 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
         <li data-i18n="s3_c5">Click <strong style="color:#f5a623">Install</strong> and wait for completion (~2 minutes)</li>
         <li data-i18n="s3_c6">Click <strong style="color:#eef1f8">Finish</strong> — TapeVault will launch automatically</li>
       </ul>
-      <div class="screen-mock">
-        <div class="screen-mock-bar">
-          <div class="screen-dot" style="background:#ff5f57"></div>
-          <div class="screen-dot" style="background:#febc2e"></div>
-          <div class="screen-dot" style="background:#28c840"></div>
-          <span style="font-size:12px;color:#c2cadc;margin-left:8px;font-family:monospace">TapeVault Setup <span data-tv-ver>v1.3.1</span></span>
-        </div>
-        <div class="screen-mock-body" data-i18n="s3_mock">
-          <span class="ok">✓</span> Extracting files...<br>
-          <span class="ok">✓</span> Installing Python runtime...<br>
-          <span class="ok">✓</span> Installing Electron framework...<br>
-          <span class="ok">✓</span> Registering TapeVault...<br>
-          <span class="hl">→</span> Installation complete. Click Finish to launch.<br>
-          <span class="dim">Installed to C:\Program Files\TapeVault</span>
-        </div>
-      </div>
     </div>
 
     <hr class="step-divider">
@@ -504,22 +488,10 @@ footer{padding:32px 48px;border-top:0.5px solid #313a54;margin-top:48px}
         <div class="step-title" data-i18n="s5_title">First Launch</div>
       </div>
       <p class="step-desc" data-i18n="s5_desc">Launch TapeVault from the Desktop shortcut or Start Menu. The license screen appears first (Step 6). Once activated, TapeVault finds your connected LTO drive automatically.</p>
-      <div class="screen-mock">
-        <div class="screen-mock-bar">
-          <div class="screen-dot" style="background:#ff5f57"></div>
-          <div class="screen-dot" style="background:#febc2e"></div>
-          <div class="screen-dot" style="background:#28c840"></div>
-          <span style="font-size:12px;color:#c2cadc;margin-left:8px;font-family:monospace">TapeVault <span data-tv-ver>v1.3.1</span> — LTO Archive Manager</span>
-        </div>
-        <div class="screen-mock-body" data-i18n="s5_mock">
-          <span class="hl">TapeVault</span> <span class="dim" data-tv-ver>v1.3.1</span><br><br>
-          <span class="ok">✓</span> Python IPC bridge started<br>
-          <span class="ok">✓</span> Database initialized<br>
-          <span class="hl">→</span> Scanning for LTO drives...<br>
-          <span class="ok">✓</span> Drive detected: <span class="hl">HP Ultrium 7 (LTO-7)</span><br>
-          <span class="dim">Ready. Insert tape to begin.</span>
-        </div>
-      </div>
+      <figure style="margin:16px 0 0">
+        <a href="img/manual/main-areas.png" target="_blank" rel="noopener"><img src="img/manual/main-areas.png" alt="The TapeVault main window" loading="lazy" style="display:block;max-width:100%;height:auto;border:0.5px solid #2a3349;border-radius:8px"></a>
+        <figcaption style="font-size:12.5px;color:#7c88a4;line-height:1.7;margin-top:8px" data-i18n="s5_cap">The main window that opens after activation. It is empty at first; this picture shows it with sample data. The drive and tape appear in the top bar once a tape is recognized.</figcaption>
+      </figure>
       <ul class="checklist" style="margin-top:16px">
         <li data-i18n="s5_c1">Insert an LTO tape into your drive</li>
         <li data-i18n="s5_c2">Click <strong style="color:#f5a623">+ New Tape</strong> to format and register a new tape</li>
@@ -829,7 +801,6 @@ const T = {
     s3_c4:'Shortcuts are created on the Desktop and in the Start Menu',
     s3_c5:'Click <strong style="color:#f5a623">Install</strong> and wait for completion (~2 minutes)',
     s3_c6:'Click <strong style="color:#eef1f8">Finish</strong> — TapeVault will launch automatically',
-    s3_mock:'<span class="ok">✓</span> Extracting files...<br><span class="ok">✓</span> Installing Python runtime...<br><span class="ok">✓</span> Installing Electron framework...<br><span class="ok">✓</span> Registering TapeVault...<br><span class="hl">→</span> Installation complete. Click Finish to launch.<br><span class="dim">Installed to C:\\Program Files\\TapeVault</span>',
     s4_title:'Drivers and LTFS (Windows)', s4_desc:'To use LTO tape on Windows you need three things: ① the driver for your SAS HBA (adapter), ② the tape driver for your LTO drive, and ③ <strong style="color:#eef1f8">IBM LTFS SDE</strong> (IBM Spectrum/Storage Archive Single Drive Edition). The Install Assistant in Step 1 checks which of these are missing and tells you where to get them.',
     s4_alert:'Connect your LTO drive <strong>before</strong> launching TapeVault for the first time. TapeVault will detect the drive automatically on startup.',
     s4_desc2:'If the drive is not detected, check the drivers in this order:',
@@ -837,8 +808,7 @@ const T = {
     s4_c2:'Look for your LTO drive under <strong style="color:#eef1f8">Tape drives</strong> or <strong style="color:#eef1f8">Other devices</strong>',
     s4_c3:'Right-click → <strong style="color:#eef1f8">Update driver</strong> → Search automatically',
     s4_c4:"If not found, download the driver from your drive manufacturer's website",
-    s5_title:'First Launch', s5_desc:'Launch TapeVault from the Desktop shortcut or Start Menu. The license screen appears first (Step 6). Once activated, TapeVault finds your connected LTO drive automatically.',
-    s5_mock:'<span class="hl">TapeVault</span> <span class="dim" data-tv-ver>v1.3.1</span><br><br><span class="ok">✓</span> Python IPC bridge started<br><span class="ok">✓</span> Database initialized<br><span class="hl">→</span> Scanning for LTO drives...<br><span class="ok">✓</span> Drive detected: <span class="hl">HP Ultrium 7 (LTO-7)</span><br><span class="dim">Ready. Insert tape to begin.</span>',
+    s5_title:'First Launch', s5_cap:'The main window that opens after activation. It is empty at first; this picture shows it with sample data. The drive and tape appear in the top bar once a tape is recognized.', s5_desc:'Launch TapeVault from the Desktop shortcut or Start Menu. The license screen appears first (Step 6). Once activated, TapeVault finds your connected LTO drive automatically.',
     s5_c1:'Insert an LTO tape into your drive',
     s5_c2:'Click <strong style="color:#f5a623">+ New Tape</strong> to format and register a new tape',
     s5_c3:'Create a folder in the tree and drag your footage folder onto it to register the files',
@@ -943,7 +913,6 @@ const T = {
     s3_c4:'바탕화면과 시작 메뉴에 바로가기가 만들어집니다',
     s3_c5:'<strong style="color:#f5a623">설치</strong>를 클릭하고 완료될 때까지 기다립니다 (약 2분)',
     s3_c6:'<strong style="color:#eef1f8">마침</strong>을 클릭하면 TapeVault가 자동으로 실행됩니다',
-    s3_mock:'<span class="ok">✓</span> 파일 압축 해제 중...<br><span class="ok">✓</span> Python 런타임 설치 중...<br><span class="ok">✓</span> Electron 프레임워크 설치 중...<br><span class="ok">✓</span> TapeVault 등록 중...<br><span class="hl">→</span> 설치 완료. 마침을 클릭해 실행하세요.<br><span class="dim">설치 위치: C:\\Program Files\\TapeVault</span>',
     s4_title:'드라이버와 LTFS 준비 (Windows)', s4_desc:'Windows에서 LTO 테이프를 쓰려면 세 가지가 필요합니다: ① SAS HBA(어댑터) 드라이버 ② LTO 드라이브의 테이프 드라이버 ③ <strong style="color:#eef1f8">IBM LTFS SDE</strong>(IBM Spectrum/Storage Archive Single Drive Edition). 1단계의 설치 도우미가 빠진 항목을 점검하고 받는 곳을 안내합니다.',
     s4_alert:'TapeVault를 처음 실행하기 <strong>전에</strong> LTO 드라이브를 연결하세요. TapeVault가 시작 시 드라이브를 자동으로 인식합니다.',
     s4_desc2:'드라이브가 인식되지 않으면 아래 순서로 확인하세요:',
@@ -951,8 +920,7 @@ const T = {
     s4_c2:'<strong style="color:#eef1f8">테이프 드라이브</strong> 또는 <strong style="color:#eef1f8">기타 장치</strong> 항목에서 LTO 드라이브를 찾습니다',
     s4_c3:'우클릭 → <strong style="color:#eef1f8">드라이버 업데이트</strong> → 자동으로 검색',
     s4_c4:'찾을 수 없으면 드라이브 제조사 웹사이트에서 드라이버를 다운로드하세요',
-    s5_title:'첫 실행', s5_desc:'바탕화면 바로가기나 시작 메뉴에서 TapeVault를 실행하세요. 처음에는 라이선스 화면이 먼저 나옵니다(6단계). 활성화가 끝나면 연결된 LTO 드라이브를 자동으로 찾습니다.',
-    s5_mock:'<span class="hl">TapeVault</span> <span class="dim" data-tv-ver>v1.3.1</span><br><br><span class="ok">✓</span> Python IPC 브릿지 시작됨<br><span class="ok">✓</span> 데이터베이스 초기화됨<br><span class="hl">→</span> LTO 드라이브 검색 중...<br><span class="ok">✓</span> 드라이브 인식됨: <span class="hl">HP Ultrium 7 (LTO-7)</span><br><span class="dim">준비 완료. 테이프를 삽입하세요.</span>',
+    s5_title:'첫 실행', s5_cap:'활성화가 끝나면 열리는 메인 화면입니다. 처음에는 비어 있으며, 이 그림은 예시 데이터를 넣은 모습입니다. 테이프가 인식되면 위쪽 막대에 드라이브와 테이프가 표시됩니다.', s5_desc:'바탕화면 바로가기나 시작 메뉴에서 TapeVault를 실행하세요. 처음에는 라이선스 화면이 먼저 나옵니다(6단계). 활성화가 끝나면 연결된 LTO 드라이브를 자동으로 찾습니다.',
     s5_c1:'드라이브에 LTO 테이프를 삽입합니다',
     s5_c2:'<strong style="color:#f5a623">+ 새 테이프</strong>를 눌러 새 테이프를 포맷하고 등록합니다',
     s5_c3:'폴더 트리에 폴더를 만들고, 촬영 폴더를 끌어다 놓아 파일을 등록합니다',
@@ -1057,7 +1025,6 @@ const T = {
     s3_c4:'デスクトップとスタートメニューにショートカットが作成されます',
     s3_c5:'<strong style="color:#f5a623">インストール</strong>をクリックし、完了まで待ちます（約2分）',
     s3_c6:'<strong style="color:#eef1f8">完了</strong>をクリックすると、TapeVaultが自動的に起動します',
-    s3_mock:'<span class="ok">✓</span> ファイルを展開中...<br><span class="ok">✓</span> Pythonランタイムをインストール中...<br><span class="ok">✓</span> Electronフレームワークをインストール中...<br><span class="ok">✓</span> TapeVaultを登録中...<br><span class="hl">→</span> インストール完了。完了をクリックして起動してください。<br><span class="dim">インストール先: C:\\Program Files\\TapeVault</span>',
     s4_title:'ドライバーとLTFSの準備（Windows）', s4_desc:'WindowsでLTOテープを使うには次の3つが必要です：① SAS HBA（アダプター）のドライバー ② LTOドライブのテープドライバー ③ <strong style="color:#eef1f8">IBM LTFS SDE</strong>（IBM Spectrum/Storage Archive Single Drive Edition）。手順1のインストールアシスタントが不足している項目を確認し、入手先を案内します。',
     s4_alert:'TapeVaultを初めて起動する<strong>前に</strong>LTOドライブを接続してください。起動時にTapeVaultが自動的にドライブを検出します。',
     s4_desc2:'ドライブが認識されない場合は、次の順に確認してください：',
@@ -1065,8 +1032,7 @@ const T = {
     s4_c2:'<strong style="color:#eef1f8">テープドライブ</strong>または<strong style="color:#eef1f8">その他のデバイス</strong>の項目からLTOドライブを探します',
     s4_c3:'右クリック → <strong style="color:#eef1f8">ドライバーの更新</strong> → 自動検索',
     s4_c4:'見つからない場合は、ドライブメーカーのWebサイトからドライバーをダウンロードしてください',
-    s5_title:'初回起動', s5_desc:'デスクトップのショートカットまたはスタートメニューからTapeVaultを起動します。最初にライセンス画面が表示されます（手順6）。認証が終わると、接続されたLTOドライブを自動的に検出します。',
-    s5_mock:'<span class="hl">TapeVault</span> <span class="dim" data-tv-ver>v1.3.1</span><br><br><span class="ok">✓</span> Python IPCブリッジ起動<br><span class="ok">✓</span> データベース初期化完了<br><span class="hl">→</span> LTOドライブをスキャン中...<br><span class="ok">✓</span> ドライブを検出: <span class="hl">HP Ultrium 7 (LTO-7)</span><br><span class="dim">準備完了。テープを挿入してください。</span>',
+    s5_title:'初回起動', s5_cap:'アクティベーション後に開くメイン画面です。最初は空で、この図はサンプルデータを入れた状態です。テープが認識されると、上部のバーにドライブとテープが表示されます。', s5_desc:'デスクトップのショートカットまたはスタートメニューからTapeVaultを起動します。最初にライセンス画面が表示されます（手順6）。認証が終わると、接続されたLTOドライブを自動的に検出します。',
     s5_c1:'ドライブにLTOテープを挿入します',
     s5_c2:'<strong style="color:#f5a623">＋ 新しいテープ</strong>をクリックして、新しいテープをフォーマット・登録します',
     s5_c3:'ツリーにフォルダーを作成し、撮影フォルダーをドラッグして登録します',
