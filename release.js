@@ -93,8 +93,7 @@
       var rows = keys.map(function (k) {
         var p = d.platforms[k];
         return '<div class="dl-row"><a href="' + esc(p.url) + '" rel="noopener">' + esc(t[NAME[k]]) + ' · ' + esc(p.file) +
-          '</a> <span>' + Math.round(p.size / 1048576) + ' ' + t.mb + ' · ' + esc(osText(p, lang)) + '</span><code title="' + t.sha + '">' +
-          t.sha + ' ' + esc(p.sha256) + '</code></div>';
+          '</a> <span>' + Math.round(p.size / 1048576) + ' ' + t.mb + ' · ' + esc(osText(p, lang)) + '</span></div>';
       }).join('');
       var feats = '';
       if (d.features && d.features.length && both) {
@@ -102,7 +101,7 @@
           return '<tr><td>' + esc(f[lang] || f.en) + '</td><td>' + (f.windows ? t.yes : t.no) + '</td><td>' + (f.mac ? t.yes : t.no) + '</td></tr>';
         }).join('') + '</table></details>';
       }
-      host.innerHTML = rows + '<div class="dl-row"><a href="how-to-install.html#verify">' + t.verify + '</a></div>' + (d.page ? '<div class="dl-row"><a href="' + esc(d.page) + '" rel="noopener">' + t.notes + ' →</a></div>' : '') + feats;
+      host.innerHTML = rows + (d.page ? '<div class="dl-row"><a href="' + esc(d.page) + '" rel="noopener">' + t.notes + ' →</a></div>' : '') + feats;
       host.hidden = false;
     }
     if (typeof applyLang === 'function') {
